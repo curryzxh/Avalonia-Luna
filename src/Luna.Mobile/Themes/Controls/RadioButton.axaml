@@ -4,10 +4,51 @@
     <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.TouchTarget}" />
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
     <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Medium}" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border Background="Transparent">
+          <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+            <Border Name="PART_Indicator"
+                    Width="{DynamicResource Luna.Size.Icon.Medium}"
+                    Height="{DynamicResource Luna.Size.Icon.Medium}"
+                    BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                    BorderThickness="2"
+                    Background="Transparent"
+                    CornerRadius="{DynamicResource Luna.Radius.Circle}"
+                    VerticalAlignment="Center">
+              <Path Name="PART_Check"
+                    Width="{DynamicResource Luna.Size.Icon.Medium}"
+                    Height="{DynamicResource Luna.Size.Icon.Medium}"
+                    Data="M6 12L10 16L18 8"
+                    Stroke="{DynamicResource Luna.Brush.Text.Anti}"
+                    StrokeThickness="2"
+                    StrokeLineCap="Round"
+                    StrokeJoin="Round"
+                    Stretch="Uniform"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    IsVisible="False" />
+            </Border>
+            <ContentPresenter Grid.Column="1"
+                              Content="{TemplateBinding Content}"
+                              VerticalAlignment="Center" />
+          </Grid>
+        </Border>
+      </ControlTemplate>
+    </Setter>
   </Style>
 
-  <Style Selector="RadioButton:checked">
-    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
+  <Style Selector="RadioButton:checked /template/ #PART_Indicator">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="RadioButton:checked /template/ #PART_Check">
+    <Setter Property="IsVisible" Value="True" />
+  </Style>
+
+  <Style Selector="RadioButton:disabled /template/ #PART_Indicator">
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Weak}" />
   </Style>
 
   <Style Selector="RadioButton:disabled">

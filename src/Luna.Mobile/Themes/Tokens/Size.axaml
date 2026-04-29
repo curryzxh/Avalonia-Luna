@@ -10,4 +10,16 @@
   <sys:Double x:Key="Luna.Size.Icon.Small">18</sys:Double>
   <sys:Double x:Key="Luna.Size.Icon.Medium">22</sys:Double>
   <sys:Double x:Key="Luna.Size.Icon.Large">26</sys:Double>
+
+  <sys:Double x:Key="Luna.Size.Switch.Width.Large">52</sys:Double>
+  <sys:Double x:Key="Luna.Size.Switch.Width.Medium">48</sys:Double>
+  <sys:Double x:Key="Luna.Size.Switch.Width.Small">44</sys:Double>
+
+  <sys:Double x:Key="Luna.Size.Switch.Height.Large">32</sys:Double>
+  <sys:Double x:Key="Luna.Size.Switch.Height.Medium">28</sys:Double>
+  <sys:Double x:Key="Luna.Size.Switch.Height.Small">24</sys:Double>
+
+  <sys:Double x:Key="Luna.Size.Switch.Thumb.Large">28</sys:Double>
+  <sys:Double x:Key="Luna.Size.Switch.Thumb.Medium">24</sys:Double>
+  <sys:Double x:Key="Luna.Size.Switch.Thumb.Small">20</sys:Double>
 </ResourceDictionary>

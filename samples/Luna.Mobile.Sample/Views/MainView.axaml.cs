@@ -1,6 +1,7 @@
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Media;
+using System.ComponentModel;
 using System.Collections.Generic;
 
 namespace Luna.Mobile.Sample.Views;
@@ -37,7 +38,7 @@ public partial class MainView : UserControl
             new("TabBar 底部标签栏", "/tabbar"),
             new("Tabs 选项卡", "/tabs"),
         ]),
-        new("输入", "bulletpoint", Icons.Bulletpoint, false,
+        new("输入", "bulletpoint", Icons.Bulletpoint, true,
         [
             new("Calendar 日历", "/calendar"),
             new("Cascader 级联选择器", "/cascader"),
@@ -108,23 +109,74 @@ public partial class MainView : UserControl
 
     private void OnCatalogItemTapped(object? sender, TappedEventArgs e)
     {
-        if (sender is not Control { Tag: "/button" })
+        if (sender is not Control { Tag: string path })
         {
             return;
         }
 
-        var view = new ButtonDemoView();
+        Content = path switch
+        {
+            "/button" => AttachBackHandler(new ButtonDemoView()),
+            "/radio" => AttachBackHandler(new RadioDemoView()),
+            "/switch" => AttachBackHandler(new SwitchDemoView()),
+            _ => _catalogContent,
+        };
+    }
+
+    private UserControl AttachBackHandler(ButtonDemoView view)
+    {
         view.BackRequested += (_, _) => Content = _catalogContent;
-        Content = view;
+        return view;
+    }
+
+    private UserControl AttachBackHandler(SwitchDemoView view)
+    {
+        view.BackRequested += (_, _) => Content = _catalogContent;
+        return view;
+    }
+
+    private UserControl AttachBackHandler(RadioDemoView view)
+    {
+        view.BackRequested += (_, _) => Content = _catalogContent;
+        return view;
     }
 }
 
-public sealed record CatalogSection(
-    string Title,
-    string Icon,
-    Geometry IconData,
-    bool IsExpanded,
-    IReadOnlyList<CatalogItem> Children);
+public sealed class CatalogSection : INotifyPropertyChanged
+{
+    private bool _isExpanded;
+
+    public string Title { get; }
+    public string Icon { get; }
+    public Geometry IconData { get; }
+    public IReadOnlyList<CatalogItem> Children { get; }
+
+    public bool IsExpanded
+    {
+        get => _isExpanded;
+        set
+        {
+            if (value == _isExpanded)
+            {
+                return;
+            }
+
+            _isExpanded = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsExpanded)));
+        }
+    }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    public CatalogSection(string title, string icon, Geometry iconData, bool isExpanded, IReadOnlyList<CatalogItem> children)
+    {
+        Title = title;
+        Icon = icon;
+        IconData = iconData;
+        _isExpanded = isExpanded;
+        Children = children;
+    }
+}
 
 public sealed record CatalogItem(string Name, string Path);
 

@@ -65,64 +65,68 @@
         </ItemsControl.ItemsPanel>
         <ItemsControl.ItemTemplate>
           <DataTemplate x:DataType="views:CatalogSection">
-            <StackPanel>
-              <Border Background="{DynamicResource Luna.Brush.Background.Container}">
-                <Grid Height="56" ColumnDefinitions="*,48" Margin="32,0,26,0">
-                  <TextBlock Text="{Binding Title}"
-                             FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
-                             FontWeight="{DynamicResource Luna.FontWeight.Medium}"
-                             Foreground="{DynamicResource Luna.Brush.Text.Primary}"
-                             VerticalAlignment="Center" />
-                  <Path Grid.Column="1"
-                        Width="28"
-                        Height="28"
-                        Data="{Binding IconData}"
-                        Stroke="{DynamicResource Luna.Brush.Text.Placeholder}"
-                        StrokeThickness="2"
-                        StrokeLineCap="Square"
-                        StrokeJoin="Miter"
-                        Fill="Transparent"
-                        Stretch="Uniform"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center" />
-                </Grid>
-              </Border>
+            <Expander IsExpanded="{Binding IsExpanded, Mode=TwoWay}">
+              <Expander.ContentTransition>
+                <PageSlide Duration="0:00:00.200" Orientation="Vertical" />
+              </Expander.ContentTransition>
+              <Expander.Header>
+                <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+                  <Grid Height="56" ColumnDefinitions="*,48" Margin="32,0,26,0">
+                    <TextBlock Text="{Binding Title}"
+                               FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                               FontWeight="{DynamicResource Luna.FontWeight.Medium}"
+                               Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                               VerticalAlignment="Center" />
+                    <Path Grid.Column="1"
+                          Width="28"
+                          Height="28"
+                          Data="{Binding IconData}"
+                          Stroke="{DynamicResource Luna.Brush.Text.Placeholder}"
+                          StrokeThickness="2"
+                          StrokeLineCap="Square"
+                          StrokeJoin="Miter"
+                          Fill="Transparent"
+                          Stretch="Uniform"
+                          HorizontalAlignment="Right"
+                          VerticalAlignment="Center" />
+                  </Grid>
+                </Border>
+              </Expander.Header>
 
-              <Border IsVisible="{Binding IsExpanded}"
-                      Background="{DynamicResource Luna.Brush.Background.Container}">
+              <Border Background="{DynamicResource Luna.Brush.Background.Container}">
                 <ItemsControl ItemsSource="{Binding Children}">
-                    <ItemsControl.ItemTemplate>
-                      <DataTemplate x:DataType="views:CatalogItem">
-                        <Grid Height="56"
-                              ColumnDefinitions="*,36"
-                              Margin="32,0,26,0"
-                              Tag="{Binding Path}"
-                              Tapped="OnCatalogItemTapped">
-                          <Border Height="1"
-                                  Background="{DynamicResource Luna.Brush.Border.Divider}"
-                                  VerticalAlignment="Top"
-                                  Grid.ColumnSpan="2" />
-                          <TextBlock Text="{Binding Name}"
-                                     FontSize="{DynamicResource Luna.FontSize.Body.Large}"
-                                     Foreground="{DynamicResource Luna.Brush.Text.Primary}"
-                                     VerticalAlignment="Center" />
-                          <Path Grid.Column="1"
-                                Width="18"
-                                Height="18"
-                                Data="M9.5 17.5L15 12L9.5 6.5"
-                                Stroke="{DynamicResource Luna.Brush.Text.Placeholder}"
-                                StrokeThickness="2"
-                                StrokeLineCap="Square"
-                                Fill="Transparent"
-                                Stretch="Uniform"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Center" />
-                        </Grid>
-                      </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                  </ItemsControl>
+                  <ItemsControl.ItemTemplate>
+                    <DataTemplate x:DataType="views:CatalogItem">
+                      <Grid Height="56"
+                            ColumnDefinitions="*,36"
+                            Margin="32,0,26,0"
+                            Tag="{Binding Path}"
+                            Tapped="OnCatalogItemTapped">
+                        <Border Height="1"
+                                Background="{DynamicResource Luna.Brush.Border.Divider}"
+                                VerticalAlignment="Top"
+                                Grid.ColumnSpan="2" />
+                        <TextBlock Text="{Binding Name}"
+                                   FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                                   Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                                   VerticalAlignment="Center" />
+                        <Path Grid.Column="1"
+                              Width="18"
+                              Height="18"
+                              Data="M9.5 17.5L15 12L9.5 6.5"
+                              Stroke="{DynamicResource Luna.Brush.Text.Placeholder}"
+                              StrokeThickness="2"
+                              StrokeLineCap="Square"
+                              Fill="Transparent"
+                              Stretch="Uniform"
+                              HorizontalAlignment="Right"
+                              VerticalAlignment="Center" />
+                      </Grid>
+                    </DataTemplate>
+                  </ItemsControl.ItemTemplate>
+                </ItemsControl>
               </Border>
-            </StackPanel>
+            </Expander>
           </DataTemplate>
         </ItemsControl.ItemTemplate>
       </ItemsControl>

@@ -1,0 +1,246 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Luna.Mobile.Sample.Views.RadioDemoView">
+  <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
+    <StackPanel Spacing="24" Margin="0,0,0,28">
+      <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+        <Grid ColumnDefinitions="56,*,56" MinHeight="56">
+          <Button Classes="text"
+                  Content="‹"
+                  FontSize="34"
+                  Padding="0"
+                  Click="OnBackClick" />
+          <TextBlock Grid.Column="1"
+                     Text="Radio 单选框"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center" />
+        </Grid>
+      </Border>
+
+      <StackPanel Margin="16,0" Spacing="8">
+        <TextBlock Text="Radio 单选框"
+                   FontSize="{DynamicResource Luna.FontSize.Title.Large}"
+                   FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+        <TextBlock Text="用于在预设的一组选项中执行单项选择，并呈现选择结果。"
+                   FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                   TextWrapping="Wrap" />
+      </StackPanel>
+
+      <StackPanel Spacing="28">
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="01 组件类型"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="纵向单选框"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+            <StackPanel Margin="16,8" Spacing="12">
+              <RadioButton GroupName="vertical" IsChecked="True" Content="单选" />
+              <RadioButton GroupName="vertical" Content="单选" />
+              <RadioButton GroupName="vertical">
+                <TextBlock Text="单选标题多行单选标题多行单选标题多行单选标题多行单选标题多行"
+                           TextWrapping="Wrap"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Medium}" />
+              </RadioButton>
+              <RadioButton GroupName="vertical">
+                <StackPanel Spacing="4">
+                  <TextBlock Text="单选"
+                             Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                             FontSize="{DynamicResource Luna.FontSize.Body.Medium}" />
+                  <TextBlock Text="描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息"
+                             Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                             FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                             TextWrapping="Wrap" />
+                </StackPanel>
+              </RadioButton>
+            </StackPanel>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="横向单选框"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+            <Grid Margin="16" ColumnDefinitions="*,*,*" ColumnSpacing="12">
+              <RadioButton GroupName="horizontal" IsChecked="True" Content="单选标题" />
+              <RadioButton Grid.Column="1" GroupName="horizontal" Content="单选标题" />
+              <RadioButton Grid.Column="2" GroupName="horizontal" Content="上限四字" />
+            </Grid>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="02 组件状态"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="单选框状态"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+          <StackPanel Spacing="16" Margin="16,0">
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+              <Grid Height="56" ColumnDefinitions="*,Auto" Margin="16,0">
+                <TextBlock Text="选项禁用-已选"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           VerticalAlignment="Center" />
+                <RadioButton Grid.Column="1"
+                             GroupName="disabled"
+                             IsChecked="True"
+                             IsEnabled="False"
+                             VerticalAlignment="Center" />
+              </Grid>
+            </Border>
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+              <Grid Height="56" ColumnDefinitions="*,Auto" Margin="16,0">
+                <TextBlock Text="选项禁用-默认"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           VerticalAlignment="Center" />
+                <RadioButton Grid.Column="1"
+                             GroupName="disabled"
+                             IsEnabled="False"
+                             VerticalAlignment="Center" />
+              </Grid>
+            </Border>
+          </StackPanel>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="03 组件样式"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="勾选样式"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+          <StackPanel Spacing="16" Margin="16,0">
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+              <Grid Height="56" ColumnDefinitions="*,Auto" Margin="16,0">
+                <TextBlock Text="单选"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           VerticalAlignment="Center" />
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                  <TextBlock Text="占位：line"
+                             Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                             VerticalAlignment="Center" />
+                  <RadioButton GroupName="icon" IsChecked="True" VerticalAlignment="Center" />
+                </StackPanel>
+              </Grid>
+            </Border>
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+              <Grid Height="56" ColumnDefinitions="*,Auto" Margin="16,0">
+                <TextBlock Text="单选"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           VerticalAlignment="Center" />
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                  <TextBlock Text="占位：dot"
+                             Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                             VerticalAlignment="Center" />
+                  <RadioButton GroupName="icon" IsChecked="True" VerticalAlignment="Center" />
+                </StackPanel>
+              </Grid>
+            </Border>
+          </StackPanel>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="勾选显示位置"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          <StackPanel Spacing="16" Margin="16,0">
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+              <Grid Height="56" ColumnDefinitions="*,Auto" Margin="16,0">
+                <TextBlock Text="单选"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           VerticalAlignment="Center" />
+                <RadioButton Grid.Column="1" GroupName="placement" IsChecked="True" VerticalAlignment="Center" />
+              </Grid>
+            </Border>
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+              <Grid Height="56" ColumnDefinitions="*,Auto" Margin="16,0">
+                <TextBlock Text="单选"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           VerticalAlignment="Center" />
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                  <TextBlock Text="占位：right"
+                             Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                             VerticalAlignment="Center" />
+                  <RadioButton GroupName="placement" IsChecked="True" VerticalAlignment="Center" />
+                </StackPanel>
+              </Grid>
+            </Border>
+          </StackPanel>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="非通栏单选样式"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          <StackPanel Spacing="12" Margin="16,0">
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                    BorderBrush="{DynamicResource Luna.Brush.Brand}"
+                    BorderThickness="1.5"
+                    CornerRadius="{DynamicResource Luna.Radius.Default}"
+                    Padding="16">
+              <RadioButton GroupName="card" IsChecked="True" Content="单选" />
+            </Border>
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                    BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                    BorderThickness="1.5"
+                    CornerRadius="{DynamicResource Luna.Radius.Default}"
+                    Padding="16">
+              <RadioButton GroupName="card" Content="单选" />
+            </Border>
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                    BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                    BorderThickness="1.5"
+                    CornerRadius="{DynamicResource Luna.Radius.Default}"
+                    Padding="16">
+              <TextBlock Text="占位：卡片激活态角标/自定义模板后续补齐"
+                         Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         TextWrapping="Wrap" />
+            </Border>
+          </StackPanel>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="04 特殊样式"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}" Margin="16,0" Padding="16">
+            <TextBlock Text="占位：纵向/横向卡片单选框（需更强的模板/选择态联动样式，后续进入控件级样式任务）"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                       TextWrapping="Wrap" />
+          </Border>
+        </StackPanel>
+      </StackPanel>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

@@ -1,0 +1,216 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Luna.Mobile.Sample.Views.SwitchDemoView">
+  <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
+    <StackPanel Spacing="24" Margin="0,0,0,28">
+      <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+        <Grid ColumnDefinitions="56,*,56" MinHeight="56">
+          <Button Classes="text"
+                  Content="‹"
+                  FontSize="34"
+                  Padding="0"
+                  Click="OnBackClick" />
+          <TextBlock Grid.Column="1"
+                     Text="Switch 开关"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center" />
+        </Grid>
+      </Border>
+
+      <StackPanel Margin="16,0" Spacing="8">
+        <TextBlock Text="Switch 开关"
+                   FontSize="{DynamicResource Luna.FontSize.Title.Large}"
+                   FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+        <TextBlock Text="用于控制某个功能的开启和关闭。"
+                   FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                   TextWrapping="Wrap" />
+      </StackPanel>
+
+      <StackPanel Spacing="28">
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="01 组件类型"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="基础开关"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+            <Grid Height="56" ColumnDefinitions="*,Auto" Margin="16,0">
+              <TextBlock Text="基础开关"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                         VerticalAlignment="Center" />
+              <ToggleSwitch Grid.Column="1" IsChecked="True" VerticalAlignment="Center" />
+            </Grid>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="带描述开关"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          <StackPanel Spacing="16">
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+              <Grid Height="56" ColumnDefinitions="*,Auto" Margin="16,0">
+                <TextBlock Text="带文字开关"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           VerticalAlignment="Center" />
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                  <TextBlock Text="开" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" VerticalAlignment="Center" />
+                  <ToggleSwitch IsChecked="True" />
+                </StackPanel>
+              </Grid>
+            </Border>
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+              <Grid Height="56" ColumnDefinitions="*,Auto" Margin="16,0">
+                <TextBlock Text="带图标开关"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           VerticalAlignment="Center" />
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                  <Path Width="16" Height="16" Data="M4 12L9 17L20 6" Stroke="{DynamicResource Luna.Brush.Brand}" StrokeThickness="2" Stretch="Uniform" />
+                  <ToggleSwitch IsChecked="True" />
+                </StackPanel>
+              </Grid>
+            </Border>
+          </StackPanel>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="自定义颜色开关"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+            <Grid Height="56" ColumnDefinitions="*,Auto" Margin="16,0">
+              <TextBlock Text="自定义颜色开关"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                         VerticalAlignment="Center" />
+              <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                <TextBlock Text="占位" Foreground="{DynamicResource Luna.Brush.Success}" VerticalAlignment="Center" />
+                <ToggleSwitch IsChecked="True" />
+              </StackPanel>
+            </Grid>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="02 状态"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="加载状态"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+          <StackPanel Spacing="16">
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+              <Grid Height="56" ColumnDefinitions="*,Auto" Margin="16,0">
+                <TextBlock Text="加载状态"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           VerticalAlignment="Center" />
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                  <TextBlock Text="加载中" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" VerticalAlignment="Center" />
+                  <ToggleSwitch IsEnabled="False" />
+                </StackPanel>
+              </Grid>
+            </Border>
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+              <Grid Height="56" ColumnDefinitions="*,Auto" Margin="16,0">
+                <TextBlock Text="开关开启禁用"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           VerticalAlignment="Center" />
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                  <TextBlock Text="加载中" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" VerticalAlignment="Center" />
+                  <ToggleSwitch IsChecked="True" IsEnabled="False" />
+                </StackPanel>
+              </Grid>
+            </Border>
+          </StackPanel>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="禁用状态"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          <StackPanel Spacing="16">
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+              <Grid Height="56" ColumnDefinitions="*,Auto" Margin="16,0">
+                <TextBlock Text="禁用状态"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           VerticalAlignment="Center" />
+                <ToggleSwitch Grid.Column="1" IsEnabled="False" VerticalAlignment="Center" />
+              </Grid>
+            </Border>
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+              <Grid Height="56" ColumnDefinitions="*,Auto" Margin="16,0">
+                <TextBlock Text="禁用状态"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           VerticalAlignment="Center" />
+                <ToggleSwitch Grid.Column="1" IsChecked="True" IsEnabled="False" VerticalAlignment="Center" />
+              </Grid>
+            </Border>
+          </StackPanel>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="03 组件样式"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="开关尺寸"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+          <StackPanel Spacing="16">
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+              <Grid Height="56" ColumnDefinitions="*,Auto" Margin="16,0">
+                <TextBlock Text="大尺寸 32"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           VerticalAlignment="Center" />
+                <ToggleSwitch Grid.Column="1" Classes="large" IsChecked="True" VerticalAlignment="Center" />
+              </Grid>
+            </Border>
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+              <Grid Height="56" ColumnDefinitions="*,Auto" Margin="16,0">
+                <TextBlock Text="中尺寸 28"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           VerticalAlignment="Center" />
+                <ToggleSwitch Grid.Column="1" IsChecked="True" VerticalAlignment="Center" />
+              </Grid>
+            </Border>
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+              <Grid Height="56" ColumnDefinitions="*,Auto" Margin="16,0">
+                <TextBlock Text="小尺寸 24"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           VerticalAlignment="Center" />
+                <ToggleSwitch Grid.Column="1" Classes="small" IsChecked="True" VerticalAlignment="Center" />
+              </Grid>
+            </Border>
+          </StackPanel>
+        </StackPanel>
+      </StackPanel>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

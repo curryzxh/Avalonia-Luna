@@ -116,12 +116,15 @@ public partial class MainView : UserControl
 
         Content = path switch
         {
+            "/actionsheet" => AttachBackHandler(new ActionSheetDemoView()),
             "/avatar" => AttachBackHandler(new AvatarDemoView()),
             "/button" => AttachBackHandler(new ButtonDemoView()),
             "/badge" => AttachBackHandler(new BadgeDemoView()),
+            "/cell" => AttachBackHandler(new CellDemoView()),
             "/checkbox" => AttachBackHandler(new CheckBoxDemoView()),
             "/divider" => AttachBackHandler(new DividerDemoView()),
             "/input" => AttachBackHandler(new InputDemoView()),
+            "/dialog" => AttachBackHandler(new DialogDemoView()),
             "/loading" => AttachBackHandler(new LoadingDemoView()),
             "/message" => AttachBackHandler(new MessageDemoView()),
             "/noticebar" => AttachBackHandler(new NoticeBarDemoView()),
@@ -169,6 +172,12 @@ public partial class MainView : UserControl
         return view;
     }
 
+    private UserControl AttachBackHandler(DialogDemoView view)
+    {
+        view.BackRequested += (_, _) => Content = _catalogContent;
+        return view;
+    }
+
     private UserControl AttachBackHandler(ToastDemoView view)
     {
         view.BackRequested += (_, _) => Content = _catalogContent;
@@ -206,6 +215,18 @@ public partial class MainView : UserControl
     }
 
     private UserControl AttachBackHandler(AvatarDemoView view)
+    {
+        view.BackRequested += (_, _) => Content = _catalogContent;
+        return view;
+    }
+
+    private UserControl AttachBackHandler(ActionSheetDemoView view)
+    {
+        view.BackRequested += (_, _) => Content = _catalogContent;
+        return view;
+    }
+
+    private UserControl AttachBackHandler(CellDemoView view)
     {
         view.BackRequested += (_, _) => Content = _catalogContent;
         return view;

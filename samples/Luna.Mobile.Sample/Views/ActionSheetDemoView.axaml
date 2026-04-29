@@ -1,0 +1,139 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="using:Luna.Mobile.Controls"
+             x:Class="Luna.Mobile.Sample.Views.ActionSheetDemoView">
+  <Grid>
+    <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
+      <StackPanel Spacing="24" Margin="0,0,0,28">
+        <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+          <Grid ColumnDefinitions="56,*,56" MinHeight="56">
+            <Button Classes="text"
+                    Content="‹"
+                    FontSize="34"
+                    Padding="0"
+                    Click="OnBackClick" />
+            <TextBlock Grid.Column="1"
+                       Text="ActionSheet 动作面板"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center" />
+          </Grid>
+        </Border>
+
+        <StackPanel Margin="16,0" Spacing="8">
+          <TextBlock Text="ActionSheet 动作面板"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Large}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+          <TextBlock Text="从底部弹出的模态框，提供和当前场景相关的操作动作，也支持提供信息输入和描述。"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                     TextWrapping="Wrap" />
+        </StackPanel>
+
+        <StackPanel Spacing="28">
+          <StackPanel Spacing="16">
+            <StackPanel Margin="16,0" Spacing="4">
+              <TextBlock Text="01 类型"
+                         FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                         FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+              <TextBlock Text="列表型"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            </StackPanel>
+            <StackPanel Margin="16,0" Spacing="16">
+              <Button Classes="primary outline large"
+                      HorizontalAlignment="Stretch"
+                      Content="常规列表型"
+                      Click="OnNormalListClick" />
+              <Button Classes="primary outline large"
+                      HorizontalAlignment="Stretch"
+                      Content="函数调用"
+                      Click="OnMethodListClick" />
+              <Button Classes="primary outline large"
+                      HorizontalAlignment="Stretch"
+                      Content="带描述列表型"
+                      Click="OnDescriptionListClick" />
+              <Button Classes="primary outline large"
+                      HorizontalAlignment="Stretch"
+                      Content="带图标列表型"
+                      Click="OnIconListClick" />
+              <Button Classes="primary outline large"
+                      HorizontalAlignment="Stretch"
+                      Content="带徽标列表型"
+                      Click="OnBadgeListClick" />
+            </StackPanel>
+          </StackPanel>
+
+          <StackPanel Spacing="16">
+            <TextBlock Text="宫格型"
+                       Margin="16,0"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <StackPanel Margin="16,0" Spacing="16">
+              <Button Classes="primary outline large"
+                      HorizontalAlignment="Stretch"
+                      Content="常规宫格型"
+                      Click="OnNormalGridClick" />
+              <Button Classes="primary outline large"
+                      HorizontalAlignment="Stretch"
+                      Content="带描述宫格型"
+                      Click="OnDescriptionGridClick" />
+              <Button Classes="primary outline large"
+                      HorizontalAlignment="Stretch"
+                      Content="带徽标宫格型"
+                      Click="OnBadgeGridClick" />
+            </StackPanel>
+          </StackPanel>
+
+          <StackPanel Spacing="16">
+            <StackPanel Margin="16,0" Spacing="4">
+              <TextBlock Text="02 组件状态"
+                         FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                         FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+              <TextBlock Text="列表型选项状态"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            </StackPanel>
+            <StackPanel Margin="16,0" Spacing="16">
+              <Button Classes="primary outline large"
+                      HorizontalAlignment="Stretch"
+                      Content="列表型选项状态"
+                      Click="OnStatusListClick" />
+            </StackPanel>
+          </StackPanel>
+
+          <StackPanel Spacing="16">
+            <StackPanel Margin="16,0" Spacing="4">
+              <TextBlock Text="03 组件样式"
+                         FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                         FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+              <TextBlock Text="列表型对齐方式"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            </StackPanel>
+            <StackPanel Margin="16,0" Spacing="16">
+              <Button Classes="primary outline large"
+                      HorizontalAlignment="Stretch"
+                      Content="居中列表型"
+                      Click="OnAlignCenterListClick" />
+              <Button Classes="primary outline large"
+                      HorizontalAlignment="Stretch"
+                      Content="左对齐列表型"
+                      Click="OnAlignLeftListClick" />
+            </StackPanel>
+          </StackPanel>
+        </StackPanel>
+      </StackPanel>
+    </ScrollViewer>
+
+    <controls:ActionSheetHost Name="ActionSheetHost"
+                              HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch" />
+  </Grid>
+</UserControl>

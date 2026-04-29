@@ -52,4 +52,63 @@
   <StaticResource x:Key="RadioButtonCheckGlyphFillPointerOver" ResourceKey="Luna.Brush.Neutral.White" />
   <StaticResource x:Key="RadioButtonCheckGlyphFillPressed" ResourceKey="Luna.Brush.Neutral.White" />
   <StaticResource x:Key="RadioButtonCheckGlyphFillDisabled" ResourceKey="Luna.Brush.Neutral.White" />
+
+  <StaticResource x:Key="CheckBoxForegroundUnchecked" ResourceKey="Luna.Brush.Text.Primary" />
+  <StaticResource x:Key="CheckBoxForegroundUncheckedPointerOver" ResourceKey="Luna.Brush.Text.Primary" />
+  <StaticResource x:Key="CheckBoxForegroundUncheckedPressed" ResourceKey="Luna.Brush.Text.Primary" />
+  <StaticResource x:Key="CheckBoxForegroundUncheckedDisabled" ResourceKey="Luna.Brush.Text.Disabled" />
+
+  <StaticResource x:Key="CheckBoxForegroundChecked" ResourceKey="Luna.Brush.Text.Primary" />
+  <StaticResource x:Key="CheckBoxForegroundCheckedPointerOver" ResourceKey="Luna.Brush.Text.Primary" />
+  <StaticResource x:Key="CheckBoxForegroundCheckedPressed" ResourceKey="Luna.Brush.Text.Primary" />
+  <StaticResource x:Key="CheckBoxForegroundCheckedDisabled" ResourceKey="Luna.Brush.Text.Disabled" />
+
+  <StaticResource x:Key="CheckBoxForegroundIndeterminate" ResourceKey="Luna.Brush.Text.Primary" />
+  <StaticResource x:Key="CheckBoxForegroundIndeterminatePointerOver" ResourceKey="Luna.Brush.Text.Primary" />
+  <StaticResource x:Key="CheckBoxForegroundIndeterminatePressed" ResourceKey="Luna.Brush.Text.Primary" />
+  <StaticResource x:Key="CheckBoxForegroundIndeterminateDisabled" ResourceKey="Luna.Brush.Text.Disabled" />
+
+  <StaticResource x:Key="CheckBoxCheckBackgroundStrokeUnchecked" ResourceKey="Luna.Brush.Border.Strong" />
+  <StaticResource x:Key="CheckBoxCheckBackgroundStrokeUncheckedPointerOver" ResourceKey="Luna.Brush.Border.Strong" />
+  <StaticResource x:Key="CheckBoxCheckBackgroundStrokeUncheckedPressed" ResourceKey="Luna.Brush.Border.Strong" />
+  <StaticResource x:Key="CheckBoxCheckBackgroundStrokeUncheckedDisabled" ResourceKey="Luna.Brush.Border.Default" />
+
+  <StaticResource x:Key="CheckBoxCheckBackgroundFillUnchecked" ResourceKey="Luna.Brush.Background.Container" />
+  <StaticResource x:Key="CheckBoxCheckBackgroundFillUncheckedPointerOver" ResourceKey="Luna.Brush.Background.Container" />
+  <StaticResource x:Key="CheckBoxCheckBackgroundFillUncheckedPressed" ResourceKey="Luna.Brush.Background.Container" />
+  <StaticResource x:Key="CheckBoxCheckBackgroundFillUncheckedDisabled" ResourceKey="Luna.Brush.Background.Disabled" />
+
+  <StaticResource x:Key="CheckBoxCheckBackgroundFillChecked" ResourceKey="Luna.Brush.Brand" />
+  <StaticResource x:Key="CheckBoxCheckBackgroundFillCheckedPointerOver" ResourceKey="Luna.Brush.Brand.Active" />
+  <StaticResource x:Key="CheckBoxCheckBackgroundFillCheckedPressed" ResourceKey="Luna.Brush.Brand.Active" />
+  <StaticResource x:Key="CheckBoxCheckBackgroundFillCheckedDisabled" ResourceKey="Luna.Brush.Border.Default" />
+
+  <StaticResource x:Key="CheckBoxCheckBackgroundStrokeCheckedPointerOver" ResourceKey="Luna.Brush.Brand.Active" />
+  <StaticResource x:Key="CheckBoxCheckBackgroundStrokeCheckedPressed" ResourceKey="Luna.Brush.Brand.Active" />
+  <StaticResource x:Key="CheckBoxCheckBackgroundStrokeCheckedDisabled" ResourceKey="Luna.Brush.Border.Default" />
+
+  <StaticResource x:Key="CheckBoxCheckBackgroundStrokeIndeterminate" ResourceKey="Luna.Brush.Brand" />
+  <StaticResource x:Key="CheckBoxCheckBackgroundStrokeIndeterminatePointerOver" ResourceKey="Luna.Brush.Brand.Active" />
+  <StaticResource x:Key="CheckBoxCheckBackgroundStrokeIndeterminatePressed" ResourceKey="Luna.Brush.Brand.Active" />
+  <StaticResource x:Key="CheckBoxCheckBackgroundStrokeIndeterminateDisabled" ResourceKey="Luna.Brush.Border.Default" />
+
+  <StaticResource x:Key="CheckBoxCheckBackgroundFillIndeterminate" ResourceKey="Luna.Brush.Brand" />
+  <StaticResource x:Key="CheckBoxCheckBackgroundFillIndeterminatePointerOver" ResourceKey="Luna.Brush.Brand.Active" />
+  <StaticResource x:Key="CheckBoxCheckBackgroundFillIndeterminatePressed" ResourceKey="Luna.Brush.Brand.Active" />
+  <StaticResource x:Key="CheckBoxCheckBackgroundFillIndeterminateDisabled" ResourceKey="Luna.Brush.Border.Default" />
+
+  <StaticResource x:Key="CheckBoxCheckGlyphForegroundUnchecked" ResourceKey="Luna.Brush.Text.Primary" />
+  <StaticResource x:Key="CheckBoxCheckGlyphForegroundUncheckedPointerOver" ResourceKey="Luna.Brush.Text.Primary" />
+  <StaticResource x:Key="CheckBoxCheckGlyphForegroundUncheckedPressed" ResourceKey="Luna.Brush.Text.Primary" />
+  <StaticResource x:Key="CheckBoxCheckGlyphForegroundUncheckedDisabled" ResourceKey="Luna.Brush.Text.Disabled" />
+
+  <StaticResource x:Key="CheckBoxCheckGlyphForegroundChecked" ResourceKey="Luna.Brush.Neutral.White" />
+  <StaticResource x:Key="CheckBoxCheckGlyphForegroundCheckedPointerOver" ResourceKey="Luna.Brush.Neutral.White" />
+  <StaticResource x:Key="CheckBoxCheckGlyphForegroundCheckedPressed" ResourceKey="Luna.Brush.Neutral.White" />
+  <StaticResource x:Key="CheckBoxCheckGlyphForegroundCheckedDisabled" ResourceKey="Luna.Brush.Neutral.White" />
+
+  <StaticResource x:Key="CheckBoxCheckGlyphForegroundIndeterminate" ResourceKey="Luna.Brush.Neutral.White" />
+  <StaticResource x:Key="CheckBoxCheckGlyphForegroundIndeterminatePointerOver" ResourceKey="Luna.Brush.Neutral.White" />
+  <StaticResource x:Key="CheckBoxCheckGlyphForegroundIndeterminatePressed" ResourceKey="Luna.Brush.Neutral.White" />
+  <StaticResource x:Key="CheckBoxCheckGlyphForegroundIndeterminateDisabled" ResourceKey="Luna.Brush.Neutral.White" />
 </ResourceDictionary>

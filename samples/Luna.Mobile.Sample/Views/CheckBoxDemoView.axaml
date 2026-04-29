@@ -1,0 +1,252 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Luna.Mobile.Sample.Views.CheckBoxDemoView">
+  <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
+    <StackPanel Spacing="24" Margin="0,0,0,28">
+      <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+        <Grid ColumnDefinitions="56,*,56" MinHeight="56">
+          <Button Classes="text"
+                  Content="‹"
+                  FontSize="34"
+                  Padding="0"
+                  Click="OnBackClick" />
+          <TextBlock Grid.Column="1"
+                     Text="Checkbox 多选框"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center" />
+        </Grid>
+      </Border>
+
+      <StackPanel Margin="16,0" Spacing="8">
+        <TextBlock Text="Checkbox 多选框"
+                   FontSize="{DynamicResource Luna.FontSize.Title.Large}"
+                   FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+        <TextBlock Text="用于预设的一组选项中执行多项选择，并呈现选择结果。"
+                   FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                   TextWrapping="Wrap" />
+      </StackPanel>
+
+      <StackPanel Spacing="28">
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="01 组件类型"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="纵向多选框"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+            <StackPanel Margin="16,8" Spacing="12">
+              <CheckBox IsChecked="True" Content="多选" />
+              <CheckBox IsChecked="True" Content="多选" />
+              <CheckBox>
+                <TextBlock Text="多选标题多行多选标题多行多选标题多行多选标题多行多选标题多行多选标题多行"
+                           TextWrapping="Wrap"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Medium}" />
+              </CheckBox>
+              <CheckBox>
+                <StackPanel Spacing="4">
+                  <TextBlock Text="多选"
+                             Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                             FontSize="{DynamicResource Luna.FontSize.Body.Medium}" />
+                  <TextBlock Text="描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息"
+                             Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                             FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                             TextWrapping="Wrap" />
+                </StackPanel>
+              </CheckBox>
+            </StackPanel>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="横向多选框"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+            <Grid Margin="16" ColumnDefinitions="*,*,*" ColumnSpacing="12">
+              <CheckBox IsChecked="True" Content="多选标题" />
+              <CheckBox Grid.Column="1" IsChecked="True" Content="多选标题" />
+              <CheckBox Grid.Column="2" Content="上限四字" />
+            </Grid>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="带全选多选框"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+            <StackPanel Margin="16,8" Spacing="12">
+              <CheckBox Name="CheckAll" Content="全选" IsChecked="True" IsThreeState="True" IsCheckedChanged="OnCheckAllChanged" />
+              <CheckBox Name="Option1" Content="多选" IsChecked="True" IsCheckedChanged="OnOptionChanged" />
+              <CheckBox Name="Option2" Content="多选" IsChecked="True" IsCheckedChanged="OnOptionChanged" />
+              <CheckBox Name="Option3" IsChecked="True" IsCheckedChanged="OnOptionChanged">
+                <StackPanel Spacing="4">
+                  <TextBlock Text="多选"
+                             Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                             FontSize="{DynamicResource Luna.FontSize.Body.Medium}" />
+                  <TextBlock Text="单选描述信息单选描述信息单选描述信息单选描述信息单选描述信息单选描述信息单选描述信息"
+                             Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                             FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                             TextWrapping="Wrap" />
+                </StackPanel>
+              </CheckBox>
+            </StackPanel>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="02 组件状态"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="多选框状态"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}" Margin="16,0">
+            <StackPanel Margin="16,8" Spacing="12">
+              <CheckBox Content="选项禁用-已选" IsChecked="True" IsEnabled="False" />
+              <CheckBox Content="选项禁用-默认" IsEnabled="False" />
+            </StackPanel>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="03 组件样式"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="勾选样式"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}" Margin="16,0" Padding="16">
+            <StackPanel Spacing="12">
+              <Grid ColumnDefinitions="*,Auto">
+                <TextBlock Text="多选"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           VerticalAlignment="Center" />
+                <TextBlock Grid.Column="1"
+                           Text="占位：icon=line"
+                           Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                           VerticalAlignment="Center" />
+              </Grid>
+              <Grid ColumnDefinitions="*,Auto">
+                <TextBlock Text="多选"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           VerticalAlignment="Center" />
+                <TextBlock Grid.Column="1"
+                           Text="占位：icon=rectangle"
+                           Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                           VerticalAlignment="Center" />
+              </Grid>
+              <Grid ColumnDefinitions="*,Auto">
+                <TextBlock Text="图片图标"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           VerticalAlignment="Center" />
+                <TextBlock Grid.Column="1"
+                           Text="占位：image icon"
+                           Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                           VerticalAlignment="Center" />
+              </Grid>
+            </StackPanel>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="勾选显示位置"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}" Margin="16,0" Padding="16">
+            <StackPanel Spacing="12">
+              <CheckBox Content="多选" />
+              <Grid ColumnDefinitions="*,Auto" VerticalAlignment="Center">
+                <TextBlock Text="多选"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           VerticalAlignment="Center" />
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                  <TextBlock Text="占位：right"
+                             Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                             VerticalAlignment="Center" />
+                  <CheckBox IsChecked="True" VerticalAlignment="Center" />
+                </StackPanel>
+              </Grid>
+            </StackPanel>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="非通栏多选样式"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                  CornerRadius="{DynamicResource Luna.Radius.ExtraLarge}"
+                  Margin="16,0"
+                  Padding="0"
+                  ClipToBounds="True">
+            <StackPanel>
+              <Grid Height="56" ColumnDefinitions="*,Auto" Margin="16,0">
+                <TextBlock Text="多选"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           VerticalAlignment="Center" />
+                <CheckBox Grid.Column="1" IsChecked="True" VerticalAlignment="Center" />
+              </Grid>
+              <Border Height="1" Background="{DynamicResource Luna.Brush.Border.Divider}" Margin="16,0" />
+              <Grid Height="56" ColumnDefinitions="*,Auto" Margin="16,0">
+                <TextBlock Text="多选"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           VerticalAlignment="Center" />
+                <CheckBox Grid.Column="1" IsChecked="True" VerticalAlignment="Center" />
+              </Grid>
+              <Border Height="1" Background="{DynamicResource Luna.Brush.Border.Divider}" Margin="16,0" />
+              <Grid Height="56" ColumnDefinitions="*,Auto" Margin="16,0">
+                <TextBlock Text="多选标题多行多选标题多行多选标题多行多选标题多行多选标题多行多选标题"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           VerticalAlignment="Center"
+                           TextWrapping="Wrap" />
+                <CheckBox Grid.Column="1" VerticalAlignment="Center" />
+              </Grid>
+            </StackPanel>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="04 特殊样式"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}" Margin="16,0" Padding="16">
+            <TextBlock Text="占位：纵向卡片多选框（需要更强的卡片选中态联动/角标/自定义 icon，后续进入控件级样式任务）"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                       TextWrapping="Wrap" />
+          </Border>
+        </StackPanel>
+      </StackPanel>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

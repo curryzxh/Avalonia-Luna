@@ -34,6 +34,7 @@ curl -L https://raw.githubusercontent.com/Tencent/tdesign-mobile-react/develop/s
 4. 在 `samples/Luna.Mobile.Sample/Views` 下新增 `{Component}DemoView.axaml` 和 code-behind。
 5. 在 `MainView.axaml.cs` 的 path 分发中接入新页面。
 6. 如样式问题主要来自 FluentTheme 内置模板使用的资源键（而不是布局/模板结构），优先通过“覆写 Fluent 资源键”完成 TDesign 配色适配，不要直接改模板。
+   - Fluent本地 Avalonia 源码的路径：`~/Documents/git/donet/Avalonia`
    - Fluent 内置控件模板位置（本地 Avalonia 源码）：`Avalonia/src/Avalonia.Themes.Fluent/Controls/{Control}.xaml`
    - Fluent 内置控件资源键默认值位置：`Avalonia/src/Avalonia.Themes.Fluent/Accents/FluentControlResources.xaml`
    - 做法：在 `src/Luna.Mobile/Themes/Tokens/FluentOverrides.axaml` 中用相同 `x:Key` 覆写（例如 `ToggleSwitchKnobFillOn`、`ToggleSwitchKnobFillOff`、`ToggleSwitchFillOn`、`RadioButtonOuterEllipseCheckedFill`），并在 `src/Luna.Mobile/Themes/Index.axaml` 中合并该字典。

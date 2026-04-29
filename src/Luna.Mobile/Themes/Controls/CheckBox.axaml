@@ -6,10 +6,6 @@
     <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Medium}" />
   </Style>
 
-  <Style Selector="CheckBox:checked">
-    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
-  </Style>
-
   <Style Selector="CheckBox:disabled">
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
   </Style>

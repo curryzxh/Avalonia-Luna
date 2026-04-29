@@ -1,0 +1,85 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Luna.Mobile.Controls">
+  <Style Selector="controls|RateGlyphs">
+    <Setter Property="ActiveBrush" Value="{DynamicResource Luna.Brush.Warning}" />
+    <Setter Property="InactiveBrush" Value="{DynamicResource Luna.Brush.Text.Placeholder}" />
+  </Style>
+
+  <Style Selector="controls|Rate">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+          <controls:RateGlyphs Count="{TemplateBinding Count}"
+                               Value="{TemplateBinding Value}"
+                               Size="{TemplateBinding Size}"
+                               Spacing="{TemplateBinding Spacing}"
+                               ActiveBrush="{TemplateBinding ActiveBrush}"
+                               InactiveBrush="{TemplateBinding InactiveBrush}"
+                               IconGeometry="{TemplateBinding IconGeometry}" />
+          <TextBlock Text="{TemplateBinding CurrentText}"
+                     IsVisible="{TemplateBinding HasText}"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                     VerticalAlignment="Center" />
+        </StackPanel>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|Rate:placement-top">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <StackPanel Orientation="Vertical" Spacing="8" HorizontalAlignment="Center">
+          <TextBlock Text="{TemplateBinding CurrentText}"
+                     IsVisible="{TemplateBinding HasText}"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                     HorizontalAlignment="Center" />
+          <controls:RateGlyphs Count="{TemplateBinding Count}"
+                               Value="{TemplateBinding Value}"
+                               Size="{TemplateBinding Size}"
+                               Spacing="{TemplateBinding Spacing}"
+                               ActiveBrush="{TemplateBinding ActiveBrush}"
+                               InactiveBrush="{TemplateBinding InactiveBrush}"
+                               IconGeometry="{TemplateBinding IconGeometry}" />
+        </StackPanel>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|Rate:placement-bottom">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <StackPanel Orientation="Vertical" Spacing="8" HorizontalAlignment="Center">
+          <controls:RateGlyphs Count="{TemplateBinding Count}"
+                               Value="{TemplateBinding Value}"
+                               Size="{TemplateBinding Size}"
+                               Spacing="{TemplateBinding Spacing}"
+                               ActiveBrush="{TemplateBinding ActiveBrush}"
+                               InactiveBrush="{TemplateBinding InactiveBrush}"
+                               IconGeometry="{TemplateBinding IconGeometry}" />
+          <TextBlock Text="{TemplateBinding CurrentText}"
+                     IsVisible="{TemplateBinding HasText}"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                     HorizontalAlignment="Center" />
+        </StackPanel>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|Rate:placement-none">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <controls:RateGlyphs Count="{TemplateBinding Count}"
+                             Value="{TemplateBinding Value}"
+                             Size="{TemplateBinding Size}"
+                             Spacing="{TemplateBinding Spacing}"
+                             ActiveBrush="{TemplateBinding ActiveBrush}"
+                             InactiveBrush="{TemplateBinding InactiveBrush}"
+                             IconGeometry="{TemplateBinding IconGeometry}" />
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>

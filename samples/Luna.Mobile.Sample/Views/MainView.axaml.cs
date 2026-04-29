@@ -124,6 +124,7 @@ public partial class MainView : UserControl
             "/checkbox" => AttachBackHandler(new CheckBoxDemoView()),
             "/drawer" => AttachBackHandler(new DrawerDemoView()),
             "/divider" => AttachBackHandler(new DividerDemoView()),
+            "/empty" => AttachBackHandler(new EmptyDemoView()),
             "/input" => AttachBackHandler(new InputDemoView()),
             "/dialog" => AttachBackHandler(new DialogDemoView()),
             "/loading" => AttachBackHandler(new LoadingDemoView()),
@@ -131,7 +132,9 @@ public partial class MainView : UserControl
             "/noticebar" => AttachBackHandler(new NoticeBarDemoView()),
             "/picker" => AttachBackHandler(new PickerDemoView()),
             "/radio" => AttachBackHandler(new RadioDemoView()),
+            "/rate" => AttachBackHandler(new RateDemoView()),
             "/search" => AttachBackHandler(new SearchDemoView()),
+            "/stepper" => AttachBackHandler(new StepperDemoView()),
             "/switch" => AttachBackHandler(new SwitchDemoView()),
             "/tag" => AttachBackHandler(new TagDemoView()),
             "/toast" => AttachBackHandler(new ToastDemoView()),
@@ -163,6 +166,12 @@ public partial class MainView : UserControl
         return view;
     }
 
+    private UserControl AttachBackHandler(StepperDemoView view)
+    {
+        view.BackRequested += (_, _) => Content = _catalogContent;
+        return view;
+    }
+
     private UserControl AttachBackHandler(CheckBoxDemoView view)
     {
         view.BackRequested += (_, _) => Content = _catalogContent;
@@ -170,6 +179,12 @@ public partial class MainView : UserControl
     }
 
     private UserControl AttachBackHandler(DividerDemoView view)
+    {
+        view.BackRequested += (_, _) => Content = _catalogContent;
+        return view;
+    }
+
+    private UserControl AttachBackHandler(EmptyDemoView view)
     {
         view.BackRequested += (_, _) => Content = _catalogContent;
         return view;
@@ -206,6 +221,12 @@ public partial class MainView : UserControl
     }
 
     private UserControl AttachBackHandler(PickerDemoView view)
+    {
+        view.BackRequested += (_, _) => Content = _catalogContent;
+        return view;
+    }
+
+    private UserControl AttachBackHandler(RateDemoView view)
     {
         view.BackRequested += (_, _) => Content = _catalogContent;
         return view;

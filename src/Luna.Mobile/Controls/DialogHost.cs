@@ -7,6 +7,12 @@ using System;
 
 namespace Luna.Mobile.Controls;
 
+/// <summary>
+/// 对话框宿主控件，负责渲染遮罩与对话框面板，并处理按钮/关闭逻辑。
+/// </summary>
+/// <remarks>
+/// 通常每个页面放置一个实例；静态入口 <see cref="Dialog"/> 会使用最近附加到可视树的 <see cref="Current"/>。
+/// </remarks>
 public sealed class DialogHost : TemplatedControl
 {
     private const string OverlayPartName = "PART_Overlay";

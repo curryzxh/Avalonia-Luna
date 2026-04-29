@@ -5,6 +5,9 @@ using System;
 
 namespace Luna.Mobile.Controls;
 
+/// <summary>
+/// 徽标的形状。
+/// </summary>
 public enum BadgeShape
 {
     Circle,
@@ -12,6 +15,9 @@ public enum BadgeShape
     Bubble,
 }
 
+/// <summary>
+/// 徽标相对于内容的位置。
+/// </summary>
 public enum BadgePlacement
 {
     TopRight,
@@ -20,6 +26,9 @@ public enum BadgePlacement
     BottomLeft,
 }
 
+/// <summary>
+/// 徽标控件，用于展示数字/点状提示，并可包裹任意内容。
+/// </summary>
 public sealed class Badge : ContentControl
 {
     private bool _isBadgeVisible;
@@ -89,72 +98,108 @@ public sealed class Badge : ContentControl
         PlacementProperty.Changed.AddClassHandler<Badge>((control, _) => control.UpdateState());
     }
 
+    /// <summary>
+    /// 获取或设置徽标数量文本。
+    /// </summary>
     public string? Count
     {
         get => GetValue(CountProperty);
         set => SetValue(CountProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置数量溢出阈值；超过后显示为 “{OverflowCount}+”。
+    /// </summary>
     public int OverflowCount
     {
         get => GetValue(OverflowCountProperty);
         set => SetValue(OverflowCountProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置是否显示点状徽标（dot）。
+    /// </summary>
     public bool Dot
     {
         get => GetValue(DotProperty);
         set => SetValue(DotProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置徽标形状。
+    /// </summary>
     public BadgeShape Shape
     {
         get => GetValue(ShapeProperty);
         set => SetValue(ShapeProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置徽标位置。
+    /// </summary>
     public BadgePlacement Placement
     {
         get => GetValue(PlacementProperty);
         set => SetValue(PlacementProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置徽标偏移量。
+    /// </summary>
     public Vector Offset
     {
         get => GetValue(OffsetProperty);
         set => SetValue(OffsetProperty, value);
     }
 
+    /// <summary>
+    /// 获取徽标整体是否可见（由 <see cref="Dot"/> / <see cref="Count"/> 自动计算）。
+    /// </summary>
     public bool IsBadgeVisible
     {
         get => _isBadgeVisible;
         private set => SetAndRaise(IsBadgeVisibleProperty, ref _isBadgeVisible, value);
     }
 
+    /// <summary>
+    /// 获取徽标文本是否可见（由 <see cref="Dot"/> / <see cref="Count"/> 自动计算）。
+    /// </summary>
     public bool IsBadgeTextVisible
     {
         get => _isBadgeTextVisible;
         private set => SetAndRaise(IsBadgeTextVisibleProperty, ref _isBadgeTextVisible, value);
     }
 
+    /// <summary>
+    /// 获取最终展示的数量文本（包含溢出处理）。
+    /// </summary>
     public string? DisplayCount
     {
         get => _displayCount;
         private set => SetAndRaise(DisplayCountProperty, ref _displayCount, value);
     }
 
+    /// <summary>
+    /// 获取徽标的水平对齐方式（由 <see cref="Placement"/> 自动计算）。
+    /// </summary>
     public HorizontalAlignment BadgeHorizontalAlignment
     {
         get => _badgeHorizontalAlignment;
         private set => SetAndRaise(BadgeHorizontalAlignmentProperty, ref _badgeHorizontalAlignment, value);
     }
 
+    /// <summary>
+    /// 获取徽标的垂直对齐方式（由 <see cref="Placement"/> 自动计算）。
+    /// </summary>
     public VerticalAlignment BadgeVerticalAlignment
     {
         get => _badgeVerticalAlignment;
         private set => SetAndRaise(BadgeVerticalAlignmentProperty, ref _badgeVerticalAlignment, value);
     }
 
+    /// <summary>
+    /// 获取徽标的外边距（可结合偏移使用）。
+    /// </summary>
     public Thickness BadgeMargin
     {
         get => _badgeMargin;

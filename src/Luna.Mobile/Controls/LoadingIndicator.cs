@@ -9,6 +9,9 @@ using System.Diagnostics;
 
 namespace Luna.Mobile.Controls;
 
+/// <summary>
+/// Loading 的绘制指示器控件（支持 Circular/Spinner/Dots）。
+/// </summary>
 public sealed class LoadingIndicator : Control
 {
     private static readonly DispatcherTimer SharedTimer;

@@ -12,6 +12,9 @@ using System.Diagnostics;
 
 namespace Luna.Mobile.Controls;
 
+/// <summary>
+/// 通知栏主题类型。
+/// </summary>
 public enum NoticeBarTheme
 {
     Info,
@@ -20,12 +23,27 @@ public enum NoticeBarTheme
     Error,
 }
 
+/// <summary>
+/// 通知栏滚动方向。
+/// </summary>
 public enum NoticeBarDirection
 {
     Horizontal,
     Vertical,
 }
 
+/// <summary>
+/// 通知栏控件，用于展示提示信息，支持跑马灯/竖向轮播，以及关闭与操作区域。
+/// </summary>
+/// <remarks>
+/// 模板契约：
+/// <list type="bullet">
+/// <item><description>PART_ContentViewport：<see cref="Border"/></description></item>
+/// <item><description>PART_ContentText：<see cref="TextBlock"/></description></item>
+/// <item><description>PART_CloseButton：<see cref="Button"/></description></item>
+/// <item><description>PART_SuffixButton：<see cref="Button"/></description></item>
+/// </list>
+/// </remarks>
 public sealed class NoticeBar : TemplatedControl
 {
     private const string ContentViewportPartName = "PART_ContentViewport";

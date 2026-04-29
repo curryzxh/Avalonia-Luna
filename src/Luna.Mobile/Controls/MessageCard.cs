@@ -6,6 +6,9 @@ using System;
 
 namespace Luna.Mobile.Controls;
 
+/// <summary>
+/// 单条 Message 卡片控件，用于展示主题图标、文本、可选链接与关闭按钮。
+/// </summary>
 public sealed class MessageCard : TemplatedControl
 {
     private const string CloseButtonPartName = "PART_CloseButton";

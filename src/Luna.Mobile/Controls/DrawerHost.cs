@@ -7,6 +7,12 @@ using System;
 
 namespace Luna.Mobile.Controls;
 
+/// <summary>
+/// 抽屉宿主控件，负责渲染遮罩与侧边抽屉面板，并处理打开/关闭逻辑。
+/// </summary>
+/// <remarks>
+/// 通常每个页面放置一个实例；静态入口 <see cref="Drawer"/> 会使用最近附加到可视树的 <see cref="Current"/>。
+/// </remarks>
 public sealed class DrawerHost : TemplatedControl
 {
     private const string OverlayPartName = "PART_Overlay";
@@ -230,4 +236,3 @@ public sealed class DrawerHost : TemplatedControl
         IsOverlayVisible = IsOpen && ShowOverlay;
     }
 }
-

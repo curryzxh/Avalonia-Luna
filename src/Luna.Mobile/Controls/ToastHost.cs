@@ -8,6 +8,12 @@ using System;
 
 namespace Luna.Mobile.Controls;
 
+/// <summary>
+/// Toast 宿主控件，负责渲染 Toast 以及遮罩/自动关闭逻辑。
+/// </summary>
+/// <remarks>
+/// 通常每个页面放置一个实例；静态入口 <see cref="Toast"/> 会使用最近附加到可视树的 <see cref="Current"/>。
+/// </remarks>
 public sealed class ToastHost : TemplatedControl
 {
     private const string CloseButtonPartName = "PART_CloseButton";
@@ -62,65 +68,98 @@ public sealed class ToastHost : TemplatedControl
 
     public static ToastHost? Current => _current;
 
+    /// <summary>
+    /// 获取或设置当前是否显示 Toast。
+    /// </summary>
     public bool IsOpen
     {
         get => GetValue(IsOpenProperty);
         set => SetValue(IsOpenProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置消息文本。
+    /// </summary>
     public string? Message
     {
         get => GetValue(MessageProperty);
         set => SetValue(MessageProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置图标字符（由主题决定）。
+    /// </summary>
     public string? IconGlyph
     {
         get => GetValue(IconGlyphProperty);
         set => SetValue(IconGlyphProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置是否显示图标区域。
+    /// </summary>
     public bool IsIconVisible
     {
         get => GetValue(IsIconVisibleProperty);
         set => SetValue(IsIconVisibleProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置是否显示遮罩层。
+    /// </summary>
     public bool ShowOverlay
     {
         get => GetValue(ShowOverlayProperty);
         set => SetValue(ShowOverlayProperty, value);
     }
 
+    /// <summary>
+    /// 获取当前遮罩层是否可见（由 <see cref="IsOpen"/> 与 <see cref="ShowOverlay"/> 自动计算）。
+    /// </summary>
     public bool IsOverlayVisible
     {
         get => _isOverlayVisible;
         private set => SetAndRaise(IsOverlayVisibleProperty, ref _isOverlayVisible, value);
     }
 
+    /// <summary>
+    /// 获取或设置是否显示关闭按钮。
+    /// </summary>
     public bool ShowClose
     {
         get => GetValue(ShowCloseProperty);
         set => SetValue(ShowCloseProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置 Toast 内容布局方向。
+    /// </summary>
     public Orientation ToastOrientation
     {
         get => GetValue(ToastOrientationProperty);
         set => SetValue(ToastOrientationProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置 Toast 的垂直对齐方式（对应 Top/Middle/Bottom）。
+    /// </summary>
     public VerticalAlignment ToastVerticalAlignment
     {
         get => GetValue(ToastVerticalAlignmentProperty);
         set => SetValue(ToastVerticalAlignmentProperty, value);
     }
 
+    /// <summary>
+    /// 使用默认参数显示 Toast。
+    /// </summary>
     public void Show(string message)
     {
         Show(new ToastOptions { Message = message });
     }
 
+    /// <summary>
+    /// 使用自定义参数显示 Toast。
+    /// </summary>
     public void Show(ToastOptions options)
     {
         _duration = options.Duration;
@@ -153,6 +192,9 @@ public sealed class ToastHost : TemplatedControl
         }
     }
 
+    /// <summary>
+    /// 清除/关闭当前 Toast。
+    /// </summary>
     public void Clear()
     {
         _timer.Stop();

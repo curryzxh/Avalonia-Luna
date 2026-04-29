@@ -8,6 +8,12 @@ using System.Collections.Generic;
 
 namespace Luna.Mobile.Controls;
 
+/// <summary>
+/// Message 宿主控件，负责在页面顶部渲染多个消息卡片，并管理自动关闭。
+/// </summary>
+/// <remarks>
+/// 通常每个页面放置一个实例；静态入口 <see cref="Message"/> 会使用最近附加到可视树的 <see cref="Current"/>。
+/// </remarks>
 public sealed class MessageHost : TemplatedControl
 {
     private const string ItemsHostPartName = "PART_ItemsHost";

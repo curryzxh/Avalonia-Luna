@@ -6,6 +6,9 @@ using System;
 
 namespace Luna.Mobile.Controls;
 
+/// <summary>
+/// Loading 指示器主题类型。
+/// </summary>
 public enum LoadingTheme
 {
     Circular,
@@ -13,6 +16,9 @@ public enum LoadingTheme
     Dots,
 }
 
+/// <summary>
+/// Loading 控件，可作为独立加载状态，也可包裹内容并在其上显示遮罩加载。
+/// </summary>
 public sealed class Loading : ContentControl
 {
     private bool _showStandalone;

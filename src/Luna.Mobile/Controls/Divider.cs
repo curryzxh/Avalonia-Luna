@@ -4,12 +4,18 @@ using Avalonia.Controls.Primitives;
 
 namespace Luna.Mobile.Controls;
 
+/// <summary>
+/// 分割线方向。
+/// </summary>
 public enum DividerLayout
 {
     Horizontal,
     Vertical,
 }
 
+/// <summary>
+/// 分割线内容对齐方式（仅横向分割线有效）。
+/// </summary>
 public enum DividerAlign
 {
     Center,
@@ -17,6 +23,9 @@ public enum DividerAlign
     Right,
 }
 
+/// <summary>
+/// 分割线控件，支持横向/纵向、虚线以及带文字内容。
+/// </summary>
 public sealed class Divider : TemplatedControl
 {
     public static readonly StyledProperty<DividerLayout> LayoutProperty =

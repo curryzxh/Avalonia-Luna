@@ -7,12 +7,18 @@ using System;
 
 namespace Luna.Mobile.Controls;
 
+/// <summary>
+/// 定义 <see cref="Avatar"/> 的形状。
+/// </summary>
 public enum AvatarShape
 {
     Circle,
     Round,
 }
 
+/// <summary>
+/// 定义 <see cref="Avatar"/> 的尺寸预设。
+/// </summary>
 public enum AvatarSize
 {
     Small,
@@ -20,6 +26,16 @@ public enum AvatarSize
     Large,
 }
 
+/// <summary>
+/// 显示头像图片、图标或回退内容（通常是昵称首字母）。
+/// </summary>
+/// <remarks>
+/// 模板契约：
+/// <list type="bullet">
+/// <item><description><see cref="Source"/> 优先级高于 <see cref="Icon"/> 与 <see cref="Content"/>。</description></item>
+/// <item><description>伪类：:circle/:round 以及 :small/:medium/:large。</description></item>
+/// </list>
+/// </remarks>
 public sealed class Avatar : ContentControl
 {
     private bool _isImageVisible;
@@ -82,48 +98,72 @@ public sealed class Avatar : ContentControl
         set => SetValue(SourceProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置图标内容（当 <see cref="Source"/> 未设置时显示）。
+    /// </summary>
     public object? Icon
     {
         get => GetValue(IconProperty);
         set => SetValue(IconProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置形状预设。
+    /// </summary>
     public AvatarShape Shape
     {
         get => GetValue(ShapeProperty);
         set => SetValue(ShapeProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置尺寸预设。
+    /// </summary>
     public AvatarSize Size
     {
         get => GetValue(SizeProperty);
         set => SetValue(SizeProperty, value);
     }
 
+    /// <summary>
+    /// 获取模板当前是否使用 <see cref="Source"/>。
+    /// </summary>
     public bool IsImageVisible
     {
         get => _isImageVisible;
         private set => SetAndRaise(IsImageVisibleProperty, ref _isImageVisible, value);
     }
 
+    /// <summary>
+    /// 获取模板当前是否使用 <see cref="Icon"/>。
+    /// </summary>
     public bool IsIconVisible
     {
         get => _isIconVisible;
         private set => SetAndRaise(IsIconVisibleProperty, ref _isIconVisible, value);
     }
 
+    /// <summary>
+    /// 获取模板当前是否使用 <see cref="Content"/>。
+    /// </summary>
     public bool IsContentVisible
     {
         get => _isContentVisible;
         private set => SetAndRaise(IsContentVisibleProperty, ref _isContentVisible, value);
     }
 
+    /// <summary>
+    /// 获取当前 <see cref="Size"/> 预设对应的边长（自动计算）。
+    /// </summary>
     public double AvatarLength
     {
         get => _avatarLength;
         private set => SetAndRaise(AvatarLengthProperty, ref _avatarLength, value);
     }
 
+    /// <summary>
+    /// 获取当前 <see cref="Shape"/> 预设对应的圆角（自动计算）。
+    /// </summary>
     public CornerRadius AvatarCornerRadius
     {
         get => _avatarCornerRadius;

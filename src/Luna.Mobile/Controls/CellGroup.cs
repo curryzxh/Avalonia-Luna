@@ -3,6 +3,9 @@ using Avalonia.Controls;
 
 namespace Luna.Mobile.Controls;
 
+/// <summary>
+/// 单元格分组容器，可选标题与概要说明。
+/// </summary>
 public sealed class CellGroup : ContentControl
 {
     private bool _showTitle;

@@ -11,18 +11,27 @@ using System.Windows.Input;
 
 namespace Luna.Mobile.Controls;
 
+/// <summary>
+/// <see cref="ActionSheetHost"/> 的布局模式。
+/// </summary>
 public enum ActionSheetTheme
 {
     List,
     Grid,
 }
 
+/// <summary>
+/// 列表模式下的文本对齐预设。
+/// </summary>
 public enum ActionSheetAlign
 {
     Center,
     Left,
 }
 
+/// <summary>
+/// <see cref="ActionSheetHost"/> 的关闭原因。
+/// </summary>
 public enum ActionSheetCloseReason
 {
     Unknown,
@@ -32,13 +41,39 @@ public enum ActionSheetCloseReason
     Programmatic,
 }
 
+/// <summary>
+/// <see cref="ActionSheetHost"/> 中显示的选项项。
+/// </summary>
 public sealed class ActionSheetItem
 {
+    /// <summary>
+    /// 获取显示给用户的文本。
+    /// </summary>
     public required string Label { get; init; }
+
+    /// <summary>
+    /// 获取可选的图标内容。
+    /// </summary>
     public object? Icon { get; init; }
+
+    /// <summary>
+    /// 获取该项是否禁用。
+    /// </summary>
     public bool IsDisabled { get; init; }
+
+    /// <summary>
+    /// 获取可选的文本前景色。
+    /// </summary>
     public IBrush? Foreground { get; init; }
+
+    /// <summary>
+    /// 获取是否显示点状徽标。
+    /// </summary>
     public bool BadgeDot { get; init; }
+
+    /// <summary>
+    /// 获取徽标数量文本（例如：8 / 99 / 1000）。
+    /// </summary>
     public string? BadgeCount { get; init; }
 
     public bool HasIcon => Icon is not null;
@@ -49,17 +84,50 @@ public sealed class ActionSheetItem
     public bool IsEnabled => !IsDisabled;
 }
 
+/// <summary>
+/// <see cref="ActionSheetHost.Show(ActionSheetOptions)"/> 的配置参数。
+/// </summary>
 public sealed class ActionSheetOptions
 {
+    /// <summary>
+    /// 获取要展示的选项列表。
+    /// </summary>
     public IReadOnlyList<ActionSheetItem> Items { get; init; } = Array.Empty<ActionSheetItem>();
+
+    /// <summary>
+    /// 获取可选的描述文本（显示在选项上方）。
+    /// </summary>
     public string? Description { get; init; }
+
+    /// <summary>
+    /// 获取取消按钮文案。
+    /// </summary>
     public string CancelText { get; init; } = "取消";
+
+    /// <summary>
+    /// 获取是否显示遮罩层。
+    /// </summary>
     public bool ShowOverlay { get; init; } = true;
+
+    /// <summary>
+    /// 获取布局模式（列表/宫格）。
+    /// </summary>
     public ActionSheetTheme Theme { get; init; } = ActionSheetTheme.List;
+
+    /// <summary>
+    /// 获取列表模式下的对齐预设。
+    /// </summary>
     public ActionSheetAlign Align { get; init; } = ActionSheetAlign.Center;
+
+    /// <summary>
+    /// 获取点击选项后是否自动关闭。
+    /// </summary>
     public bool CloseOnSelect { get; init; } = true;
 }
 
+/// <summary>
+/// 选项被选中时触发的事件参数。
+/// </summary>
 public sealed class ActionSheetItemSelectedEventArgs : EventArgs
 {
     public ActionSheetItemSelectedEventArgs(ActionSheetItem item, int index)
@@ -72,6 +140,9 @@ public sealed class ActionSheetItemSelectedEventArgs : EventArgs
     public int Index { get; }
 }
 
+/// <summary>
+/// 面板关闭时触发的事件参数。
+/// </summary>
 public sealed class ActionSheetClosedEventArgs : EventArgs
 {
     public ActionSheetClosedEventArgs(ActionSheetCloseReason reason)
@@ -82,6 +153,13 @@ public sealed class ActionSheetClosedEventArgs : EventArgs
     public ActionSheetCloseReason Reason { get; }
 }
 
+/// <summary>
+/// 动作面板宿主控件，渲染遮罩层与底部面板。
+/// </summary>
+/// <remarks>
+/// 通常每个页面放置一个实例，并调用 <see cref="Show(ActionSheetOptions)"/> 打开。
+/// 静态帮助类 <see cref="ActionSheet"/> 会使用最近一次附加到可视树的宿主作为 <see cref="Current"/>。
+/// </remarks>
 public sealed class ActionSheetHost : TemplatedControl
 {
     private const string OverlayPartName = "PART_Overlay";

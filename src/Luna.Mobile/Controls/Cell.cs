@@ -3,6 +3,9 @@ using Avalonia.Controls;
 
 namespace Luna.Mobile.Controls;
 
+/// <summary>
+/// 单元格控件，常用于列表项展示，支持标题/描述/左右内容与右侧箭头。
+/// </summary>
 public sealed class Cell : Button
 {
     private bool _showLeftContent;

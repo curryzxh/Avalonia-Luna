@@ -8,6 +8,12 @@ using System.Collections.Generic;
 
 namespace Luna.Mobile.Controls;
 
+/// <summary>
+/// Picker 宿主控件，负责渲染遮罩与底部选择面板，并处理取消/确认/关闭事件。
+/// </summary>
+/// <remarks>
+/// 通常每个页面放置一个实例；静态入口 <see cref="Picker"/> 会使用最近附加到可视树的 <see cref="Current"/>。
+/// </remarks>
 public sealed class PickerHost : TemplatedControl
 {
     private const string OverlayPartName = "PART_Overlay";
@@ -246,4 +252,3 @@ public sealed class PickerHost : TemplatedControl
         IsOverlayVisible = IsOpen;
     }
 }
-

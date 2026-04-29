@@ -31,7 +31,7 @@
               <TextBox Name="PART_TextBox"
                        Grid.Column="1"
                        Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
-                       Watermark="{TemplateBinding Placeholder}"
+                       PlaceholderText="{TemplateBinding Placeholder}"
                        Background="Transparent"
                        BorderThickness="0"
                        Padding="0"

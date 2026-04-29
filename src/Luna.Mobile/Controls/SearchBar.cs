@@ -10,12 +10,27 @@ using System;
 
 namespace Luna.Mobile.Controls;
 
+/// <summary>
+/// 定义 <see cref="SearchBar"/> 的形状。
+/// </summary>
 public enum SearchBarShape
 {
     Default,
     Round,
 }
 
+/// <summary>
+/// 移动端搜索输入控件。
+/// </summary>
+/// <remarks>
+/// 模板契约：
+/// <list type="bullet">
+/// <item><description>PART_TextBox：<see cref="TextBox"/></description></item>
+/// <item><description>PART_ClearButton：<see cref="Button"/></description></item>
+/// <item><description>PART_CancelButton：<see cref="Button"/></description></item>
+/// </list>
+/// 伪类：:round/:default、:center、:focused、:has-text。
+/// </remarks>
 public sealed class SearchBar : TemplatedControl
 {
     private const string TextBoxPartName = "PART_TextBox";
@@ -94,82 +109,132 @@ public sealed class SearchBar : TemplatedControl
         ShapeProperty.Changed.AddClassHandler<SearchBar>((o, _) => o.UpdateState());
     }
 
+    /// <summary>
+    /// 用户在输入框按下 Enter 时触发。
+    /// </summary>
     public event EventHandler? SearchRequested;
+
+    /// <summary>
+    /// 用户点击取消按钮时触发。
+    /// </summary>
     public event EventHandler? CancelRequested;
+
+    /// <summary>
+    /// 用户点击清除按钮时触发。
+    /// </summary>
     public event EventHandler? Cleared;
 
+    /// <summary>
+    /// 获取或设置当前输入文本。
+    /// </summary>
     public string? Text
     {
         get => GetValue(TextProperty);
         set => SetValue(TextProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置占位文案。
+    /// </summary>
     public string? Placeholder
     {
         get => GetValue(PlaceholderProperty);
         set => SetValue(PlaceholderProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置是否启用清除按钮能力。
+    /// </summary>
     public bool IsClearable
     {
         get => GetValue(IsClearableProperty);
         set => SetValue(IsClearableProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置是否启用取消按钮能力。
+    /// </summary>
     public bool ShowCancelButton
     {
         get => GetValue(ShowCancelButtonProperty);
         set => SetValue(ShowCancelButtonProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置取消按钮是否受焦点/文本状态控制显示与隐藏。
+    /// </summary>
     public bool ShowCancelButtonOnFocus
     {
         get => GetValue(ShowCancelButtonOnFocusProperty);
         set => SetValue(ShowCancelButtonOnFocusProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置取消按钮文案。
+    /// </summary>
     public string CancelText
     {
         get => GetValue(CancelTextProperty);
         set => SetValue(CancelTextProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置文本是否居中显示。
+    /// </summary>
     public bool Center
     {
         get => GetValue(CenterProperty);
         set => SetValue(CenterProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置形状预设。
+    /// </summary>
     public SearchBarShape Shape
     {
         get => GetValue(ShapeProperty);
         set => SetValue(ShapeProperty, value);
     }
 
+    /// <summary>
+    /// 获取当前状态下清除按钮是否可见。
+    /// </summary>
     public bool IsClearVisible
     {
         get => _isClearVisible;
         private set => SetAndRaise(IsClearVisibleProperty, ref _isClearVisible, value);
     }
 
+    /// <summary>
+    /// 获取当前状态下取消按钮是否可见。
+    /// </summary>
     public bool IsCancelVisible
     {
         get => _isCancelVisible;
         private set => SetAndRaise(IsCancelVisibleProperty, ref _isCancelVisible, value);
     }
 
+    /// <summary>
+    /// 获取内部 <see cref="TextBox"/> 是否处于焦点状态。
+    /// </summary>
     public bool IsInputFocused
     {
         get => _isInputFocused;
         private set => SetAndRaise(IsInputFocusedProperty, ref _isInputFocused, value);
     }
 
+    /// <summary>
+    /// 获取当前 <see cref="Center"/> 设置对应的文本对齐方式（自动计算）。
+    /// </summary>
     public TextAlignment TextAlignment
     {
         get => _textAlignment;
         private set => SetAndRaise(TextAlignmentProperty, ref _textAlignment, value);
     }
 
+    /// <summary>
+    /// 获取当前 <see cref="Center"/> 设置对应的水平对齐方式（自动计算）。
+    /// </summary>
     public HorizontalAlignment TextHorizontalAlignment
     {
         get => _textHorizontalAlignment;

@@ -4,6 +4,9 @@ using Avalonia.Controls.Primitives;
 
 namespace Luna.Mobile.Controls;
 
+/// <summary>
+/// 移动端 ActionChip 控件，支持选中态与文本展示。
+/// </summary>
 public class MobileActionChip : TemplatedControl
 {
     public static readonly StyledProperty<string?> TextProperty =

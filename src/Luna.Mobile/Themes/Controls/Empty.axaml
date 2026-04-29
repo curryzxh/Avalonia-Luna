@@ -1,0 +1,54 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Luna.Mobile.Controls">
+  <Style Selector="controls|Empty">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <StackPanel Spacing="{DynamicResource Luna.Spacing.3}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+          <ContentPresenter Name="PART_Icon"
+                            Content="{TemplateBinding Icon}"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            IsVisible="{Binding HasIcon, RelativeSource={RelativeSource TemplatedParent}}" />
+          <Border Name="PART_DefaultIcon"
+                  Width="120"
+                  Height="120"
+                  Background="{DynamicResource Luna.Brush.Background.Component}"
+                  CornerRadius="{DynamicResource Luna.Radius.Default}"
+                  IsVisible="{TemplateBinding ShowDefaultIcon}">
+            <TextBlock Text="∅"
+                       FontSize="44"
+                       Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center" />
+          </Border>
+
+          <TextBlock Name="PART_Title"
+                     Text="{TemplateBinding Title}"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                     HorizontalAlignment="Center"
+                     TextWrapping="Wrap"
+                     IsVisible="{Binding HasTitle, RelativeSource={RelativeSource TemplatedParent}}" />
+          <TextBlock Name="PART_Description"
+                     Text="{TemplateBinding Description}"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                     HorizontalAlignment="Center"
+                     TextWrapping="Wrap"
+                     MaxWidth="260"
+                     IsVisible="{Binding HasDescription, RelativeSource={RelativeSource TemplatedParent}}" />
+
+          <ContentPresenter Name="PART_Action"
+                            Content="{TemplateBinding Action}"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            IsVisible="{Binding HasAction, RelativeSource={RelativeSource TemplatedParent}}" />
+        </StackPanel>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>

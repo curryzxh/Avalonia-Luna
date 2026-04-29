@@ -1,0 +1,80 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Luna.Mobile.Controls">
+  <Style Selector="controls|SearchBar">
+    <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.Control.Medium}" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid ColumnDefinitions="*,Auto"
+              ColumnSpacing="12"
+              VerticalAlignment="Center">
+          <Border Name="PART_Box"
+                  Background="{DynamicResource Luna.Brush.Background.Component}"
+                  CornerRadius="{DynamicResource Luna.Radius.Default}"
+                  BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                  BorderThickness="1"
+                  Padding="12,0"
+                  Height="{DynamicResource Luna.Size.Control.Medium}">
+            <Grid ColumnDefinitions="Auto,*,Auto"
+                  ColumnSpacing="10"
+                  VerticalAlignment="Center">
+              <Path Width="{DynamicResource Luna.Size.Icon.Medium}"
+                    Height="{DynamicResource Luna.Size.Icon.Medium}"
+                    Data="M10.5 3.5C14.366 3.5 17.5 6.634 17.5 10.5C17.5 14.366 14.366 17.5 10.5 17.5C6.634 17.5 3.5 14.366 3.5 10.5C3.5 6.634 6.634 3.5 10.5 3.5Z M15.45 15.45L20 20"
+                    Stroke="{DynamicResource Luna.Brush.Text.Placeholder}"
+                    StrokeThickness="2"
+                    StrokeLineCap="Round"
+                   
+                    Fill="Transparent"
+                    VerticalAlignment="Center" />
+
+              <TextBox Name="PART_TextBox"
+                       Grid.Column="1"
+                       Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                       Watermark="{TemplateBinding Placeholder}"
+                       Background="Transparent"
+                       BorderThickness="0"
+                       Padding="0"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                       HorizontalContentAlignment="{TemplateBinding TextHorizontalAlignment}"
+                       TextAlignment="{TemplateBinding TextAlignment}"
+                       VerticalContentAlignment="Center" />
+
+              <Button Name="PART_ClearButton"
+                      Grid.Column="2"
+                      Classes="text"
+                      Padding="0"
+                      MinWidth="0"
+                      MinHeight="0"
+                      Width="{DynamicResource Luna.Size.Icon.Medium}"
+                      Height="{DynamicResource Luna.Size.Icon.Medium}"
+                      IsVisible="{TemplateBinding IsClearVisible}">
+                <Path Width="{DynamicResource Luna.Size.Icon.Medium}"
+                      Height="{DynamicResource Luna.Size.Icon.Medium}"
+                      Data="M8 8L16 16 M16 8L8 16"
+                      Stroke="{DynamicResource Luna.Brush.Text.Placeholder}"
+                      StrokeThickness="2"
+                      StrokeLineCap="Round"
+                      
+                      Fill="Transparent" />
+              </Button>
+            </Grid>
+          </Border>
+
+          <Button Name="PART_CancelButton"
+                  Grid.Column="1"
+                  Classes="text"
+                  Padding="0"
+                  Content="{TemplateBinding CancelText}"
+                  IsVisible="{TemplateBinding IsCancelVisible}"
+                  VerticalAlignment="Center" />
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|SearchBar:round /template/ Border#PART_Box">
+    <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Circle}" />
+  </Style>
+</Styles>

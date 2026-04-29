@@ -1,0 +1,72 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Luna.Mobile.Controls">
+  <Style Selector="controls|PickerHost">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid>
+          <Border Name="PART_Overlay"
+                  Background="{DynamicResource Luna.Brush.Mask}"
+                  Opacity="0.6"
+                  IsVisible="{TemplateBinding IsOverlayVisible}"
+                  IsHitTestVisible="{TemplateBinding IsOverlayVisible}" />
+
+          <Border Name="PART_Sheet"
+                  Background="{DynamicResource Luna.Brush.Background.Container}"
+                  CornerRadius="12,12,0,0"
+                  Height="{TemplateBinding SheetHeight}"
+                  Padding="16,12"
+                  HorizontalAlignment="Stretch"
+                  VerticalAlignment="Bottom"
+                  IsVisible="{TemplateBinding IsOpen}"
+                  TextElement.Foreground="{DynamicResource Luna.Brush.Text.Primary}">
+            <Grid RowDefinitions="Auto,Auto,*"
+                  RowSpacing="12">
+              <Grid ColumnDefinitions="Auto,*,Auto"
+                    ColumnSpacing="12">
+                <Button Name="PART_CancelButton"
+                        Classes="text"
+                        Padding="0"
+                        Content="{TemplateBinding CancelText}"
+                        VerticalAlignment="Center" />
+                <TextBlock Grid.Column="1"
+                           Text="{TemplateBinding Title}"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                           FontWeight="{DynamicResource Luna.FontWeight.Medium}"
+                           TextAlignment="Center"
+                           VerticalAlignment="Center"
+                           IsVisible="{TemplateBinding HasTitle}" />
+                <Button Name="PART_ConfirmButton"
+                        Grid.Column="2"
+                        Classes="text"
+                        Padding="0"
+                        Content="{TemplateBinding ConfirmText}"
+                        Foreground="{DynamicResource Luna.Brush.Brand}"
+                        VerticalAlignment="Center" />
+              </Grid>
+
+              <Border Height="1"
+                      Background="{DynamicResource Luna.Brush.Border.Divider}" />
+
+              <ItemsControl ItemsSource="{TemplateBinding Columns}">
+                <ItemsControl.ItemsPanel>
+                  <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" Spacing="12" />
+                  </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                  <DataTemplate x:DataType="controls:PickerColumn">
+                    <ComboBox Width="140"
+                              ItemsSource="{Binding Items}"
+                              SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}" />
+                  </DataTemplate>
+                </ItemsControl.ItemTemplate>
+              </ItemsControl>
+            </Grid>
+          </Border>
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>
+

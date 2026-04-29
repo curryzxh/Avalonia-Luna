@@ -1,0 +1,64 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Luna.Mobile.Controls">
+  <Style Selector="controls|DrawerHost">
+    <Setter Property="HorizontalAlignment" Value="Stretch" />
+    <Setter Property="VerticalAlignment" Value="Stretch" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid>
+          <Border Name="PART_Overlay"
+                  Background="{DynamicResource Luna.Brush.Mask}"
+                  IsVisible="{TemplateBinding IsOverlayVisible}"
+                  IsHitTestVisible="{TemplateBinding IsOverlayVisible}" />
+          <Border Name="PART_Drawer"
+                  Background="{DynamicResource Luna.Brush.Background.Container}"
+                  Width="{TemplateBinding DrawerWidth}"
+                  HorizontalAlignment="Right"
+                  VerticalAlignment="Stretch"
+                  IsVisible="{TemplateBinding IsOpen}">
+            <Grid RowDefinitions="Auto,*">
+              <Grid Name="PART_Header"
+                    ColumnDefinitions="*,Auto"
+                    Height="56"
+                    Margin="16,0"
+                    IsVisible="{Binding ShowCloseButton, RelativeSource={RelativeSource TemplatedParent}}">
+                <TextBlock Text="{TemplateBinding Title}"
+                           FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                           FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           VerticalAlignment="Center"
+                           IsVisible="{Binding HasTitle, RelativeSource={RelativeSource TemplatedParent}}" />
+                <Button Name="PART_CloseButton"
+                        Grid.Column="1"
+                        Classes="text"
+                        Content="×"
+                        FontSize="22"
+                        Padding="0"
+                        Width="44"
+                        Height="44"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        IsVisible="{TemplateBinding ShowCloseButton}" />
+              </Grid>
+              <Border Grid.Row="0"
+                      Height="1"
+                      Margin="0,56,0,0"
+                      Background="{DynamicResource Luna.Brush.Border.Divider}"
+                      IsVisible="{Binding ShowCloseButton, RelativeSource={RelativeSource TemplatedParent}}" />
+              <ContentPresenter Grid.Row="1"
+                                Margin="16"
+                                Content="{TemplateBinding DrawerContent}"
+                                HorizontalContentAlignment="Stretch"
+                                VerticalContentAlignment="Stretch" />
+            </Grid>
+          </Border>
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|DrawerHost:left /template/ Border#PART_Drawer">
+    <Setter Property="HorizontalAlignment" Value="Left" />
+  </Style>
+</Styles>

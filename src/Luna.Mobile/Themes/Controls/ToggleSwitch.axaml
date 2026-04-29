@@ -4,70 +4,18 @@
     <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.TouchTarget}" />
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
     <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Medium}" />
-    <Setter Property="Template">
-      <ControlTemplate>
-        <Grid ColumnDefinitions="Auto,Auto" VerticalAlignment="Center">
-          <ContentPresenter Name="PART_ContentPresenter"
-                            Content="{TemplateBinding Content}"
-                            Margin="0,0,12,0"
-                            VerticalAlignment="Center" />
-          <Border Name="PART_Track"
-                  Grid.Column="1"
-                  Width="{DynamicResource Luna.Size.Switch.Width.Medium}"
-                  Height="{DynamicResource Luna.Size.Switch.Height.Medium}"
-                  Background="{DynamicResource Luna.Brush.Background.Component}"
-                  CornerRadius="{DynamicResource Luna.Radius.Circle}">
-            <Border Name="PART_Thumb"
-                    Width="{DynamicResource Luna.Size.Switch.Thumb.Medium}"
-                    Height="{DynamicResource Luna.Size.Switch.Thumb.Medium}"
-                    Background="{DynamicResource Luna.Brush.Background.Container}"
-                    CornerRadius="{DynamicResource Luna.Radius.Circle}"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    Margin="2" />
-          </Border>
-        </Grid>
-      </ControlTemplate>
-    </Setter>
-  </Style>
-
-  <Style Selector="ToggleSwitch:checked /template/ #PART_Track">
-    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand}" />
-  </Style>
-
-  <Style Selector="ToggleSwitch:checked /template/ #PART_Thumb">
-    <Setter Property="HorizontalAlignment" Value="Right" />
-  </Style>
-
-  <Style Selector="ToggleSwitch:disabled /template/ #PART_Track">
-    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Disabled}" />
-  </Style>
-
-  <Style Selector="ToggleSwitch:disabled /template/ #PART_Thumb">
-    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Component}" />
   </Style>
 
   <Style Selector="ToggleSwitch:disabled">
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
   </Style>
 
-  <Style Selector="ToggleSwitch.large /template/ #PART_Track">
-    <Setter Property="Width" Value="{DynamicResource Luna.Size.Switch.Width.Large}" />
-    <Setter Property="Height" Value="{DynamicResource Luna.Size.Switch.Height.Large}" />
+  <Style Selector="ToggleSwitch.large">
+    <Setter Property="MinHeight" Value="48" />
   </Style>
 
-  <Style Selector="ToggleSwitch.large /template/ #PART_Thumb">
-    <Setter Property="Width" Value="{DynamicResource Luna.Size.Switch.Thumb.Large}" />
-    <Setter Property="Height" Value="{DynamicResource Luna.Size.Switch.Thumb.Large}" />
-  </Style>
-
-  <Style Selector="ToggleSwitch.small /template/ #PART_Track">
-    <Setter Property="Width" Value="{DynamicResource Luna.Size.Switch.Width.Small}" />
-    <Setter Property="Height" Value="{DynamicResource Luna.Size.Switch.Height.Small}" />
-  </Style>
-
-  <Style Selector="ToggleSwitch.small /template/ #PART_Thumb">
-    <Setter Property="Width" Value="{DynamicResource Luna.Size.Switch.Thumb.Small}" />
-    <Setter Property="Height" Value="{DynamicResource Luna.Size.Switch.Thumb.Small}" />
+  <Style Selector="ToggleSwitch.small">
+    <Setter Property="MinHeight" Value="40" />
+    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Small}" />
   </Style>
 </Styles>

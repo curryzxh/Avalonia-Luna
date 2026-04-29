@@ -12,6 +12,14 @@
       <Color x:Key="Luna.Color.Brand.8">#BBD7FF</Color>
       <Color x:Key="Luna.Color.Brand.9">#E8F3FF</Color>
 
+      <Color x:Key="SystemAccentColor">#5E9FFF</Color>
+      <Color x:Key="SystemAccentColorLight1">#8FBCFF</Color>
+      <Color x:Key="SystemAccentColorLight2">#BBD7FF</Color>
+      <Color x:Key="SystemAccentColorLight3">#E8F3FF</Color>
+      <Color x:Key="SystemAccentColorDark1">#458FFF</Color>
+      <Color x:Key="SystemAccentColorDark2">#2667C8</Color>
+      <Color x:Key="SystemAccentColorDark3">#1D519E</Color>
+
       <Color x:Key="Luna.Color.Success.6">#34C995</Color>
       <Color x:Key="Luna.Color.Warning.6">#F2995F</Color>
       <Color x:Key="Luna.Color.Error.6">#E86A62</Color>

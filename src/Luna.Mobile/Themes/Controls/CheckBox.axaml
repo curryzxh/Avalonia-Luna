@@ -1,0 +1,16 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Style Selector="CheckBox">
+    <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.TouchTarget}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
+    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Medium}" />
+  </Style>
+
+  <Style Selector="CheckBox:checked">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="CheckBox:disabled">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
+  </Style>
+</Styles>

@@ -1,0 +1,157 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Style Selector="Button">
+    <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.TouchTarget}" />
+    <Setter Property="Padding" Value="{DynamicResource Luna.Padding.Control.Medium}" />
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Component}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Default}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
+    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Medium}" />
+    <Setter Property="FontWeight" Value="{DynamicResource Luna.FontWeight.SemiBold}" />
+    <Setter Property="HorizontalContentAlignment" Value="Center" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+  </Style>
+
+  <Style Selector="Button:pointerover">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.ComponentActive}" />
+  </Style>
+
+  <Style Selector="Button:pressed">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Border.Weak}" />
+  </Style>
+
+  <Style Selector="Button.primary">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Anti}" />
+  </Style>
+
+  <Style Selector="Button.primary:pointerover">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand.Active}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand.Active}" />
+  </Style>
+
+  <Style Selector="Button.light">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand.Light}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand.Light}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="Button.danger">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Error}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Error}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Anti}" />
+  </Style>
+
+  <Style Selector="Button.outline">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Strong}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
+  </Style>
+
+  <Style Selector="Button.primary.outline">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="Button.danger.outline">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Error}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Error}" />
+  </Style>
+
+  <Style Selector="Button.light.outline">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand.Light}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="Button.text">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
+  </Style>
+
+  <Style Selector="Button.primary.text">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="Button.danger.text">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Error}" />
+  </Style>
+
+  <Style Selector="Button.light.text">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="Button.ghost">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Text.Anti}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Anti}" />
+  </Style>
+
+  <Style Selector="Button.primary.ghost">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="Button.danger.ghost">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Error}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Error}" />
+  </Style>
+
+  <Style Selector="Button.large">
+    <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.Control.Large}" />
+    <Setter Property="Padding" Value="18,12" />
+  </Style>
+
+  <Style Selector="Button.small">
+    <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.Control.Small}" />
+    <Setter Property="Padding" Value="12,7" />
+    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Small}" />
+  </Style>
+
+  <Style Selector="Button.extra-small">
+    <Setter Property="MinHeight" Value="28" />
+    <Setter Property="Padding" Value="10,5" />
+    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Small}" />
+  </Style>
+
+  <Style Selector="Button.square">
+    <Setter Property="Width" Value="{DynamicResource Luna.Size.Control.Large}" />
+    <Setter Property="MinWidth" Value="{DynamicResource Luna.Size.Control.Large}" />
+    <Setter Property="Padding" Value="0" />
+  </Style>
+
+  <Style Selector="Button.round">
+    <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Circle}" />
+  </Style>
+
+  <Style Selector="Button.circle">
+    <Setter Property="Width" Value="{DynamicResource Luna.Size.Control.Large}" />
+    <Setter Property="MinWidth" Value="{DynamicResource Luna.Size.Control.Large}" />
+    <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Circle}" />
+    <Setter Property="Padding" Value="0" />
+  </Style>
+
+  <Style Selector="Button.rectangle">
+    <Setter Property="CornerRadius" Value="0" />
+  </Style>
+
+  <Style Selector="Button:disabled">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Disabled}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Weak}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
+  </Style>
+</Styles>

@@ -28,13 +28,20 @@
 
 目标：用 Avalonia 原生控件快速覆盖 TDesign 最常用基础输入控件。
 
-首批控件：
+细化规划：[Luna 阶段 1：移动 MVP Base/Form 原生控件皮肤化规划](luna-phase-1-mobile-base-form-plan.md)。
+
+首轮范围：移动 MVP，先覆盖 `Button`、`TextBox`、`ToggleSwitch`、`CheckBox`、`RadioButton`，不新增业务型自定义控件。
+
+移动 MVP 控件：
 
 - `Button`
 - `TextBox` as Input/Textarea
 - `CheckBox`
 - `RadioButton`
 - `ToggleSwitch`
+
+阶段 1 后续扩展：
+
 - `Slider`
 - `NumericUpDown` as Stepper
 - `ProgressBar`

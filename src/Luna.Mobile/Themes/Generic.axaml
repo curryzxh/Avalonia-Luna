@@ -1,6 +1,12 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="using:Luna.Mobile.Controls">
+  <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Button.axaml" />
+  <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/TextBox.axaml" />
+  <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/ToggleSwitch.axaml" />
+  <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/CheckBox.axaml" />
+  <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/RadioButton.axaml" />
+
   <Design.PreviewWith>
     <Border Padding="24">
       <controls:MobileActionChip Text="Mobile control" IsActive="True" />

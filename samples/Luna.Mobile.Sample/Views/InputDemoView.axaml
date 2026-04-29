@@ -1,0 +1,515 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Luna.Mobile.Sample.Views.InputDemoView">
+  <UserControl.Styles>
+    <Style Selector="TextBox.input-inner">
+      <Setter Property="Background" Value="Transparent" />
+      <Setter Property="BorderThickness" Value="0" />
+      <Setter Property="Padding" Value="0" />
+      <Setter Property="MinHeight" Value="0" />
+    </Style>
+    <Style Selector="Border.input-row">
+      <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
+      <Setter Property="BorderThickness" Value="1" />
+      <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Default}" />
+      <Setter Property="Padding" Value="16,0" />
+      <Setter Property="MinHeight" Value="56" />
+    </Style>
+    <Style Selector="Border.input-row.error">
+      <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Error}" />
+    </Style>
+    <Style Selector="Border.input-row:disabled">
+      <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Disabled}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Weak}" />
+    </Style>
+  </UserControl.Styles>
+
+  <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
+    <StackPanel Spacing="24" Margin="0,0,0,28">
+      <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+        <Grid ColumnDefinitions="56,*,56" MinHeight="56">
+          <Button Classes="text"
+                  Content="‹"
+                  FontSize="34"
+                  Padding="0"
+                  Click="OnBackClick" />
+          <TextBlock Grid.Column="1"
+                     Text="Input 输入框"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center" />
+        </Grid>
+      </Border>
+
+      <StackPanel Margin="16,0" Spacing="8">
+        <TextBlock Text="Input 输入框"
+                   FontSize="{DynamicResource Luna.FontSize.Title.Large}"
+                   FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+        <TextBlock Text="用于单行文本信息输入。"
+                   FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                   TextWrapping="Wrap" />
+      </StackPanel>
+
+      <StackPanel Spacing="28">
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="01 类型"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="基础输入框"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+          <StackPanel Margin="16,0" Spacing="16">
+            <Border Classes="input-row">
+              <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12" VerticalAlignment="Center">
+                <TextBlock Text="标签文字"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                           VerticalAlignment="Center" />
+                <TextBox Grid.Column="1"
+                         Classes="input-inner"
+                         PlaceholderText="请输入文字" />
+              </Grid>
+            </Border>
+            <Border Classes="input-row">
+              <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12" VerticalAlignment="Center">
+                <TextBlock Text="标签文字"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                           VerticalAlignment="Center" />
+                <TextBox Grid.Column="1"
+                         Classes="input-inner"
+                         PlaceholderText="请输入文字（选填）" />
+              </Grid>
+            </Border>
+            <Border Classes="input-row">
+              <TextBox Classes="input-inner"
+                       PlaceholderText="请输入文字" />
+            </Border>
+          </StackPanel>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="带字数限制输入框"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          <StackPanel Margin="16,0" Spacing="16">
+            <StackPanel Spacing="8">
+              <Border Classes="input-row">
+                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12" VerticalAlignment="Center">
+                  <TextBlock Text="标签文字"
+                             Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                             FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                             VerticalAlignment="Center" />
+                  <TextBox Grid.Column="1"
+                           Classes="input-inner"
+                           PlaceholderText="请输入文字"
+                           MaxLength="10" />
+                </Grid>
+              </Border>
+              <TextBlock Text="最大输入10个字符"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            </StackPanel>
+            <StackPanel Spacing="8">
+              <Border Classes="input-row">
+                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12" VerticalAlignment="Center">
+                  <TextBlock Text="标签文字"
+                             Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                             FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                             VerticalAlignment="Center" />
+                  <TextBox Grid.Column="1"
+                           Classes="input-inner"
+                           PlaceholderText="请输入文字"
+                           MaxLength="10" />
+                </Grid>
+              </Border>
+              <TextBlock Text="最大输入10个字符，汉字算两个"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            </StackPanel>
+          </StackPanel>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="带操作输入框"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          <StackPanel Margin="16,0" Spacing="16">
+            <Border Classes="input-row">
+              <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12" VerticalAlignment="Center">
+                <TextBlock Text="标签文字"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                           VerticalAlignment="Center" />
+                <TextBox Grid.Column="1"
+                         Classes="input-inner"
+                         PlaceholderText="请输入文字" />
+                <TextBlock Grid.Column="2"
+                           Text="占位：InfoCircleFilledIcon"
+                           Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                           VerticalAlignment="Center" />
+              </Grid>
+            </Border>
+            <Border Classes="input-row">
+              <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12" VerticalAlignment="Center">
+                <TextBlock Text="标签文字"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                           VerticalAlignment="Center" />
+                <TextBox Grid.Column="1"
+                         Classes="input-inner"
+                         PlaceholderText="请输入手机号码" />
+                <Button Grid.Column="2" Classes="primary small" Content="操作按钮" />
+              </Grid>
+            </Border>
+            <Border Classes="input-row">
+              <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12" VerticalAlignment="Center">
+                <TextBlock Text="标签文字"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                           VerticalAlignment="Center" />
+                <TextBox Grid.Column="1"
+                         Classes="input-inner"
+                         PlaceholderText="请输入文字" />
+                <TextBlock Grid.Column="2"
+                           Text="占位：UserAvatarIcon"
+                           Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                           VerticalAlignment="Center" />
+              </Grid>
+            </Border>
+          </StackPanel>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="特定类型输入框"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          <StackPanel Margin="16,0" Spacing="16">
+            <Border Classes="input-row">
+              <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12" VerticalAlignment="Center">
+                <TextBlock Text="输入密码"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                           VerticalAlignment="Center" />
+                <TextBox Grid.Column="1"
+                         Classes="input-inner"
+                         Text="520 TDesign"
+                         PasswordChar="●" />
+                <TextBlock Grid.Column="2"
+                           Text="占位：BrowseOffIcon"
+                           Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                           VerticalAlignment="Center" />
+              </Grid>
+            </Border>
+            <Border Classes="input-row">
+              <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12" VerticalAlignment="Center">
+                <TextBlock Text="验证码"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                           VerticalAlignment="Center" />
+                <TextBox Grid.Column="1"
+                         Classes="input-inner"
+                         PlaceholderText="输入验证码" />
+                <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="12" VerticalAlignment="Center">
+                  <Border Width="1" Height="24" Background="{DynamicResource Luna.Brush.Border.Divider}" />
+                  <TextBlock Text="占位：验证码图片"
+                             Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                             VerticalAlignment="Center" />
+                </StackPanel>
+              </Grid>
+            </Border>
+            <StackPanel Spacing="8">
+              <Border Classes="input-row error">
+                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12" VerticalAlignment="Center">
+                  <TextBlock Text="手机号"
+                             Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                             FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                             VerticalAlignment="Center" />
+                  <TextBox Grid.Column="1"
+                           Classes="input-inner"
+                           Text="1760060060"
+                           PlaceholderText="请输入手机号码" />
+                  <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="12" VerticalAlignment="Center">
+                    <Border Width="1" Height="24" Background="{DynamicResource Luna.Brush.Border.Divider}" />
+                    <TextBlock Text="发送验证码"
+                               Foreground="{DynamicResource Luna.Brush.Brand}"
+                               VerticalAlignment="Center" />
+                  </StackPanel>
+                </Grid>
+              </Border>
+              <TextBlock Text="手机号输入不正确"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                         Foreground="{DynamicResource Luna.Brush.Error}" />
+            </StackPanel>
+            <Border Classes="input-row">
+              <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12" VerticalAlignment="Center">
+                <TextBlock Text="价格"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                           VerticalAlignment="Center" />
+                <TextBox Grid.Column="1"
+                         Classes="input-inner"
+                         PlaceholderText="0.00"
+                         TextAlignment="Right" />
+                <TextBlock Grid.Column="2"
+                           Text="元"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           VerticalAlignment="Center" />
+              </Grid>
+            </Border>
+            <Border Classes="input-row">
+              <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12" VerticalAlignment="Center">
+                <TextBlock Text="数量"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                           VerticalAlignment="Center" />
+                <TextBox Grid.Column="1"
+                         Classes="input-inner"
+                         PlaceholderText="填写个数"
+                         TextAlignment="Right" />
+                <TextBlock Grid.Column="2"
+                           Text="个"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           VerticalAlignment="Center" />
+              </Grid>
+            </Border>
+          </StackPanel>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="02 组件状态"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="输入框状态"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+          <StackPanel Margin="16,0" Spacing="16">
+            <StackPanel Spacing="8">
+              <Border Classes="input-row error">
+                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12" VerticalAlignment="Center">
+                  <TextBlock Text="标签文字"
+                             Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                             FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                             VerticalAlignment="Center" />
+                  <TextBox Grid.Column="1"
+                           Classes="input-inner"
+                           Text="已输入文字"
+                           PlaceholderText="请输入文字" />
+                </Grid>
+              </Border>
+              <TextBlock Text="辅助说明"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                         Foreground="{DynamicResource Luna.Brush.Error}" />
+            </StackPanel>
+            <Border Classes="input-row" IsEnabled="False">
+              <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12" VerticalAlignment="Center">
+                <TextBlock Text="不可编辑"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                           VerticalAlignment="Center" />
+                <TextBox Grid.Column="1"
+                         Classes="input-inner"
+                         Text="不可编辑文字"
+                         IsEnabled="False" />
+              </Grid>
+            </Border>
+          </StackPanel>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="信息超长状态"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          <StackPanel Margin="16,0">
+            <Border Classes="input-row">
+              <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12" VerticalAlignment="Center">
+                <TextBlock Text="标签超长时最多十个字"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                           TextTrimming="CharacterEllipsis"
+                           MaxWidth="140"
+                           VerticalAlignment="Center" />
+                <TextBox Grid.Column="1"
+                         Classes="input-inner"
+                         PlaceholderText="请输入文字" />
+              </Grid>
+            </Border>
+          </StackPanel>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="03 组件样式"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="内容位置"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+          <StackPanel Margin="16,0" Spacing="16">
+            <Border Classes="input-row">
+              <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12" VerticalAlignment="Center">
+                <TextBlock Text="左对齐"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                           VerticalAlignment="Center" />
+                <TextBox Grid.Column="1"
+                         Classes="input-inner"
+                         PlaceholderText="请输入文字"
+                         TextAlignment="Left" />
+              </Grid>
+            </Border>
+            <Border Classes="input-row">
+              <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12" VerticalAlignment="Center">
+                <TextBlock Text="居中"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                           VerticalAlignment="Center" />
+                <TextBox Grid.Column="1"
+                         Classes="input-inner"
+                         PlaceholderText="请输入文字"
+                         TextAlignment="Center" />
+              </Grid>
+            </Border>
+            <Border Classes="input-row">
+              <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12" VerticalAlignment="Center">
+                <TextBlock Text="右对齐"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                           VerticalAlignment="Center" />
+                <TextBox Grid.Column="1"
+                         Classes="input-inner"
+                         PlaceholderText="请输入文字"
+                         TextAlignment="Right" />
+              </Grid>
+            </Border>
+          </StackPanel>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="竖排样式"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          <StackPanel Margin="16,0">
+            <StackPanel Spacing="8">
+              <TextBlock Text="标签文字"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}" />
+              <Border Classes="input-row">
+                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12" VerticalAlignment="Center">
+                  <TextBox Classes="input-inner"
+                           PlaceholderText="请输入文字" />
+                  <TextBlock Grid.Column="1"
+                             Text="占位：ErrorCircleFilledIcon"
+                             Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                             VerticalAlignment="Center" />
+                </Grid>
+              </Border>
+            </StackPanel>
+          </StackPanel>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="非通栏样式"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          <Border Margin="16,0" Classes="input-row">
+            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12" VerticalAlignment="Center">
+              <TextBlock Text="标签文字"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         VerticalAlignment="Center" />
+              <TextBox Grid.Column="1"
+                       Classes="input-inner"
+                       PlaceholderText="请输入文字" />
+            </Grid>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="标签外置样式"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          <Border Margin="16,0"
+                  Background="{DynamicResource Luna.Brush.Background.Container}"
+                  CornerRadius="{DynamicResource Luna.Radius.Default}"
+                  Padding="16,16,16,24">
+            <StackPanel Spacing="8">
+              <TextBlock Text="标签文字"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                         LineHeight="{DynamicResource Luna.LineHeight.Body.Small}" />
+              <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                      BorderBrush="#DCDCDC"
+                      BorderThickness="1"
+                      CornerRadius="{DynamicResource Luna.Radius.Default}"
+                      Padding="16,0"
+                      MinHeight="56">
+                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12" VerticalAlignment="Center">
+                  <TextBox Classes="input-inner"
+                           PlaceholderText="请输入文字" />
+                  <TextBlock Grid.Column="1"
+                             Text="占位：ErrorCircleFilledIcon"
+                             Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                             VerticalAlignment="Center" />
+                </Grid>
+              </Border>
+            </StackPanel>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="自定义样式输入框"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          <Border Margin="16,0"
+                  Background="#2C2C2C"
+                  CornerRadius="{DynamicResource Luna.Radius.Default}"
+                  Padding="16,16,16,24">
+            <Border Background="#2C2C2C"
+                    BorderBrush="#4B4B4B"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource Luna.Radius.Default}"
+                    Padding="16,0"
+                    MinHeight="56">
+              <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12" VerticalAlignment="Center">
+                <TextBlock Text="标签文字"
+                           Foreground="#FFFFFF"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                           VerticalAlignment="Center" />
+                <TextBox Grid.Column="1"
+                         Background="Transparent"
+                         BorderThickness="0"
+                         Padding="0"
+                         MinHeight="0"
+                         Foreground="#FFFFFF"
+                         PlaceholderForeground="#59FFFFFF"
+                         PlaceholderText="请输入文字" />
+              </Grid>
+            </Border>
+          </Border>
+        </StackPanel>
+      </StackPanel>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

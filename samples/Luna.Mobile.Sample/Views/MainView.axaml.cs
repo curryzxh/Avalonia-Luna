@@ -118,6 +118,7 @@ public partial class MainView : UserControl
         {
             "/button" => AttachBackHandler(new ButtonDemoView()),
             "/checkbox" => AttachBackHandler(new CheckBoxDemoView()),
+            "/input" => AttachBackHandler(new InputDemoView()),
             "/radio" => AttachBackHandler(new RadioDemoView()),
             "/switch" => AttachBackHandler(new SwitchDemoView()),
             _ => _catalogContent,
@@ -143,6 +144,12 @@ public partial class MainView : UserControl
     }
 
     private UserControl AttachBackHandler(CheckBoxDemoView view)
+    {
+        view.BackRequested += (_, _) => Content = _catalogContent;
+        return view;
+    }
+
+    private UserControl AttachBackHandler(InputDemoView view)
     {
         view.BackRequested += (_, _) => Content = _catalogContent;
         return view;

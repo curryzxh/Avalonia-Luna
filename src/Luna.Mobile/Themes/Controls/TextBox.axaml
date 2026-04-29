@@ -8,7 +8,7 @@
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Default}" />
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
-    <Setter Property="WatermarkForeground" Value="{DynamicResource Luna.Brush.Text.Placeholder}" />
+    <Setter Property="PlaceholderForeground" Value="{DynamicResource Luna.Brush.Text.Placeholder}" />
     <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Medium}" />
   </Style>
 
@@ -24,6 +24,6 @@
     <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Disabled}" />
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Weak}" />
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
-    <Setter Property="WatermarkForeground" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
+    <Setter Property="PlaceholderForeground" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
   </Style>
 </Styles>

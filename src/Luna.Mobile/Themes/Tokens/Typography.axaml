@@ -1,0 +1,19 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+  <sys:Double x:Key="Luna.FontSize.Title.Large">22</sys:Double>
+  <sys:Double x:Key="Luna.FontSize.Title.Medium">20</sys:Double>
+  <sys:Double x:Key="Luna.FontSize.Body.Large">16</sys:Double>
+  <sys:Double x:Key="Luna.FontSize.Body.Medium">14</sys:Double>
+  <sys:Double x:Key="Luna.FontSize.Body.Small">12</sys:Double>
+  <sys:Double x:Key="Luna.FontSize.Mark.Small">10</sys:Double>
+
+  <sys:Double x:Key="Luna.LineHeight.Title.Large">30</sys:Double>
+  <sys:Double x:Key="Luna.LineHeight.Body.Large">24</sys:Double>
+  <sys:Double x:Key="Luna.LineHeight.Body.Medium">22</sys:Double>
+  <sys:Double x:Key="Luna.LineHeight.Body.Small">20</sys:Double>
+
+  <FontWeight x:Key="Luna.FontWeight.Regular">Regular</FontWeight>
+  <FontWeight x:Key="Luna.FontWeight.Medium">Medium</FontWeight>
+  <FontWeight x:Key="Luna.FontWeight.SemiBold">SemiBold</FontWeight>
+</ResourceDictionary>

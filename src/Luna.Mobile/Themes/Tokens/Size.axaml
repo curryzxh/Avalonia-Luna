@@ -1,0 +1,13 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+  <sys:Double x:Key="Luna.Size.TouchTarget">44</sys:Double>
+
+  <sys:Double x:Key="Luna.Size.Control.Small">36</sys:Double>
+  <sys:Double x:Key="Luna.Size.Control.Medium">44</sys:Double>
+  <sys:Double x:Key="Luna.Size.Control.Large">48</sys:Double>
+
+  <sys:Double x:Key="Luna.Size.Icon.Small">18</sys:Double>
+  <sys:Double x:Key="Luna.Size.Icon.Medium">22</sys:Double>
+  <sys:Double x:Key="Luna.Size.Icon.Large">26</sys:Double>
+</ResourceDictionary>

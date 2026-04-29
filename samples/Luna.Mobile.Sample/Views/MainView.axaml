@@ -2,23 +2,87 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:luna="clr-namespace:Luna.Mobile.Controls;assembly=Luna.Mobile"
              x:Class="Luna.Mobile.Sample.Views.MainView">
-  <ScrollViewer>
-    <Grid RowDefinitions="Auto,*" Margin="24" RowSpacing="20">
+  <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
+    <Grid RowDefinitions="Auto,Auto,Auto" Margin="{DynamicResource Luna.Padding.Page}" RowSpacing="20">
       <StackPanel Spacing="8">
-        <TextBlock Text="Luna Mobile" FontSize="28" FontWeight="SemiBold" />
+        <TextBlock Text="Luna Mobile"
+                   FontSize="{DynamicResource Luna.FontSize.Title.Large}"
+                   FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
         <TextBlock Text="Touch-first custom controls playground"
-                   Foreground="{DynamicResource TextControlPlaceholderForeground}" />
+                   FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
       </StackPanel>
 
       <Border Grid.Row="1"
-              BorderBrush="{DynamicResource SystemControlForegroundBaseLowBrush}"
+              Background="{DynamicResource Luna.Brush.Background.Container}"
+              BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
               BorderThickness="1"
-              CornerRadius="8"
-              Padding="20">
+              CornerRadius="{DynamicResource Luna.Radius.Large}"
+              Padding="{DynamicResource Luna.Padding.Card}">
         <StackPanel Spacing="14">
-          <TextBlock Text="Luna.Mobile.Controls.MobileActionChip" FontWeight="SemiBold" />
+          <TextBlock Text="Luna.Mobile.Controls.MobileActionChip"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
           <luna:MobileActionChip Text="Mobile ready" IsActive="True" />
           <luna:MobileActionChip Text="Inactive state" />
+        </StackPanel>
+      </Border>
+
+      <Border Grid.Row="2"
+              Background="{DynamicResource Luna.Brush.Background.Container}"
+              BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+              BorderThickness="1"
+              CornerRadius="{DynamicResource Luna.Radius.Large}"
+              Padding="{DynamicResource Luna.Padding.Card}">
+        <StackPanel Spacing="16">
+          <StackPanel Spacing="4">
+            <TextBlock Text="Theme tokens"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="Mobile-first TDesign-style resources"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+
+          <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto" ColumnSpacing="10" RowSpacing="10">
+            <Border Height="{DynamicResource Luna.Size.TouchTarget}"
+                    Background="{DynamicResource Luna.Brush.Brand}"
+                    CornerRadius="{DynamicResource Luna.Radius.Default}" />
+            <Border Grid.Column="1"
+                    Height="{DynamicResource Luna.Size.TouchTarget}"
+                    Background="{DynamicResource Luna.Brush.Success}"
+                    CornerRadius="{DynamicResource Luna.Radius.Default}" />
+            <Border Grid.Column="2"
+                    Height="{DynamicResource Luna.Size.TouchTarget}"
+                    Background="{DynamicResource Luna.Brush.Error}"
+                    CornerRadius="{DynamicResource Luna.Radius.Default}" />
+
+            <TextBlock Grid.Row="1"
+                       Text="Brand"
+                       HorizontalAlignment="Center"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <TextBlock Grid.Row="1"
+                       Grid.Column="1"
+                       Text="Success"
+                       HorizontalAlignment="Center"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <TextBlock Grid.Row="1"
+                       Grid.Column="2"
+                       Text="Error"
+                       HorizontalAlignment="Center"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </Grid>
+
+          <Border MinHeight="{DynamicResource Luna.Size.TouchTarget}"
+                  Background="{DynamicResource Luna.Brush.Background.Component}"
+                  CornerRadius="{DynamicResource Luna.Radius.Default}"
+                  Padding="{DynamicResource Luna.Padding.Control.Medium}">
+            <TextBlock Text="Touch target >= 44px, radius and spacing are resolved from Luna tokens."
+                       TextWrapping="Wrap"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+          </Border>
         </StackPanel>
       </Border>
     </Grid>

@@ -1,0 +1,14 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceInclude Source="avares://Luna.Mobile/Themes/Light.axaml" />
+    <ResourceInclude Source="avares://Luna.Mobile/Themes/Dark.axaml" />
+    <ResourceInclude Source="avares://Luna.Mobile/Themes/Tokens/Color.axaml" />
+    <ResourceInclude Source="avares://Luna.Mobile/Themes/Tokens/Typography.axaml" />
+    <ResourceInclude Source="avares://Luna.Mobile/Themes/Tokens/Radius.axaml" />
+    <ResourceInclude Source="avares://Luna.Mobile/Themes/Tokens/Spacing.axaml" />
+    <ResourceInclude Source="avares://Luna.Mobile/Themes/Tokens/Size.axaml" />
+    <ResourceInclude Source="avares://Luna.Mobile/Themes/Tokens/Shadow.axaml" />
+    <ResourceInclude Source="avares://Luna.Mobile/Themes/Tokens/Motion.axaml" />
+  </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

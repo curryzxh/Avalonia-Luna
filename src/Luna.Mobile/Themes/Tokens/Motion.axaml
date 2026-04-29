@@ -1,0 +1,7 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+  <sys:Double x:Key="Luna.Motion.Fast">120</sys:Double>
+  <sys:Double x:Key="Luna.Motion.Base">200</sys:Double>
+  <sys:Double x:Key="Luna.Motion.Slow">300</sys:Double>
+</ResourceDictionary>

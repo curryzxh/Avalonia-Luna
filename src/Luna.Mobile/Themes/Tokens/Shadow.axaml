@@ -1,0 +1,7 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+  <sys:String x:Key="Luna.Shadow.Card">0 2 8 0 #14000000</sys:String>
+  <sys:String x:Key="Luna.Shadow.Popup">0 8 24 0 #24000000</sys:String>
+  <sys:String x:Key="Luna.Shadow.Floating">0 6 18 0 #26000000</sys:String>
+</ResourceDictionary>

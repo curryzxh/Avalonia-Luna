@@ -1,0 +1,41 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ResourceDictionary.ThemeDictionaries>
+    <ResourceDictionary x:Key="Light">
+      <Color x:Key="Luna.Color.Brand.1">#E8F3FF</Color>
+      <Color x:Key="Luna.Color.Brand.2">#BEDAFF</Color>
+      <Color x:Key="Luna.Color.Brand.3">#94BFFF</Color>
+      <Color x:Key="Luna.Color.Brand.4">#6AA1FF</Color>
+      <Color x:Key="Luna.Color.Brand.5">#4080FF</Color>
+      <Color x:Key="Luna.Color.Brand.6">#0052D9</Color>
+      <Color x:Key="Luna.Color.Brand.7">#003CAB</Color>
+      <Color x:Key="Luna.Color.Brand.8">#002A7C</Color>
+      <Color x:Key="Luna.Color.Brand.9">#001A4D</Color>
+
+      <Color x:Key="Luna.Color.Success.6">#00A870</Color>
+      <Color x:Key="Luna.Color.Warning.6">#ED7B2F</Color>
+      <Color x:Key="Luna.Color.Error.6">#D54941</Color>
+
+      <Color x:Key="Luna.Color.Text.Primary">#1F2329</Color>
+      <Color x:Key="Luna.Color.Text.Secondary">#565A60</Color>
+      <Color x:Key="Luna.Color.Text.Placeholder">#8F959E</Color>
+      <Color x:Key="Luna.Color.Text.Disabled">#C9CDD4</Color>
+      <Color x:Key="Luna.Color.Text.Anti">#FFFFFF</Color>
+
+      <Color x:Key="Luna.Color.Background.Page">#F5F7FA</Color>
+      <Color x:Key="Luna.Color.Background.Container">#FFFFFF</Color>
+      <Color x:Key="Luna.Color.Background.Component">#F2F3F5</Color>
+      <Color x:Key="Luna.Color.Background.ComponentActive">#E8F3FF</Color>
+      <Color x:Key="Luna.Color.Background.Disabled">#F2F3F5</Color>
+
+      <Color x:Key="Luna.Color.Border.Default">#E5E6EB</Color>
+      <Color x:Key="Luna.Color.Border.Weak">#F2F3F5</Color>
+      <Color x:Key="Luna.Color.Border.Strong">#C9CDD4</Color>
+      <Color x:Key="Luna.Color.Border.Divider">#E5E6EB</Color>
+
+      <Color x:Key="Luna.Color.Mask">#99000000</Color>
+      <Color x:Key="Luna.Color.Mask.Strong">#CC000000</Color>
+      <Color x:Key="Luna.Color.Mask.Light">#66000000</Color>
+    </ResourceDictionary>
+  </ResourceDictionary.ThemeDictionaries>
+</ResourceDictionary>

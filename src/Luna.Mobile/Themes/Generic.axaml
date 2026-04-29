@@ -8,19 +8,19 @@
   </Design.PreviewWith>
 
   <Style Selector="controls|MobileActionChip">
-    <Setter Property="MinHeight" Value="44" />
-    <Setter Property="Padding" Value="16,10" />
+    <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.TouchTarget}" />
+    <Setter Property="Padding" Value="{DynamicResource Luna.Padding.Control.Medium}" />
     <Setter Property="Template">
       <ControlTemplate>
-        <Border Background="#F4F7F5"
-                BorderBrush="#84A98C"
+        <Border Background="{DynamicResource Luna.Brush.Background.Component}"
+                BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
                 BorderThickness="1"
-                CornerRadius="22"
+                CornerRadius="{DynamicResource Luna.Radius.Circle}"
                 Padding="{TemplateBinding Padding}">
           <TextBlock Text="{TemplateBinding Text}"
-                     Foreground="#263B2A"
-                     FontSize="15"
-                     FontWeight="SemiBold"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
                      HorizontalAlignment="Center"
                      VerticalAlignment="Center" />
         </Border>
@@ -31,15 +31,15 @@
   <Style Selector="controls|MobileActionChip:active">
     <Setter Property="Template">
       <ControlTemplate>
-        <Border Background="#1E6F50"
-                BorderBrush="#1E6F50"
+        <Border Background="{DynamicResource Luna.Brush.Brand}"
+                BorderBrush="{DynamicResource Luna.Brush.Brand}"
                 BorderThickness="1"
-                CornerRadius="22"
+                CornerRadius="{DynamicResource Luna.Radius.Circle}"
                 Padding="{TemplateBinding Padding}">
           <TextBlock Text="{TemplateBinding Text}"
-                     Foreground="#FFFFFF"
-                     FontSize="15"
-                     FontWeight="SemiBold"
+                     Foreground="{DynamicResource Luna.Brush.Text.Anti}"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
                      HorizontalAlignment="Center"
                      VerticalAlignment="Center" />
         </Border>

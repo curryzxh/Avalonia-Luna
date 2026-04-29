@@ -1,0 +1,228 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="using:Luna.Mobile.Controls"
+             x:Class="Luna.Mobile.Sample.Views.AvatarDemoView">
+  <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
+    <StackPanel Spacing="24" Margin="0,0,0,28">
+      <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+        <Grid ColumnDefinitions="56,*,56" MinHeight="56">
+          <Button Classes="text"
+                  Content="‹"
+                  FontSize="34"
+                  Padding="0"
+                  Click="OnBackClick" />
+          <TextBlock Grid.Column="1"
+                     Text="Avatar 头像"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center" />
+        </Grid>
+      </Border>
+
+      <StackPanel Margin="16,0" Spacing="8">
+        <TextBlock Text="Avatar 头像"
+                   FontSize="{DynamicResource Luna.FontSize.Title.Large}"
+                   FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+        <TextBlock Text="用于展示用户头像信息，除了纯展示也可点击进入个人详情等操作。"
+                   FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                   TextWrapping="Wrap" />
+      </StackPanel>
+
+      <StackPanel Spacing="28">
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="01 头像类型"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="图片头像（占位）"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+          <StackPanel Orientation="Horizontal" Spacing="32" Margin="16,0">
+            <controls:Avatar Classes="primary">IMG</controls:Avatar>
+            <controls:Avatar Classes="primary" Shape="Round">IMG</controls:Avatar>
+          </StackPanel>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="字符头像"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          <StackPanel Orientation="Horizontal" Spacing="32" Margin="16,0">
+            <controls:Avatar Classes="primary">A</controls:Avatar>
+            <controls:Avatar Classes="primary" Shape="Round">A</controls:Avatar>
+          </StackPanel>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="图标头像"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          <StackPanel Orientation="Horizontal" Spacing="32" Margin="16,0">
+            <controls:Avatar>
+              <controls:Avatar.Icon>
+                <Path Width="20"
+                      Height="20"
+                      Data="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z M4 20C4 16.6863 7.58172 14 12 14C16.4183 14 20 16.6863 20 20"
+                      Stroke="{DynamicResource Luna.Brush.Text.Primary}"
+                      StrokeThickness="2"
+                      StrokeLineCap="Round"
+                      StrokeJoin="Round"
+                      Fill="Transparent"
+                      Stretch="Uniform" />
+              </controls:Avatar.Icon>
+            </controls:Avatar>
+            <controls:Avatar Shape="Round">
+              <controls:Avatar.Icon>
+                <Path Width="20"
+                      Height="20"
+                      Data="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z M4 20C4 16.6863 7.58172 14 12 14C16.4183 14 20 16.6863 20 20"
+                      Stroke="{DynamicResource Luna.Brush.Text.Primary}"
+                      StrokeThickness="2"
+                      StrokeLineCap="Round"
+                      StrokeJoin="Round"
+                      Fill="Transparent"
+                      Stretch="Uniform" />
+              </controls:Avatar.Icon>
+            </controls:Avatar>
+          </StackPanel>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="徽标头像"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          <StackPanel Orientation="Horizontal" Spacing="32" Margin="16,0">
+            <controls:Badge Dot="True" Offset="4,4">
+              <controls:Avatar Classes="primary">IMG</controls:Avatar>
+            </controls:Badge>
+            <controls:Badge Count="8" Offset="6,6">
+              <controls:Avatar Classes="primary">A</controls:Avatar>
+            </controls:Badge>
+            <controls:Badge Count="12" Offset="6,6">
+              <controls:Avatar>
+                <controls:Avatar.Icon>
+                  <Path Width="20"
+                        Height="20"
+                        Data="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z M4 20C4 16.6863 7.58172 14 12 14C16.4183 14 20 16.6863 20 20"
+                        Stroke="{DynamicResource Luna.Brush.Text.Primary}"
+                        StrokeThickness="2"
+                        StrokeLineCap="Round"
+                        StrokeJoin="Round"
+                        Fill="Transparent"
+                        Stretch="Uniform" />
+                </controls:Avatar.Icon>
+              </controls:Avatar>
+            </controls:Badge>
+          </StackPanel>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="02 特殊类型"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="纯展示的头像组"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+          <StackPanel Orientation="Horizontal" Margin="16,0">
+            <controls:Avatar Classes="primary" Margin="0,0,-12,0">A</controls:Avatar>
+            <controls:Avatar Classes="primary" Margin="0,0,-12,0">B</controls:Avatar>
+            <controls:Avatar Classes="primary" Margin="0,0,-12,0">C</controls:Avatar>
+            <controls:Avatar Classes="primary">D</controls:Avatar>
+          </StackPanel>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="带操作的头像组（占位）"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          <StackPanel Orientation="Horizontal" Spacing="16" Margin="16,0">
+            <Button Classes="text" Content="操作" />
+            <controls:Avatar Classes="primary">A</controls:Avatar>
+            <controls:Avatar Classes="primary">B</controls:Avatar>
+          </StackPanel>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="03 组件尺寸"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="组件尺寸"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+
+          <StackPanel Spacing="16" Margin="16,0">
+            <StackPanel Orientation="Horizontal" Spacing="32">
+              <controls:Avatar Size="Large" Classes="primary">IMG</controls:Avatar>
+              <controls:Avatar Size="Large" Classes="primary">A</controls:Avatar>
+              <controls:Avatar Size="Large">
+                <controls:Avatar.Icon>
+                  <Path Width="26"
+                        Height="26"
+                        Data="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z M4 20C4 16.6863 7.58172 14 12 14C16.4183 14 20 16.6863 20 20"
+                        Stroke="{DynamicResource Luna.Brush.Text.Primary}"
+                        StrokeThickness="2"
+                        StrokeLineCap="Round"
+                        StrokeJoin="Round"
+                        Fill="Transparent"
+                        Stretch="Uniform" />
+                </controls:Avatar.Icon>
+              </controls:Avatar>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Spacing="48">
+              <controls:Avatar Size="Medium" Classes="primary">IMG</controls:Avatar>
+              <controls:Avatar Size="Medium" Classes="primary">A</controls:Avatar>
+              <controls:Avatar Size="Medium">
+                <controls:Avatar.Icon>
+                  <Path Width="22"
+                        Height="22"
+                        Data="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z M4 20C4 16.6863 7.58172 14 12 14C16.4183 14 20 16.6863 20 20"
+                        Stroke="{DynamicResource Luna.Brush.Text.Primary}"
+                        StrokeThickness="2"
+                        StrokeLineCap="Round"
+                        StrokeJoin="Round"
+                        Fill="Transparent"
+                        Stretch="Uniform" />
+                </controls:Avatar.Icon>
+              </controls:Avatar>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Spacing="56">
+              <controls:Avatar Size="Small" Classes="primary">IMG</controls:Avatar>
+              <controls:Avatar Size="Small" Classes="primary">A</controls:Avatar>
+              <controls:Avatar Size="Small">
+                <controls:Avatar.Icon>
+                  <Path Width="18"
+                        Height="18"
+                        Data="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z M4 20C4 16.6863 7.58172 14 12 14C16.4183 14 20 16.6863 20 20"
+                        Stroke="{DynamicResource Luna.Brush.Text.Primary}"
+                        StrokeThickness="2"
+                        StrokeLineCap="Round"
+                        StrokeJoin="Round"
+                        Fill="Transparent"
+                        Stretch="Uniform" />
+                </controls:Avatar.Icon>
+              </controls:Avatar>
+            </StackPanel>
+          </StackPanel>
+        </StackPanel>
+      </StackPanel>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

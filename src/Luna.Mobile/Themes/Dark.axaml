@@ -23,6 +23,9 @@
       <Color x:Key="Luna.Color.Success.6">#34C995</Color>
       <Color x:Key="Luna.Color.Warning.6">#F2995F</Color>
       <Color x:Key="Luna.Color.Error.6">#E86A62</Color>
+      <Color x:Key="Luna.Color.Success.1">#12352B</Color>
+      <Color x:Key="Luna.Color.Warning.1">#3A2A16</Color>
+      <Color x:Key="Luna.Color.Error.1">#3A1C1C</Color>
 
       <Color x:Key="Luna.Color.Text.Primary">#F2F3F5</Color>
       <Color x:Key="Luna.Color.Text.Secondary">#C9CDD4</Color>

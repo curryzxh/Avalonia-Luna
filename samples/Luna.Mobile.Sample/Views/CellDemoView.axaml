@@ -1,0 +1,95 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="using:Luna.Mobile.Controls"
+             x:Class="Luna.Mobile.Sample.Views.CellDemoView">
+  <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
+    <StackPanel Spacing="24" Margin="0,0,0,28">
+      <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+        <Grid ColumnDefinitions="56,*,56" MinHeight="56">
+          <Button Classes="text"
+                  Content="‹"
+                  FontSize="34"
+                  Padding="0"
+                  Click="OnBackClick" />
+          <TextBlock Grid.Column="1"
+                     Text="Cell 单元格"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center" />
+        </Grid>
+      </Border>
+
+      <StackPanel Margin="16,0" Spacing="8">
+        <TextBlock Text="Cell 单元格"
+                   FontSize="{DynamicResource Luna.FontSize.Title.Large}"
+                   FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+        <TextBlock Text="用于承载各类信息展示，并提供导航入口。"
+                   FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                   TextWrapping="Wrap" />
+      </StackPanel>
+
+      <StackPanel Spacing="28">
+        <StackPanel Spacing="16">
+          <TextBlock Text="01 组件类型"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+          <controls:CellGroup Title="基础用法">
+            <StackPanel>
+              <controls:Cell Title="单元格" RightText="内容" />
+              <controls:Cell Title="带描述单元格" Description="描述文字" RightText="内容" />
+              <controls:Cell Title="带图标单元格" RightText="内容">
+                <controls:Cell.LeftContent>
+                  <Border Width="24"
+                          Height="24"
+                          CornerRadius="{DynamicResource Luna.Radius.Circle}"
+                          Background="{DynamicResource Luna.Brush.Background.Component}" />
+                </controls:Cell.LeftContent>
+              </controls:Cell>
+            </StackPanel>
+          </controls:CellGroup>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="02 状态"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+          <controls:CellGroup Title="禁用状态">
+            <StackPanel>
+              <controls:Cell Title="禁用单元格" RightText="内容" IsEnabled="False" />
+              <controls:Cell Title="禁用带描述" Description="描述文字" RightText="内容" IsEnabled="False" />
+            </StackPanel>
+          </controls:CellGroup>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="03 组件样式"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+          <controls:CellGroup Title="右侧内容">
+            <StackPanel>
+              <controls:Cell Title="带开关"
+                             ShowArrow="False">
+                <controls:Cell.RightContent>
+                  <ToggleSwitch IsChecked="True" />
+                </controls:Cell.RightContent>
+              </controls:Cell>
+              <controls:Cell Title="隐藏箭头"
+                             RightText="内容"
+                             ShowArrow="False" />
+            </StackPanel>
+          </controls:CellGroup>
+        </StackPanel>
+      </StackPanel>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

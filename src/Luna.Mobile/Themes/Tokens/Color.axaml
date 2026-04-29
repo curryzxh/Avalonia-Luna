@@ -10,6 +10,9 @@
   <SolidColorBrush x:Key="Luna.Brush.Success" Color="{DynamicResource Luna.Color.Success.6}" />
   <SolidColorBrush x:Key="Luna.Brush.Warning" Color="{DynamicResource Luna.Color.Warning.6}" />
   <SolidColorBrush x:Key="Luna.Brush.Error" Color="{DynamicResource Luna.Color.Error.6}" />
+  <SolidColorBrush x:Key="Luna.Brush.Success.Light" Color="{DynamicResource Luna.Color.Success.1}" />
+  <SolidColorBrush x:Key="Luna.Brush.Warning.Light" Color="{DynamicResource Luna.Color.Warning.1}" />
+  <SolidColorBrush x:Key="Luna.Brush.Error.Light" Color="{DynamicResource Luna.Color.Error.1}" />
 
   <SolidColorBrush x:Key="Luna.Brush.Text.Primary" Color="{DynamicResource Luna.Color.Text.Primary}" />
   <SolidColorBrush x:Key="Luna.Brush.Text.Secondary" Color="{DynamicResource Luna.Color.Text.Secondary}" />

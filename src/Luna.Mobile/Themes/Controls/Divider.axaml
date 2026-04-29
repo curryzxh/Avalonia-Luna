@@ -1,0 +1,196 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Luna.Mobile.Controls">
+  <Style Selector="controls|Divider">
+    <Setter Property="LineThickness" Value="1" />
+    <Setter Property="LineLength" Value="16" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid>
+          <Grid Name="PART_HorizontalRoot" VerticalAlignment="Center">
+            <Path Name="PART_FullLine"
+                  Data="M 0 0 L 1 0"
+                  Stretch="Fill"
+                  Stroke="{DynamicResource Luna.Brush.Border.Divider}"
+                  StrokeThickness="{TemplateBinding LineThickness}"
+                  Height="{TemplateBinding LineThickness}"
+                  VerticalAlignment="Center" />
+          </Grid>
+
+          <Path Name="PART_VerticalLine"
+                Data="M 0 0 L 0 1"
+                Stretch="Fill"
+                Stroke="{DynamicResource Luna.Brush.Border.Divider}"
+                StrokeThickness="{TemplateBinding LineThickness}"
+                Width="{TemplateBinding LineThickness}"
+                Height="{TemplateBinding LineLength}"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center" />
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|Divider:has-content">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid>
+          <Grid Name="PART_HorizontalRoot" VerticalAlignment="Center">
+            <Grid ColumnDefinitions="*,Auto,*" VerticalAlignment="Center">
+              <Path Name="PART_LeftLine"
+                    Data="M 0 0 L 1 0"
+                    Stretch="Fill"
+                    Stroke="{DynamicResource Luna.Brush.Border.Divider}"
+                    StrokeThickness="{TemplateBinding LineThickness}"
+                    Height="{TemplateBinding LineThickness}"
+                    VerticalAlignment="Center" />
+              <TextBlock Name="PART_Text"
+                         Grid.Column="1"
+                         Text="{TemplateBinding Content}"
+                         Margin="16,0"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                         VerticalAlignment="Center" />
+              <Path Name="PART_RightLine"
+                    Grid.Column="2"
+                    Data="M 0 0 L 1 0"
+                    Stretch="Fill"
+                    Stroke="{DynamicResource Luna.Brush.Border.Divider}"
+                    StrokeThickness="{TemplateBinding LineThickness}"
+                    Height="{TemplateBinding LineThickness}"
+                    VerticalAlignment="Center" />
+            </Grid>
+          </Grid>
+
+          <Path Name="PART_VerticalLine"
+                Data="M 0 0 L 0 1"
+                Stretch="Fill"
+                Stroke="{DynamicResource Luna.Brush.Border.Divider}"
+                StrokeThickness="{TemplateBinding LineThickness}"
+                Width="{TemplateBinding LineThickness}"
+                Height="{TemplateBinding LineLength}"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center" />
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|Divider:has-content:align-left">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid>
+          <Grid Name="PART_HorizontalRoot" VerticalAlignment="Center">
+            <Grid ColumnDefinitions="Auto,Auto,*" VerticalAlignment="Center">
+              <Path Name="PART_LeftLine"
+                    Data="M 0 0 L 1 0"
+                    Stretch="Fill"
+                    Width="{TemplateBinding LineLength}"
+                    Stroke="{DynamicResource Luna.Brush.Border.Divider}"
+                    StrokeThickness="{TemplateBinding LineThickness}"
+                    Height="{TemplateBinding LineThickness}"
+                    VerticalAlignment="Center" />
+              <TextBlock Name="PART_Text"
+                         Grid.Column="1"
+                         Text="{TemplateBinding Content}"
+                         Margin="16,0"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                         VerticalAlignment="Center" />
+              <Path Name="PART_RightLine"
+                    Grid.Column="2"
+                    Data="M 0 0 L 1 0"
+                    Stretch="Fill"
+                    Stroke="{DynamicResource Luna.Brush.Border.Divider}"
+                    StrokeThickness="{TemplateBinding LineThickness}"
+                    Height="{TemplateBinding LineThickness}"
+                    VerticalAlignment="Center" />
+            </Grid>
+          </Grid>
+
+          <Path Name="PART_VerticalLine"
+                Data="M 0 0 L 0 1"
+                Stretch="Fill"
+                Stroke="{DynamicResource Luna.Brush.Border.Divider}"
+                StrokeThickness="{TemplateBinding LineThickness}"
+                Width="{TemplateBinding LineThickness}"
+                Height="{TemplateBinding LineLength}"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center" />
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|Divider:has-content:align-right">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid>
+          <Grid Name="PART_HorizontalRoot" VerticalAlignment="Center">
+            <Grid ColumnDefinitions="*,Auto,Auto" VerticalAlignment="Center">
+              <Path Name="PART_LeftLine"
+                    Data="M 0 0 L 1 0"
+                    Stretch="Fill"
+                    Stroke="{DynamicResource Luna.Brush.Border.Divider}"
+                    StrokeThickness="{TemplateBinding LineThickness}"
+                    Height="{TemplateBinding LineThickness}"
+                    VerticalAlignment="Center" />
+              <TextBlock Name="PART_Text"
+                         Grid.Column="1"
+                         Text="{TemplateBinding Content}"
+                         Margin="16,0"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                         VerticalAlignment="Center" />
+              <Path Name="PART_RightLine"
+                    Grid.Column="2"
+                    Data="M 0 0 L 1 0"
+                    Stretch="Fill"
+                    Width="{TemplateBinding LineLength}"
+                    Stroke="{DynamicResource Luna.Brush.Border.Divider}"
+                    StrokeThickness="{TemplateBinding LineThickness}"
+                    Height="{TemplateBinding LineThickness}"
+                    VerticalAlignment="Center" />
+            </Grid>
+          </Grid>
+
+          <Path Name="PART_VerticalLine"
+                Data="M 0 0 L 0 1"
+                Stretch="Fill"
+                Stroke="{DynamicResource Luna.Brush.Border.Divider}"
+                StrokeThickness="{TemplateBinding LineThickness}"
+                Width="{TemplateBinding LineThickness}"
+                Height="{TemplateBinding LineLength}"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center" />
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|Divider Grid#PART_HorizontalRoot">
+    <Setter Property="IsVisible" Value="True" />
+  </Style>
+  <Style Selector="controls|Divider:vertical Grid#PART_HorizontalRoot">
+    <Setter Property="IsVisible" Value="False" />
+  </Style>
+  <Style Selector="controls|Divider Path#PART_VerticalLine">
+    <Setter Property="IsVisible" Value="False" />
+  </Style>
+  <Style Selector="controls|Divider:vertical Path#PART_VerticalLine">
+    <Setter Property="IsVisible" Value="True" />
+  </Style>
+
+  <Style Selector="controls|Divider:dashed Path#PART_LeftLine">
+    <Setter Property="StrokeDashArray" Value="4,4" />
+  </Style>
+  <Style Selector="controls|Divider:dashed Path#PART_RightLine">
+    <Setter Property="StrokeDashArray" Value="4,4" />
+  </Style>
+  <Style Selector="controls|Divider:dashed Path#PART_FullLine">
+    <Setter Property="StrokeDashArray" Value="4,4" />
+  </Style>
+  <Style Selector="controls|Divider:dashed Path#PART_VerticalLine">
+    <Setter Property="StrokeDashArray" Value="4,4" />
+  </Style>
+</Styles>

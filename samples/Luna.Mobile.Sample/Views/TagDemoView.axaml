@@ -1,0 +1,240 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="using:Luna.Mobile.Controls"
+             x:Class="Luna.Mobile.Sample.Views.TagDemoView">
+  <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
+    <StackPanel Spacing="24" Margin="0,0,0,28">
+      <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+        <Grid ColumnDefinitions="56,*,56" MinHeight="56">
+          <Button Classes="text"
+                  Content="‹"
+                  FontSize="34"
+                  Padding="0"
+                  Click="OnBackClick" />
+          <TextBlock Grid.Column="1"
+                     Text="Tag 标签"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center" />
+        </Grid>
+      </Border>
+
+      <StackPanel Margin="16,0" Spacing="8">
+        <TextBlock Text="Tag 标签"
+                   FontSize="{DynamicResource Luna.FontSize.Title.Large}"
+                   FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+        <TextBlock Text="用于表明主体的类目，属性或状态。"
+                   FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                   TextWrapping="Wrap" />
+      </StackPanel>
+
+      <StackPanel Spacing="28">
+        <StackPanel Spacing="16">
+          <TextBlock Text="01 组件类型"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+
+          <StackPanel Margin="16,0" Spacing="12">
+            <TextBlock Text="基础标签"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}" Padding="16">
+              <StackPanel Orientation="Horizontal" Spacing="16">
+                <controls:Tag Variant="Light">标签文字</controls:Tag>
+                <controls:Tag Variant="Outline">标签文字</controls:Tag>
+              </StackPanel>
+            </Border>
+
+            <TextBlock Text="圆弧标签"
+                       Margin="0,8,0,0"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}" Padding="16">
+              <StackPanel Orientation="Horizontal" Spacing="16">
+                <controls:Tag Variant="Light" Shape="Round">标签文字</controls:Tag>
+                <controls:Tag Variant="Outline" Shape="Round">标签文字</controls:Tag>
+                <controls:Tag Variant="Outline" Shape="Mark">标签文字</controls:Tag>
+              </StackPanel>
+            </Border>
+
+            <TextBlock Text="带图标的标签"
+                       Margin="0,8,0,0"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}" Padding="16">
+              <StackPanel Orientation="Horizontal" Spacing="16">
+                <controls:Tag Variant="Light">
+                  <controls:Tag.Icon>
+                    <Path Width="14" Height="14"
+                          Data="M3 10L6 13L13 4"
+                          Stroke="{DynamicResource Luna.Brush.Brand}"
+                          StrokeThickness="2"
+                          Stretch="Uniform" />
+                  </controls:Tag.Icon>
+                  标签文字
+                </controls:Tag>
+                <controls:Tag Variant="Outline">
+                  <controls:Tag.Icon>
+                    <Path Width="14" Height="14"
+                          Data="M3 10L6 13L13 4"
+                          Stroke="{DynamicResource Luna.Brush.Brand}"
+                          StrokeThickness="2"
+                          Stretch="Uniform" />
+                  </controls:Tag.Icon>
+                  标签文字
+                </controls:Tag>
+              </StackPanel>
+            </Border>
+
+            <TextBlock Text="超长文本省略标签"
+                       Margin="0,8,0,0"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}" Padding="16">
+              <controls:Tag Variant="Light" MaxWidth="130">听说超长可以省略听说超长</controls:Tag>
+            </Border>
+
+            <TextBlock Text="可关闭标签"
+                       Margin="0,8,0,0"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}" Padding="16">
+              <StackPanel Orientation="Horizontal" Spacing="16">
+                <controls:Tag Variant="Light" IsClosable="True">文字标签</controls:Tag>
+                <controls:Tag Variant="Outline" IsClosable="True">文字标签</controls:Tag>
+              </StackPanel>
+            </Border>
+
+            <TextBlock Text="可选中的标签"
+                       Margin="0,8,0,0"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}" Padding="16">
+              <StackPanel Spacing="12">
+                <Grid ColumnDefinitions="80,*" ColumnSpacing="16" VerticalAlignment="Center">
+                  <TextBlock Text="light"
+                             Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                             FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                             VerticalAlignment="Center" />
+                  <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="16">
+                    <controls:CheckTag Variant="Light" Size="Large">未选中态</controls:CheckTag>
+                    <controls:CheckTag Variant="Light" Size="Large" IsChecked="True">已选中态</controls:CheckTag>
+                  </StackPanel>
+                </Grid>
+                <Grid ColumnDefinitions="80,*" ColumnSpacing="16" VerticalAlignment="Center">
+                  <TextBlock Text="dark"
+                             Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                             FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                             VerticalAlignment="Center" />
+                  <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="16">
+                    <controls:CheckTag Variant="Dark" Size="Large">未选中态</controls:CheckTag>
+                    <controls:CheckTag Variant="Dark" Size="Large" IsChecked="True">已选中态</controls:CheckTag>
+                  </StackPanel>
+                </Grid>
+                <Grid ColumnDefinitions="80,*" ColumnSpacing="16" VerticalAlignment="Center">
+                  <TextBlock Text="outline"
+                             Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                             FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                             VerticalAlignment="Center" />
+                  <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="16">
+                    <controls:CheckTag Variant="Outline" Size="Large">未选中态</controls:CheckTag>
+                    <controls:CheckTag Variant="Outline" Size="Large" IsChecked="True">已选中态</controls:CheckTag>
+                  </StackPanel>
+                </Grid>
+                <Grid ColumnDefinitions="80,*" ColumnSpacing="16" VerticalAlignment="Center">
+                  <TextBlock Text="light-outline"
+                             Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                             FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                             VerticalAlignment="Center" />
+                  <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="16">
+                    <controls:CheckTag Variant="LightOutline" Size="Large">未选中态</controls:CheckTag>
+                    <controls:CheckTag Variant="LightOutline" Size="Large" IsChecked="True">已选中态</controls:CheckTag>
+                  </StackPanel>
+                </Grid>
+              </StackPanel>
+            </Border>
+          </StackPanel>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="02 组件状态"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}" Padding="16">
+            <StackPanel Spacing="12">
+              <TextBlock Text="展示型标签"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+
+              <StackPanel Orientation="Horizontal" Spacing="16">
+                <controls:Tag Variant="Light">默认</controls:Tag>
+                <controls:Tag Variant="Light" Theme="Primary">主要</controls:Tag>
+                <controls:Tag Variant="Light" Theme="Warning">警告</controls:Tag>
+                <controls:Tag Variant="Light" Theme="Danger">危险</controls:Tag>
+                <controls:Tag Variant="Light" Theme="Success">成功</controls:Tag>
+              </StackPanel>
+
+              <StackPanel Orientation="Horizontal" Spacing="16">
+                <controls:Tag Variant="Dark">默认</controls:Tag>
+                <controls:Tag Variant="Dark" Theme="Primary">主要</controls:Tag>
+                <controls:Tag Variant="Dark" Theme="Warning">警告</controls:Tag>
+                <controls:Tag Variant="Dark" Theme="Danger">危险</controls:Tag>
+                <controls:Tag Variant="Dark" Theme="Success">成功</controls:Tag>
+              </StackPanel>
+
+              <StackPanel Orientation="Horizontal" Spacing="16">
+                <controls:Tag Variant="Outline">默认</controls:Tag>
+                <controls:Tag Variant="Outline" Theme="Primary">主要</controls:Tag>
+                <controls:Tag Variant="Outline" Theme="Warning">警告</controls:Tag>
+                <controls:Tag Variant="Outline" Theme="Danger">危险</controls:Tag>
+                <controls:Tag Variant="Outline" Theme="Success">成功</controls:Tag>
+              </StackPanel>
+
+              <StackPanel Orientation="Horizontal" Spacing="16">
+                <controls:Tag Variant="LightOutline">默认</controls:Tag>
+                <controls:Tag Variant="LightOutline" Theme="Primary">主要</controls:Tag>
+                <controls:Tag Variant="LightOutline" Theme="Warning">警告</controls:Tag>
+                <controls:Tag Variant="LightOutline" Theme="Danger">危险</controls:Tag>
+                <controls:Tag Variant="LightOutline" Theme="Success">成功</controls:Tag>
+              </StackPanel>
+            </StackPanel>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="03 组件尺寸"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}" Padding="16,16,16,0">
+            <StackPanel Spacing="16">
+              <StackPanel Orientation="Horizontal" Spacing="16">
+                <controls:Tag Variant="Light" Size="ExtraLarge">加大尺寸</controls:Tag>
+                <controls:Tag Variant="Light" Size="Large">大尺寸</controls:Tag>
+                <controls:Tag Variant="Light" Size="Medium">中尺寸</controls:Tag>
+                <controls:Tag Variant="Light" Size="Small">小尺寸</controls:Tag>
+              </StackPanel>
+              <Grid ColumnDefinitions="*,*,*,*" ColumnSpacing="16">
+                <controls:Tag Variant="Light" Size="ExtraLarge" IsClosable="True">加大尺寸</controls:Tag>
+                <controls:Tag Grid.Column="1" Variant="Light" Size="Large" IsClosable="True">大尺寸</controls:Tag>
+                <controls:Tag Grid.Column="2" Variant="Light" Size="Medium" IsClosable="True">中尺寸</controls:Tag>
+                <controls:Tag Grid.Column="3" Variant="Light" Size="Small" IsClosable="True">小尺寸</controls:Tag>
+              </Grid>
+            </StackPanel>
+          </Border>
+        </StackPanel>
+      </StackPanel>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

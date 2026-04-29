@@ -1,0 +1,56 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Luna.Mobile.Controls">
+  <Style Selector="controls|Avatar">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border Name="PART_Root"
+                Width="{TemplateBinding AvatarLength}"
+                Height="{TemplateBinding AvatarLength}"
+                CornerRadius="{TemplateBinding AvatarCornerRadius}"
+                Background="{DynamicResource Luna.Brush.Background.Component}"
+                BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                BorderThickness="1"
+                ClipToBounds="True"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                TextElement.FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                TextElement.FontWeight="{DynamicResource Luna.FontWeight.Medium}"
+                TextElement.Foreground="{DynamicResource Luna.Brush.Text.Primary}">
+          <Grid>
+            <Image Source="{TemplateBinding Source}"
+                   Stretch="UniformToFill"
+                   IsVisible="{TemplateBinding IsImageVisible}" />
+            <ContentPresenter Content="{TemplateBinding Icon}"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              IsVisible="{TemplateBinding IsIconVisible}" />
+            <ContentPresenter Content="{TemplateBinding Content}"
+                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              IsVisible="{TemplateBinding IsContentVisible}" />
+          </Grid>
+        </Border>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|Avatar:small /template/ Border#PART_Root">
+    <Setter Property="TextElement.FontSize" Value="{DynamicResource Luna.FontSize.Body.Small}" />
+  </Style>
+
+  <Style Selector="controls|Avatar:large /template/ Border#PART_Root">
+    <Setter Property="TextElement.FontSize" Value="{DynamicResource Luna.FontSize.Body.Large}" />
+  </Style>
+
+  <Style Selector="controls|Avatar.primary /template/ Border#PART_Root">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand}" />
+    <Setter Property="TextElement.Foreground" Value="{DynamicResource Luna.Brush.Text.Anti}" />
+  </Style>
+
+  <Style Selector="controls|Avatar.primary /template/ Border#PART_Root Path">
+    <Setter Property="Stroke" Value="{DynamicResource Luna.Brush.Text.Anti}" />
+  </Style>
+</Styles>

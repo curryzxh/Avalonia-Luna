@@ -1,0 +1,132 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Luna.Mobile.Controls">
+  <Style Selector="controls|DialogHost">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid IsVisible="{TemplateBinding IsOpen}">
+          <Border Name="PART_Overlay"
+                  Background="{DynamicResource Luna.Brush.Mask}"
+                  Opacity="0.6" />
+          <Border Name="PART_Dialog"
+                  Background="{DynamicResource Luna.Brush.Background.Container}"
+                  CornerRadius="{DynamicResource Luna.Radius.Default}"
+                  Padding="16"
+                  Margin="28,0"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  MaxWidth="320">
+            <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto"
+                  RowSpacing="12">
+              <Grid ColumnDefinitions="*,Auto">
+                <ContentPresenter Grid.ColumnSpan="2"
+                                  Content="{TemplateBinding Top}"
+                                  IsVisible="{TemplateBinding HasTop}" />
+                <Button Name="PART_CloseButton"
+                        Grid.Column="1"
+                        Classes="text"
+                        Padding="0"
+                        Content="×"
+                        IsVisible="{TemplateBinding ShowCloseButton}" />
+              </Grid>
+
+              <TextBlock Grid.Row="1"
+                         Text="{TemplateBinding Title}"
+                         TextAlignment="Center"
+                         FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                         FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                         IsVisible="{TemplateBinding HasTitle}" />
+
+              <ContentPresenter Grid.Row="2"
+                                Content="{TemplateBinding Middle}"
+                                IsVisible="{TemplateBinding HasMiddle}"
+                                HorizontalAlignment="Center" />
+
+              <ScrollViewer Grid.Row="3"
+                            VerticalScrollBarVisibility="Auto"
+                            HorizontalScrollBarVisibility="Disabled"
+                            MaxHeight="{TemplateBinding MaxContentHeight}"
+                            IsVisible="{TemplateBinding HasContent}">
+                <TextBlock Text="{TemplateBinding Content}"
+                           TextWrapping="Wrap"
+                           TextAlignment="Center"
+                           Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Medium}" />
+              </ScrollViewer>
+
+              <Border Grid.Row="4"
+                      Height="1"
+                      Background="{DynamicResource Luna.Brush.Border.Divider}"
+                      Margin="-16,4,-16,0"
+                      IsVisible="{TemplateBinding HasButtons}" />
+
+              <Grid Name="PART_ButtonGridHorizontal"
+                    Grid.Row="5"
+                    ColumnDefinitions="*,*"
+                    Margin="-16,0,-16,-16"
+                    IsVisible="{TemplateBinding HasButtons}">
+                <Button Name="PART_CancelButton"
+                        Classes="text"
+                        Content="{TemplateBinding CancelText}"
+                        IsVisible="{TemplateBinding HasCancel}"
+                        HorizontalAlignment="Stretch" />
+                <Border Grid.Column="1"
+                        Width="1"
+                        Background="{DynamicResource Luna.Brush.Border.Divider}"
+                        Margin="0,-16,0,-16"
+                        IsVisible="{TemplateBinding HasCancel}" />
+                <Button Name="PART_ConfirmButton"
+                        Grid.Column="1"
+                        Classes="text"
+                        Content="{TemplateBinding ConfirmText}"
+                        IsVisible="{TemplateBinding HasConfirm}"
+                        HorizontalAlignment="Stretch" />
+              </Grid>
+
+              <StackPanel Name="PART_ButtonStackVertical"
+                          Grid.Row="5"
+                          Spacing="0"
+                          Margin="-16,0,-16,-16"
+                          IsVisible="False">
+                <Button Name="PART_CancelButton_Vertical"
+                        Classes="text"
+                        Content="{TemplateBinding CancelText}"
+                        IsVisible="{TemplateBinding HasCancel}"
+                        HorizontalAlignment="Stretch" />
+                <Border Height="1"
+                        Background="{DynamicResource Luna.Brush.Border.Divider}"
+                        IsVisible="{TemplateBinding HasCancel}" />
+                <Button Name="PART_ConfirmButton_Vertical"
+                        Classes="text"
+                        Content="{TemplateBinding ConfirmText}"
+                        IsVisible="{TemplateBinding HasConfirm}"
+                        HorizontalAlignment="Stretch" />
+              </StackPanel>
+            </Grid>
+          </Border>
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|DialogHost:buttons-vertical Grid#PART_ButtonGridHorizontal">
+    <Setter Property="IsVisible" Value="False" />
+  </Style>
+  <Style Selector="controls|DialogHost:buttons-vertical StackPanel#PART_ButtonStackVertical">
+    <Setter Property="IsVisible" Value="True" />
+  </Style>
+
+  <Style Selector="controls|DialogHost:confirm-primary Button#PART_ConfirmButton">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+  <Style Selector="controls|DialogHost:confirm-primary Button#PART_ConfirmButton_Vertical">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+  <Style Selector="controls|DialogHost:confirm-danger Button#PART_ConfirmButton">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Error}" />
+  </Style>
+  <Style Selector="controls|DialogHost:confirm-danger Button#PART_ConfirmButton_Vertical">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Error}" />
+  </Style>
+</Styles>

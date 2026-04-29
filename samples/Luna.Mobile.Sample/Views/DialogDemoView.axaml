@@ -1,0 +1,130 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="using:Luna.Mobile.Controls"
+             x:Class="Luna.Mobile.Sample.Views.DialogDemoView">
+  <Grid>
+    <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
+      <StackPanel Spacing="24" Margin="0,0,0,28">
+        <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+          <Grid ColumnDefinitions="56,*,56" MinHeight="56">
+            <Button Classes="text"
+                    Content="‹"
+                    FontSize="34"
+                    Padding="0"
+                    Click="OnBackClick" />
+            <TextBlock Grid.Column="1"
+                       Text="Dialog 对话框"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center" />
+          </Grid>
+        </Border>
+
+        <StackPanel Margin="16,0" Spacing="8">
+          <TextBlock Text="Dialog 对话框"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Large}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+          <TextBlock Text="用于显示重要提示或请求用户进行重要操作，一种打断当前操作的模态视图。"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                     TextWrapping="Wrap" />
+        </StackPanel>
+
+        <StackPanel Spacing="28">
+          <StackPanel Spacing="16">
+            <StackPanel Margin="16,0" Spacing="4">
+              <TextBlock Text="01 组件类型"
+                         FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                         FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+              <TextBlock Text="反馈类对话框"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            </StackPanel>
+            <StackPanel Margin="16,0" Spacing="16">
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="反馈类-带标题" Click="OnFeedbackWithTitleClick" />
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="反馈类-无标题" Click="OnFeedbackNoTitleClick" />
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="反馈类-纯标题" Click="OnFeedbackOnlyTitleClick" />
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="反馈类-内容超长" Click="OnFeedbackLongContentClick" />
+            </StackPanel>
+          </StackPanel>
+
+          <StackPanel Spacing="16">
+            <TextBlock Text="确认类对话框"
+                       Margin="16,0"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <StackPanel Margin="16,0" Spacing="16">
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="确认类-带标题" Click="OnConfirmWithTitleClick" />
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="确认类-无标题" Click="OnConfirmNoTitleClick" />
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="确认类-纯标题" Click="OnConfirmOnlyTitleClick" />
+            </StackPanel>
+          </StackPanel>
+
+          <StackPanel Spacing="16">
+            <TextBlock Text="输入对话框"
+                       Margin="16,0"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <StackPanel Margin="16,0" Spacing="16">
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="输入类-无描述" Click="OnInputNoDescClick" />
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="输入类-带描述" Click="OnInputWithDescClick" />
+            </StackPanel>
+          </StackPanel>
+
+          <StackPanel Spacing="16">
+            <TextBlock Text="带图片的对话框"
+                       Margin="16,0"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <StackPanel Margin="16,0" Spacing="16">
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="图片置顶-带标题描述" Click="OnImageTopWithAllClick" />
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="图片置顶-无标题" Click="OnImageTopNoTitleClick" />
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="图片置顶-纯标题" Click="OnImageTopOnlyTitleClick" />
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="图片置顶-纯图片" Click="OnImageTopOnlyImageClick" />
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="图片居中-带标题描述" Click="OnImageMiddleWithAllClick" />
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="图片居中-纯标题" Click="OnImageMiddleOnlyTitleClick" />
+            </StackPanel>
+          </StackPanel>
+
+          <StackPanel Spacing="16">
+            <StackPanel Margin="16,0" Spacing="4">
+              <TextBlock Text="02 组件状态"
+                         FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                         FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+              <TextBlock Text="文字按钮"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            </StackPanel>
+            <StackPanel Margin="16,0" Spacing="16">
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="文字按钮" Click="OnTextButtonsClick" />
+              <TextBlock Text="水平基础按钮"
+                         Margin="0,8,0,0"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="水平基础按钮" Click="OnHorizontalButtonsClick" />
+              <TextBlock Text="垂直基础按钮"
+                         Margin="0,8,0,0"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="垂直基础按钮" Click="OnVerticalButtonsClick" />
+              <TextBlock Text="带关闭按钮的对话框"
+                         Margin="0,8,0,0"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="带关闭按钮的对话框" Click="OnCloseButtonDialogClick" />
+            </StackPanel>
+          </StackPanel>
+        </StackPanel>
+      </StackPanel>
+    </ScrollViewer>
+
+    <controls:DialogHost Name="DialogHost" />
+    <controls:ToastHost Name="ToastHost" />
+  </Grid>
+</UserControl>
+

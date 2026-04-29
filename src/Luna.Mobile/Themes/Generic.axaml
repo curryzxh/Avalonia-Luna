@@ -7,8 +7,14 @@
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/CheckBox.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/RadioButton.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Badge.axaml" />
+  <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Avatar.axaml" />
+  <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Cell.axaml" />
+  <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Tag.axaml" />
+  <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Divider.axaml" />
+  <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Dialog.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Loading.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Message.axaml" />
+  <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/NoticeBar.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Toast.axaml" />
 
   <Design.PreviewWith>

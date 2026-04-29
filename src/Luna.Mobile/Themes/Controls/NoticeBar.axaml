@@ -1,0 +1,87 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Luna.Mobile.Controls">
+  <Style Selector="controls|NoticeBar">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand.Light}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
+    <Setter Property="IconForeground" Value="{DynamicResource Luna.Brush.Brand}" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border Background="{TemplateBinding Background}"
+                CornerRadius="{DynamicResource Luna.Radius.Default}"
+                Padding="12,10"
+                IsVisible="{Binding Visible, RelativeSource={RelativeSource TemplatedParent}}">
+          <Grid ColumnDefinitions="Auto,*,Auto,Auto,Auto"
+                ColumnSpacing="10"
+                VerticalAlignment="Center">
+            <TextBlock Name="PART_PrefixIcon"
+                       Text="{TemplateBinding PrefixGlyph}"
+                       Foreground="{TemplateBinding IconForeground}"
+                       FontSize="16"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       VerticalAlignment="Center"
+                       IsVisible="{TemplateBinding ShowIcon}" />
+
+            <Border Name="PART_ContentViewport"
+                    Grid.Column="1"
+                    ClipToBounds="True"
+                    VerticalAlignment="Center">
+              <Canvas>
+                <TextBlock Name="PART_ContentText"
+                           Text="{TemplateBinding Content}"
+                           Foreground="{TemplateBinding Foreground}"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                           TextWrapping="NoWrap"
+                           VerticalAlignment="Center" />
+              </Canvas>
+            </Border>
+
+            <Button Name="PART_OperationButton"
+                    Grid.Column="2"
+                    Classes="text"
+                    Padding="0"
+                    Content="{TemplateBinding OperationText}"
+                    IsVisible="{Binding HasOperation, RelativeSource={RelativeSource TemplatedParent}}"
+                    VerticalAlignment="Center" />
+
+            <Button Name="PART_SuffixButton"
+                    Grid.Column="3"
+                    Classes="text"
+                    Padding="0"
+                    Content="{TemplateBinding SuffixGlyph}"
+                    IsVisible="{Binding HasSuffix, RelativeSource={RelativeSource TemplatedParent}}"
+                    VerticalAlignment="Center" />
+
+            <Button Name="PART_CloseButton"
+                    Grid.Column="4"
+                    Classes="text"
+                    Padding="0"
+                    Content="×"
+                    IsVisible="{TemplateBinding ShowClose}"
+                    VerticalAlignment="Center" />
+          </Grid>
+        </Border>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|NoticeBar:success">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Success.Light}" />
+    <Setter Property="IconForeground" Value="{DynamicResource Luna.Brush.Success}" />
+  </Style>
+
+  <Style Selector="controls|NoticeBar:warning">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Warning.Light}" />
+    <Setter Property="IconForeground" Value="{DynamicResource Luna.Brush.Warning}" />
+  </Style>
+
+  <Style Selector="controls|NoticeBar:error">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Error.Light}" />
+    <Setter Property="IconForeground" Value="{DynamicResource Luna.Brush.Error}" />
+  </Style>
+
+  <Style Selector="controls|NoticeBar.cover">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
+    <Setter Property="IconForeground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
+  </Style>
+</Styles>

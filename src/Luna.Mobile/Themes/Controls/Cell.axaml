@@ -1,0 +1,123 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Luna.Mobile.Controls">
+  <Style Selector="controls|Cell">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
+    <Setter Property="Padding" Value="{DynamicResource Luna.Padding.Control.Medium}" />
+    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border Name="PART_Background"
+                Background="{TemplateBinding Background}">
+          <Grid RowDefinitions="Auto,1">
+            <Grid ColumnDefinitions="Auto,*,Auto"
+                  ColumnSpacing="{DynamicResource Luna.Spacing.3}"
+                  Margin="{TemplateBinding Padding}">
+              <ContentPresenter Name="PART_Left"
+                                Content="{TemplateBinding LeftContent}"
+                                IsVisible="{Binding ShowLeftContent, RelativeSource={RelativeSource TemplatedParent}}"
+                                VerticalAlignment="Center" />
+              <StackPanel Grid.Column="1"
+                          Spacing="2"
+                          VerticalAlignment="Center">
+                <TextBlock Name="PART_Title"
+                           Text="{TemplateBinding Title}"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           VerticalAlignment="Center"
+                           TextWrapping="Wrap" />
+                <TextBlock Name="PART_Description"
+                           Text="{TemplateBinding Description}"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                           IsVisible="{Binding ShowDescription, RelativeSource={RelativeSource TemplatedParent}}"
+                           TextWrapping="Wrap" />
+              </StackPanel>
+              <StackPanel Grid.Column="2"
+                          Orientation="Horizontal"
+                          Spacing="{DynamicResource Luna.Spacing.2}"
+                          VerticalAlignment="Center">
+                <TextBlock Name="PART_RightText"
+                           Text="{TemplateBinding RightText}"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                           IsVisible="{Binding ShowRightText, RelativeSource={RelativeSource TemplatedParent}}"
+                           VerticalAlignment="Center" />
+                <ContentPresenter Name="PART_Right"
+                                  Content="{TemplateBinding RightContent}"
+                                  IsVisible="{Binding ShowRightContent, RelativeSource={RelativeSource TemplatedParent}}"
+                                  VerticalAlignment="Center" />
+                <Path Name="PART_Arrow"
+                      Width="18"
+                      Height="18"
+                      Data="M9.5 17.5L15 12L9.5 6.5"
+                      Stroke="{DynamicResource Luna.Brush.Text.Placeholder}"
+                      StrokeThickness="2"
+                      StrokeLineCap="Square"
+                      StrokeJoin="Miter"
+                      Fill="Transparent"
+                      Stretch="Uniform"
+                      IsVisible="{TemplateBinding ShowArrow}"
+                      VerticalAlignment="Center" />
+              </StackPanel>
+            </Grid>
+            <Border Grid.Row="1"
+                    Background="{DynamicResource Luna.Brush.Border.Divider}" />
+          </Grid>
+        </Border>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|Cell:pressed /template/ Border#PART_Background">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.ComponentActive}" />
+  </Style>
+
+  <Style Selector="controls|Cell:pointerover /template/ Border#PART_Background">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.ComponentActive}" />
+  </Style>
+
+  <Style Selector="controls|Cell:disabled /template/ TextBlock#PART_Title">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
+  </Style>
+
+  <Style Selector="controls|Cell:disabled /template/ TextBlock#PART_Description">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
+  </Style>
+
+  <Style Selector="controls|Cell:disabled /template/ TextBlock#PART_RightText">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
+  </Style>
+
+  <Style Selector="controls|Cell:disabled /template/ Path#PART_Arrow">
+    <Setter Property="Stroke" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
+  </Style>
+
+  <Style Selector="controls|CellGroup">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <StackPanel Spacing="{DynamicResource Luna.Spacing.2}">
+          <StackPanel Margin="16,0"
+                      Spacing="4">
+            <TextBlock Text="{TemplateBinding Title}"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                       IsVisible="{Binding ShowTitle, RelativeSource={RelativeSource TemplatedParent}}" />
+            <TextBlock Text="{TemplateBinding Summary}"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                       IsVisible="{Binding ShowSummary, RelativeSource={RelativeSource TemplatedParent}}"
+                       TextWrapping="Wrap" />
+          </StackPanel>
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                  CornerRadius="{DynamicResource Luna.Radius.Default}">
+            <ContentPresenter Content="{TemplateBinding Content}"
+                              ContentTemplate="{TemplateBinding ContentTemplate}" />
+          </Border>
+        </StackPanel>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>

@@ -1,0 +1,39 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Luna.Desktop.Sample.ViewModels"
+        xmlns:luna="clr-namespace:Luna.Desktop.Controls;assembly=Luna.Desktop"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="960" d:DesignHeight="560"
+        x:Class="Luna.Desktop.Sample.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Width="960"
+        Height="560"
+        Title="Luna Desktop Sample">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <Grid RowDefinitions="Auto,*" Margin="32" RowSpacing="24">
+        <StackPanel Spacing="8">
+            <TextBlock Text="{Binding Greeting}" FontSize="28" FontWeight="SemiBold" />
+            <TextBlock Text="Desktop custom controls playground" Foreground="{DynamicResource TextControlPlaceholderForeground}" />
+        </StackPanel>
+
+        <Border Grid.Row="1"
+                BorderBrush="{DynamicResource SystemControlForegroundBaseLowBrush}"
+                BorderThickness="1"
+                CornerRadius="8"
+                Padding="24">
+            <StackPanel Spacing="16" HorizontalAlignment="Left">
+                <TextBlock Text="Luna.Desktop.Controls.DesktopBadge" FontWeight="SemiBold" />
+                <luna:DesktopBadge Text="Desktop ready" />
+            </StackPanel>
+        </Border>
+    </Grid>
+
+</Window>

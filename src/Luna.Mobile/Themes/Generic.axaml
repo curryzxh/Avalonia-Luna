@@ -1,0 +1,49 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Luna.Mobile.Controls">
+  <Design.PreviewWith>
+    <Border Padding="24">
+      <controls:MobileActionChip Text="Mobile control" IsActive="True" />
+    </Border>
+  </Design.PreviewWith>
+
+  <Style Selector="controls|MobileActionChip">
+    <Setter Property="MinHeight" Value="44" />
+    <Setter Property="Padding" Value="16,10" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border Background="#F4F7F5"
+                BorderBrush="#84A98C"
+                BorderThickness="1"
+                CornerRadius="22"
+                Padding="{TemplateBinding Padding}">
+          <TextBlock Text="{TemplateBinding Text}"
+                     Foreground="#263B2A"
+                     FontSize="15"
+                     FontWeight="SemiBold"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center" />
+        </Border>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|MobileActionChip:active">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border Background="#1E6F50"
+                BorderBrush="#1E6F50"
+                BorderThickness="1"
+                CornerRadius="22"
+                Padding="{TemplateBinding Padding}">
+          <TextBlock Text="{TemplateBinding Text}"
+                     Foreground="#FFFFFF"
+                     FontSize="15"
+                     FontWeight="SemiBold"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center" />
+        </Border>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>

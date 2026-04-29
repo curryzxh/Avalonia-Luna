@@ -1,0 +1,26 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:luna="clr-namespace:Luna.Mobile.Controls;assembly=Luna.Mobile"
+             x:Class="Luna.Mobile.Sample.Views.MainView">
+  <ScrollViewer>
+    <Grid RowDefinitions="Auto,*" Margin="24" RowSpacing="20">
+      <StackPanel Spacing="8">
+        <TextBlock Text="Luna Mobile" FontSize="28" FontWeight="SemiBold" />
+        <TextBlock Text="Touch-first custom controls playground"
+                   Foreground="{DynamicResource TextControlPlaceholderForeground}" />
+      </StackPanel>
+
+      <Border Grid.Row="1"
+              BorderBrush="{DynamicResource SystemControlForegroundBaseLowBrush}"
+              BorderThickness="1"
+              CornerRadius="8"
+              Padding="20">
+        <StackPanel Spacing="14">
+          <TextBlock Text="Luna.Mobile.Controls.MobileActionChip" FontWeight="SemiBold" />
+          <luna:MobileActionChip Text="Mobile ready" IsActive="True" />
+          <luna:MobileActionChip Text="Inactive state" />
+        </StackPanel>
+      </Border>
+    </Grid>
+  </ScrollViewer>
+</UserControl>

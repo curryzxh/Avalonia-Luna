@@ -1,0 +1,55 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <StaticResource x:Key="ToggleSwitchContentForeground" ResourceKey="Luna.Brush.Text.Primary" />
+  <StaticResource x:Key="ToggleSwitchHeaderForegroundDisabled" ResourceKey="Luna.Brush.Text.Disabled" />
+
+  <StaticResource x:Key="ToggleSwitchFillOff" ResourceKey="Luna.Brush.Border.Strong" />
+  <StaticResource x:Key="ToggleSwitchFillOffPointerOver" ResourceKey="Luna.Brush.Border.Strong" />
+  <StaticResource x:Key="ToggleSwitchFillOffPressed" ResourceKey="Luna.Brush.Border.Strong" />
+  <StaticResource x:Key="ToggleSwitchFillOffDisabled" ResourceKey="Luna.Brush.Border.Default" />
+
+  <StaticResource x:Key="ToggleSwitchStrokeOff" ResourceKey="Luna.Brush.Border.Strong" />
+  <StaticResource x:Key="ToggleSwitchStrokeOffPointerOver" ResourceKey="Luna.Brush.Border.Strong" />
+  <StaticResource x:Key="ToggleSwitchStrokeOffPressed" ResourceKey="Luna.Brush.Border.Strong" />
+  <StaticResource x:Key="ToggleSwitchStrokeOffDisabled" ResourceKey="Luna.Brush.Border.Default" />
+
+  <StaticResource x:Key="ToggleSwitchFillOn" ResourceKey="Luna.Brush.Brand" />
+  <StaticResource x:Key="ToggleSwitchFillOnPointerOver" ResourceKey="Luna.Brush.Brand.Active" />
+  <StaticResource x:Key="ToggleSwitchFillOnPressed" ResourceKey="Luna.Brush.Brand.Active" />
+  <StaticResource x:Key="ToggleSwitchFillOnDisabled" ResourceKey="Luna.Brush.Border.Default" />
+
+  <StaticResource x:Key="ToggleSwitchKnobFillOff" ResourceKey="Luna.Brush.Neutral.White" />
+  <StaticResource x:Key="ToggleSwitchKnobFillOffPointerOver" ResourceKey="Luna.Brush.Neutral.White" />
+  <StaticResource x:Key="ToggleSwitchKnobFillOffPressed" ResourceKey="Luna.Brush.Neutral.White" />
+  <StaticResource x:Key="ToggleSwitchKnobFillOffDisabled" ResourceKey="Luna.Brush.Background.Component" />
+
+  <StaticResource x:Key="ToggleSwitchKnobFillOn" ResourceKey="Luna.Brush.Neutral.White" />
+  <StaticResource x:Key="ToggleSwitchKnobFillOnPointerOver" ResourceKey="Luna.Brush.Neutral.White" />
+  <StaticResource x:Key="ToggleSwitchKnobFillOnPressed" ResourceKey="Luna.Brush.Neutral.White" />
+  <StaticResource x:Key="ToggleSwitchKnobFillOnDisabled" ResourceKey="Luna.Brush.Background.Component" />
+
+  <StaticResource x:Key="RadioButtonForeground" ResourceKey="Luna.Brush.Text.Primary" />
+  <StaticResource x:Key="RadioButtonForegroundPointerOver" ResourceKey="Luna.Brush.Text.Primary" />
+  <StaticResource x:Key="RadioButtonForegroundPressed" ResourceKey="Luna.Brush.Text.Primary" />
+  <StaticResource x:Key="RadioButtonForegroundDisabled" ResourceKey="Luna.Brush.Text.Disabled" />
+
+  <StaticResource x:Key="RadioButtonOuterEllipseStroke" ResourceKey="Luna.Brush.Border.Strong" />
+  <StaticResource x:Key="RadioButtonOuterEllipseStrokePointerOver" ResourceKey="Luna.Brush.Border.Strong" />
+  <StaticResource x:Key="RadioButtonOuterEllipseStrokePressed" ResourceKey="Luna.Brush.Border.Strong" />
+  <StaticResource x:Key="RadioButtonOuterEllipseStrokeDisabled" ResourceKey="Luna.Brush.Border.Default" />
+
+  <StaticResource x:Key="RadioButtonOuterEllipseCheckedStroke" ResourceKey="Luna.Brush.Brand" />
+  <StaticResource x:Key="RadioButtonOuterEllipseCheckedStrokePointerOver" ResourceKey="Luna.Brush.Brand.Active" />
+  <StaticResource x:Key="RadioButtonOuterEllipseCheckedStrokePressed" ResourceKey="Luna.Brush.Brand.Active" />
+  <StaticResource x:Key="RadioButtonOuterEllipseCheckedStrokeDisabled" ResourceKey="Luna.Brush.Border.Default" />
+
+  <StaticResource x:Key="RadioButtonOuterEllipseCheckedFill" ResourceKey="Luna.Brush.Brand" />
+  <StaticResource x:Key="RadioButtonOuterEllipseCheckedFillPointerOver" ResourceKey="Luna.Brush.Brand.Active" />
+  <StaticResource x:Key="RadioButtonOuterEllipseCheckedFillPressed" ResourceKey="Luna.Brush.Brand.Active" />
+  <StaticResource x:Key="RadioButtonOuterEllipseCheckedFillDisabled" ResourceKey="Luna.Brush.Border.Default" />
+
+  <StaticResource x:Key="RadioButtonCheckGlyphFill" ResourceKey="Luna.Brush.Neutral.White" />
+  <StaticResource x:Key="RadioButtonCheckGlyphFillPointerOver" ResourceKey="Luna.Brush.Neutral.White" />
+  <StaticResource x:Key="RadioButtonCheckGlyphFillPressed" ResourceKey="Luna.Brush.Neutral.White" />
+  <StaticResource x:Key="RadioButtonCheckGlyphFillDisabled" ResourceKey="Luna.Brush.Neutral.White" />
+</ResourceDictionary>

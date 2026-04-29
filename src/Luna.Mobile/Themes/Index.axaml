@@ -4,6 +4,7 @@
     <ResourceInclude Source="avares://Luna.Mobile/Themes/Light.axaml" />
     <ResourceInclude Source="avares://Luna.Mobile/Themes/Dark.axaml" />
     <ResourceInclude Source="avares://Luna.Mobile/Themes/Tokens/Color.axaml" />
+    <ResourceInclude Source="avares://Luna.Mobile/Themes/Tokens/FluentOverrides.axaml" />
     <ResourceInclude Source="avares://Luna.Mobile/Themes/Tokens/Typography.axaml" />
     <ResourceInclude Source="avares://Luna.Mobile/Themes/Tokens/Radius.axaml" />
     <ResourceInclude Source="avares://Luna.Mobile/Themes/Tokens/Spacing.axaml" />

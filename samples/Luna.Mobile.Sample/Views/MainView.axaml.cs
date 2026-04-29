@@ -14,11 +14,11 @@ public partial class MainView : UserControl
 
     public IReadOnlyList<CatalogSection> Sections { get; } =
     [
-        new("全局配置", "internet", Icons.Internet, true,
+        new("全局配置", "internet", Icons.Internet, false,
         [
             new("全局特性配置", "/global-config"),
         ]),
-        new("基础", "app", Icons.App, true,
+        new("基础", "app", Icons.App, false,
         [
             new("Button 按钮", "/button"),
             new("Divider 分割线", "/divider"),
@@ -27,7 +27,7 @@ public partial class MainView : UserControl
             new("Layout 布局", "/layout"),
             new("Link 链接", "/link"),
         ]),
-        new("导航", "view-module", Icons.ViewModule, true,
+        new("导航", "view-module", Icons.ViewModule, false,
         [
             new("BackTop 返回顶部", "/backtop"),
             new("Drawer 抽屉", "/drawer"),
@@ -38,7 +38,7 @@ public partial class MainView : UserControl
             new("TabBar 底部标签栏", "/tabbar"),
             new("Tabs 选项卡", "/tabs"),
         ]),
-        new("输入", "bulletpoint", Icons.Bulletpoint, true,
+        new("输入", "bulletpoint", Icons.Bulletpoint, false,
         [
             new("Calendar 日历", "/calendar"),
             new("Cascader 级联选择器", "/cascader"),
@@ -58,7 +58,7 @@ public partial class MainView : UserControl
             new("TreeSelect 树形选择器", "/treeselect"),
             new("Upload 上传", "/upload"),
         ]),
-        new("数据展示", "image", Icons.Image, true,
+        new("数据展示", "image", Icons.Image, false,
         [
             new("Avatar 头像", "/avatar"),
             new("Badge 徽标", "/badge"),
@@ -82,7 +82,7 @@ public partial class MainView : UserControl
             new("Tag 标签", "/tag"),
             new("Watermark 水印", "/watermark"),
         ]),
-        new("反馈", "chevron-up", Icons.ChevronUp, true,
+        new("反馈", "chevron-up", Icons.ChevronUp, false,
         [
             new("ActionSheet 动作面板", "/actionsheet"),
             new("Dialog 对话框", "/dialog"),

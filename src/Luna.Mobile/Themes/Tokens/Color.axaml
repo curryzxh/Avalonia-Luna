@@ -1,5 +1,8 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Color x:Key="Luna.Color.Neutral.White">#FFFFFF</Color>
+  <SolidColorBrush x:Key="Luna.Brush.Neutral.White" Color="{StaticResource Luna.Color.Neutral.White}" />
+
   <SolidColorBrush x:Key="Luna.Brush.Brand" Color="{DynamicResource Luna.Color.Brand.6}" />
   <SolidColorBrush x:Key="Luna.Brush.Brand.Light" Color="{DynamicResource Luna.Color.Brand.1}" />
   <SolidColorBrush x:Key="Luna.Brush.Brand.Active" Color="{DynamicResource Luna.Color.Brand.7}" />

@@ -3,7 +3,8 @@
              xmlns:views="clr-namespace:Luna.Mobile.Sample.Views"
              x:Class="Luna.Mobile.Sample.Views.MainView"
              x:DataType="views:MainView">
-  <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
+  <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}"
+                HorizontalScrollBarVisibility="Disabled">
     <StackPanel Margin="16,18,16,24" Spacing="24">
       <StackPanel Spacing="24">
         <Grid ColumnDefinitions="54,Auto" ColumnSpacing="12" HorizontalAlignment="Left">
@@ -65,7 +66,7 @@
         </ItemsControl.ItemsPanel>
         <ItemsControl.ItemTemplate>
           <DataTemplate x:DataType="views:CatalogSection">
-            <Expander IsExpanded="{Binding IsExpanded, Mode=TwoWay}">
+            <Expander IsExpanded="{Binding IsExpanded, Mode=TwoWay}" HorizontalAlignment="Stretch">
               <Expander.ContentTransition>
                 <PageSlide Duration="0:00:00.200" Orientation="Vertical" />
               </Expander.ContentTransition>

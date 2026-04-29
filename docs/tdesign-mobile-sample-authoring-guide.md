@@ -33,14 +33,19 @@ curl -L https://raw.githubusercontent.com/Tencent/tdesign-mobile-react/develop/s
 3. 读取子示例文件，转换为 Avalonia 原生控件或 Luna 控件。
 4. 在 `samples/Luna.Mobile.Sample/Views` 下新增 `{Component}DemoView.axaml` 和 code-behind。
 5. 在 `MainView.axaml.cs` 的 path 分发中接入新页面。
-6. 如原生控件缺少必要 style class，在 `src/Luna.Mobile/Themes/Controls/{Control}.axaml` 中补样式。
-7. 运行 `dotnet build Luna.sln --no-restore` 验证。
+6. 如样式问题主要来自 FluentTheme 内置模板使用的资源键（而不是布局/模板结构），优先通过“覆写 Fluent 资源键”完成 TDesign 配色适配，不要直接改模板。
+   - Fluent 内置控件模板位置（本地 Avalonia 源码）：`Avalonia/src/Avalonia.Themes.Fluent/Controls/{Control}.xaml`
+   - Fluent 内置控件资源键默认值位置：`Avalonia/src/Avalonia.Themes.Fluent/Accents/FluentControlResources.xaml`
+   - 做法：在 `src/Luna.Mobile/Themes/Tokens/FluentOverrides.axaml` 中用相同 `x:Key` 覆写（例如 `ToggleSwitchKnobFillOn`、`ToggleSwitchKnobFillOff`、`ToggleSwitchFillOn`、`RadioButtonOuterEllipseCheckedFill`），并在 `src/Luna.Mobile/Themes/Index.axaml` 中合并该字典。
+7. 如原生控件缺少必要 style class（例如 TDesign 的 `size`/`theme`/`variant` 映射），在 `src/Luna.Mobile/Themes/Controls/{Control}.axaml` 中补样式。
+8. 运行 `dotnet build Luna.sln --no-restore` 验证。
 
 ## 映射原则
 
 - 保持 TDesign 示例的信息架构：标题、说明、分组顺序、示例文案尽量一致。
 - 保持 Avalonia 语义：用 `Button`、`ToggleSwitch` 等原生控件表达，不为了示例强行实现完整 TDesign API。
 - 样式优先用 `Luna.*` token；只有 TDesign 示例本身需要特殊背景时才允许少量硬编码色值，例如幽灵按钮黑底区域。
+- 优先“资源键覆写”而不是“改模板”：当控件外观由 FluentTheme 模板 + 一组资源键驱动时，先对照 Fluent 源码确认对应资源键，再用 Luna token 覆写这些键。
 - 示例页应可从目录进入，并提供返回目录的轻量交互。
 - 目录项的 `path` 先作为页面分发键；不要在未建立导航框架前引入复杂路由。
 

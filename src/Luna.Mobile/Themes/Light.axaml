@@ -35,6 +35,7 @@
       <Color x:Key="Luna.Color.Background.Component">#F2F3F5</Color>
       <Color x:Key="Luna.Color.Background.ComponentActive">#E8F3FF</Color>
       <Color x:Key="Luna.Color.Background.Disabled">#F2F3F5</Color>
+      <Color x:Key="Luna.Color.Background.Toast">#E6000000</Color>
 
       <Color x:Key="Luna.Color.Border.Default">#E5E6EB</Color>
       <Color x:Key="Luna.Color.Border.Weak">#F2F3F5</Color>

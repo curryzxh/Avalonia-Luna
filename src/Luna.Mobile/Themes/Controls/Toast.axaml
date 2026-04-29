@@ -1,0 +1,56 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Luna.Mobile.Controls">
+  <Style Selector="controls|ToastHost">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid>
+          <Border Background="{DynamicResource Luna.Brush.Mask}"
+                  IsVisible="{TemplateBinding IsOverlayVisible}"
+                  IsHitTestVisible="{TemplateBinding IsOverlayVisible}" />
+          <Border Background="{DynamicResource Luna.Brush.Background.Toast}"
+                  CornerRadius="{DynamicResource Luna.Radius.ExtraLarge}"
+                  Padding="16,12"
+                  Margin="16,80,16,80"
+                  MaxWidth="320"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="{TemplateBinding ToastVerticalAlignment}"
+                  IsVisible="{TemplateBinding IsOpen}">
+            <Grid ColumnDefinitions="*,Auto">
+              <StackPanel Orientation="{TemplateBinding ToastOrientation}"
+                          Spacing="12"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center">
+                <TextBlock Name="PART_Icon"
+                           Text="{TemplateBinding IconGlyph}"
+                           IsVisible="{TemplateBinding IsIconVisible}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Anti}"
+                           FontSize="20"
+                           FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
+                <TextBlock Text="{TemplateBinding Message}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Anti}"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                           TextWrapping="Wrap"
+                           TextAlignment="Center"
+                           MaxWidth="280" />
+              </StackPanel>
+              <Button Name="PART_CloseButton"
+                      Grid.Column="1"
+                      Classes="text"
+                      Content="×"
+                      FontSize="18"
+                      Padding="0"
+                      Margin="12,0,0,0"
+                      Foreground="{DynamicResource Luna.Brush.Text.Anti}"
+                      VerticalAlignment="Center"
+                      IsVisible="{TemplateBinding ShowClose}" />
+            </Grid>
+          </Border>
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>
+

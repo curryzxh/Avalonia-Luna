@@ -22,6 +22,7 @@
   <SolidColorBrush x:Key="Luna.Brush.Background.Component" Color="{DynamicResource Luna.Color.Background.Component}" />
   <SolidColorBrush x:Key="Luna.Brush.Background.ComponentActive" Color="{DynamicResource Luna.Color.Background.ComponentActive}" />
   <SolidColorBrush x:Key="Luna.Brush.Background.Disabled" Color="{DynamicResource Luna.Color.Background.Disabled}" />
+  <SolidColorBrush x:Key="Luna.Brush.Background.Toast" Color="{DynamicResource Luna.Color.Background.Toast}" />
 
   <SolidColorBrush x:Key="Luna.Brush.Border.Default" Color="{DynamicResource Luna.Color.Border.Default}" />
   <SolidColorBrush x:Key="Luna.Brush.Border.Weak" Color="{DynamicResource Luna.Color.Border.Weak}" />

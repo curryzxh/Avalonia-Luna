@@ -6,6 +6,8 @@
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/ToggleSwitch.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/CheckBox.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/RadioButton.axaml" />
+  <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Badge.axaml" />
+  <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Toast.axaml" />
 
   <Design.PreviewWith>
     <Border Padding="24">

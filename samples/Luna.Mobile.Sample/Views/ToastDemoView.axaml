@@ -1,0 +1,115 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="using:Luna.Mobile.Controls"
+             x:Class="Luna.Mobile.Sample.Views.ToastDemoView">
+  <Grid>
+    <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
+      <StackPanel Spacing="24" Margin="0,0,0,28">
+        <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+          <Grid ColumnDefinitions="56,*,56" MinHeight="56">
+            <Button Classes="text"
+                    Content="‹"
+                    FontSize="34"
+                    Padding="0"
+                    Click="OnBackClick" />
+            <TextBlock Grid.Column="1"
+                       Text="Toast 轻提示"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center" />
+          </Grid>
+        </Border>
+
+        <StackPanel Margin="16,0" Spacing="8">
+          <TextBlock Text="Toast 轻提示"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Large}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+          <TextBlock Text="用于轻量级反馈或提示，不会打断用户操作"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                     TextWrapping="Wrap" />
+        </StackPanel>
+
+        <StackPanel Spacing="28">
+          <StackPanel Spacing="16">
+            <TextBlock Text="01 组件类型"
+                       Margin="16,0"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <StackPanel Margin="16,0" Spacing="16">
+              <Button Classes="primary outline large"
+                      HorizontalAlignment="Stretch"
+                      Content="纯文本"
+                      Click="OnOnlyTextClick" />
+              <Button Classes="primary outline large"
+                      HorizontalAlignment="Stretch"
+                      Content="多行文字"
+                      Click="OnMultiLineClick" />
+              <Button Classes="primary outline large"
+                      HorizontalAlignment="Stretch"
+                      Content="带横向图标"
+                      Click="OnIconRowClick" />
+              <Button Classes="primary outline large"
+                      HorizontalAlignment="Stretch"
+                      Content="带竖向图标"
+                      Click="OnIconColumnClick" />
+              <Button Classes="primary outline large"
+                      HorizontalAlignment="Stretch"
+                      Content="加载状态"
+                      Click="OnLoadingClick" />
+            </StackPanel>
+          </StackPanel>
+
+          <StackPanel Spacing="16">
+            <TextBlock Text="02 组件状态"
+                       Margin="16,0"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <StackPanel Margin="16,0" Spacing="16">
+              <Button Classes="primary outline large"
+                      HorizontalAlignment="Stretch"
+                      Content="成功提示"
+                      Click="OnSuccessClick" />
+              <Button Classes="primary outline large"
+                      HorizontalAlignment="Stretch"
+                      Content="警告提示"
+                      Click="OnWarningClick" />
+              <Button Classes="primary outline large"
+                      HorizontalAlignment="Stretch"
+                      Content="失败提示"
+                      Click="OnErrorClick" />
+            </StackPanel>
+          </StackPanel>
+
+          <StackPanel Spacing="16">
+            <StackPanel Margin="16,0" Spacing="4">
+              <TextBlock Text="03 显示遮罩"
+                         FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                         FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+              <TextBlock Text="弹窗可显示遮罩，禁止滑动和点击"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            </StackPanel>
+            <StackPanel Margin="16,0" Spacing="16">
+              <Button Classes="primary outline large"
+                      HorizontalAlignment="Stretch"
+                      Content="禁止滑动和点击"
+                      Click="OnOverlayClick" />
+            </StackPanel>
+          </StackPanel>
+        </StackPanel>
+      </StackPanel>
+    </ScrollViewer>
+
+    <controls:ToastHost Name="ToastHost"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch" />
+  </Grid>
+</UserControl>
+

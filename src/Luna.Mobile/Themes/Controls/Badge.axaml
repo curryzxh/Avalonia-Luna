@@ -1,0 +1,59 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Luna.Mobile.Controls">
+  <Style Selector="controls|Badge">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid>
+          <ContentPresenter Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+
+          <Border Name="PART_BadgeBorder"
+                  ZIndex="1"
+                  Background="{DynamicResource Luna.Brush.Error}"
+                  CornerRadius="{DynamicResource Luna.Radius.Circle}"
+                  MinWidth="18"
+                  MinHeight="18"
+                  Padding="6,0"
+                  Margin="{TemplateBinding BadgeMargin}"
+                  HorizontalAlignment="{TemplateBinding BadgeHorizontalAlignment}"
+                  VerticalAlignment="{TemplateBinding BadgeVerticalAlignment}"
+                  IsVisible="{TemplateBinding IsBadgeVisible}">
+            <Border.RenderTransform>
+              <TranslateTransform X="{Binding Offset.X, RelativeSource={RelativeSource TemplatedParent}}"
+                                  Y="{Binding Offset.Y, RelativeSource={RelativeSource TemplatedParent}}" />
+            </Border.RenderTransform>
+            <TextBlock Name="PART_BadgeText"
+                       Text="{TemplateBinding DisplayCount}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Anti}"
+                       FontSize="12"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       IsVisible="{TemplateBinding IsBadgeTextVisible}" />
+          </Border>
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|Badge:square /template/ Border#PART_BadgeBorder">
+    <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Small}" />
+  </Style>
+
+  <Style Selector="controls|Badge:bubble /template/ Border#PART_BadgeBorder">
+    <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Default}" />
+    <Setter Property="MinHeight" Value="22" />
+    <Setter Property="Padding" Value="8,0" />
+  </Style>
+
+  <Style Selector="controls|Badge:dot /template/ Border#PART_BadgeBorder">
+    <Setter Property="MinWidth" Value="8" />
+    <Setter Property="MinHeight" Value="8" />
+    <Setter Property="Width" Value="8" />
+    <Setter Property="Height" Value="8" />
+    <Setter Property="Padding" Value="0" />
+  </Style>
+</Styles>

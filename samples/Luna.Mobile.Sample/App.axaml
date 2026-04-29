@@ -1,7 +1,7 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="Luna.Mobile.Sample.App"
-             RequestedThemeVariant="Default">
+             RequestedThemeVariant="Light">
   <Application.Resources>
     <ResourceDictionary>
       <ResourceDictionary.MergedDictionaries>
@@ -11,7 +11,7 @@
   </Application.Resources>
 
   <Application.Styles>
-    <FluentTheme />
+    <FluentTheme DensityStyle="Normal" />
     <StyleInclude Source="avares://Luna.Mobile/Themes/Generic.axaml" />
   </Application.Styles>
 </Application>

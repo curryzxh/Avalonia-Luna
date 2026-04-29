@@ -120,6 +120,8 @@ public partial class MainView : UserControl
             "/badge" => AttachBackHandler(new BadgeDemoView()),
             "/checkbox" => AttachBackHandler(new CheckBoxDemoView()),
             "/input" => AttachBackHandler(new InputDemoView()),
+            "/loading" => AttachBackHandler(new LoadingDemoView()),
+            "/message" => AttachBackHandler(new MessageDemoView()),
             "/radio" => AttachBackHandler(new RadioDemoView()),
             "/switch" => AttachBackHandler(new SwitchDemoView()),
             "/toast" => AttachBackHandler(new ToastDemoView()),
@@ -158,6 +160,18 @@ public partial class MainView : UserControl
     }
 
     private UserControl AttachBackHandler(ToastDemoView view)
+    {
+        view.BackRequested += (_, _) => Content = _catalogContent;
+        return view;
+    }
+
+    private UserControl AttachBackHandler(MessageDemoView view)
+    {
+        view.BackRequested += (_, _) => Content = _catalogContent;
+        return view;
+    }
+
+    private UserControl AttachBackHandler(LoadingDemoView view)
     {
         view.BackRequested += (_, _) => Content = _catalogContent;
         return view;

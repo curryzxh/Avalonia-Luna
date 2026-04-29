@@ -1,0 +1,82 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Luna.Mobile.Controls">
+  <Style Selector="controls|MessageHost">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border Background="Transparent"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Top"
+                Padding="0"
+                Margin="0,10,0,0">
+          <StackPanel Name="PART_ItemsHost"
+                      Spacing="10"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Top" />
+        </Border>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|MessageCard">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                BorderThickness="1"
+                CornerRadius="{DynamicResource Luna.Radius.Default}"
+                Padding="12,10"
+                Margin="16,0,16,0">
+          <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+            <TextBlock Name="PART_IconText"
+                       Text="{TemplateBinding IconGlyph}"
+                       IsVisible="{TemplateBinding ShowIcon}"
+                       Foreground="{DynamicResource Luna.Brush.Brand}"
+                       FontSize="16"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       VerticalAlignment="Center" />
+            <TextBlock Name="PART_ContentText"
+                       Grid.Column="1"
+                       Text="{TemplateBinding Content}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       TextWrapping="Wrap"
+                       VerticalAlignment="Center" />
+            <StackPanel Grid.Column="2"
+                        Orientation="Horizontal"
+                        Spacing="12"
+                        VerticalAlignment="Center">
+              <Button Name="PART_LinkButton"
+                      Classes="text"
+                      Padding="0"
+                      Content="{TemplateBinding Link}"
+                      IsVisible="{TemplateBinding HasLink}" />
+              <Button Name="PART_CloseButton"
+                      Classes="text"
+                      Padding="0"
+                      Content="×"
+                      IsVisible="{TemplateBinding CloseBtn}" />
+            </StackPanel>
+          </Grid>
+        </Border>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|MessageCard:marquee TextBlock#PART_ContentText">
+    <Setter Property="TextWrapping" Value="NoWrap" />
+    <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+  </Style>
+
+  <Style Selector="controls|MessageCard:success TextBlock#PART_IconText">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Success}" />
+  </Style>
+
+  <Style Selector="controls|MessageCard:warning TextBlock#PART_IconText">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Warning}" />
+  </Style>
+
+  <Style Selector="controls|MessageCard:error TextBlock#PART_IconText">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Error}" />
+  </Style>
+</Styles>

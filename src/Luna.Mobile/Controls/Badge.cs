@@ -79,6 +79,9 @@ public sealed class Badge : ContentControl
 
     static Badge()
     {
+        ClipToBoundsProperty.OverrideDefaultValue<Badge>(false);
+        HorizontalAlignmentProperty.OverrideDefaultValue<Badge>(HorizontalAlignment.Left);
+
         CountProperty.Changed.AddClassHandler<Badge>((control, _) => control.UpdateState());
         OverflowCountProperty.Changed.AddClassHandler<Badge>((control, _) => control.UpdateState());
         DotProperty.Changed.AddClassHandler<Badge>((control, _) => control.UpdateState());
@@ -193,14 +196,7 @@ public sealed class Badge : ContentControl
             _ => (HorizontalAlignment.Right, VerticalAlignment.Top),
         };
 
-        var overlap = Dot ? 4 : 6;
-        BadgeMargin = Placement switch
-        {
-            BadgePlacement.TopLeft => new Thickness(-overlap, -overlap, 0, 0),
-            BadgePlacement.BottomRight => new Thickness(0, 0, -overlap, -overlap),
-            BadgePlacement.BottomLeft => new Thickness(-overlap, 0, 0, -overlap),
-            _ => new Thickness(0, -overlap, -overlap, 0),
-        };
+        BadgeMargin = default;
     }
 
     private static string CoerceCount(string count, int overflowCount)

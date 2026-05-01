@@ -8,12 +8,6 @@ public partial class ToastDemoView : UserControl
 {
     private ToastDemoViewModel ViewModel { get; } = new();
 
-    public event EventHandler? BackRequested
-    {
-        add => ViewModel.BackRequested += value;
-        remove => ViewModel.BackRequested -= value;
-    }
-
     public ToastDemoView()
     {
         InitializeComponent();

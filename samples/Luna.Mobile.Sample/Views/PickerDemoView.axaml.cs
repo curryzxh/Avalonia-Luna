@@ -9,12 +9,6 @@ public partial class PickerDemoView : UserControl
 {
     private PickerDemoViewModel ViewModel { get; } = new();
 
-    public event EventHandler? BackRequested
-    {
-        add => ViewModel.BackRequested += value;
-        remove => ViewModel.BackRequested -= value;
-    }
-
     public PickerDemoView()
     {
         InitializeComponent();

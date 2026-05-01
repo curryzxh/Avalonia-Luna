@@ -8,12 +8,6 @@ public partial class OverlayDemoView : UserControl
 {
     private OverlayDemoViewModel ViewModel { get; } = new();
 
-    public event EventHandler? BackRequested
-    {
-        add => ViewModel.BackRequested += value;
-        remove => ViewModel.BackRequested -= value;
-    }
-
     public OverlayDemoView()
     {
         InitializeComponent();

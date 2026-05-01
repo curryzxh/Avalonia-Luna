@@ -1,215 +1,77 @@
 using Avalonia.Controls;
+using Avalonia.Interactivity;
 using Luna.Mobile.Sample.ViewModels;
 
 namespace Luna.Mobile.Sample.Views;
 
 public partial class MainView : UserControl
 {
-    private Control? _catalogContent;
     private MainViewModel ViewModel { get; } = new();
 
     public MainView()
     {
         InitializeComponent();
         DataContext = ViewModel;
+        CatalogPage.DataContext = ViewModel;
         ViewModel.CatalogItemRequested += OnCatalogItemRequested;
-        _catalogContent = Content as Control;
     }
 
     private void OnCatalogItemRequested(object? sender, CatalogItemViewModel item)
     {
-        Content = item.Path switch
+        var view = CreateSampleView(item.Path);
+        if (view is null)
         {
-            "/actionsheet" => AttachBackHandler(new ActionSheetDemoView()),
-            "/avatar" => AttachBackHandler(new AvatarDemoView()),
-            "/button" => AttachBackHandler(new ButtonDemoView()),
-            "/badge" => AttachBackHandler(new BadgeDemoView()),
-            "/cell" => AttachBackHandler(new CellDemoView()),
-            "/checkbox" => AttachBackHandler(new CheckBoxDemoView()),
-            "/datetimepicker" => AttachBackHandler(new DateTimePickerDemoView()),
-            "/drawer" => AttachBackHandler(new DrawerDemoView()),
-            "/popover" => AttachBackHandler(new PopoverDemoView()),
-            "/divider" => AttachBackHandler(new DividerDemoView()),
-            "/empty" => AttachBackHandler(new EmptyDemoView()),
-            "/imageviewer" => AttachBackHandler(new ImageViewerDemoView()),
-            "/indexes" => AttachBackHandler(new IndexesDemoView()),
-            "/input" => AttachBackHandler(new InputDemoView()),
-            "/dialog" => AttachBackHandler(new DialogDemoView()),
-            "/loading" => AttachBackHandler(new LoadingDemoView()),
-            "/message" => AttachBackHandler(new MessageDemoView()),
-            "/noticebar" => AttachBackHandler(new NoticeBarDemoView()),
-            "/overlay" => AttachBackHandler(new OverlayDemoView()),
-            "/picker" => AttachBackHandler(new PickerDemoView()),
-            "/radio" => AttachBackHandler(new RadioDemoView()),
-            "/rate" => AttachBackHandler(new RateDemoView()),
-            "/search" => AttachBackHandler(new SearchDemoView()),
-            "/stepper" => AttachBackHandler(new StepperDemoView()),
-            "/switch" => AttachBackHandler(new SwitchDemoView()),
-            "/tag" => AttachBackHandler(new TagDemoView()),
-            "/toast" => AttachBackHandler(new ToastDemoView()),
-            _ => _catalogContent,
+            return;
+        }
+
+        ShellHost.Page = new ContentPage
+        {
+            Header = item.Name,
+            AutomaticallyApplySafeAreaPadding = true,
+            Content = view,
         };
+
+        BackButton.IsVisible = true;
     }
 
-    private UserControl AttachBackHandler(ButtonDemoView view)
+    private void BackButton_OnClick(object? sender, RoutedEventArgs e)
     {
-        view.BackRequested += (_, _) => Content = _catalogContent;
-        return view;
+        ShellHost.Page = CatalogPage;
+        BackButton.IsVisible = false;
     }
 
-    private UserControl AttachBackHandler(SwitchDemoView view)
+    private static Control? CreateSampleView(string path)
     {
-        view.BackRequested += (_, _) => Content = _catalogContent;
-        return view;
-    }
-
-    private UserControl AttachBackHandler(RadioDemoView view)
-    {
-        view.BackRequested += (_, _) => Content = _catalogContent;
-        return view;
-    }
-
-    private UserControl AttachBackHandler(SearchDemoView view)
-    {
-        view.BackRequested += (_, _) => Content = _catalogContent;
-        return view;
-    }
-
-    private UserControl AttachBackHandler(StepperDemoView view)
-    {
-        view.BackRequested += (_, _) => Content = _catalogContent;
-        return view;
-    }
-
-    private UserControl AttachBackHandler(CheckBoxDemoView view)
-    {
-        view.BackRequested += (_, _) => Content = _catalogContent;
-        return view;
-    }
-
-    private UserControl AttachBackHandler(DateTimePickerDemoView view)
-    {
-        view.BackRequested += (_, _) => Content = _catalogContent;
-        return view;
-    }
-
-    private UserControl AttachBackHandler(DividerDemoView view)
-    {
-        view.BackRequested += (_, _) => Content = _catalogContent;
-        return view;
-    }
-
-    private UserControl AttachBackHandler(EmptyDemoView view)
-    {
-        view.BackRequested += (_, _) => Content = _catalogContent;
-        return view;
-    }
-
-    private UserControl AttachBackHandler(IndexesDemoView view)
-    {
-        view.BackRequested += (_, _) => Content = _catalogContent;
-        return view;
-    }
-
-    private UserControl AttachBackHandler(InputDemoView view)
-    {
-        view.BackRequested += (_, _) => Content = _catalogContent;
-        return view;
-    }
-
-    private UserControl AttachBackHandler(DialogDemoView view)
-    {
-        view.BackRequested += (_, _) => Content = _catalogContent;
-        return view;
-    }
-
-    private UserControl AttachBackHandler(ToastDemoView view)
-    {
-        view.BackRequested += (_, _) => Content = _catalogContent;
-        return view;
-    }
-
-    private UserControl AttachBackHandler(MessageDemoView view)
-    {
-        view.BackRequested += (_, _) => Content = _catalogContent;
-        return view;
-    }
-
-    private UserControl AttachBackHandler(NoticeBarDemoView view)
-    {
-        view.BackRequested += (_, _) => Content = _catalogContent;
-        return view;
-    }
-
-    private UserControl AttachBackHandler(OverlayDemoView view)
-    {
-        view.BackRequested += (_, _) => Content = _catalogContent;
-        return view;
-    }
-
-    private UserControl AttachBackHandler(PickerDemoView view)
-    {
-        view.BackRequested += (_, _) => Content = _catalogContent;
-        return view;
-    }
-
-    private UserControl AttachBackHandler(RateDemoView view)
-    {
-        view.BackRequested += (_, _) => Content = _catalogContent;
-        return view;
-    }
-
-    private UserControl AttachBackHandler(LoadingDemoView view)
-    {
-        view.BackRequested += (_, _) => Content = _catalogContent;
-        return view;
-    }
-
-    private UserControl AttachBackHandler(BadgeDemoView view)
-    {
-        view.BackRequested += (_, _) => Content = _catalogContent;
-        return view;
-    }
-
-    private UserControl AttachBackHandler(TagDemoView view)
-    {
-        view.BackRequested += (_, _) => Content = _catalogContent;
-        return view;
-    }
-
-    private UserControl AttachBackHandler(AvatarDemoView view)
-    {
-        view.BackRequested += (_, _) => Content = _catalogContent;
-        return view;
-    }
-
-    private UserControl AttachBackHandler(ActionSheetDemoView view)
-    {
-        view.BackRequested += (_, _) => Content = _catalogContent;
-        return view;
-    }
-
-    private UserControl AttachBackHandler(CellDemoView view)
-    {
-        view.BackRequested += (_, _) => Content = _catalogContent;
-        return view;
-    }
-
-    private UserControl AttachBackHandler(DrawerDemoView view)
-    {
-        view.BackRequested += (_, _) => Content = _catalogContent;
-        return view;
-    }
-
-    private UserControl AttachBackHandler(PopoverDemoView view)
-    {
-        view.BackRequested += (_, _) => Content = _catalogContent;
-        return view;
-    }
-
-    private UserControl AttachBackHandler(ImageViewerDemoView view)
-    {
-        view.BackRequested += (_, _) => Content = _catalogContent;
-        return view;
+        return path switch
+        {
+            "/actionsheet" => new ActionSheetDemoView(),
+            "/avatar" => new AvatarDemoView(),
+            "/button" => new ButtonDemoView(),
+            "/badge" => new BadgeDemoView(),
+            "/cell" => new CellDemoView(),
+            "/checkbox" => new CheckBoxDemoView(),
+            "/datetimepicker" => new DateTimePickerDemoView(),
+            "/drawer" => new DrawerDemoView(),
+            "/popover" => new PopoverDemoView(),
+            "/divider" => new DividerDemoView(),
+            "/empty" => new EmptyDemoView(),
+            "/imageviewer" => new ImageViewerDemoView(),
+            "/indexes" => new IndexesDemoView(),
+            "/input" => new InputDemoView(),
+            "/dialog" => new DialogDemoView(),
+            "/loading" => new LoadingDemoView(),
+            "/message" => new MessageDemoView(),
+            "/noticebar" => new NoticeBarDemoView(),
+            "/overlay" => new OverlayDemoView(),
+            "/picker" => new PickerDemoView(),
+            "/radio" => new RadioDemoView(),
+            "/rate" => new RateDemoView(),
+            "/search" => new SearchDemoView(),
+            "/stepper" => new StepperDemoView(),
+            "/switch" => new SwitchDemoView(),
+            "/tag" => new TagDemoView(),
+            "/toast" => new ToastDemoView(),
+            _ => null,
+        };
     }
 }

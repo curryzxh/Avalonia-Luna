@@ -8,12 +8,6 @@ public partial class DialogDemoView : UserControl
 {
     private DialogDemoViewModel ViewModel { get; } = new();
 
-    public event EventHandler? BackRequested
-    {
-        add => ViewModel.BackRequested += value;
-        remove => ViewModel.BackRequested -= value;
-    }
-
     public DialogDemoView()
     {
         InitializeComponent();

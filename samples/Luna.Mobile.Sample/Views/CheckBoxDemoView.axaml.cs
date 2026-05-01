@@ -11,12 +11,6 @@ public partial class CheckBoxDemoView : UserControl
 
         private CheckBoxDemoViewModel ViewModel { get; } = new();
 
-    public event EventHandler? BackRequested
-    {
-        add => ViewModel.BackRequested += value;
-        remove => ViewModel.BackRequested -= value;
-    }
-
     public CheckBoxDemoView()
     {
         InitializeComponent();

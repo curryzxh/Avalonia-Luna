@@ -9,12 +9,6 @@ public partial class ActionSheetDemoView : UserControl
 {
     private ActionSheetDemoViewModel ViewModel { get; } = new();
 
-    public event EventHandler? BackRequested
-    {
-        add => ViewModel.BackRequested += value;
-        remove => ViewModel.BackRequested -= value;
-    }
-
     public ActionSheetDemoView()
     {
         InitializeComponent();

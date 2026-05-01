@@ -5,23 +5,7 @@
              x:DataType="vm:RadioDemoViewModel">
   <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
     <StackPanel Spacing="24" Margin="0,0,0,28">
-      <Border Background="{DynamicResource Luna.Brush.Background.Container}">
-        <Grid ColumnDefinitions="56,*,56" MinHeight="56">
-          <Button Classes="text"
-                  Content="‹"
-                  FontSize="34"
-                  Padding="0"
-                  Command="{Binding BackCommand}" />
-          <TextBlock Grid.Column="1"
-                     Text="Radio 单选框"
-                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
-                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
-                     Foreground="{DynamicResource Luna.Brush.Text.Primary}"
-                     HorizontalAlignment="Center"
-                     VerticalAlignment="Center" />
-        </Grid>
-      </Border>
-
+      
       <StackPanel Margin="16,0" Spacing="8">
         <TextBlock Text="Radio 单选框"
                    FontSize="{DynamicResource Luna.FontSize.Title.Large}"

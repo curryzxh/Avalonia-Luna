@@ -12,12 +12,6 @@ public partial class NoticeBarDemoView : UserControl
 {
         private NoticeBarDemoViewModel ViewModel { get; } = new();
 
-    public event EventHandler? BackRequested
-    {
-        add => ViewModel.BackRequested += value;
-        remove => ViewModel.BackRequested -= value;
-    }
-
     public NoticeBarDemoView()
     {
         InitializeComponent();

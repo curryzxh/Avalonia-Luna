@@ -8,12 +8,6 @@ public partial class TagDemoView : UserControl
 {
         private TagDemoViewModel ViewModel { get; } = new();
 
-    public event EventHandler? BackRequested
-    {
-        add => ViewModel.BackRequested += value;
-        remove => ViewModel.BackRequested -= value;
-    }
-
     public TagDemoView()
     {
         InitializeComponent();

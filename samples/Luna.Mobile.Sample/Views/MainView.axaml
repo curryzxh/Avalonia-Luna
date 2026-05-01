@@ -5,140 +5,160 @@
              x:Class="Luna.Mobile.Sample.Views.MainView"
              x:Name="Root"
              x:DataType="vm:MainViewModel">
-  <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}"
-                HorizontalScrollBarVisibility="Disabled">
-    <StackPanel Margin="16,18,16,24" Spacing="24">
-      <StackPanel Spacing="24">
-        <Grid ColumnDefinitions="54,Auto" ColumnSpacing="12" HorizontalAlignment="Left">
-          <Grid Width="54" Height="40">
-            <Border Width="38"
-                    Height="8"
-                    Margin="9,0,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Background="{DynamicResource Luna.Brush.Success}"
-                    CornerRadius="{DynamicResource Luna.Radius.Small}">
-              <Border.RenderTransform>
-                <RotateTransform Angle="3" />
-              </Border.RenderTransform>
-            </Border>
-            <Border Width="12"
-                    Height="38"
-                    Margin="5,1,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Background="{DynamicResource Luna.Brush.Brand}"
-                    CornerRadius="{DynamicResource Luna.Radius.Small}">
-              <Border.RenderTransform>
-                <SkewTransform AngleX="-10" />
-              </Border.RenderTransform>
-            </Border>
-            <Border Width="30"
-                    Height="8"
-                    Margin="6,16,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Background="{DynamicResource Luna.Brush.Brand.Active}"
-                    CornerRadius="{DynamicResource Luna.Radius.Small}">
-              <Border.RenderTransform>
-                <SkewTransform AngleX="-10" />
-              </Border.RenderTransform>
-            </Border>
-          </Grid>
-
-          <TextBlock Grid.Column="1"
-                     Text="Luna Mobile"
-                     FontSize="30"
-                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
-                     FontStyle="Italic"
-                     Foreground="{DynamicResource Luna.Brush.Text.Primary}"
-                     VerticalAlignment="Center" />
-        </Grid>
-
-        <TextBlock Text="{Binding Title}"
-                   FontSize="{DynamicResource Luna.FontSize.Body.Large}"
-                   Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" />
-      </StackPanel>
-
-      <ItemsControl ItemsSource="{Binding Sections}">
-        <ItemsControl.ItemsPanel>
-          <ItemsPanelTemplate>
-            <StackPanel Spacing="12" />
-          </ItemsPanelTemplate>
-        </ItemsControl.ItemsPanel>
-        <ItemsControl.ItemTemplate>
-          <DataTemplate x:DataType="vm:CatalogSectionViewModel">
-            <Expander IsExpanded="{Binding IsExpanded, Mode=TwoWay}" HorizontalAlignment="Stretch">
-              <Expander.ContentTransition>
-                <PageSlide Duration="0:00:00.200" Orientation="Vertical" />
-              </Expander.ContentTransition>
-              <Expander.Header>
-                <Border Background="{DynamicResource Luna.Brush.Background.Container}">
-                  <Grid Height="56" ColumnDefinitions="*,48" Margin="32,0,26,0">
-                    <TextBlock Text="{Binding Title}"
-                               FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
-                               FontWeight="{DynamicResource Luna.FontWeight.Medium}"
-                               Foreground="{DynamicResource Luna.Brush.Text.Primary}"
-                               VerticalAlignment="Center" />
-                    <Path Grid.Column="1"
-                          Width="28"
-                          Height="28"
-                          Data="{Binding IconData}"
-                          Stroke="{DynamicResource Luna.Brush.Text.Placeholder}"
-                          StrokeThickness="2"
-                          StrokeLineCap="Square"
-                          StrokeJoin="Miter"
-                          Fill="Transparent"
-                          Stretch="Uniform"
-                          HorizontalAlignment="Right"
-                          VerticalAlignment="Center" />
+  <Grid>
+    <PageNavigationHost x:Name="ShellHost">
+      <PageNavigationHost.Page>
+        <ContentPage x:Name="CatalogPage"
+                     AutomaticallyApplySafeAreaPadding="True">
+          <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}"
+                        HorizontalScrollBarVisibility="Disabled">
+            <StackPanel Margin="16,18,16,24" Spacing="24">
+              <StackPanel Spacing="24">
+                <Grid ColumnDefinitions="54,Auto" ColumnSpacing="12" HorizontalAlignment="Left">
+                  <Grid Width="54" Height="40">
+                    <Border Width="38"
+                            Height="8"
+                            Margin="9,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Background="{DynamicResource Luna.Brush.Success}"
+                            CornerRadius="{DynamicResource Luna.Radius.Small}">
+                      <Border.RenderTransform>
+                        <RotateTransform Angle="3" />
+                      </Border.RenderTransform>
+                    </Border>
+                    <Border Width="12"
+                            Height="38"
+                            Margin="5,1,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Background="{DynamicResource Luna.Brush.Brand}"
+                            CornerRadius="{DynamicResource Luna.Radius.Small}">
+                      <Border.RenderTransform>
+                        <SkewTransform AngleX="-10" />
+                      </Border.RenderTransform>
+                    </Border>
+                    <Border Width="30"
+                            Height="8"
+                            Margin="6,16,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Background="{DynamicResource Luna.Brush.Brand.Active}"
+                            CornerRadius="{DynamicResource Luna.Radius.Small}">
+                      <Border.RenderTransform>
+                        <SkewTransform AngleX="-10" />
+                      </Border.RenderTransform>
+                    </Border>
                   </Grid>
-                </Border>
-              </Expander.Header>
 
-              <Border Background="{DynamicResource Luna.Brush.Background.Container}">
-                <ItemsControl ItemsSource="{Binding Children}">
-                  <ItemsControl.ItemTemplate>
-                    <DataTemplate x:DataType="vm:CatalogItemViewModel">
-                      <Button Height="56"
-                              Margin="32,0,26,0"
-                              Background="Transparent"
-                              BorderThickness="0"
-                              CornerRadius="0"
-                              Padding="0"
-                              HorizontalContentAlignment="Stretch"
-                              Command="{Binding #Root.DataContext.OpenCatalogItemCommand}"
-                              CommandParameter="{Binding}">
-                        <Grid ColumnDefinitions="*,36">
-                        <Border Height="1"
-                                Background="{DynamicResource Luna.Brush.Border.Divider}"
-                                VerticalAlignment="Top"
-                                Grid.ColumnSpan="2" />
-                        <TextBlock Text="{Binding Name}"
-                                   FontSize="{DynamicResource Luna.FontSize.Body.Large}"
-                                   Foreground="{DynamicResource Luna.Brush.Text.Primary}"
-                                   VerticalAlignment="Center" />
-                        <Path Grid.Column="1"
-                              Width="18"
-                              Height="18"
-                              Data="M9.5 17.5L15 12L9.5 6.5"
-                              Stroke="{DynamicResource Luna.Brush.Text.Placeholder}"
-                              StrokeThickness="2"
-                              StrokeLineCap="Square"
-                              Fill="Transparent"
-                              Stretch="Uniform"
-                              HorizontalAlignment="Right"
-                              VerticalAlignment="Center" />
-                        </Grid>
-                      </Button>
-                    </DataTemplate>
-                  </ItemsControl.ItemTemplate>
-                </ItemsControl>
-              </Border>
-            </Expander>
-          </DataTemplate>
-        </ItemsControl.ItemTemplate>
-      </ItemsControl>
-    </StackPanel>
-  </ScrollViewer>
+                  <TextBlock Grid.Column="1"
+                             Text="Luna Mobile"
+                             FontSize="30"
+                             FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                             FontStyle="Italic"
+                             Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                             VerticalAlignment="Center" />
+                </Grid>
+
+                <TextBlock Text="{Binding Title}"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" />
+              </StackPanel>
+
+              <ItemsControl ItemsSource="{Binding Sections}">
+                <ItemsControl.ItemsPanel>
+                  <ItemsPanelTemplate>
+                    <StackPanel Spacing="12" />
+                  </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                  <DataTemplate x:DataType="vm:CatalogSectionViewModel">
+                    <Expander IsExpanded="{Binding IsExpanded, Mode=TwoWay}" HorizontalAlignment="Stretch">
+                      <Expander.ContentTransition>
+                        <PageSlide Duration="0:00:00.200" Orientation="Vertical" />
+                      </Expander.ContentTransition>
+                      <Expander.Header>
+                        <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+                          <Grid Height="56" ColumnDefinitions="*,48" Margin="32,0,26,0">
+                            <TextBlock Text="{Binding Title}"
+                                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                                       FontWeight="{DynamicResource Luna.FontWeight.Medium}"
+                                       Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                                       VerticalAlignment="Center" />
+                            <Path Grid.Column="1"
+                                  Width="28"
+                                  Height="28"
+                                  Data="{Binding IconData}"
+                                  Stroke="{DynamicResource Luna.Brush.Text.Placeholder}"
+                                  StrokeThickness="2"
+                                  StrokeLineCap="Square"
+                                  StrokeJoin="Miter"
+                                  Fill="Transparent"
+                                  Stretch="Uniform"
+                                  HorizontalAlignment="Right"
+                                  VerticalAlignment="Center" />
+                          </Grid>
+                        </Border>
+                      </Expander.Header>
+
+                      <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+                        <ItemsControl ItemsSource="{Binding Children}">
+                          <ItemsControl.ItemTemplate>
+                            <DataTemplate x:DataType="vm:CatalogItemViewModel">
+                              <Button Height="56"
+                                      Margin="32,0,26,0"
+                                      Background="Transparent"
+                                      BorderThickness="0"
+                                      CornerRadius="0"
+                                      Padding="0"
+                                      HorizontalContentAlignment="Stretch"
+                                      Command="{Binding #Root.DataContext.OpenCatalogItemCommand}"
+                                      CommandParameter="{Binding}">
+                                <Grid ColumnDefinitions="*,36">
+                                  <Border Height="1"
+                                          Background="{DynamicResource Luna.Brush.Border.Divider}"
+                                          VerticalAlignment="Top"
+                                          Grid.ColumnSpan="2" />
+                                  <TextBlock Text="{Binding Name}"
+                                             FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                                             Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                                             VerticalAlignment="Center" />
+                                  <Path Grid.Column="1"
+                                        Width="18"
+                                        Height="18"
+                                        Data="M9.5 17.5L15 12L9.5 6.5"
+                                        Stroke="{DynamicResource Luna.Brush.Text.Placeholder}"
+                                        StrokeThickness="2"
+                                        StrokeLineCap="Square"
+                                        Fill="Transparent"
+                                        Stretch="Uniform"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center" />
+                                </Grid>
+                              </Button>
+                            </DataTemplate>
+                          </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                      </Border>
+                    </Expander>
+                  </DataTemplate>
+                </ItemsControl.ItemTemplate>
+              </ItemsControl>
+            </StackPanel>
+          </ScrollViewer>
+        </ContentPage>
+      </PageNavigationHost.Page>
+    </PageNavigationHost>
+
+    <Button x:Name="BackButton"
+            Content="←"
+            IsVisible="False"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            Padding="10"
+            Margin="14"
+            Click="BackButton_OnClick" />
+  </Grid>
 </UserControl>

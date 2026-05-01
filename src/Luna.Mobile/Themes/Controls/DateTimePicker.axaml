@@ -12,6 +12,8 @@
 
           <Border Name="PART_Sheet"
                   Classes="bottom-sheet-panel"
+                  Width="{Binding Bounds.Width, RelativeSource={RelativeSource TemplatedParent}}"
+                  MaxWidth="420"
                   Height="{TemplateBinding SheetHeight}"
                   IsVisible="{TemplateBinding IsSheetVisible}"
                   Opacity="0">
@@ -19,9 +21,10 @@
               <TranslateTransform Y="0" />
             </Border.RenderTransform>
             <Grid RowDefinitions="Auto,Auto,*"
-                  RowSpacing="12">
+                  RowSpacing="10">
               <Grid Classes="bottom-sheet-header"
-                    ColumnDefinitions="Auto,*,Auto">
+                    ColumnDefinitions="Auto,*,Auto"
+                    Margin="16,0">
                 <Button Name="PART_CancelButton"
                         Classes="text bottom-sheet-cancel"
                         Content="{TemplateBinding CancelText}" />
@@ -35,27 +38,36 @@
                         Content="{TemplateBinding ConfirmText}" />
               </Grid>
 
-              <Border Classes="bottom-sheet-divider" />
+              <Border Grid.Row="1"
+                      Classes="bottom-sheet-divider" />
 
-              <ItemsControl ItemsSource="{TemplateBinding Columns}">
+              <ItemsControl Grid.Row="2"
+                            ItemsSource="{TemplateBinding Columns}">
                 <ItemsControl.ItemsPanel>
                   <ItemsPanelTemplate>
-                    <StackPanel Orientation="Horizontal" Spacing="12" />
+                    <UniformGrid Rows="1" />
                   </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                   <DataTemplate x:DataType="luna:DateTimePickerColumn">
-                    <ComboBox Width="92"
-                              HorizontalAlignment="Stretch"
-                              ItemsSource="{Binding Items}"
-                              SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}">
-                      <ComboBox.ItemTemplate>
+                    <ListBox Classes="bottom-sheet-wheel"
+                             Margin="0,0,0,4"
+                             ItemsSource="{Binding Items}"
+                             SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}">
+                      <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                          <StackPanel />
+                        </ItemsPanelTemplate>
+                      </ListBox.ItemsPanel>
+                      <ListBox.ItemTemplate>
                         <DataTemplate x:DataType="luna:DateTimePickerColumnItem">
                           <TextBlock Text="{Binding Label}"
+                                     HorizontalAlignment="Center"
+                                     VerticalAlignment="Center"
                                      TextAlignment="Center" />
                         </DataTemplate>
-                      </ComboBox.ItemTemplate>
-                    </ComboBox>
+                      </ListBox.ItemTemplate>
+                    </ListBox>
                   </DataTemplate>
                 </ItemsControl.ItemTemplate>
               </ItemsControl>

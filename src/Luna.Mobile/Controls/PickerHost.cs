@@ -8,6 +8,7 @@ using Avalonia.Threading;
 using Avalonia.VisualTree;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Luna.Mobile.Controls;
@@ -350,6 +351,8 @@ public sealed class PickerHost : TemplatedControl
             IsSheetVisible = true;
             UpdateOverlayVisible();
             await Dispatcher.UIThread.InvokeAsync(() => { }, DispatcherPriority.Render);
+            RefreshSheetLayout();
+            await Dispatcher.UIThread.InvokeAsync(() => { }, DispatcherPriority.Render);
             await RunOpenAnimationAsync(version);
             return;
         }
@@ -442,5 +445,27 @@ public sealed class PickerHost : TemplatedControl
     private double GetClosedOffset()
     {
         return OverlayHostAnimationHelper.ResolveDistance(SheetHeight, 320);
+    }
+
+    private void RefreshSheetLayout()
+    {
+        if (_sheet is null)
+        {
+            return;
+        }
+
+        _sheet.InvalidateMeasure();
+        _sheet.InvalidateArrange();
+
+        foreach (var listBox in _sheet.GetVisualDescendants().OfType<ListBox>())
+        {
+            listBox.InvalidateMeasure();
+            listBox.InvalidateArrange();
+
+            if (listBox.SelectedItem is not null)
+            {
+                listBox.ScrollIntoView(listBox.SelectedItem);
+            }
+        }
     }
 }

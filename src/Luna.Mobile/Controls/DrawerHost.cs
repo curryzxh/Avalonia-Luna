@@ -1,12 +1,9 @@
 using Avalonia;
-using Avalonia.Animation;
-using Avalonia.Animation.Easings;
 using Avalonia.Controls;
 using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Media;
-using Avalonia.Styling;
 using Avalonia.Threading;
 using Avalonia.VisualTree;
 using System;
@@ -40,7 +37,6 @@ public sealed class DrawerHost : TemplatedControl
     private bool _isDrawerVisible;
     private bool _hasTitle;
     private int _animationVersion;
-    private static readonly TimeSpan TransitionDuration = TimeSpan.FromMilliseconds(200);
 
     /// <summary>
     /// 获取当前附加到可视树的抽屉宿主实例。
@@ -360,15 +356,15 @@ public sealed class DrawerHost : TemplatedControl
         if (_overlay is not null && ShowOverlay)
         {
             _overlay.Opacity = 0;
-            tasks.Add(CreateOpacityAnimation(true).RunAsync(_overlay));
+            tasks.Add(OverlayHostAnimationHelper.CreateOpacityAnimation(true).RunAsync(_overlay));
         }
 
         if (_drawer is not null)
         {
-            EnsureDrawerTransform();
+            var transform = OverlayHostAnimationHelper.EnsureTranslateTransform(_drawer);
             _drawer.Opacity = 0;
-            _drawer.RenderTransform = new TranslateTransform { X = GetClosedOffset() };
-            tasks.Add(CreateDrawerAnimation(true).RunAsync(_drawer));
+            transform.X = GetClosedOffset();
+            tasks.Add(OverlayHostAnimationHelper.CreateSlideAnimation(true, TranslateTransform.XProperty, GetClosedOffset()).RunAsync(_drawer));
         }
 
         if (tasks.Count == 0)
@@ -398,13 +394,13 @@ public sealed class DrawerHost : TemplatedControl
 
         if (_overlay is not null && ShowOverlay)
         {
-            tasks.Add(CreateOpacityAnimation(false).RunAsync(_overlay));
+            tasks.Add(OverlayHostAnimationHelper.CreateOpacityAnimation(false).RunAsync(_overlay));
         }
 
         if (_drawer is not null)
         {
-            EnsureDrawerTransform();
-            tasks.Add(CreateDrawerAnimation(false).RunAsync(_drawer));
+            OverlayHostAnimationHelper.EnsureTranslateTransform(_drawer);
+            tasks.Add(OverlayHostAnimationHelper.CreateSlideAnimation(false, TranslateTransform.XProperty, GetClosedOffset()).RunAsync(_drawer));
         }
 
         if (tasks.Count > 0)
@@ -422,68 +418,9 @@ public sealed class DrawerHost : TemplatedControl
         Closed?.Invoke(this, EventArgs.Empty);
     }
 
-    private Animation CreateOpacityAnimation(bool appear)
-    {
-        var animation = new Animation
-        {
-            Duration = TransitionDuration,
-            FillMode = FillMode.Forward,
-        };
-
-        var from = new KeyFrame { Cue = new Cue(0d) };
-        from.Setters.Add(new Setter(OpacityProperty, appear ? 0d : 1d));
-        var to = new KeyFrame { Cue = new Cue(1d) };
-        to.Setters.Add(new Setter(OpacityProperty, appear ? 1d : 0d));
-
-        animation.Children.Add(from);
-        animation.Children.Add(to);
-        return animation;
-    }
-
-    private Animation CreateDrawerAnimation(bool appear)
-    {
-        var offset = GetClosedOffset();
-        var animation = new Animation
-        {
-            Duration = TransitionDuration,
-            FillMode = FillMode.Forward,
-            Easing = appear ? new CubicEaseOut() : new CubicEaseIn(),
-        };
-
-        var from = new KeyFrame { Cue = new Cue(0d) };
-        from.Setters.Add(new Setter(OpacityProperty, appear ? 0d : 1d));
-        from.Setters.Add(new Setter(TranslateTransform.XProperty, appear ? offset : 0d));
-
-        var to = new KeyFrame { Cue = new Cue(1d) };
-        to.Setters.Add(new Setter(OpacityProperty, appear ? 1d : 0d));
-        to.Setters.Add(new Setter(TranslateTransform.XProperty, appear ? 0d : offset));
-
-        animation.Children.Add(from);
-        animation.Children.Add(to);
-        return animation;
-    }
-
     private double GetClosedOffset()
     {
-        var width = DrawerWidth;
-        if (double.IsNaN(width) || width <= 0)
-        {
-            width = 280;
-        }
-
+        var width = OverlayHostAnimationHelper.ResolveDistance(DrawerWidth, 280);
         return Placement == DrawerPlacement.Left ? -width : width;
-    }
-
-    private void EnsureDrawerTransform()
-    {
-        if (_drawer is null)
-        {
-            return;
-        }
-
-        if (_drawer.RenderTransform is not TranslateTransform)
-        {
-            _drawer.RenderTransform = new TranslateTransform();
-        }
     }
 }

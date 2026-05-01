@@ -3,12 +3,16 @@ using Avalonia.Controls;
 using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
+using Avalonia.Media;
+using Avalonia.Threading;
 using Avalonia.VisualTree;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
+using System.Threading.Tasks;
+
 
 namespace Luna.Mobile.Controls;
 
@@ -342,17 +346,20 @@ public static class DateTimePicker
 /// </list>
 /// </remarks>
 [TemplatePart(OverlayPartName, typeof(Border))]
+[TemplatePart(SheetPartName, typeof(Border))]
 [TemplatePart(CancelButtonPartName, typeof(Button))]
 [TemplatePart(ConfirmButtonPartName, typeof(Button))]
 public sealed class DateTimePickerHost : TemplatedControl
 {
     private const string OverlayPartName = "PART_Overlay";
+    private const string SheetPartName = "PART_Sheet";
     private const string CancelButtonPartName = "PART_CancelButton";
     private const string ConfirmButtonPartName = "PART_ConfirmButton";
 
     private static DateTimePickerHost? _current;
 
     private Border? _overlay;
+    private Border? _sheet;
     private Button? _cancelButton;
     private Button? _confirmButton;
     private DateTime _start = DateTime.Now.AddYears(-10);
@@ -363,10 +370,12 @@ public sealed class DateTimePickerHost : TemplatedControl
     private bool _showWeek;
     private bool _isSyncingColumns;
     private bool _isOverlayVisible;
+    private bool _isSheetVisible;
     private bool _hasTitle;
     private IReadOnlyList<DateTimePickerColumn> _columns = Array.Empty<DateTimePickerColumn>();
     private DateTimePickerCloseReason _closeReason = DateTimePickerCloseReason.Unknown;
     private DateTimePickerStepOptions _steps = new();
+    private int _animationVersion;
 
     /// <summary>
     /// 获取当前附加到可视树的时间选择器宿主实例。
@@ -423,6 +432,12 @@ public sealed class DateTimePickerHost : TemplatedControl
             nameof(IsOverlayVisible),
             o => o.IsOverlayVisible);
 
+    /// <inheritdoc cref="IsSheetVisible" />
+    public static readonly DirectProperty<DateTimePickerHost, bool> IsSheetVisibleProperty =
+        AvaloniaProperty.RegisterDirect<DateTimePickerHost, bool>(
+            nameof(IsSheetVisible),
+            o => o.IsSheetVisible);
+
     /// <inheritdoc cref="HasTitle" />
     public static readonly DirectProperty<DateTimePickerHost, bool> HasTitleProperty =
         AvaloniaProperty.RegisterDirect<DateTimePickerHost, bool>(
@@ -437,7 +452,10 @@ public sealed class DateTimePickerHost : TemplatedControl
 
     static DateTimePickerHost()
     {
-        IsOpenProperty.Changed.AddClassHandler<DateTimePickerHost>((control, _) => control.UpdateOverlayVisible());
+        IsOpenProperty.Changed.AddClassHandler<DateTimePickerHost>((control, args) =>
+        {
+            control.HandleIsOpenChanged(args.GetNewValue<bool>());
+        });
         TitleProperty.Changed.AddClassHandler<DateTimePickerHost>((control, args) =>
         {
             control.HasTitle = !string.IsNullOrWhiteSpace(args.GetNewValue<string?>());
@@ -450,6 +468,8 @@ public sealed class DateTimePickerHost : TemplatedControl
     public DateTimePickerHost()
     {
         HasTitle = !string.IsNullOrWhiteSpace(Title);
+        IsSheetVisible = IsOpen;
+        UpdateOverlayVisible();
     }
 
     /// <summary>
@@ -516,6 +536,15 @@ public sealed class DateTimePickerHost : TemplatedControl
     }
 
     /// <summary>
+    /// 获取当前底部面板是否仍需保持渲染，用于承载开关动画。
+    /// </summary>
+    public bool IsSheetVisible
+    {
+        get => _isSheetVisible;
+        private set => SetAndRaise(IsSheetVisibleProperty, ref _isSheetVisible, value);
+    }
+
+    /// <summary>
     /// 获取当前是否存在标题。
     /// </summary>
     public bool HasTitle
@@ -561,7 +590,6 @@ public sealed class DateTimePickerHost : TemplatedControl
         _currentValue = Clamp(options.Value ?? now);
         RebuildColumns(_currentValue, raisePicked: false);
         IsOpen = true;
-        UpdateOverlayVisible();
     }
 
     /// <summary>
@@ -571,8 +599,6 @@ public sealed class DateTimePickerHost : TemplatedControl
     {
         _closeReason = reason;
         IsOpen = false;
-        UpdateOverlayVisible();
-        Closed?.Invoke(this, new DateTimePickerClosedEventArgs(reason));
     }
 
     /// <inheritdoc />
@@ -603,6 +629,7 @@ public sealed class DateTimePickerHost : TemplatedControl
         DetachTemplateHandlers();
 
         _overlay = e.NameScope.Find<Border>(OverlayPartName);
+        _sheet = e.NameScope.Find<Border>(SheetPartName);
         _cancelButton = e.NameScope.Find<Button>(CancelButtonPartName);
         _confirmButton = e.NameScope.Find<Button>(ConfirmButtonPartName);
 
@@ -675,7 +702,105 @@ public sealed class DateTimePickerHost : TemplatedControl
 
     private void UpdateOverlayVisible()
     {
-        IsOverlayVisible = IsOpen;
+        IsOverlayVisible = IsOpen || IsSheetVisible;
+    }
+
+    private async void HandleIsOpenChanged(bool isOpen)
+    {
+        var version = ++_animationVersion;
+
+        if (isOpen)
+        {
+            IsSheetVisible = true;
+            UpdateOverlayVisible();
+            await Dispatcher.UIThread.InvokeAsync(() => { }, DispatcherPriority.Render);
+            await RunOpenAnimationAsync(version);
+            return;
+        }
+
+        if (!IsSheetVisible && !IsOverlayVisible)
+        {
+            return;
+        }
+
+        await RunCloseAnimationAsync(version);
+    }
+
+    private async Task RunOpenAnimationAsync(int version)
+    {
+        if (_sheet is null && _overlay is null)
+        {
+            return;
+        }
+
+        var tasks = new List<Task>(2);
+
+        if (_overlay is not null)
+        {
+            _overlay.Opacity = 0;
+            tasks.Add(OverlayHostAnimationHelper.CreateOpacityAnimation(true, 0.6d).RunAsync(_overlay));
+        }
+
+        if (_sheet is not null)
+        {
+            var transform = OverlayHostAnimationHelper.EnsureTranslateTransform(_sheet);
+            _sheet.Opacity = 0;
+            transform.Y = GetClosedOffset();
+            tasks.Add(OverlayHostAnimationHelper.CreateSlideAnimation(true, TranslateTransform.YProperty, GetClosedOffset()).RunAsync(_sheet));
+        }
+
+        if (tasks.Count > 0)
+        {
+            await Task.WhenAll(tasks);
+        }
+
+        if (version != _animationVersion || !IsOpen)
+        {
+            return;
+        }
+    }
+
+    private async Task RunCloseAnimationAsync(int version)
+    {
+        if (_sheet is null && _overlay is null)
+        {
+            IsSheetVisible = false;
+            UpdateOverlayVisible();
+            Closed?.Invoke(this, new DateTimePickerClosedEventArgs(_closeReason));
+            return;
+        }
+
+        var tasks = new List<Task>(2);
+
+        if (_overlay is not null)
+        {
+            tasks.Add(OverlayHostAnimationHelper.CreateOpacityAnimation(false, 0.6d).RunAsync(_overlay));
+        }
+
+        if (_sheet is not null)
+        {
+            OverlayHostAnimationHelper.EnsureTranslateTransform(_sheet);
+            tasks.Add(OverlayHostAnimationHelper.CreateSlideAnimation(false, TranslateTransform.YProperty, GetClosedOffset()).RunAsync(_sheet));
+        }
+
+        if (tasks.Count > 0)
+        {
+            await Task.WhenAll(tasks);
+        }
+
+        if (version != _animationVersion || IsOpen)
+        {
+            return;
+        }
+
+        IsSheetVisible = false;
+        UpdateOverlayVisible();
+        Closed?.Invoke(this, new DateTimePickerClosedEventArgs(_closeReason));
+    }
+
+    private double GetClosedOffset()
+    {
+        return OverlayHostAnimationHelper.ResolveDistance(SheetHeight, 320);
     }
 
     private void RebuildColumns(DateTime value, bool raisePicked)

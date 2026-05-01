@@ -6,46 +6,36 @@
       <ControlTemplate>
         <Grid>
           <Border Name="PART_Overlay"
-                  Background="{DynamicResource Luna.Brush.Mask}"
-                  Opacity="0.6"
+                  Classes="bottom-sheet-overlay"
                   IsVisible="{TemplateBinding IsOverlayVisible}"
                   IsHitTestVisible="{TemplateBinding IsOverlayVisible}" />
 
-          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
-                  CornerRadius="12,12,0,0"
+          <Border Name="PART_Sheet"
+                  Classes="bottom-sheet-panel"
                   Height="{TemplateBinding SheetHeight}"
-                  Padding="16,12"
-                  HorizontalAlignment="Stretch"
-                  VerticalAlignment="Bottom"
-                  IsVisible="{TemplateBinding IsOpen}"
-                  TextElement.Foreground="{DynamicResource Luna.Brush.Text.Primary}">
+                  IsVisible="{TemplateBinding IsSheetVisible}"
+                  Opacity="0">
+            <Border.RenderTransform>
+              <TranslateTransform Y="0" />
+            </Border.RenderTransform>
             <Grid RowDefinitions="Auto,Auto,*"
                   RowSpacing="12">
-              <Grid ColumnDefinitions="Auto,*,Auto"
-                    ColumnSpacing="12">
+              <Grid Classes="bottom-sheet-header"
+                    ColumnDefinitions="Auto,*,Auto">
                 <Button Name="PART_CancelButton"
-                        Classes="text"
-                        Padding="0"
-                        Content="{TemplateBinding CancelText}"
-                        VerticalAlignment="Center" />
+                        Classes="text bottom-sheet-cancel"
+                        Content="{TemplateBinding CancelText}" />
                 <TextBlock Grid.Column="1"
+                           Classes="bottom-sheet-title"
                            Text="{TemplateBinding Title}"
-                           FontSize="{DynamicResource Luna.FontSize.Body.Large}"
-                           FontWeight="{DynamicResource Luna.FontWeight.Medium}"
-                           TextAlignment="Center"
-                           VerticalAlignment="Center"
                            IsVisible="{TemplateBinding HasTitle}" />
                 <Button Name="PART_ConfirmButton"
                         Grid.Column="2"
-                        Classes="text"
-                        Padding="0"
-                        Content="{TemplateBinding ConfirmText}"
-                        Foreground="{DynamicResource Luna.Brush.Brand}"
-                        VerticalAlignment="Center" />
+                        Classes="text bottom-sheet-confirm"
+                        Content="{TemplateBinding ConfirmText}" />
               </Grid>
 
-              <Border Height="1"
-                      Background="{DynamicResource Luna.Brush.Border.Divider}" />
+              <Border Classes="bottom-sheet-divider" />
 
               <ItemsControl ItemsSource="{TemplateBinding Columns}">
                 <ItemsControl.ItemsPanel>

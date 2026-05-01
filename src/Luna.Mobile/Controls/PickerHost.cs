@@ -3,9 +3,12 @@ using Avalonia.Controls;
 using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
+using Avalonia.Media;
+using Avalonia.Threading;
 using Avalonia.VisualTree;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Luna.Mobile.Controls;
 
@@ -16,22 +19,27 @@ namespace Luna.Mobile.Controls;
 /// 通常每个页面放置一个实例；静态入口 <see cref="Picker"/> 会使用最近附加到可视树的 <see cref="Current"/>。
 /// </remarks>
 [TemplatePart(OverlayPartName, typeof(Border))]
+[TemplatePart(SheetPartName, typeof(Border))]
 [TemplatePart(CancelButtonPartName, typeof(Button))]
 [TemplatePart(ConfirmButtonPartName, typeof(Button))]
 public sealed class PickerHost : TemplatedControl
 {
     private const string OverlayPartName = "PART_Overlay";
+    private const string SheetPartName = "PART_Sheet";
     private const string CancelButtonPartName = "PART_CancelButton";
     private const string ConfirmButtonPartName = "PART_ConfirmButton";
 
     private static PickerHost? _current;
 
     private Border? _overlay;
+    private Border? _sheet;
     private Button? _cancelButton;
     private Button? _confirmButton;
     private PickerCloseReason _closeReason = PickerCloseReason.Unknown;
     private bool _isOverlayVisible;
+    private bool _isSheetVisible;
     private bool _hasTitle;
+    private int _animationVersion;
 
     /// <summary>
     /// 获取当前附加到可视树的选择器宿主实例。
@@ -67,6 +75,12 @@ public sealed class PickerHost : TemplatedControl
             nameof(IsOverlayVisible),
             o => o.IsOverlayVisible);
 
+    /// <inheritdoc cref="IsSheetVisible" />
+    public static readonly DirectProperty<PickerHost, bool> IsSheetVisibleProperty =
+        AvaloniaProperty.RegisterDirect<PickerHost, bool>(
+            nameof(IsSheetVisible),
+            o => o.IsSheetVisible);
+
     /// <inheritdoc cref="Title" />
     public static readonly StyledProperty<string?> TitleProperty =
         AvaloniaProperty.Register<PickerHost, string?>(nameof(Title));
@@ -95,7 +109,10 @@ public sealed class PickerHost : TemplatedControl
 
     static PickerHost()
     {
-        IsOpenProperty.Changed.AddClassHandler<PickerHost>((control, _) => control.UpdateOverlayVisible());
+        IsOpenProperty.Changed.AddClassHandler<PickerHost>((control, args) =>
+        {
+            control.HandleIsOpenChanged(args.GetNewValue<bool>());
+        });
         TitleProperty.Changed.AddClassHandler<PickerHost>((control, args) =>
         {
             control.HasTitle = !string.IsNullOrWhiteSpace(args.GetNewValue<string?>());
@@ -108,6 +125,8 @@ public sealed class PickerHost : TemplatedControl
     public PickerHost()
     {
         HasTitle = !string.IsNullOrWhiteSpace(Title);
+        IsSheetVisible = IsOpen;
+        UpdateOverlayVisible();
     }
 
     /// <summary>
@@ -135,6 +154,15 @@ public sealed class PickerHost : TemplatedControl
     {
         get => _isOverlayVisible;
         private set => SetAndRaise(IsOverlayVisibleProperty, ref _isOverlayVisible, value);
+    }
+
+    /// <summary>
+    /// 获取当前底部面板是否仍需保持渲染，用于承载开关动画。
+    /// </summary>
+    public bool IsSheetVisible
+    {
+        get => _isSheetVisible;
+        private set => SetAndRaise(IsSheetVisibleProperty, ref _isSheetVisible, value);
     }
 
     /// <summary>
@@ -205,7 +233,6 @@ public sealed class PickerHost : TemplatedControl
         CloseOnOverlayClick = options.CloseOnOverlayClick;
         SheetHeight = options.SheetHeight;
         IsOpen = true;
-        UpdateOverlayVisible();
     }
 
     /// <summary>
@@ -216,8 +243,6 @@ public sealed class PickerHost : TemplatedControl
     {
         _closeReason = reason;
         IsOpen = false;
-        UpdateOverlayVisible();
-        Closed?.Invoke(this, new PickerClosedEventArgs(reason));
     }
 
     /// <inheritdoc />
@@ -256,6 +281,7 @@ public sealed class PickerHost : TemplatedControl
         }
 
         _overlay = e.NameScope.Find<Border>(OverlayPartName);
+        _sheet = e.NameScope.Find<Border>(SheetPartName);
         _cancelButton = e.NameScope.Find<Button>(CancelButtonPartName);
         _confirmButton = e.NameScope.Find<Button>(ConfirmButtonPartName);
 
@@ -315,8 +341,106 @@ public sealed class PickerHost : TemplatedControl
         Close(PickerCloseReason.Confirm);
     }
 
+    private async void HandleIsOpenChanged(bool isOpen)
+    {
+        var version = ++_animationVersion;
+
+        if (isOpen)
+        {
+            IsSheetVisible = true;
+            UpdateOverlayVisible();
+            await Dispatcher.UIThread.InvokeAsync(() => { }, DispatcherPriority.Render);
+            await RunOpenAnimationAsync(version);
+            return;
+        }
+
+        if (!IsSheetVisible && !IsOverlayVisible)
+        {
+            return;
+        }
+
+        await RunCloseAnimationAsync(version);
+    }
+
     private void UpdateOverlayVisible()
     {
-        IsOverlayVisible = IsOpen;
+        IsOverlayVisible = IsOpen || IsSheetVisible;
+    }
+
+    private async Task RunOpenAnimationAsync(int version)
+    {
+        if (_sheet is null && _overlay is null)
+        {
+            return;
+        }
+
+        var tasks = new List<Task>(2);
+
+        if (_overlay is not null)
+        {
+            _overlay.Opacity = 0;
+            tasks.Add(OverlayHostAnimationHelper.CreateOpacityAnimation(true, 0.6d).RunAsync(_overlay));
+        }
+
+        if (_sheet is not null)
+        {
+            var transform = OverlayHostAnimationHelper.EnsureTranslateTransform(_sheet);
+            _sheet.Opacity = 0;
+            transform.Y = GetClosedOffset();
+            tasks.Add(OverlayHostAnimationHelper.CreateSlideAnimation(true, TranslateTransform.YProperty, GetClosedOffset()).RunAsync(_sheet));
+        }
+
+        if (tasks.Count > 0)
+        {
+            await Task.WhenAll(tasks);
+        }
+
+        if (version != _animationVersion || !IsOpen)
+        {
+            return;
+        }
+    }
+
+    private async Task RunCloseAnimationAsync(int version)
+    {
+        if (_sheet is null && _overlay is null)
+        {
+            IsSheetVisible = false;
+            UpdateOverlayVisible();
+            Closed?.Invoke(this, new PickerClosedEventArgs(_closeReason));
+            return;
+        }
+
+        var tasks = new List<Task>(2);
+
+        if (_overlay is not null)
+        {
+            tasks.Add(OverlayHostAnimationHelper.CreateOpacityAnimation(false, 0.6d).RunAsync(_overlay));
+        }
+
+        if (_sheet is not null)
+        {
+            OverlayHostAnimationHelper.EnsureTranslateTransform(_sheet);
+            tasks.Add(OverlayHostAnimationHelper.CreateSlideAnimation(false, TranslateTransform.YProperty, GetClosedOffset()).RunAsync(_sheet));
+        }
+
+        if (tasks.Count > 0)
+        {
+            await Task.WhenAll(tasks);
+        }
+
+        if (version != _animationVersion || IsOpen)
+        {
+            return;
+        }
+
+        IsSheetVisible = false;
+        UpdateOverlayVisible();
+        Closed?.Invoke(this, new PickerClosedEventArgs(_closeReason));
+    }
+
+    private double GetClosedOffset()
+    {
+        return OverlayHostAnimationHelper.ResolveDistance(SheetHeight, 320);
     }
 }

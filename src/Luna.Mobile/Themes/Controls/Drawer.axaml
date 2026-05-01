@@ -10,13 +10,18 @@
           <Border Name="PART_Overlay"
                   Background="{DynamicResource Luna.Brush.Mask}"
                   IsVisible="{TemplateBinding IsOverlayVisible}"
-                  IsHitTestVisible="{TemplateBinding IsOverlayVisible}" />
+                  IsHitTestVisible="{TemplateBinding IsOpen}"
+                  Opacity="0" />
           <Border Name="PART_Drawer"
                   Background="{DynamicResource Luna.Brush.Background.Container}"
                   Width="{TemplateBinding DrawerWidth}"
                   HorizontalAlignment="Right"
                   VerticalAlignment="Stretch"
-                  IsVisible="{TemplateBinding IsOpen}">
+                  IsVisible="{TemplateBinding IsDrawerVisible}"
+                  Opacity="0">
+            <Border.RenderTransform>
+              <TranslateTransform X="0" />
+            </Border.RenderTransform>
             <Grid RowDefinitions="Auto,*">
               <Grid Name="PART_Header"
                     ColumnDefinitions="*,Auto"

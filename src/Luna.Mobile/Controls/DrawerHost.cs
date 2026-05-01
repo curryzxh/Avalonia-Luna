@@ -1,10 +1,17 @@
 using Avalonia;
+using Avalonia.Animation;
+using Avalonia.Animation.Easings;
 using Avalonia.Controls;
 using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
+using Avalonia.Media;
+using Avalonia.Styling;
+using Avalonia.Threading;
 using Avalonia.VisualTree;
 using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Luna.Mobile.Controls;
 
@@ -15,19 +22,25 @@ namespace Luna.Mobile.Controls;
 /// 通常每个页面放置一个实例；静态入口 <see cref="Drawer"/> 会使用最近附加到可视树的 <see cref="Current"/>。
 /// </remarks>
 [TemplatePart(OverlayPartName, typeof(Border))]
+[TemplatePart(DrawerPartName, typeof(Border))]
 [TemplatePart(CloseButtonPartName, typeof(Button))]
 public sealed class DrawerHost : TemplatedControl
 {
     private const string OverlayPartName = "PART_Overlay";
+    private const string DrawerPartName = "PART_Drawer";
     private const string CloseButtonPartName = "PART_CloseButton";
 
     private static DrawerHost? _current;
 
     private Border? _overlay;
+    private Border? _drawer;
     private Button? _closeButton;
 
     private bool _isOverlayVisible;
+    private bool _isDrawerVisible;
     private bool _hasTitle;
+    private int _animationVersion;
+    private static readonly TimeSpan TransitionDuration = TimeSpan.FromMilliseconds(200);
 
     /// <summary>
     /// 获取当前附加到可视树的抽屉宿主实例。
@@ -72,6 +85,12 @@ public sealed class DrawerHost : TemplatedControl
             nameof(IsOverlayVisible),
             o => o.IsOverlayVisible);
 
+    /// <inheritdoc cref="IsDrawerVisible" />
+    public static readonly DirectProperty<DrawerHost, bool> IsDrawerVisibleProperty =
+        AvaloniaProperty.RegisterDirect<DrawerHost, bool>(
+            nameof(IsDrawerVisible),
+            o => o.IsDrawerVisible);
+
     /// <inheritdoc cref="HasTitle" />
     public static readonly DirectProperty<DrawerHost, bool> HasTitleProperty =
         AvaloniaProperty.RegisterDirect<DrawerHost, bool>(
@@ -82,8 +101,7 @@ public sealed class DrawerHost : TemplatedControl
     {
         IsOpenProperty.Changed.AddClassHandler<DrawerHost>((control, args) =>
         {
-            control.PseudoClasses.Set(":open", args.GetNewValue<bool>());
-            control.UpdateOverlayVisible();
+            control.HandleIsOpenChanged(args.GetNewValue<bool>());
         });
 
         ShowOverlayProperty.Changed.AddClassHandler<DrawerHost>((control, _) => control.UpdateOverlayVisible());
@@ -109,6 +127,7 @@ public sealed class DrawerHost : TemplatedControl
         HasTitle = !string.IsNullOrWhiteSpace(Title);
         PseudoClasses.Set(":left", Placement == DrawerPlacement.Left);
         PseudoClasses.Set(":right", Placement == DrawerPlacement.Right);
+        IsDrawerVisible = IsOpen;
         UpdateOverlayVisible();
     }
 
@@ -194,6 +213,15 @@ public sealed class DrawerHost : TemplatedControl
     }
 
     /// <summary>
+    /// 获取当前抽屉面板是否仍需保持渲染，用于承载开关动画。
+    /// </summary>
+    public bool IsDrawerVisible
+    {
+        get => _isDrawerVisible;
+        private set => SetAndRaise(IsDrawerVisibleProperty, ref _isDrawerVisible, value);
+    }
+
+    /// <summary>
     /// 获取当前是否存在标题。
     /// </summary>
     public bool HasTitle
@@ -231,7 +259,6 @@ public sealed class DrawerHost : TemplatedControl
     public void Close()
     {
         IsOpen = false;
-        Closed?.Invoke(this, EventArgs.Empty);
     }
 
     /// <inheritdoc />
@@ -266,6 +293,7 @@ public sealed class DrawerHost : TemplatedControl
         }
 
         _overlay = e.NameScope.Find<Border>(OverlayPartName);
+        _drawer = e.NameScope.Find<Border>(DrawerPartName);
         _closeButton = e.NameScope.Find<Button>(CloseButtonPartName);
 
         if (_overlay is not null)
@@ -293,8 +321,169 @@ public sealed class DrawerHost : TemplatedControl
         Close();
     }
 
+    private async void HandleIsOpenChanged(bool isOpen)
+    {
+        var version = ++_animationVersion;
+        PseudoClasses.Set(":open", isOpen);
+
+        if (isOpen)
+        {
+            IsDrawerVisible = true;
+            UpdateOverlayVisible();
+            await Dispatcher.UIThread.InvokeAsync(() => { }, DispatcherPriority.Render);
+            await RunOpenAnimationAsync(version);
+            return;
+        }
+
+        if (!IsDrawerVisible && !IsOverlayVisible)
+        {
+            return;
+        }
+
+        await RunCloseAnimationAsync(version);
+    }
+
     private void UpdateOverlayVisible()
     {
-        IsOverlayVisible = IsOpen && ShowOverlay;
+        IsOverlayVisible = ShowOverlay && (IsOpen || IsDrawerVisible);
+    }
+
+    private async Task RunOpenAnimationAsync(int version)
+    {
+        if (_drawer is null && _overlay is null)
+        {
+            return;
+        }
+
+        var tasks = new List<Task>(2);
+
+        if (_overlay is not null && ShowOverlay)
+        {
+            _overlay.Opacity = 0;
+            tasks.Add(CreateOpacityAnimation(true).RunAsync(_overlay));
+        }
+
+        if (_drawer is not null)
+        {
+            EnsureDrawerTransform();
+            _drawer.Opacity = 0;
+            _drawer.RenderTransform = new TranslateTransform { X = GetClosedOffset() };
+            tasks.Add(CreateDrawerAnimation(true).RunAsync(_drawer));
+        }
+
+        if (tasks.Count == 0)
+        {
+            return;
+        }
+
+        await Task.WhenAll(tasks);
+
+        if (version != _animationVersion || !IsOpen)
+        {
+            return;
+        }
+    }
+
+    private async Task RunCloseAnimationAsync(int version)
+    {
+        if (_drawer is null && _overlay is null)
+        {
+            IsDrawerVisible = false;
+            UpdateOverlayVisible();
+            Closed?.Invoke(this, EventArgs.Empty);
+            return;
+        }
+
+        var tasks = new List<Task>(2);
+
+        if (_overlay is not null && ShowOverlay)
+        {
+            tasks.Add(CreateOpacityAnimation(false).RunAsync(_overlay));
+        }
+
+        if (_drawer is not null)
+        {
+            EnsureDrawerTransform();
+            tasks.Add(CreateDrawerAnimation(false).RunAsync(_drawer));
+        }
+
+        if (tasks.Count > 0)
+        {
+            await Task.WhenAll(tasks);
+        }
+
+        if (version != _animationVersion || IsOpen)
+        {
+            return;
+        }
+
+        IsDrawerVisible = false;
+        UpdateOverlayVisible();
+        Closed?.Invoke(this, EventArgs.Empty);
+    }
+
+    private Animation CreateOpacityAnimation(bool appear)
+    {
+        var animation = new Animation
+        {
+            Duration = TransitionDuration,
+            FillMode = FillMode.Forward,
+        };
+
+        var from = new KeyFrame { Cue = new Cue(0d) };
+        from.Setters.Add(new Setter(OpacityProperty, appear ? 0d : 1d));
+        var to = new KeyFrame { Cue = new Cue(1d) };
+        to.Setters.Add(new Setter(OpacityProperty, appear ? 1d : 0d));
+
+        animation.Children.Add(from);
+        animation.Children.Add(to);
+        return animation;
+    }
+
+    private Animation CreateDrawerAnimation(bool appear)
+    {
+        var offset = GetClosedOffset();
+        var animation = new Animation
+        {
+            Duration = TransitionDuration,
+            FillMode = FillMode.Forward,
+            Easing = appear ? new CubicEaseOut() : new CubicEaseIn(),
+        };
+
+        var from = new KeyFrame { Cue = new Cue(0d) };
+        from.Setters.Add(new Setter(OpacityProperty, appear ? 0d : 1d));
+        from.Setters.Add(new Setter(TranslateTransform.XProperty, appear ? offset : 0d));
+
+        var to = new KeyFrame { Cue = new Cue(1d) };
+        to.Setters.Add(new Setter(OpacityProperty, appear ? 1d : 0d));
+        to.Setters.Add(new Setter(TranslateTransform.XProperty, appear ? 0d : offset));
+
+        animation.Children.Add(from);
+        animation.Children.Add(to);
+        return animation;
+    }
+
+    private double GetClosedOffset()
+    {
+        var width = DrawerWidth;
+        if (double.IsNaN(width) || width <= 0)
+        {
+            width = 280;
+        }
+
+        return Placement == DrawerPlacement.Left ? -width : width;
+    }
+
+    private void EnsureDrawerTransform()
+    {
+        if (_drawer is null)
+        {
+            return;
+        }
+
+        if (_drawer.RenderTransform is not TranslateTransform)
+        {
+            _drawer.RenderTransform = new TranslateTransform();
+        }
     }
 }

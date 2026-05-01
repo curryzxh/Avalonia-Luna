@@ -54,13 +54,13 @@
                   </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
-                  <DataTemplate>
+                  <DataTemplate x:DataType="controls:DateTimePickerColumn">
                     <ComboBox Width="92"
                               HorizontalAlignment="Stretch"
                               ItemsSource="{Binding Items}"
                               SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}">
                       <ComboBox.ItemTemplate>
-                        <DataTemplate>
+                        <DataTemplate x:DataType="controls:DateTimePickerColumnItem">
                           <TextBlock Text="{Binding Label}"
                                      TextAlignment="Center" />
                         </DataTemplate>

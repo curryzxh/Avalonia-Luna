@@ -101,6 +101,7 @@
                       <Grid Height="56"
                             ColumnDefinitions="*,36"
                             Margin="32,0,26,0"
+                            Background="Transparent"
                             Tag="{Binding Path}"
                             Tapped="OnCatalogItemTapped">
                         <Border Height="1"

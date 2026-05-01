@@ -1,0 +1,220 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="using:Luna.Mobile.Controls"
+             x:Class="Luna.Mobile.Sample.Views.OverlayDemoView">
+  <Grid>
+    <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
+      <StackPanel Spacing="24" Margin="0,0,0,28">
+        <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+          <Grid ColumnDefinitions="56,*,56" MinHeight="56">
+            <Button Classes="text"
+                    Content="‹"
+                    FontSize="34"
+                    Padding="0"
+                    Click="OnBackClick" />
+            <TextBlock Grid.Column="1"
+                       Text="Overlay 遮罩层"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center" />
+          </Grid>
+        </Border>
+
+        <StackPanel Margin="16,0" Spacing="8">
+          <TextBlock Text="Overlay 遮罩层"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Large}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+          <TextBlock Text="用于强调当前界面状态，可承载简单提示内容，也可以单独作为基础遮罩能力供其他弹层复用。"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                     TextWrapping="Wrap" />
+        </StackPanel>
+
+        <StackPanel Spacing="28">
+          <StackPanel Spacing="16">
+            <StackPanel Margin="16,0" Spacing="4">
+              <TextBlock Text="01 基础用法"
+                         FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                         FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+              <TextBlock Text="显示纯遮罩，并监听打开与关闭的生命周期事件。"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            </StackPanel>
+            <StackPanel Margin="16,0" Spacing="12">
+              <Button Classes="primary outline large"
+                      HorizontalAlignment="Stretch"
+                      Content="显示基础遮罩"
+                      Click="OnShowBasicOverlayClick" />
+              <TextBlock Name="LifecycleText"
+                         Text="最近事件：未触发"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            </StackPanel>
+          </StackPanel>
+
+          <StackPanel Spacing="16">
+            <StackPanel Margin="16,0" Spacing="4">
+              <TextBlock Text="02 承载内容"
+                         FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                         FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+              <TextBlock Text="遮罩中可以直接放置提示卡片、说明文本和操作按钮。"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            </StackPanel>
+            <StackPanel Margin="16,0" Spacing="16">
+              <Button Classes="primary outline large"
+                      HorizontalAlignment="Stretch"
+                      Content="显示带内容遮罩"
+                      Click="OnShowContentOverlayClick" />
+            </StackPanel>
+          </StackPanel>
+
+          <StackPanel Spacing="16">
+            <StackPanel Margin="16,0" Spacing="4">
+              <TextBlock Text="03 自定义背景"
+                         FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                         FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+              <TextBlock Text="通过自定义遮罩颜色可以表达不同语义或视觉层级。"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            </StackPanel>
+            <StackPanel Margin="16,0" Spacing="16">
+              <Button Classes="primary outline large"
+                      HorizontalAlignment="Stretch"
+                      Content="显示蓝色遮罩"
+                      Click="OnShowTintOverlayClick" />
+            </StackPanel>
+          </StackPanel>
+
+          <StackPanel Spacing="16">
+            <StackPanel Margin="16,0" Spacing="4">
+              <TextBlock Text="04 允许穿透"
+                         FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                         FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+              <TextBlock Text="关闭阻止穿透后，底层区域仍可继续点击和滚动，适合弱提示场景。"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            </StackPanel>
+            <Border Margin="16,0"
+                    Padding="16"
+                    Background="{DynamicResource Luna.Brush.Background.Container}"
+                    CornerRadius="16">
+              <Grid RowDefinitions="Auto,Auto,*"
+                    MinHeight="180">
+                <Button Classes="primary outline"
+                        HorizontalAlignment="Stretch"
+                        Content="切换局部穿透遮罩"
+                        Click="OnTogglePassThroughOverlayClick" />
+                <TextBlock Grid.Row="1"
+                           Margin="0,12,0,0"
+                           Text="点击下面按钮时，弱提示遮罩不会拦截输入。"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                <StackPanel Grid.Row="2"
+                            Margin="0,16,0,0"
+                            Spacing="12"
+                            VerticalAlignment="Center">
+                  <Button Classes="primary large"
+                          HorizontalAlignment="Stretch"
+                          Content="点击计数 +1"
+                          Click="OnPassThroughTargetClick" />
+                  <TextBlock Name="PassThroughCountText"
+                             Text="当前点击次数：0"
+                             FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                             Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+                </StackPanel>
+
+                <controls:Overlay Name="PassThroughOverlay"
+                                  Grid.RowSpan="3"
+                                  Visible="False"
+                                  Duration="0:0:0.2"
+                                  PreventScrollThrough="False"
+                                  OverlayBrush="#663B82F6">
+                  <Border Padding="12,8"
+                          Background="{DynamicResource Luna.Brush.Background.Container}"
+                          CornerRadius="999"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center">
+                    <TextBlock Text="当前为可穿透遮罩"
+                               FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                               Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+                  </Border>
+                </controls:Overlay>
+              </Grid>
+            </Border>
+          </StackPanel>
+        </StackPanel>
+      </StackPanel>
+    </ScrollViewer>
+
+    <controls:Overlay Name="BasicOverlay"
+                      Visible="False"
+                      Clicked="OnBasicOverlayClicked"
+                      Opening="OnBasicOverlayOpening"
+                      Opened="OnBasicOverlayOpened"
+                      Closing="OnBasicOverlayClosing"
+                      Closed="OnBasicOverlayClosed" />
+
+    <controls:Overlay Name="ContentOverlay"
+                      Visible="False"
+                      Clicked="OnContentOverlayClicked">
+      <Border Margin="24"
+              Padding="20"
+              MaxWidth="320"
+              Background="{DynamicResource Luna.Brush.Background.Container}"
+              CornerRadius="20">
+        <StackPanel Spacing="16">
+          <TextBlock Text="自定义浮层内容"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                     TextAlignment="Center" />
+          <TextBlock Text="Overlay 本身只负责渲染遮罩与容器，你可以在这里组合按钮、说明文案或其他任意 Avalonia 内容。"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                     TextWrapping="Wrap"
+                     TextAlignment="Center" />
+          <Button Classes="primary large"
+                  HorizontalAlignment="Stretch"
+                  Content="关闭"
+                  Click="OnCloseContentOverlayClick" />
+        </StackPanel>
+      </Border>
+    </controls:Overlay>
+
+    <controls:Overlay Name="TintOverlay"
+                      Visible="False"
+                      OverlayBrush="#804084FF"
+                      Clicked="OnTintOverlayClicked">
+      <Border Margin="24"
+              Padding="18"
+              MaxWidth="300"
+              Background="{DynamicResource Luna.Brush.Background.Container}"
+              CornerRadius="20">
+        <StackPanel Spacing="12">
+          <TextBlock Text="蓝色语义遮罩"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                     TextAlignment="Center" />
+          <TextBlock Text="可通过 OverlayBrush 自定义颜色与透明度，用于区分提醒、引导或品牌化视觉场景。"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                     TextWrapping="Wrap"
+                     TextAlignment="Center" />
+          <Button Classes="primary outline large"
+                  HorizontalAlignment="Stretch"
+                  Content="知道了"
+                  Click="OnCloseTintOverlayClick" />
+        </StackPanel>
+      </Border>
+    </controls:Overlay>
+  </Grid>
+</UserControl>

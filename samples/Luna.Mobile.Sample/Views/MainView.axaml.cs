@@ -122,14 +122,19 @@ public partial class MainView : UserControl
             "/badge" => AttachBackHandler(new BadgeDemoView()),
             "/cell" => AttachBackHandler(new CellDemoView()),
             "/checkbox" => AttachBackHandler(new CheckBoxDemoView()),
+            "/datetimepicker" => AttachBackHandler(new DateTimePickerDemoView()),
             "/drawer" => AttachBackHandler(new DrawerDemoView()),
+            "/popover" => AttachBackHandler(new PopoverDemoView()),
             "/divider" => AttachBackHandler(new DividerDemoView()),
             "/empty" => AttachBackHandler(new EmptyDemoView()),
+            "/imageviewer" => AttachBackHandler(new ImageViewerDemoView()),
+            "/indexes" => AttachBackHandler(new IndexesDemoView()),
             "/input" => AttachBackHandler(new InputDemoView()),
             "/dialog" => AttachBackHandler(new DialogDemoView()),
             "/loading" => AttachBackHandler(new LoadingDemoView()),
             "/message" => AttachBackHandler(new MessageDemoView()),
             "/noticebar" => AttachBackHandler(new NoticeBarDemoView()),
+            "/overlay" => AttachBackHandler(new OverlayDemoView()),
             "/picker" => AttachBackHandler(new PickerDemoView()),
             "/radio" => AttachBackHandler(new RadioDemoView()),
             "/rate" => AttachBackHandler(new RateDemoView()),
@@ -178,6 +183,12 @@ public partial class MainView : UserControl
         return view;
     }
 
+    private UserControl AttachBackHandler(DateTimePickerDemoView view)
+    {
+        view.BackRequested += (_, _) => Content = _catalogContent;
+        return view;
+    }
+
     private UserControl AttachBackHandler(DividerDemoView view)
     {
         view.BackRequested += (_, _) => Content = _catalogContent;
@@ -185,6 +196,12 @@ public partial class MainView : UserControl
     }
 
     private UserControl AttachBackHandler(EmptyDemoView view)
+    {
+        view.BackRequested += (_, _) => Content = _catalogContent;
+        return view;
+    }
+
+    private UserControl AttachBackHandler(IndexesDemoView view)
     {
         view.BackRequested += (_, _) => Content = _catalogContent;
         return view;
@@ -215,6 +232,12 @@ public partial class MainView : UserControl
     }
 
     private UserControl AttachBackHandler(NoticeBarDemoView view)
+    {
+        view.BackRequested += (_, _) => Content = _catalogContent;
+        return view;
+    }
+
+    private UserControl AttachBackHandler(OverlayDemoView view)
     {
         view.BackRequested += (_, _) => Content = _catalogContent;
         return view;
@@ -269,6 +292,18 @@ public partial class MainView : UserControl
     }
 
     private UserControl AttachBackHandler(DrawerDemoView view)
+    {
+        view.BackRequested += (_, _) => Content = _catalogContent;
+        return view;
+    }
+
+    private UserControl AttachBackHandler(PopoverDemoView view)
+    {
+        view.BackRequested += (_, _) => Content = _catalogContent;
+        return view;
+    }
+
+    private UserControl AttachBackHandler(ImageViewerDemoView view)
     {
         view.BackRequested += (_, _) => Content = _catalogContent;
         return view;

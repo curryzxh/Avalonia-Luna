@@ -1,0 +1,35 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Luna.Mobile.Controls">
+  <Style Selector="controls|Overlay">
+    <Setter Property="HorizontalAlignment" Value="Stretch" />
+    <Setter Property="VerticalAlignment" Value="Stretch" />
+    <Setter Property="HorizontalContentAlignment" Value="Center" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="OverlayBrush" Value="{DynamicResource Luna.Brush.Mask}" />
+    <Setter Property="ZIndex" Value="1000" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid ClipToBounds="True"
+              IsVisible="{TemplateBinding IsRendered}"
+              Opacity="{TemplateBinding OverlayOpacity}">
+          <Grid.Transitions>
+            <Transitions>
+              <DoubleTransition Property="Opacity"
+                                Duration="{Binding Duration, RelativeSource={RelativeSource TemplatedParent}}" />
+            </Transitions>
+          </Grid.Transitions>
+
+          <Border Name="PART_Backdrop"
+                  Background="{TemplateBinding OverlayBrush}"
+                  IsHitTestVisible="{TemplateBinding IsBackdropInteractive}" />
+
+          <ContentPresenter Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>

@@ -1,0 +1,308 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="using:Luna.Mobile.Controls"
+             x:Class="Luna.Mobile.Sample.Views.PopoverDemoView">
+  <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
+    <StackPanel Spacing="24" Margin="0,0,0,28">
+      <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+        <Grid ColumnDefinitions="56,*,56" MinHeight="56">
+          <Button Classes="text"
+                  Content="‹"
+                  FontSize="34"
+                  Padding="0"
+                  Click="OnBackClick" />
+          <TextBlock Grid.Column="1"
+                     Text="Popover 弹出气泡"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center" />
+        </Grid>
+      </Border>
+
+      <StackPanel Margin="16,0" Spacing="8">
+        <TextBlock Text="Popover 弹出气泡"
+                   FontSize="{DynamicResource Luna.FontSize.Title.Large}"
+                   FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+        <TextBlock Text="用于文字提示的气泡框。"
+                   FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                   TextWrapping="Wrap" />
+      </StackPanel>
+
+      <StackPanel Spacing="28">
+        <StackPanel Spacing="16">
+          <TextBlock Text="01 组件类型"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+
+          <StackPanel Spacing="12" Margin="16,0">
+            <TextBlock Text="带箭头的弹出气泡"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                    CornerRadius="{DynamicResource Luna.Radius.Default}"
+                    Padding="16,24">
+              <controls:Popover Placement="Top"
+                                Theme="Dark"
+                                PopupContent="弹出气泡内容">
+                <Button Classes="primary outline large"
+                        HorizontalAlignment="Center"
+                        Content="带箭头" />
+              </controls:Popover>
+            </Border>
+
+            <TextBlock Text="不带箭头的弹出气泡"
+                       Margin="0,12,0,0"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                    CornerRadius="{DynamicResource Luna.Radius.Default}"
+                    Padding="16,24">
+              <controls:Popover Placement="Top"
+                                Theme="Dark"
+                                ShowArrow="False"
+                                PopupContent="弹出气泡内容">
+                <Button Classes="primary outline large"
+                        HorizontalAlignment="Center"
+                        Content="不带箭头" />
+              </controls:Popover>
+            </Border>
+
+            <TextBlock Text="自定义内容弹出气泡"
+                       Margin="0,12,0,0"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                    CornerRadius="{DynamicResource Luna.Radius.Default}"
+                    Padding="16,24">
+              <controls:Popover Placement="Top"
+                                Theme="Dark">
+                <controls:Popover.PopupContent>
+                  <StackPanel Spacing="0">
+                    <TextBlock Text="选项1" Padding="12" />
+                    <Border Height="1" Background="#44FFFFFF" />
+                    <TextBlock Text="选项2" Padding="12" />
+                    <Border Height="1" Background="#44FFFFFF" />
+                    <TextBlock Text="选项3" Padding="12" />
+                  </StackPanel>
+                </controls:Popover.PopupContent>
+                <Button Classes="primary outline large"
+                        HorizontalAlignment="Center"
+                        Content="自定义内容" />
+              </controls:Popover>
+            </Border>
+          </StackPanel>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="02 组件样式"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+
+          <StackPanel Spacing="12" Margin="16,0">
+            <UniformGrid Columns="3" Rows="2">
+              <controls:Popover Placement="Top"
+                                Theme="Dark"
+                                PopupContent="弹出气泡内容"
+                                Margin="0,0,8,16">
+                <Button Classes="primary outline large"
+                        HorizontalAlignment="Stretch"
+                        Content="深色" />
+              </controls:Popover>
+
+              <controls:Popover Placement="Top"
+                                Theme="Light"
+                                PopupContent="弹出气泡内容"
+                                Margin="0,0,8,16">
+                <Button Classes="primary outline large"
+                        HorizontalAlignment="Stretch"
+                        Content="浅色" />
+              </controls:Popover>
+
+              <controls:Popover Placement="Top"
+                                Theme="Brand"
+                                PopupContent="弹出气泡内容"
+                                Margin="0,0,0,16">
+                <Button Classes="primary outline large"
+                        HorizontalAlignment="Stretch"
+                        Content="品牌色" />
+              </controls:Popover>
+
+              <controls:Popover Placement="Top"
+                                Theme="Success"
+                                PopupContent="弹出气泡内容"
+                                Margin="0,0,8,0">
+                <Button Classes="primary outline large"
+                        HorizontalAlignment="Stretch"
+                        Content="成功色" />
+              </controls:Popover>
+
+              <controls:Popover Placement="Top"
+                                Theme="Warning"
+                                PopupContent="弹出气泡内容"
+                                Margin="0,0,8,0">
+                <Button Classes="primary outline large"
+                        HorizontalAlignment="Stretch"
+                        Content="警告色" />
+              </controls:Popover>
+
+              <controls:Popover Placement="Top"
+                                Theme="Error"
+                                PopupContent="弹出气泡内容">
+                <Button Classes="primary outline large"
+                        HorizontalAlignment="Stretch"
+                        Content="错误色" />
+              </controls:Popover>
+            </UniformGrid>
+          </StackPanel>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="03 弹出位置"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+
+          <StackPanel Spacing="12" Margin="16,0">
+            <TextBlock Text="顶部弹出气泡"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <UniformGrid Columns="3" Margin="0,0,0,8">
+              <controls:Popover Placement="TopLeft"
+                                Theme="Dark"
+                                PopupContent="弹出气泡内容"
+                                Margin="0,0,8,0">
+                <Button Classes="primary outline large"
+                        HorizontalAlignment="Stretch"
+                        Content="顶部左" />
+              </controls:Popover>
+
+              <controls:Popover Placement="Top"
+                                Theme="Dark"
+                                PopupContent="弹出气泡内容"
+                                Margin="0,0,8,0">
+                <Button Classes="primary outline large"
+                        HorizontalAlignment="Stretch"
+                        Content="顶部中" />
+              </controls:Popover>
+
+              <controls:Popover Placement="TopRight"
+                                Theme="Dark"
+                                PopupContent="弹出气泡内容">
+                <Button Classes="primary outline large"
+                        HorizontalAlignment="Stretch"
+                        Content="顶部右" />
+              </controls:Popover>
+            </UniformGrid>
+
+            <TextBlock Text="底部弹出气泡"
+                       Margin="0,12,0,0"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <UniformGrid Columns="3" Margin="0,0,0,8">
+              <controls:Popover Placement="BottomLeft"
+                                Theme="Dark"
+                                PopupContent="弹出气泡内容"
+                                Margin="0,0,8,0">
+                <Button Classes="primary outline large"
+                        HorizontalAlignment="Stretch"
+                        Content="底部左" />
+              </controls:Popover>
+
+              <controls:Popover Placement="Bottom"
+                                Theme="Dark"
+                                PopupContent="弹出气泡内容"
+                                Margin="0,0,8,0">
+                <Button Classes="primary outline large"
+                        HorizontalAlignment="Stretch"
+                        Content="底部中" />
+              </controls:Popover>
+
+              <controls:Popover Placement="BottomRight"
+                                Theme="Dark"
+                                PopupContent="弹出气泡内容">
+                <Button Classes="primary outline large"
+                        HorizontalAlignment="Stretch"
+                        Content="底部右" />
+              </controls:Popover>
+            </UniformGrid>
+
+            <TextBlock Text="右侧弹出气泡"
+                       Margin="0,12,0,0"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <StackPanel Spacing="8">
+              <controls:Popover Placement="RightTop"
+                                Theme="Dark"
+                                PopupContent="气泡内容"
+                                HorizontalAlignment="Stretch">
+                <Button Classes="primary outline large"
+                        HorizontalAlignment="Stretch"
+                        Content="右侧上" />
+              </controls:Popover>
+
+              <controls:Popover Placement="Right"
+                                Theme="Dark"
+                                PopupContent="气泡内容"
+                                HorizontalAlignment="Stretch">
+                <Button Classes="primary outline large"
+                        HorizontalAlignment="Stretch"
+                        Content="右侧中" />
+              </controls:Popover>
+
+              <controls:Popover Placement="RightBottom"
+                                Theme="Dark"
+                                PopupContent="气泡内容"
+                                HorizontalAlignment="Stretch">
+                <Button Classes="primary outline large"
+                        HorizontalAlignment="Stretch"
+                        Content="右侧下" />
+              </controls:Popover>
+            </StackPanel>
+
+            <TextBlock Text="左侧弹出气泡"
+                       Margin="0,12,0,0"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <StackPanel Spacing="8" HorizontalAlignment="Right">
+              <controls:Popover Placement="LeftTop"
+                                Theme="Dark"
+                                PopupContent="气泡内容"
+                                HorizontalAlignment="Stretch">
+                <Button Classes="primary outline large"
+                        HorizontalAlignment="Stretch"
+                        Content="左侧上" />
+              </controls:Popover>
+
+              <controls:Popover Placement="Left"
+                                Theme="Dark"
+                                PopupContent="气泡内容"
+                                HorizontalAlignment="Stretch">
+                <Button Classes="primary outline large"
+                        HorizontalAlignment="Stretch"
+                        Content="左侧中" />
+              </controls:Popover>
+
+              <controls:Popover Placement="LeftBottom"
+                                Theme="Dark"
+                                PopupContent="气泡内容"
+                                HorizontalAlignment="Stretch">
+                <Button Classes="primary outline large"
+                        HorizontalAlignment="Stretch"
+                        Content="左侧下" />
+              </controls:Popover>
+            </StackPanel>
+          </StackPanel>
+        </StackPanel>
+      </StackPanel>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

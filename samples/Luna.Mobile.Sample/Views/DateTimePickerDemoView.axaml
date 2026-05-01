@@ -1,0 +1,109 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="using:Luna.Mobile.Controls"
+             x:Class="Luna.Mobile.Sample.Views.DateTimePickerDemoView">
+  <Grid>
+    <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
+      <StackPanel Spacing="24" Margin="0,0,0,28">
+        <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+          <Grid ColumnDefinitions="56,*,56" MinHeight="56">
+            <Button Classes="text"
+                    Content="‹"
+                    FontSize="34"
+                    Padding="0"
+                    Click="OnBackClick" />
+            <TextBlock Grid.Column="1"
+                       Text="DateTimePicker 时间选择器"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center" />
+          </Grid>
+        </Border>
+
+        <StackPanel Margin="16,0" Spacing="8">
+          <TextBlock Text="DateTimePicker 时间选择器"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Large}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+          <TextBlock Text="用于日期和时间的分列联动选择，支持日期、时间粒度切换、范围限制和星期展示。"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                     TextWrapping="Wrap" />
+        </StackPanel>
+
+        <StackPanel Spacing="28">
+          <StackPanel Spacing="16">
+            <StackPanel Margin="16,0" Spacing="4">
+              <TextBlock Text="01 基础类型"
+                         FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                         FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+              <TextBlock Text="支持纯日期和精确到分钟的日期时间选择。"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            </StackPanel>
+            <StackPanel Margin="16,0" Spacing="16">
+              <Button Classes="primary outline large"
+                      HorizontalAlignment="Stretch"
+                      Content="选择日期"
+                      Click="OnDatePickerClick" />
+              <Button Classes="primary outline large"
+                      HorizontalAlignment="Stretch"
+                      Content="选择日期时间（到分钟）"
+                      Click="OnMinutePickerClick" />
+            </StackPanel>
+          </StackPanel>
+
+          <StackPanel Spacing="16">
+            <StackPanel Margin="16,0" Spacing="4">
+              <TextBlock Text="02 组件状态"
+                         FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                         FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+              <TextBlock Text="通过范围约束和步进设置，控制可选值集合。"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            </StackPanel>
+            <StackPanel Margin="16,0" Spacing="16">
+              <Button Classes="primary outline large"
+                      HorizontalAlignment="Stretch"
+                      Content="限制最近 7 天"
+                      Click="OnRangePickerClick" />
+              <Button Classes="primary outline large"
+                      HorizontalAlignment="Stretch"
+                      Content="分钟 5 分钟步进"
+                      Click="OnStepPickerClick" />
+            </StackPanel>
+          </StackPanel>
+
+          <StackPanel Spacing="16">
+            <StackPanel Margin="16,0" Spacing="4">
+              <TextBlock Text="03 组件样式"
+                         FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                         FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+              <TextBlock Text="支持标题、星期展示和自定义格式化输出。"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            </StackPanel>
+            <StackPanel Margin="16,0" Spacing="16">
+              <Button Classes="primary outline large"
+                      HorizontalAlignment="Stretch"
+                      Content="显示星期"
+                      Click="OnWeekPickerClick" />
+              <Button Classes="primary outline large"
+                      HorizontalAlignment="Stretch"
+                      Content="自定义格式"
+                      Click="OnFormatPickerClick" />
+            </StackPanel>
+          </StackPanel>
+        </StackPanel>
+      </StackPanel>
+    </ScrollViewer>
+
+    <controls:DateTimePickerHost Name="DateTimePickerHost" />
+    <controls:ToastHost Name="ToastHost" />
+  </Grid>
+</UserControl>

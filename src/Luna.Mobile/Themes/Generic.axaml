@@ -8,6 +8,8 @@
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/RadioButton.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/SearchBar.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Stepper.axaml" />
+  <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/DateTimePicker.axaml" />
+  <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Indexes.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Badge.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Avatar.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Cell.axaml" />
@@ -20,9 +22,12 @@
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Loading.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Message.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/NoticeBar.axaml" />
+  <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Overlay.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Picker.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Rate.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Toast.axaml" />
+  <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Popover.axaml" />
+  <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/ImageViewer.axaml" />
 
   <Design.PreviewWith>
     <Border Padding="24">

@@ -1,0 +1,104 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="using:Luna.Mobile.Controls"
+             x:Class="Luna.Mobile.Sample.Views.ImageViewerDemoView">
+  <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
+    <StackPanel Spacing="24" Margin="0,0,0,28">
+      <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+        <Grid ColumnDefinitions="56,*,56" MinHeight="56">
+          <Button Classes="text"
+                  Content="‹"
+                  FontSize="34"
+                  Padding="0"
+                  Click="OnBackClick" />
+          <TextBlock Grid.Column="1"
+                     Text="ImageViewer 图片预览"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center" />
+        </Grid>
+      </Border>
+
+      <StackPanel Margin="16,0" Spacing="8">
+        <TextBlock Text="ImageViewer 图片预览"
+                   FontSize="{DynamicResource Luna.FontSize.Title.Large}"
+                   FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+        <TextBlock Text="用于图片内容的缩略展示与查看。"
+                   FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                   TextWrapping="Wrap" />
+      </StackPanel>
+
+      <StackPanel Spacing="28">
+        <StackPanel Spacing="12">
+          <TextBlock Text="01 组件类型"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+          <TextBlock Text="图片预览类型"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                  CornerRadius="{DynamicResource Luna.Radius.Default}"
+                  Padding="16,24"
+                  Margin="16,0">
+            <Button Classes="primary outline large"
+                    HorizontalAlignment="Stretch"
+                    Content="基础图片预览"
+                    Click="OnBasePreviewClick" />
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="12">
+          <TextBlock Text="02 组件类型"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+          <TextBlock Text="图片预览类型，可设置垂直对齐方式"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                  CornerRadius="{DynamicResource Luna.Radius.Default}"
+                  Padding="16,24"
+                  Margin="16,0">
+            <Button Classes="primary outline large"
+                    HorizontalAlignment="Stretch"
+                    Content="基础图片预览 + 对齐方式"
+                    Click="OnAlignPreviewClick" />
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="12">
+          <TextBlock Text="03 组件类型"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+          <TextBlock Text="带操作图片预览"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                  CornerRadius="{DynamicResource Luna.Radius.Default}"
+                  Padding="16,24"
+                  Margin="16,0">
+            <Button Classes="primary outline large"
+                    HorizontalAlignment="Stretch"
+                    Content="带操作图片预览"
+                    Click="OnOperationPreviewClick" />
+          </Border>
+        </StackPanel>
+      </StackPanel>
+
+      <controls:ImageViewer Name="PART_Viewer" />
+
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

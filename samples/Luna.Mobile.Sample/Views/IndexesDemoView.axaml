@@ -1,0 +1,206 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="using:Luna.Mobile.Controls"
+             x:Class="Luna.Mobile.Sample.Views.IndexesDemoView">
+  <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
+    <StackPanel Spacing="24" Margin="0,0,0,28">
+      <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+        <Grid ColumnDefinitions="56,*,56" MinHeight="56">
+          <Button Classes="text"
+                  Content="‹"
+                  FontSize="34"
+                  Padding="0"
+                  Click="OnBackClick" />
+          <TextBlock Grid.Column="1"
+                     Text="Indexes 索引"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center" />
+        </Grid>
+      </Border>
+
+      <StackPanel Margin="16,0" Spacing="8">
+        <TextBlock Text="Indexes 索引"
+                   FontSize="{DynamicResource Luna.FontSize.Title.Large}"
+                   FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+        <TextBlock Text="用于页面中信息快速检索，可以根据右侧目录快速找到所需内容。"
+                   FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                   TextWrapping="Wrap" />
+      </StackPanel>
+
+      <StackPanel Spacing="28">
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="01 基础用法"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="右侧索引栏支持点击跳转，滚动时自动联动高亮当前分组。"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                       TextWrapping="Wrap" />
+          </StackPanel>
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                  Padding="12"
+                  Height="520">
+            <controls:Indexes Sticky="True">
+              <StackPanel Spacing="0">
+                <controls:IndexesAnchor Index="A" />
+                <controls:CellGroup>
+                  <StackPanel>
+                    <controls:Cell Title="阿坝" />
+                    <controls:Cell Title="阿拉善" />
+                    <controls:Cell Title="阿里" />
+                    <controls:Cell Title="安康" />
+                    <controls:Cell Title="安庆" />
+                  </StackPanel>
+                </controls:CellGroup>
+
+                <controls:IndexesAnchor Index="B" />
+                <controls:CellGroup>
+                  <StackPanel>
+                    <controls:Cell Title="北京" />
+                    <controls:Cell Title="白银" />
+                    <controls:Cell Title="保定" />
+                    <controls:Cell Title="宝鸡" />
+                    <controls:Cell Title="包头" />
+                  </StackPanel>
+                </controls:CellGroup>
+
+                <controls:IndexesAnchor Index="C" />
+                <controls:CellGroup>
+                  <StackPanel>
+                    <controls:Cell Title="重庆" />
+                    <controls:Cell Title="成都" />
+                    <controls:Cell Title="长沙" />
+                    <controls:Cell Title="长春" />
+                    <controls:Cell Title="沧州" />
+                  </StackPanel>
+                </controls:CellGroup>
+
+                <controls:IndexesAnchor Index="D" />
+                <controls:CellGroup>
+                  <StackPanel>
+                    <controls:Cell Title="大连" />
+                    <controls:Cell Title="东莞" />
+                    <controls:Cell Title="大理" />
+                    <controls:Cell Title="大庆" />
+                    <controls:Cell Title="德州" />
+                  </StackPanel>
+                </controls:CellGroup>
+
+                <controls:IndexesAnchor Index="E" />
+                <controls:CellGroup>
+                  <StackPanel>
+                    <controls:Cell Title="鄂尔多斯" />
+                    <controls:Cell Title="恩施" />
+                    <controls:Cell Title="鄂州" />
+                  </StackPanel>
+                </controls:CellGroup>
+
+                <controls:IndexesAnchor Index="F" />
+                <controls:CellGroup>
+                  <StackPanel>
+                    <controls:Cell Title="福州" />
+                    <controls:Cell Title="防城港" />
+                    <controls:Cell Title="佛山" />
+                    <controls:Cell Title="阜阳" />
+                  </StackPanel>
+                </controls:CellGroup>
+
+                <controls:IndexesAnchor Index="G" />
+                <controls:CellGroup>
+                  <StackPanel>
+                    <controls:Cell Title="广州" />
+                    <controls:Cell Title="桂林" />
+                    <controls:Cell Title="贵阳" />
+                    <controls:Cell Title="赣州" />
+                  </StackPanel>
+                </controls:CellGroup>
+
+                <controls:IndexesAnchor Index="J" />
+                <controls:CellGroup>
+                  <StackPanel>
+                    <controls:Cell Title="揭阳" />
+                    <controls:Cell Title="吉林" />
+                    <controls:Cell Title="嘉兴" />
+                    <controls:Cell Title="济南" />
+                  </StackPanel>
+                </controls:CellGroup>
+
+                <controls:IndexesAnchor Index="K" />
+                <controls:CellGroup>
+                  <StackPanel>
+                    <controls:Cell Title="昆明" />
+                    <controls:Cell Title="开封" />
+                    <controls:Cell Title="康定" />
+                    <controls:Cell Title="喀什" />
+                  </StackPanel>
+                </controls:CellGroup>
+              </StackPanel>
+            </controls:Indexes>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="02 组件状态"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="关闭吸顶后，分组标题跟随内容滚动。"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                  Padding="12"
+                  Height="360">
+            <controls:Indexes Sticky="False">
+              <StackPanel Spacing="0">
+                <controls:IndexesAnchor Index="L" />
+                <controls:CellGroup>
+                  <StackPanel>
+                    <controls:Cell Title="廊坊" />
+                    <controls:Cell Title="兰州" />
+                    <controls:Cell Title="拉萨" />
+                  </StackPanel>
+                </controls:CellGroup>
+
+                <controls:IndexesAnchor Index="M" />
+                <controls:CellGroup>
+                  <StackPanel>
+                    <controls:Cell Title="绵阳" />
+                    <controls:Cell Title="茂名" />
+                    <controls:Cell Title="眉山" />
+                  </StackPanel>
+                </controls:CellGroup>
+
+                <controls:IndexesAnchor Index="N" />
+                <controls:CellGroup>
+                  <StackPanel>
+                    <controls:Cell Title="南京" />
+                    <controls:Cell Title="南宁" />
+                    <controls:Cell Title="南昌" />
+                  </StackPanel>
+                </controls:CellGroup>
+
+                <controls:IndexesAnchor Index="S" />
+                <controls:CellGroup>
+                  <StackPanel>
+                    <controls:Cell Title="上海" />
+                    <controls:Cell Title="深圳" />
+                    <controls:Cell Title="沈阳" />
+                  </StackPanel>
+                </controls:CellGroup>
+              </StackPanel>
+            </controls:Indexes>
+          </Border>
+        </StackPanel>
+      </StackPanel>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

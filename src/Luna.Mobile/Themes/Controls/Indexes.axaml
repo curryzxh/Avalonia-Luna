@@ -1,0 +1,97 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Luna.Mobile.Controls">
+  <Style Selector="controls|Indexes">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid ColumnDefinitions="*,32">
+          <Border Grid.Column="0"
+                  Background="{DynamicResource Luna.Brush.Background.Container}"
+                  CornerRadius="{DynamicResource Luna.Radius.Default}">
+            <Grid>
+              <ScrollViewer Name="PART_ScrollViewer"
+                            Padding="0,0,8,0"
+                            VerticalScrollBarVisibility="Hidden"
+                            HorizontalScrollBarVisibility="Disabled">
+                <ContentPresenter Content="{TemplateBinding Content}"
+                                  ContentTemplate="{TemplateBinding ContentTemplate}" />
+              </ScrollViewer>
+
+              <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                      Padding="16,10,16,10"
+                      IsHitTestVisible="False"
+                      IsVisible="{TemplateBinding ShowStickyHeader}"
+                      VerticalAlignment="Top">
+                <TextBlock Text="{TemplateBinding StickyHeaderText}"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                           FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                           Foreground="{DynamicResource Luna.Brush.Brand}" />
+              </Border>
+            </Grid>
+          </Border>
+
+          <Border Grid.Column="1"
+                  Background="Transparent"
+                  VerticalAlignment="Stretch">
+            <ItemsControl Name="PART_Sidebar"
+                          ItemsSource="{TemplateBinding ResolvedIndexes}"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center">
+              <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                  <StackPanel Spacing="4" />
+                </ItemsPanelTemplate>
+              </ItemsControl.ItemsPanel>
+              <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                  <Button Classes="text indexes-sidebar-item"
+                          Width="20"
+                          Height="20"
+                          Padding="0"
+                          MinWidth="20"
+                          MinHeight="20"
+                          Tag="{Binding .}"
+                          Content="{Binding .}" />
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+          </Border>
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|Indexes /template/ Button.indexes-sidebar-item">
+    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Small}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Secondary}" />
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Circle}" />
+  </Style>
+
+  <Style Selector="controls|Indexes /template/ Button.indexes-sidebar-item.active">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Anti}" />
+  </Style>
+
+  <Style Selector="controls|IndexesAnchor">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border Background="{DynamicResource Luna.Brush.Background.SecondaryContainer}"
+                Padding="16,10,16,10">
+          <TextBlock Text="{TemplateBinding Index}"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+        </Border>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|IndexesAnchor:current /template/ Border">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
+  </Style>
+
+  <Style Selector="controls|IndexesAnchor:current /template/ TextBlock">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+</Styles>

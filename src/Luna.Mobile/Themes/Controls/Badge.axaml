@@ -22,8 +22,8 @@
                   VerticalAlignment="{TemplateBinding BadgeVerticalAlignment}"
                   IsVisible="{TemplateBinding IsBadgeVisible}">
             <Border.RenderTransform>
-              <TranslateTransform X="{Binding Offset.X, RelativeSource={RelativeSource TemplatedParent}}"
-                                  Y="{Binding Offset.Y, RelativeSource={RelativeSource TemplatedParent}}" />
+              <TranslateTransform X="{Binding BadgeTransformOffset.X, RelativeSource={RelativeSource TemplatedParent}}"
+                                  Y="{Binding BadgeTransformOffset.Y, RelativeSource={RelativeSource TemplatedParent}}" />
             </Border.RenderTransform>
             <TextBlock Name="PART_BadgeText"
                        Text="{TemplateBinding DisplayCount}"

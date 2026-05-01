@@ -9,9 +9,11 @@ namespace Luna.Mobile.Controls;
 /// </summary>
 public class MobileActionChip : TemplatedControl
 {
+    /// <inheritdoc cref="Text" />
     public static readonly StyledProperty<string?> TextProperty =
         AvaloniaProperty.Register<MobileActionChip, string?>(nameof(Text));
 
+    /// <inheritdoc cref="IsActive" />
     public static readonly StyledProperty<bool> IsActiveProperty =
         AvaloniaProperty.Register<MobileActionChip, bool>(nameof(IsActive));
 
@@ -23,12 +25,18 @@ public class MobileActionChip : TemplatedControl
         });
     }
 
+    /// <summary>
+    /// 获取或设置芯片文本。
+    /// </summary>
     public string? Text
     {
         get => GetValue(TextProperty);
         set => SetValue(TextProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置是否处于激活状态。
+    /// </summary>
     public bool IsActive
     {
         get => GetValue(IsActiveProperty);

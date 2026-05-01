@@ -12,7 +12,13 @@ namespace Luna.Mobile.Controls;
 /// </summary>
 public enum AvatarShape
 {
+    /// <summary>
+    /// Circle。
+    /// </summary>
     Circle,
+    /// <summary>
+    /// Round。
+    /// </summary>
     Round,
 }
 
@@ -21,8 +27,17 @@ public enum AvatarShape
 /// </summary>
 public enum AvatarSize
 {
+    /// <summary>
+    /// Small。
+    /// </summary>
     Small,
+    /// <summary>
+    /// Medium。
+    /// </summary>
     Medium,
+    /// <summary>
+    /// Large。
+    /// </summary>
     Large,
 }
 
@@ -32,7 +47,7 @@ public enum AvatarSize
 /// <remarks>
 /// 模板契约：
 /// <list type="bullet">
-/// <item><description><see cref="Source"/> 优先级高于 <see cref="Icon"/> 与 <see cref="Content"/>。</description></item>
+/// <item><description><see cref="Source"/> 优先级高于 <see cref="Icon"/> 与 <see cref="ContentControl.Content"/>。</description></item>
 /// <item><description>伪类：:circle/:round 以及 :small/:medium/:large。</description></item>
 /// </list>
 /// </remarks>
@@ -44,38 +59,47 @@ public sealed class Avatar : ContentControl
     private double _avatarLength = 40;
     private CornerRadius _avatarCornerRadius = new(999);
 
+    /// <inheritdoc cref="Source" />
     public static readonly StyledProperty<IImage?> SourceProperty =
         AvaloniaProperty.Register<Avatar, IImage?>(nameof(Source));
 
+    /// <inheritdoc cref="Icon" />
     public static readonly StyledProperty<object?> IconProperty =
         AvaloniaProperty.Register<Avatar, object?>(nameof(Icon));
 
+    /// <inheritdoc cref="Shape" />
     public static readonly StyledProperty<AvatarShape> ShapeProperty =
         AvaloniaProperty.Register<Avatar, AvatarShape>(nameof(Shape), AvatarShape.Circle);
 
+    /// <inheritdoc cref="Size" />
     public static readonly StyledProperty<AvatarSize> SizeProperty =
         AvaloniaProperty.Register<Avatar, AvatarSize>(nameof(Size), AvatarSize.Medium);
 
+    /// <inheritdoc cref="IsImageVisible" />
     public static readonly DirectProperty<Avatar, bool> IsImageVisibleProperty =
         AvaloniaProperty.RegisterDirect<Avatar, bool>(
             nameof(IsImageVisible),
             o => o.IsImageVisible);
 
+    /// <inheritdoc cref="IsIconVisible" />
     public static readonly DirectProperty<Avatar, bool> IsIconVisibleProperty =
         AvaloniaProperty.RegisterDirect<Avatar, bool>(
             nameof(IsIconVisible),
             o => o.IsIconVisible);
 
+    /// <inheritdoc cref="IsContentVisible" />
     public static readonly DirectProperty<Avatar, bool> IsContentVisibleProperty =
         AvaloniaProperty.RegisterDirect<Avatar, bool>(
             nameof(IsContentVisible),
             o => o.IsContentVisible);
 
+    /// <inheritdoc cref="AvatarLength" />
     public static readonly DirectProperty<Avatar, double> AvatarLengthProperty =
         AvaloniaProperty.RegisterDirect<Avatar, double>(
             nameof(AvatarLength),
             o => o.AvatarLength);
 
+    /// <inheritdoc cref="AvatarCornerRadius" />
     public static readonly DirectProperty<Avatar, CornerRadius> AvatarCornerRadiusProperty =
         AvaloniaProperty.RegisterDirect<Avatar, CornerRadius>(
             nameof(AvatarCornerRadius),
@@ -92,6 +116,9 @@ public sealed class Avatar : ContentControl
         SizeProperty.Changed.AddClassHandler<Avatar>((o, _) => o.UpdateState());
     }
 
+    /// <summary>
+    /// 获取或设置头像图片源。
+    /// </summary>
     public IImage? Source
     {
         get => GetValue(SourceProperty);
@@ -144,7 +171,7 @@ public sealed class Avatar : ContentControl
     }
 
     /// <summary>
-    /// 获取模板当前是否使用 <see cref="Content"/>。
+    /// 获取模板当前是否使用 <see cref="ContentControl.Content"/>。
     /// </summary>
     public bool IsContentVisible
     {
@@ -170,6 +197,7 @@ public sealed class Avatar : ContentControl
         private set => SetAndRaise(AvatarCornerRadiusProperty, ref _avatarCornerRadius, value);
     }
 
+    /// <inheritdoc />
     protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
     {
         base.OnAttachedToVisualTree(e);

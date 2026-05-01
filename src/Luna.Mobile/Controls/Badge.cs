@@ -1,5 +1,7 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Metadata;
+using Avalonia.Controls.Primitives;
 using Avalonia.Layout;
 using System;
 
@@ -10,8 +12,17 @@ namespace Luna.Mobile.Controls;
 /// </summary>
 public enum BadgeShape
 {
+    /// <summary>
+    /// Circle。
+    /// </summary>
     Circle,
+    /// <summary>
+    /// Square。
+    /// </summary>
     Square,
+    /// <summary>
+    /// Bubble。
+    /// </summary>
     Bubble,
 }
 
@@ -20,71 +31,109 @@ public enum BadgeShape
 /// </summary>
 public enum BadgePlacement
 {
+    /// <summary>
+    /// TopRight。
+    /// </summary>
     TopRight,
+    /// <summary>
+    /// TopLeft。
+    /// </summary>
     TopLeft,
+    /// <summary>
+    /// BottomRight。
+    /// </summary>
     BottomRight,
+    /// <summary>
+    /// BottomLeft。
+    /// </summary>
     BottomLeft,
 }
 
 /// <summary>
 /// 徽标控件，用于展示数字/点状提示，并可包裹任意内容。
 /// </summary>
+[TemplatePart(PART_BadgeBorder, typeof(Border))]
 public sealed class Badge : ContentControl
 {
+    /// <summary>
+    /// 模板中徽标边框部件的名称。
+    /// </summary>
+    public const string PART_BadgeBorder = "PART_BadgeBorder";
+
     private bool _isBadgeVisible;
     private bool _isBadgeTextVisible;
     private string? _displayCount;
     private Thickness _badgeMargin;
+    private Vector _badgeTransformOffset;
     private HorizontalAlignment _badgeHorizontalAlignment = HorizontalAlignment.Right;
     private VerticalAlignment _badgeVerticalAlignment = VerticalAlignment.Top;
+    private Border? _badgeBorder;
 
+    /// <inheritdoc cref="Count" />
     public static readonly StyledProperty<string?> CountProperty =
         AvaloniaProperty.Register<Badge, string?>(nameof(Count));
 
+    /// <inheritdoc cref="OverflowCount" />
     public static readonly StyledProperty<int> OverflowCountProperty =
         AvaloniaProperty.Register<Badge, int>(nameof(OverflowCount), 99);
 
+    /// <inheritdoc cref="Dot" />
     public static readonly StyledProperty<bool> DotProperty =
         AvaloniaProperty.Register<Badge, bool>(nameof(Dot));
 
+    /// <inheritdoc cref="Shape" />
     public static readonly StyledProperty<BadgeShape> ShapeProperty =
         AvaloniaProperty.Register<Badge, BadgeShape>(nameof(Shape), BadgeShape.Circle);
 
+    /// <inheritdoc cref="Placement" />
     public static readonly StyledProperty<BadgePlacement> PlacementProperty =
         AvaloniaProperty.Register<Badge, BadgePlacement>(nameof(Placement), BadgePlacement.TopRight);
 
+    /// <inheritdoc cref="Offset" />
     public static readonly StyledProperty<Vector> OffsetProperty =
         AvaloniaProperty.Register<Badge, Vector>(nameof(Offset));
 
+    /// <inheritdoc cref="IsBadgeVisible" />
     public static readonly DirectProperty<Badge, bool> IsBadgeVisibleProperty =
         AvaloniaProperty.RegisterDirect<Badge, bool>(
             nameof(IsBadgeVisible),
             o => o.IsBadgeVisible);
 
+    /// <inheritdoc cref="IsBadgeTextVisible" />
     public static readonly DirectProperty<Badge, bool> IsBadgeTextVisibleProperty =
         AvaloniaProperty.RegisterDirect<Badge, bool>(
             nameof(IsBadgeTextVisible),
             o => o.IsBadgeTextVisible);
 
+    /// <inheritdoc cref="DisplayCount" />
     public static readonly DirectProperty<Badge, string?> DisplayCountProperty =
         AvaloniaProperty.RegisterDirect<Badge, string?>(
             nameof(DisplayCount),
             o => o.DisplayCount);
 
+    /// <inheritdoc cref="BadgeHorizontalAlignment" />
     public static readonly DirectProperty<Badge, HorizontalAlignment> BadgeHorizontalAlignmentProperty =
         AvaloniaProperty.RegisterDirect<Badge, HorizontalAlignment>(
             nameof(BadgeHorizontalAlignment),
             o => o.BadgeHorizontalAlignment);
 
+    /// <inheritdoc cref="BadgeVerticalAlignment" />
     public static readonly DirectProperty<Badge, VerticalAlignment> BadgeVerticalAlignmentProperty =
         AvaloniaProperty.RegisterDirect<Badge, VerticalAlignment>(
             nameof(BadgeVerticalAlignment),
             o => o.BadgeVerticalAlignment);
 
+    /// <inheritdoc cref="BadgeMargin" />
     public static readonly DirectProperty<Badge, Thickness> BadgeMarginProperty =
         AvaloniaProperty.RegisterDirect<Badge, Thickness>(
             nameof(BadgeMargin),
             o => o.BadgeMargin);
+
+    /// <inheritdoc cref="BadgeTransformOffset" />
+    public static readonly DirectProperty<Badge, Vector> BadgeTransformOffsetProperty =
+        AvaloniaProperty.RegisterDirect<Badge, Vector>(
+            nameof(BadgeTransformOffset),
+            o => o.BadgeTransformOffset);
 
     static Badge()
     {
@@ -96,6 +145,7 @@ public sealed class Badge : ContentControl
         DotProperty.Changed.AddClassHandler<Badge>((control, _) => control.UpdateState());
         ShapeProperty.Changed.AddClassHandler<Badge>((control, _) => control.UpdateState());
         PlacementProperty.Changed.AddClassHandler<Badge>((control, _) => control.UpdateState());
+        OffsetProperty.Changed.AddClassHandler<Badge>((control, _) => control.UpdateBadgePosition());
     }
 
     /// <summary>
@@ -206,10 +256,50 @@ public sealed class Badge : ContentControl
         private set => SetAndRaise(BadgeMarginProperty, ref _badgeMargin, value);
     }
 
+    /// <summary>
+    /// 获取徽标的实际平移偏移量（由 <see cref="Placement"/>、徽标尺寸和 <see cref="Offset"/> 共同计算）。
+    /// </summary>
+    public Vector BadgeTransformOffset
+    {
+        get => _badgeTransformOffset;
+        private set => SetAndRaise(BadgeTransformOffsetProperty, ref _badgeTransformOffset, value);
+    }
+
+    /// <inheritdoc />
+    protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
+    {
+        if (_badgeBorder is not null)
+        {
+            _badgeBorder.SizeChanged -= OnBadgeBorderSizeChanged;
+        }
+
+        base.OnApplyTemplate(e);
+
+        _badgeBorder = e.NameScope.Find<Border>(PART_BadgeBorder);
+        if (_badgeBorder is not null)
+        {
+            _badgeBorder.SizeChanged += OnBadgeBorderSizeChanged;
+        }
+
+        UpdateState();
+    }
+
+    /// <inheritdoc />
     protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
     {
         base.OnAttachedToVisualTree(e);
         UpdateState();
+    }
+
+    /// <inheritdoc />
+    protected override void OnDetachedFromVisualTree(VisualTreeAttachmentEventArgs e)
+    {
+        if (_badgeBorder is not null)
+        {
+            _badgeBorder.SizeChanged -= OnBadgeBorderSizeChanged;
+        }
+
+        base.OnDetachedFromVisualTree(e);
     }
 
     private void UpdateState()
@@ -242,6 +332,23 @@ public sealed class Badge : ContentControl
         };
 
         BadgeMargin = default;
+        UpdateBadgePosition();
+    }
+
+    private void OnBadgeBorderSizeChanged(object? sender, SizeChangedEventArgs e)
+    {
+        UpdateBadgePosition();
+    }
+
+    private void UpdateBadgePosition()
+    {
+        var horizontal = BadgeHorizontalAlignment == HorizontalAlignment.Left ? -1d : 1d;
+        var vertical = BadgeVerticalAlignment == VerticalAlignment.Top ? -1d : 1d;
+        var bounds = _badgeBorder?.Bounds ?? default;
+
+        BadgeTransformOffset = new Vector(
+            Offset.X + (horizontal * bounds.Width / 2d),
+            Offset.Y + (vertical * bounds.Height / 2d));
     }
 
     private static string CoerceCount(string count, int overflowCount)

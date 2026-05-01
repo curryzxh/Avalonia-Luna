@@ -47,47 +47,67 @@ public sealed class LoadingIndicator : Control
         };
     }
 
+    /// <inheritdoc cref="Theme" />
     public static readonly new StyledProperty<LoadingTheme> ThemeProperty =
         AvaloniaProperty.Register<LoadingIndicator, LoadingTheme>(nameof(Theme), LoadingTheme.Circular);
 
+    /// <inheritdoc cref="Size" />
     public static readonly StyledProperty<double> SizeProperty =
         AvaloniaProperty.Register<LoadingIndicator, double>(nameof(Size), 22);
 
+    /// <inheritdoc cref="Duration" />
     public static readonly StyledProperty<TimeSpan> DurationProperty =
         AvaloniaProperty.Register<LoadingIndicator, TimeSpan>(nameof(Duration), TimeSpan.FromMilliseconds(3000));
 
+    /// <inheritdoc cref="Foreground" />
     public static readonly StyledProperty<IBrush?> ForegroundProperty =
         AvaloniaProperty.Register<LoadingIndicator, IBrush?>(nameof(Foreground));
 
+    /// <summary>
+    /// 获取或设置绘制主题。
+    /// </summary>
     public new LoadingTheme Theme
     {
         get => GetValue(ThemeProperty);
         set => SetValue(ThemeProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置绘制尺寸。
+    /// </summary>
     public double Size
     {
         get => GetValue(SizeProperty);
         set => SetValue(SizeProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置单次动画周期。
+    /// </summary>
     public TimeSpan Duration
     {
         get => GetValue(DurationProperty);
         set => SetValue(DurationProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置前景画刷。
+    /// </summary>
     public IBrush? Foreground
     {
         get => GetValue(ForegroundProperty);
         set => SetValue(ForegroundProperty, value);
     }
 
+    /// <summary>
+    /// 初始化 <see cref="LoadingIndicator" /> 的新实例。
+    /// </summary>
     public LoadingIndicator()
     {
         _startTimestamp = Stopwatch.GetTimestamp();
     }
 
+    /// <inheritdoc />
     protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
     {
         base.OnAttachedToVisualTree(e);
@@ -99,6 +119,7 @@ public sealed class LoadingIndicator : Control
         }
     }
 
+    /// <inheritdoc />
     protected override void OnDetachedFromVisualTree(VisualTreeAttachmentEventArgs e)
     {
         base.OnDetachedFromVisualTree(e);
@@ -111,6 +132,7 @@ public sealed class LoadingIndicator : Control
         }
     }
 
+    /// <inheritdoc />
     public override void Render(DrawingContext context)
     {
         var size = Size;
@@ -136,6 +158,7 @@ public sealed class LoadingIndicator : Control
         }
     }
 
+    /// <inheritdoc />
     protected override Size MeasureOverride(Size availableSize)
     {
         var s = Size;

@@ -1,5 +1,6 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Primitives;
 using Avalonia.VisualTree;
 using System;
@@ -11,10 +12,25 @@ namespace Luna.Mobile.Controls;
 /// </summary>
 public enum TagTheme
 {
+    /// <summary>
+    /// Default。
+    /// </summary>
     Default,
+    /// <summary>
+    /// Primary。
+    /// </summary>
     Primary,
+    /// <summary>
+    /// Warning。
+    /// </summary>
     Warning,
+    /// <summary>
+    /// Danger。
+    /// </summary>
     Danger,
+    /// <summary>
+    /// Success。
+    /// </summary>
     Success,
 }
 
@@ -23,9 +39,21 @@ public enum TagTheme
 /// </summary>
 public enum TagVariant
 {
+    /// <summary>
+    /// Light。
+    /// </summary>
     Light,
+    /// <summary>
+    /// Dark。
+    /// </summary>
     Dark,
+    /// <summary>
+    /// Outline。
+    /// </summary>
     Outline,
+    /// <summary>
+    /// LightOutline。
+    /// </summary>
     LightOutline,
 }
 
@@ -34,8 +62,17 @@ public enum TagVariant
 /// </summary>
 public enum TagShape
 {
+    /// <summary>
+    /// Square。
+    /// </summary>
     Square,
+    /// <summary>
+    /// Round。
+    /// </summary>
     Round,
+    /// <summary>
+    /// Mark。
+    /// </summary>
     Mark,
 }
 
@@ -44,15 +81,28 @@ public enum TagShape
 /// </summary>
 public enum TagSize
 {
+    /// <summary>
+    /// Small。
+    /// </summary>
     Small,
+    /// <summary>
+    /// Medium。
+    /// </summary>
     Medium,
+    /// <summary>
+    /// Large。
+    /// </summary>
     Large,
+    /// <summary>
+    /// ExtraLarge。
+    /// </summary>
     ExtraLarge,
 }
 
 /// <summary>
 /// 标签控件，用于展示短文本/状态，可选图标与关闭按钮。
 /// </summary>
+[TemplatePart(CloseButtonPartName, typeof(Button))]
 public sealed class Tag : ContentControl
 {
     private const string CloseButtonPartName = "PART_CloseButton";
@@ -60,27 +110,35 @@ public sealed class Tag : ContentControl
     private bool _isIconVisible;
     private Button? _closeButton;
 
+    /// <inheritdoc cref="Theme" />
     public static readonly StyledProperty<TagTheme> ThemeProperty =
         AvaloniaProperty.Register<Tag, TagTheme>(nameof(Theme), TagTheme.Default);
 
+    /// <inheritdoc cref="Variant" />
     public static readonly StyledProperty<TagVariant> VariantProperty =
         AvaloniaProperty.Register<Tag, TagVariant>(nameof(Variant), TagVariant.Light);
 
+    /// <inheritdoc cref="Shape" />
     public static readonly StyledProperty<TagShape> ShapeProperty =
         AvaloniaProperty.Register<Tag, TagShape>(nameof(Shape), TagShape.Square);
 
+    /// <inheritdoc cref="Size" />
     public static readonly StyledProperty<TagSize> SizeProperty =
         AvaloniaProperty.Register<Tag, TagSize>(nameof(Size), TagSize.Medium);
 
+    /// <inheritdoc cref="IsClosable" />
     public static readonly StyledProperty<bool> IsClosableProperty =
         AvaloniaProperty.Register<Tag, bool>(nameof(IsClosable));
 
+    /// <inheritdoc cref="IsOpen" />
     public static readonly StyledProperty<bool> IsOpenProperty =
         AvaloniaProperty.Register<Tag, bool>(nameof(IsOpen), true);
 
+    /// <inheritdoc cref="Icon" />
     public static readonly StyledProperty<object?> IconProperty =
         AvaloniaProperty.Register<Tag, object?>(nameof(Icon));
 
+    /// <inheritdoc cref="IsIconVisible" />
     public static readonly DirectProperty<Tag, bool> IsIconVisibleProperty =
         AvaloniaProperty.RegisterDirect<Tag, bool>(
             nameof(IsIconVisible),
@@ -175,12 +233,14 @@ public sealed class Tag : ContentControl
         private set => SetAndRaise(IsIconVisibleProperty, ref _isIconVisible, value);
     }
 
+    /// <inheritdoc />
     protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
     {
         base.OnAttachedToVisualTree(e);
         UpdateState();
     }
 
+    /// <inheritdoc />
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {
         base.OnApplyTemplate(e);
@@ -236,21 +296,27 @@ public sealed class CheckTag : ToggleButton
 {
     private bool _isIconVisible;
 
+    /// <inheritdoc cref="Theme" />
     public static readonly StyledProperty<TagTheme> ThemeProperty =
         AvaloniaProperty.Register<CheckTag, TagTheme>(nameof(Theme), TagTheme.Default);
 
+    /// <inheritdoc cref="Variant" />
     public static readonly StyledProperty<TagVariant> VariantProperty =
         AvaloniaProperty.Register<CheckTag, TagVariant>(nameof(Variant), TagVariant.Light);
 
+    /// <inheritdoc cref="Shape" />
     public static readonly StyledProperty<TagShape> ShapeProperty =
         AvaloniaProperty.Register<CheckTag, TagShape>(nameof(Shape), TagShape.Square);
 
+    /// <inheritdoc cref="Size" />
     public static readonly StyledProperty<TagSize> SizeProperty =
         AvaloniaProperty.Register<CheckTag, TagSize>(nameof(Size), TagSize.Medium);
 
+    /// <inheritdoc cref="Icon" />
     public static readonly StyledProperty<object?> IconProperty =
         AvaloniaProperty.Register<CheckTag, object?>(nameof(Icon));
 
+    /// <inheritdoc cref="IsIconVisible" />
     public static readonly DirectProperty<CheckTag, bool> IsIconVisibleProperty =
         AvaloniaProperty.RegisterDirect<CheckTag, bool>(
             nameof(IsIconVisible),
@@ -323,6 +389,7 @@ public sealed class CheckTag : ToggleButton
         private set => SetAndRaise(IsIconVisibleProperty, ref _isIconVisible, value);
     }
 
+    /// <inheritdoc />
     protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
     {
         base.OnAttachedToVisualTree(e);

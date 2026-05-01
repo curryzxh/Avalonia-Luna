@@ -1,5 +1,6 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Layout;
@@ -13,8 +14,19 @@ namespace Luna.Mobile.Controls;
 /// </summary>
 public enum StepperTheme
 {
+    /// <summary>
+    /// 默认样式。
+    /// </summary>
     Default,
+
+    /// <summary>
+    /// 填充背景样式。
+    /// </summary>
     Filled,
+
+    /// <summary>
+    /// 描边样式。
+    /// </summary>
     Outline,
 }
 
@@ -23,8 +35,19 @@ public enum StepperTheme
 /// </summary>
 public enum StepperSize
 {
+    /// <summary>
+    /// 小尺寸。
+    /// </summary>
     Small,
+
+    /// <summary>
+    /// 中尺寸。
+    /// </summary>
     Medium,
+
+    /// <summary>
+    /// 大尺寸。
+    /// </summary>
     Large,
 }
 
@@ -33,11 +56,18 @@ public enum StepperSize
 /// </summary>
 public sealed class StepperOverlimitEventArgs : EventArgs
 {
+    /// <summary>
+    /// 使用边界命中信息初始化事件参数。
+    /// </summary>
+    /// <param name="isMin">是否命中最小值边界。</param>
     public StepperOverlimitEventArgs(bool isMin)
     {
         IsMin = isMin;
     }
 
+    /// <summary>
+    /// 获取是否命中了最小值边界。
+    /// </summary>
     public bool IsMin { get; }
 }
 
@@ -53,6 +83,9 @@ public sealed class StepperOverlimitEventArgs : EventArgs
 /// </list>
 /// 伪类：:filled/:outline/:default、:small/:medium/:large、:min/:max、:disabled。
 /// </remarks>
+[TemplatePart(DecreaseButtonPartName, typeof(Button))]
+[TemplatePart(IncreaseButtonPartName, typeof(Button))]
+[TemplatePart(TextBoxPartName, typeof(TextBox))]
 public sealed class Stepper : TemplatedControl
 {
     private const string DecreaseButtonPartName = "PART_DecreaseButton";
@@ -67,40 +100,51 @@ public sealed class Stepper : TemplatedControl
     private bool _canIncrease;
     private bool _isTextBoxReadOnly;
 
+    /// <inheritdoc cref="Value" />
     public static readonly StyledProperty<int> ValueProperty =
         AvaloniaProperty.Register<Stepper, int>(nameof(Value), defaultBindingMode: Avalonia.Data.BindingMode.TwoWay);
 
+    /// <inheritdoc cref="Minimum" />
     public static readonly StyledProperty<int> MinimumProperty =
         AvaloniaProperty.Register<Stepper, int>(nameof(Minimum), 0);
 
+    /// <inheritdoc cref="Maximum" />
     public static readonly StyledProperty<int> MaximumProperty =
         AvaloniaProperty.Register<Stepper, int>(nameof(Maximum), 999);
 
+    /// <inheritdoc cref="Step" />
     public static readonly StyledProperty<int> StepProperty =
         AvaloniaProperty.Register<Stepper, int>(nameof(Step), 1);
 
+    /// <inheritdoc cref="Theme" />
     public static readonly StyledProperty<StepperTheme> ThemeProperty =
         AvaloniaProperty.Register<Stepper, StepperTheme>(nameof(Theme), StepperTheme.Default);
 
+    /// <inheritdoc cref="Size" />
     public static readonly StyledProperty<StepperSize> SizeProperty =
         AvaloniaProperty.Register<Stepper, StepperSize>(nameof(Size), StepperSize.Medium);
 
+    /// <inheritdoc cref="IsEditable" />
     public static readonly StyledProperty<bool> IsEditableProperty =
         AvaloniaProperty.Register<Stepper, bool>(nameof(IsEditable), true);
 
+    /// <inheritdoc cref="IsDisabled" />
     public static readonly StyledProperty<bool> IsDisabledProperty =
         AvaloniaProperty.Register<Stepper, bool>(nameof(IsDisabled));
 
+    /// <inheritdoc cref="CanDecrease" />
     public static readonly DirectProperty<Stepper, bool> CanDecreaseProperty =
         AvaloniaProperty.RegisterDirect<Stepper, bool>(
             nameof(CanDecrease),
             o => o.CanDecrease);
 
+    /// <inheritdoc cref="CanIncrease" />
     public static readonly DirectProperty<Stepper, bool> CanIncreaseProperty =
         AvaloniaProperty.RegisterDirect<Stepper, bool>(
             nameof(CanIncrease),
             o => o.CanIncrease);
 
+    /// <inheritdoc cref="IsTextBoxReadOnly" />
     public static readonly DirectProperty<Stepper, bool> IsTextBoxReadOnlyProperty =
         AvaloniaProperty.RegisterDirect<Stepper, bool>(
             nameof(IsTextBoxReadOnly),
@@ -185,42 +229,59 @@ public sealed class Stepper : TemplatedControl
         set => SetValue(SizeProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置输入框是否允许直接编辑。
+    /// </summary>
     public bool IsEditable
     {
         get => GetValue(IsEditableProperty);
         set => SetValue(IsEditableProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置控件是否禁用。
+    /// </summary>
     public bool IsDisabled
     {
         get => GetValue(IsDisabledProperty);
         set => SetValue(IsDisabledProperty, value);
     }
 
+    /// <summary>
+    /// 获取当前是否允许递减。
+    /// </summary>
     public bool CanDecrease
     {
         get => _canDecrease;
         private set => SetAndRaise(CanDecreaseProperty, ref _canDecrease, value);
     }
 
+    /// <summary>
+    /// 获取当前是否允许递增。
+    /// </summary>
     public bool CanIncrease
     {
         get => _canIncrease;
         private set => SetAndRaise(CanIncreaseProperty, ref _canIncrease, value);
     }
 
+    /// <summary>
+    /// 获取当前输入框是否为只读。
+    /// </summary>
     public bool IsTextBoxReadOnly
     {
         get => _isTextBoxReadOnly;
         private set => SetAndRaise(IsTextBoxReadOnlyProperty, ref _isTextBoxReadOnly, value);
     }
 
+    /// <inheritdoc />
     protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
     {
         base.OnAttachedToVisualTree(e);
         UpdateState();
     }
 
+    /// <inheritdoc />
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {
         base.OnApplyTemplate(e);

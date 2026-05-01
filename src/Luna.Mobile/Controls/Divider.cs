@@ -9,7 +9,13 @@ namespace Luna.Mobile.Controls;
 /// </summary>
 public enum DividerLayout
 {
+    /// <summary>
+    /// Horizontal。
+    /// </summary>
     Horizontal,
+    /// <summary>
+    /// Vertical。
+    /// </summary>
     Vertical,
 }
 
@@ -18,8 +24,17 @@ public enum DividerLayout
 /// </summary>
 public enum DividerAlign
 {
+    /// <summary>
+    /// Center。
+    /// </summary>
     Center,
+    /// <summary>
+    /// Left。
+    /// </summary>
     Left,
+    /// <summary>
+    /// Right。
+    /// </summary>
     Right,
 }
 
@@ -28,21 +43,27 @@ public enum DividerAlign
 /// </summary>
 public sealed class Divider : TemplatedControl
 {
+    /// <inheritdoc cref="Layout" />
     public static readonly StyledProperty<DividerLayout> LayoutProperty =
         AvaloniaProperty.Register<Divider, DividerLayout>(nameof(Layout), DividerLayout.Horizontal);
 
+    /// <inheritdoc cref="Align" />
     public static readonly StyledProperty<DividerAlign> AlignProperty =
         AvaloniaProperty.Register<Divider, DividerAlign>(nameof(Align), DividerAlign.Center);
 
+    /// <inheritdoc cref="Dashed" />
     public static readonly StyledProperty<bool> DashedProperty =
         AvaloniaProperty.Register<Divider, bool>(nameof(Dashed));
 
+    /// <inheritdoc cref="Content" />
     public static readonly StyledProperty<string?> ContentProperty =
         AvaloniaProperty.Register<Divider, string?>(nameof(Content));
 
+    /// <inheritdoc cref="LineThickness" />
     public static readonly StyledProperty<double> LineThicknessProperty =
         AvaloniaProperty.Register<Divider, double>(nameof(LineThickness), 1);
 
+    /// <inheritdoc cref="LineLength" />
     public static readonly StyledProperty<double> LineLengthProperty =
         AvaloniaProperty.Register<Divider, double>(nameof(LineLength), 16);
 
@@ -69,6 +90,9 @@ public sealed class Divider : TemplatedControl
         });
     }
 
+    /// <summary>
+    /// 初始化 <see cref="Divider" /> 的新实例。
+    /// </summary>
     public Divider()
     {
         UpdateContentPseudo(Content);
@@ -77,36 +101,54 @@ public sealed class Divider : TemplatedControl
         PseudoClasses.Set(":dashed", Dashed);
     }
 
+    /// <summary>
+    /// 获取或设置分割线布局方向。
+    /// </summary>
     public DividerLayout Layout
     {
         get => GetValue(LayoutProperty);
         set => SetValue(LayoutProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置内容对齐方式。
+    /// </summary>
     public DividerAlign Align
     {
         get => GetValue(AlignProperty);
         set => SetValue(AlignProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置是否使用虚线样式。
+    /// </summary>
     public bool Dashed
     {
         get => GetValue(DashedProperty);
         set => SetValue(DashedProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置分割线中间的文本内容。
+    /// </summary>
     public string? Content
     {
         get => GetValue(ContentProperty);
         set => SetValue(ContentProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置线条粗细。
+    /// </summary>
     public double LineThickness
     {
         get => GetValue(LineThicknessProperty);
         set => SetValue(LineThicknessProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置纵向线段长度或横向内容间距参考值。
+    /// </summary>
     public double LineLength
     {
         get => GetValue(LineLengthProperty);

@@ -1,5 +1,6 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Interactivity;
@@ -15,7 +16,13 @@ namespace Luna.Mobile.Controls;
 /// </summary>
 public enum SearchBarShape
 {
+    /// <summary>
+    /// Default。
+    /// </summary>
     Default,
+    /// <summary>
+    /// Round。
+    /// </summary>
     Round,
 }
 
@@ -31,6 +38,9 @@ public enum SearchBarShape
 /// </list>
 /// 伪类：:round/:default、:center、:focused、:has-text。
 /// </remarks>
+[TemplatePart(TextBoxPartName, typeof(TextBox))]
+[TemplatePart(ClearButtonPartName, typeof(Button))]
+[TemplatePart(CancelButtonPartName, typeof(Button))]
 public sealed class SearchBar : TemplatedControl
 {
     private const string TextBoxPartName = "PART_TextBox";
@@ -47,50 +57,63 @@ public sealed class SearchBar : TemplatedControl
     private TextAlignment _textAlignment = TextAlignment.Left;
     private HorizontalAlignment _textHorizontalAlignment = HorizontalAlignment.Left;
 
+    /// <inheritdoc cref="Text" />
     public static readonly StyledProperty<string?> TextProperty =
         AvaloniaProperty.Register<SearchBar, string?>(nameof(Text));
 
+    /// <inheritdoc cref="Placeholder" />
     public static readonly StyledProperty<string?> PlaceholderProperty =
         AvaloniaProperty.Register<SearchBar, string?>(nameof(Placeholder));
 
+    /// <inheritdoc cref="IsClearable" />
     public static readonly StyledProperty<bool> IsClearableProperty =
         AvaloniaProperty.Register<SearchBar, bool>(nameof(IsClearable), true);
 
+    /// <inheritdoc cref="ShowCancelButton" />
     public static readonly StyledProperty<bool> ShowCancelButtonProperty =
         AvaloniaProperty.Register<SearchBar, bool>(nameof(ShowCancelButton));
 
+    /// <inheritdoc cref="ShowCancelButtonOnFocus" />
     public static readonly StyledProperty<bool> ShowCancelButtonOnFocusProperty =
         AvaloniaProperty.Register<SearchBar, bool>(nameof(ShowCancelButtonOnFocus), true);
 
+    /// <inheritdoc cref="CancelText" />
     public static readonly StyledProperty<string> CancelTextProperty =
         AvaloniaProperty.Register<SearchBar, string>(nameof(CancelText), "取消");
 
+    /// <inheritdoc cref="Center" />
     public static readonly StyledProperty<bool> CenterProperty =
         AvaloniaProperty.Register<SearchBar, bool>(nameof(Center));
 
+    /// <inheritdoc cref="Shape" />
     public static readonly StyledProperty<SearchBarShape> ShapeProperty =
         AvaloniaProperty.Register<SearchBar, SearchBarShape>(nameof(Shape), SearchBarShape.Default);
 
+    /// <inheritdoc cref="IsClearVisible" />
     public static readonly DirectProperty<SearchBar, bool> IsClearVisibleProperty =
         AvaloniaProperty.RegisterDirect<SearchBar, bool>(
             nameof(IsClearVisible),
             o => o.IsClearVisible);
 
+    /// <inheritdoc cref="IsCancelVisible" />
     public static readonly DirectProperty<SearchBar, bool> IsCancelVisibleProperty =
         AvaloniaProperty.RegisterDirect<SearchBar, bool>(
             nameof(IsCancelVisible),
             o => o.IsCancelVisible);
 
+    /// <inheritdoc cref="IsInputFocused" />
     public static readonly DirectProperty<SearchBar, bool> IsInputFocusedProperty =
         AvaloniaProperty.RegisterDirect<SearchBar, bool>(
             nameof(IsInputFocused),
             o => o.IsInputFocused);
 
+    /// <inheritdoc cref="TextAlignment" />
     public static readonly DirectProperty<SearchBar, TextAlignment> TextAlignmentProperty =
         AvaloniaProperty.RegisterDirect<SearchBar, TextAlignment>(
             nameof(TextAlignment),
             o => o.TextAlignment);
 
+    /// <inheritdoc cref="TextHorizontalAlignment" />
     public static readonly DirectProperty<SearchBar, HorizontalAlignment> TextHorizontalAlignmentProperty =
         AvaloniaProperty.RegisterDirect<SearchBar, HorizontalAlignment>(
             nameof(TextHorizontalAlignment),
@@ -241,12 +264,14 @@ public sealed class SearchBar : TemplatedControl
         private set => SetAndRaise(TextHorizontalAlignmentProperty, ref _textHorizontalAlignment, value);
     }
 
+    /// <inheritdoc />
     protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
     {
         base.OnAttachedToVisualTree(e);
         UpdateState();
     }
 
+    /// <inheritdoc />
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {
         base.OnApplyTemplate(e);

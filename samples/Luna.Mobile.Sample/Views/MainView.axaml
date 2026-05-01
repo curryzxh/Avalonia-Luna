@@ -6,6 +6,87 @@
              x:Class="Luna.Mobile.Sample.Views.MainView"
              x:Name="Root"
              x:DataType="vm:MainViewModel">
+  <UserControl.Styles>
+    <Style Selector="Border.hero-card">
+      <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
+      <Setter Property="CornerRadius" Value="20" />
+      <Setter Property="Padding" Value="20" />
+    </Style>
+
+    <Style Selector="Border.hero-logo">
+      <Setter Property="Width" Value="72" />
+      <Setter Property="Height" Value="72" />
+      <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Component}" />
+      <Setter Property="CornerRadius" Value="20" />
+    </Style>
+
+    <Style Selector="Border.hero-chip">
+      <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Component}" />
+      <Setter Property="CornerRadius" Value="999" />
+      <Setter Property="Padding" Value="12,6" />
+    </Style>
+
+    <Style Selector="Border.catalog-section-card">
+      <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Divider}" />
+      <Setter Property="BorderThickness" Value="1" />
+      <Setter Property="CornerRadius" Value="16" />
+      <Setter Property="ClipToBounds" Value="True" />
+    </Style>
+
+    <Style Selector="ToggleButton.catalog-section-toggle">
+      <Setter Property="Background" Value="Transparent" />
+      <Setter Property="BorderThickness" Value="0" />
+      <Setter Property="Padding" Value="18,16" />
+      <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+    </Style>
+
+    <Style Selector="ToggleButton.catalog-section-toggle:pointerover">
+      <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Component}" />
+    </Style>
+
+    <Style Selector="ToggleButton.catalog-section-toggle:pressed">
+      <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.ComponentActive}" />
+    </Style>
+
+    <Style Selector="Border.catalog-section-icon">
+      <Setter Property="Width" Value="40" />
+      <Setter Property="Height" Value="40" />
+      <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Component}" />
+      <Setter Property="CornerRadius" Value="12" />
+    </Style>
+
+    <Style Selector="Border.catalog-section-count">
+      <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Component}" />
+      <Setter Property="CornerRadius" Value="999" />
+      <Setter Property="Padding" Value="10,4" />
+    </Style>
+
+    <Style Selector="Path.catalog-section-chevron">
+      <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+      <Setter Property="RenderTransform">
+        <RotateTransform Angle="0" />
+      </Setter>
+    </Style>
+
+    <Style Selector="ToggleButton.catalog-section-toggle:checked Path.catalog-section-chevron">
+      <Setter Property="RenderTransform">
+        <RotateTransform Angle="180" />
+      </Setter>
+    </Style>
+
+    <Style Selector="Border.catalog-section-divider">
+      <Setter Property="Height" Value="1" />
+      <Setter Property="Background" Value="{DynamicResource Luna.Brush.Border.Divider}" />
+      <Setter Property="Margin" Value="18,0" />
+    </Style>
+
+    <Style Selector="luna|Cell.catalog-item">
+      <Setter Property="Background" Value="Transparent" />
+      <Setter Property="Padding" Value="20,16" />
+    </Style>
+  </UserControl.Styles>
+
   <Grid RowDefinitions="Auto,*"
         Background="{DynamicResource Luna.Brush.Background.Page}">
     <luna:NavBar x:Name="HeaderBar"
@@ -23,138 +104,193 @@
                        NavigationPage.HasNavigationBar="False">
           <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}"
                         HorizontalScrollBarVisibility="Disabled">
-            <StackPanel Margin="16,18,16,24" Spacing="24">
-              <StackPanel Spacing="24">
-                <Grid ColumnDefinitions="54,Auto" ColumnSpacing="12" HorizontalAlignment="Left">
-                  <Grid Width="54" Height="40">
-                    <Border Width="38"
-                            Height="8"
-                            Margin="9,0,0,0"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Top"
-                            Background="{DynamicResource Luna.Brush.Success}"
-                            CornerRadius="{DynamicResource Luna.Radius.Small}">
-                      <Border.RenderTransform>
-                        <RotateTransform Angle="3" />
-                      </Border.RenderTransform>
+            <StackPanel Margin="16,12,16,24" Spacing="16">
+              <Border Classes="hero-card">
+                <StackPanel Spacing="18">
+                  <Grid ColumnDefinitions="Auto,*"
+                        ColumnSpacing="16">
+                    <Border Classes="hero-logo">
+                      <Grid Width="54"
+                            Height="40"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                        <Border Width="38"
+                                Height="8"
+                                Margin="9,0,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Background="{DynamicResource Luna.Brush.Success}"
+                                CornerRadius="{DynamicResource Luna.Radius.Small}">
+                          <Border.RenderTransform>
+                            <RotateTransform Angle="3" />
+                          </Border.RenderTransform>
+                        </Border>
+                        <Border Width="12"
+                                Height="38"
+                                Margin="5,1,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Background="{DynamicResource Luna.Brush.Brand}"
+                                CornerRadius="{DynamicResource Luna.Radius.Small}">
+                          <Border.RenderTransform>
+                            <SkewTransform AngleX="-10" />
+                          </Border.RenderTransform>
+                        </Border>
+                        <Border Width="30"
+                                Height="8"
+                                Margin="6,16,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Background="{DynamicResource Luna.Brush.Brand.Active}"
+                                CornerRadius="{DynamicResource Luna.Radius.Small}">
+                          <Border.RenderTransform>
+                            <SkewTransform AngleX="-10" />
+                          </Border.RenderTransform>
+                        </Border>
+                      </Grid>
                     </Border>
-                    <Border Width="12"
-                            Height="38"
-                            Margin="5,1,0,0"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Top"
-                            Background="{DynamicResource Luna.Brush.Brand}"
-                            CornerRadius="{DynamicResource Luna.Radius.Small}">
-                      <Border.RenderTransform>
-                        <SkewTransform AngleX="-10" />
-                      </Border.RenderTransform>
-                    </Border>
-                    <Border Width="30"
-                            Height="8"
-                            Margin="6,16,0,0"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Top"
-                            Background="{DynamicResource Luna.Brush.Brand.Active}"
-                            CornerRadius="{DynamicResource Luna.Radius.Small}">
-                      <Border.RenderTransform>
-                        <SkewTransform AngleX="-10" />
-                      </Border.RenderTransform>
-                    </Border>
+
+                    <StackPanel Grid.Column="1"
+                                Spacing="6"
+                                VerticalAlignment="Center">
+                      <TextBlock Text="Luna Mobile"
+                                 FontSize="32"
+                                 FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                                 FontStyle="Italic"
+                                 Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+                      <TextBlock Text="{Binding Title}"
+                                 FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                                 Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                                 TextWrapping="Wrap" />
+                    </StackPanel>
                   </Grid>
 
-                  <TextBlock Grid.Column="1"
-                             Text="Luna Mobile"
-                             FontSize="30"
-                             FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
-                             FontStyle="Italic"
-                             Foreground="{DynamicResource Luna.Brush.Text.Primary}"
-                             VerticalAlignment="Center" />
-                </Grid>
+                  <StackPanel Orientation="Horizontal"
+                              Spacing="8">
+                    <Border Classes="hero-chip">
+                      <TextBlock Text="{Binding SectionCount, StringFormat='{}{0} 个分组'}"
+                                 FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                                 Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+                    </Border>
+                    <Border Classes="hero-chip">
+                      <TextBlock Text="{Binding ComponentCount, StringFormat='{}{0} 个组件'}"
+                                 FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                                 Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+                    </Border>
+                  </StackPanel>
 
-                <TextBlock Text="{Binding Title}"
-                           FontSize="{DynamicResource Luna.FontSize.Body.Large}"
-                           Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" />
-              </StackPanel>
+                  <StackPanel Spacing="8">
+                    <luna:SearchBar Text="{Binding SearchText, Mode=TwoWay}"
+                                    Placeholder="搜索组件名称"
+                                    ShowCancelButton="True"
+                                    CancelText="清空" />
+                    <TextBlock Text="{Binding SearchStatus}"
+                               FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                               Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                  </StackPanel>
+                </StackPanel>
+              </Border>
 
               <ItemsControl ItemsSource="{Binding Sections}">
                 <ItemsControl.ItemsPanel>
                   <ItemsPanelTemplate>
-                    <StackPanel Spacing="12" />
+                    <StackPanel Spacing="14" />
                   </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                   <DataTemplate x:DataType="vm:CatalogSectionViewModel">
-                    <Expander IsExpanded="{Binding IsExpanded, Mode=TwoWay}" HorizontalAlignment="Stretch">
-                      <Expander.ContentTransition>
-                        <PageSlide Duration="0:00:00.200" Orientation="Vertical" />
-                      </Expander.ContentTransition>
-                      <Expander.Header>
-                        <Border Background="{DynamicResource Luna.Brush.Background.Container}">
-                          <Grid Height="56" ColumnDefinitions="*,48" Margin="32,0,26,0">
-                            <TextBlock Text="{Binding Title}"
-                                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
-                                       FontWeight="{DynamicResource Luna.FontWeight.Medium}"
-                                       Foreground="{DynamicResource Luna.Brush.Text.Primary}"
-                                       VerticalAlignment="Center" />
-                            <Path Grid.Column="1"
-                                  Width="28"
-                                  Height="28"
-                                  Data="{Binding IconData}"
-                                  Stroke="{DynamicResource Luna.Brush.Text.Placeholder}"
+                    <Border Classes="catalog-section-card">
+                      <StackPanel Spacing="0">
+                        <ToggleButton Classes="catalog-section-toggle"
+                                      IsChecked="{Binding IsExpanded, Mode=TwoWay}">
+                          <Grid ColumnDefinitions="Auto,*,Auto,Auto"
+                                ColumnSpacing="12">
+                            <Border Classes="catalog-section-icon">
+                              <Path Width="22"
+                                    Height="22"
+                                    Data="{Binding IconData}"
+                                    Stroke="{DynamicResource Luna.Brush.Brand}"
+                                    StrokeThickness="1.8"
+                                    StrokeLineCap="Square"
+                                    StrokeJoin="Miter"
+                                    Fill="Transparent"
+                                    Stretch="Uniform"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center" />
+                            </Border>
+
+                            <StackPanel Grid.Column="1"
+                                        Spacing="2"
+                                        VerticalAlignment="Center">
+                              <TextBlock Text="{Binding Title}"
+                                         FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                                         FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                                         Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+                              <TextBlock Text="{Binding ItemCount, StringFormat='{}{0} 个组件'}"
+                                         FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                            </StackPanel>
+
+                            <Border Grid.Column="2"
+                                    Classes="catalog-section-count"
+                                    VerticalAlignment="Center">
+                              <TextBlock Text="{Binding ItemCount}"
+                                         FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                            </Border>
+
+                            <Path Grid.Column="3"
+                                  Classes="catalog-section-chevron"
+                                  Width="16"
+                                  Height="16"
+                                  Data="M4 6L8 10L12 6"
+                                  Stroke="{DynamicResource Luna.Brush.Text.Secondary}"
                                   StrokeThickness="2"
-                                  StrokeLineCap="Square"
-                                  StrokeJoin="Miter"
+                                  StrokeLineCap="Round"
                                   Fill="Transparent"
-                                  Stretch="Uniform"
                                   HorizontalAlignment="Right"
                                   VerticalAlignment="Center" />
                           </Grid>
-                        </Border>
-                      </Expander.Header>
+                        </ToggleButton>
 
-                      <Border Background="{DynamicResource Luna.Brush.Background.Container}">
-                        <ItemsControl ItemsSource="{Binding Children}">
-                          <ItemsControl.ItemTemplate>
-                            <DataTemplate x:DataType="vm:CatalogItemViewModel">
-                              <Button Height="56"
-                                      Margin="32,0,26,0"
-                                      Background="Transparent"
-                                      BorderThickness="0"
-                                      CornerRadius="0"
-                                      Padding="0"
-                                      HorizontalContentAlignment="Stretch"
-                                      Command="{Binding #Root.DataContext.OpenCatalogItemCommand}"
-                                      CommandParameter="{Binding}">
-                                <Grid ColumnDefinitions="*,36">
-                                  <Border Height="1"
-                                          Background="{DynamicResource Luna.Brush.Border.Divider}"
-                                          VerticalAlignment="Top"
-                                          Grid.ColumnSpan="2" />
-                                  <TextBlock Text="{Binding Name}"
-                                             FontSize="{DynamicResource Luna.FontSize.Body.Large}"
-                                             Foreground="{DynamicResource Luna.Brush.Text.Primary}"
-                                             VerticalAlignment="Center" />
-                                  <Path Grid.Column="1"
-                                        Width="18"
-                                        Height="18"
-                                        Data="M9.5 17.5L15 12L9.5 6.5"
-                                        Stroke="{DynamicResource Luna.Brush.Text.Placeholder}"
-                                        StrokeThickness="2"
-                                        StrokeLineCap="Square"
-                                        Fill="Transparent"
-                                        Stretch="Uniform"
-                                        HorizontalAlignment="Right"
-                                        VerticalAlignment="Center" />
-                                </Grid>
-                              </Button>
-                            </DataTemplate>
-                          </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-                      </Border>
-                    </Expander>
+                        <Border Classes="catalog-section-divider"
+                                IsVisible="{Binding IsExpanded}" />
+
+                        <Border IsVisible="{Binding IsExpanded}">
+                          <ItemsControl ItemsSource="{Binding Children}">
+                            <ItemsControl.ItemTemplate>
+                              <DataTemplate x:DataType="vm:CatalogItemViewModel">
+                                <luna:Cell Classes="catalog-item"
+                                           Title="{Binding Name}"
+                                           Command="{Binding #Root.DataContext.OpenCatalogItemCommand}"
+                                           CommandParameter="{Binding}" />
+                              </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                          </ItemsControl>
+                        </Border>
+                      </StackPanel>
+                    </Border>
                   </DataTemplate>
                 </ItemsControl.ItemTemplate>
               </ItemsControl>
+
+              <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                      Padding="24"
+                      CornerRadius="16"
+                      IsVisible="{Binding ShowEmptyState}">
+                <StackPanel Spacing="8">
+                  <TextBlock Text="未找到匹配组件"
+                             HorizontalAlignment="Center"
+                             FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                             FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                             Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+                  <TextBlock Text="试试输入中文组件名、英文名或关键字。"
+                             HorizontalAlignment="Center"
+                             TextAlignment="Center"
+                             FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                             Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                </StackPanel>
+              </Border>
             </StackPanel>
           </ScrollViewer>
           </ContentPage>

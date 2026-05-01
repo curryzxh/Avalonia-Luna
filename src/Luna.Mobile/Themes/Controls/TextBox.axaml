@@ -1,23 +1,43 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <Style Selector="TextBox">
-    <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.TouchTarget}" />
-    <Setter Property="Padding" Value="{DynamicResource Luna.Padding.Control.Medium}" />
-    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
+    <Setter Property="MinHeight" Value="48" />
+    <Setter Property="Padding" Value="16,12" />
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Component}" />
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
     <Setter Property="BorderThickness" Value="1" />
-    <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Default}" />
+    <Setter Property="CornerRadius" Value="12" />
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
     <Setter Property="PlaceholderForeground" Value="{DynamicResource Luna.Brush.Text.Placeholder}" />
     <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Medium}" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="SelectionBrush" Value="{DynamicResource Luna.Brush.Brand.Light}" />
+  </Style>
+
+  <Style Selector="TextBox:pointerover /template/ Border#PART_BorderElement">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Strong}" />
   </Style>
 
   <Style Selector="TextBox:focus">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand}" />
   </Style>
 
-  <Style Selector="TextBox.error">
+  <Style Selector="TextBox:focus /template/ Border#PART_BorderElement">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand}" />
+    <Setter Property="BorderThickness" Value="1" />
+  </Style>
+
+  <Style Selector="TextBox.error, TextBox:error">
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Error}" />
+  </Style>
+
+  <Style Selector="TextBox.error /template/ Border#PART_BorderElement, TextBox:error /template/ Border#PART_BorderElement">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Error}" />
+    <Setter Property="BorderThickness" Value="1" />
   </Style>
 
   <Style Selector="TextBox:disabled">
@@ -25,5 +45,59 @@
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Weak}" />
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
     <Setter Property="PlaceholderForeground" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
+  </Style>
+
+  <Style Selector="TextBox.filled">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Component}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
+  </Style>
+
+  <Style Selector="TextBox.outlined">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Strong}" />
+  </Style>
+
+  <Style Selector="TextBox.outlined:pointerover /template/ Border#PART_BorderElement">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="TextBox.quiet">
+    <Setter Property="MinHeight" Value="0" />
+    <Setter Property="Padding" Value="0" />
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="CornerRadius" Value="0" />
+  </Style>
+
+  <Style Selector="TextBox.quiet /template/ Border#PART_BorderElement">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="0" />
+  </Style>
+
+  <Style Selector="TextBox.quiet:pointerover /template/ Border#PART_BorderElement, TextBox.quiet:focus /template/ Border#PART_BorderElement, TextBox.quiet:disabled /template/ Border#PART_BorderElement">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="0" />
+  </Style>
+
+  <Style Selector="TextBox.dark">
+    <Setter Property="Background" Value="#2C2C2C" />
+    <Setter Property="BorderBrush" Value="#4B4B4B" />
+    <Setter Property="Foreground" Value="#FFFFFF" />
+    <Setter Property="PlaceholderForeground" Value="#59FFFFFF" />
+  </Style>
+
+  <Style Selector="TextBox.dark:pointerover /template/ Border#PART_BorderElement">
+    <Setter Property="Background" Value="#2C2C2C" />
+    <Setter Property="BorderBrush" Value="#5A5A5A" />
+  </Style>
+
+  <Style Selector="TextBox.dark:focus /template/ Border#PART_BorderElement">
+    <Setter Property="Background" Value="#2C2C2C" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand}" />
+    <Setter Property="BorderThickness" Value="1" />
   </Style>
 </Styles>

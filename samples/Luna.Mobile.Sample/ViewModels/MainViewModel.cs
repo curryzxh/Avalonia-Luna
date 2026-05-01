@@ -3,14 +3,14 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace Luna.Mobile.Sample.ViewModels;
 
 public partial class MainViewModel : ViewModelBase
 {
-    public string Title { get; } = "Luna 适配 Avalonia 的移动端组件库";
-
-    public IReadOnlyList<CatalogSectionViewModel> Sections { get; } =
+    private static readonly IReadOnlyList<CatalogSectionDefinition> AllSections =
     [
         new("全局配置", Icons.Internet, false,
         [
@@ -98,6 +98,35 @@ public partial class MainViewModel : ViewModelBase
         ]),
     ];
 
+    public string Title { get; } = "Luna 适配 Avalonia 的移动端组件库";
+
+    public ObservableCollection<CatalogSectionViewModel> Sections { get; } = [];
+
+    [ObservableProperty]
+    private string searchText = string.Empty;
+
+    [ObservableProperty]
+    private bool hasSearchResults = true;
+
+    public bool ShowEmptyState => !HasSearchResults;
+
+    public int SectionCount => AllSections.Count;
+
+    public int ComponentCount => AllSections.Sum(section => section.Children.Count);
+
+    public int VisibleComponentCount => Sections.Sum(section => section.Children.Count);
+
+    public bool IsSearching => !string.IsNullOrWhiteSpace(SearchText);
+
+    public string SearchStatus => IsSearching
+        ? $"当前筛选出 {VisibleComponentCount} 个组件"
+        : $"共收录 {ComponentCount} 个组件";
+
+    public MainViewModel()
+    {
+        ApplySearch();
+    }
+
     public event EventHandler<CatalogItemViewModel>? CatalogItemRequested;
 
     [RelayCommand]
@@ -109,6 +138,60 @@ public partial class MainViewModel : ViewModelBase
         }
 
         CatalogItemRequested?.Invoke(this, item);
+    }
+
+    partial void OnSearchTextChanged(string value)
+    {
+        ApplySearch();
+    }
+
+    private void ApplySearch()
+    {
+        var keyword = SearchText.Trim();
+        var isSearching = !string.IsNullOrWhiteSpace(keyword);
+
+        var filteredSections = AllSections
+            .Select(section => CreateFilteredSection(section, keyword, isSearching))
+            .Where(section => section is not null)
+            .Cast<CatalogSectionViewModel>()
+            .ToArray();
+
+        Sections.Clear();
+        foreach (var section in filteredSections)
+        {
+            Sections.Add(section);
+        }
+
+        HasSearchResults = filteredSections.Length > 0;
+        OnPropertyChanged(nameof(ShowEmptyState));
+        OnPropertyChanged(nameof(VisibleComponentCount));
+        OnPropertyChanged(nameof(IsSearching));
+        OnPropertyChanged(nameof(SearchStatus));
+    }
+
+    private static CatalogSectionViewModel? CreateFilteredSection(CatalogSectionDefinition section, string keyword, bool isSearching)
+    {
+        if (!isSearching)
+        {
+            return new CatalogSectionViewModel(section.Title, section.IconData, section.IsExpanded, section.Children);
+        }
+
+        var matchesSection = ContainsIgnoreCase(section.Title, keyword);
+        var children = matchesSection
+            ? section.Children
+            : section.Children.Where(child => ContainsIgnoreCase(child.Name, keyword)).ToArray();
+
+        if (children.Count == 0)
+        {
+            return null;
+        }
+
+        return new CatalogSectionViewModel(section.Title, section.IconData, true, children);
+    }
+
+    private static bool ContainsIgnoreCase(string text, string keyword)
+    {
+        return text.Contains(keyword, StringComparison.OrdinalIgnoreCase);
     }
 }
 
@@ -128,11 +211,19 @@ public partial class CatalogSectionViewModel : ObservableObject
 
     public IReadOnlyList<CatalogItemViewModel> Children { get; }
 
+    public int ItemCount => Children.Count;
+
     [ObservableProperty]
     private bool isExpanded;
 }
 
 public sealed record CatalogItemViewModel(string Name, string Path);
+
+internal sealed record CatalogSectionDefinition(
+    string Title,
+    Geometry IconData,
+    bool IsExpanded,
+    IReadOnlyList<CatalogItemViewModel> Children);
 
 internal static class Icons
 {

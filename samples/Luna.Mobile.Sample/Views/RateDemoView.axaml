@@ -67,9 +67,9 @@
                      Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
           <Border Background="{DynamicResource Luna.Brush.Background.Container}" Margin="16,0" Padding="16">
             <StackPanel Spacing="12">
-              <luna:Rate Name="TextRate1" ShowText="True" Value="1" />
-              <luna:Rate Name="TextRate2" ShowText="True" Value="5" />
-              <luna:Rate Name="TextRate3" ShowText="True" Value="0" />
+              <luna:Rate ShowText="True" Texts="{Binding Texts}" Value="1" />
+              <luna:Rate ShowText="True" Texts="{Binding Texts}" Value="5" />
+              <luna:Rate ShowText="True" Texts="{Binding Texts}" Value="0" />
             </StackPanel>
           </Border>
         </StackPanel>
@@ -81,9 +81,9 @@
                      Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
           <Border Background="{DynamicResource Luna.Brush.Background.Container}" Margin="16,0" Padding="16">
             <StackPanel Spacing="16">
-              <luna:Rate Name="PlaceTop" ShowText="True" Placement="Top" Value="3" />
-              <luna:Rate Name="PlaceBottom" ShowText="True" Placement="Bottom" Value="3" />
-              <luna:Rate Name="PlaceNone" ShowText="True" Placement="None" Value="3" />
+              <luna:Rate ShowText="True" Texts="{Binding Texts}" Placement="Top" Value="3" />
+              <luna:Rate ShowText="True" Texts="{Binding Texts}" Placement="Bottom" Value="3" />
+              <luna:Rate ShowText="True" Texts="{Binding Texts}" Placement="None" Value="3" />
             </StackPanel>
           </Border>
         </StackPanel>
@@ -185,16 +185,15 @@
           </StackPanel>
           <Border Background="{DynamicResource Luna.Brush.Background.Container}" Margin="16,0" Padding="16">
             <StackPanel Spacing="8" HorizontalAlignment="Center">
-              <luna:Rate Name="SpecialRate"
-                             Size="30"
-                             ShowText="True"
-                             Placement="Bottom"
-                             Value="3"
-                             ValueChanged="OnSpecialValueChanged" />
-              <TextBlock Name="SpecialDesc"
-                         Text=""
+              <luna:Rate Size="30"
+                         ShowText="True"
+                         Texts="{Binding SpecialTexts}"
+                         Placement="Bottom"
+                         Value="{Binding SpecialValue, Mode=TwoWay}" />
+              <TextBlock Text="{Binding SpecialDescription}"
                          FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
-                         Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                         Foreground="{Binding SpecialDescriptionBrush}"
+                         FontWeight="{Binding SpecialDescriptionFontWeight}"
                          HorizontalAlignment="Center" />
             </StackPanel>
           </Border>
@@ -203,4 +202,3 @@
     </StackPanel>
   </ScrollViewer>
 </UserControl>
-

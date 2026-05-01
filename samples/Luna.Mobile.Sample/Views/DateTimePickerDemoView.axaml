@@ -50,11 +50,11 @@
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="选择日期"
-                      Click="OnDatePickerClick" />
+                      Command="{Binding DatePickerCommand}" />
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="选择日期时间（到分钟）"
-                      Click="OnMinutePickerClick" />
+                      Command="{Binding MinutePickerCommand}" />
             </StackPanel>
           </StackPanel>
 
@@ -72,11 +72,11 @@
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="限制最近 7 天"
-                      Click="OnRangePickerClick" />
+                      Command="{Binding RangePickerCommand}" />
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="分钟 5 分钟步进"
-                      Click="OnStepPickerClick" />
+                      Command="{Binding StepPickerCommand}" />
             </StackPanel>
           </StackPanel>
 
@@ -94,11 +94,11 @@
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="显示星期"
-                      Click="OnWeekPickerClick" />
+                      Command="{Binding WeekPickerCommand}" />
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="自定义格式"
-                      Click="OnFormatPickerClick" />
+                      Command="{Binding FormatPickerCommand}" />
             </StackPanel>
           </StackPanel>
         </StackPanel>

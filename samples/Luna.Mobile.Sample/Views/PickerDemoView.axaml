@@ -50,11 +50,11 @@
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="选择地区（单列）"
-                      Click="OnCityPickerClick" />
+                      Command="{Binding CityPickerCommand}" />
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="选择季节（双列）"
-                      Click="OnSeasonPickerClick" />
+                      Command="{Binding SeasonPickerCommand}" />
             </StackPanel>
           </StackPanel>
 
@@ -69,11 +69,11 @@
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="带标题选择器"
-                      Click="OnTitlePickerClick" />
+                      Command="{Binding TitlePickerCommand}" />
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="自定义高度选择器"
-                      Click="OnCustomHeightPickerClick" />
+                      Command="{Binding CustomHeightPickerCommand}" />
             </StackPanel>
           </StackPanel>
         </StackPanel>
@@ -84,4 +84,3 @@
     <luna:ToastHost Name="ToastHost" />
   </Grid>
 </UserControl>
-

@@ -50,23 +50,23 @@
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="常规列表型"
-                      Click="OnNormalListClick" />
+                      Command="{Binding NormalListCommand}" />
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="函数调用"
-                      Click="OnMethodListClick" />
+                      Command="{Binding MethodListCommand}" />
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="带描述列表型"
-                      Click="OnDescriptionListClick" />
+                      Command="{Binding DescriptionListCommand}" />
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="带图标列表型"
-                      Click="OnIconListClick" />
+                      Command="{Binding IconListCommand}" />
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="带徽标列表型"
-                      Click="OnBadgeListClick" />
+                      Command="{Binding BadgeListCommand}" />
             </StackPanel>
           </StackPanel>
 
@@ -79,15 +79,15 @@
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="常规宫格型"
-                      Click="OnNormalGridClick" />
+                      Command="{Binding NormalGridCommand}" />
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="带描述宫格型"
-                      Click="OnDescriptionGridClick" />
+                      Command="{Binding DescriptionGridCommand}" />
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="带徽标宫格型"
-                      Click="OnBadgeGridClick" />
+                      Command="{Binding BadgeGridCommand}" />
             </StackPanel>
           </StackPanel>
 
@@ -105,7 +105,7 @@
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="列表型选项状态"
-                      Click="OnStatusListClick" />
+                      Command="{Binding StatusListCommand}" />
             </StackPanel>
           </StackPanel>
 
@@ -123,11 +123,11 @@
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="居中列表型"
-                      Click="OnAlignCenterListClick" />
+                      Command="{Binding AlignCenterListCommand}" />
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="左对齐列表型"
-                      Click="OnAlignLeftListClick" />
+                      Command="{Binding AlignLeftListCommand}" />
             </StackPanel>
           </StackPanel>
         </StackPanel>

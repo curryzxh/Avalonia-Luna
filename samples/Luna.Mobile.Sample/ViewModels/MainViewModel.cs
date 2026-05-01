@@ -136,20 +136,39 @@ public sealed record CatalogItemViewModel(string Name, string Path);
 
 internal static class Icons
 {
-    public static Geometry Internet { get; } = Geometry.Parse(
-        "M3 12H21 M2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5229 17.5228 22 12C6.47715 22 2 17.5229 2 12Z M11.4987 21.9877C6.88584 16.2216 6.88581 7.77835 11.4988 2.01231 M12.5 21.9877C17.113 16.2216 17.1129 7.77835 12.4999 2.01231");
+    public static Geometry Internet { get; } = ParseOrFallback(
+        "M3 12H21 M2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5229 17.5228 22 12C6.47715 22 2 17.5229 2 12Z M11.4987 21.9877C6.88584 16.2216 6.88581 7.77835 11.4988 2.01231 M12.5 21.9877C17.113 16.2216 17.1129 7.77835 12.4999 2.01231",
+        "M4 12H20 M12 4V20");
 
-    public static Geometry App { get; } = Geometry.Parse(
-        "M3 3H10V10H3V3Z M14 14H21V21H14V14Z M3 14H10V21H3V14Z M21.5 6.5C21.5 8.70914 19.7091 10.5 17.5 10.5C15.2909 10.5 13.5 8.70914 13.5 6.5C13.5 4.29086 15.2909 2.5 17.5 2.5C19.7091 2.5 21.5 4.29086 21.5 6.5Z");
+    public static Geometry App { get; } = ParseOrFallback(
+        "M3 3H10V10H3V3Z M14 14H21V21H14V14Z M3 14H10V21H3V14Z M21.5 6.5C21.5 8.70914 19.7091 10.5 17.5 10.5C15.2909 10.5 13.5 8.70914 13.5 6.5C13.5 4.29086 15.2909 2.5 17.5 2.5C19.7091 2.5 21.5 4.29086 21.5 6.5Z",
+        "M4 4H10V10H4Z M14 4H20V10H14Z M4 14H10V20H4Z M14 14H20V20H14Z");
 
-    public static Geometry ViewModule { get; } = Geometry.Parse(
-        "M8.6665 4V20 M15.333 4V20 M2 12H22 M2 20H22V4H2V20Z");
+    public static Geometry ViewModule { get; } = ParseOrFallback(
+        "M8.6665 4V20 M15.333 4V20 M2 12H22 M2 20H22V4H2V20Z",
+        "M8 4V20 M16 4V20 M4 12H20 M4 4H20V20H4Z");
 
-    public static Geometry Bulletpoint { get; } = Geometry.Parse(
-        "M8 5H21 M8 12H21 M8 19H21 M3 5H3.01 M3 12H3.01 M3 19H3.01");
+    public static Geometry Bulletpoint { get; } = ParseOrFallback(
+        "M8 5H21 M8 12H21 M8 19H21 M3 5H3.01 M3 12H3.01 M3 19H3.01",
+        "M8 6H20 M8 12H20 M8 18H20 M4 6H4.01 M4 12H4.01 M4 18H4.01");
 
-    public static Geometry Image { get; } = Geometry.Parse(
-        "M3 16V3H21V21H20 M3 16V21H20 M3 16L9 10L20 21 M15.75 6.25A2 2 0 1 1 15.75 10.25A2 2 0 1 1 15.75 6.25");
+    public static Geometry Image { get; } = ParseOrFallback(
+        "M3 16V3H21V21H20 M3 16V21H20 M3 16L9 10L20 21 M15.75 6.25A2 2 0 1 1 15.75 10.25 A2 2 0 1 1 15.75 6.25",
+        "M4 6V18H20V6H4Z M4 15L9 10L14 15L17 12L20 15");
 
-    public static Geometry ChevronUp { get; } = Geometry.Parse("M17.5 14.5L12 9L6.5 14.5");
+    public static Geometry ChevronUp { get; } = ParseOrFallback(
+        "M17.5 14.5L12 9L6.5 14.5",
+        "M6.5 14.5L12 9L17.5 14.5");
+
+    private static Geometry ParseOrFallback(string data, string fallback)
+    {
+        try
+        {
+            return Geometry.Parse(data);
+        }
+        catch
+        {
+            return Geometry.Parse(fallback);
+        }
+    }
 }

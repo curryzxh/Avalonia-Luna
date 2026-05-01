@@ -50,9 +50,9 @@
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="显示基础遮罩"
-                      Click="OnShowBasicOverlayClick" />
+                      Command="{Binding ShowBasicOverlayCommand}" />
               <TextBlock Name="LifecycleText"
-                         Text="最近事件：未触发"
+                         Text="{Binding LifecycleText}"
                          FontSize="{DynamicResource Luna.FontSize.Body.Small}"
                          Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
             </StackPanel>
@@ -72,7 +72,7 @@
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="显示带内容遮罩"
-                      Click="OnShowContentOverlayClick" />
+                      Command="{Binding ShowContentOverlayCommand}" />
             </StackPanel>
           </StackPanel>
 
@@ -90,7 +90,7 @@
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="显示蓝色遮罩"
-                      Click="OnShowTintOverlayClick" />
+                      Command="{Binding ShowTintOverlayCommand}" />
             </StackPanel>
           </StackPanel>
 
@@ -113,7 +113,7 @@
                 <Button Classes="primary outline"
                         HorizontalAlignment="Stretch"
                         Content="切换局部穿透遮罩"
-                        Click="OnTogglePassThroughOverlayClick" />
+                        Command="{Binding TogglePassThroughOverlayCommand}" />
                 <TextBlock Grid.Row="1"
                            Margin="0,12,0,0"
                            Text="点击下面按钮时，弱提示遮罩不会拦截输入。"
@@ -126,16 +126,15 @@
                   <Button Classes="primary large"
                           HorizontalAlignment="Stretch"
                           Content="点击计数 +1"
-                          Click="OnPassThroughTargetClick" />
-                  <TextBlock Name="PassThroughCountText"
-                             Text="当前点击次数：0"
+                          Command="{Binding IncrementPassThroughCountCommand}" />
+                  <TextBlock Text="{Binding PassThroughCountText}"
                              FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
                              Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
                 </StackPanel>
 
                 <luna:Overlay Name="PassThroughOverlay"
                                   Grid.RowSpan="3"
-                                  Visible="False"
+                                  Visible="{Binding IsPassThroughOverlayVisible}"
                                   Duration="0:0:0.2"
                                   PreventScrollThrough="False"
                                   OverlayBrush="#663B82F6">
@@ -157,7 +156,7 @@
     </ScrollViewer>
 
     <luna:Overlay Name="BasicOverlay"
-                      Visible="False"
+                      Visible="{Binding IsBasicOverlayVisible}"
                       Clicked="OnBasicOverlayClicked"
                       Opening="OnBasicOverlayOpening"
                       Opened="OnBasicOverlayOpened"
@@ -165,7 +164,7 @@
                       Closed="OnBasicOverlayClosed" />
 
     <luna:Overlay Name="ContentOverlay"
-                      Visible="False"
+                      Visible="{Binding IsContentOverlayVisible}"
                       Clicked="OnContentOverlayClicked">
       <Border Margin="24"
               Padding="20"
@@ -186,13 +185,13 @@
           <Button Classes="primary large"
                   HorizontalAlignment="Stretch"
                   Content="关闭"
-                  Click="OnCloseContentOverlayClick" />
+                  Command="{Binding CloseContentOverlayCommand}" />
         </StackPanel>
       </Border>
     </luna:Overlay>
 
     <luna:Overlay Name="TintOverlay"
-                      Visible="False"
+                      Visible="{Binding IsTintOverlayVisible}"
                       OverlayBrush="#804084FF"
                       Clicked="OnTintOverlayClicked">
       <Border Margin="24"
@@ -214,7 +213,7 @@
           <Button Classes="primary outline large"
                   HorizontalAlignment="Stretch"
                   Content="知道了"
-                  Click="OnCloseTintOverlayClick" />
+                  Command="{Binding CloseTintOverlayCommand}" />
         </StackPanel>
       </Border>
     </luna:Overlay>

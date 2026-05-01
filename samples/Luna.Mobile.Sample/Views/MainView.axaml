@@ -1,5 +1,6 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:luna="https://github.com/curryzxh/Luna"
              xmlns:views="clr-namespace:Luna.Mobile.Sample.Views"
              xmlns:vm="using:Luna.Mobile.Sample.ViewModels"
              x:Class="Luna.Mobile.Sample.Views.MainView"
@@ -7,51 +8,10 @@
              x:DataType="vm:MainViewModel">
   <Grid RowDefinitions="Auto,*"
         Background="{DynamicResource Luna.Brush.Background.Page}">
-    <Border x:Name="HeaderBar"
-            Grid.Row="0"
-            IsVisible="False"
-            Background="{DynamicResource Luna.Brush.Background.Page}"
-            BorderBrush="{DynamicResource Luna.Brush.Border.Divider}"
-            BorderThickness="0,0,0,1">
-      <Grid Height="56"
-            Margin="12,0"
-            ColumnDefinitions="40,*,40">
-        <Button x:Name="BackButton"
-                Width="40"
-                Height="40"
-                Padding="0"
-                Background="Transparent"
-                BorderThickness="0"
-                CornerRadius="20"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                IsVisible="False"
-                Click="BackButton_OnClick">
-          <TextBlock Text="←"
-                     FontSize="20"
-                     Foreground="{DynamicResource Luna.Brush.Text.Primary}"
-                     HorizontalAlignment="Center"
-                     VerticalAlignment="Center" />
-        </Button>
-
-        <TextBlock x:Name="HeaderTitleText"
-                   Grid.Column="1"
-                   FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
-                   FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
-                   Foreground="{DynamicResource Luna.Brush.Text.Primary}"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   TextAlignment="Center"
-                   TextTrimming="CharacterEllipsis" />
-
-        <Border Grid.Column="2"
-                Width="40"
-                Height="40"
-                Background="Transparent"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center" />
-      </Grid>
-    </Border>
+    <luna:NavBar x:Name="HeaderBar"
+                 Grid.Row="0"
+                 IsVisible="False"
+                 BackRequested="HeaderBar_OnBackRequested" />
 
     <PageNavigationHost x:Name="ShellHost"
                         Grid.Row="1">

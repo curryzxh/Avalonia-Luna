@@ -1,0 +1,371 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:luna="https://github.com/curryzxh/Luna"
+             xmlns:vm="using:Luna.Mobile.Sample.ViewModels"
+             x:Class="Luna.Mobile.Sample.Views.NavBarDemoView"
+             x:DataType="vm:NavBarDemoViewModel">
+  <UserControl.Styles>
+    <Style Selector="Border.navbar-demo-card">
+      <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
+    </Style>
+
+    <Style Selector="Button.navbar-icon">
+      <Setter Property="Width" Value="40" />
+      <Setter Property="Height" Value="40" />
+      <Setter Property="Padding" Value="0" />
+      <Setter Property="Background" Value="Transparent" />
+      <Setter Property="BorderThickness" Value="0" />
+      <Setter Property="CornerRadius" Value="20" />
+      <Setter Property="HorizontalAlignment" Value="Center" />
+      <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style Selector="TextBlock.navbar-block-summary">
+      <Setter Property="Margin" Value="16,0" />
+      <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Medium}" />
+      <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Secondary}" />
+    </Style>
+
+    <Style Selector="luna|NavBar.navbar-accent /template/ Border">
+      <Setter Property="Background" Value="#0052D9" />
+      <Setter Property="BorderBrush" Value="#0052D9" />
+    </Style>
+
+    <Style Selector="luna|NavBar.navbar-accent /template/ TextBlock">
+      <Setter Property="Foreground" Value="#FFFFFF" />
+    </Style>
+
+    <Style Selector="luna|NavBar.navbar-accent /template/ Path">
+      <Setter Property="Stroke" Value="#FFFFFF" />
+    </Style>
+  </UserControl.Styles>
+
+  <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
+    <StackPanel Spacing="24"
+                Margin="0,0,0,28">
+      <StackPanel Margin="16,0"
+                  Spacing="8">
+        <TextBlock Text="Navbar 导航栏"
+                   FontSize="{DynamicResource Luna.FontSize.Title.Large}"
+                   FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+        <TextBlock Text="用于不同页面之间切换或者跳转，位于内容区的上方，系统状态栏的下方。"
+                   FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                   TextWrapping="Wrap" />
+      </StackPanel>
+
+      <StackPanel Spacing="28">
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0"
+                      Spacing="4">
+            <TextBlock Text="01 组件类型"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="基础导航栏"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+
+          <Border Classes="navbar-demo-card">
+            <StackPanel>
+              <luna:NavBar Title="标题文字" />
+
+              <luna:NavBar Title="标题文字"
+                           RightContent="{x:Null}">
+                <luna:NavBar.LeftContent>
+                  <Button Classes="navbar-icon">
+                    <Path Width="18"
+                          Height="18"
+                          Data="M6 6L18 18 M18 6L6 18"
+                          Stroke="{DynamicResource Luna.Brush.Text.Primary}"
+                          StrokeThickness="2"
+                          StrokeLineCap="Round" />
+                  </Button>
+                </luna:NavBar.LeftContent>
+                <luna:NavBar.RightContent>
+                  <Button Classes="navbar-icon">
+                    <TextBlock Text="..."
+                               FontSize="24"
+                               Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                               VerticalAlignment="Center" />
+                  </Button>
+                </luna:NavBar.RightContent>
+              </luna:NavBar>
+
+              <luna:NavBar Title="标题文字超长展示"
+                           ShowDivider="False">
+                <luna:NavBar.LeftContent>
+                  <Border Background="{DynamicResource Luna.Brush.Background.Page}"
+                          BorderBrush="{DynamicResource Luna.Brush.Border.Divider}"
+                          BorderThickness="1"
+                          CornerRadius="18"
+                          Padding="8,4">
+                    <Grid ColumnDefinitions="Auto,1,Auto"
+                          ColumnSpacing="8">
+                      <Path Width="16"
+                            Height="16"
+                            Data="M11.5 3.5L5 10L11.5 16.5"
+                            Stroke="{DynamicResource Luna.Brush.Text.Primary}"
+                            StrokeThickness="2"
+                            StrokeLineCap="Round"
+                            VerticalAlignment="Center" />
+                      <Border Grid.Column="1"
+                              Width="1"
+                              Height="16"
+                              Background="{DynamicResource Luna.Brush.Border.Divider}"
+                              VerticalAlignment="Center" />
+                      <Path Grid.Column="2"
+                            Width="16"
+                            Height="16"
+                            Data="M4 7.5L10 3L16 7.5V17H12V12H8V17H4Z"
+                            Stroke="{DynamicResource Luna.Brush.Text.Primary}"
+                            StrokeThickness="1.8"
+                            StrokeLineCap="Round" />
+                    </Grid>
+                  </Border>
+                </luna:NavBar.LeftContent>
+              </luna:NavBar>
+            </StackPanel>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Classes="navbar-block-summary"
+                     Text="带搜索导航栏" />
+          <Border Classes="navbar-demo-card">
+            <luna:NavBar Title=""
+                         ShowDivider="False">
+              <luna:NavBar.LeftContent>
+                <luna:SearchBar Width="200"
+                                Placeholder="搜索预设文案" />
+              </luna:NavBar.LeftContent>
+              <luna:NavBar.RightContent>
+                <StackPanel Orientation="Horizontal"
+                            Spacing="4">
+                  <Button Classes="navbar-icon">
+                    <Path Width="18"
+                          Height="18"
+                          Data="M4 7.5L10 3L16 7.5V17H12V12H8V17H4Z"
+                          Stroke="{DynamicResource Luna.Brush.Text.Primary}"
+                          StrokeThickness="1.8"
+                          StrokeLineCap="Round" />
+                  </Button>
+                  <Button Classes="navbar-icon">
+                    <TextBlock Text="..."
+                               FontSize="24"
+                               Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                               VerticalAlignment="Center" />
+                  </Button>
+                </StackPanel>
+              </luna:NavBar.RightContent>
+            </luna:NavBar>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Classes="navbar-block-summary"
+                     Text="带图片导航栏" />
+          <Border Classes="navbar-demo-card">
+            <luna:NavBar Title=""
+                         ShowDivider="False">
+              <luna:NavBar.LeftContent>
+                <Border Background="{DynamicResource Luna.Brush.Brand.Light}"
+                        CornerRadius="12"
+                        Padding="8,4">
+                  <StackPanel Orientation="Horizontal"
+                              Spacing="8">
+                    <Border Width="16"
+                            Height="16"
+                            CornerRadius="8"
+                            Background="{DynamicResource Luna.Brush.Brand}" />
+                    <TextBlock Text="Luna Mobile"
+                               FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                               FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                               Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                               VerticalAlignment="Center" />
+                  </StackPanel>
+                </Border>
+              </luna:NavBar.LeftContent>
+              <luna:NavBar.RightContent>
+                <StackPanel Orientation="Horizontal"
+                            Spacing="4">
+                  <Button Classes="navbar-icon">
+                    <Path Width="18"
+                          Height="18"
+                          Data="M4 7.5L10 3L16 7.5V17H12V12H8V17H4Z"
+                          Stroke="{DynamicResource Luna.Brush.Text.Primary}"
+                          StrokeThickness="1.8"
+                          StrokeLineCap="Round" />
+                  </Button>
+                  <Button Classes="navbar-icon">
+                    <TextBlock Text="..."
+                               FontSize="24"
+                               Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                               VerticalAlignment="Center" />
+                  </Button>
+                </StackPanel>
+              </luna:NavBar.RightContent>
+            </luna:NavBar>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0"
+                      Spacing="4">
+            <TextBlock Text="02 组件样式"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="标题对齐"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+
+          <Border Classes="navbar-demo-card">
+            <StackPanel>
+              <luna:NavBar Title="标题居中">
+                <luna:NavBar.RightContent>
+                  <Button Classes="navbar-icon">
+                    <TextBlock Text="..."
+                               FontSize="24"
+                               Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                               VerticalAlignment="Center" />
+                  </Button>
+                </luna:NavBar.RightContent>
+              </luna:NavBar>
+
+              <luna:NavBar Title=""
+                           ShowDivider="False">
+                <luna:NavBar.LeftContent>
+                  <TextBlock Text="标题左对齐"
+                             FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                             FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                             Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                             VerticalAlignment="Center" />
+                </luna:NavBar.LeftContent>
+                <luna:NavBar.RightContent>
+                  <StackPanel Orientation="Horizontal"
+                              Spacing="4">
+                    <Button Classes="navbar-icon">
+                      <Path Width="18"
+                            Height="18"
+                            Data="M4 7.5L10 3L16 7.5V17H12V12H8V17H4Z"
+                            Stroke="{DynamicResource Luna.Brush.Text.Primary}"
+                            StrokeThickness="1.8"
+                            StrokeLineCap="Round" />
+                    </Button>
+                    <Button Classes="navbar-icon">
+                      <TextBlock Text="..."
+                                 FontSize="24"
+                                 Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                                 VerticalAlignment="Center" />
+                    </Button>
+                  </StackPanel>
+                </luna:NavBar.RightContent>
+              </luna:NavBar>
+            </StackPanel>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Classes="navbar-block-summary"
+                     Text="标题尺寸" />
+          <Border Classes="navbar-demo-card">
+            <StackPanel>
+              <luna:NavBar Title="标题文字">
+                <luna:NavBar.RightContent>
+                  <StackPanel Orientation="Horizontal"
+                              Spacing="4">
+                    <Button Classes="navbar-icon">
+                      <Path Width="18"
+                            Height="18"
+                            Data="M4 7.5L10 3L16 7.5V17H12V12H8V17H4Z"
+                            Stroke="{DynamicResource Luna.Brush.Text.Primary}"
+                            StrokeThickness="1.8"
+                            StrokeLineCap="Round" />
+                    </Button>
+                    <Button Classes="navbar-icon">
+                      <TextBlock Text="..."
+                                 FontSize="24"
+                                 Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                                 VerticalAlignment="Center" />
+                    </Button>
+                  </StackPanel>
+                </luna:NavBar.RightContent>
+              </luna:NavBar>
+
+              <StackPanel Background="{DynamicResource Luna.Brush.Background.Container}">
+                <luna:NavBar Title=""
+                             ShowDivider="False">
+                  <luna:NavBar.LeftContent>
+                    <TextBlock Text="返回"
+                               FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                               Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                               VerticalAlignment="Center" />
+                  </luna:NavBar.LeftContent>
+                  <luna:NavBar.RightContent>
+                    <StackPanel Orientation="Horizontal"
+                                Spacing="4">
+                      <Button Classes="navbar-icon">
+                        <Path Width="18"
+                              Height="18"
+                              Data="M4 7.5L10 3L16 7.5V17H12V12H8V17H4Z"
+                              Stroke="{DynamicResource Luna.Brush.Text.Primary}"
+                              StrokeThickness="1.8"
+                              StrokeLineCap="Round" />
+                      </Button>
+                      <Button Classes="navbar-icon">
+                        <TextBlock Text="..."
+                                   FontSize="24"
+                                   Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                                   VerticalAlignment="Center" />
+                      </Button>
+                    </StackPanel>
+                  </luna:NavBar.RightContent>
+                </luna:NavBar>
+
+                <TextBlock Text="大尺寸标题"
+                           Margin="20,4,20,16"
+                           FontSize="28"
+                           FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+              </StackPanel>
+            </StackPanel>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Classes="navbar-block-summary"
+                     Text="自定义颜色" />
+          <Border Classes="navbar-demo-card">
+            <luna:NavBar Classes="navbar-accent"
+                         Title="标题文字"
+                         ShowDivider="False">
+              <luna:NavBar.RightContent>
+                <StackPanel Orientation="Horizontal"
+                            Spacing="4">
+                  <Button Classes="navbar-icon">
+                    <Path Width="18"
+                          Height="18"
+                          Data="M4 7.5L10 3L16 7.5V17H12V12H8V17H4Z"
+                          Stroke="#FFFFFF"
+                          StrokeThickness="1.8"
+                          StrokeLineCap="Round" />
+                  </Button>
+                  <Button Classes="navbar-icon">
+                    <TextBlock Text="..."
+                               FontSize="24"
+                               Foreground="#FFFFFF"
+                               VerticalAlignment="Center" />
+                  </Button>
+                </StackPanel>
+              </luna:NavBar.RightContent>
+            </luna:NavBar>
+          </Border>
+        </StackPanel>
+      </StackPanel>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

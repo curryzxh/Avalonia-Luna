@@ -7,6 +7,7 @@
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/CheckBox.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/RadioButton.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/SearchBar.axaml" />
+  <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/NavBar.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Stepper.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/DateTimePicker.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Indexes.axaml" />

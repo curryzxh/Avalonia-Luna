@@ -1,0 +1,82 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:luna="https://github.com/curryzxh/Luna">
+  <Design.PreviewWith>
+    <Border Width="390"
+            Height="120"
+            Background="{DynamicResource Luna.Brush.Background.Page}">
+      <luna:NavBar Title="Button 按钮"
+                   ShowBackButton="True"
+                   LeftContent="返回" />
+    </Border>
+  </Design.PreviewWith>
+
+  <Style Selector="luna|NavBar">
+    <Setter Property="HorizontalAlignment" Value="Stretch" />
+    <Setter Property="ShowDivider" Value="True" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border Background="{DynamicResource Luna.Brush.Background.Page}"
+                BorderBrush="{DynamicResource Luna.Brush.Border.Divider}"
+                BorderThickness="0,0,0,1">
+          <Grid Height="{TemplateBinding BarHeight}"
+                Margin="12,0">
+            <TextBlock Text="{TemplateBinding Title}"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       TextAlignment="Center"
+                       TextTrimming="CharacterEllipsis"
+                       Margin="56,0" />
+
+            <Grid ColumnDefinitions="Auto,*,Auto"
+                  ColumnSpacing="8">
+              <StackPanel Orientation="Horizontal"
+                          Spacing="4"
+                          VerticalAlignment="Center">
+                <Button Name="PART_BackButton"
+                        Width="40"
+                        Height="40"
+                        Padding="0"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        CornerRadius="20"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        IsVisible="{TemplateBinding ShowBackButton}">
+                  <Path Width="18"
+                        Height="18"
+                        Data="M14.5 3.5L6 12L14.5 20.5"
+                        Stroke="{DynamicResource Luna.Brush.Text.Primary}"
+                        StrokeThickness="2"
+                        StrokeLineCap="Round"
+                        Fill="Transparent"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center" />
+                </Button>
+
+                <ContentPresenter Content="{TemplateBinding LeftContent}"
+                                  VerticalAlignment="Center"
+                                  HorizontalAlignment="Left" />
+              </StackPanel>
+              <ContentPresenter Grid.Column="2"
+                                Content="{TemplateBinding RightContent}"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Right" />
+            </Grid>
+          </Grid>
+        </Border>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="luna|NavBar /template/ Border">
+    <Setter Property="BorderThickness" Value="0,0,0,1" />
+  </Style>
+
+  <Style Selector="luna|NavBar[ShowDivider=false] /template/ Border">
+    <Setter Property="BorderThickness" Value="0" />
+  </Style>
+</Styles>

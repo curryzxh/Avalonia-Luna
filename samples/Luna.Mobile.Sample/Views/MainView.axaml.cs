@@ -31,9 +31,9 @@ public partial class MainView : UserControl
         await ShellNavigation.PushAsync(page);
     }
 
-    private async void BackButton_OnClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    private async void HeaderBar_OnBackRequested(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        if (ShellNavigation.CanGoBack)
+        if (ShellNavigation.NavigationStack.Count > 1)
         {
             await ShellNavigation.PopAsync();
         }
@@ -56,8 +56,8 @@ public partial class MainView : UserControl
         var canGoBack = ShellNavigation.NavigationStack.Count > 1;
 
         HeaderBar.IsVisible = !isCatalogPage;
-        BackButton.IsVisible = !isCatalogPage && canGoBack;
-        HeaderTitleText.Text = isCatalogPage ? string.Empty : GetHeaderText(currentPage?.Header);
+        HeaderBar.ShowBackButton = !isCatalogPage && canGoBack;
+        HeaderBar.Title = isCatalogPage ? string.Empty : GetHeaderText(currentPage?.Header);
     }
 
     private static string GetHeaderText(object? header)
@@ -125,6 +125,7 @@ public partial class MainView : UserControl
             "/dialog" => new DialogDemoView(),
             "/loading" => new LoadingDemoView(),
             "/message" => new MessageDemoView(),
+            "/navbar" => new NavBarDemoView(),
             "/noticebar" => new NoticeBarDemoView(),
             "/overlay" => new OverlayDemoView(),
             "/picker" => new PickerDemoView(),

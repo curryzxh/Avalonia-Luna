@@ -1,7 +1,9 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:controls="using:Luna.Mobile.Controls"
-             x:Class="Luna.Mobile.Sample.Views.IndexesDemoView">
+             xmlns:luna="https://github.com/curryzxh/Luna"
+             xmlns:vm="using:Luna.Mobile.Sample.ViewModels"
+             x:Class="Luna.Mobile.Sample.Views.IndexesDemoView"
+             x:DataType="vm:IndexesDemoViewModel">
   <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
     <StackPanel Spacing="24" Margin="0,0,0,28">
       <Border Background="{DynamicResource Luna.Brush.Background.Container}">
@@ -10,7 +12,7 @@
                   Content="‹"
                   FontSize="34"
                   Padding="0"
-                  Click="OnBackClick" />
+                  Command="{Binding BackCommand}" />
           <TextBlock Grid.Column="1"
                      Text="Indexes 索引"
                      FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
@@ -47,102 +49,102 @@
           <Border Background="{DynamicResource Luna.Brush.Background.Container}"
                   Padding="12"
                   Height="520">
-            <controls:Indexes Sticky="True">
+            <luna:Indexes Sticky="True">
               <StackPanel Spacing="0">
-                <controls:IndexesAnchor Index="A" />
-                <controls:CellGroup>
+                <luna:IndexesAnchor Index="A" />
+                <luna:CellGroup>
                   <StackPanel>
-                    <controls:Cell Title="阿坝" />
-                    <controls:Cell Title="阿拉善" />
-                    <controls:Cell Title="阿里" />
-                    <controls:Cell Title="安康" />
-                    <controls:Cell Title="安庆" />
+                    <luna:Cell Title="阿坝" />
+                    <luna:Cell Title="阿拉善" />
+                    <luna:Cell Title="阿里" />
+                    <luna:Cell Title="安康" />
+                    <luna:Cell Title="安庆" />
                   </StackPanel>
-                </controls:CellGroup>
+                </luna:CellGroup>
 
-                <controls:IndexesAnchor Index="B" />
-                <controls:CellGroup>
+                <luna:IndexesAnchor Index="B" />
+                <luna:CellGroup>
                   <StackPanel>
-                    <controls:Cell Title="北京" />
-                    <controls:Cell Title="白银" />
-                    <controls:Cell Title="保定" />
-                    <controls:Cell Title="宝鸡" />
-                    <controls:Cell Title="包头" />
+                    <luna:Cell Title="北京" />
+                    <luna:Cell Title="白银" />
+                    <luna:Cell Title="保定" />
+                    <luna:Cell Title="宝鸡" />
+                    <luna:Cell Title="包头" />
                   </StackPanel>
-                </controls:CellGroup>
+                </luna:CellGroup>
 
-                <controls:IndexesAnchor Index="C" />
-                <controls:CellGroup>
+                <luna:IndexesAnchor Index="C" />
+                <luna:CellGroup>
                   <StackPanel>
-                    <controls:Cell Title="重庆" />
-                    <controls:Cell Title="成都" />
-                    <controls:Cell Title="长沙" />
-                    <controls:Cell Title="长春" />
-                    <controls:Cell Title="沧州" />
+                    <luna:Cell Title="重庆" />
+                    <luna:Cell Title="成都" />
+                    <luna:Cell Title="长沙" />
+                    <luna:Cell Title="长春" />
+                    <luna:Cell Title="沧州" />
                   </StackPanel>
-                </controls:CellGroup>
+                </luna:CellGroup>
 
-                <controls:IndexesAnchor Index="D" />
-                <controls:CellGroup>
+                <luna:IndexesAnchor Index="D" />
+                <luna:CellGroup>
                   <StackPanel>
-                    <controls:Cell Title="大连" />
-                    <controls:Cell Title="东莞" />
-                    <controls:Cell Title="大理" />
-                    <controls:Cell Title="大庆" />
-                    <controls:Cell Title="德州" />
+                    <luna:Cell Title="大连" />
+                    <luna:Cell Title="东莞" />
+                    <luna:Cell Title="大理" />
+                    <luna:Cell Title="大庆" />
+                    <luna:Cell Title="德州" />
                   </StackPanel>
-                </controls:CellGroup>
+                </luna:CellGroup>
 
-                <controls:IndexesAnchor Index="E" />
-                <controls:CellGroup>
+                <luna:IndexesAnchor Index="E" />
+                <luna:CellGroup>
                   <StackPanel>
-                    <controls:Cell Title="鄂尔多斯" />
-                    <controls:Cell Title="恩施" />
-                    <controls:Cell Title="鄂州" />
+                    <luna:Cell Title="鄂尔多斯" />
+                    <luna:Cell Title="恩施" />
+                    <luna:Cell Title="鄂州" />
                   </StackPanel>
-                </controls:CellGroup>
+                </luna:CellGroup>
 
-                <controls:IndexesAnchor Index="F" />
-                <controls:CellGroup>
+                <luna:IndexesAnchor Index="F" />
+                <luna:CellGroup>
                   <StackPanel>
-                    <controls:Cell Title="福州" />
-                    <controls:Cell Title="防城港" />
-                    <controls:Cell Title="佛山" />
-                    <controls:Cell Title="阜阳" />
+                    <luna:Cell Title="福州" />
+                    <luna:Cell Title="防城港" />
+                    <luna:Cell Title="佛山" />
+                    <luna:Cell Title="阜阳" />
                   </StackPanel>
-                </controls:CellGroup>
+                </luna:CellGroup>
 
-                <controls:IndexesAnchor Index="G" />
-                <controls:CellGroup>
+                <luna:IndexesAnchor Index="G" />
+                <luna:CellGroup>
                   <StackPanel>
-                    <controls:Cell Title="广州" />
-                    <controls:Cell Title="桂林" />
-                    <controls:Cell Title="贵阳" />
-                    <controls:Cell Title="赣州" />
+                    <luna:Cell Title="广州" />
+                    <luna:Cell Title="桂林" />
+                    <luna:Cell Title="贵阳" />
+                    <luna:Cell Title="赣州" />
                   </StackPanel>
-                </controls:CellGroup>
+                </luna:CellGroup>
 
-                <controls:IndexesAnchor Index="J" />
-                <controls:CellGroup>
+                <luna:IndexesAnchor Index="J" />
+                <luna:CellGroup>
                   <StackPanel>
-                    <controls:Cell Title="揭阳" />
-                    <controls:Cell Title="吉林" />
-                    <controls:Cell Title="嘉兴" />
-                    <controls:Cell Title="济南" />
+                    <luna:Cell Title="揭阳" />
+                    <luna:Cell Title="吉林" />
+                    <luna:Cell Title="嘉兴" />
+                    <luna:Cell Title="济南" />
                   </StackPanel>
-                </controls:CellGroup>
+                </luna:CellGroup>
 
-                <controls:IndexesAnchor Index="K" />
-                <controls:CellGroup>
+                <luna:IndexesAnchor Index="K" />
+                <luna:CellGroup>
                   <StackPanel>
-                    <controls:Cell Title="昆明" />
-                    <controls:Cell Title="开封" />
-                    <controls:Cell Title="康定" />
-                    <controls:Cell Title="喀什" />
+                    <luna:Cell Title="昆明" />
+                    <luna:Cell Title="开封" />
+                    <luna:Cell Title="康定" />
+                    <luna:Cell Title="喀什" />
                   </StackPanel>
-                </controls:CellGroup>
+                </luna:CellGroup>
               </StackPanel>
-            </controls:Indexes>
+            </luna:Indexes>
           </Border>
         </StackPanel>
 
@@ -159,45 +161,45 @@
           <Border Background="{DynamicResource Luna.Brush.Background.Container}"
                   Padding="12"
                   Height="360">
-            <controls:Indexes Sticky="False">
+            <luna:Indexes Sticky="False">
               <StackPanel Spacing="0">
-                <controls:IndexesAnchor Index="L" />
-                <controls:CellGroup>
+                <luna:IndexesAnchor Index="L" />
+                <luna:CellGroup>
                   <StackPanel>
-                    <controls:Cell Title="廊坊" />
-                    <controls:Cell Title="兰州" />
-                    <controls:Cell Title="拉萨" />
+                    <luna:Cell Title="廊坊" />
+                    <luna:Cell Title="兰州" />
+                    <luna:Cell Title="拉萨" />
                   </StackPanel>
-                </controls:CellGroup>
+                </luna:CellGroup>
 
-                <controls:IndexesAnchor Index="M" />
-                <controls:CellGroup>
+                <luna:IndexesAnchor Index="M" />
+                <luna:CellGroup>
                   <StackPanel>
-                    <controls:Cell Title="绵阳" />
-                    <controls:Cell Title="茂名" />
-                    <controls:Cell Title="眉山" />
+                    <luna:Cell Title="绵阳" />
+                    <luna:Cell Title="茂名" />
+                    <luna:Cell Title="眉山" />
                   </StackPanel>
-                </controls:CellGroup>
+                </luna:CellGroup>
 
-                <controls:IndexesAnchor Index="N" />
-                <controls:CellGroup>
+                <luna:IndexesAnchor Index="N" />
+                <luna:CellGroup>
                   <StackPanel>
-                    <controls:Cell Title="南京" />
-                    <controls:Cell Title="南宁" />
-                    <controls:Cell Title="南昌" />
+                    <luna:Cell Title="南京" />
+                    <luna:Cell Title="南宁" />
+                    <luna:Cell Title="南昌" />
                   </StackPanel>
-                </controls:CellGroup>
+                </luna:CellGroup>
 
-                <controls:IndexesAnchor Index="S" />
-                <controls:CellGroup>
+                <luna:IndexesAnchor Index="S" />
+                <luna:CellGroup>
                   <StackPanel>
-                    <controls:Cell Title="上海" />
-                    <controls:Cell Title="深圳" />
-                    <controls:Cell Title="沈阳" />
+                    <luna:Cell Title="上海" />
+                    <luna:Cell Title="深圳" />
+                    <luna:Cell Title="沈阳" />
                   </StackPanel>
-                </controls:CellGroup>
+                </luna:CellGroup>
               </StackPanel>
-            </controls:Indexes>
+            </luna:Indexes>
           </Border>
         </StackPanel>
       </StackPanel>

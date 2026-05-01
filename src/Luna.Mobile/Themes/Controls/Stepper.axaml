@@ -1,7 +1,7 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:controls="using:Luna.Mobile.Controls">
-  <Style Selector="controls|Stepper">
+        xmlns:luna="https://github.com/curryzxh/Luna">
+  <Style Selector="luna|Stepper">
     <Setter Property="Focusable" Value="False" />
     <Setter Property="Template">
       <ControlTemplate>
@@ -48,54 +48,54 @@
     </Setter>
   </Style>
 
-  <Style Selector="controls|Stepper:filled /template/ Border#PART_Root">
+  <Style Selector="luna|Stepper:filled /template/ Border#PART_Root">
     <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Component}" />
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
   </Style>
 
-  <Style Selector="controls|Stepper:outline /template/ Border#PART_Root">
+  <Style Selector="luna|Stepper:outline /template/ Border#PART_Root">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
   </Style>
 
-  <Style Selector="controls|Stepper /template/ Button#PART_DecreaseButton">
+  <Style Selector="luna|Stepper /template/ Button#PART_DecreaseButton">
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
   </Style>
 
-  <Style Selector="controls|Stepper /template/ Button#PART_IncreaseButton">
+  <Style Selector="luna|Stepper /template/ Button#PART_IncreaseButton">
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
   </Style>
 
-  <Style Selector="controls|Stepper:disabled /template/ Border#PART_Root">
+  <Style Selector="luna|Stepper:disabled /template/ Border#PART_Root">
     <Setter Property="Opacity" Value="0.6" />
   </Style>
 
-  <Style Selector="controls|Stepper:small /template/ Button#PART_DecreaseButton">
+  <Style Selector="luna|Stepper:small /template/ Button#PART_DecreaseButton">
     <Setter Property="MinWidth" Value="{DynamicResource Luna.Size.Control.Small}" />
     <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.Control.Small}" />
   </Style>
 
-  <Style Selector="controls|Stepper:small /template/ Button#PART_IncreaseButton">
+  <Style Selector="luna|Stepper:small /template/ Button#PART_IncreaseButton">
     <Setter Property="MinWidth" Value="{DynamicResource Luna.Size.Control.Small}" />
     <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.Control.Small}" />
   </Style>
 
-  <Style Selector="controls|Stepper:small /template/ TextBox#PART_TextBox">
+  <Style Selector="luna|Stepper:small /template/ TextBox#PART_TextBox">
     <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.Control.Small}" />
     <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Small}" />
   </Style>
 
-  <Style Selector="controls|Stepper:large /template/ Button#PART_DecreaseButton">
+  <Style Selector="luna|Stepper:large /template/ Button#PART_DecreaseButton">
     <Setter Property="MinWidth" Value="{DynamicResource Luna.Size.Control.Large}" />
     <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.Control.Large}" />
   </Style>
 
-  <Style Selector="controls|Stepper:large /template/ Button#PART_IncreaseButton">
+  <Style Selector="luna|Stepper:large /template/ Button#PART_IncreaseButton">
     <Setter Property="MinWidth" Value="{DynamicResource Luna.Size.Control.Large}" />
     <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.Control.Large}" />
   </Style>
 
-  <Style Selector="controls|Stepper:large /template/ TextBox#PART_TextBox">
+  <Style Selector="luna|Stepper:large /template/ TextBox#PART_TextBox">
     <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.Control.Large}" />
     <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Large}" />
   </Style>

@@ -1,21 +1,24 @@
 using Avalonia.Controls;
 using Luna.Mobile.Controls;
 using System;
+using Luna.Mobile.Sample.ViewModels;
 
 namespace Luna.Mobile.Sample.Views;
 
 public partial class DrawerDemoView : UserControl
 {
-    public event EventHandler? BackRequested;
+        private DrawerDemoViewModel ViewModel { get; } = new();
+
+    public event EventHandler? BackRequested
+    {
+        add => ViewModel.BackRequested += value;
+        remove => ViewModel.BackRequested -= value;
+    }
 
     public DrawerDemoView()
     {
         InitializeComponent();
-    }
-
-    private void OnBackClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
-    {
-        BackRequested?.Invoke(this, EventArgs.Empty);
+        DataContext = ViewModel;
     }
 
     private void OnOpenLeftClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e)

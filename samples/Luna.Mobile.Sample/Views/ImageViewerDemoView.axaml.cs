@@ -3,21 +3,24 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Media;
 using Luna.Mobile.Controls;
+using Luna.Mobile.Sample.ViewModels;
 
 namespace Luna.Mobile.Sample.Views;
 
 public partial class ImageViewerDemoView : UserControl
 {
-    public event EventHandler? BackRequested;
+    private ImageViewerDemoViewModel ViewModel { get; } = new();
+
+    public event EventHandler? BackRequested
+    {
+        add => ViewModel.BackRequested += value;
+        remove => ViewModel.BackRequested -= value;
+    }
 
     public ImageViewerDemoView()
     {
         InitializeComponent();
-    }
-
-    private void OnBackClick(object? sender, RoutedEventArgs e)
-    {
-        BackRequested?.Invoke(this, EventArgs.Empty);
+        DataContext = ViewModel;
     }
 
     private void OnBasePreviewClick(object? sender, RoutedEventArgs e)

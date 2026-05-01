@@ -1,7 +1,7 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:controls="using:Luna.Mobile.Controls">
-  <Style Selector="controls|Tag">
+        xmlns:luna="https://github.com/curryzxh/Luna">
+  <Style Selector="luna|Tag">
     <Setter Property="Focusable" Value="False" />
     <Setter Property="Template">
       <ControlTemplate>
@@ -27,7 +27,7 @@
     </Setter>
   </Style>
 
-  <Style Selector="controls|Tag /template/ Border#PART_Root">
+  <Style Selector="luna|Tag /template/ Border#PART_Root">
     <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
     <Setter Property="BorderThickness" Value="1" />
@@ -38,99 +38,99 @@
     <Setter Property="TextElement.Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
   </Style>
 
-  <Style Selector="controls|Tag:small /template/ Border#PART_Root">
+  <Style Selector="luna|Tag:small /template/ Border#PART_Root">
     <Setter Property="Padding" Value="6,2" />
     <Setter Property="TextElement.FontSize" Value="{DynamicResource Luna.FontSize.Mark.Small}" />
   </Style>
 
-  <Style Selector="controls|Tag:medium /template/ Border#PART_Root">
+  <Style Selector="luna|Tag:medium /template/ Border#PART_Root">
     <Setter Property="Padding" Value="8,3" />
     <Setter Property="TextElement.FontSize" Value="{DynamicResource Luna.FontSize.Body.Small}" />
   </Style>
 
-  <Style Selector="controls|Tag:large /template/ Border#PART_Root">
+  <Style Selector="luna|Tag:large /template/ Border#PART_Root">
     <Setter Property="Padding" Value="10,4" />
     <Setter Property="TextElement.FontSize" Value="{DynamicResource Luna.FontSize.Body.Small}" />
   </Style>
 
-  <Style Selector="controls|Tag:extra-large /template/ Border#PART_Root">
+  <Style Selector="luna|Tag:extra-large /template/ Border#PART_Root">
     <Setter Property="Padding" Value="12,6" />
     <Setter Property="TextElement.FontSize" Value="{DynamicResource Luna.FontSize.Body.Medium}" />
   </Style>
 
-  <Style Selector="controls|Tag:round /template/ Border#PART_Root">
+  <Style Selector="luna|Tag:round /template/ Border#PART_Root">
     <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Circle}" />
   </Style>
 
-  <Style Selector="controls|Tag:mark /template/ Border#PART_Root">
+  <Style Selector="luna|Tag:mark /template/ Border#PART_Root">
     <Setter Property="CornerRadius" Value="6,6,6,0" />
   </Style>
 
-  <Style Selector="controls|Tag:outline /template/ Border#PART_Root">
+  <Style Selector="luna|Tag:outline /template/ Border#PART_Root">
     <Setter Property="Background" Value="Transparent" />
   </Style>
 
-  <Style Selector="controls|Tag:dark /template/ Border#PART_Root">
+  <Style Selector="luna|Tag:dark /template/ Border#PART_Root">
     <Setter Property="TextElement.Foreground" Value="{DynamicResource Luna.Brush.Text.Anti}" />
   </Style>
 
-  <Style Selector="controls|Tag:default /template/ Border#PART_Root">
+  <Style Selector="luna|Tag:default /template/ Border#PART_Root">
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Strong}" />
   </Style>
 
-  <Style Selector="controls|Tag:primary /template/ Border#PART_Root">
+  <Style Selector="luna|Tag:primary /template/ Border#PART_Root">
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand}" />
     <Setter Property="TextElement.Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
   </Style>
 
-  <Style Selector="controls|Tag:warning /template/ Border#PART_Root">
+  <Style Selector="luna|Tag:warning /template/ Border#PART_Root">
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Warning}" />
     <Setter Property="TextElement.Foreground" Value="{DynamicResource Luna.Brush.Warning}" />
   </Style>
 
-  <Style Selector="controls|Tag:danger /template/ Border#PART_Root">
+  <Style Selector="luna|Tag:danger /template/ Border#PART_Root">
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Error}" />
     <Setter Property="TextElement.Foreground" Value="{DynamicResource Luna.Brush.Error}" />
   </Style>
 
-  <Style Selector="controls|Tag:success /template/ Border#PART_Root">
+  <Style Selector="luna|Tag:success /template/ Border#PART_Root">
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Success}" />
     <Setter Property="TextElement.Foreground" Value="{DynamicResource Luna.Brush.Success}" />
   </Style>
 
-  <Style Selector="controls|Tag:primary:dark /template/ Border#PART_Root">
+  <Style Selector="luna|Tag:primary:dark /template/ Border#PART_Root">
     <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand}" />
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand}" />
     <Setter Property="TextElement.Foreground" Value="{DynamicResource Luna.Brush.Text.Anti}" />
   </Style>
 
-  <Style Selector="controls|Tag:warning:dark /template/ Border#PART_Root">
+  <Style Selector="luna|Tag:warning:dark /template/ Border#PART_Root">
     <Setter Property="Background" Value="{DynamicResource Luna.Brush.Warning}" />
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Warning}" />
     <Setter Property="TextElement.Foreground" Value="{DynamicResource Luna.Brush.Text.Anti}" />
   </Style>
 
-  <Style Selector="controls|Tag:danger:dark /template/ Border#PART_Root">
+  <Style Selector="luna|Tag:danger:dark /template/ Border#PART_Root">
     <Setter Property="Background" Value="{DynamicResource Luna.Brush.Error}" />
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Error}" />
     <Setter Property="TextElement.Foreground" Value="{DynamicResource Luna.Brush.Text.Anti}" />
   </Style>
 
-  <Style Selector="controls|Tag:success:dark /template/ Border#PART_Root">
+  <Style Selector="luna|Tag:success:dark /template/ Border#PART_Root">
     <Setter Property="Background" Value="{DynamicResource Luna.Brush.Success}" />
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Success}" />
     <Setter Property="TextElement.Foreground" Value="{DynamicResource Luna.Brush.Text.Anti}" />
   </Style>
 
-  <Style Selector="controls|Tag:light-outline /template/ Border#PART_Root">
+  <Style Selector="luna|Tag:light-outline /template/ Border#PART_Root">
     <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
   </Style>
 
-  <Style Selector="controls|Tag:primary:light-outline /template/ Border#PART_Root">
+  <Style Selector="luna|Tag:primary:light-outline /template/ Border#PART_Root">
     <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand.Light}" />
   </Style>
 
-  <Style Selector="controls|Tag /template/ Button#PART_CloseButton">
+  <Style Selector="luna|Tag /template/ Button#PART_CloseButton">
     <Setter Property="Padding" Value="0" />
     <Setter Property="MinHeight" Value="0" />
     <Setter Property="MinWidth" Value="0" />
@@ -139,27 +139,27 @@
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
   </Style>
 
-  <Style Selector="controls|Tag:primary /template/ Button#PART_CloseButton">
+  <Style Selector="luna|Tag:primary /template/ Button#PART_CloseButton">
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
   </Style>
 
-  <Style Selector="controls|Tag:warning /template/ Button#PART_CloseButton">
+  <Style Selector="luna|Tag:warning /template/ Button#PART_CloseButton">
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Warning}" />
   </Style>
 
-  <Style Selector="controls|Tag:danger /template/ Button#PART_CloseButton">
+  <Style Selector="luna|Tag:danger /template/ Button#PART_CloseButton">
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Error}" />
   </Style>
 
-  <Style Selector="controls|Tag:success /template/ Button#PART_CloseButton">
+  <Style Selector="luna|Tag:success /template/ Button#PART_CloseButton">
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Success}" />
   </Style>
 
-  <Style Selector="controls|Tag:dark /template/ Button#PART_CloseButton">
+  <Style Selector="luna|Tag:dark /template/ Button#PART_CloseButton">
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Anti}" />
   </Style>
 
-  <Style Selector="controls|CheckTag">
+  <Style Selector="luna|CheckTag">
     <Setter Property="Focusable" Value="False" />
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="Transparent" />
@@ -182,7 +182,7 @@
     </Setter>
   </Style>
 
-  <Style Selector="controls|CheckTag /template/ Border#PART_Root">
+  <Style Selector="luna|CheckTag /template/ Border#PART_Root">
     <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
     <Setter Property="BorderThickness" Value="1" />
@@ -193,62 +193,62 @@
     <Setter Property="TextElement.Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
   </Style>
 
-  <Style Selector="controls|CheckTag:round /template/ Border#PART_Root">
+  <Style Selector="luna|CheckTag:round /template/ Border#PART_Root">
     <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Circle}" />
   </Style>
 
-  <Style Selector="controls|CheckTag:mark /template/ Border#PART_Root">
+  <Style Selector="luna|CheckTag:mark /template/ Border#PART_Root">
     <Setter Property="CornerRadius" Value="6,6,6,0" />
   </Style>
 
-  <Style Selector="controls|CheckTag:outline /template/ Border#PART_Root">
+  <Style Selector="luna|CheckTag:outline /template/ Border#PART_Root">
     <Setter Property="Background" Value="Transparent" />
   </Style>
 
-  <Style Selector="controls|CheckTag:default /template/ Border#PART_Root">
+  <Style Selector="luna|CheckTag:default /template/ Border#PART_Root">
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Strong}" />
   </Style>
 
-  <Style Selector="controls|CheckTag:primary /template/ Border#PART_Root">
+  <Style Selector="luna|CheckTag:primary /template/ Border#PART_Root">
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand}" />
     <Setter Property="TextElement.Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
   </Style>
 
-  <Style Selector="controls|CheckTag:warning /template/ Border#PART_Root">
+  <Style Selector="luna|CheckTag:warning /template/ Border#PART_Root">
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Warning}" />
     <Setter Property="TextElement.Foreground" Value="{DynamicResource Luna.Brush.Warning}" />
   </Style>
 
-  <Style Selector="controls|CheckTag:danger /template/ Border#PART_Root">
+  <Style Selector="luna|CheckTag:danger /template/ Border#PART_Root">
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Error}" />
     <Setter Property="TextElement.Foreground" Value="{DynamicResource Luna.Brush.Error}" />
   </Style>
 
-  <Style Selector="controls|CheckTag:success /template/ Border#PART_Root">
+  <Style Selector="luna|CheckTag:success /template/ Border#PART_Root">
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Success}" />
     <Setter Property="TextElement.Foreground" Value="{DynamicResource Luna.Brush.Success}" />
   </Style>
 
-  <Style Selector="controls|CheckTag:checked /template/ Border#PART_Root">
+  <Style Selector="luna|CheckTag:checked /template/ Border#PART_Root">
     <Setter Property="TextElement.Foreground" Value="{DynamicResource Luna.Brush.Text.Anti}" />
   </Style>
 
-  <Style Selector="controls|CheckTag:primary:checked /template/ Border#PART_Root">
+  <Style Selector="luna|CheckTag:primary:checked /template/ Border#PART_Root">
     <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand}" />
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand}" />
   </Style>
 
-  <Style Selector="controls|CheckTag:warning:checked /template/ Border#PART_Root">
+  <Style Selector="luna|CheckTag:warning:checked /template/ Border#PART_Root">
     <Setter Property="Background" Value="{DynamicResource Luna.Brush.Warning}" />
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Warning}" />
   </Style>
 
-  <Style Selector="controls|CheckTag:danger:checked /template/ Border#PART_Root">
+  <Style Selector="luna|CheckTag:danger:checked /template/ Border#PART_Root">
     <Setter Property="Background" Value="{DynamicResource Luna.Brush.Error}" />
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Error}" />
   </Style>
 
-  <Style Selector="controls|CheckTag:success:checked /template/ Border#PART_Root">
+  <Style Selector="luna|CheckTag:success:checked /template/ Border#PART_Root">
     <Setter Property="Background" Value="{DynamicResource Luna.Brush.Success}" />
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Success}" />
   </Style>

@@ -1,7 +1,9 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:controls="using:Luna.Mobile.Controls"
-             x:Class="Luna.Mobile.Sample.Views.MessageDemoView">
+             xmlns:luna="https://github.com/curryzxh/Luna"
+             xmlns:vm="using:Luna.Mobile.Sample.ViewModels"
+             x:Class="Luna.Mobile.Sample.Views.MessageDemoView"
+             x:DataType="vm:MessageDemoViewModel">
   <Grid>
     <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
       <StackPanel Spacing="24" Margin="0,0,0,28">
@@ -11,7 +13,7 @@
                     Content="‹"
                     FontSize="34"
                     Padding="0"
-                    Click="OnBackClick" />
+                    Command="{Binding BackCommand}" />
             <TextBlock Grid.Column="1"
                        Text="Message 消息通知"
                        FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
@@ -48,23 +50,23 @@
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="纯文字的通知"
-                      Click="OnTextOnlyClick" />
+                      Command="{Binding TextOnlyCommand}" />
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="带图标的通知"
-                      Click="OnIconClick" />
+                      Command="{Binding IconCommand}" />
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="带关闭的通知"
-                      Click="OnCloseClick" />
+                      Command="{Binding CloseCommand}" />
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="可滚动的通知"
-                      Click="OnMarqueeClick" />
+                      Command="{Binding MarqueeCommand}" />
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="带按钮的通知"
-                      Click="OnLinkClick" />
+                      Command="{Binding LinkCommand}" />
             </StackPanel>
           </StackPanel>
 
@@ -82,19 +84,19 @@
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="普通通知"
-                      Click="OnInfoClick" />
+                      Command="{Binding InfoCommand}" />
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="成功通知"
-                      Click="OnSuccessClick" />
+                      Command="{Binding SuccessCommand}" />
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="警示通知"
-                      Click="OnWarningClick" />
+                      Command="{Binding WarningCommand}" />
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="错误通知"
-                      Click="OnErrorClick" />
+                      Command="{Binding ErrorCommand}" />
             </StackPanel>
           </StackPanel>
 
@@ -112,18 +114,18 @@
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="打开多个通知"
-                      Click="OnOpenMultipleClick" />
+                      Command="{Binding OpenMultipleCommand}" />
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="关闭所有通知"
-                      Click="OnCloseAllClick" />
+                      Command="{Binding CloseAllCommand}" />
             </StackPanel>
           </StackPanel>
         </StackPanel>
       </StackPanel>
     </ScrollViewer>
 
-    <controls:MessageHost HorizontalAlignment="Stretch"
+    <luna:MessageHost HorizontalAlignment="Stretch"
                           VerticalAlignment="Stretch" />
   </Grid>
 </UserControl>

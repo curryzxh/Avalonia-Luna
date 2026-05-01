@@ -1,7 +1,7 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:controls="using:Luna.Mobile.Controls">
-  <Style Selector="controls|Indexes">
+        xmlns:luna="https://github.com/curryzxh/Luna">
+  <Style Selector="luna|Indexes">
     <Setter Property="Template">
       <ControlTemplate>
         <Grid ColumnDefinitions="*,32">
@@ -61,19 +61,19 @@
     </Setter>
   </Style>
 
-  <Style Selector="controls|Indexes /template/ Button.indexes-sidebar-item">
+  <Style Selector="luna|Indexes /template/ Button.indexes-sidebar-item">
     <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Small}" />
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Secondary}" />
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Circle}" />
   </Style>
 
-  <Style Selector="controls|Indexes /template/ Button.indexes-sidebar-item.active">
+  <Style Selector="luna|Indexes /template/ Button.indexes-sidebar-item.active">
     <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand}" />
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Anti}" />
   </Style>
 
-  <Style Selector="controls|IndexesAnchor">
+  <Style Selector="luna|IndexesAnchor">
     <Setter Property="Template">
       <ControlTemplate>
         <Border Background="{DynamicResource Luna.Brush.Background.SecondaryContainer}"
@@ -87,11 +87,11 @@
     </Setter>
   </Style>
 
-  <Style Selector="controls|IndexesAnchor:current /template/ Border">
+  <Style Selector="luna|IndexesAnchor:current /template/ Border">
     <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
   </Style>
 
-  <Style Selector="controls|IndexesAnchor:current /template/ TextBlock">
+  <Style Selector="luna|IndexesAnchor:current /template/ TextBlock">
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
   </Style>
 </Styles>

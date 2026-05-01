@@ -1,7 +1,7 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:controls="using:Luna.Mobile.Controls">
-  <Style Selector="controls|MessageHost">
+        xmlns:luna="https://github.com/curryzxh/Luna">
+  <Style Selector="luna|MessageHost">
     <Setter Property="Template">
       <ControlTemplate>
         <Border Background="Transparent"
@@ -18,7 +18,7 @@
     </Setter>
   </Style>
 
-  <Style Selector="controls|MessageCard">
+  <Style Selector="luna|MessageCard">
     <Setter Property="Template">
       <ControlTemplate>
         <Border Background="{DynamicResource Luna.Brush.Background.Container}"
@@ -63,20 +63,20 @@
     </Setter>
   </Style>
 
-  <Style Selector="controls|MessageCard:marquee TextBlock#PART_ContentText">
+  <Style Selector="luna|MessageCard:marquee TextBlock#PART_ContentText">
     <Setter Property="TextWrapping" Value="NoWrap" />
     <Setter Property="TextTrimming" Value="CharacterEllipsis" />
   </Style>
 
-  <Style Selector="controls|MessageCard:success TextBlock#PART_IconText">
+  <Style Selector="luna|MessageCard:success TextBlock#PART_IconText">
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Success}" />
   </Style>
 
-  <Style Selector="controls|MessageCard:warning TextBlock#PART_IconText">
+  <Style Selector="luna|MessageCard:warning TextBlock#PART_IconText">
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Warning}" />
   </Style>
 
-  <Style Selector="controls|MessageCard:error TextBlock#PART_IconText">
+  <Style Selector="luna|MessageCard:error TextBlock#PART_IconText">
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Error}" />
   </Style>
 </Styles>

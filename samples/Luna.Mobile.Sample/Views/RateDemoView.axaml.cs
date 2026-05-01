@@ -3,6 +3,7 @@ using Avalonia.Interactivity;
 using Avalonia.Media;
 using Luna.Mobile.Controls;
 using System;
+using Luna.Mobile.Sample.ViewModels;
 
 namespace Luna.Mobile.Sample.Views;
 
@@ -11,11 +12,18 @@ public partial class RateDemoView : UserControl
     private static readonly string[] Texts = ["很差", "差", "一般", "好评", "优秀"];
     private static readonly string[] SpecialTexts = ["非常糟糕", "有些糟糕", "可以尝试", "可以前往", "推荐前往"];
 
-    public event EventHandler? BackRequested;
+        private RateDemoViewModel ViewModel { get; } = new();
+
+    public event EventHandler? BackRequested
+    {
+        add => ViewModel.BackRequested += value;
+        remove => ViewModel.BackRequested -= value;
+    }
 
     public RateDemoView()
     {
         InitializeComponent();
+        DataContext = ViewModel;
 
         TextRate1.Texts = Texts;
         TextRate2.Texts = Texts;
@@ -27,11 +35,6 @@ public partial class RateDemoView : UserControl
 
         SpecialRate.Texts = SpecialTexts;
         UpdateSpecialDesc(SpecialRate.Value);
-    }
-
-    private void OnBackClick(object? sender, RoutedEventArgs e)
-    {
-        BackRequested?.Invoke(this, EventArgs.Empty);
     }
 
     private void OnSpecialValueChanged(object? sender, RateValueChangedEventArgs e)

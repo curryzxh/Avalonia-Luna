@@ -1,6 +1,8 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             x:Class="Luna.Mobile.Sample.Views.InputDemoView">
+             xmlns:vm="using:Luna.Mobile.Sample.ViewModels"
+             x:Class="Luna.Mobile.Sample.Views.InputDemoView"
+             x:DataType="vm:InputDemoViewModel">
   <UserControl.Styles>
     <Style Selector="TextBox.input-inner">
       <Setter Property="Background" Value="Transparent" />
@@ -33,7 +35,7 @@
                   Content="‹"
                   FontSize="34"
                   Padding="0"
-                  Click="OnBackClick" />
+                  Command="{Binding BackCommand}" />
           <TextBlock Grid.Column="1"
                      Text="Input 输入框"
                      FontSize="{DynamicResource Luna.FontSize.Title.Medium}"

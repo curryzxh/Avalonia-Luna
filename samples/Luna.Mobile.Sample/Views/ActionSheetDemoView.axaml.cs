@@ -5,21 +5,24 @@ using Avalonia.Media.Immutable;
 using Luna.Mobile.Controls;
 using System;
 using System.Collections.Generic;
+using Luna.Mobile.Sample.ViewModels;
 
 namespace Luna.Mobile.Sample.Views;
 
 public partial class ActionSheetDemoView : UserControl
 {
-    public event EventHandler? BackRequested;
+        private ActionSheetDemoViewModel ViewModel { get; } = new();
+
+    public event EventHandler? BackRequested
+    {
+        add => ViewModel.BackRequested += value;
+        remove => ViewModel.BackRequested -= value;
+    }
 
     public ActionSheetDemoView()
     {
         InitializeComponent();
-    }
-
-    private void OnBackClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
-    {
-        BackRequested?.Invoke(this, EventArgs.Empty);
+        DataContext = ViewModel;
     }
 
     private void OnNormalListClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e)

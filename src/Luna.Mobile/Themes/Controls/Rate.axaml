@@ -1,16 +1,16 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:controls="using:Luna.Mobile.Controls">
-  <Style Selector="controls|RateGlyphs">
+        xmlns:luna="https://github.com/curryzxh/Luna">
+  <Style Selector="luna|RateGlyphs">
     <Setter Property="ActiveBrush" Value="{DynamicResource Luna.Brush.Warning}" />
     <Setter Property="InactiveBrush" Value="{DynamicResource Luna.Brush.Text.Placeholder}" />
   </Style>
 
-  <Style Selector="controls|Rate">
+  <Style Selector="luna|Rate">
     <Setter Property="Template">
       <ControlTemplate>
         <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
-          <controls:RateGlyphs Count="{TemplateBinding Count}"
+          <luna:RateGlyphs Count="{TemplateBinding Count}"
                                Value="{TemplateBinding Value}"
                                Size="{TemplateBinding Size}"
                                Spacing="{TemplateBinding Spacing}"
@@ -27,7 +27,7 @@
     </Setter>
   </Style>
 
-  <Style Selector="controls|Rate:placement-top">
+  <Style Selector="luna|Rate:placement-top">
     <Setter Property="Template">
       <ControlTemplate>
         <StackPanel Orientation="Vertical" Spacing="8" HorizontalAlignment="Center">
@@ -36,7 +36,7 @@
                      FontSize="{DynamicResource Luna.FontSize.Body.Small}"
                      Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
                      HorizontalAlignment="Center" />
-          <controls:RateGlyphs Count="{TemplateBinding Count}"
+          <luna:RateGlyphs Count="{TemplateBinding Count}"
                                Value="{TemplateBinding Value}"
                                Size="{TemplateBinding Size}"
                                Spacing="{TemplateBinding Spacing}"
@@ -48,11 +48,11 @@
     </Setter>
   </Style>
 
-  <Style Selector="controls|Rate:placement-bottom">
+  <Style Selector="luna|Rate:placement-bottom">
     <Setter Property="Template">
       <ControlTemplate>
         <StackPanel Orientation="Vertical" Spacing="8" HorizontalAlignment="Center">
-          <controls:RateGlyphs Count="{TemplateBinding Count}"
+          <luna:RateGlyphs Count="{TemplateBinding Count}"
                                Value="{TemplateBinding Value}"
                                Size="{TemplateBinding Size}"
                                Spacing="{TemplateBinding Spacing}"
@@ -69,10 +69,10 @@
     </Setter>
   </Style>
 
-  <Style Selector="controls|Rate:placement-none">
+  <Style Selector="luna|Rate:placement-none">
     <Setter Property="Template">
       <ControlTemplate>
-        <controls:RateGlyphs Count="{TemplateBinding Count}"
+        <luna:RateGlyphs Count="{TemplateBinding Count}"
                              Value="{TemplateBinding Value}"
                              Size="{TemplateBinding Size}"
                              Spacing="{TemplateBinding Spacing}"

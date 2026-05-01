@@ -1,7 +1,9 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:controls="using:Luna.Mobile.Controls"
-             x:Class="Luna.Mobile.Sample.Views.LoadingDemoView">
+             xmlns:luna="https://github.com/curryzxh/Luna"
+             xmlns:vm="using:Luna.Mobile.Sample.ViewModels"
+             x:Class="Luna.Mobile.Sample.Views.LoadingDemoView"
+             x:DataType="vm:LoadingDemoViewModel">
   <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
     <StackPanel Spacing="24" Margin="0,0,0,28">
       <Border Background="{DynamicResource Luna.Brush.Background.Container}">
@@ -10,7 +12,7 @@
                   Content="‹"
                   FontSize="34"
                   Padding="0"
-                  Click="OnBackClick" />
+                  Command="{Binding BackCommand}" />
           <TextBlock Grid.Column="1"
                      Text="Loading 加载"
                      FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
@@ -45,9 +47,9 @@
           </StackPanel>
           <Border Background="{DynamicResource Luna.Brush.Background.Container}" Margin="16,0" Padding="16">
             <StackPanel Orientation="Horizontal" Spacing="40" VerticalAlignment="Center">
-              <controls:Loading Width="40" Height="40" />
-              <controls:Loading Theme="Spinner" Width="40" Height="40" />
-              <controls:Loading Theme="Dots" Size="40" Width="40" Height="40" />
+              <luna:Loading Width="40" Height="40" />
+              <luna:Loading Theme="Spinner" Width="40" Height="40" />
+              <luna:Loading Theme="Dots" Size="40" Width="40" Height="40" />
             </StackPanel>
           </Border>
         </StackPanel>
@@ -59,8 +61,8 @@
                      Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
           <Border Background="{DynamicResource Luna.Brush.Background.Container}" Margin="16,0" Padding="16">
             <StackPanel Orientation="Horizontal" Spacing="40" VerticalAlignment="Center">
-              <controls:Loading Text="加载中..." />
-              <controls:Loading Theme="Spinner" Text="加载中..." />
+              <luna:Loading Text="加载中..." />
+              <luna:Loading Theme="Spinner" Text="加载中..." />
             </StackPanel>
           </Border>
         </StackPanel>
@@ -72,8 +74,8 @@
                      Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
           <Border Background="{DynamicResource Luna.Brush.Background.Container}" Margin="16,0" Padding="16">
             <StackPanel Orientation="Horizontal" Spacing="40" VerticalAlignment="Center">
-              <controls:Loading Text="加载中..." Layout="Vertical" />
-              <controls:Loading Theme="Spinner" Text="加载中..." Layout="Vertical" />
+              <luna:Loading Text="加载中..." Layout="Vertical" />
+              <luna:Loading Theme="Spinner" Text="加载中..." Layout="Vertical" />
             </StackPanel>
           </Border>
         </StackPanel>
@@ -85,16 +87,16 @@
                      Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
           <Border Background="{DynamicResource Luna.Brush.Background.Container}" Margin="16,0" Padding="16">
             <StackPanel Orientation="Horizontal" Spacing="40" VerticalAlignment="Center">
-              <controls:Loading Indicator="False" Text="加载中..." />
+              <luna:Loading Indicator="False" Text="加载中..." />
               <StackPanel Orientation="Horizontal" Spacing="12" VerticalAlignment="Center">
-                <controls:Loading Name="InlineLoading"
+                <luna:Loading Name="InlineLoading"
                                   Theme="Spinner"
                                   IsLoading="False">
                   <TextBlock Text="加载失败"
                              FontSize="{DynamicResource Luna.FontSize.Body.Small}"
                              Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
                              VerticalAlignment="Center" />
-                </controls:Loading>
+                </luna:Loading>
                 <Button Classes="text"
                         Content="刷新"
                         FontSize="{DynamicResource Luna.FontSize.Body.Small}"
@@ -116,19 +118,19 @@
                 <TextBlock Text="大尺寸"
                            FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
                            Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-                <controls:Loading Size="26" Text="加载中..." />
+                <luna:Loading Size="26" Text="加载中..." />
               </StackPanel>
               <StackPanel Spacing="16">
                 <TextBlock Text="中尺寸"
                            FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
                            Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-                <controls:Loading Size="22" Text="加载中..." />
+                <luna:Loading Size="22" Text="加载中..." />
               </StackPanel>
               <StackPanel Spacing="16">
                 <TextBlock Text="小尺寸"
                            FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
                            Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-                <controls:Loading Size="20" Text="加载中..." />
+                <luna:Loading Size="20" Text="加载中..." />
               </StackPanel>
             </StackPanel>
           </Border>
@@ -146,7 +148,7 @@
           </StackPanel>
           <Border Background="{DynamicResource Luna.Brush.Background.Container}" Margin="16,0" Padding="16">
             <StackPanel Spacing="16">
-              <controls:Loading Name="SpeedLoading" Text="加载中..." />
+              <luna:Loading Name="SpeedLoading" Text="加载中..." />
               <Slider Name="SpeedSlider"
                       Minimum="0"
                       Maximum="10"

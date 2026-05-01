@@ -1,7 +1,9 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:controls="using:Luna.Mobile.Controls"
-             x:Class="Luna.Mobile.Sample.Views.OverlayDemoView">
+             xmlns:luna="https://github.com/curryzxh/Luna"
+             xmlns:vm="using:Luna.Mobile.Sample.ViewModels"
+             x:Class="Luna.Mobile.Sample.Views.OverlayDemoView"
+             x:DataType="vm:OverlayDemoViewModel">
   <Grid>
     <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
       <StackPanel Spacing="24" Margin="0,0,0,28">
@@ -11,7 +13,7 @@
                     Content="‹"
                     FontSize="34"
                     Padding="0"
-                    Click="OnBackClick" />
+                    Command="{Binding BackCommand}" />
             <TextBlock Grid.Column="1"
                        Text="Overlay 遮罩层"
                        FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
@@ -131,7 +133,7 @@
                              Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
                 </StackPanel>
 
-                <controls:Overlay Name="PassThroughOverlay"
+                <luna:Overlay Name="PassThroughOverlay"
                                   Grid.RowSpan="3"
                                   Visible="False"
                                   Duration="0:0:0.2"
@@ -146,7 +148,7 @@
                                FontSize="{DynamicResource Luna.FontSize.Body.Small}"
                                Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
                   </Border>
-                </controls:Overlay>
+                </luna:Overlay>
               </Grid>
             </Border>
           </StackPanel>
@@ -154,7 +156,7 @@
       </StackPanel>
     </ScrollViewer>
 
-    <controls:Overlay Name="BasicOverlay"
+    <luna:Overlay Name="BasicOverlay"
                       Visible="False"
                       Clicked="OnBasicOverlayClicked"
                       Opening="OnBasicOverlayOpening"
@@ -162,7 +164,7 @@
                       Closing="OnBasicOverlayClosing"
                       Closed="OnBasicOverlayClosed" />
 
-    <controls:Overlay Name="ContentOverlay"
+    <luna:Overlay Name="ContentOverlay"
                       Visible="False"
                       Clicked="OnContentOverlayClicked">
       <Border Margin="24"
@@ -187,9 +189,9 @@
                   Click="OnCloseContentOverlayClick" />
         </StackPanel>
       </Border>
-    </controls:Overlay>
+    </luna:Overlay>
 
-    <controls:Overlay Name="TintOverlay"
+    <luna:Overlay Name="TintOverlay"
                       Visible="False"
                       OverlayBrush="#804084FF"
                       Clicked="OnTintOverlayClicked">
@@ -215,6 +217,6 @@
                   Click="OnCloseTintOverlayClick" />
         </StackPanel>
       </Border>
-    </controls:Overlay>
+    </luna:Overlay>
   </Grid>
 </UserControl>

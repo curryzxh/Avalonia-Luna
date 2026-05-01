@@ -1,19 +1,22 @@
 using Avalonia.Controls;
 using System;
+using Luna.Mobile.Sample.ViewModels;
 
 namespace Luna.Mobile.Sample.Views;
 
 public partial class AvatarDemoView : UserControl
 {
-    public event EventHandler? BackRequested;
+        private AvatarDemoViewModel ViewModel { get; } = new();
+
+    public event EventHandler? BackRequested
+    {
+        add => ViewModel.BackRequested += value;
+        remove => ViewModel.BackRequested -= value;
+    }
 
     public AvatarDemoView()
     {
         InitializeComponent();
-    }
-
-    private void OnBackClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
-    {
-        BackRequested?.Invoke(this, EventArgs.Empty);
+        DataContext = ViewModel;
     }
 }

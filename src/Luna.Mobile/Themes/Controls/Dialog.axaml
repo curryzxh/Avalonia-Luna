@@ -1,7 +1,7 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:controls="using:Luna.Mobile.Controls">
-  <Style Selector="controls|DialogHost">
+        xmlns:luna="https://github.com/curryzxh/Luna">
+  <Style Selector="luna|DialogHost">
     <Setter Property="Template">
       <ControlTemplate>
         <Grid IsVisible="{TemplateBinding IsOpen}">
@@ -110,23 +110,23 @@
     </Setter>
   </Style>
 
-  <Style Selector="controls|DialogHost:buttons-vertical Grid#PART_ButtonGridHorizontal">
+  <Style Selector="luna|DialogHost:buttons-vertical Grid#PART_ButtonGridHorizontal">
     <Setter Property="IsVisible" Value="False" />
   </Style>
-  <Style Selector="controls|DialogHost:buttons-vertical StackPanel#PART_ButtonStackVertical">
+  <Style Selector="luna|DialogHost:buttons-vertical StackPanel#PART_ButtonStackVertical">
     <Setter Property="IsVisible" Value="True" />
   </Style>
 
-  <Style Selector="controls|DialogHost:confirm-primary Button#PART_ConfirmButton">
+  <Style Selector="luna|DialogHost:confirm-primary Button#PART_ConfirmButton">
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
   </Style>
-  <Style Selector="controls|DialogHost:confirm-primary Button#PART_ConfirmButton_Vertical">
+  <Style Selector="luna|DialogHost:confirm-primary Button#PART_ConfirmButton_Vertical">
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
   </Style>
-  <Style Selector="controls|DialogHost:confirm-danger Button#PART_ConfirmButton">
+  <Style Selector="luna|DialogHost:confirm-danger Button#PART_ConfirmButton">
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Error}" />
   </Style>
-  <Style Selector="controls|DialogHost:confirm-danger Button#PART_ConfirmButton_Vertical">
+  <Style Selector="luna|DialogHost:confirm-danger Button#PART_ConfirmButton_Vertical">
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Error}" />
   </Style>
 </Styles>

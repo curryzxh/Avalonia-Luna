@@ -1,8 +1,10 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:views="clr-namespace:Luna.Mobile.Sample.Views"
+             xmlns:vm="using:Luna.Mobile.Sample.ViewModels"
              x:Class="Luna.Mobile.Sample.Views.MainView"
-             x:DataType="views:MainView">
+             x:Name="Root"
+             x:DataType="vm:MainViewModel">
   <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}"
                 HorizontalScrollBarVisibility="Disabled">
     <StackPanel Margin="16,18,16,24" Spacing="24">
@@ -65,7 +67,7 @@
           </ItemsPanelTemplate>
         </ItemsControl.ItemsPanel>
         <ItemsControl.ItemTemplate>
-          <DataTemplate x:DataType="views:CatalogSection">
+          <DataTemplate x:DataType="vm:CatalogSectionViewModel">
             <Expander IsExpanded="{Binding IsExpanded, Mode=TwoWay}" HorizontalAlignment="Stretch">
               <Expander.ContentTransition>
                 <PageSlide Duration="0:00:00.200" Orientation="Vertical" />
@@ -97,13 +99,17 @@
               <Border Background="{DynamicResource Luna.Brush.Background.Container}">
                 <ItemsControl ItemsSource="{Binding Children}">
                   <ItemsControl.ItemTemplate>
-                    <DataTemplate x:DataType="views:CatalogItem">
-                      <Grid Height="56"
-                            ColumnDefinitions="*,36"
-                            Margin="32,0,26,0"
-                            Background="Transparent"
-                            Tag="{Binding Path}"
-                            Tapped="OnCatalogItemTapped">
+                    <DataTemplate x:DataType="vm:CatalogItemViewModel">
+                      <Button Height="56"
+                              Margin="32,0,26,0"
+                              Background="Transparent"
+                              BorderThickness="0"
+                              CornerRadius="0"
+                              Padding="0"
+                              HorizontalContentAlignment="Stretch"
+                              Command="{Binding #Root.DataContext.OpenCatalogItemCommand}"
+                              CommandParameter="{Binding}">
+                        <Grid ColumnDefinitions="*,36">
                         <Border Height="1"
                                 Background="{DynamicResource Luna.Brush.Border.Divider}"
                                 VerticalAlignment="Top"
@@ -123,7 +129,8 @@
                               Stretch="Uniform"
                               HorizontalAlignment="Right"
                               VerticalAlignment="Center" />
-                      </Grid>
+                        </Grid>
+                      </Button>
                     </DataTemplate>
                   </ItemsControl.ItemTemplate>
                 </ItemsControl>

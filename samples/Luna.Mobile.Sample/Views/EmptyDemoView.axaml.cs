@@ -1,20 +1,23 @@
 using Avalonia.Controls;
 using System;
+using Luna.Mobile.Sample.ViewModels;
 
 namespace Luna.Mobile.Sample.Views;
 
 public partial class EmptyDemoView : UserControl
 {
-    public event EventHandler? BackRequested;
+        private EmptyDemoViewModel ViewModel { get; } = new();
+
+    public event EventHandler? BackRequested
+    {
+        add => ViewModel.BackRequested += value;
+        remove => ViewModel.BackRequested -= value;
+    }
 
     public EmptyDemoView()
     {
         InitializeComponent();
-    }
-
-    private void OnBackClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
-    {
-        BackRequested?.Invoke(this, EventArgs.Empty);
+        DataContext = ViewModel;
     }
 }
 

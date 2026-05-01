@@ -1,7 +1,7 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:controls="using:Luna.Mobile.Controls">
-  <Style Selector="controls|DrawerHost">
+        xmlns:luna="https://github.com/curryzxh/Luna">
+  <Style Selector="luna|DrawerHost">
     <Setter Property="HorizontalAlignment" Value="Stretch" />
     <Setter Property="VerticalAlignment" Value="Stretch" />
     <Setter Property="Template">
@@ -58,7 +58,7 @@
     </Setter>
   </Style>
 
-  <Style Selector="controls|DrawerHost:left /template/ Border#PART_Drawer">
+  <Style Selector="luna|DrawerHost:left /template/ Border#PART_Drawer">
     <Setter Property="HorizontalAlignment" Value="Left" />
   </Style>
 </Styles>

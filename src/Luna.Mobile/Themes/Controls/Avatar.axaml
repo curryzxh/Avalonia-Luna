@@ -1,7 +1,7 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:controls="using:Luna.Mobile.Controls">
-  <Style Selector="controls|Avatar">
+        xmlns:luna="https://github.com/curryzxh/Luna">
+  <Style Selector="luna|Avatar">
     <Setter Property="Template">
       <ControlTemplate>
         <Border Name="PART_Root"
@@ -36,21 +36,21 @@
     </Setter>
   </Style>
 
-  <Style Selector="controls|Avatar:small /template/ Border#PART_Root">
+  <Style Selector="luna|Avatar:small /template/ Border#PART_Root">
     <Setter Property="TextElement.FontSize" Value="{DynamicResource Luna.FontSize.Body.Small}" />
   </Style>
 
-  <Style Selector="controls|Avatar:large /template/ Border#PART_Root">
+  <Style Selector="luna|Avatar:large /template/ Border#PART_Root">
     <Setter Property="TextElement.FontSize" Value="{DynamicResource Luna.FontSize.Body.Large}" />
   </Style>
 
-  <Style Selector="controls|Avatar.primary /template/ Border#PART_Root">
+  <Style Selector="luna|Avatar.primary /template/ Border#PART_Root">
     <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand}" />
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand}" />
     <Setter Property="TextElement.Foreground" Value="{DynamicResource Luna.Brush.Text.Anti}" />
   </Style>
 
-  <Style Selector="controls|Avatar.primary /template/ Border#PART_Root Path">
+  <Style Selector="luna|Avatar.primary /template/ Border#PART_Root Path">
     <Setter Property="Stroke" Value="{DynamicResource Luna.Brush.Text.Anti}" />
   </Style>
 </Styles>

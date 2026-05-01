@@ -1,7 +1,7 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:controls="using:Luna.Mobile.Controls">
-  <Style Selector="controls|Cell">
+        xmlns:luna="https://github.com/curryzxh/Luna">
+  <Style Selector="luna|Cell">
     <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
     <Setter Property="Padding" Value="{DynamicResource Luna.Padding.Control.Medium}" />
     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -70,31 +70,31 @@
     </Setter>
   </Style>
 
-  <Style Selector="controls|Cell:pressed /template/ Border#PART_Background">
+  <Style Selector="luna|Cell:pressed /template/ Border#PART_Background">
     <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.ComponentActive}" />
   </Style>
 
-  <Style Selector="controls|Cell:pointerover /template/ Border#PART_Background">
+  <Style Selector="luna|Cell:pointerover /template/ Border#PART_Background">
     <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.ComponentActive}" />
   </Style>
 
-  <Style Selector="controls|Cell:disabled /template/ TextBlock#PART_Title">
+  <Style Selector="luna|Cell:disabled /template/ TextBlock#PART_Title">
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
   </Style>
 
-  <Style Selector="controls|Cell:disabled /template/ TextBlock#PART_Description">
+  <Style Selector="luna|Cell:disabled /template/ TextBlock#PART_Description">
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
   </Style>
 
-  <Style Selector="controls|Cell:disabled /template/ TextBlock#PART_RightText">
+  <Style Selector="luna|Cell:disabled /template/ TextBlock#PART_RightText">
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
   </Style>
 
-  <Style Selector="controls|Cell:disabled /template/ Path#PART_Arrow">
+  <Style Selector="luna|Cell:disabled /template/ Path#PART_Arrow">
     <Setter Property="Stroke" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
   </Style>
 
-  <Style Selector="controls|CellGroup">
+  <Style Selector="luna|CellGroup">
     <Setter Property="Template">
       <ControlTemplate>
         <StackPanel Spacing="{DynamicResource Luna.Spacing.2}">

@@ -1,7 +1,9 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:controls="using:Luna.Mobile.Controls"
-             x:Class="Luna.Mobile.Sample.Views.EmptyDemoView">
+             xmlns:luna="https://github.com/curryzxh/Luna"
+             xmlns:vm="using:Luna.Mobile.Sample.ViewModels"
+             x:Class="Luna.Mobile.Sample.Views.EmptyDemoView"
+             x:DataType="vm:EmptyDemoViewModel">
   <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
     <StackPanel Spacing="24" Margin="0,0,0,28">
       <Border Background="{DynamicResource Luna.Brush.Background.Container}">
@@ -10,7 +12,7 @@
                   Content="‹"
                   FontSize="34"
                   Padding="0"
-                  Click="OnBackClick" />
+                  Command="{Binding BackCommand}" />
           <TextBlock Grid.Column="1"
                      Text="Empty 空状态"
                      FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
@@ -47,7 +49,7 @@
             <Border Background="{DynamicResource Luna.Brush.Background.Container}"
                     CornerRadius="{DynamicResource Luna.Radius.Default}"
                     Height="280">
-              <controls:Empty Title="暂无数据"
+              <luna:Empty Title="暂无数据"
                               Description="当前列表为空，稍后再试。"
                               HorizontalAlignment="Center"
                               VerticalAlignment="Center" />
@@ -60,16 +62,16 @@
             <Border Background="{DynamicResource Luna.Brush.Background.Container}"
                     CornerRadius="{DynamicResource Luna.Radius.Default}"
                     Height="300">
-              <controls:Empty Title="暂无结果"
+              <luna:Empty Title="暂无结果"
                               Description="尝试调整筛选条件或重新搜索。"
                               HorizontalAlignment="Center"
                               VerticalAlignment="Center">
-                <controls:Empty.Action>
+                <luna:Empty.Action>
                   <Button Classes="primary large"
                           HorizontalAlignment="Stretch"
                           Content="刷新" />
-                </controls:Empty.Action>
-              </controls:Empty>
+                </luna:Empty.Action>
+              </luna:Empty>
             </Border>
           </StackPanel>
         </StackPanel>
@@ -88,11 +90,11 @@
             <Border Background="{DynamicResource Luna.Brush.Background.Container}"
                     CornerRadius="{DynamicResource Luna.Radius.Default}"
                     Height="280">
-              <controls:Empty Title="网络异常"
+              <luna:Empty Title="网络异常"
                               Description="请检查网络设置后重试。"
                               HorizontalAlignment="Center"
                               VerticalAlignment="Center">
-                <controls:Empty.Icon>
+                <luna:Empty.Icon>
                   <Border Width="120"
                           Height="120"
                           Background="{DynamicResource Luna.Brush.Background.Component}"
@@ -103,8 +105,8 @@
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center" />
                   </Border>
-                </controls:Empty.Icon>
-              </controls:Empty>
+                </luna:Empty.Icon>
+              </luna:Empty>
             </Border>
           </StackPanel>
         </StackPanel>

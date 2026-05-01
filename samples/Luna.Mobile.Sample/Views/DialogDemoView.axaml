@@ -1,7 +1,9 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:controls="using:Luna.Mobile.Controls"
-             x:Class="Luna.Mobile.Sample.Views.DialogDemoView">
+             xmlns:luna="https://github.com/curryzxh/Luna"
+             xmlns:vm="using:Luna.Mobile.Sample.ViewModels"
+             x:Class="Luna.Mobile.Sample.Views.DialogDemoView"
+             x:DataType="vm:DialogDemoViewModel">
   <Grid>
     <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
       <StackPanel Spacing="24" Margin="0,0,0,28">
@@ -11,7 +13,7 @@
                     Content="‹"
                     FontSize="34"
                     Padding="0"
-                    Click="OnBackClick" />
+                    Command="{Binding BackCommand}" />
             <TextBlock Grid.Column="1"
                        Text="Dialog 对话框"
                        FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
@@ -45,10 +47,10 @@
                          Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
             </StackPanel>
             <StackPanel Margin="16,0" Spacing="16">
-              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="反馈类-带标题" Click="OnFeedbackWithTitleClick" />
-              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="反馈类-无标题" Click="OnFeedbackNoTitleClick" />
-              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="反馈类-纯标题" Click="OnFeedbackOnlyTitleClick" />
-              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="反馈类-内容超长" Click="OnFeedbackLongContentClick" />
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="反馈类-带标题" Command="{Binding FeedbackWithTitleCommand}" />
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="反馈类-无标题" Command="{Binding FeedbackNoTitleCommand}" />
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="反馈类-纯标题" Command="{Binding FeedbackOnlyTitleCommand}" />
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="反馈类-内容超长" Command="{Binding FeedbackLongContentCommand}" />
             </StackPanel>
           </StackPanel>
 
@@ -58,9 +60,9 @@
                        FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
                        Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
             <StackPanel Margin="16,0" Spacing="16">
-              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="确认类-带标题" Click="OnConfirmWithTitleClick" />
-              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="确认类-无标题" Click="OnConfirmNoTitleClick" />
-              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="确认类-纯标题" Click="OnConfirmOnlyTitleClick" />
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="确认类-带标题" Command="{Binding ConfirmWithTitleCommand}" />
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="确认类-无标题" Command="{Binding ConfirmNoTitleCommand}" />
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="确认类-纯标题" Command="{Binding ConfirmOnlyTitleCommand}" />
             </StackPanel>
           </StackPanel>
 
@@ -70,8 +72,8 @@
                        FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
                        Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
             <StackPanel Margin="16,0" Spacing="16">
-              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="输入类-无描述" Click="OnInputNoDescClick" />
-              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="输入类-带描述" Click="OnInputWithDescClick" />
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="输入类-无描述" Command="{Binding InputNoDescCommand}" />
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="输入类-带描述" Command="{Binding InputWithDescCommand}" />
             </StackPanel>
           </StackPanel>
 
@@ -81,12 +83,12 @@
                        FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
                        Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
             <StackPanel Margin="16,0" Spacing="16">
-              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="图片置顶-带标题描述" Click="OnImageTopWithAllClick" />
-              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="图片置顶-无标题" Click="OnImageTopNoTitleClick" />
-              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="图片置顶-纯标题" Click="OnImageTopOnlyTitleClick" />
-              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="图片置顶-纯图片" Click="OnImageTopOnlyImageClick" />
-              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="图片居中-带标题描述" Click="OnImageMiddleWithAllClick" />
-              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="图片居中-纯标题" Click="OnImageMiddleOnlyTitleClick" />
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="图片置顶-带标题描述" Command="{Binding ImageTopWithAllCommand}" />
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="图片置顶-无标题" Command="{Binding ImageTopNoTitleCommand}" />
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="图片置顶-纯标题" Command="{Binding ImageTopOnlyTitleCommand}" />
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="图片置顶-纯图片" Command="{Binding ImageTopOnlyImageCommand}" />
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="图片居中-带标题描述" Command="{Binding ImageMiddleWithAllCommand}" />
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="图片居中-纯标题" Command="{Binding ImageMiddleOnlyTitleCommand}" />
             </StackPanel>
           </StackPanel>
 
@@ -101,30 +103,30 @@
                          Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
             </StackPanel>
             <StackPanel Margin="16,0" Spacing="16">
-              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="文字按钮" Click="OnTextButtonsClick" />
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="文字按钮" Command="{Binding TextButtonsCommand}" />
               <TextBlock Text="水平基础按钮"
                          Margin="0,8,0,0"
                          FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
                          Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="水平基础按钮" Click="OnHorizontalButtonsClick" />
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="水平基础按钮" Command="{Binding HorizontalButtonsCommand}" />
               <TextBlock Text="垂直基础按钮"
                          Margin="0,8,0,0"
                          FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
                          Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="垂直基础按钮" Click="OnVerticalButtonsClick" />
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="垂直基础按钮" Command="{Binding VerticalButtonsCommand}" />
               <TextBlock Text="带关闭按钮的对话框"
                          Margin="0,8,0,0"
                          FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
                          Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="带关闭按钮的对话框" Click="OnCloseButtonDialogClick" />
+              <Button Classes="primary outline large" HorizontalAlignment="Stretch" Content="带关闭按钮的对话框" Command="{Binding CloseButtonDialogCommand}" />
             </StackPanel>
           </StackPanel>
         </StackPanel>
       </StackPanel>
     </ScrollViewer>
 
-    <controls:DialogHost Name="DialogHost" />
-    <controls:ToastHost Name="ToastHost" />
+    <luna:DialogHost Name="DialogHost" />
+    <luna:ToastHost Name="ToastHost" />
   </Grid>
 </UserControl>
 

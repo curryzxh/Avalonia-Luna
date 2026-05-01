@@ -1,7 +1,9 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:controls="using:Luna.Mobile.Controls"
-             x:Class="Luna.Mobile.Sample.Views.ActionSheetDemoView">
+             xmlns:luna="https://github.com/curryzxh/Luna"
+             xmlns:vm="using:Luna.Mobile.Sample.ViewModels"
+             x:Class="Luna.Mobile.Sample.Views.ActionSheetDemoView"
+             x:DataType="vm:ActionSheetDemoViewModel">
   <Grid>
     <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
       <StackPanel Spacing="24" Margin="0,0,0,28">
@@ -11,7 +13,7 @@
                     Content="‹"
                     FontSize="34"
                     Padding="0"
-                    Click="OnBackClick" />
+                    Command="{Binding BackCommand}" />
             <TextBlock Grid.Column="1"
                        Text="ActionSheet 动作面板"
                        FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
@@ -132,7 +134,7 @@
       </StackPanel>
     </ScrollViewer>
 
-    <controls:ActionSheetHost Name="ActionSheetHost"
+    <luna:ActionSheetHost Name="ActionSheetHost"
                               HorizontalAlignment="Stretch"
                               VerticalAlignment="Stretch" />
   </Grid>

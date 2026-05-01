@@ -1,7 +1,7 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:controls="using:Luna.Mobile.Controls">
-  <Style Selector="controls|Divider">
+        xmlns:luna="https://github.com/curryzxh/Luna">
+  <Style Selector="luna|Divider">
     <Setter Property="LineThickness" Value="1" />
     <Setter Property="LineLength" Value="16" />
     <Setter Property="Template">
@@ -31,7 +31,7 @@
     </Setter>
   </Style>
 
-  <Style Selector="controls|Divider:has-content">
+  <Style Selector="luna|Divider:has-content">
     <Setter Property="Template">
       <ControlTemplate>
         <Grid>
@@ -76,7 +76,7 @@
     </Setter>
   </Style>
 
-  <Style Selector="controls|Divider:has-content:align-left">
+  <Style Selector="luna|Divider:has-content:align-left">
     <Setter Property="Template">
       <ControlTemplate>
         <Grid>
@@ -122,7 +122,7 @@
     </Setter>
   </Style>
 
-  <Style Selector="controls|Divider:has-content:align-right">
+  <Style Selector="luna|Divider:has-content:align-right">
     <Setter Property="Template">
       <ControlTemplate>
         <Grid>
@@ -168,29 +168,29 @@
     </Setter>
   </Style>
 
-  <Style Selector="controls|Divider Grid#PART_HorizontalRoot">
+  <Style Selector="luna|Divider Grid#PART_HorizontalRoot">
     <Setter Property="IsVisible" Value="True" />
   </Style>
-  <Style Selector="controls|Divider:vertical Grid#PART_HorizontalRoot">
+  <Style Selector="luna|Divider:vertical Grid#PART_HorizontalRoot">
     <Setter Property="IsVisible" Value="False" />
   </Style>
-  <Style Selector="controls|Divider Path#PART_VerticalLine">
+  <Style Selector="luna|Divider Path#PART_VerticalLine">
     <Setter Property="IsVisible" Value="False" />
   </Style>
-  <Style Selector="controls|Divider:vertical Path#PART_VerticalLine">
+  <Style Selector="luna|Divider:vertical Path#PART_VerticalLine">
     <Setter Property="IsVisible" Value="True" />
   </Style>
 
-  <Style Selector="controls|Divider:dashed Path#PART_LeftLine">
+  <Style Selector="luna|Divider:dashed Path#PART_LeftLine">
     <Setter Property="StrokeDashArray" Value="4,4" />
   </Style>
-  <Style Selector="controls|Divider:dashed Path#PART_RightLine">
+  <Style Selector="luna|Divider:dashed Path#PART_RightLine">
     <Setter Property="StrokeDashArray" Value="4,4" />
   </Style>
-  <Style Selector="controls|Divider:dashed Path#PART_FullLine">
+  <Style Selector="luna|Divider:dashed Path#PART_FullLine">
     <Setter Property="StrokeDashArray" Value="4,4" />
   </Style>
-  <Style Selector="controls|Divider:dashed Path#PART_VerticalLine">
+  <Style Selector="luna|Divider:dashed Path#PART_VerticalLine">
     <Setter Property="StrokeDashArray" Value="4,4" />
   </Style>
 </Styles>

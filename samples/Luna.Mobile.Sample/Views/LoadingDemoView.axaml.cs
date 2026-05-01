@@ -3,6 +3,7 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
 using System;
+using Luna.Mobile.Sample.ViewModels;
 
 namespace Luna.Mobile.Sample.Views;
 
@@ -10,17 +11,19 @@ public partial class LoadingDemoView : UserControl
 {
     private DispatcherTimer? _refreshTimer;
 
-    public event EventHandler? BackRequested;
+        private LoadingDemoViewModel ViewModel { get; } = new();
+
+    public event EventHandler? BackRequested
+    {
+        add => ViewModel.BackRequested += value;
+        remove => ViewModel.BackRequested -= value;
+    }
 
     public LoadingDemoView()
     {
         InitializeComponent();
+        DataContext = ViewModel;
         UpdateSpeed(SpeedSlider.Value);
-    }
-
-    private void OnBackClick(object? sender, RoutedEventArgs e)
-    {
-        BackRequested?.Invoke(this, EventArgs.Empty);
     }
 
     private void OnRefreshClick(object? sender, RoutedEventArgs e)

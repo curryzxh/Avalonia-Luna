@@ -1,7 +1,7 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:controls="using:Luna.Mobile.Controls">
-  <Style Selector="controls|SearchBar">
+        xmlns:luna="https://github.com/curryzxh/Luna">
+  <Style Selector="luna|SearchBar">
     <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.Control.Medium}" />
     <Setter Property="Template">
       <ControlTemplate>
@@ -74,7 +74,7 @@
     </Setter>
   </Style>
 
-  <Style Selector="controls|SearchBar:round /template/ Border#PART_Box">
+  <Style Selector="luna|SearchBar:round /template/ Border#PART_Box">
     <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Circle}" />
   </Style>
 </Styles>

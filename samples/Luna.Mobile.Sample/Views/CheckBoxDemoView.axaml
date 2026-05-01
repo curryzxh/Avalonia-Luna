@@ -1,6 +1,8 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             x:Class="Luna.Mobile.Sample.Views.CheckBoxDemoView">
+             xmlns:vm="using:Luna.Mobile.Sample.ViewModels"
+             x:Class="Luna.Mobile.Sample.Views.CheckBoxDemoView"
+             x:DataType="vm:CheckBoxDemoViewModel">
   <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
     <StackPanel Spacing="24" Margin="0,0,0,28">
       <Border Background="{DynamicResource Luna.Brush.Background.Container}">
@@ -9,7 +11,7 @@
                   Content="‹"
                   FontSize="34"
                   Padding="0"
-                  Click="OnBackClick" />
+                  Command="{Binding BackCommand}" />
           <TextBlock Grid.Column="1"
                      Text="Checkbox 多选框"
                      FontSize="{DynamicResource Luna.FontSize.Title.Medium}"

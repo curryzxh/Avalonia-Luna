@@ -1,7 +1,9 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:controls="using:Luna.Mobile.Controls"
-             x:Class="Luna.Mobile.Sample.Views.AvatarDemoView">
+             xmlns:luna="https://github.com/curryzxh/Luna"
+             xmlns:vm="using:Luna.Mobile.Sample.ViewModels"
+             x:Class="Luna.Mobile.Sample.Views.AvatarDemoView"
+             x:DataType="vm:AvatarDemoViewModel">
   <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
     <StackPanel Spacing="24" Margin="0,0,0,28">
       <Border Background="{DynamicResource Luna.Brush.Background.Container}">
@@ -10,7 +12,7 @@
                   Content="‹"
                   FontSize="34"
                   Padding="0"
-                  Click="OnBackClick" />
+                  Command="{Binding BackCommand}" />
           <TextBlock Grid.Column="1"
                      Text="Avatar 头像"
                      FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
@@ -44,8 +46,8 @@
                        Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
           </StackPanel>
           <StackPanel Orientation="Horizontal" Spacing="32" Margin="16,0">
-            <controls:Avatar Classes="primary">IMG</controls:Avatar>
-            <controls:Avatar Classes="primary" Shape="Round">IMG</controls:Avatar>
+            <luna:Avatar Classes="primary">IMG</luna:Avatar>
+            <luna:Avatar Classes="primary" Shape="Round">IMG</luna:Avatar>
           </StackPanel>
         </StackPanel>
 
@@ -55,8 +57,8 @@
                      FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
                      Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
           <StackPanel Orientation="Horizontal" Spacing="32" Margin="16,0">
-            <controls:Avatar Classes="primary">A</controls:Avatar>
-            <controls:Avatar Classes="primary" Shape="Round">A</controls:Avatar>
+            <luna:Avatar Classes="primary">A</luna:Avatar>
+            <luna:Avatar Classes="primary" Shape="Round">A</luna:Avatar>
           </StackPanel>
         </StackPanel>
 
@@ -66,8 +68,8 @@
                      FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
                      Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
           <StackPanel Orientation="Horizontal" Spacing="32" Margin="16,0">
-            <controls:Avatar>
-              <controls:Avatar.Icon>
+            <luna:Avatar>
+              <luna:Avatar.Icon>
                 <Path Width="20"
                       Height="20"
                       Data="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z M4 20C4 16.6863 7.58172 14 12 14C16.4183 14 20 16.6863 20 20"
@@ -77,10 +79,10 @@
                       StrokeJoin="Round"
                       Fill="Transparent"
                       Stretch="Uniform" />
-              </controls:Avatar.Icon>
-            </controls:Avatar>
-            <controls:Avatar Shape="Round">
-              <controls:Avatar.Icon>
+              </luna:Avatar.Icon>
+            </luna:Avatar>
+            <luna:Avatar Shape="Round">
+              <luna:Avatar.Icon>
                 <Path Width="20"
                       Height="20"
                       Data="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z M4 20C4 16.6863 7.58172 14 12 14C16.4183 14 20 16.6863 20 20"
@@ -90,8 +92,8 @@
                       StrokeJoin="Round"
                       Fill="Transparent"
                       Stretch="Uniform" />
-              </controls:Avatar.Icon>
-            </controls:Avatar>
+              </luna:Avatar.Icon>
+            </luna:Avatar>
           </StackPanel>
         </StackPanel>
 
@@ -101,15 +103,15 @@
                      FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
                      Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
           <StackPanel Orientation="Horizontal" Spacing="32" Margin="16,0">
-            <controls:Badge Dot="True" Offset="4,4">
-              <controls:Avatar Classes="primary">IMG</controls:Avatar>
-            </controls:Badge>
-            <controls:Badge Count="8" Offset="6,6">
-              <controls:Avatar Classes="primary">A</controls:Avatar>
-            </controls:Badge>
-            <controls:Badge Count="12" Offset="6,6">
-              <controls:Avatar>
-                <controls:Avatar.Icon>
+            <luna:Badge Dot="True" Offset="4,4">
+              <luna:Avatar Classes="primary">IMG</luna:Avatar>
+            </luna:Badge>
+            <luna:Badge Count="8" Offset="6,6">
+              <luna:Avatar Classes="primary">A</luna:Avatar>
+            </luna:Badge>
+            <luna:Badge Count="12" Offset="6,6">
+              <luna:Avatar>
+                <luna:Avatar.Icon>
                   <Path Width="20"
                         Height="20"
                         Data="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z M4 20C4 16.6863 7.58172 14 12 14C16.4183 14 20 16.6863 20 20"
@@ -119,9 +121,9 @@
                         StrokeJoin="Round"
                         Fill="Transparent"
                         Stretch="Uniform" />
-                </controls:Avatar.Icon>
-              </controls:Avatar>
-            </controls:Badge>
+                </luna:Avatar.Icon>
+              </luna:Avatar>
+            </luna:Badge>
           </StackPanel>
         </StackPanel>
 
@@ -136,10 +138,10 @@
                        Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
           </StackPanel>
           <StackPanel Orientation="Horizontal" Margin="16,0">
-            <controls:Avatar Classes="primary" Margin="0,0,-12,0">A</controls:Avatar>
-            <controls:Avatar Classes="primary" Margin="0,0,-12,0">B</controls:Avatar>
-            <controls:Avatar Classes="primary" Margin="0,0,-12,0">C</controls:Avatar>
-            <controls:Avatar Classes="primary">D</controls:Avatar>
+            <luna:Avatar Classes="primary" Margin="0,0,-12,0">A</luna:Avatar>
+            <luna:Avatar Classes="primary" Margin="0,0,-12,0">B</luna:Avatar>
+            <luna:Avatar Classes="primary" Margin="0,0,-12,0">C</luna:Avatar>
+            <luna:Avatar Classes="primary">D</luna:Avatar>
           </StackPanel>
         </StackPanel>
 
@@ -150,8 +152,8 @@
                      Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
           <StackPanel Orientation="Horizontal" Spacing="16" Margin="16,0">
             <Button Classes="text" Content="操作" />
-            <controls:Avatar Classes="primary">A</controls:Avatar>
-            <controls:Avatar Classes="primary">B</controls:Avatar>
+            <luna:Avatar Classes="primary">A</luna:Avatar>
+            <luna:Avatar Classes="primary">B</luna:Avatar>
           </StackPanel>
         </StackPanel>
 
@@ -168,10 +170,10 @@
 
           <StackPanel Spacing="16" Margin="16,0">
             <StackPanel Orientation="Horizontal" Spacing="32">
-              <controls:Avatar Size="Large" Classes="primary">IMG</controls:Avatar>
-              <controls:Avatar Size="Large" Classes="primary">A</controls:Avatar>
-              <controls:Avatar Size="Large">
-                <controls:Avatar.Icon>
+              <luna:Avatar Size="Large" Classes="primary">IMG</luna:Avatar>
+              <luna:Avatar Size="Large" Classes="primary">A</luna:Avatar>
+              <luna:Avatar Size="Large">
+                <luna:Avatar.Icon>
                   <Path Width="26"
                         Height="26"
                         Data="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z M4 20C4 16.6863 7.58172 14 12 14C16.4183 14 20 16.6863 20 20"
@@ -181,15 +183,15 @@
                         StrokeJoin="Round"
                         Fill="Transparent"
                         Stretch="Uniform" />
-                </controls:Avatar.Icon>
-              </controls:Avatar>
+                </luna:Avatar.Icon>
+              </luna:Avatar>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Spacing="48">
-              <controls:Avatar Size="Medium" Classes="primary">IMG</controls:Avatar>
-              <controls:Avatar Size="Medium" Classes="primary">A</controls:Avatar>
-              <controls:Avatar Size="Medium">
-                <controls:Avatar.Icon>
+              <luna:Avatar Size="Medium" Classes="primary">IMG</luna:Avatar>
+              <luna:Avatar Size="Medium" Classes="primary">A</luna:Avatar>
+              <luna:Avatar Size="Medium">
+                <luna:Avatar.Icon>
                   <Path Width="22"
                         Height="22"
                         Data="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z M4 20C4 16.6863 7.58172 14 12 14C16.4183 14 20 16.6863 20 20"
@@ -199,15 +201,15 @@
                         StrokeJoin="Round"
                         Fill="Transparent"
                         Stretch="Uniform" />
-                </controls:Avatar.Icon>
-              </controls:Avatar>
+                </luna:Avatar.Icon>
+              </luna:Avatar>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Spacing="56">
-              <controls:Avatar Size="Small" Classes="primary">IMG</controls:Avatar>
-              <controls:Avatar Size="Small" Classes="primary">A</controls:Avatar>
-              <controls:Avatar Size="Small">
-                <controls:Avatar.Icon>
+              <luna:Avatar Size="Small" Classes="primary">IMG</luna:Avatar>
+              <luna:Avatar Size="Small" Classes="primary">A</luna:Avatar>
+              <luna:Avatar Size="Small">
+                <luna:Avatar.Icon>
                   <Path Width="18"
                         Height="18"
                         Data="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z M4 20C4 16.6863 7.58172 14 12 14C16.4183 14 20 16.6863 20 20"
@@ -217,8 +219,8 @@
                         StrokeJoin="Round"
                         Fill="Transparent"
                         Stretch="Uniform" />
-                </controls:Avatar.Icon>
-              </controls:Avatar>
+                </luna:Avatar.Icon>
+              </luna:Avatar>
             </StackPanel>
           </StackPanel>
         </StackPanel>

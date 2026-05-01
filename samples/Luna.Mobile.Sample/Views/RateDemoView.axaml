@@ -1,7 +1,9 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:controls="using:Luna.Mobile.Controls"
-             x:Class="Luna.Mobile.Sample.Views.RateDemoView">
+             xmlns:luna="https://github.com/curryzxh/Luna"
+             xmlns:vm="using:Luna.Mobile.Sample.ViewModels"
+             x:Class="Luna.Mobile.Sample.Views.RateDemoView"
+             x:DataType="vm:RateDemoViewModel">
   <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
     <StackPanel Spacing="24" Margin="0,0,0,28">
       <Border Background="{DynamicResource Luna.Brush.Background.Container}">
@@ -10,7 +12,7 @@
                   Content="‹"
                   FontSize="34"
                   Padding="0"
-                  Click="OnBackClick" />
+                  Command="{Binding BackCommand}" />
           <TextBlock Grid.Column="1"
                      Text="Rate 评分"
                      FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
@@ -44,7 +46,7 @@
                        Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
           </StackPanel>
           <Border Background="{DynamicResource Luna.Brush.Background.Container}" Margin="16,0" Padding="16">
-            <controls:Rate Name="BasicRate" Value="3" />
+            <luna:Rate Name="BasicRate" Value="3" />
           </Border>
         </StackPanel>
 
@@ -54,7 +56,7 @@
                      FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
                      Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
           <Border Background="{DynamicResource Luna.Brush.Background.Container}" Margin="16,0" Padding="16">
-            <controls:Rate Count="3" Value="2" />
+            <luna:Rate Count="3" Value="2" />
           </Border>
         </StackPanel>
 
@@ -65,9 +67,9 @@
                      Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
           <Border Background="{DynamicResource Luna.Brush.Background.Container}" Margin="16,0" Padding="16">
             <StackPanel Spacing="12">
-              <controls:Rate Name="TextRate1" ShowText="True" Value="1" />
-              <controls:Rate Name="TextRate2" ShowText="True" Value="5" />
-              <controls:Rate Name="TextRate3" ShowText="True" Value="0" />
+              <luna:Rate Name="TextRate1" ShowText="True" Value="1" />
+              <luna:Rate Name="TextRate2" ShowText="True" Value="5" />
+              <luna:Rate Name="TextRate3" ShowText="True" Value="0" />
             </StackPanel>
           </Border>
         </StackPanel>
@@ -79,9 +81,9 @@
                      Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
           <Border Background="{DynamicResource Luna.Brush.Background.Container}" Margin="16,0" Padding="16">
             <StackPanel Spacing="16">
-              <controls:Rate Name="PlaceTop" ShowText="True" Placement="Top" Value="3" />
-              <controls:Rate Name="PlaceBottom" ShowText="True" Placement="Bottom" Value="3" />
-              <controls:Rate Name="PlaceNone" ShowText="True" Placement="None" Value="3" />
+              <luna:Rate Name="PlaceTop" ShowText="True" Placement="Top" Value="3" />
+              <luna:Rate Name="PlaceBottom" ShowText="True" Placement="Bottom" Value="3" />
+              <luna:Rate Name="PlaceNone" ShowText="True" Placement="None" Value="3" />
             </StackPanel>
           </Border>
         </StackPanel>
@@ -97,7 +99,7 @@
                        Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
           </StackPanel>
           <Border Background="{DynamicResource Luna.Brush.Background.Container}" Margin="16,0" Padding="16">
-            <controls:Rate Value="0" AllowHalf="False" />
+            <luna:Rate Value="0" AllowHalf="False" />
           </Border>
         </StackPanel>
 
@@ -107,7 +109,7 @@
                      FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
                      Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
           <Border Background="{DynamicResource Luna.Brush.Background.Container}" Margin="16,0" Padding="16">
-            <controls:Rate Value="2.5" AllowHalf="True" />
+            <luna:Rate Value="2.5" AllowHalf="True" />
           </Border>
         </StackPanel>
 
@@ -128,14 +130,14 @@
                            FontSize="{DynamicResource Luna.FontSize.Body.Small}"
                            Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
                            VerticalAlignment="Center" />
-                <controls:Rate Size="24" Value="3" />
+                <luna:Rate Size="24" Value="3" />
               </StackPanel>
               <StackPanel Orientation="Horizontal" Spacing="12" VerticalAlignment="Center">
                 <TextBlock Text="小尺寸20"
                            FontSize="{DynamicResource Luna.FontSize.Body.Small}"
                            Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
                            VerticalAlignment="Center" />
-                <controls:Rate Size="20" Value="3" />
+                <luna:Rate Size="20" Value="3" />
               </StackPanel>
             </StackPanel>
           </Border>
@@ -153,7 +155,7 @@
                            FontSize="{DynamicResource Luna.FontSize.Body.Small}"
                            Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
                            VerticalAlignment="Center" />
-                <controls:Rate Value="3"
+                <luna:Rate Value="3"
                                AllowHalf="True"
                                ActiveBrush="#FFC51C"
                                InactiveBrush="#E8E8E8" />
@@ -163,7 +165,7 @@
                            FontSize="{DynamicResource Luna.FontSize.Body.Small}"
                            Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
                            VerticalAlignment="Center" />
-                <controls:Rate Value="3"
+                <luna:Rate Value="3"
                                AllowHalf="True"
                                ActiveBrush="{DynamicResource Luna.Brush.Success}" />
               </StackPanel>
@@ -183,7 +185,7 @@
           </StackPanel>
           <Border Background="{DynamicResource Luna.Brush.Background.Container}" Margin="16,0" Padding="16">
             <StackPanel Spacing="8" HorizontalAlignment="Center">
-              <controls:Rate Name="SpecialRate"
+              <luna:Rate Name="SpecialRate"
                              Size="30"
                              ShowText="True"
                              Placement="Bottom"

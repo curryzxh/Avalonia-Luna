@@ -1,7 +1,9 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:controls="using:Luna.Mobile.Controls"
-             x:Class="Luna.Mobile.Sample.Views.ImageViewerDemoView">
+             xmlns:luna="https://github.com/curryzxh/Luna"
+             xmlns:vm="using:Luna.Mobile.Sample.ViewModels"
+             x:Class="Luna.Mobile.Sample.Views.ImageViewerDemoView"
+             x:DataType="vm:ImageViewerDemoViewModel">
   <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
     <StackPanel Spacing="24" Margin="0,0,0,28">
       <Border Background="{DynamicResource Luna.Brush.Background.Container}">
@@ -10,7 +12,7 @@
                   Content="‹"
                   FontSize="34"
                   Padding="0"
-                  Click="OnBackClick" />
+                  Command="{Binding BackCommand}" />
           <TextBlock Grid.Column="1"
                      Text="ImageViewer 图片预览"
                      FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
@@ -97,7 +99,7 @@
         </StackPanel>
       </StackPanel>
 
-      <controls:ImageViewer Name="PART_Viewer" />
+      <luna:ImageViewer Name="PART_Viewer" />
 
     </StackPanel>
   </ScrollViewer>

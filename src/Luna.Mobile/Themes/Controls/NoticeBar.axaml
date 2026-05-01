@@ -1,7 +1,7 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:controls="using:Luna.Mobile.Controls">
-  <Style Selector="controls|NoticeBar">
+        xmlns:luna="https://github.com/curryzxh/Luna">
+  <Style Selector="luna|NoticeBar">
     <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand.Light}" />
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
     <Setter Property="IconForeground" Value="{DynamicResource Luna.Brush.Brand}" />
@@ -65,22 +65,22 @@
     </Setter>
   </Style>
 
-  <Style Selector="controls|NoticeBar:success">
+  <Style Selector="luna|NoticeBar:success">
     <Setter Property="Background" Value="{DynamicResource Luna.Brush.Success.Light}" />
     <Setter Property="IconForeground" Value="{DynamicResource Luna.Brush.Success}" />
   </Style>
 
-  <Style Selector="controls|NoticeBar:warning">
+  <Style Selector="luna|NoticeBar:warning">
     <Setter Property="Background" Value="{DynamicResource Luna.Brush.Warning.Light}" />
     <Setter Property="IconForeground" Value="{DynamicResource Luna.Brush.Warning}" />
   </Style>
 
-  <Style Selector="controls|NoticeBar:error">
+  <Style Selector="luna|NoticeBar:error">
     <Setter Property="Background" Value="{DynamicResource Luna.Brush.Error.Light}" />
     <Setter Property="IconForeground" Value="{DynamicResource Luna.Brush.Error}" />
   </Style>
 
-  <Style Selector="controls|NoticeBar.cover">
+  <Style Selector="luna|NoticeBar.cover">
     <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
     <Setter Property="IconForeground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
   </Style>

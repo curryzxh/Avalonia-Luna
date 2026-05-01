@@ -1,7 +1,9 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:controls="using:Luna.Mobile.Controls"
-             x:Class="Luna.Mobile.Sample.Views.ToastDemoView">
+             xmlns:luna="https://github.com/curryzxh/Luna"
+             xmlns:vm="using:Luna.Mobile.Sample.ViewModels"
+             x:Class="Luna.Mobile.Sample.Views.ToastDemoView"
+             x:DataType="vm:ToastDemoViewModel">
   <Grid>
     <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
       <StackPanel Spacing="24" Margin="0,0,0,28">
@@ -11,7 +13,7 @@
                     Content="‹"
                     FontSize="34"
                     Padding="0"
-                    Click="OnBackClick" />
+                    Command="{Binding BackCommand}" />
             <TextBlock Grid.Column="1"
                        Text="Toast 轻提示"
                        FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
@@ -44,23 +46,23 @@
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="纯文本"
-                      Click="OnOnlyTextClick" />
+                      Command="{Binding OnlyTextCommand}" />
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="多行文字"
-                      Click="OnMultiLineClick" />
+                      Command="{Binding MultiLineCommand}" />
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="带横向图标"
-                      Click="OnIconRowClick" />
+                      Command="{Binding IconRowCommand}" />
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="带竖向图标"
-                      Click="OnIconColumnClick" />
+                      Command="{Binding IconColumnCommand}" />
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="加载状态"
-                      Click="OnLoadingClick" />
+                      Command="{Binding LoadingCommand}" />
             </StackPanel>
           </StackPanel>
 
@@ -74,15 +76,15 @@
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="成功提示"
-                      Click="OnSuccessClick" />
+                      Command="{Binding SuccessCommand}" />
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="警告提示"
-                      Click="OnWarningClick" />
+                      Command="{Binding WarningCommand}" />
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="失败提示"
-                      Click="OnErrorClick" />
+                      Command="{Binding ErrorCommand}" />
             </StackPanel>
           </StackPanel>
 
@@ -100,14 +102,14 @@
               <Button Classes="primary outline large"
                       HorizontalAlignment="Stretch"
                       Content="禁止滑动和点击"
-                      Click="OnOverlayClick" />
+                      Command="{Binding OverlayCommand}" />
             </StackPanel>
           </StackPanel>
         </StackPanel>
       </StackPanel>
     </ScrollViewer>
 
-    <controls:ToastHost Name="ToastHost"
+    <luna:ToastHost Name="ToastHost"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch" />
   </Grid>

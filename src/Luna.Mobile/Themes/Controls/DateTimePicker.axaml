@@ -1,7 +1,7 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:controls="using:Luna.Mobile.Controls">
-  <Style Selector="controls|DateTimePickerHost">
+        xmlns:luna="https://github.com/curryzxh/Luna">
+  <Style Selector="luna|DateTimePickerHost">
     <Setter Property="Template">
       <ControlTemplate>
         <Grid>
@@ -54,13 +54,13 @@
                   </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
-                  <DataTemplate x:DataType="controls:DateTimePickerColumn">
+                  <DataTemplate x:DataType="luna:DateTimePickerColumn">
                     <ComboBox Width="92"
                               HorizontalAlignment="Stretch"
                               ItemsSource="{Binding Items}"
                               SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}">
                       <ComboBox.ItemTemplate>
-                        <DataTemplate x:DataType="controls:DateTimePickerColumnItem">
+                        <DataTemplate x:DataType="luna:DateTimePickerColumnItem">
                           <TextBlock Text="{Binding Label}"
                                      TextAlignment="Center" />
                         </DataTemplate>

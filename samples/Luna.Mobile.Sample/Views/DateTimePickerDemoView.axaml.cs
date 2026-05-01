@@ -3,22 +3,25 @@ using Avalonia.Interactivity;
 using Luna.Mobile.Controls;
 using System;
 using Toast = Luna.Mobile.Controls.Toast;
+using Luna.Mobile.Sample.ViewModels;
 
 namespace Luna.Mobile.Sample.Views;
 
 public partial class DateTimePickerDemoView : UserControl
 {
-    public event EventHandler? BackRequested;
+        private DateTimePickerDemoViewModel ViewModel { get; } = new();
+
+    public event EventHandler? BackRequested
+    {
+        add => ViewModel.BackRequested += value;
+        remove => ViewModel.BackRequested -= value;
+    }
 
     public DateTimePickerDemoView()
     {
         InitializeComponent();
+        DataContext = ViewModel;
         DateTimePickerHost.Confirmed += OnDateTimePickerConfirmed;
-    }
-
-    private void OnBackClick(object? sender, RoutedEventArgs e)
-    {
-        BackRequested?.Invoke(this, EventArgs.Empty);
     }
 
     private void OnDatePickerClick(object? sender, RoutedEventArgs e)

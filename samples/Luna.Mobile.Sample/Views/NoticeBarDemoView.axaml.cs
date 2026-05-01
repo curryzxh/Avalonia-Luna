@@ -4,16 +4,24 @@ using Avalonia.Interactivity;
 using Luna.Mobile.Controls;
 using Toast = Luna.Mobile.Controls.Toast;
 using System;
+using Luna.Mobile.Sample.ViewModels;
 
 namespace Luna.Mobile.Sample.Views;
 
 public partial class NoticeBarDemoView : UserControl
 {
-    public event EventHandler? BackRequested;
+        private NoticeBarDemoViewModel ViewModel { get; } = new();
+
+    public event EventHandler? BackRequested
+    {
+        add => ViewModel.BackRequested += value;
+        remove => ViewModel.BackRequested -= value;
+    }
 
     public NoticeBarDemoView()
     {
         InitializeComponent();
+        DataContext = ViewModel;
         VerticalNotice.ContentList =
         [
             "君不见",
@@ -22,11 +30,6 @@ public partial class NoticeBarDemoView : UserControl
             "人生得意须尽欢",
             "莫使金樽空对月",
         ];
-    }
-
-    private void OnBackClick(object? sender, RoutedEventArgs e)
-    {
-        BackRequested?.Invoke(this, EventArgs.Empty);
     }
 
     private void OnCloseNoticeCloseRequested(object? sender, EventArgs e)

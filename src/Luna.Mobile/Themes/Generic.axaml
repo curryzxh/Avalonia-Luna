@@ -1,6 +1,6 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:controls="using:Luna.Mobile.Controls">
+        xmlns:luna="https://github.com/curryzxh/Luna">
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Button.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/TextBox.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/ToggleSwitch.axaml" />
@@ -31,11 +31,11 @@
 
   <Design.PreviewWith>
     <Border Padding="24">
-      <controls:MobileActionChip Text="Mobile control" IsActive="True" />
+      <luna:MobileActionChip Text="Mobile control" IsActive="True" />
     </Border>
   </Design.PreviewWith>
 
-  <Style Selector="controls|MobileActionChip">
+  <Style Selector="luna|MobileActionChip">
     <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.TouchTarget}" />
     <Setter Property="Padding" Value="{DynamicResource Luna.Padding.Control.Medium}" />
     <Setter Property="Template">
@@ -56,7 +56,7 @@
     </Setter>
   </Style>
 
-  <Style Selector="controls|MobileActionChip:active">
+  <Style Selector="luna|MobileActionChip:active">
     <Setter Property="Template">
       <ControlTemplate>
         <Border Background="{DynamicResource Luna.Brush.Brand}"

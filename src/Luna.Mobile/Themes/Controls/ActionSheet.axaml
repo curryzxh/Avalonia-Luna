@@ -1,7 +1,7 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:controls="using:Luna.Mobile.Controls">
-  <Style Selector="controls|ActionSheetHost">
+        xmlns:luna="https://github.com/curryzxh/Luna">
+  <Style Selector="luna|ActionSheetHost">
     <Setter Property="Template">
       <ControlTemplate>
         <Grid>
@@ -38,11 +38,11 @@
                     </ItemsPanelTemplate>
                   </ItemsControl.ItemsPanel>
                   <ItemsControl.ItemTemplate>
-                    <DataTemplate x:DataType="controls:ActionSheetItem">
+                    <DataTemplate x:DataType="luna:ActionSheetItem">
                       <Button Classes="text"
                               HorizontalAlignment="Stretch"
                               Padding="12,10"
-                              Command="{Binding ItemClickCommand, RelativeSource={RelativeSource AncestorType=controls:ActionSheetHost}}"
+                              Command="{Binding ItemClickCommand, RelativeSource={RelativeSource AncestorType=luna:ActionSheetHost}}"
                               CommandParameter="{Binding}"
                               IsEnabled="{Binding IsEnabled}">
                         <Grid ColumnDefinitions="Auto,*,Auto"
@@ -53,25 +53,25 @@
                           <TextBlock Grid.Column="1"
                                      Text="{Binding Label}"
                                      FontSize="{DynamicResource Luna.FontSize.Body.Large}"
-                                     HorizontalAlignment="{Binding ItemHorizontalAlignment, RelativeSource={RelativeSource AncestorType=controls:ActionSheetHost}}"
-                                     TextAlignment="{Binding ItemTextAlignment, RelativeSource={RelativeSource AncestorType=controls:ActionSheetHost}}"
+                                     HorizontalAlignment="{Binding ItemHorizontalAlignment, RelativeSource={RelativeSource AncestorType=luna:ActionSheetHost}}"
+                                     TextAlignment="{Binding ItemTextAlignment, RelativeSource={RelativeSource AncestorType=luna:ActionSheetHost}}"
                                      VerticalAlignment="Center"
                                      IsVisible="{Binding HasDefaultForeground}" />
                           <TextBlock Grid.Column="1"
                                      Text="{Binding Label}"
                                      FontSize="{DynamicResource Luna.FontSize.Body.Large}"
                                      Foreground="{Binding Foreground}"
-                                     HorizontalAlignment="{Binding ItemHorizontalAlignment, RelativeSource={RelativeSource AncestorType=controls:ActionSheetHost}}"
-                                     TextAlignment="{Binding ItemTextAlignment, RelativeSource={RelativeSource AncestorType=controls:ActionSheetHost}}"
+                                     HorizontalAlignment="{Binding ItemHorizontalAlignment, RelativeSource={RelativeSource AncestorType=luna:ActionSheetHost}}"
+                                     TextAlignment="{Binding ItemTextAlignment, RelativeSource={RelativeSource AncestorType=luna:ActionSheetHost}}"
                                      VerticalAlignment="Center"
                                      IsVisible="{Binding HasCustomForeground}" />
-                          <controls:Badge Grid.Column="2"
+                          <luna:Badge Grid.Column="2"
                                           Dot="{Binding BadgeDot}"
                                           Count="{Binding BadgeCount}"
                                           IsVisible="{Binding HasBadge}"
                                           VerticalAlignment="Center">
                             <Border Width="1" Height="1" Background="Transparent" />
-                          </controls:Badge>
+                          </luna:Badge>
                         </Grid>
                       </Button>
                     </DataTemplate>
@@ -87,18 +87,18 @@
                     </ItemsPanelTemplate>
                   </ItemsControl.ItemsPanel>
                   <ItemsControl.ItemTemplate>
-                    <DataTemplate x:DataType="controls:ActionSheetItem">
+                    <DataTemplate x:DataType="luna:ActionSheetItem">
                       <Button Classes="text"
                               Width="76"
                               Height="84"
                               Padding="0"
-                              Command="{Binding ItemClickCommand, RelativeSource={RelativeSource AncestorType=controls:ActionSheetHost}}"
+                              Command="{Binding ItemClickCommand, RelativeSource={RelativeSource AncestorType=luna:ActionSheetHost}}"
                               CommandParameter="{Binding}"
                               IsEnabled="{Binding IsEnabled}">
                         <StackPanel Spacing="8"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center">
-                          <controls:Badge Dot="{Binding BadgeDot}"
+                          <luna:Badge Dot="{Binding BadgeDot}"
                                           Count="{Binding BadgeCount}"
                                           IsVisible="{Binding HasBadge}">
                             <Border Width="44"
@@ -109,7 +109,7 @@
                                                 HorizontalAlignment="Center"
                                                 VerticalAlignment="Center" />
                             </Border>
-                          </controls:Badge>
+                          </luna:Badge>
                           <Border Width="44"
                                   Height="44"
                                   Background="{DynamicResource Luna.Brush.Background.Component}"

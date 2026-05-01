@@ -1,6 +1,7 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using System;
+using Luna.Mobile.Sample.ViewModels;
 
 namespace Luna.Mobile.Sample.Views;
 
@@ -8,16 +9,18 @@ public partial class OverlayDemoView : UserControl
 {
     private int _passThroughCount;
 
-    public event EventHandler? BackRequested;
+        private OverlayDemoViewModel ViewModel { get; } = new();
+
+    public event EventHandler? BackRequested
+    {
+        add => ViewModel.BackRequested += value;
+        remove => ViewModel.BackRequested -= value;
+    }
 
     public OverlayDemoView()
     {
         InitializeComponent();
-    }
-
-    private void OnBackClick(object? sender, RoutedEventArgs e)
-    {
-        BackRequested?.Invoke(this, EventArgs.Empty);
+        DataContext = ViewModel;
     }
 
     private void OnShowBasicOverlayClick(object? sender, RoutedEventArgs e)

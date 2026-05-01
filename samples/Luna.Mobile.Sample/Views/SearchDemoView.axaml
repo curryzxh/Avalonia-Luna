@@ -1,7 +1,9 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:controls="using:Luna.Mobile.Controls"
-             x:Class="Luna.Mobile.Sample.Views.SearchDemoView">
+             xmlns:luna="https://github.com/curryzxh/Luna"
+             xmlns:vm="using:Luna.Mobile.Sample.ViewModels"
+             x:Class="Luna.Mobile.Sample.Views.SearchDemoView"
+             x:DataType="vm:SearchDemoViewModel">
   <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
     <StackPanel Spacing="24" Margin="0,0,0,28">
       <Border Background="{DynamicResource Luna.Brush.Background.Container}">
@@ -10,7 +12,7 @@
                   Content="‹"
                   FontSize="34"
                   Padding="0"
-                  Click="OnBackClick" />
+                  Command="{Binding BackCommand}" />
           <TextBlock Grid.Column="1"
                      Text="Search 搜索框"
                      FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
@@ -46,12 +48,12 @@
 
           <Border Background="{DynamicResource Luna.Brush.Background.Container}"
                   Padding="8,8,16,8">
-            <controls:SearchBar Placeholder="搜索预设文案" />
+            <luna:SearchBar Placeholder="搜索预设文案" />
           </Border>
 
           <Border Background="{DynamicResource Luna.Brush.Background.Container}"
                   Padding="8,8,16,8">
-            <controls:SearchBar Placeholder="输入tdesign，有预览效果" />
+            <luna:SearchBar Placeholder="输入tdesign，有预览效果" />
           </Border>
         </StackPanel>
 
@@ -62,7 +64,7 @@
                      Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
           <Border Background="{DynamicResource Luna.Brush.Background.Container}"
                   Padding="8,8,16,8">
-            <controls:SearchBar Placeholder="搜索预设文案"
+            <luna:SearchBar Placeholder="搜索预设文案"
                                 Center="True"
                                 ShowCancelButton="True"
                                 CancelText="取消" />
@@ -81,7 +83,7 @@
           </StackPanel>
           <Border Background="{DynamicResource Luna.Brush.Background.Container}"
                   Padding="8,8,16,8">
-            <controls:SearchBar Shape="Round"
+            <luna:SearchBar Shape="Round"
                                 IsClearable="True"
                                 Placeholder="请输入关键字" />
           </Border>
@@ -99,7 +101,7 @@
           </StackPanel>
           <Border Background="{DynamicResource Luna.Brush.Background.Container}"
                   Padding="8,8,16,8">
-            <controls:SearchBar Placeholder="搜索预设文案" />
+            <luna:SearchBar Placeholder="搜索预设文案" />
           </Border>
         </StackPanel>
       </StackPanel>

@@ -1,7 +1,9 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:controls="using:Luna.Mobile.Controls"
-             x:Class="Luna.Mobile.Sample.Views.NoticeBarDemoView">
+             xmlns:luna="https://github.com/curryzxh/Luna"
+             xmlns:vm="using:Luna.Mobile.Sample.ViewModels"
+             x:Class="Luna.Mobile.Sample.Views.NoticeBarDemoView"
+             x:DataType="vm:NoticeBarDemoViewModel">
   <Grid>
     <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
       <StackPanel Spacing="24" Margin="0,0,0,28">
@@ -11,7 +13,7 @@
                   Content="‹"
                   FontSize="34"
                   Padding="0"
-                  Click="OnBackClick" />
+                  Command="{Binding BackCommand}" />
           <TextBlock Grid.Column="1"
                      Text="NoticeBar 公告栏"
                      FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
@@ -45,20 +47,20 @@
             <TextBlock Text="纯文字的公告栏"
                        FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
                        Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-            <controls:NoticeBar Content="这是一条普通的通知消息"
+            <luna:NoticeBar Content="这是一条普通的通知消息"
                                 ShowIcon="False" />
 
             <TextBlock Text="带图标静态公告栏"
                        Margin="0,6,0,0"
                        FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
                        Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-            <controls:NoticeBar Content="提示文字描述提示文字描述提示文字描述" />
+            <luna:NoticeBar Content="提示文字描述提示文字描述提示文字描述" />
 
             <TextBlock Text="带关闭的公告栏"
                        Margin="0,6,0,0"
                        FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
                        Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-            <controls:NoticeBar Name="CloseNotice"
+            <luna:NoticeBar Name="CloseNotice"
                                 Content="这是一条普通的通知信息"
                                 ShowClose="True"
                                 CloseRequested="OnCloseNoticeCloseRequested" />
@@ -67,7 +69,7 @@
                        Margin="0,6,0,0"
                        FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
                        Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-            <controls:NoticeBar Content="这是一条普通的消息通知"
+            <luna:NoticeBar Content="这是一条普通的消息通知"
                                 SuffixGlyph="›"
                                 PointerPressed="OnEntrancePressed" />
 
@@ -75,7 +77,7 @@
                        Margin="0,6,0,0"
                        FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
                        Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-            <controls:NoticeBar Classes="cover"
+            <luna:NoticeBar Classes="cover"
                                 Content="提示文字描述提示文字描述提示文字描述"
                                 PrefixGlyph="♪"
                                 SuffixGlyph="›" />
@@ -84,7 +86,7 @@
                        Margin="0,6,0,0"
                        FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
                        Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-            <controls:NoticeBar Name="CustomNotice"
+            <luna:NoticeBar Name="CustomNotice"
                                 Content="提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述"
                                 OperationText="详情"
                                 SuffixGlyph="×"
@@ -104,10 +106,10 @@
                        TextWrapping="Wrap" />
           </StackPanel>
           <StackPanel Margin="16,0" Spacing="16">
-            <controls:NoticeBar Content="默认状态公告栏默认状态公告栏" Theme="Info" />
-            <controls:NoticeBar Content="成功状态公告栏成功状态公告栏" Theme="Success" />
-            <controls:NoticeBar Content="警示状态公告栏警示状态公告栏" Theme="Warning" />
-            <controls:NoticeBar Content="错误状态公告栏错误状态公告栏" Theme="Error" />
+            <luna:NoticeBar Content="默认状态公告栏默认状态公告栏" Theme="Info" />
+            <luna:NoticeBar Content="成功状态公告栏成功状态公告栏" Theme="Success" />
+            <luna:NoticeBar Content="警示状态公告栏警示状态公告栏" Theme="Warning" />
+            <luna:NoticeBar Content="错误状态公告栏错误状态公告栏" Theme="Error" />
           </StackPanel>
         </StackPanel>
 
@@ -123,12 +125,12 @@
                        TextWrapping="Wrap" />
           </StackPanel>
           <StackPanel Margin="16,0" Spacing="16">
-            <controls:NoticeBar Content="提示文字描述提示文字描述提示文字描述提示文字描述文"
+            <luna:NoticeBar Content="提示文字描述提示文字描述提示文字描述提示文字描述文"
                                 ShowIcon="False"
                                 Marquee="True" />
-            <controls:NoticeBar Content="提示文字描述提示文字描述提示文字描述提示文字描述文"
+            <luna:NoticeBar Content="提示文字描述提示文字描述提示文字描述提示文字描述文"
                                 Marquee="True" />
-            <controls:NoticeBar Name="VerticalNotice"
+            <luna:NoticeBar Name="VerticalNotice"
                                 PrefixGlyph="♪"
                                 Marquee="True"
                                 Direction="Vertical" />
@@ -137,6 +139,6 @@
       </StackPanel>
       </StackPanel>
     </ScrollViewer>
-    <controls:ToastHost Name="ToastHost" />
+    <luna:ToastHost Name="ToastHost" />
   </Grid>
 </UserControl>

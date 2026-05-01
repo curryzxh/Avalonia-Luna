@@ -4,22 +4,25 @@ using Luna.Mobile.Controls;
 using System;
 using System.Collections.Generic;
 using Toast = Luna.Mobile.Controls.Toast;
+using Luna.Mobile.Sample.ViewModels;
 
 namespace Luna.Mobile.Sample.Views;
 
 public partial class PickerDemoView : UserControl
 {
-    public event EventHandler? BackRequested;
+        private PickerDemoViewModel ViewModel { get; } = new();
+
+    public event EventHandler? BackRequested
+    {
+        add => ViewModel.BackRequested += value;
+        remove => ViewModel.BackRequested -= value;
+    }
 
     public PickerDemoView()
     {
         InitializeComponent();
+        DataContext = ViewModel;
         PickerHost.Confirmed += OnPickerConfirmed;
-    }
-
-    private void OnBackClick(object? sender, RoutedEventArgs e)
-    {
-        BackRequested?.Invoke(this, EventArgs.Empty);
     }
 
     private void OnCityPickerClick(object? sender, RoutedEventArgs e)

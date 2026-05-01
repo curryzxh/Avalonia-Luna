@@ -1,6 +1,7 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using System;
+using Luna.Mobile.Sample.ViewModels;
 
 namespace Luna.Mobile.Sample.Views;
 
@@ -8,17 +9,19 @@ public partial class CheckBoxDemoView : UserControl
 {
     private bool _updating;
 
-    public event EventHandler? BackRequested;
+        private CheckBoxDemoViewModel ViewModel { get; } = new();
+
+    public event EventHandler? BackRequested
+    {
+        add => ViewModel.BackRequested += value;
+        remove => ViewModel.BackRequested -= value;
+    }
 
     public CheckBoxDemoView()
     {
         InitializeComponent();
+        DataContext = ViewModel;
         UpdateCheckAll();
-    }
-
-    private void OnBackClick(object? sender, RoutedEventArgs e)
-    {
-        BackRequested?.Invoke(this, EventArgs.Empty);
     }
 
     private void OnCheckAllChanged(object? sender, RoutedEventArgs e)

@@ -1,8 +1,8 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:controls="using:Luna.Mobile.Controls">
+        xmlns:luna="https://github.com/curryzxh/Luna">
 
-  <Style Selector="controls|ImageViewer">
+  <Style Selector="luna|ImageViewer">
     <Setter Property="Template">
       <ControlTemplate>
         <Panel>
@@ -79,11 +79,11 @@
     </Setter>
   </Style>
 
-  <Style Selector="controls|ImageViewer:no-index /template/ TextBlock#PART_IndexText">
+  <Style Selector="luna|ImageViewer:no-index /template/ TextBlock#PART_IndexText">
     <Setter Property="IsVisible" Value="False" />
   </Style>
 
-  <Style Selector="controls|ImageViewer:no-delete /template/ Button#PART_DeleteButton">
+  <Style Selector="luna|ImageViewer:no-delete /template/ Button#PART_DeleteButton">
     <Setter Property="IsVisible" Value="False" />
   </Style>
 

@@ -1,7 +1,9 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:controls="using:Luna.Mobile.Controls"
-             x:Class="Luna.Mobile.Sample.Views.DividerDemoView">
+             xmlns:luna="https://github.com/curryzxh/Luna"
+             xmlns:vm="using:Luna.Mobile.Sample.ViewModels"
+             x:Class="Luna.Mobile.Sample.Views.DividerDemoView"
+             x:DataType="vm:DividerDemoViewModel">
   <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
     <StackPanel Spacing="24" Margin="0,0,0,28">
       <Border Background="{DynamicResource Luna.Brush.Background.Container}">
@@ -10,7 +12,7 @@
                   Content="‹"
                   FontSize="34"
                   Padding="0"
-                  Click="OnBackClick" />
+                  Command="{Binding BackCommand}" />
           <TextBlock Grid.Column="1"
                      Text="Divider 分割符"
                      FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
@@ -44,13 +46,13 @@
                        Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
           </StackPanel>
           <StackPanel Margin="16,0" Spacing="16">
-            <controls:Divider />
+            <luna:Divider />
             <TextBlock Text="带文字水平分割线"
                        FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
                        Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-            <controls:Divider Content="文字信息" Align="Left" />
-            <controls:Divider Content="文字信息" />
-            <controls:Divider Content="文字信息" Align="Right" />
+            <luna:Divider Content="文字信息" Align="Left" />
+            <luna:Divider Content="文字信息" />
+            <luna:Divider Content="文字信息" Align="Right" />
             <TextBlock Text="垂直分割线"
                        Margin="0,6,0,0"
                        FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
@@ -60,12 +62,12 @@
                          FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
                          Foreground="{DynamicResource Luna.Brush.Text.Primary}"
                          VerticalAlignment="Center" />
-              <controls:Divider Layout="Vertical" LineLength="20" />
+              <luna:Divider Layout="Vertical" LineLength="20" />
               <TextBlock Text="文字信息"
                          FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
                          Foreground="{DynamicResource Luna.Brush.Text.Primary}"
                          VerticalAlignment="Center" />
-              <controls:Divider Layout="Vertical" LineLength="20" />
+              <luna:Divider Layout="Vertical" LineLength="20" />
               <TextBlock Text="文字信息"
                          FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
                          Foreground="{DynamicResource Luna.Brush.Text.Primary}"
@@ -85,10 +87,10 @@
                        Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
           </StackPanel>
           <StackPanel Margin="16,0" Spacing="16">
-            <controls:Divider Dashed="True" />
-            <controls:Divider Dashed="True" Content="文字信息" Align="Left" />
-            <controls:Divider Dashed="True" Content="文字信息" />
-            <controls:Divider Dashed="True" Content="文字信息" Align="Right" />
+            <luna:Divider Dashed="True" />
+            <luna:Divider Dashed="True" Content="文字信息" Align="Left" />
+            <luna:Divider Dashed="True" Content="文字信息" />
+            <luna:Divider Dashed="True" Content="文字信息" Align="Right" />
           </StackPanel>
         </StackPanel>
       </StackPanel>

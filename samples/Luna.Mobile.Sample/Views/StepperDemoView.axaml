@@ -1,7 +1,9 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:controls="using:Luna.Mobile.Controls"
-             x:Class="Luna.Mobile.Sample.Views.StepperDemoView">
+             xmlns:luna="https://github.com/curryzxh/Luna"
+             xmlns:vm="using:Luna.Mobile.Sample.ViewModels"
+             x:Class="Luna.Mobile.Sample.Views.StepperDemoView"
+             x:DataType="vm:StepperDemoViewModel">
   <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
     <StackPanel Spacing="24" Margin="0,0,0,28">
       <Border Background="{DynamicResource Luna.Brush.Background.Container}">
@@ -10,7 +12,7 @@
                   Content="‹"
                   FontSize="34"
                   Padding="0"
-                  Click="OnBackClick" />
+                  Command="{Binding BackCommand}" />
           <TextBlock Grid.Column="1"
                      Text="Stepper 步进器"
                      FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
@@ -44,7 +46,7 @@
                        Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
           </StackPanel>
           <Border Background="{DynamicResource Luna.Brush.Background.Container}" Padding="16">
-            <controls:Stepper Theme="Filled" Value="3" />
+            <luna:Stepper Theme="Filled" Value="3" />
           </Border>
         </StackPanel>
 
@@ -60,8 +62,8 @@
           </StackPanel>
           <Border Background="{DynamicResource Luna.Brush.Background.Container}" Padding="16">
             <StackPanel Orientation="Horizontal" Spacing="24">
-              <controls:Stepper Theme="Filled" Minimum="0" Maximum="10" Value="0" />
-              <controls:Stepper Theme="Filled" Minimum="0" Maximum="999" Value="999" />
+              <luna:Stepper Theme="Filled" Minimum="0" Maximum="10" Value="0" />
+              <luna:Stepper Theme="Filled" Minimum="0" Maximum="999" Value="999" />
             </StackPanel>
           </Border>
         </StackPanel>
@@ -72,7 +74,7 @@
                      FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
                      Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
           <Border Background="{DynamicResource Luna.Brush.Background.Container}" Padding="16">
-            <controls:Stepper Theme="Filled" IsDisabled="True" />
+            <luna:Stepper Theme="Filled" IsDisabled="True" />
           </Border>
         </StackPanel>
 
@@ -88,9 +90,9 @@
           </StackPanel>
           <Border Background="{DynamicResource Luna.Brush.Background.Container}" Padding="16">
             <StackPanel Orientation="Horizontal" Spacing="24">
-              <controls:Stepper Theme="Filled" Value="3" />
-              <controls:Stepper Theme="Outline" Value="3" />
-              <controls:Stepper Theme="Default" Value="3" />
+              <luna:Stepper Theme="Filled" Value="3" />
+              <luna:Stepper Theme="Outline" Value="3" />
+              <luna:Stepper Theme="Default" Value="3" />
             </StackPanel>
           </Border>
         </StackPanel>
@@ -102,9 +104,9 @@
                      Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
           <Border Background="{DynamicResource Luna.Brush.Background.Container}" Padding="16">
             <StackPanel Orientation="Horizontal" Spacing="24">
-              <controls:Stepper Theme="Filled" Size="Large" Value="3" Maximum="99" />
-              <controls:Stepper Theme="Filled" Size="Medium" Value="3" Maximum="99" />
-              <controls:Stepper Theme="Filled" Size="Small" Value="3" Maximum="99" />
+              <luna:Stepper Theme="Filled" Size="Large" Value="3" Maximum="99" />
+              <luna:Stepper Theme="Filled" Size="Medium" Value="3" Maximum="99" />
+              <luna:Stepper Theme="Filled" Size="Small" Value="3" Maximum="99" />
             </StackPanel>
           </Border>
         </StackPanel>

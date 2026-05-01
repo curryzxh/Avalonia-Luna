@@ -1,7 +1,9 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:controls="using:Luna.Mobile.Controls"
-             x:Class="Luna.Mobile.Sample.Views.DateTimePickerDemoView">
+             xmlns:luna="https://github.com/curryzxh/Luna"
+             xmlns:vm="using:Luna.Mobile.Sample.ViewModels"
+             x:Class="Luna.Mobile.Sample.Views.DateTimePickerDemoView"
+             x:DataType="vm:DateTimePickerDemoViewModel">
   <Grid>
     <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
       <StackPanel Spacing="24" Margin="0,0,0,28">
@@ -11,7 +13,7 @@
                     Content="‹"
                     FontSize="34"
                     Padding="0"
-                    Click="OnBackClick" />
+                    Command="{Binding BackCommand}" />
             <TextBlock Grid.Column="1"
                        Text="DateTimePicker 时间选择器"
                        FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
@@ -103,7 +105,7 @@
       </StackPanel>
     </ScrollViewer>
 
-    <controls:DateTimePickerHost Name="DateTimePickerHost" />
-    <controls:ToastHost Name="ToastHost" />
+    <luna:DateTimePickerHost Name="DateTimePickerHost" />
+    <luna:ToastHost Name="ToastHost" />
   </Grid>
 </UserControl>

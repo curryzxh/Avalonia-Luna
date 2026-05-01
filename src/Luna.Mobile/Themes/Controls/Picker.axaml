@@ -1,7 +1,7 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:controls="using:Luna.Mobile.Controls">
-  <Style Selector="controls|PickerHost">
+        xmlns:luna="https://github.com/curryzxh/Luna">
+  <Style Selector="luna|PickerHost">
     <Setter Property="Template">
       <ControlTemplate>
         <Grid>
@@ -55,7 +55,7 @@
                   </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
-                  <DataTemplate x:DataType="controls:PickerColumn">
+                  <DataTemplate x:DataType="luna:PickerColumn">
                     <ComboBox Width="140"
                               ItemsSource="{Binding Items}"
                               SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}" />

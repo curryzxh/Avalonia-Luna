@@ -5,57 +5,127 @@
     <Setter Property="Focusable" Value="False" />
     <Setter Property="Template">
       <ControlTemplate>
-        <Border Name="PART_Root"
-                BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
-                BorderThickness="1"
-                CornerRadius="{DynamicResource Luna.Radius.Default}"
-                Background="{DynamicResource Luna.Brush.Background.Container}">
-          <Grid ColumnDefinitions="Auto,*,Auto"
-                VerticalAlignment="Center">
-            <Button Name="PART_DecreaseButton"
-                    Classes="text"
-                    Padding="0"
-                    MinWidth="{DynamicResource Luna.Size.Control.Medium}"
-                    MinHeight="{DynamicResource Luna.Size.Control.Medium}"
-                    Content="−"
-                    FontSize="20"
-                    IsEnabled="{TemplateBinding CanDecrease}" />
+        <Grid Name="PART_Root"
+              ColumnDefinitions="Auto,Auto,Auto"
+              ColumnSpacing="4"
+              VerticalAlignment="Center">
+          <Button Name="PART_DecreaseButton"
+                  Padding="0"
+                  MinWidth="{DynamicResource Luna.Size.Control.Medium}"
+                  MinHeight="{DynamicResource Luna.Size.Control.Medium}"
+                  Background="{DynamicResource Luna.Brush.Background.Component}"
+                  BorderBrush="Transparent"
+                  BorderThickness="0"
+                  CornerRadius="{DynamicResource Luna.Radius.Default}"
+                  Content="−"
+                  FontSize="20"
+                  FontWeight="{DynamicResource Luna.FontWeight.Medium}"
+                  IsEnabled="{TemplateBinding CanDecrease}" />
+          <Border Grid.Column="1"
+                  Name="PART_ValueContainer"
+                  Background="{DynamicResource Luna.Brush.Background.Component}"
+                  BorderBrush="Transparent"
+                  BorderThickness="0"
+                  CornerRadius="{DynamicResource Luna.Radius.Default}"
+                  MinWidth="44"
+                  MinHeight="{DynamicResource Luna.Size.Control.Medium}">
             <TextBox Name="PART_TextBox"
-                     Grid.Column="1"
+                     Classes="quiet"
                      Text="{Binding Value, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                      Background="Transparent"
                      BorderThickness="0"
-                     Padding="0"
+                     Padding="10,0"
+                     MinWidth="44"
                      MinHeight="{DynamicResource Luna.Size.Control.Medium}"
                      VerticalContentAlignment="Center"
                      HorizontalContentAlignment="Center"
                      TextAlignment="Center"
                      FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.Medium}"
                      Foreground="{DynamicResource Luna.Brush.Text.Primary}"
                      IsReadOnly="{TemplateBinding IsTextBoxReadOnly}" />
-            <Button Name="PART_IncreaseButton"
-                    Grid.Column="2"
-                    Classes="text"
-                    Padding="0"
-                    MinWidth="{DynamicResource Luna.Size.Control.Medium}"
-                    MinHeight="{DynamicResource Luna.Size.Control.Medium}"
-                    Content="+"
-                    FontSize="20"
-                    IsEnabled="{TemplateBinding CanIncrease}" />
-          </Grid>
-        </Border>
+          </Border>
+          <Button Name="PART_IncreaseButton"
+                  Grid.Column="2"
+                  Padding="0"
+                  MinWidth="{DynamicResource Luna.Size.Control.Medium}"
+                  MinHeight="{DynamicResource Luna.Size.Control.Medium}"
+                  Background="{DynamicResource Luna.Brush.Background.Component}"
+                  BorderBrush="Transparent"
+                  BorderThickness="0"
+                  CornerRadius="{DynamicResource Luna.Radius.Default}"
+                  Content="+"
+                  FontSize="20"
+                  FontWeight="{DynamicResource Luna.FontWeight.Medium}"
+                  IsEnabled="{TemplateBinding CanIncrease}" />
+        </Grid>
       </ControlTemplate>
     </Setter>
   </Style>
 
-  <Style Selector="luna|Stepper:filled /template/ Border#PART_Root">
+  <Style Selector="luna|Stepper /template/ Border#PART_ValueContainer">
     <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Component}" />
-    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
   </Style>
 
-  <Style Selector="luna|Stepper:outline /template/ Border#PART_Root">
-    <Setter Property="Background" Value="Transparent" />
+  <Style Selector="luna|Stepper /template/ Button#PART_DecreaseButton:pointerover">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.ComponentActive}" />
+  </Style>
+
+  <Style Selector="luna|Stepper /template/ Button#PART_IncreaseButton:pointerover">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.ComponentActive}" />
+  </Style>
+
+  <Style Selector="luna|Stepper /template/ Button#PART_DecreaseButton:pressed">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Border.Weak}" />
+  </Style>
+
+  <Style Selector="luna|Stepper /template/ Button#PART_IncreaseButton:pressed">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Border.Weak}" />
+  </Style>
+
+  <Style Selector="luna|Stepper:filled /template/ Button#PART_DecreaseButton">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Component}" />
+  </Style>
+
+  <Style Selector="luna|Stepper:filled /template/ Button#PART_IncreaseButton">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Component}" />
+  </Style>
+
+  <Style Selector="luna|Stepper:filled /template/ Border#PART_ValueContainer">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Component}" />
+  </Style>
+
+  <Style Selector="luna|Stepper:outline /template/ Button#PART_DecreaseButton">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
+    <Setter Property="BorderThickness" Value="1" />
+  </Style>
+
+  <Style Selector="luna|Stepper:outline /template/ Button#PART_IncreaseButton">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
+    <Setter Property="BorderThickness" Value="1" />
+  </Style>
+
+  <Style Selector="luna|Stepper:outline /template/ Border#PART_ValueContainer">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
+    <Setter Property="BorderThickness" Value="1" />
+  </Style>
+
+  <Style Selector="luna|Stepper:default /template/ Button#PART_DecreaseButton">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Component}" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+  </Style>
+
+  <Style Selector="luna|Stepper:default /template/ Button#PART_IncreaseButton">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Component}" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+  </Style>
+
+  <Style Selector="luna|Stepper:default /template/ Border#PART_ValueContainer">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Component}" />
+    <Setter Property="BorderBrush" Value="Transparent" />
   </Style>
 
   <Style Selector="luna|Stepper /template/ Button#PART_DecreaseButton">
@@ -70,17 +140,39 @@
     <Setter Property="Opacity" Value="0.6" />
   </Style>
 
+  <Style Selector="luna|Stepper:disabled /template/ Grid#PART_Root">
+    <Setter Property="Opacity" Value="0.6" />
+  </Style>
+
+  <Style Selector="luna|Stepper:min /template/ Button#PART_DecreaseButton">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Placeholder}" />
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Disabled}" />
+  </Style>
+
+  <Style Selector="luna|Stepper:max /template/ Button#PART_IncreaseButton">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Placeholder}" />
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Disabled}" />
+  </Style>
+
   <Style Selector="luna|Stepper:small /template/ Button#PART_DecreaseButton">
     <Setter Property="MinWidth" Value="{DynamicResource Luna.Size.Control.Small}" />
     <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.Control.Small}" />
+    <Setter Property="FontSize" Value="16" />
   </Style>
 
   <Style Selector="luna|Stepper:small /template/ Button#PART_IncreaseButton">
     <Setter Property="MinWidth" Value="{DynamicResource Luna.Size.Control.Small}" />
     <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.Control.Small}" />
+    <Setter Property="FontSize" Value="16" />
+  </Style>
+
+  <Style Selector="luna|Stepper:small /template/ Border#PART_ValueContainer">
+    <Setter Property="MinWidth" Value="40" />
+    <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.Control.Small}" />
   </Style>
 
   <Style Selector="luna|Stepper:small /template/ TextBox#PART_TextBox">
+    <Setter Property="MinWidth" Value="40" />
     <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.Control.Small}" />
     <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Small}" />
   </Style>
@@ -88,14 +180,22 @@
   <Style Selector="luna|Stepper:large /template/ Button#PART_DecreaseButton">
     <Setter Property="MinWidth" Value="{DynamicResource Luna.Size.Control.Large}" />
     <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.Control.Large}" />
+    <Setter Property="FontSize" Value="22" />
   </Style>
 
   <Style Selector="luna|Stepper:large /template/ Button#PART_IncreaseButton">
     <Setter Property="MinWidth" Value="{DynamicResource Luna.Size.Control.Large}" />
     <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.Control.Large}" />
+    <Setter Property="FontSize" Value="22" />
+  </Style>
+
+  <Style Selector="luna|Stepper:large /template/ Border#PART_ValueContainer">
+    <Setter Property="MinWidth" Value="48" />
+    <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.Control.Large}" />
   </Style>
 
   <Style Selector="luna|Stepper:large /template/ TextBox#PART_TextBox">
+    <Setter Property="MinWidth" Value="48" />
     <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.Control.Large}" />
     <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Large}" />
   </Style>

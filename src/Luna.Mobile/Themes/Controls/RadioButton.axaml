@@ -4,9 +4,59 @@
     <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.TouchTarget}" />
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
     <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Medium}" />
+    <Setter Property="HorizontalAlignment" Value="Stretch" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid ColumnDefinitions="20,*"
+              ColumnSpacing="12"
+              MinHeight="{TemplateBinding MinHeight}">
+          <Border Name="PART_RadioOuter"
+                  Width="20"
+                  Height="20"
+                  CornerRadius="999"
+                  BorderThickness="1.5"
+                  BorderBrush="{DynamicResource Luna.Brush.Border.Strong}"
+                  Background="{DynamicResource Luna.Brush.Background.Container}"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Center">
+            <Border Name="PART_RadioInner"
+                    Width="8"
+                    Height="8"
+                    CornerRadius="999"
+                    Background="{DynamicResource Luna.Brush.Neutral.White}"
+                    Opacity="0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center" />
+          </Border>
+
+          <ContentPresenter Grid.Column="1"
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Center"
+                            RecognizesAccessKey="True" />
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="RadioButton:checked /template/ Border#PART_RadioOuter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="RadioButton:checked /template/ Border#PART_RadioInner">
+    <Setter Property="Opacity" Value="1" />
   </Style>
 
   <Style Selector="RadioButton:disabled">
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
+  </Style>
+
+  <Style Selector="RadioButton:disabled /template/ Border#PART_RadioOuter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Disabled}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
   </Style>
 </Styles>

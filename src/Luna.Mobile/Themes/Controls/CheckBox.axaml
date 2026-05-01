@@ -4,9 +4,80 @@
     <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.TouchTarget}" />
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
     <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Medium}" />
+    <Setter Property="HorizontalAlignment" Value="Stretch" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid ColumnDefinitions="20,*"
+              ColumnSpacing="12"
+              MinHeight="{TemplateBinding MinHeight}">
+          <Border Name="PART_CheckMarkBackground"
+                  Width="20"
+                  Height="20"
+                  CornerRadius="6"
+                  BorderThickness="1.5"
+                  BorderBrush="{DynamicResource Luna.Brush.Border.Strong}"
+                  Background="{DynamicResource Luna.Brush.Background.Container}"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Center">
+            <Grid>
+              <Path Name="PART_CheckGlyph"
+                    Width="10"
+                    Height="8"
+                    Data="M1 4L3.5 6.5L9 1"
+                    Stroke="{DynamicResource Luna.Brush.Neutral.White}"
+                    StrokeThickness="2"
+                    StrokeLineCap="Round"
+                    Opacity="0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center" />
+              <Border Name="PART_IndeterminateGlyph"
+                      Width="10"
+                      Height="2"
+                      Background="{DynamicResource Luna.Brush.Neutral.White}"
+                      CornerRadius="999"
+                      Opacity="0"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center" />
+            </Grid>
+          </Border>
+
+          <ContentPresenter Grid.Column="1"
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Center"
+                            RecognizesAccessKey="True" />
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="CheckBox:checked /template/ Border#PART_CheckMarkBackground">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="CheckBox:checked /template/ Path#PART_CheckGlyph">
+    <Setter Property="Opacity" Value="1" />
+  </Style>
+
+  <Style Selector="CheckBox:indeterminate /template/ Border#PART_CheckMarkBackground">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="CheckBox:indeterminate /template/ Border#PART_IndeterminateGlyph">
+    <Setter Property="Opacity" Value="1" />
   </Style>
 
   <Style Selector="CheckBox:disabled">
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
+  </Style>
+
+  <Style Selector="CheckBox:disabled /template/ Border#PART_CheckMarkBackground">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Disabled}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
   </Style>
 </Styles>

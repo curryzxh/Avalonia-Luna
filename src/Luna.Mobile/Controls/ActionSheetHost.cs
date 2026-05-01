@@ -5,9 +5,11 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Layout;
 using Avalonia.Media;
+using Avalonia.Threading;
 using Avalonia.VisualTree;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Luna.Mobile.Controls;
@@ -237,25 +239,30 @@ public sealed class ActionSheetClosedEventArgs : EventArgs
 /// 静态帮助类 <see cref="ActionSheet"/> 会使用最近一次附加到可视树的宿主作为 <see cref="Current"/>。
 /// </remarks>
 [TemplatePart(OverlayPartName, typeof(Border))]
+[TemplatePart(SheetPartName, typeof(Border))]
 [TemplatePart(CancelButtonPartName, typeof(Button))]
 public sealed class ActionSheetHost : TemplatedControl
 {
     private const string OverlayPartName = "PART_Overlay";
+    private const string SheetPartName = "PART_Sheet";
     private const string CancelButtonPartName = "PART_CancelButton";
 
     private static ActionSheetHost? _current;
 
     private Border? _overlay;
+    private Border? _sheet;
     private Button? _cancelButton;
     private ActionSheetCloseReason _closeReason = ActionSheetCloseReason.Unknown;
 
     private bool _isOverlayVisible;
+    private bool _isSheetVisible;
     private bool _isDescriptionVisible;
     private bool _isListVisible = true;
     private bool _isGridVisible;
     private bool _isAlignLeft;
     private TextAlignment _itemTextAlignment = TextAlignment.Center;
     private HorizontalAlignment _itemHorizontalAlignment = HorizontalAlignment.Center;
+    private int _animationVersion;
 
     /// <inheritdoc cref="IsOpen" />
     public static readonly StyledProperty<bool> IsOpenProperty =
@@ -284,6 +291,12 @@ public sealed class ActionSheetHost : TemplatedControl
         AvaloniaProperty.RegisterDirect<ActionSheetHost, bool>(
             nameof(IsOverlayVisible),
             o => o.IsOverlayVisible);
+
+    /// <inheritdoc cref="IsSheetVisible" />
+    public static readonly DirectProperty<ActionSheetHost, bool> IsSheetVisibleProperty =
+        AvaloniaProperty.RegisterDirect<ActionSheetHost, bool>(
+            nameof(IsSheetVisible),
+            o => o.IsSheetVisible);
 
     /// <inheritdoc cref="Items" />
     public static readonly StyledProperty<IReadOnlyList<ActionSheetItem>> ItemsProperty =
@@ -339,7 +352,10 @@ public sealed class ActionSheetHost : TemplatedControl
 
     static ActionSheetHost()
     {
-        IsOpenProperty.Changed.AddClassHandler<ActionSheetHost>((control, _) => control.UpdateOverlayVisible());
+        IsOpenProperty.Changed.AddClassHandler<ActionSheetHost>((control, args) =>
+        {
+            control.HandleIsOpenChanged(args.GetNewValue<bool>());
+        });
         ShowOverlayProperty.Changed.AddClassHandler<ActionSheetHost>((control, _) => control.UpdateOverlayVisible());
 
         DescriptionProperty.Changed.AddClassHandler<ActionSheetHost>((control, args) =>
@@ -358,6 +374,8 @@ public sealed class ActionSheetHost : TemplatedControl
     {
         ItemClickCommand = new ItemClickCommandImpl(this);
         IsDescriptionVisible = !string.IsNullOrWhiteSpace(Description);
+        IsSheetVisible = IsOpen;
+        UpdateOverlayVisible();
         UpdatePseudoClasses();
     }
 
@@ -433,6 +451,15 @@ public sealed class ActionSheetHost : TemplatedControl
     {
         get => _isOverlayVisible;
         private set => SetAndRaise(IsOverlayVisibleProperty, ref _isOverlayVisible, value);
+    }
+
+    /// <summary>
+    /// 获取当前底部面板是否仍需保持渲染，用于承载开关动画。
+    /// </summary>
+    public bool IsSheetVisible
+    {
+        get => _isSheetVisible;
+        private set => SetAndRaise(IsSheetVisibleProperty, ref _isSheetVisible, value);
     }
 
     /// <summary>
@@ -552,7 +579,6 @@ public sealed class ActionSheetHost : TemplatedControl
 
         _closeReason = reason;
         IsOpen = false;
-        Closed?.Invoke(this, new ActionSheetClosedEventArgs(reason));
     }
 
     /// <inheritdoc />
@@ -582,6 +608,7 @@ public sealed class ActionSheetHost : TemplatedControl
             _overlay.PointerPressed -= OnOverlayPointerPressed;
         }
 
+        _sheet = null;
         if (_cancelButton is not null)
         {
             _cancelButton.Click -= OnCancelButtonClick;
@@ -592,6 +619,8 @@ public sealed class ActionSheetHost : TemplatedControl
         {
             _overlay.PointerPressed += OnOverlayPointerPressed;
         }
+
+        _sheet = e.NameScope.Find<Border>(SheetPartName);
 
         _cancelButton = e.NameScope.Find<Button>(CancelButtonPartName);
         if (_cancelButton is not null)
@@ -616,9 +645,108 @@ public sealed class ActionSheetHost : TemplatedControl
         Close(ActionSheetCloseReason.Cancel);
     }
 
+    private async void HandleIsOpenChanged(bool isOpen)
+    {
+        var version = ++_animationVersion;
+
+        if (isOpen)
+        {
+            IsSheetVisible = true;
+            UpdateOverlayVisible();
+            await Dispatcher.UIThread.InvokeAsync(() => { }, DispatcherPriority.Render);
+            await RunOpenAnimationAsync(version);
+            return;
+        }
+
+        if (!IsSheetVisible && !IsOverlayVisible)
+        {
+            return;
+        }
+
+        await RunCloseAnimationAsync(version);
+    }
+
     private void UpdateOverlayVisible()
     {
-        IsOverlayVisible = IsOpen && ShowOverlay;
+        IsOverlayVisible = ShowOverlay && (IsOpen || IsSheetVisible);
+    }
+
+    private async Task RunOpenAnimationAsync(int version)
+    {
+        if (_sheet is null && _overlay is null)
+        {
+            return;
+        }
+
+        var tasks = new List<Task>(2);
+
+        if (_overlay is not null && ShowOverlay)
+        {
+            _overlay.Opacity = 0;
+            tasks.Add(OverlayHostAnimationHelper.CreateOpacityAnimation(true, 0.6d).RunAsync(_overlay));
+        }
+
+        if (_sheet is not null)
+        {
+            var transform = OverlayHostAnimationHelper.EnsureTranslateTransform(_sheet);
+            _sheet.Opacity = 0;
+            transform.Y = GetClosedOffset();
+            tasks.Add(OverlayHostAnimationHelper.CreateSlideAnimation(true, TranslateTransform.YProperty, GetClosedOffset()).RunAsync(_sheet));
+        }
+
+        if (tasks.Count > 0)
+        {
+            await Task.WhenAll(tasks);
+        }
+
+        if (version != _animationVersion || !IsOpen)
+        {
+            return;
+        }
+    }
+
+    private async Task RunCloseAnimationAsync(int version)
+    {
+        if (_sheet is null && _overlay is null)
+        {
+            IsSheetVisible = false;
+            UpdateOverlayVisible();
+            Closed?.Invoke(this, new ActionSheetClosedEventArgs(_closeReason));
+            return;
+        }
+
+        var tasks = new List<Task>(2);
+
+        if (_overlay is not null && ShowOverlay)
+        {
+            tasks.Add(OverlayHostAnimationHelper.CreateOpacityAnimation(false, 0.6d).RunAsync(_overlay));
+        }
+
+        if (_sheet is not null)
+        {
+            OverlayHostAnimationHelper.EnsureTranslateTransform(_sheet);
+            tasks.Add(OverlayHostAnimationHelper.CreateSlideAnimation(false, TranslateTransform.YProperty, GetClosedOffset()).RunAsync(_sheet));
+        }
+
+        if (tasks.Count > 0)
+        {
+            await Task.WhenAll(tasks);
+        }
+
+        if (version != _animationVersion || IsOpen)
+        {
+            return;
+        }
+
+        IsSheetVisible = false;
+        UpdateOverlayVisible();
+        Closed?.Invoke(this, new ActionSheetClosedEventArgs(_closeReason));
+    }
+
+    private double GetClosedOffset()
+    {
+        var height = _sheet?.Bounds.Height ?? double.NaN;
+        return OverlayHostAnimationHelper.ResolveDistance(height, 320);
     }
 
     private void UpdatePseudoClasses()

@@ -8,7 +8,8 @@
           <Border Name="PART_Overlay"
                   Background="{DynamicResource Luna.Brush.Mask}"
                   IsVisible="{TemplateBinding IsOverlayVisible}"
-                  IsHitTestVisible="{TemplateBinding IsOverlayVisible}" />
+                  IsHitTestVisible="{TemplateBinding IsOverlayVisible}"
+                  Opacity="0" />
 
           <Border Name="PART_Sheet"
                   Background="{DynamicResource Luna.Brush.Background.Container}"
@@ -16,8 +17,12 @@
                   Padding="16"
                   HorizontalAlignment="Stretch"
                   VerticalAlignment="Bottom"
-                  IsVisible="{TemplateBinding IsOpen}"
+                  IsVisible="{TemplateBinding IsSheetVisible}"
+                  Opacity="0"
                   TextElement.Foreground="{DynamicResource Luna.Brush.Text.Primary}">
+            <Border.RenderTransform>
+              <TranslateTransform Y="0" />
+            </Border.RenderTransform>
             <StackPanel Spacing="12">
               <TextBlock Text="{TemplateBinding Description}"
                          FontSize="{DynamicResource Luna.FontSize.Body.Medium}"

@@ -2,7 +2,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:luna="https://github.com/curryzxh/Luna">
   <Style Selector="luna|SearchBar">
-    <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.Control.Medium}" />
+    <Setter Property="MinHeight" Value="40" />
     <Setter Property="Template">
       <ControlTemplate>
         <Grid ColumnDefinitions="*,Auto"
@@ -10,15 +10,16 @@
               VerticalAlignment="Center">
           <Border Name="PART_Box"
                   Background="{DynamicResource Luna.Brush.Background.Component}"
-                  CornerRadius="{DynamicResource Luna.Radius.Default}"
-                  BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                  CornerRadius="12"
+                  BorderBrush="Transparent"
                   BorderThickness="1"
                   Padding="12,0"
-                  Height="{DynamicResource Luna.Size.Control.Medium}">
+                  Height="40">
             <Grid ColumnDefinitions="Auto,*,Auto"
                   ColumnSpacing="10"
                   VerticalAlignment="Center">
-              <Path Width="{DynamicResource Luna.Size.Icon.Medium}"
+              <Path Name="PART_SearchIcon"
+                    Width="{DynamicResource Luna.Size.Icon.Medium}"
                     Height="{DynamicResource Luna.Size.Icon.Medium}"
                     Data="M10.5 3.5C14.366 3.5 17.5 6.634 17.5 10.5C17.5 14.366 14.366 17.5 10.5 17.5C6.634 17.5 3.5 14.366 3.5 10.5C3.5 6.634 6.634 3.5 10.5 3.5Z M15.45 15.45L20 20"
                     Stroke="{DynamicResource Luna.Brush.Text.Placeholder}"
@@ -30,9 +31,11 @@
 
               <TextBox Name="PART_TextBox"
                        Grid.Column="1"
+                       Classes="quiet"
                        Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                        PlaceholderText="{TemplateBinding Placeholder}"
                        Background="Transparent"
+                       BorderBrush="Transparent"
                        BorderThickness="0"
                        Padding="0"
                        FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
@@ -43,21 +46,30 @@
 
               <Button Name="PART_ClearButton"
                       Grid.Column="2"
-                      Classes="text"
                       Padding="0"
+                      Background="Transparent"
+                      BorderBrush="Transparent"
+                      BorderThickness="0"
+                      CornerRadius="10"
                       MinWidth="0"
                       MinHeight="0"
-                      Width="{DynamicResource Luna.Size.Icon.Medium}"
-                      Height="{DynamicResource Luna.Size.Icon.Medium}"
+                      Width="20"
+                      Height="20"
                       IsVisible="{TemplateBinding IsClearVisible}">
-                <Path Width="{DynamicResource Luna.Size.Icon.Medium}"
-                      Height="{DynamicResource Luna.Size.Icon.Medium}"
-                      Data="M8 8L16 16 M16 8L8 16"
-                      Stroke="{DynamicResource Luna.Brush.Text.Placeholder}"
-                      StrokeThickness="2"
-                      StrokeLineCap="Round"
-                      
-                      Fill="Transparent" />
+                <Border Background="{DynamicResource Luna.Brush.Text.Placeholder}"
+                        CornerRadius="10"
+                        Width="18"
+                        Height="18">
+                  <Path Width="10"
+                        Height="10"
+                        Data="M2 2L8 8 M8 2L2 8"
+                        Stroke="{DynamicResource Luna.Brush.Text.Anti}"
+                        StrokeThickness="1.6"
+                        StrokeLineCap="Round"
+                        Fill="Transparent"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center" />
+                </Border>
               </Button>
             </Grid>
           </Border>
@@ -66,6 +78,8 @@
                   Grid.Column="1"
                   Classes="text"
                   Padding="0"
+                  FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                  Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
                   Content="{TemplateBinding CancelText}"
                   IsVisible="{TemplateBinding IsCancelVisible}"
                   VerticalAlignment="Center" />
@@ -75,6 +89,32 @@
   </Style>
 
   <Style Selector="luna|SearchBar:round /template/ Border#PART_Box">
-    <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Circle}" />
+    <Setter Property="CornerRadius" Value="999" />
+  </Style>
+
+  <Style Selector="luna|SearchBar:focused /template/ Border#PART_Box">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Component}" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+  </Style>
+
+  <Style Selector="luna|SearchBar:pointerover /template/ Border#PART_Box">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
+  </Style>
+
+  <Style Selector="luna|SearchBar:focused /template/ Path#PART_SearchIcon">
+    <Setter Property="Stroke" Value="{DynamicResource Luna.Brush.Text.Secondary}" />
+  </Style>
+
+  <Style Selector="luna|SearchBar:disabled /template/ Border#PART_Box">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Disabled}" />
+  </Style>
+
+  <Style Selector="luna|SearchBar:disabled /template/ TextBox#PART_TextBox">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
+    <Setter Property="PlaceholderForeground" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
+  </Style>
+
+  <Style Selector="luna|SearchBar:center /template/ Border#PART_Box">
+    <Setter Property="Padding" Value="16,0" />
   </Style>
 </Styles>

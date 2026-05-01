@@ -7,7 +7,14 @@ namespace Luna.Mobile.Controls;
 /// </summary>
 public enum DrawerPlacement
 {
+    /// <summary>
+    /// 从左侧滑出。
+    /// </summary>
     Left,
+
+    /// <summary>
+    /// 从右侧滑出。
+    /// </summary>
     Right,
 }
 
@@ -57,7 +64,14 @@ public sealed record DrawerOptions
 /// </summary>
 public static class Drawer
 {
+    /// <summary>
+    /// 使用指定参数显示抽屉。
+    /// </summary>
+    /// <param name="options">抽屉配置参数。</param>
     public static void Show(DrawerOptions options) => DrawerHost.Current?.Show(options);
 
+    /// <summary>
+    /// 关闭当前抽屉。
+    /// </summary>
     public static void Close() => DrawerHost.Current?.Close();
 }

@@ -1,5 +1,6 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Primitives;
 using Avalonia.Threading;
 using Avalonia.VisualTree;
@@ -14,6 +15,7 @@ namespace Luna.Mobile.Controls;
 /// <remarks>
 /// 通常每个页面放置一个实例；静态入口 <see cref="Message"/> 会使用最近附加到可视树的 <see cref="Current"/>。
 /// </remarks>
+[TemplatePart(ItemsHostPartName, typeof(Panel))]
 public sealed class MessageHost : TemplatedControl
 {
     private const string ItemsHostPartName = "PART_ItemsHost";
@@ -23,14 +25,19 @@ public sealed class MessageHost : TemplatedControl
     private Panel? _itemsHost;
     private readonly List<MessageEntry> _entries = [];
 
+    /// <summary>
+    /// 获取当前附加到可视树的消息宿主实例。
+    /// </summary>
     public static MessageHost? Current => _current;
 
+    /// <inheritdoc />
     protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
     {
         base.OnAttachedToVisualTree(e);
         _current = this;
     }
 
+    /// <inheritdoc />
     protected override void OnDetachedFromVisualTree(VisualTreeAttachmentEventArgs e)
     {
         base.OnDetachedFromVisualTree(e);
@@ -40,6 +47,7 @@ public sealed class MessageHost : TemplatedControl
         }
     }
 
+    /// <inheritdoc />
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {
         base.OnApplyTemplate(e);
@@ -47,6 +55,10 @@ public sealed class MessageHost : TemplatedControl
         RenderEntries();
     }
 
+    /// <summary>
+    /// 显示一条消息提示。
+    /// </summary>
+    /// <param name="options">消息配置参数。</param>
     public void Show(MessageOptions options)
     {
         var entry = new MessageEntry(Guid.NewGuid(), options);
@@ -68,6 +80,9 @@ public sealed class MessageHost : TemplatedControl
         }
     }
 
+    /// <summary>
+    /// 关闭当前宿主中的全部消息提示。
+    /// </summary>
     public void CloseAll()
     {
         foreach (var entry in _entries)

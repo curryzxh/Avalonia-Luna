@@ -1,5 +1,6 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Primitives;
 using Avalonia.Layout;
 using Avalonia.Threading;
@@ -14,6 +15,7 @@ namespace Luna.Mobile.Controls;
 /// <remarks>
 /// 通常每个页面放置一个实例；静态入口 <see cref="Toast"/> 会使用最近附加到可视树的 <see cref="Current"/>。
 /// </remarks>
+[TemplatePart(CloseButtonPartName, typeof(Button))]
 public sealed class ToastHost : TemplatedControl
 {
     private const string CloseButtonPartName = "PART_CloseButton";
@@ -25,32 +27,41 @@ public sealed class ToastHost : TemplatedControl
     private TimeSpan _duration;
     private bool _isOverlayVisible;
 
+    /// <inheritdoc cref="IsOpen" />
     public static readonly StyledProperty<bool> IsOpenProperty =
         AvaloniaProperty.Register<ToastHost, bool>(nameof(IsOpen));
 
+    /// <inheritdoc cref="Message" />
     public static readonly StyledProperty<string?> MessageProperty =
         AvaloniaProperty.Register<ToastHost, string?>(nameof(Message));
 
+    /// <inheritdoc cref="IconGlyph" />
     public static readonly StyledProperty<string?> IconGlyphProperty =
         AvaloniaProperty.Register<ToastHost, string?>(nameof(IconGlyph));
 
+    /// <inheritdoc cref="IsIconVisible" />
     public static readonly StyledProperty<bool> IsIconVisibleProperty =
         AvaloniaProperty.Register<ToastHost, bool>(nameof(IsIconVisible));
 
+    /// <inheritdoc cref="ShowOverlay" />
     public static readonly StyledProperty<bool> ShowOverlayProperty =
         AvaloniaProperty.Register<ToastHost, bool>(nameof(ShowOverlay));
 
+    /// <inheritdoc cref="IsOverlayVisible" />
     public static readonly DirectProperty<ToastHost, bool> IsOverlayVisibleProperty =
         AvaloniaProperty.RegisterDirect<ToastHost, bool>(
             nameof(IsOverlayVisible),
             o => o.IsOverlayVisible);
 
+    /// <inheritdoc cref="ShowClose" />
     public static readonly StyledProperty<bool> ShowCloseProperty =
         AvaloniaProperty.Register<ToastHost, bool>(nameof(ShowClose));
 
+    /// <inheritdoc cref="ToastOrientation" />
     public static readonly StyledProperty<Orientation> ToastOrientationProperty =
         AvaloniaProperty.Register<ToastHost, Orientation>(nameof(ToastOrientation), Orientation.Horizontal);
 
+    /// <inheritdoc cref="ToastVerticalAlignment" />
     public static readonly StyledProperty<VerticalAlignment> ToastVerticalAlignmentProperty =
         AvaloniaProperty.Register<ToastHost, VerticalAlignment>(nameof(ToastVerticalAlignment), VerticalAlignment.Center);
 
@@ -60,12 +71,18 @@ public sealed class ToastHost : TemplatedControl
         ShowOverlayProperty.Changed.AddClassHandler<ToastHost>((control, _) => control.UpdateOverlayVisible());
     }
 
+    /// <summary>
+    /// 初始化 <see cref="ToastHost" /> 的新实例。
+    /// </summary>
     public ToastHost()
     {
         _timer = new DispatcherTimer();
         _timer.Tick += (_, _) => Clear();
     }
 
+    /// <summary>
+    /// 获取当前附加到可视树的 Toast 宿主实例。
+    /// </summary>
     public static ToastHost? Current => _current;
 
     /// <summary>
@@ -201,12 +218,14 @@ public sealed class ToastHost : TemplatedControl
         IsOpen = false;
     }
 
+    /// <inheritdoc />
     protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
     {
         base.OnAttachedToVisualTree(e);
         _current = this;
     }
 
+    /// <inheritdoc />
     protected override void OnDetachedFromVisualTree(VisualTreeAttachmentEventArgs e)
     {
         base.OnDetachedFromVisualTree(e);
@@ -216,6 +235,7 @@ public sealed class ToastHost : TemplatedControl
         }
     }
 
+    /// <inheritdoc />
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {
         base.OnApplyTemplate(e);

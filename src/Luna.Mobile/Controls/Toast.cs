@@ -7,10 +7,29 @@ namespace Luna.Mobile.Controls;
 /// </summary>
 public enum ToastTheme
 {
+    /// <summary>
+    /// 纯文本提示。
+    /// </summary>
     Default,
+
+    /// <summary>
+    /// 成功提示。
+    /// </summary>
     Success,
+
+    /// <summary>
+    /// 警告提示。
+    /// </summary>
     Warning,
+
+    /// <summary>
+    /// 错误提示。
+    /// </summary>
     Error,
+
+    /// <summary>
+    /// 加载提示。
+    /// </summary>
     Loading,
 }
 
@@ -19,7 +38,14 @@ public enum ToastTheme
 /// </summary>
 public enum ToastDirection
 {
+    /// <summary>
+    /// 横向排列图标与文本。
+    /// </summary>
     Row,
+
+    /// <summary>
+    /// 纵向排列图标与文本。
+    /// </summary>
     Column,
 }
 
@@ -28,8 +54,19 @@ public enum ToastDirection
 /// </summary>
 public enum ToastPlacement
 {
+    /// <summary>
+    /// 显示在屏幕上方。
+    /// </summary>
     Top,
+
+    /// <summary>
+    /// 显示在屏幕中间。
+    /// </summary>
     Middle,
+
+    /// <summary>
+    /// 显示在屏幕下方。
+    /// </summary>
     Bottom,
 }
 

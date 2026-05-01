@@ -7,7 +7,14 @@ namespace Luna.Mobile.Controls;
 /// </summary>
 public enum DialogButtonLayout
 {
+    /// <summary>
+    /// 按钮横向排列。
+    /// </summary>
     Horizontal,
+
+    /// <summary>
+    /// 按钮纵向排列。
+    /// </summary>
     Vertical,
 }
 
@@ -16,8 +23,19 @@ public enum DialogButtonLayout
 /// </summary>
 public enum DialogButtonTheme
 {
+    /// <summary>
+    /// 默认中性按钮。
+    /// </summary>
     Default,
+
+    /// <summary>
+    /// 主色强调按钮。
+    /// </summary>
     Primary,
+
+    /// <summary>
+    /// 危险语义按钮。
+    /// </summary>
     Danger,
 }
 
@@ -98,7 +116,14 @@ public sealed record DialogOptions
 /// </summary>
 public static class Dialog
 {
+    /// <summary>
+    /// 使用指定参数显示对话框。
+    /// </summary>
+    /// <param name="options">对话框配置参数。</param>
     public static void Show(DialogOptions options) => DialogHost.Current?.Show(options);
 
+    /// <summary>
+    /// 关闭当前对话框。
+    /// </summary>
     public static void Close() => DialogHost.Current?.Close();
 }

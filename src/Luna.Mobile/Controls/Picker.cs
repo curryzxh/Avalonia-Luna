@@ -8,10 +8,29 @@ namespace Luna.Mobile.Controls;
 /// </summary>
 public enum PickerCloseReason
 {
+    /// <summary>
+    /// 未知原因关闭。
+    /// </summary>
     Unknown,
+
+    /// <summary>
+    /// 点击遮罩关闭。
+    /// </summary>
     Overlay,
+
+    /// <summary>
+    /// 点击取消关闭。
+    /// </summary>
     Cancel,
+
+    /// <summary>
+    /// 点击确认关闭。
+    /// </summary>
     Confirm,
+
+    /// <summary>
+    /// 通过代码主动关闭。
+    /// </summary>
     Programmatic,
 }
 
@@ -88,13 +107,25 @@ public sealed class PickerOptions
 /// </summary>
 public sealed class PickerConfirmedEventArgs : EventArgs
 {
+    /// <summary>
+    /// 使用确认结果初始化事件参数。
+    /// </summary>
+    /// <param name="indices">各列选中索引。</param>
+    /// <param name="values">各列选中值。</param>
     public PickerConfirmedEventArgs(IReadOnlyList<int> indices, IReadOnlyList<string?> values)
     {
         Indices = indices;
         Values = values;
     }
 
+    /// <summary>
+    /// 获取各列最终选中的索引集合。
+    /// </summary>
     public IReadOnlyList<int> Indices { get; }
+
+    /// <summary>
+    /// 获取各列最终选中的值集合。
+    /// </summary>
     public IReadOnlyList<string?> Values { get; }
 }
 
@@ -103,11 +134,18 @@ public sealed class PickerConfirmedEventArgs : EventArgs
 /// </summary>
 public sealed class PickerClosedEventArgs : EventArgs
 {
+    /// <summary>
+    /// 使用关闭原因初始化事件参数。
+    /// </summary>
+    /// <param name="reason">关闭原因。</param>
     public PickerClosedEventArgs(PickerCloseReason reason)
     {
         Reason = reason;
     }
 
+    /// <summary>
+    /// 获取关闭原因。
+    /// </summary>
     public PickerCloseReason Reason { get; }
 }
 
@@ -116,7 +154,14 @@ public sealed class PickerClosedEventArgs : EventArgs
 /// </summary>
 public static class Picker
 {
+    /// <summary>
+    /// 使用指定参数显示选择器。
+    /// </summary>
+    /// <param name="options">选择器配置参数。</param>
     public static void Show(PickerOptions options) => PickerHost.Current?.Show(options);
 
+    /// <summary>
+    /// 以编程方式关闭当前选择器。
+    /// </summary>
     public static void Close() => PickerHost.Current?.Close(PickerCloseReason.Programmatic);
 }

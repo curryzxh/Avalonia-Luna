@@ -1,5 +1,6 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Layout;
@@ -17,9 +18,21 @@ namespace Luna.Mobile.Controls;
 /// </summary>
 public enum NoticeBarTheme
 {
+    /// <summary>
+    /// Info。
+    /// </summary>
     Info,
+    /// <summary>
+    /// Success。
+    /// </summary>
     Success,
+    /// <summary>
+    /// Warning。
+    /// </summary>
     Warning,
+    /// <summary>
+    /// Error。
+    /// </summary>
     Error,
 }
 
@@ -28,7 +41,13 @@ public enum NoticeBarTheme
 /// </summary>
 public enum NoticeBarDirection
 {
+    /// <summary>
+    /// Horizontal。
+    /// </summary>
     Horizontal,
+    /// <summary>
+    /// Vertical。
+    /// </summary>
     Vertical,
 }
 
@@ -44,6 +63,10 @@ public enum NoticeBarDirection
 /// <item><description>PART_SuffixButton：<see cref="Button"/></description></item>
 /// </list>
 /// </remarks>
+[TemplatePart(ContentViewportPartName, typeof(Border))]
+[TemplatePart(ContentTextPartName, typeof(TextBlock))]
+[TemplatePart(CloseButtonPartName, typeof(Button))]
+[TemplatePart(SuffixButtonPartName, typeof(Button))]
 public sealed class NoticeBar : TemplatedControl
 {
     private const string ContentViewportPartName = "PART_ContentViewport";
@@ -66,64 +89,83 @@ public sealed class NoticeBar : TemplatedControl
     private bool _hasOperation;
     private bool _hasSuffix;
 
+    /// <inheritdoc cref="Visible" />
     public static readonly StyledProperty<bool> VisibleProperty =
         AvaloniaProperty.Register<NoticeBar, bool>(nameof(Visible), true);
 
+    /// <inheritdoc cref="Theme" />
     public static readonly StyledProperty<NoticeBarTheme> ThemeProperty =
         AvaloniaProperty.Register<NoticeBar, NoticeBarTheme>(nameof(Theme), NoticeBarTheme.Info);
 
+    /// <inheritdoc cref="Background" />
     public static readonly StyledProperty<IBrush?> BackgroundProperty =
         AvaloniaProperty.Register<NoticeBar, IBrush?>(nameof(Background));
 
+    /// <inheritdoc cref="Foreground" />
     public static readonly StyledProperty<IBrush?> ForegroundProperty =
         AvaloniaProperty.Register<NoticeBar, IBrush?>(nameof(Foreground));
 
+    /// <inheritdoc cref="IconForeground" />
     public static readonly StyledProperty<IBrush?> IconForegroundProperty =
         AvaloniaProperty.Register<NoticeBar, IBrush?>(nameof(IconForeground));
 
+    /// <inheritdoc cref="Content" />
     public static readonly StyledProperty<string?> ContentProperty =
         AvaloniaProperty.Register<NoticeBar, string?>(nameof(Content));
 
+    /// <inheritdoc cref="ContentList" />
     public static readonly StyledProperty<IReadOnlyList<string>?> ContentListProperty =
         AvaloniaProperty.Register<NoticeBar, IReadOnlyList<string>?>(nameof(ContentList));
 
+    /// <inheritdoc cref="ShowIcon" />
     public static readonly StyledProperty<bool> ShowIconProperty =
         AvaloniaProperty.Register<NoticeBar, bool>(nameof(ShowIcon), true);
 
+    /// <inheritdoc cref="ShowClose" />
     public static readonly StyledProperty<bool> ShowCloseProperty =
         AvaloniaProperty.Register<NoticeBar, bool>(nameof(ShowClose));
 
+    /// <inheritdoc cref="OperationText" />
     public static readonly StyledProperty<string?> OperationTextProperty =
         AvaloniaProperty.Register<NoticeBar, string?>(nameof(OperationText));
 
+    /// <inheritdoc cref="HasOperation" />
     public static readonly DirectProperty<NoticeBar, bool> HasOperationProperty =
         AvaloniaProperty.RegisterDirect<NoticeBar, bool>(
             nameof(HasOperation),
             o => o.HasOperation);
 
+    /// <inheritdoc cref="PrefixGlyph" />
     public static readonly StyledProperty<string?> PrefixGlyphProperty =
         AvaloniaProperty.Register<NoticeBar, string?>(nameof(PrefixGlyph), "!");
 
+    /// <inheritdoc cref="SuffixGlyph" />
     public static readonly StyledProperty<string?> SuffixGlyphProperty =
         AvaloniaProperty.Register<NoticeBar, string?>(nameof(SuffixGlyph));
 
+    /// <inheritdoc cref="HasSuffix" />
     public static readonly DirectProperty<NoticeBar, bool> HasSuffixProperty =
         AvaloniaProperty.RegisterDirect<NoticeBar, bool>(
             nameof(HasSuffix),
             o => o.HasSuffix);
 
+    /// <inheritdoc cref="Marquee" />
     public static readonly StyledProperty<bool> MarqueeProperty =
         AvaloniaProperty.Register<NoticeBar, bool>(nameof(Marquee));
 
+    /// <inheritdoc cref="Direction" />
     public static readonly StyledProperty<NoticeBarDirection> DirectionProperty =
         AvaloniaProperty.Register<NoticeBar, NoticeBarDirection>(nameof(Direction), NoticeBarDirection.Horizontal);
 
+    /// <inheritdoc cref="MarqueeSpeed" />
     public static readonly StyledProperty<double> MarqueeSpeedProperty =
         AvaloniaProperty.Register<NoticeBar, double>(nameof(MarqueeSpeed), 36);
 
+    /// <inheritdoc cref="MarqueeGap" />
     public static readonly StyledProperty<double> MarqueeGapProperty =
         AvaloniaProperty.Register<NoticeBar, double>(nameof(MarqueeGap), 32);
 
+    /// <inheritdoc cref="VerticalInterval" />
     public static readonly StyledProperty<TimeSpan> VerticalIntervalProperty =
         AvaloniaProperty.Register<NoticeBar, TimeSpan>(nameof(VerticalInterval), TimeSpan.FromSeconds(2));
 
@@ -205,6 +247,9 @@ public sealed class NoticeBar : TemplatedControl
         });
     }
 
+    /// <summary>
+    /// 初始化 <see cref="NoticeBar" /> 的新实例。
+    /// </summary>
     public NoticeBar()
     {
         IsVisible = Visible;
@@ -215,123 +260,187 @@ public sealed class NoticeBar : TemplatedControl
         HasSuffix = !string.IsNullOrWhiteSpace(SuffixGlyph);
     }
 
+    /// <summary>
+    /// 获取或设置通知栏是否可见。
+    /// </summary>
     public bool Visible
     {
         get => GetValue(VisibleProperty);
         set => SetValue(VisibleProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置通知栏主题。
+    /// </summary>
     public NoticeBarTheme Theme
     {
         get => GetValue(ThemeProperty);
         set => SetValue(ThemeProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置当前显示的通知文本。
+    /// </summary>
     public string? Content
     {
         get => GetValue(ContentProperty);
         set => SetValue(ContentProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置轮播文本列表。
+    /// </summary>
     public IReadOnlyList<string>? ContentList
     {
         get => GetValue(ContentListProperty);
         set => SetValue(ContentListProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置是否显示前缀图标。
+    /// </summary>
     public bool ShowIcon
     {
         get => GetValue(ShowIconProperty);
         set => SetValue(ShowIconProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置是否显示关闭按钮。
+    /// </summary>
     public bool ShowClose
     {
         get => GetValue(ShowCloseProperty);
         set => SetValue(ShowCloseProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置操作文案。
+    /// </summary>
     public string? OperationText
     {
         get => GetValue(OperationTextProperty);
         set => SetValue(OperationTextProperty, value);
     }
 
+    /// <summary>
+    /// 获取当前是否存在操作文案。
+    /// </summary>
     public bool HasOperation
     {
         get => _hasOperation;
         private set => SetAndRaise(HasOperationProperty, ref _hasOperation, value);
     }
 
+    /// <summary>
+    /// 获取或设置前缀图标字符。
+    /// </summary>
     public string? PrefixGlyph
     {
         get => GetValue(PrefixGlyphProperty);
         set => SetValue(PrefixGlyphProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置后缀图标字符。
+    /// </summary>
     public string? SuffixGlyph
     {
         get => GetValue(SuffixGlyphProperty);
         set => SetValue(SuffixGlyphProperty, value);
     }
 
+    /// <summary>
+    /// 获取当前是否存在后缀图标。
+    /// </summary>
     public bool HasSuffix
     {
         get => _hasSuffix;
         private set => SetAndRaise(HasSuffixProperty, ref _hasSuffix, value);
     }
 
+    /// <summary>
+    /// 获取或设置是否启用滚动播放。
+    /// </summary>
     public bool Marquee
     {
         get => GetValue(MarqueeProperty);
         set => SetValue(MarqueeProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置滚动方向。
+    /// </summary>
     public NoticeBarDirection Direction
     {
         get => GetValue(DirectionProperty);
         set => SetValue(DirectionProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置横向跑马灯速度。
+    /// </summary>
     public double MarqueeSpeed
     {
         get => GetValue(MarqueeSpeedProperty);
         set => SetValue(MarqueeSpeedProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置横向跑马灯循环间距。
+    /// </summary>
     public double MarqueeGap
     {
         get => GetValue(MarqueeGapProperty);
         set => SetValue(MarqueeGapProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置竖向轮播切换间隔。
+    /// </summary>
     public TimeSpan VerticalInterval
     {
         get => GetValue(VerticalIntervalProperty);
         set => SetValue(VerticalIntervalProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置背景画刷。
+    /// </summary>
     public IBrush? Background
     {
         get => GetValue(BackgroundProperty);
         set => SetValue(BackgroundProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置前景画刷。
+    /// </summary>
     public IBrush? Foreground
     {
         get => GetValue(ForegroundProperty);
         set => SetValue(ForegroundProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置图标前景画刷。
+    /// </summary>
     public IBrush? IconForeground
     {
         get => GetValue(IconForegroundProperty);
         set => SetValue(IconForegroundProperty, value);
     }
 
+    /// <summary>
+    /// 用户点击关闭按钮时触发。
+    /// </summary>
     public event EventHandler? CloseRequested;
+    /// <summary>
+    /// 用户点击后缀操作区域时触发。
+    /// </summary>
     public event EventHandler? SuffixRequested;
 
+    /// <inheritdoc />
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {
         base.OnApplyTemplate(e);
@@ -370,6 +479,7 @@ public sealed class NoticeBar : TemplatedControl
         UpdateVerticalTimer();
     }
 
+    /// <inheritdoc />
     protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
     {
         base.OnAttachedToVisualTree(e);
@@ -382,6 +492,7 @@ public sealed class NoticeBar : TemplatedControl
         UpdateVerticalTimer();
     }
 
+    /// <inheritdoc />
     protected override void OnDetachedFromVisualTree(VisualTreeAttachmentEventArgs e)
     {
         base.OnDetachedFromVisualTree(e);

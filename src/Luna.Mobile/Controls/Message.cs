@@ -7,9 +7,24 @@ namespace Luna.Mobile.Controls;
 /// </summary>
 public enum MessageTheme
 {
+    /// <summary>
+    /// 信息提示。
+    /// </summary>
     Info,
+
+    /// <summary>
+    /// 成功提示。
+    /// </summary>
     Success,
+
+    /// <summary>
+    /// 警告提示。
+    /// </summary>
     Warning,
+
+    /// <summary>
+    /// 错误提示。
+    /// </summary>
     Error,
 }
 
@@ -59,13 +74,32 @@ public sealed record MessageOptions
 /// </summary>
 public static class Message
 {
+    /// <summary>
+    /// 显示信息类型的消息提示。
+    /// </summary>
+    /// <param name="options">消息配置参数。</param>
     public static void Info(MessageOptions options) => MessageHost.Current?.Show(options with { Theme = MessageTheme.Info });
 
+    /// <summary>
+    /// 显示成功类型的消息提示。
+    /// </summary>
+    /// <param name="options">消息配置参数。</param>
     public static void Success(MessageOptions options) => MessageHost.Current?.Show(options with { Theme = MessageTheme.Success });
 
+    /// <summary>
+    /// 显示警告类型的消息提示。
+    /// </summary>
+    /// <param name="options">消息配置参数。</param>
     public static void Warning(MessageOptions options) => MessageHost.Current?.Show(options with { Theme = MessageTheme.Warning });
 
+    /// <summary>
+    /// 显示错误类型的消息提示。
+    /// </summary>
+    /// <param name="options">消息配置参数。</param>
     public static void Error(MessageOptions options) => MessageHost.Current?.Show(options with { Theme = MessageTheme.Error });
 
+    /// <summary>
+    /// 关闭当前页面上的全部消息提示。
+    /// </summary>
     public static void CloseAll() => MessageHost.Current?.CloseAll();
 }

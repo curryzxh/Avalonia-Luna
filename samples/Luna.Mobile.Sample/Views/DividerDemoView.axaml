@@ -2,6 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:luna="https://github.com/curryzxh/Luna"
              xmlns:vm="using:Luna.Mobile.Sample.ViewModels"
+            
              x:Class="Luna.Mobile.Sample.Views.DividerDemoView"
              x:DataType="vm:DividerDemoViewModel">
   <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">

@@ -5,11 +5,62 @@
              x:Class="Luna.Mobile.Sample.Views.MainView"
              x:Name="Root"
              x:DataType="vm:MainViewModel">
-  <Grid>
-    <PageNavigationHost x:Name="ShellHost">
+  <Grid RowDefinitions="Auto,*"
+        Background="{DynamicResource Luna.Brush.Background.Page}">
+    <Border x:Name="HeaderBar"
+            Grid.Row="0"
+            IsVisible="False"
+            Background="{DynamicResource Luna.Brush.Background.Page}"
+            BorderBrush="{DynamicResource Luna.Brush.Border.Divider}"
+            BorderThickness="0,0,0,1">
+      <Grid Height="56"
+            Margin="12,0"
+            ColumnDefinitions="40,*,40">
+        <Button x:Name="BackButton"
+                Width="40"
+                Height="40"
+                Padding="0"
+                Background="Transparent"
+                BorderThickness="0"
+                CornerRadius="20"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                IsVisible="False"
+                Click="BackButton_OnClick">
+          <TextBlock Text="←"
+                     FontSize="20"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center" />
+        </Button>
+
+        <TextBlock x:Name="HeaderTitleText"
+                   Grid.Column="1"
+                   FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                   FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   TextAlignment="Center"
+                   TextTrimming="CharacterEllipsis" />
+
+        <Border Grid.Column="2"
+                Width="40"
+                Height="40"
+                Background="Transparent"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center" />
+      </Grid>
+    </Border>
+
+    <PageNavigationHost x:Name="ShellHost"
+                        Grid.Row="1">
       <PageNavigationHost.Page>
-        <ContentPage x:Name="CatalogPage"
-                     AutomaticallyApplySafeAreaPadding="True">
+        <NavigationPage x:Name="ShellNavigation"
+                        IsGestureEnabled="True">
+          <ContentPage x:Name="CatalogPage"
+                       AutomaticallyApplySafeAreaPadding="True"
+                       NavigationPage.HasNavigationBar="False">
           <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}"
                         HorizontalScrollBarVisibility="Disabled">
             <StackPanel Margin="16,18,16,24" Spacing="24">
@@ -146,19 +197,9 @@
               </ItemsControl>
             </StackPanel>
           </ScrollViewer>
-        </ContentPage>
+          </ContentPage>
+        </NavigationPage>
       </PageNavigationHost.Page>
     </PageNavigationHost>
-
-    <Button x:Name="BackButton"
-            Content="←"
-            IsVisible="False"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            HorizontalContentAlignment="Center"
-            VerticalContentAlignment="Center"
-            Padding="10"
-            Margin="14"
-            Click="BackButton_OnClick" />
   </Grid>
 </UserControl>

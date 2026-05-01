@@ -14,6 +14,9 @@ public partial class MainView : UserControl
         CatalogPage.DataContext = ViewModel;
         ViewModel.CatalogItemRequested += OnCatalogItemRequested;
         ShellNavigation.CurrentPageChanged += OnCurrentPageChanged;
+        ShellNavigation.Pushed += OnNavigationStackChanged;
+        ShellNavigation.Popped += OnNavigationStackChanged;
+        ShellNavigation.PoppedToRoot += OnNavigationStackChanged;
         UpdateHeader();
     }
 
@@ -41,13 +44,19 @@ public partial class MainView : UserControl
         UpdateHeader();
     }
 
+    private void OnNavigationStackChanged(object? sender, NavigationEventArgs e)
+    {
+        UpdateHeader();
+    }
+
     private void UpdateHeader()
     {
         var currentPage = ShellNavigation.CurrentPage;
         var isCatalogPage = currentPage is null || ReferenceEquals(currentPage, CatalogPage);
+        var canGoBack = ShellNavigation.NavigationStack.Count > 1;
 
         HeaderBar.IsVisible = !isCatalogPage;
-        BackButton.IsVisible = !isCatalogPage && ShellNavigation.CanGoBack;
+        BackButton.IsVisible = !isCatalogPage && canGoBack;
         HeaderTitleText.Text = isCatalogPage ? string.Empty : GetHeaderText(currentPage?.Header);
     }
 

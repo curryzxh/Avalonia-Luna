@@ -1,6 +1,24 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="Luna.Mobile.Sample.Views.LinkDemoView">
+  <UserControl.Styles>
+    <Style Selector="Border.link-demo-block">
+      <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
+      <Setter Property="Margin" Value="16,0" />
+      <Setter Property="Padding" Value="16,0" />
+      <Setter Property="MinHeight" Value="48" />
+    </Style>
+
+    <Style Selector="Path.link-demo-icon">
+      <Setter Property="Width" Value="12" />
+      <Setter Property="Height" Value="12" />
+      <Setter Property="StrokeThickness" Value="1.6" />
+      <Setter Property="StrokeLineCap" Value="Round" />
+      <Setter Property="Stroke" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=HyperlinkButton}}" />
+      <Setter Property="Stretch" Value="Uniform" />
+      <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+  </UserControl.Styles>
   <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
     <StackPanel Spacing="24" Margin="0,0,0,28">
       <StackPanel Margin="16,0" Spacing="8">
@@ -26,10 +44,10 @@
                        Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
           </StackPanel>
 
-          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
-                  Margin="16,0"
-                  Padding="16">
-            <StackPanel Orientation="Horizontal" Spacing="24">
+          <Border Classes="link-demo-block">
+            <StackPanel Orientation="Horizontal"
+                        Spacing="32"
+                        VerticalAlignment="Center">
               <HyperlinkButton Classes="primary small" Content="跳转链接" />
               <HyperlinkButton Classes="small" Content="跳转链接" />
             </StackPanel>
@@ -42,10 +60,10 @@
                      FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
                      Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
 
-          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
-                  Margin="16,0"
-                  Padding="16">
-            <StackPanel Orientation="Horizontal" Spacing="24">
+          <Border Classes="link-demo-block">
+            <StackPanel Orientation="Horizontal"
+                        Spacing="32"
+                        VerticalAlignment="Center">
               <HyperlinkButton Classes="primary small underline" Content="跳转链接" />
               <HyperlinkButton Classes="small underline" Content="跳转链接" />
             </StackPanel>
@@ -58,32 +76,22 @@
                      FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
                      Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
 
-          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
-                  Margin="16,0"
-                  Padding="16">
-            <StackPanel Orientation="Horizontal" Spacing="24">
+          <Border Classes="link-demo-block">
+            <StackPanel Orientation="Horizontal"
+                        Spacing="32"
+                        VerticalAlignment="Center">
               <HyperlinkButton Classes="primary small">
                 <StackPanel Orientation="Horizontal" Spacing="4">
-                  <Path Width="14"
-                        Height="14"
-                        Data="M5 3H19V17H5V3Z M8 7H16 M8 10H16 M8 13H13"
-                        Stroke="{DynamicResource Luna.Brush.Brand}"
-                        StrokeThickness="1.8"
-                        StrokeLineCap="Round"
-                        StrokeJoin="Round" />
+                  <Path Classes="link-demo-icon"
+                        Data="M5 3H19V17H5V3Z M8 7H16 M8 10H16 M8 13H13" />
                   <TextBlock Text="跳转链接" />
                 </StackPanel>
               </HyperlinkButton>
 
               <HyperlinkButton Classes="small">
                 <StackPanel Orientation="Horizontal" Spacing="4">
-                  <Path Width="14"
-                        Height="14"
-                        Data="M5 3H19V17H5V3Z M8 7H16 M8 10H16 M8 13H13"
-                        Stroke="{DynamicResource Luna.Brush.Text.Secondary}"
-                        StrokeThickness="1.8"
-                        StrokeLineCap="Round"
-                        StrokeJoin="Round" />
+                  <Path Classes="link-demo-icon"
+                        Data="M5 3H19V17H5V3Z M8 7H16 M8 10H16 M8 13H13" />
                   <TextBlock Text="跳转链接" />
                 </StackPanel>
               </HyperlinkButton>
@@ -97,33 +105,23 @@
                      FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
                      Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
 
-          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
-                  Margin="16,0"
-                  Padding="16">
-            <StackPanel Orientation="Horizontal" Spacing="24">
+          <Border Classes="link-demo-block">
+            <StackPanel Orientation="Horizontal"
+                        Spacing="32"
+                        VerticalAlignment="Center">
               <HyperlinkButton Classes="primary small underline">
                 <StackPanel Orientation="Horizontal" Spacing="4">
                   <TextBlock Text="跳转链接" />
-                  <Path Width="14"
-                        Height="14"
-                        Data="M6 6H18V18 M7 17L17 7"
-                        Stroke="{DynamicResource Luna.Brush.Brand}"
-                        StrokeThickness="1.8"
-                        StrokeLineCap="Round"
-                        StrokeJoin="Round" />
+                  <Path Classes="link-demo-icon"
+                        Data="M6 6H18V18 M7 17L17 7" />
                 </StackPanel>
               </HyperlinkButton>
 
               <HyperlinkButton Classes="small underline">
                 <StackPanel Orientation="Horizontal" Spacing="4">
                   <TextBlock Text="跳转链接" />
-                  <Path Width="14"
-                        Height="14"
-                        Data="M6 6H18V18 M7 17L17 7"
-                        Stroke="{DynamicResource Luna.Brush.Text.Secondary}"
-                        StrokeThickness="1.8"
-                        StrokeLineCap="Round"
-                        StrokeJoin="Round" />
+                  <Path Classes="link-demo-icon"
+                        Data="M6 6H18V18 M7 17L17 7" />
                 </StackPanel>
               </HyperlinkButton>
             </StackPanel>
@@ -141,18 +139,46 @@
                        Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
           </StackPanel>
 
-          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
-                  Margin="16,0"
-                  Padding="16">
+          <Border Classes="link-demo-block">
             <StackPanel Spacing="16">
-              <StackPanel Orientation="Horizontal" Spacing="24">
-                <HyperlinkButton Classes="primary small" Content="跳转链接" />
-                <HyperlinkButton Classes="small" Content="跳转链接" />
-                <HyperlinkButton Classes="danger small" Content="跳转链接" />
+              <StackPanel Orientation="Horizontal" Spacing="28">
+                <HyperlinkButton Classes="primary small">
+                  <StackPanel Orientation="Horizontal" Spacing="4">
+                    <TextBlock Text="跳转链接" />
+                    <Path Classes="link-demo-icon"
+                          Data="M6 6H18V18 M7 17L17 7" />
+                  </StackPanel>
+                </HyperlinkButton>
+                <HyperlinkButton Classes="small">
+                  <StackPanel Orientation="Horizontal" Spacing="4">
+                    <TextBlock Text="跳转链接" />
+                    <Path Classes="link-demo-icon"
+                          Data="M6 6H18V18 M7 17L17 7" />
+                  </StackPanel>
+                </HyperlinkButton>
+                <HyperlinkButton Classes="danger small">
+                  <StackPanel Orientation="Horizontal" Spacing="4">
+                    <TextBlock Text="跳转链接" />
+                    <Path Classes="link-demo-icon"
+                          Data="M6 6H18V18 M7 17L17 7" />
+                  </StackPanel>
+                </HyperlinkButton>
               </StackPanel>
-              <StackPanel Orientation="Horizontal" Spacing="24">
-                <HyperlinkButton Classes="success small" Content="跳转链接" />
-                <HyperlinkButton Classes="warning small" Content="跳转链接" />
+              <StackPanel Orientation="Horizontal" Spacing="28">
+                <HyperlinkButton Classes="success small">
+                  <StackPanel Orientation="Horizontal" Spacing="4">
+                    <TextBlock Text="跳转链接" />
+                    <Path Classes="link-demo-icon"
+                          Data="M6 6H18V18 M7 17L17 7" />
+                  </StackPanel>
+                </HyperlinkButton>
+                <HyperlinkButton Classes="warning small">
+                  <StackPanel Orientation="Horizontal" Spacing="4">
+                    <TextBlock Text="跳转链接" />
+                    <Path Classes="link-demo-icon"
+                          Data="M6 6H18V18 M7 17L17 7" />
+                  </StackPanel>
+                </HyperlinkButton>
               </StackPanel>
             </StackPanel>
           </Border>
@@ -164,18 +190,46 @@
                      FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
                      Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
 
-          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
-                  Margin="16,0"
-                  Padding="16">
+          <Border Classes="link-demo-block">
             <StackPanel Spacing="16">
-              <StackPanel Orientation="Horizontal" Spacing="24">
-                <HyperlinkButton Classes="primary small" Content="跳转链接" IsEnabled="False" />
-                <HyperlinkButton Classes="small" Content="跳转链接" IsEnabled="False" />
-                <HyperlinkButton Classes="danger small" Content="跳转链接" IsEnabled="False" />
+              <StackPanel Orientation="Horizontal" Spacing="28">
+                <HyperlinkButton Classes="primary small" IsEnabled="False">
+                  <StackPanel Orientation="Horizontal" Spacing="4">
+                    <TextBlock Text="跳转链接" />
+                    <Path Classes="link-demo-icon"
+                          Data="M6 6H18V18 M7 17L17 7" />
+                  </StackPanel>
+                </HyperlinkButton>
+                <HyperlinkButton Classes="small" IsEnabled="False">
+                  <StackPanel Orientation="Horizontal" Spacing="4">
+                    <TextBlock Text="跳转链接" />
+                    <Path Classes="link-demo-icon"
+                          Data="M6 6H18V18 M7 17L17 7" />
+                  </StackPanel>
+                </HyperlinkButton>
+                <HyperlinkButton Classes="danger small" IsEnabled="False">
+                  <StackPanel Orientation="Horizontal" Spacing="4">
+                    <TextBlock Text="跳转链接" />
+                    <Path Classes="link-demo-icon"
+                          Data="M6 6H18V18 M7 17L17 7" />
+                  </StackPanel>
+                </HyperlinkButton>
               </StackPanel>
-              <StackPanel Orientation="Horizontal" Spacing="24">
-                <HyperlinkButton Classes="success small" Content="跳转链接" IsEnabled="False" />
-                <HyperlinkButton Classes="warning small" Content="跳转链接" IsEnabled="False" />
+              <StackPanel Orientation="Horizontal" Spacing="28">
+                <HyperlinkButton Classes="success small" IsEnabled="False">
+                  <StackPanel Orientation="Horizontal" Spacing="4">
+                    <TextBlock Text="跳转链接" />
+                    <Path Classes="link-demo-icon"
+                          Data="M6 6H18V18 M7 17L17 7" />
+                  </StackPanel>
+                </HyperlinkButton>
+                <HyperlinkButton Classes="warning small" IsEnabled="False">
+                  <StackPanel Orientation="Horizontal" Spacing="4">
+                    <TextBlock Text="跳转链接" />
+                    <Path Classes="link-demo-icon"
+                          Data="M6 6H18V18 M7 17L17 7" />
+                  </StackPanel>
+                </HyperlinkButton>
               </StackPanel>
             </StackPanel>
           </Border>
@@ -192,46 +246,31 @@
                        Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
           </StackPanel>
 
-          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
-                  Margin="16,0"
-                  Padding="16">
-            <StackPanel Orientation="Horizontal" Spacing="24" VerticalAlignment="Center">
+          <Border Classes="link-demo-block">
+            <StackPanel Orientation="Horizontal"
+                        Spacing="28"
+                        VerticalAlignment="Center">
               <HyperlinkButton Classes="primary small">
                 <StackPanel Orientation="Horizontal" Spacing="4">
                   <TextBlock Text="S号链接" />
-                  <Path Width="14"
-                        Height="14"
-                        Data="M6 6H18V18 M7 17L17 7"
-                        Stroke="{DynamicResource Luna.Brush.Brand}"
-                        StrokeThickness="1.8"
-                        StrokeLineCap="Round"
-                        StrokeJoin="Round" />
+                  <Path Classes="link-demo-icon"
+                        Data="M6 6H18V18 M7 17L17 7" />
                 </StackPanel>
               </HyperlinkButton>
 
               <HyperlinkButton Classes="primary medium">
                 <StackPanel Orientation="Horizontal" Spacing="4">
                   <TextBlock Text="M号链接" />
-                  <Path Width="14"
-                        Height="14"
-                        Data="M6 6H18V18 M7 17L17 7"
-                        Stroke="{DynamicResource Luna.Brush.Brand}"
-                        StrokeThickness="1.8"
-                        StrokeLineCap="Round"
-                        StrokeJoin="Round" />
+                  <Path Classes="link-demo-icon"
+                        Data="M6 6H18V18 M7 17L17 7" />
                 </StackPanel>
               </HyperlinkButton>
 
               <HyperlinkButton Classes="primary large">
                 <StackPanel Orientation="Horizontal" Spacing="4">
                   <TextBlock Text="L号链接" />
-                  <Path Width="14"
-                        Height="14"
-                        Data="M6 6H18V18 M7 17L17 7"
-                        Stroke="{DynamicResource Luna.Brush.Brand}"
-                        StrokeThickness="1.8"
-                        StrokeLineCap="Round"
-                        StrokeJoin="Round" />
+                  <Path Classes="link-demo-icon"
+                        Data="M6 6H18V18 M7 17L17 7" />
                 </StackPanel>
               </HyperlinkButton>
             </StackPanel>

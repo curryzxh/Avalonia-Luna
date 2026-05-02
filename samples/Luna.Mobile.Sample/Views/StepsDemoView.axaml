@@ -1,9 +1,36 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:luna="https://github.com/curryzxh/Luna"
-             xmlns:vm="using:Luna.Mobile.Sample.ViewModels"
-             x:Class="Luna.Mobile.Sample.Views.StepsDemoView"
-             x:DataType="vm:StepsDemoViewModel">
+             x:Class="Luna.Mobile.Sample.Views.StepsDemoView">
+  <UserControl.Styles>
+    <Style Selector="Border.steps-demo-block">
+      <Setter Property="Margin" Value="16,0" />
+      <Setter Property="Padding" Value="16,16" />
+      <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
+    </Style>
+
+    <Style Selector="TextBlock.steps-demo-summary">
+      <Setter Property="Margin" Value="16,0" />
+      <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Medium}" />
+      <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Secondary}" />
+    </Style>
+
+    <Style Selector="Path.steps-demo-icon">
+      <Setter Property="Width" Value="16" />
+      <Setter Property="Height" Value="16" />
+      <Setter Property="StrokeThickness" Value="1.8" />
+      <Setter Property="StrokeLineCap" Value="Round" />
+      <Setter Property="Stretch" Value="Uniform" />
+    </Style>
+
+    <Style Selector="Border.steps-demo-extra-placeholder">
+      <Setter Property="Margin" Value="0,4,0,0" />
+      <Setter Property="Padding" Value="12" />
+      <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Component}" />
+      <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Large}" />
+    </Style>
+  </UserControl.Styles>
+
   <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
     <StackPanel Spacing="24" Margin="0,0,0,28">
       <StackPanel Margin="16,0" Spacing="8">
@@ -11,7 +38,7 @@
                    FontSize="{DynamicResource Luna.FontSize.Title.Large}"
                    FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
                    Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
-        <TextBlock Text="用于拆解任务流、物流流转或支付流程等连续步骤，支持横向、纵向与点状主题展示。"
+        <TextBlock Text="用于任务步骤展示或任务进度展示。"
                    FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
                    Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
                    TextWrapping="Wrap" />
@@ -19,137 +46,277 @@
 
       <StackPanel Spacing="28">
         <StackPanel Spacing="16">
-          <StackPanel Margin="16,0" Spacing="4">
-            <TextBlock Text="01 基础用法"
-                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
-                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
-                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
-            <TextBlock Text="默认横向步骤条会根据 Current 自动推导已完成、进行中与未开始状态。"
-                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
-                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
-                       TextWrapping="Wrap" />
+          <TextBlock Text="01 组件类型"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+
+          <StackPanel Spacing="12">
+            <TextBlock Classes="steps-demo-summary" Text="水平带序号步骤条" />
+            <Border Classes="steps-demo-block">
+              <luna:Steps Current="1">
+                <luna:StepItem Title="步骤一" Content="辅助信息" />
+                <luna:StepItem Title="步骤二" Content="辅助信息" />
+                <luna:StepItem Title="步骤三" Content="辅助信息" />
+                <luna:StepItem Title="步骤四" Content="辅助信息" />
+              </luna:Steps>
+            </Border>
           </StackPanel>
 
-          <Border Margin="16,0"
-                  Padding="16"
-                  Background="{DynamicResource Luna.Brush.Background.Container}"
-                  CornerRadius="{DynamicResource Luna.Radius.ExtraLarge}">
-            <luna:Steps Current="1">
-              <luna:StepItem Title="下单" Content="选择商品" />
-              <luna:StepItem Title="支付" Content="提交订单并完成支付" />
-              <luna:StepItem Title="发货" Content="商家准备商品" />
-              <luna:StepItem Title="完成" Content="确认收货" />
+          <StackPanel Spacing="12">
+            <TextBlock Classes="steps-demo-summary" Text="水平带图标步骤条" />
+            <Border Classes="steps-demo-block">
+              <luna:Steps Current="1">
+                <luna:StepItem Title="步骤一" Content="辅助信息">
+                  <luna:StepItem.Icon>
+                    <Path Classes="steps-demo-icon"
+                          Data="M3 5H13L12 12H4L3 5Z M6 5V3H10V5"
+                          Stroke="{DynamicResource Luna.Brush.Text.Placeholder}" />
+                  </luna:StepItem.Icon>
+                </luna:StepItem>
+                <luna:StepItem Title="步骤二" Content="辅助信息">
+                  <luna:StepItem.Icon>
+                    <Path Classes="steps-demo-icon"
+                          Data="M3 5H13L12 12H4L3 5Z M6 5V3H10V5"
+                          Stroke="{DynamicResource Luna.Brush.Brand}" />
+                  </luna:StepItem.Icon>
+                </luna:StepItem>
+                <luna:StepItem Title="步骤三" Content="辅助信息">
+                  <luna:StepItem.Icon>
+                    <Path Classes="steps-demo-icon"
+                          Data="M3 5H13L12 12H4L3 5Z M6 5V3H10V5"
+                          Stroke="{DynamicResource Luna.Brush.Text.Placeholder}" />
+                  </luna:StepItem.Icon>
+                </luna:StepItem>
+                <luna:StepItem Title="步骤四" Content="辅助信息">
+                  <luna:StepItem.Icon>
+                    <Path Classes="steps-demo-icon"
+                          Data="M3 5H13L12 12H4L3 5Z M6 5V3H10V5"
+                          Stroke="{DynamicResource Luna.Brush.Text.Placeholder}" />
+                  </luna:StepItem.Icon>
+                </luna:StepItem>
+              </luna:Steps>
+            </Border>
+          </StackPanel>
+
+          <StackPanel Spacing="12">
+            <TextBlock Classes="steps-demo-summary" Text="水平简略步骤条" />
+            <Border Classes="steps-demo-block">
+              <luna:Steps StepTheme="Dot" Current="1">
+                <luna:StepItem Title="步骤一" Content="辅助信息" />
+                <luna:StepItem Title="步骤二" Content="辅助信息" />
+                <luna:StepItem Title="步骤三" Content="辅助信息" />
+                <luna:StepItem Title="步骤四" Content="辅助信息" />
+              </luna:Steps>
+            </Border>
+          </StackPanel>
+
+          <StackPanel Spacing="12">
+            <TextBlock Classes="steps-demo-summary" Text="垂直带序号步骤条" />
+            <Border Classes="steps-demo-block">
+              <luna:Steps Layout="Vertical" Current="1">
+                <luna:StepItem Title="步骤一" Content="可自定义此处内容" />
+                <luna:StepItem Title="步骤二" Content="可自定义此处内容" />
+                <luna:StepItem Title="步骤三" Content="可自定义此处内容" />
+                <luna:StepItem Title="步骤四" Content="可自定义此处内容" />
+              </luna:Steps>
+            </Border>
+          </StackPanel>
+
+          <StackPanel Spacing="12">
+            <TextBlock Classes="steps-demo-summary" Text="垂直带图标步骤条" />
+            <Border Classes="steps-demo-block">
+              <luna:Steps Layout="Vertical" Current="1">
+                <luna:StepItem Title="步骤一" Content="可自定义此处内容">
+                  <luna:StepItem.Icon>
+                    <Path Classes="steps-demo-icon"
+                          Data="M3 5H13L12 12H4L3 5Z M6 5V3H10V5"
+                          Stroke="{DynamicResource Luna.Brush.Text.Placeholder}" />
+                  </luna:StepItem.Icon>
+                </luna:StepItem>
+                <luna:StepItem Title="步骤二" Content="可自定义此处内容">
+                  <luna:StepItem.Icon>
+                    <Path Classes="steps-demo-icon"
+                          Data="M3 5H13L12 12H4L3 5Z M6 5V3H10V5"
+                          Stroke="{DynamicResource Luna.Brush.Brand}" />
+                  </luna:StepItem.Icon>
+                </luna:StepItem>
+                <luna:StepItem Title="步骤三" Content="可自定义此处内容">
+                  <luna:StepItem.Icon>
+                    <Path Classes="steps-demo-icon"
+                          Data="M3 5H13L12 12H4L3 5Z M6 5V3H10V5"
+                          Stroke="{DynamicResource Luna.Brush.Text.Placeholder}" />
+                  </luna:StepItem.Icon>
+                </luna:StepItem>
+                <luna:StepItem Title="步骤四" Content="可自定义此处内容">
+                  <luna:StepItem.Icon>
+                    <Path Classes="steps-demo-icon"
+                          Data="M3 5H13L12 12H4L3 5Z M6 5V3H10V5"
+                          Stroke="{DynamicResource Luna.Brush.Text.Placeholder}" />
+                  </luna:StepItem.Icon>
+                </luna:StepItem>
+              </luna:Steps>
+            </Border>
+          </StackPanel>
+
+          <StackPanel Spacing="12">
+            <TextBlock Classes="steps-demo-summary" Text="垂直简略步骤条" />
+            <Border Classes="steps-demo-block">
+              <luna:Steps Layout="Vertical" StepTheme="Dot" Current="1">
+                <luna:StepItem Title="步骤一" Content="可自定义此处内容" />
+                <luna:StepItem Title="步骤二" Content="可自定义此处内容" />
+                <luna:StepItem Title="步骤三" Content="可自定义此处内容" />
+                <luna:StepItem Title="步骤四" Content="可自定义此处内容" />
+              </luna:Steps>
+            </Border>
+          </StackPanel>
+
+          <StackPanel Spacing="12">
+            <TextBlock Classes="steps-demo-summary" Text="垂直带可自定义此处内容步骤条" />
+            <Border Classes="steps-demo-block">
+              <luna:Steps Layout="Vertical" StepTheme="Dot" Current="1">
+                <luna:StepItem Title="步骤一" Content="可自定义此处内容" />
+                <luna:StepItem Title="步骤二" Content="可自定义此处内容">
+                  <luna:StepItem.Extra>
+                    <Border Classes="steps-demo-extra-placeholder">
+                      <TextBlock Text="图片占位"
+                                 HorizontalAlignment="Center"
+                                 FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                                 Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" />
+                    </Border>
+                  </luna:StepItem.Extra>
+                </luna:StepItem>
+                <luna:StepItem Title="步骤三" Content="可自定义此处内容" />
+                <luna:StepItem Title="步骤四" Content="可自定义此处内容" />
+              </luna:Steps>
+            </Border>
+          </StackPanel>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="02 组件状态"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+
+          <StackPanel Spacing="12">
+            <TextBlock Classes="steps-demo-summary" Text="选项卡状态" />
+            <Border Classes="steps-demo-block">
+              <luna:Steps Current="1" CurrentStatus="Error">
+                <luna:StepItem Title="步骤一" Content="辅助信息" />
+                <luna:StepItem Title="步骤二" Content="辅助信息" />
+                <luna:StepItem Title="步骤三" Content="辅助信息" />
+                <luna:StepItem Title="步骤四" Content="辅助信息" />
+              </luna:Steps>
+            </Border>
+          </StackPanel>
+
+          <Border Classes="steps-demo-block">
+            <luna:Steps Current="1" CurrentStatus="Error">
+              <luna:StepItem Title="步骤一" Content="辅助信息">
+                <luna:StepItem.Icon>
+                  <Path Classes="steps-demo-icon"
+                        Data="M3 5H13L12 12H4L3 5Z M6 5V3H10V5"
+                        Stroke="{DynamicResource Luna.Brush.Text.Placeholder}" />
+                </luna:StepItem.Icon>
+              </luna:StepItem>
+              <luna:StepItem Title="步骤二" Content="辅助信息">
+                <luna:StepItem.Icon>
+                  <Path Classes="steps-demo-icon"
+                        Data="M3 5H13L12 12H4L3 5Z M6 5V3H10V5"
+                        Stroke="{DynamicResource Luna.Brush.Brand}" />
+                </luna:StepItem.Icon>
+              </luna:StepItem>
+              <luna:StepItem Title="步骤三" Content="辅助信息">
+                <luna:StepItem.Icon>
+                  <Path Classes="steps-demo-icon"
+                        Data="M3 5H13L12 12H4L3 5Z M6 5V3H10V5"
+                        Stroke="{DynamicResource Luna.Brush.Text.Placeholder}" />
+                </luna:StepItem.Icon>
+              </luna:StepItem>
+              <luna:StepItem Title="步骤四" Content="辅助信息">
+                <luna:StepItem.Icon>
+                  <Path Classes="steps-demo-icon"
+                        Data="M3 5H13L12 12H4L3 5Z M6 5V3H10V5"
+                        Stroke="{DynamicResource Luna.Brush.Text.Placeholder}" />
+                </luna:StepItem.Icon>
+              </luna:StepItem>
+            </luna:Steps>
+          </Border>
+
+          <Border Classes="steps-demo-block">
+            <luna:Steps StepTheme="Dot" Current="1" CurrentStatus="Error">
+              <luna:StepItem Title="步骤一" Content="辅助信息" />
+              <luna:StepItem Title="步骤二" Content="辅助信息" />
+              <luna:StepItem Title="步骤三" Content="辅助信息" />
+              <luna:StepItem Title="步骤四" Content="辅助信息" />
             </luna:Steps>
           </Border>
         </StackPanel>
 
         <StackPanel Spacing="16">
-          <StackPanel Margin="16,0" Spacing="4">
-            <TextBlock Text="02 组件状态"
-                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
-                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
-                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
-            <TextBlock Text="支持点状主题、错误态以及自定义图标，让流程节点更贴近业务语义。"
-                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
-                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
-                       TextWrapping="Wrap" />
+          <TextBlock Text="03 特殊类型"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+
+          <StackPanel Spacing="12">
+            <TextBlock Classes="steps-demo-summary" Text="垂直自定义步骤条" />
+            <Border Classes="steps-demo-block">
+              <StackPanel Spacing="0">
+                <luna:Steps x:Name="SpecialInteractiveSteps"
+                            Layout="Vertical"
+                            StepTheme="Dot" />
+                <Button Classes="light large"
+                        Margin="0,32,0,0"
+                        HorizontalAlignment="Stretch"
+                        Content="下一步"
+                        Click="OnSpecialNextStepClick" />
+              </StackPanel>
+            </Border>
           </StackPanel>
 
-          <Border Margin="16,0"
-                  Padding="16"
-                  Background="{DynamicResource Luna.Brush.Background.Container}"
-                  CornerRadius="{DynamicResource Luna.Radius.ExtraLarge}">
-            <StackPanel Spacing="20">
-              <StackPanel Spacing="8">
-                <TextBlock Text="点状主题"
-                           FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
-                           Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-                <luna:Steps StepTheme="Dot" Current="2">
-                  <luna:StepItem Title="开始" Content="已创建任务" />
-                  <luna:StepItem Title="审核" Content="人工校验中" />
-                  <luna:StepItem Title="执行" Content="系统处理中" />
-                  <luna:StepItem Title="完成" Content="结果已生成" />
-                </luna:Steps>
-              </StackPanel>
-
-              <StackPanel Spacing="8">
-                <TextBlock Text="错误与图标"
-                           FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
-                           Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-                <luna:Steps Current="1" CurrentStatus="Error">
-                  <luna:StepItem Title="身份校验" Content="用户资料已提交" />
-                  <luna:StepItem Title="风险审核" Content="需要补充材料" />
-                  <luna:StepItem Title="合同签署" Content="待处理">
-                    <luna:StepItem.Icon>
-                      <Path Width="14"
-                            Height="14"
-                            Data="M2 7H12 M7 2V12"
-                            Stroke="{DynamicResource Luna.Brush.Text.Placeholder}"
-                            StrokeThickness="2"
-                            StrokeLineCap="Round"
-                            Stretch="Uniform" />
-                    </luna:StepItem.Icon>
-                  </luna:StepItem>
-                  <luna:StepItem Title="放款成功" Content="待完成" />
-                </luna:Steps>
-              </StackPanel>
-            </StackPanel>
-          </Border>
-        </StackPanel>
-
-        <StackPanel Spacing="16">
-          <StackPanel Margin="16,0" Spacing="4">
-            <TextBlock Text="03 纵向步骤"
-                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
-                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
-                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
-            <TextBlock Text="纵向布局更适合时间线、物流轨迹等信息密度更高的场景。"
-                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
-                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
-                       TextWrapping="Wrap" />
+          <StackPanel Spacing="12">
+            <TextBlock Classes="steps-demo-summary" Text="纯展示步骤条" />
+            <Border Classes="steps-demo-block">
+              <luna:Steps Layout="Vertical"
+                          StepTheme="Dot"
+                          Current="3"
+                          IsReadOnly="True">
+                <luna:StepItem Title="步骤展示" Content="可自定义此处内容">
+                  <luna:StepItem.Icon>
+                    <Path Classes="steps-demo-icon"
+                          Data="M3 5H13L12 12H4L3 5Z M6 5V3H10V5"
+                          Stroke="{DynamicResource Luna.Brush.Text.Placeholder}" />
+                  </luna:StepItem.Icon>
+                </luna:StepItem>
+                <luna:StepItem Title="步骤展示" Content="可自定义此处内容">
+                  <luna:StepItem.Icon>
+                    <Path Classes="steps-demo-icon"
+                          Data="M3 5H13L12 12H4L3 5Z M6 5V3H10V5"
+                          Stroke="{DynamicResource Luna.Brush.Text.Placeholder}" />
+                  </luna:StepItem.Icon>
+                </luna:StepItem>
+                <luna:StepItem Title="步骤展示" Content="可自定义此处内容">
+                  <luna:StepItem.Icon>
+                    <Path Classes="steps-demo-icon"
+                          Data="M3 5H13L12 12H4L3 5Z M6 5V3H10V5"
+                          Stroke="{DynamicResource Luna.Brush.Text.Placeholder}" />
+                  </luna:StepItem.Icon>
+                </luna:StepItem>
+                <luna:StepItem Title="步骤展示" Content="可自定义此处内容">
+                  <luna:StepItem.Icon>
+                    <Path Classes="steps-demo-icon"
+                          Data="M3 5H13L12 12H4L3 5Z M6 5V3H10V5"
+                          Stroke="{DynamicResource Luna.Brush.Text.Placeholder}" />
+                  </luna:StepItem.Icon>
+                </luna:StepItem>
+              </luna:Steps>
+            </Border>
           </StackPanel>
-
-          <Border Margin="16,0"
-                  Padding="16"
-                  Background="{DynamicResource Luna.Brush.Background.Container}"
-                  CornerRadius="{DynamicResource Luna.Radius.ExtraLarge}">
-            <luna:Steps Layout="Vertical" Current="2">
-              <luna:StepItem Title="订单已支付"
-                             TitleRight="09:20"
-                             Content="商家已收到支付通知。">
-                <luna:StepItem.Extra>
-                  <TextBlock Text="杭州西湖区文三路仓"
-                             FontSize="{DynamicResource Luna.FontSize.Body.Small}"
-                             Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" />
-                </luna:StepItem.Extra>
-              </luna:StepItem>
-              <luna:StepItem Title="商品分拣中"
-                             TitleRight="10:05"
-                             Content="仓库正在打包商品。">
-                <luna:StepItem.Extra>
-                  <TextBlock Text="包裹号：SF202605020001"
-                             FontSize="{DynamicResource Luna.FontSize.Body.Small}"
-                             Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" />
-                </luna:StepItem.Extra>
-              </luna:StepItem>
-              <luna:StepItem Title="运输中"
-                             TitleRight="12:40"
-                             Content="预计今晚送达。">
-                <luna:StepItem.Extra>
-                  <Border Padding="8,4"
-                          Background="{DynamicResource Luna.Brush.Brand.Light}"
-                          CornerRadius="{DynamicResource Luna.Radius.Default}">
-                    <TextBlock Text="配送员已取件"
-                               FontSize="{DynamicResource Luna.FontSize.Body.Small}"
-                               Foreground="{DynamicResource Luna.Brush.Brand}" />
-                  </Border>
-                </luna:StepItem.Extra>
-              </luna:StepItem>
-              <luna:StepItem Title="签收完成"
-                             TitleRight="待更新"
-                             Content="请留意签收提醒。" />
-            </luna:Steps>
-          </Border>
         </StackPanel>
       </StackPanel>
     </StackPanel>

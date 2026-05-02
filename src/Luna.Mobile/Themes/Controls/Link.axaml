@@ -5,10 +5,10 @@
     <Setter Property="BorderBrush" Value="Transparent" />
     <Setter Property="BorderThickness" Value="0" />
     <Setter Property="Padding" Value="0" />
-    <Setter Property="MinHeight" Value="24" />
-    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Secondary}" />
+    <Setter Property="MinHeight" Value="20" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
     <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Small}" />
-    <Setter Property="FontWeight" Value="{DynamicResource Luna.FontWeight.SemiBold}" />
+    <Setter Property="FontWeight" Value="{DynamicResource Luna.FontWeight.Medium}" />
     <Setter Property="HorizontalContentAlignment" Value="Left" />
     <Setter Property="VerticalContentAlignment" Value="Center" />
   </Style>
@@ -17,13 +17,18 @@
     <Setter Property="TextBlock.Foreground" Value="{TemplateBinding Foreground}" />
   </Style>
 
+  <Style Selector="HyperlinkButton TextBlock">
+    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=HyperlinkButton}}" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+  </Style>
+
   <Style Selector="HyperlinkButton:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-    <Setter Property="Opacity" Value="0.8" />
+    <Setter Property="Opacity" Value="0.78" />
     <Setter Property="TextBlock.Foreground" Value="{TemplateBinding Foreground}" />
   </Style>
 
   <Style Selector="HyperlinkButton:pressed /template/ ContentPresenter#PART_ContentPresenter">
-    <Setter Property="Opacity" Value="0.65" />
+    <Setter Property="Opacity" Value="0.56" />
     <Setter Property="TextBlock.Foreground" Value="{TemplateBinding Foreground}" />
   </Style>
 
@@ -45,25 +50,33 @@
 
   <Style Selector="HyperlinkButton.large">
     <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Large}" />
-    <Setter Property="MinHeight" Value="28" />
+    <Setter Property="MinHeight" Value="24" />
   </Style>
 
   <Style Selector="HyperlinkButton.medium">
     <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Medium}" />
-    <Setter Property="MinHeight" Value="26" />
+    <Setter Property="MinHeight" Value="22" />
   </Style>
 
   <Style Selector="HyperlinkButton.small">
     <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Small}" />
-    <Setter Property="MinHeight" Value="24" />
+    <Setter Property="MinHeight" Value="20" />
   </Style>
 
   <Style Selector="HyperlinkButton.underline /template/ ContentPresenter#PART_ContentPresenter">
     <Setter Property="TextBlock.TextDecorations" Value="Underline" />
   </Style>
 
+  <Style Selector="HyperlinkButton.underline TextBlock">
+    <Setter Property="TextDecorations" Value="Underline" />
+  </Style>
+
   <Style Selector="HyperlinkButton:disabled /template/ ContentPresenter#PART_ContentPresenter">
     <Setter Property="Opacity" Value="1" />
     <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
+  </Style>
+
+  <Style Selector="HyperlinkButton:disabled TextBlock">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
   </Style>
 </Styles>

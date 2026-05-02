@@ -4,9 +4,31 @@
              xmlns:vm="using:Luna.Mobile.Sample.ViewModels"
              x:Class="Luna.Mobile.Sample.Views.CellDemoView"
              x:DataType="vm:CellDemoViewModel">
+  <UserControl.Styles>
+    <Style Selector="Border.cell-demo-avatar">
+      <Setter Property="Width" Value="40" />
+      <Setter Property="Height" Value="40" />
+      <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Circle}" />
+      <Setter Property="Background" Value="#EFDFAF" />
+    </Style>
+
+    <Style Selector="Border.cell-demo-image">
+      <Setter Property="Width" Value="56" />
+      <Setter Property="Height" Value="56" />
+      <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Small}" />
+      <Setter Property="Background" Value="#E6EEFF" />
+    </Style>
+
+    <Style Selector="Path.cell-demo-blue-icon">
+      <Setter Property="Width" Value="28" />
+      <Setter Property="Height" Value="28" />
+      <Setter Property="Stroke" Value="{DynamicResource Luna.Brush.Brand}" />
+      <Setter Property="StrokeThickness" Value="1.8" />
+      <Setter Property="Stretch" Value="Uniform" />
+    </Style>
+  </UserControl.Styles>
   <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
     <StackPanel Spacing="24" Margin="0,0,0,28">
-      
       <StackPanel Margin="16,0" Spacing="8">
         <TextBlock Text="Cell 单元格"
                    FontSize="{DynamicResource Luna.FontSize.Title.Large}"
@@ -20,21 +42,48 @@
 
       <StackPanel Spacing="28">
         <StackPanel Spacing="16">
-          <TextBlock Text="01 组件类型"
-                     Margin="16,0"
-                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
-                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
-                     Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
-          <luna:CellGroup Title="基础用法">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="01 类型"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="单行单元格"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+
+          <luna:CellGroup>
             <StackPanel>
-              <luna:Cell Title="单元格" RightText="内容" />
-              <luna:Cell Title="带描述单元格" Description="描述文字" RightText="内容" />
-              <luna:Cell Title="带图标单元格" RightText="内容">
-                <luna:Cell.LeftContent>
+              <luna:Cell Title="单行标题" />
+              <luna:Cell Title="单行标题 *" />
+              <luna:Cell Title="单行标题"
+                         ShowArrow="False">
+                <luna:Cell.RightContent>
                   <Border Width="24"
                           Height="24"
                           CornerRadius="{DynamicResource Luna.Radius.Circle}"
-                          Background="{DynamicResource Luna.Brush.Background.Component}" />
+                          Background="{DynamicResource Luna.Brush.Error}">
+                    <TextBlock Text="16"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                               FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                               Foreground="White" />
+                  </Border>
+                </luna:Cell.RightContent>
+              </luna:Cell>
+              <luna:Cell Title="单行标题"
+                         ShowArrow="False">
+                <luna:Cell.RightContent>
+                  <ToggleSwitch IsChecked="True" />
+                </luna:Cell.RightContent>
+              </luna:Cell>
+              <luna:Cell Title="单行标题"
+                         RightText="辅助信息" />
+              <luna:Cell Title="单行标题">
+                <luna:Cell.LeftContent>
+                  <Path Classes="cell-demo-blue-icon"
+                        Data="M5 5H11V11H5Z M13 5H19V11H13Z M5 13H11V19H5Z M13 13H19V19H13Z" />
                 </luna:Cell.LeftContent>
               </luna:Cell>
             </StackPanel>
@@ -42,36 +91,141 @@
         </StackPanel>
 
         <StackPanel Spacing="16">
-          <TextBlock Text="02 状态"
-                     Margin="16,0"
-                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
-                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
-                     Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
-          <luna:CellGroup Title="禁用状态">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="02"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="多行单元格"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+
+          <luna:CellGroup>
             <StackPanel>
-              <luna:Cell Title="禁用单元格" RightText="内容" IsEnabled="False" />
-              <luna:Cell Title="禁用带描述" Description="描述文字" RightText="内容" IsEnabled="False" />
+              <luna:Cell Title="单行标题"
+                         Description="一段很长很长的内容文字" />
+              <luna:Cell Title="单行标题 *"
+                         Description="一段很长很长的内容文字" />
+              <luna:Cell Title="单行标题"
+                         Description="一段很长很长的内容文字"
+                         ShowArrow="False">
+                <luna:Cell.RightContent>
+                  <Border Width="24"
+                          Height="24"
+                          CornerRadius="{DynamicResource Luna.Radius.Circle}"
+                          Background="{DynamicResource Luna.Brush.Error}">
+                    <TextBlock Text="16"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                               FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                               Foreground="White" />
+                  </Border>
+                </luna:Cell.RightContent>
+              </luna:Cell>
+              <luna:Cell Title="单行标题"
+                         Description="一段很长很长的内容文字"
+                         ShowArrow="False">
+                <luna:Cell.RightContent>
+                  <ToggleSwitch IsChecked="True" />
+                </luna:Cell.RightContent>
+              </luna:Cell>
+              <luna:Cell Title="单行标题"
+                         Description="一段很长很长的内容文字"
+                         RightText="辅助信息" />
+              <luna:Cell Title="单行标题"
+                         Description="一段很长很长的内容文字">
+                <luna:Cell.LeftContent>
+                  <Path Classes="cell-demo-blue-icon"
+                        Data="M5 5H11V11H5Z M13 5H19V11H13Z M5 13H11V19H5Z M13 13H19V19H13Z" />
+                </luna:Cell.LeftContent>
+              </luna:Cell>
+              <luna:Cell Title="单行标题"
+                         Description="一段很长很长的内容文字，长文本自动换行，该选项的描述是一段很长的内容"
+                         ShowArrow="False" />
+              <luna:Cell Title="多行高度不定，长文本自动换行，该选项的描述是一段很长的内容"
+                         Description="一段很长很长的内容文字，长文本自动换行，该选项的描述是一段很长的内容"
+                         ShowArrow="False" />
+              <luna:Cell Title="单行标题"
+                         Description="一段很长很长的内容文字">
+                <luna:Cell.LeftContent>
+                  <Border Classes="cell-demo-avatar">
+                    <Grid>
+                      <Ellipse Width="18"
+                               Height="18"
+                               Margin="0,-4,0,0"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Fill="#262626" />
+                      <Ellipse Width="18"
+                               Height="10"
+                               Margin="0,12,0,0"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Top"
+                               Fill="#F4D4B6" />
+                    </Grid>
+                  </Border>
+                </luna:Cell.LeftContent>
+              </luna:Cell>
+              <luna:Cell Title="单行标题"
+                         Description="一段很长很长的内容文字"
+                         ShowArrow="False">
+                <luna:Cell.LeftContent>
+                  <Border Classes="cell-demo-image">
+                    <Grid>
+                      <Ellipse Width="18"
+                               Height="18"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Fill="#6F8DFF" />
+                      <Path Width="28"
+                            Height="28"
+                            Data="M7 9C7 7.89543 7.89543 7 9 7H15C16.1046 7 17 7.89543 17 9V15C17 16.1046 16.1046 17 15 17H9C7.89543 17 7 16.1046 7 15V9Z M5 11L19 11 M12 4L12 20"
+                            Stroke="#B9C7FF"
+                            StrokeThickness="1.4"
+                            Stretch="Uniform"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center" />
+                    </Grid>
+                  </Border>
+                </luna:Cell.LeftContent>
+              </luna:Cell>
             </StackPanel>
           </luna:CellGroup>
         </StackPanel>
 
         <StackPanel Spacing="16">
-          <TextBlock Text="03 组件样式"
-                     Margin="16,0"
-                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
-                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
-                     Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
-          <luna:CellGroup Title="右侧内容">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="03 组件样式"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="卡片单元格"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+
+          <luna:CellGroup>
             <StackPanel>
-              <luna:Cell Title="带开关"
-                             ShowArrow="False">
-                <luna:Cell.RightContent>
-                  <ToggleSwitch IsChecked="True" />
-                </luna:Cell.RightContent>
+              <luna:Cell Title="单行标题">
+                <luna:Cell.LeftContent>
+                  <Path Classes="cell-demo-blue-icon"
+                        Data="M5 5H11V11H5Z M13 5H19V11H13Z M5 13H11V19H5Z M13 13H19V19H13Z" />
+                </luna:Cell.LeftContent>
               </luna:Cell>
-              <luna:Cell Title="隐藏箭头"
-                             RightText="内容"
-                             ShowArrow="False" />
+              <luna:Cell Title="单行标题">
+                <luna:Cell.LeftContent>
+                  <Path Classes="cell-demo-blue-icon"
+                        Data="M12 4C8.13401 4 5 7.13401 5 11V15H7V11C7 8.23858 9.23858 6 12 6C14.7614 6 17 8.23858 17 11V15H19V11C19 7.13401 15.866 4 12 4Z M8 15V18H10V15 M14 15V18H16V15" />
+                </luna:Cell.LeftContent>
+              </luna:Cell>
+              <luna:Cell Title="单行标题">
+                <luna:Cell.LeftContent>
+                  <Path Classes="cell-demo-blue-icon"
+                        Data="M12 4C8.13401 4 5 7.13401 5 11C5 14.866 8.13401 18 12 18C15.866 18 19 14.866 19 11C19 7.13401 15.866 4 12 4Z M12 4V18 M5 11H19 M7.5 6.5C8.7 7.9 9.4 9.5 9.4 11C9.4 12.5 8.7 14.1 7.5 15.5 M16.5 6.5C15.3 7.9 14.6 9.5 14.6 11C14.6 12.5 15.3 14.1 16.5 15.5" />
+                </luna:Cell.LeftContent>
+              </luna:Cell>
             </StackPanel>
           </luna:CellGroup>
         </StackPanel>

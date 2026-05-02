@@ -51,6 +51,7 @@
           <Border Background="{DynamicResource Luna.Brush.Background.Container}"
                   Margin="16,0">
             <Expander x:Name="ActionExpander"
+                      Classes="with-action"
                       IsExpanded="True">
               <Expander.Header>
                 <Grid ColumnDefinitions="*,Auto"
@@ -59,17 +60,44 @@
                   <TextBlock Text="折叠面板标题"
                              FontSize="{DynamicResource Luna.FontSize.Body.Large}"
                              Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
-                  <Grid Grid.Column="1"
-                        HorizontalAlignment="Right">
+                  <StackPanel Grid.Column="1"
+                              Orientation="Horizontal"
+                              Spacing="6"
+                              HorizontalAlignment="Right"
+                              VerticalAlignment="Center"
+                              IsVisible="{Binding !#ActionExpander.IsExpanded}">
                     <TextBlock Text="展开"
+                               VerticalAlignment="Center"
                                FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
-                               Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
-                               IsVisible="{Binding !#ActionExpander.IsExpanded}" />
+                               Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                    <Path Width="16"
+                          Height="16"
+                          Data="M8 11L13 6L14.4 7.4L8 13.8L1.6 7.4L3 6L8 11Z"
+                          Margin="0,5,0,0"
+                          Fill="{DynamicResource Luna.Brush.Text.Secondary}"
+                          Stretch="Uniform"
+                          VerticalAlignment="Center" />
+                  </StackPanel>
+                  <StackPanel Grid.Column="1"
+                              Orientation="Horizontal"
+                              Spacing="6"
+                              HorizontalAlignment="Right"
+                              VerticalAlignment="Center"
+                              IsVisible="{Binding #ActionExpander.IsExpanded}">
                     <TextBlock Text="收起"
+                               VerticalAlignment="Center"
                                FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
-                               Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
-                               IsVisible="{Binding #ActionExpander.IsExpanded}" />
-                  </Grid>
+                               Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                    <Path Width="16"
+                          Height="16"
+                          Margin="0,-5,0,0"
+                          Data="M8 11L13 6L14.4 7.4L8 13.8L1.6 7.4L3 6L8 11Z"
+                          Fill="{DynamicResource Luna.Brush.Text.Secondary}"
+                          Stretch="Uniform"
+                          VerticalAlignment="Center"
+                          RenderTransform="rotate(180deg)"
+                          RenderTransformOrigin="50%,50%" />
+                  </StackPanel>
                 </Grid>
               </Expander.Header>
               <TextBlock Text="此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容"

@@ -11,6 +11,8 @@
               VerticalAlignment="Center">
           <Button Name="PART_DecreaseButton"
                   Padding="0"
+                  Width="28"
+                  Height="28"
                   MinWidth="{DynamicResource Luna.Size.Control.Medium}"
                   MinHeight="{DynamicResource Luna.Size.Control.Medium}"
                   Background="{DynamicResource Luna.Brush.Background.Component}"
@@ -18,7 +20,7 @@
                   BorderThickness="0"
                   CornerRadius="{DynamicResource Luna.Radius.Default}"
                   Content="−"
-                  FontSize="20"
+                  FontSize="16"
                   FontWeight="{DynamicResource Luna.FontWeight.Medium}"
                   IsEnabled="{TemplateBinding CanDecrease}" />
           <Border Grid.Column="1"
@@ -27,20 +29,24 @@
                   BorderBrush="Transparent"
                   BorderThickness="0"
                   CornerRadius="{DynamicResource Luna.Radius.Default}"
-                  MinWidth="44"
-                  MinHeight="{DynamicResource Luna.Size.Control.Medium}">
+                  Width="40"
+                  Height="28"
+                  MinWidth="40"
+                  MinHeight="28">
             <TextBox Name="PART_TextBox"
                      Classes="quiet"
                      Text="{Binding Value, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                      Background="Transparent"
                      BorderThickness="0"
-                     Padding="10,0"
-                     MinWidth="44"
-                     MinHeight="{DynamicResource Luna.Size.Control.Medium}"
+                     Padding="8,0"
+                     Width="40"
+                     Height="28"
+                     MinWidth="40"
+                     MinHeight="28"
                      VerticalContentAlignment="Center"
                      HorizontalContentAlignment="Center"
                      TextAlignment="Center"
-                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Small}"
                      FontWeight="{DynamicResource Luna.FontWeight.Medium}"
                      Foreground="{DynamicResource Luna.Brush.Text.Primary}"
                      IsReadOnly="{TemplateBinding IsTextBoxReadOnly}" />
@@ -48,6 +54,8 @@
           <Button Name="PART_IncreaseButton"
                   Grid.Column="2"
                   Padding="0"
+                  Width="28"
+                  Height="28"
                   MinWidth="{DynamicResource Luna.Size.Control.Medium}"
                   MinHeight="{DynamicResource Luna.Size.Control.Medium}"
                   Background="{DynamicResource Luna.Brush.Background.Component}"
@@ -55,7 +63,7 @@
                   BorderThickness="0"
                   CornerRadius="{DynamicResource Luna.Radius.Default}"
                   Content="+"
-                  FontSize="20"
+                  FontSize="16"
                   FontWeight="{DynamicResource Luna.FontWeight.Medium}"
                   IsEnabled="{TemplateBinding CanIncrease}" />
         </Grid>
@@ -155,48 +163,95 @@
   </Style>
 
   <Style Selector="luna|Stepper:small /template/ Button#PART_DecreaseButton">
-    <Setter Property="MinWidth" Value="{DynamicResource Luna.Size.Control.Small}" />
-    <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.Control.Small}" />
-    <Setter Property="FontSize" Value="16" />
+    <Setter Property="Width" Value="24" />
+    <Setter Property="Height" Value="24" />
+    <Setter Property="MinWidth" Value="24" />
+    <Setter Property="MinHeight" Value="24" />
+    <Setter Property="FontSize" Value="14" />
   </Style>
 
   <Style Selector="luna|Stepper:small /template/ Button#PART_IncreaseButton">
-    <Setter Property="MinWidth" Value="{DynamicResource Luna.Size.Control.Small}" />
-    <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.Control.Small}" />
-    <Setter Property="FontSize" Value="16" />
+    <Setter Property="Width" Value="24" />
+    <Setter Property="Height" Value="24" />
+    <Setter Property="MinWidth" Value="24" />
+    <Setter Property="MinHeight" Value="24" />
+    <Setter Property="FontSize" Value="14" />
   </Style>
 
   <Style Selector="luna|Stepper:small /template/ Border#PART_ValueContainer">
-    <Setter Property="MinWidth" Value="40" />
-    <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.Control.Small}" />
+    <Setter Property="Width" Value="32" />
+    <Setter Property="Height" Value="24" />
+    <Setter Property="MinWidth" Value="32" />
+    <Setter Property="MinHeight" Value="24" />
   </Style>
 
   <Style Selector="luna|Stepper:small /template/ TextBox#PART_TextBox">
+    <Setter Property="Width" Value="32" />
+    <Setter Property="Height" Value="24" />
+    <Setter Property="MinWidth" Value="32" />
+    <Setter Property="MinHeight" Value="24" />
+    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Small}" />
+  </Style>
+
+  <Style Selector="luna|Stepper:medium /template/ Button#PART_DecreaseButton">
+    <Setter Property="Width" Value="28" />
+    <Setter Property="Height" Value="28" />
+    <Setter Property="MinWidth" Value="28" />
+    <Setter Property="MinHeight" Value="28" />
+    <Setter Property="FontSize" Value="16" />
+  </Style>
+
+  <Style Selector="luna|Stepper:medium /template/ Button#PART_IncreaseButton">
+    <Setter Property="Width" Value="28" />
+    <Setter Property="Height" Value="28" />
+    <Setter Property="MinWidth" Value="28" />
+    <Setter Property="MinHeight" Value="28" />
+    <Setter Property="FontSize" Value="16" />
+  </Style>
+
+  <Style Selector="luna|Stepper:medium /template/ Border#PART_ValueContainer">
+    <Setter Property="Width" Value="40" />
+    <Setter Property="Height" Value="28" />
     <Setter Property="MinWidth" Value="40" />
-    <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.Control.Small}" />
+    <Setter Property="MinHeight" Value="28" />
+  </Style>
+
+  <Style Selector="luna|Stepper:medium /template/ TextBox#PART_TextBox">
+    <Setter Property="Width" Value="40" />
+    <Setter Property="Height" Value="28" />
+    <Setter Property="MinWidth" Value="40" />
+    <Setter Property="MinHeight" Value="28" />
     <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Small}" />
   </Style>
 
   <Style Selector="luna|Stepper:large /template/ Button#PART_DecreaseButton">
-    <Setter Property="MinWidth" Value="{DynamicResource Luna.Size.Control.Large}" />
-    <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.Control.Large}" />
-    <Setter Property="FontSize" Value="22" />
+    <Setter Property="Width" Value="36" />
+    <Setter Property="Height" Value="36" />
+    <Setter Property="MinWidth" Value="36" />
+    <Setter Property="MinHeight" Value="36" />
+    <Setter Property="FontSize" Value="18" />
   </Style>
 
   <Style Selector="luna|Stepper:large /template/ Button#PART_IncreaseButton">
-    <Setter Property="MinWidth" Value="{DynamicResource Luna.Size.Control.Large}" />
-    <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.Control.Large}" />
-    <Setter Property="FontSize" Value="22" />
+    <Setter Property="Width" Value="36" />
+    <Setter Property="Height" Value="36" />
+    <Setter Property="MinWidth" Value="36" />
+    <Setter Property="MinHeight" Value="36" />
+    <Setter Property="FontSize" Value="18" />
   </Style>
 
   <Style Selector="luna|Stepper:large /template/ Border#PART_ValueContainer">
-    <Setter Property="MinWidth" Value="48" />
-    <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.Control.Large}" />
+    <Setter Property="Width" Value="44" />
+    <Setter Property="Height" Value="36" />
+    <Setter Property="MinWidth" Value="44" />
+    <Setter Property="MinHeight" Value="36" />
   </Style>
 
   <Style Selector="luna|Stepper:large /template/ TextBox#PART_TextBox">
-    <Setter Property="MinWidth" Value="48" />
-    <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.Control.Large}" />
-    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Large}" />
+    <Setter Property="Width" Value="44" />
+    <Setter Property="Height" Value="36" />
+    <Setter Property="MinWidth" Value="44" />
+    <Setter Property="MinHeight" Value="36" />
+    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Medium}" />
   </Style>
 </Styles>

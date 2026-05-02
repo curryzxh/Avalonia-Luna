@@ -11,6 +11,8 @@
       <Color x:Key="Luna.Color.Brand.7">#003CAB</Color>
       <Color x:Key="Luna.Color.Brand.8">#002A7C</Color>
       <Color x:Key="Luna.Color.Brand.9">#001A4D</Color>
+      <Color x:Key="Luna.Color.Brand.Subtle">#F2F3FF</Color>
+      <Color x:Key="Luna.Color.Brand.Subtle.Active">#E6EDFF</Color>
 
       <Color x:Key="SystemAccentColor">#0052D9</Color>
       <Color x:Key="SystemAccentColorLight1">#4080FF</Color>

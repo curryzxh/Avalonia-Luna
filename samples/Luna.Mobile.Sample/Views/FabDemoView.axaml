@@ -1,0 +1,222 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:luna="https://github.com/curryzxh/Luna"
+             xmlns:vm="using:Luna.Mobile.Sample.ViewModels"
+             x:Class="Luna.Mobile.Sample.Views.FabDemoView"
+             x:DataType="vm:FabDemoViewModel">
+  <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
+    <StackPanel Spacing="24" Margin="0,0,0,28">
+      <StackPanel Margin="16,0" Spacing="8">
+        <TextBlock Text="Fab 悬浮按钮"
+                   FontSize="{DynamicResource Luna.FontSize.Title.Large}"
+                   FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+        <TextBlock Text="当功能使用图标即可清晰表达时，可使用悬浮按钮突出主操作，也可搭配文本增强语义。"
+                   FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                   TextWrapping="Wrap" />
+      </StackPanel>
+
+      <StackPanel Spacing="28">
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="01 组件类型"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="支持仅图标形态和带文本的扩展形态。"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+
+          <Border Margin="16,0"
+                  Height="220"
+                  Padding="16"
+                  Background="{DynamicResource Luna.Brush.Background.Container}"
+                  CornerRadius="{DynamicResource Luna.Radius.ExtraLarge}">
+            <Grid ClipToBounds="True">
+              <StackPanel Spacing="10">
+                <Border Height="40"
+                        Background="{DynamicResource Luna.Brush.Background.Component}"
+                        CornerRadius="{DynamicResource Luna.Radius.Default}" />
+                <Border Height="40"
+                        Background="{DynamicResource Luna.Brush.Background.Component}"
+                        CornerRadius="{DynamicResource Luna.Radius.Default}" />
+                <Border Height="40"
+                        Background="{DynamicResource Luna.Brush.Background.Component}"
+                        CornerRadius="{DynamicResource Luna.Radius.Default}" />
+              </StackPanel>
+
+              <luna:Fab Margin="0,0,16,16"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom">
+                <luna:Fab.Icon>
+                  <Path Width="24"
+                        Height="24"
+                        Data="M11 4H13V11H20V13H13V20H11V13H4V11H11V4Z"
+                        Fill="{DynamicResource Luna.Brush.Text.Anti}"
+                        Stretch="Uniform" />
+                </luna:Fab.Icon>
+              </luna:Fab>
+            </Grid>
+          </Border>
+
+          <Border Margin="16,0"
+                  Height="220"
+                  Padding="16"
+                  Background="{DynamicResource Luna.Brush.Background.Container}"
+                  CornerRadius="{DynamicResource Luna.Radius.ExtraLarge}">
+            <Grid ClipToBounds="True">
+              <StackPanel Spacing="10">
+                <Border Height="40"
+                        Background="{DynamicResource Luna.Brush.Background.Component}"
+                        CornerRadius="{DynamicResource Luna.Radius.Default}" />
+                <Border Height="40"
+                        Background="{DynamicResource Luna.Brush.Background.Component}"
+                        CornerRadius="{DynamicResource Luna.Radius.Default}" />
+                <Border Height="40"
+                        Background="{DynamicResource Luna.Brush.Background.Component}"
+                        CornerRadius="{DynamicResource Luna.Radius.Default}" />
+              </StackPanel>
+
+              <luna:Fab Margin="0,0,16,16"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Text="发表">
+                <luna:Fab.Icon>
+                  <Path Width="22"
+                        Height="22"
+                        Data="M4 4H20V20H4V4Z M8 8H16V10H8V8Z M8 12H16V14H8V12Z"
+                        Fill="{DynamicResource Luna.Brush.Text.Anti}"
+                        Stretch="Uniform" />
+                </luna:Fab.Icon>
+              </luna:Fab>
+            </Grid>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="02 组件状态"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="支持禁止拖拽、单轴拖拽与双轴拖拽。"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+
+          <Border Margin="16,0"
+                  Height="220"
+                  Padding="16"
+                  Background="{DynamicResource Luna.Brush.Background.Container}"
+                  CornerRadius="{DynamicResource Luna.Radius.ExtraLarge}">
+            <Grid ClipToBounds="True">
+              <TextBlock Text="垂直拖拽"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+              <luna:Fab Margin="0,0,16,16"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        DragMode="Vertical">
+                <luna:Fab.Icon>
+                  <Path Width="24"
+                        Height="24"
+                        Data="M12 5L16 10H13V14H11V10H8L12 5Z M12 19L8 14H11V10H13V14H16L12 19Z"
+                        Fill="{DynamicResource Luna.Brush.Text.Anti}"
+                        Stretch="Uniform" />
+                </luna:Fab.Icon>
+              </luna:Fab>
+            </Grid>
+          </Border>
+
+          <Border Margin="16,0"
+                  Height="220"
+                  Padding="16"
+                  Background="{DynamicResource Luna.Brush.Background.Container}"
+                  CornerRadius="{DynamicResource Luna.Radius.ExtraLarge}">
+            <Grid ClipToBounds="True">
+              <TextBlock Text="自由拖拽"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+              <luna:Fab Margin="0,0,16,16"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        DragMode="All"
+                        Text="新建">
+                <luna:Fab.Icon>
+                  <Path Width="24"
+                        Height="24"
+                        Data="M11 4H13V11H20V13H13V20H11V13H4V11H11V4Z"
+                        Fill="{DynamicResource Luna.Brush.Text.Anti}"
+                        Stretch="Uniform" />
+                </luna:Fab.Icon>
+              </luna:Fab>
+            </Grid>
+          </Border>
+
+          <Border Margin="16,0"
+                  Height="120"
+                  Padding="16"
+                  Background="{DynamicResource Luna.Brush.Background.Container}"
+                  CornerRadius="{DynamicResource Luna.Radius.ExtraLarge}">
+            <Grid ClipToBounds="True">
+              <TextBlock Text="禁用态"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+              <luna:Fab Margin="0,0,16,16"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        IsEnabled="False"
+                        Text="禁用">
+                <luna:Fab.Icon>
+                  <Path Width="22"
+                        Height="22"
+                        Data="M5 12H19M12 5V19"
+                        Stroke="{DynamicResource Luna.Brush.Text.Anti}"
+                        StrokeThickness="2"
+                        Stretch="Uniform" />
+                </luna:Fab.Icon>
+              </luna:Fab>
+            </Grid>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="03 组件样式"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="可直接通过背景色、前景色和边框色调整悬浮按钮主题。"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+
+          <Border Margin="16,0"
+                  Height="180"
+                  Padding="16"
+                  Background="#111827"
+                  CornerRadius="{DynamicResource Luna.Radius.ExtraLarge}">
+            <Grid ClipToBounds="True">
+              <TextBlock Text="深色主题示例"
+                         Foreground="#D1D5DB" />
+              <luna:Fab Margin="0,0,16,16"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Text="发布"
+                        Background="#F59E0B"
+                        BorderBrush="#F59E0B"
+                        Foreground="White">
+                <luna:Fab.Icon>
+                  <Path Width="22"
+                        Height="22"
+                        Data="M4 18L20 12L4 6V11L15 12L4 13V18Z"
+                        Fill="White"
+                        Stretch="Uniform" />
+                </luna:Fab.Icon>
+              </luna:Fab>
+            </Grid>
+          </Border>
+        </StackPanel>
+      </StackPanel>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

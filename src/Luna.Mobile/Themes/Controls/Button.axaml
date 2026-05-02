@@ -14,12 +14,16 @@
     <Setter Property="VerticalContentAlignment" Value="Center" />
   </Style>
 
-  <Style Selector="Button:pointerover">
-    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.ComponentActive}" />
+  <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Border.Weak}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
   </Style>
 
-  <Style Selector="Button:pressed">
-    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Border.Weak}" />
+  <Style Selector="Button:pressed /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Border.Default}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
   </Style>
 
   <Style Selector="Button.primary">
@@ -28,15 +32,34 @@
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Anti}" />
   </Style>
 
-  <Style Selector="Button.primary:pointerover">
+  <Style Selector="Button.primary:pointerover /template/ ContentPresenter#PART_ContentPresenter">
     <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand.Active}" />
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand.Active}" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Text.Anti}" />
+  </Style>
+
+  <Style Selector="Button.primary:pressed /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand.Active}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand.Active}" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Text.Anti}" />
   </Style>
 
   <Style Selector="Button.light">
-    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand.Light}" />
-    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand.Light}" />
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand.Subtle}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand.Subtle}" />
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="Button.light:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand.Subtle.Active}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand.Subtle.Active}" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="Button.light:pressed /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand.Subtle.Active}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand.Subtle.Active}" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Brand.Active}" />
   </Style>
 
   <Style Selector="Button.danger">
@@ -45,10 +68,34 @@
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Anti}" />
   </Style>
 
+  <Style Selector="Button.danger:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Error}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Error}" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Text.Anti}" />
+    <Setter Property="Opacity" Value="0.92" />
+  </Style>
+
+  <Style Selector="Button.danger:pressed /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Error}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Error}" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Text.Anti}" />
+    <Setter Property="Opacity" Value="0.84" />
+  </Style>
+
   <Style Selector="Button.outline">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Strong}" />
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
+  </Style>
+
+  <Style Selector="Button.outline:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Component}" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
+  </Style>
+
+  <Style Selector="Button.outline:pressed /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.ComponentActive}" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
   </Style>
 
   <Style Selector="Button.primary.outline">
@@ -57,10 +104,34 @@
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
   </Style>
 
+  <Style Selector="Button.primary.outline:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand.Light}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand}" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="Button.primary.outline:pressed /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Component}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand}" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
   <Style Selector="Button.danger.outline">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Error}" />
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Error}" />
+  </Style>
+
+  <Style Selector="Button.danger.outline:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Component}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Error}" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Error}" />
+  </Style>
+
+  <Style Selector="Button.danger.outline:pressed /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.ComponentActive}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Error}" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Error}" />
   </Style>
 
   <Style Selector="Button.light.outline">
@@ -69,10 +140,34 @@
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
   </Style>
 
+  <Style Selector="Button.light.outline:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand.Light}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand.Light}" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="Button.light.outline:pressed /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.ComponentActive}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand.Light}" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
   <Style Selector="Button.text">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="Transparent" />
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
+  </Style>
+
+  <Style Selector="Button.text:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Component}" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
+  </Style>
+
+  <Style Selector="Button.text:pressed /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.ComponentActive}" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
   </Style>
 
   <Style Selector="Button.primary.text">
@@ -81,10 +176,34 @@
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
   </Style>
 
+  <Style Selector="Button.primary.text:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand.Light}" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="Button.primary.text:pressed /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Component}" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
   <Style Selector="Button.danger.text">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="Transparent" />
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Error}" />
+  </Style>
+
+  <Style Selector="Button.danger.text:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Component}" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Error}" />
+  </Style>
+
+  <Style Selector="Button.danger.text:pressed /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.ComponentActive}" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Error}" />
   </Style>
 
   <Style Selector="Button.light.text">
@@ -93,10 +212,34 @@
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
   </Style>
 
+  <Style Selector="Button.light.text:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand.Light}" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="Button.light.text:pressed /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.ComponentActive}" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
   <Style Selector="Button.ghost">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Text.Anti}" />
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Anti}" />
+  </Style>
+
+  <Style Selector="Button.ghost:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="#F2F3F5" />
+    <Setter Property="TextBlock.Foreground" Value="#F2F3F5" />
+  </Style>
+
+  <Style Selector="Button.ghost:pressed /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="#C9CDD4" />
+    <Setter Property="TextBlock.Foreground" Value="#C9CDD4" />
   </Style>
 
   <Style Selector="Button.primary.ghost">
@@ -105,10 +248,35 @@
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
   </Style>
 
+  <Style Selector="Button.primary.ghost:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand.Active}" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Brand.Active}" />
+  </Style>
+
+  <Style Selector="Button.primary.ghost:pressed /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand.Active}" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Brand.Active}" />
+  </Style>
+
   <Style Selector="Button.danger.ghost">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Error}" />
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Error}" />
+  </Style>
+
+  <Style Selector="Button.danger.ghost:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Error}" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Error}" />
+  </Style>
+
+  <Style Selector="Button.danger.ghost:pressed /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Error}" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Error}" />
+    <Setter Property="Opacity" Value="0.84" />
   </Style>
 
   <Style Selector="Button.large">
@@ -149,9 +317,69 @@
     <Setter Property="CornerRadius" Value="0" />
   </Style>
 
-  <Style Selector="Button:disabled">
+  <Style Selector="Button:disabled /template/ ContentPresenter#PART_ContentPresenter">
     <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Disabled}" />
-    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Weak}" />
-    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Background.Disabled}" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
+    <Setter Property="Opacity" Value="1" />
+  </Style>
+
+  <Style Selector="Button.primary:disabled /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand.Disabled}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand.Disabled}" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Text.Anti}" />
+  </Style>
+
+  <Style Selector="Button.light:disabled /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand.Subtle}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand.Subtle}" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Brand.Disabled}" />
+  </Style>
+
+  <Style Selector="Button.outline:disabled /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Strong}" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Border.Strong}" />
+  </Style>
+
+  <Style Selector="Button.primary.outline:disabled /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand.Disabled}" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Brand.Disabled}" />
+  </Style>
+
+  <Style Selector="Button.danger:disabled /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Error.Disabled}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Error.Disabled}" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
+  </Style>
+
+  <Style Selector="Button.danger.outline:disabled /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Error.Disabled}" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Error.Disabled}" />
+  </Style>
+
+  <Style Selector="Button.text:disabled /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
+  </Style>
+
+  <Style Selector="Button.primary.text:disabled /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Brand.Disabled}" />
+  </Style>
+
+  <Style Selector="Button.danger.text:disabled /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Error.Disabled}" />
+  </Style>
+
+  <Style Selector="Button.ghost:disabled /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
   </Style>
 </Styles>

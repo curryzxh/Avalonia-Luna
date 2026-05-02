@@ -1,0 +1,147 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:luna="https://github.com/curryzxh/Luna">
+  <Style Selector="luna|CascaderHost">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid>
+          <Border Name="PART_Overlay"
+                  Classes="bottom-sheet-overlay"
+                  IsVisible="{TemplateBinding IsOverlayVisible}"
+                  IsHitTestVisible="{TemplateBinding IsOverlayVisible}" />
+
+          <Border Name="PART_Sheet"
+                  Classes="bottom-sheet-panel"
+                  Width="{Binding Bounds.Width, RelativeSource={RelativeSource TemplatedParent}}"
+                  MaxWidth="420"
+                  Height="{TemplateBinding SheetHeight}"
+                  IsVisible="{TemplateBinding IsSheetVisible}"
+                  Opacity="0">
+            <Border.RenderTransform>
+              <TranslateTransform Y="0" />
+            </Border.RenderTransform>
+            <Grid RowDefinitions="Auto,Auto,Auto,*"
+                  RowSpacing="10">
+              <Grid Classes="bottom-sheet-header"
+                    ColumnDefinitions="*,Auto"
+                    Margin="16,0">
+                <TextBlock Classes="bottom-sheet-title"
+                           Text="{TemplateBinding Title}"
+                           HorizontalAlignment="Left"
+                           TextAlignment="Left"
+                           IsVisible="{TemplateBinding HasTitle}" />
+                <Button Name="PART_CloseButton"
+                        Grid.Column="1"
+                        Classes="text bottom-sheet-confirm"
+                        Content="{TemplateBinding CloseText}" />
+              </Grid>
+
+              <Border Grid.Row="1"
+                      Classes="bottom-sheet-divider" />
+
+              <ItemsControl Grid.Row="2"
+                            Name="PART_Tabs"
+                            Margin="12,0"
+                            ItemsSource="{Binding Tabs, RelativeSource={RelativeSource TemplatedParent}}">
+                <ItemsControl.ItemsPanel>
+                  <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" Spacing="8" />
+                  </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                  <DataTemplate x:DataType="luna:CascaderTabItem">
+                    <Button Classes="text cascader-tab-button"
+                            Tag="{Binding .}">
+                      <StackPanel Spacing="2">
+                        <TextBlock Text="{Binding Title}"
+                                   FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                                   FontWeight="{DynamicResource Luna.FontWeight.Medium}" />
+                        <TextBlock Text="{Binding Subtitle}"
+                                   FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                                   IsVisible="{Binding HasSubtitle}" />
+                      </StackPanel>
+                    </Button>
+                  </DataTemplate>
+                </ItemsControl.ItemTemplate>
+              </ItemsControl>
+
+              <ScrollViewer Grid.Row="3"
+                            Margin="0,4,0,0"
+                            HorizontalScrollBarVisibility="Disabled"
+                            VerticalScrollBarVisibility="Auto">
+                <ItemsControl Name="PART_Options"
+                              ItemsSource="{Binding CurrentItems, RelativeSource={RelativeSource TemplatedParent}}">
+                  <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                      <StackPanel Spacing="0" />
+                    </ItemsPanelTemplate>
+                  </ItemsControl.ItemsPanel>
+                  <ItemsControl.ItemTemplate>
+                    <DataTemplate x:DataType="luna:CascaderItem">
+                      <Button Classes="text cascader-option-button"
+                              Tag="{Binding .}"
+                              IsEnabled="{Binding IsEnabled}">
+                        <Grid ColumnDefinitions="*,Auto"
+                              ColumnSpacing="12">
+                          <TextBlock Text="{Binding Label}"
+                                     VerticalAlignment="Center" />
+                          <Path Grid.Column="1"
+                                Width="16"
+                                Height="16"
+                                Data="M6 4L12 8L6 12"
+                                Stroke="{DynamicResource Luna.Brush.Text.Placeholder}"
+                                StrokeThickness="1.8"
+                                Stretch="Uniform"
+                                VerticalAlignment="Center"
+                                IsVisible="{Binding HasChildren}" />
+                        </Grid>
+                      </Button>
+                    </DataTemplate>
+                  </ItemsControl.ItemTemplate>
+                </ItemsControl>
+              </ScrollViewer>
+            </Grid>
+          </Border>
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="Button.cascader-tab-button">
+    <Setter Property="Padding" Value="8,6" />
+    <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Default}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Placeholder}" />
+  </Style>
+
+  <Style Selector="Button.cascader-tab-button.active">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand.Light}" />
+  </Style>
+
+  <Style Selector="Button.cascader-tab-button.placeholder">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Placeholder}" />
+  </Style>
+
+  <Style Selector="Button.cascader-option-button">
+    <Setter Property="Padding" Value="16,14" />
+    <Setter Property="HorizontalAlignment" Value="Stretch" />
+    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+    <Setter Property="CornerRadius" Value="0" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
+  </Style>
+
+  <Style Selector="Button.cascader-option-button:pointerover">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.ComponentActive}" />
+  </Style>
+
+  <Style Selector="Button.cascader-option-button.selected">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand.Light}" />
+  </Style>
+
+  <Style Selector="Button.cascader-option-button:disabled">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
+    <Setter Property="Background" Value="Transparent" />
+  </Style>
+</Styles>

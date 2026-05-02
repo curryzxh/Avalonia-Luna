@@ -1,0 +1,86 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:luna="https://github.com/curryzxh/Luna"
+             xmlns:vm="using:Luna.Mobile.Sample.ViewModels"
+             x:Class="Luna.Mobile.Sample.Views.CascaderDemoView"
+             x:DataType="vm:CascaderDemoViewModel">
+  <Grid>
+    <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
+      <StackPanel Spacing="24" Margin="0,0,0,28">
+        <StackPanel Margin="16,0" Spacing="8">
+          <TextBlock Text="Cascader 级联选择器"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Large}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+          <TextBlock Text="用于多层级数据的逐级选择，适合地区、分类、业务目录等树形场景。"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                     TextWrapping="Wrap" />
+        </StackPanel>
+
+        <StackPanel Spacing="28">
+          <StackPanel Spacing="16">
+            <StackPanel Margin="16,0" Spacing="4">
+              <TextBlock Text="01 组件类型"
+                         FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                         FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+              <TextBlock Text="基础级联选择器与分类选择。"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            </StackPanel>
+            <StackPanel Margin="16,0" Spacing="16">
+              <Button Classes="primary outline large"
+                      HorizontalAlignment="Stretch"
+                      Content="选择地址"
+                      Command="{Binding AddressCascaderCommand}" />
+              <Button Classes="primary outline large"
+                      HorizontalAlignment="Stretch"
+                      Content="选择分类"
+                      Command="{Binding CategoryCascaderCommand}" />
+            </StackPanel>
+          </StackPanel>
+
+          <StackPanel Spacing="16">
+            <StackPanel Margin="16,0" Spacing="4">
+              <TextBlock Text="02 组件状态"
+                         FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                         FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+              <TextBlock Text="支持父节点可选和禁用节点。"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            </StackPanel>
+            <StackPanel Margin="16,0" Spacing="16">
+              <Button Classes="primary outline large"
+                      HorizontalAlignment="Stretch"
+                      Content="父节点可选"
+                      Command="{Binding StrictCascaderCommand}" />
+            </StackPanel>
+          </StackPanel>
+
+          <StackPanel Spacing="16">
+            <StackPanel Margin="16,0" Spacing="4">
+              <TextBlock Text="03 组件样式"
+                         FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                         FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+              <TextBlock Text="支持自定义面板高度和每级辅助标题。"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            </StackPanel>
+            <StackPanel Margin="16,0" Spacing="16">
+              <Button Classes="primary outline large"
+                      HorizontalAlignment="Stretch"
+                      Content="自定义高度"
+                      Command="{Binding CustomHeightCascaderCommand}" />
+            </StackPanel>
+          </StackPanel>
+        </StackPanel>
+      </StackPanel>
+    </ScrollViewer>
+
+    <luna:CascaderHost Name="CascaderHost" />
+    <luna:ToastHost Name="ToastHost" />
+  </Grid>
+</UserControl>

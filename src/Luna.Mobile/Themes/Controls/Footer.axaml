@@ -1,0 +1,58 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:luna="https://github.com/curryzxh/Luna">
+  <Style Selector="luna|Footer">
+    <Setter Property="HorizontalAlignment" Value="Stretch" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <StackPanel Spacing="{DynamicResource Luna.Spacing.2}"
+                    HorizontalAlignment="Center">
+          <StackPanel Orientation="Horizontal"
+                      Spacing="{DynamicResource Luna.Spacing.2}"
+                      HorizontalAlignment="Center"
+                      IsVisible="{Binding HasLogo, RelativeSource={RelativeSource TemplatedParent}}">
+            <ContentPresenter Content="{TemplateBinding LogoIcon}"
+                              VerticalContentAlignment="Center"
+                              HorizontalContentAlignment="Center" />
+            <TextBlock Text="{TemplateBinding LogoTitle}"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                       VerticalAlignment="Center"
+                       IsVisible="{Binding HasLogoTitle, RelativeSource={RelativeSource TemplatedParent}}" />
+          </StackPanel>
+
+          <ItemsControl ItemsSource="{Binding Links, RelativeSource={RelativeSource TemplatedParent}}"
+                        IsVisible="{Binding HasLinks, RelativeSource={RelativeSource TemplatedParent}}">
+            <ItemsControl.ItemsPanel>
+              <ItemsPanelTemplate>
+                <WrapPanel Orientation="Horizontal"
+                           HorizontalAlignment="Center"
+                           ItemHeight="24" />
+              </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+              <DataTemplate>
+                <StackPanel Orientation="Horizontal"
+                            Spacing="{DynamicResource Luna.Spacing.1}"
+                            Margin="6,0">
+                  <HyperlinkButton Classes="primary small"
+                                   Content="{Binding}" />
+                </StackPanel>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+
+          <TextBlock Text="{TemplateBinding Text}"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                     HorizontalAlignment="Center"
+                     TextAlignment="Center"
+                     TextWrapping="Wrap"
+                     MaxWidth="320"
+                     IsVisible="{Binding HasText, RelativeSource={RelativeSource TemplatedParent}}" />
+        </StackPanel>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>

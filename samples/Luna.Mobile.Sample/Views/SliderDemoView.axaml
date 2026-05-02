@@ -1,0 +1,193 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Luna.Mobile.Sample.Views.SliderDemoView">
+  <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
+    <StackPanel Spacing="24" Margin="0,0,0,28">
+      <StackPanel Margin="16,0" Spacing="8">
+        <TextBlock Text="Slider 滑动选择器"
+                   FontSize="{DynamicResource Luna.FontSize.Title.Large}"
+                   FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+        <TextBlock Text="用于选择横轴上的数值、区间、档位。"
+                   FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                   TextWrapping="Wrap" />
+      </StackPanel>
+
+      <StackPanel Spacing="28">
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="01 类型"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="单游标滑块"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                  Margin="16,0"
+                  Padding="16">
+            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+              <Slider x:Name="BasicSlider"
+                      Minimum="0"
+                      Maximum="100"
+                      Value="23"
+                      VerticalAlignment="Center" />
+              <TextBlock Grid.Column="1"
+                         Text="{Binding #BasicSlider.Value, StringFormat='{}{0:F0}'}"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                         VerticalAlignment="Center" />
+            </Grid>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="双游标滑块"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                  Margin="16,0"
+                  Padding="16">
+            <StackPanel Spacing="8">
+              <TextBlock Text="Avalonia 原生 Slider 暂不支持双游标区间滑块。"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+              <TextBlock Text="先保留官方示例位置，后续如需区间能力再进入自定义控件任务。"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                         TextWrapping="Wrap" />
+            </StackPanel>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="带数值单游标/双游标滑块"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                  Margin="16,0"
+                  Padding="16">
+            <StackPanel Spacing="16">
+              <StackPanel Spacing="8">
+                <TextBlock Text="{Binding #LabelSlider.Value, StringFormat='当前值：{0:F0}%'}"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                <Slider x:Name="LabelSlider"
+                        Minimum="0"
+                        Maximum="100"
+                        Value="10" />
+              </StackPanel>
+              <Border Background="{DynamicResource Luna.Brush.Background.Component}"
+                      CornerRadius="12"
+                      Padding="12">
+                <TextBlock Text="双游标带数值能力占位"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+              </Border>
+            </StackPanel>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="带刻度单游标/双游标滑块"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                  Margin="16,0"
+                  Padding="16">
+            <StackPanel Spacing="16">
+              <StackPanel Spacing="8">
+                <Slider x:Name="StepSlider"
+                        Minimum="0"
+                        Maximum="100"
+                        Value="40"
+                        TickFrequency="20"
+                        IsSnapToTickEnabled="True" />
+                <Grid ColumnDefinitions="Auto,*,Auto,*,Auto,*,Auto,*,Auto,*,Auto">
+                  <TextBlock Text="0" FontSize="{DynamicResource Luna.FontSize.Body.Small}" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                  <TextBlock Grid.Column="2" Text="20" HorizontalAlignment="Center" FontSize="{DynamicResource Luna.FontSize.Body.Small}" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                  <TextBlock Grid.Column="4" Text="40" HorizontalAlignment="Center" FontSize="{DynamicResource Luna.FontSize.Body.Small}" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                  <TextBlock Grid.Column="6" Text="60" HorizontalAlignment="Center" FontSize="{DynamicResource Luna.FontSize.Body.Small}" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                  <TextBlock Grid.Column="8" Text="80" HorizontalAlignment="Center" FontSize="{DynamicResource Luna.FontSize.Body.Small}" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                  <TextBlock Grid.Column="10" Text="100" HorizontalAlignment="Right" FontSize="{DynamicResource Luna.FontSize.Body.Small}" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                </Grid>
+              </StackPanel>
+              <Border Background="{DynamicResource Luna.Brush.Background.Component}"
+                      CornerRadius="12"
+                      Padding="12">
+                <TextBlock Text="双游标刻度滑块占位"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+              </Border>
+            </StackPanel>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="02 组件状态"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="滑块禁用状态"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                  Margin="16,0"
+                  Padding="16">
+            <StackPanel Spacing="16">
+              <Slider Minimum="0" Maximum="100" Value="35" IsEnabled="False" />
+              <Slider Minimum="0"
+                      Maximum="100"
+                      Value="60"
+                      TickFrequency="20"
+                      IsSnapToTickEnabled="True"
+                      IsEnabled="False" />
+            </StackPanel>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="03 特殊样式"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="胶囊型滑块"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                  Margin="16,0"
+                  Padding="16">
+            <StackPanel Spacing="16">
+              <Slider Classes="luna-capsule"
+                      Minimum="0"
+                      Maximum="100"
+                      Value="30" />
+              <StackPanel Spacing="8">
+                <TextBlock Text="{Binding #CapsuleStepSlider.Value, StringFormat='胶囊刻度值：{0:F0}%'}"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                <Slider x:Name="CapsuleStepSlider"
+                        Classes="luna-capsule"
+                        Minimum="0"
+                        Maximum="100"
+                        Value="60"
+                        TickFrequency="20"
+                        IsSnapToTickEnabled="True" />
+              </StackPanel>
+            </StackPanel>
+          </Border>
+        </StackPanel>
+      </StackPanel>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

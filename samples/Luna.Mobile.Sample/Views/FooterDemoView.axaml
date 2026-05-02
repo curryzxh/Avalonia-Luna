@@ -1,0 +1,110 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:luna="https://github.com/curryzxh/Luna"
+             xmlns:vm="using:Luna.Mobile.Sample.ViewModels"
+             x:Class="Luna.Mobile.Sample.Views.FooterDemoView"
+             x:DataType="vm:FooterDemoViewModel">
+  <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
+    <StackPanel Spacing="24" Margin="0,0,0,28">
+      <StackPanel Margin="16,0" Spacing="8">
+        <TextBlock Text="Footer 页脚"
+                   FontSize="{DynamicResource Luna.FontSize.Title.Large}"
+                   FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+        <TextBlock Text="用于在页面底部展示品牌信息、服务导航和版权说明，常见于详情页、活动页和内容页末尾。"
+                   FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                   TextWrapping="Wrap" />
+      </StackPanel>
+
+      <StackPanel Spacing="28">
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="01 基础用法"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="最简单的页脚只展示版权信息，适合资讯页或结果页收尾。"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                       TextWrapping="Wrap" />
+          </StackPanel>
+
+          <Border Margin="16,0"
+                  Padding="24,32"
+                  Background="{DynamicResource Luna.Brush.Background.Container}"
+                  CornerRadius="{DynamicResource Luna.Radius.ExtraLarge}">
+            <luna:Footer Text="Copyright © 2023-2026 Luna. All Rights Reserved." />
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="02 组件状态"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="可叠加服务链接，引导用户查看协议、帮助中心或联系我们等页面。"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                       TextWrapping="Wrap" />
+          </StackPanel>
+
+          <Border Margin="16,0"
+                  Padding="24,32"
+                  Background="{DynamicResource Luna.Brush.Background.Container}"
+                  CornerRadius="{DynamicResource Luna.Radius.ExtraLarge}">
+            <luna:Footer Text="ICP备案号：浙ICP备00000000号-1">
+              <luna:Footer.Links>
+                <luna:FooterLink Name="用户协议" />
+                <luna:FooterLink Name="隐私政策" />
+                <luna:FooterLink Name="帮助中心" />
+                <luna:FooterLink Name="联系我们" />
+              </luna:Footer.Links>
+            </luna:Footer>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="03 组件样式"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="可加入品牌图标和标题，在活动页或品牌专区形成更完整的视觉收束。"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                       TextWrapping="Wrap" />
+          </StackPanel>
+
+          <Border Margin="16,0"
+                  Padding="24,36"
+                  Background="#111827"
+                  CornerRadius="{DynamicResource Luna.Radius.ExtraLarge}">
+            <luna:Footer LogoTitle="Luna Mobile UI"
+                         Text="探索适配 Avalonia 的移动端组件体验。">
+              <luna:Footer.LogoIcon>
+                <Border Width="28"
+                        Height="28"
+                        Background="{DynamicResource Luna.Brush.Brand}"
+                        CornerRadius="{DynamicResource Luna.Radius.Circle}">
+                  <TextBlock Text="L"
+                             Foreground="{DynamicResource Luna.Brush.Text.Anti}"
+                             FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                             FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center" />
+                </Border>
+              </luna:Footer.LogoIcon>
+              <luna:Footer.Links>
+                <luna:FooterLink Name="GitHub" />
+                <luna:FooterLink Name="组件文档" />
+                <luna:FooterLink Name="更新日志" />
+              </luna:Footer.Links>
+            </luna:Footer>
+          </Border>
+        </StackPanel>
+      </StackPanel>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

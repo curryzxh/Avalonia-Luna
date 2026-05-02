@@ -1,0 +1,75 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:luna="https://github.com/curryzxh/Luna">
+  <Style Selector="luna|Segmented">
+    <Setter Property="HorizontalAlignment" Value="Left" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border Background="{DynamicResource Luna.Brush.Background.Component}"
+                BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                BorderThickness="1"
+                CornerRadius="{DynamicResource Luna.Radius.Circle}"
+                Padding="2">
+          <Grid Name="PART_ItemsHost"
+                ColumnSpacing="2"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch" />
+        </Border>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="luna|Segmented:block">
+    <Setter Property="HorizontalAlignment" Value="Stretch" />
+  </Style>
+
+  <Style Selector="Button.segmented-item">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Secondary}" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="Padding" Value="16,8" />
+    <Setter Property="MinHeight" Value="32" />
+    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Medium}" />
+    <Setter Property="FontWeight" Value="{DynamicResource Luna.FontWeight.Medium}" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                CornerRadius="{DynamicResource Luna.Radius.Circle}"
+                Padding="{TemplateBinding Padding}">
+          <ContentPresenter Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Center" />
+        </Border>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="Button.segmented-item:pointerover">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
+  </Style>
+
+  <Style Selector="Button.segmented-item:pressed">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.ComponentActive}" />
+  </Style>
+
+  <Style Selector="Button.segmented-item.selected">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
+    <Setter Property="FontWeight" Value="{DynamicResource Luna.FontWeight.SemiBold}" />
+  </Style>
+
+  <Style Selector="Button.segmented-item:disabled">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
+    <Setter Property="Opacity" Value="1" />
+  </Style>
+
+  <Style Selector="Button.segmented-item.item-disabled">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
+  </Style>
+</Styles>

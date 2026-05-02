@@ -1,0 +1,243 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Luna.Mobile.Sample.Views.LinkDemoView">
+  <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
+    <StackPanel Spacing="24" Margin="0,0,0,28">
+      <StackPanel Margin="16,0" Spacing="8">
+        <TextBlock Text="Link 链接"
+                   FontSize="{DynamicResource Luna.FontSize.Title.Large}"
+                   FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+        <TextBlock Text="文字超链接用于跳转一个新页面，如当前项目跳转，友情链接等。"
+                   FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                   TextWrapping="Wrap" />
+      </StackPanel>
+
+      <StackPanel Spacing="28">
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="01 组件类型"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="基础文字链接"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                  Margin="16,0"
+                  Padding="16">
+            <StackPanel Orientation="Horizontal" Spacing="24">
+              <HyperlinkButton Classes="primary small" Content="跳转链接" />
+              <HyperlinkButton Classes="small" Content="跳转链接" />
+            </StackPanel>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="下划线文字链接"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                  Margin="16,0"
+                  Padding="16">
+            <StackPanel Orientation="Horizontal" Spacing="24">
+              <HyperlinkButton Classes="primary small underline" Content="跳转链接" />
+              <HyperlinkButton Classes="small underline" Content="跳转链接" />
+            </StackPanel>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="前置图标文字链接"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                  Margin="16,0"
+                  Padding="16">
+            <StackPanel Orientation="Horizontal" Spacing="24">
+              <HyperlinkButton Classes="primary small">
+                <StackPanel Orientation="Horizontal" Spacing="4">
+                  <Path Width="14"
+                        Height="14"
+                        Data="M5 3H19V17H5V3Z M8 7H16 M8 10H16 M8 13H13"
+                        Stroke="{DynamicResource Luna.Brush.Brand}"
+                        StrokeThickness="1.8"
+                        StrokeLineCap="Round"
+                        StrokeJoin="Round" />
+                  <TextBlock Text="跳转链接" />
+                </StackPanel>
+              </HyperlinkButton>
+
+              <HyperlinkButton Classes="small">
+                <StackPanel Orientation="Horizontal" Spacing="4">
+                  <Path Width="14"
+                        Height="14"
+                        Data="M5 3H19V17H5V3Z M8 7H16 M8 10H16 M8 13H13"
+                        Stroke="{DynamicResource Luna.Brush.Text.Secondary}"
+                        StrokeThickness="1.8"
+                        StrokeLineCap="Round"
+                        StrokeJoin="Round" />
+                  <TextBlock Text="跳转链接" />
+                </StackPanel>
+              </HyperlinkButton>
+            </StackPanel>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="后置图标文字链接"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                  Margin="16,0"
+                  Padding="16">
+            <StackPanel Orientation="Horizontal" Spacing="24">
+              <HyperlinkButton Classes="primary small underline">
+                <StackPanel Orientation="Horizontal" Spacing="4">
+                  <TextBlock Text="跳转链接" />
+                  <Path Width="14"
+                        Height="14"
+                        Data="M6 6H18V18 M7 17L17 7"
+                        Stroke="{DynamicResource Luna.Brush.Brand}"
+                        StrokeThickness="1.8"
+                        StrokeLineCap="Round"
+                        StrokeJoin="Round" />
+                </StackPanel>
+              </HyperlinkButton>
+
+              <HyperlinkButton Classes="small underline">
+                <StackPanel Orientation="Horizontal" Spacing="4">
+                  <TextBlock Text="跳转链接" />
+                  <Path Width="14"
+                        Height="14"
+                        Data="M6 6H18V18 M7 17L17 7"
+                        Stroke="{DynamicResource Luna.Brush.Text.Secondary}"
+                        StrokeThickness="1.8"
+                        StrokeLineCap="Round"
+                        StrokeJoin="Round" />
+                </StackPanel>
+              </HyperlinkButton>
+            </StackPanel>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="02 组件状态"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="不同主题"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                  Margin="16,0"
+                  Padding="16">
+            <StackPanel Spacing="16">
+              <StackPanel Orientation="Horizontal" Spacing="24">
+                <HyperlinkButton Classes="primary small" Content="跳转链接" />
+                <HyperlinkButton Classes="small" Content="跳转链接" />
+                <HyperlinkButton Classes="danger small" Content="跳转链接" />
+              </StackPanel>
+              <StackPanel Orientation="Horizontal" Spacing="24">
+                <HyperlinkButton Classes="success small" Content="跳转链接" />
+                <HyperlinkButton Classes="warning small" Content="跳转链接" />
+              </StackPanel>
+            </StackPanel>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="禁用状态"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                  Margin="16,0"
+                  Padding="16">
+            <StackPanel Spacing="16">
+              <StackPanel Orientation="Horizontal" Spacing="24">
+                <HyperlinkButton Classes="primary small" Content="跳转链接" IsEnabled="False" />
+                <HyperlinkButton Classes="small" Content="跳转链接" IsEnabled="False" />
+                <HyperlinkButton Classes="danger small" Content="跳转链接" IsEnabled="False" />
+              </StackPanel>
+              <StackPanel Orientation="Horizontal" Spacing="24">
+                <HyperlinkButton Classes="success small" Content="跳转链接" IsEnabled="False" />
+                <HyperlinkButton Classes="warning small" Content="跳转链接" IsEnabled="False" />
+              </StackPanel>
+            </StackPanel>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="03 组件样式"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="链接尺寸"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                  Margin="16,0"
+                  Padding="16">
+            <StackPanel Orientation="Horizontal" Spacing="24" VerticalAlignment="Center">
+              <HyperlinkButton Classes="primary small">
+                <StackPanel Orientation="Horizontal" Spacing="4">
+                  <TextBlock Text="S号链接" />
+                  <Path Width="14"
+                        Height="14"
+                        Data="M6 6H18V18 M7 17L17 7"
+                        Stroke="{DynamicResource Luna.Brush.Brand}"
+                        StrokeThickness="1.8"
+                        StrokeLineCap="Round"
+                        StrokeJoin="Round" />
+                </StackPanel>
+              </HyperlinkButton>
+
+              <HyperlinkButton Classes="primary medium">
+                <StackPanel Orientation="Horizontal" Spacing="4">
+                  <TextBlock Text="M号链接" />
+                  <Path Width="14"
+                        Height="14"
+                        Data="M6 6H18V18 M7 17L17 7"
+                        Stroke="{DynamicResource Luna.Brush.Brand}"
+                        StrokeThickness="1.8"
+                        StrokeLineCap="Round"
+                        StrokeJoin="Round" />
+                </StackPanel>
+              </HyperlinkButton>
+
+              <HyperlinkButton Classes="primary large">
+                <StackPanel Orientation="Horizontal" Spacing="4">
+                  <TextBlock Text="L号链接" />
+                  <Path Width="14"
+                        Height="14"
+                        Data="M6 6H18V18 M7 17L17 7"
+                        Stroke="{DynamicResource Luna.Brush.Brand}"
+                        StrokeThickness="1.8"
+                        StrokeLineCap="Round"
+                        StrokeJoin="Round" />
+                </StackPanel>
+              </HyperlinkButton>
+            </StackPanel>
+          </Border>
+        </StackPanel>
+      </StackPanel>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

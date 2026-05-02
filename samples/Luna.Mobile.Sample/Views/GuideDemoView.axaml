@@ -1,0 +1,258 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:luna="https://github.com/curryzxh/Luna"
+             xmlns:vm="using:Luna.Mobile.Sample.ViewModels"
+             x:Class="Luna.Mobile.Sample.Views.GuideDemoView"
+             x:DataType="vm:GuideDemoViewModel">
+  <Grid>
+    <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
+      <StackPanel Spacing="24" Margin="0,0,0,28">
+        <StackPanel Margin="16,0" Spacing="8">
+          <TextBlock Text="Guide 引导"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Large}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+          <TextBlock Text="逐步骤进行指引或解释说明的组件，常用于用户不熟悉的或需进行特别强调的页面。"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                     TextWrapping="Wrap" />
+        </StackPanel>
+
+        <StackPanel Spacing="28">
+          <StackPanel Spacing="16">
+            <StackPanel Margin="16,0" Spacing="4">
+              <TextBlock Text="01 组件类型"
+                         FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                         FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+              <TextBlock Text="基础引导"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            </StackPanel>
+            <Border Margin="16,0"
+                    Padding="16"
+                    Background="{DynamicResource Luna.Brush.Background.Container}"
+                    CornerRadius="{DynamicResource Luna.Radius.ExtraLarge}">
+              <StackPanel Spacing="16">
+                <Button Classes="primary" Content="用户引导" Click="StartBaseGuide" />
+                <Border Padding="16"
+                        Background="{DynamicResource Luna.Brush.Background.Page}"
+                        CornerRadius="{DynamicResource Luna.Radius.Large}">
+                  <StackPanel Spacing="16">
+                    <StackPanel Name="BaseTitleTarget" Spacing="4">
+                      <TextBlock Text="用户引导标题"
+                                 FontSize="24"
+                                 FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                                 Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+                      <TextBlock Text="按钮用于开启一个闭环的操作任务，如“删除”对象、“购买”商品等。"
+                                 TextWrapping="Wrap"
+                                 FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                                 Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                    </StackPanel>
+                    <Border Name="BaseLabelFieldTarget"
+                            Padding="12"
+                            BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                            BorderThickness="1"
+                            CornerRadius="{DynamicResource Luna.Radius.Default}">
+                      <StackPanel Spacing="8">
+                        <TextBlock Text="标签文字"
+                                   Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+                        <TextBox Watermark="请输入内容" />
+                      </StackPanel>
+                    </Border>
+                    <Grid Name="BaseActionTarget" ColumnDefinitions="*,*" ColumnSpacing="16">
+                      <Button Content="重置" />
+                      <Button Grid.Column="1" Classes="primary" Content="确定" />
+                    </Grid>
+                  </StackPanel>
+                </Border>
+              </StackPanel>
+            </Border>
+          </StackPanel>
+
+          <StackPanel Spacing="16">
+            <TextBlock Text="不带遮罩的引导"
+                       Margin="16,0"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <Border Margin="16,0"
+                    Padding="16"
+                    Background="{DynamicResource Luna.Brush.Background.Container}"
+                    CornerRadius="{DynamicResource Luna.Radius.ExtraLarge}">
+              <StackPanel Spacing="16">
+                <Button Classes="primary" Content="用户引导" Click="StartNoMaskGuide" />
+                <Border Padding="16"
+                        Background="{DynamicResource Luna.Brush.Background.Page}"
+                        CornerRadius="{DynamicResource Luna.Radius.Large}">
+                  <StackPanel Spacing="16">
+                    <StackPanel Name="NoMaskTitleTarget" Spacing="4">
+                      <TextBlock Text="用户引导标题"
+                                 FontSize="24"
+                                 FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                                 Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+                      <TextBlock Text="按钮用于开启一个闭环的操作任务，如“删除”对象、“购买”商品等。"
+                                 TextWrapping="Wrap"
+                                 FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                                 Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                    </StackPanel>
+                    <Border Name="NoMaskLabelFieldTarget"
+                            Padding="12"
+                            BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                            BorderThickness="1"
+                            CornerRadius="{DynamicResource Luna.Radius.Default}">
+                      <StackPanel Spacing="8">
+                        <TextBlock Text="标签文字" />
+                        <TextBox Watermark="请输入内容" />
+                      </StackPanel>
+                    </Border>
+                    <Grid Name="NoMaskActionTarget" ColumnDefinitions="*,*" ColumnSpacing="16">
+                      <Button Content="重置" />
+                      <Button Grid.Column="1" Classes="primary" Content="确定" />
+                    </Grid>
+                  </StackPanel>
+                </Border>
+              </StackPanel>
+            </Border>
+          </StackPanel>
+
+          <StackPanel Spacing="16">
+            <TextBlock Text="弹窗形式的引导"
+                       Margin="16,0"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <Border Margin="16,0"
+                    Padding="16"
+                    Background="{DynamicResource Luna.Brush.Background.Container}"
+                    CornerRadius="{DynamicResource Luna.Radius.ExtraLarge}">
+              <StackPanel Spacing="16">
+                <Button Classes="primary" Content="用户引导" Click="StartDialogGuide" />
+                <Border Padding="16"
+                        Background="{DynamicResource Luna.Brush.Background.Page}"
+                        CornerRadius="{DynamicResource Luna.Radius.Large}">
+                  <StackPanel Spacing="16">
+                    <StackPanel Name="DialogTitleTarget" Spacing="4">
+                      <TextBlock Text="用户引导标题"
+                                 FontSize="24"
+                                 FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                                 Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+                      <TextBlock Text="按钮用于开启一个闭环的操作任务，如“删除”对象、“购买”商品等。"
+                                 TextWrapping="Wrap"
+                                 FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                                 Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                    </StackPanel>
+                    <Border Name="DialogLabelFieldTarget"
+                            Padding="12"
+                            BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                            BorderThickness="1"
+                            CornerRadius="{DynamicResource Luna.Radius.Default}">
+                      <StackPanel Spacing="8">
+                        <TextBlock Text="标签文字" />
+                        <TextBox Watermark="请输入内容" />
+                      </StackPanel>
+                    </Border>
+                    <Grid Name="DialogActionTarget" ColumnDefinitions="*,*" ColumnSpacing="16">
+                      <Button Content="重置" />
+                      <Button Grid.Column="1" Classes="primary" Content="确定" />
+                    </Grid>
+                  </StackPanel>
+                </Border>
+              </StackPanel>
+            </Border>
+          </StackPanel>
+
+          <StackPanel Spacing="16">
+            <TextBlock Text="气泡与弹窗混合的引导"
+                       Margin="16,0"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <Border Margin="16,0"
+                    Padding="16"
+                    Background="{DynamicResource Luna.Brush.Background.Container}"
+                    CornerRadius="{DynamicResource Luna.Radius.ExtraLarge}">
+              <StackPanel Spacing="16">
+                <Button Classes="primary" Content="用户引导" Click="StartMixedGuide" />
+                <Border Padding="16"
+                        Background="{DynamicResource Luna.Brush.Background.Page}"
+                        CornerRadius="{DynamicResource Luna.Radius.Large}">
+                  <StackPanel Spacing="16">
+                    <StackPanel Name="MixedTitleTarget" Spacing="4">
+                      <TextBlock Text="用户引导标题"
+                                 FontSize="24"
+                                 FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                                 Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+                      <TextBlock Text="按钮用于开启一个闭环的操作任务，如“删除”对象、“购买”商品等。"
+                                 TextWrapping="Wrap"
+                                 FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                                 Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                    </StackPanel>
+                    <Border Name="MixedLabelFieldTarget"
+                            Padding="12"
+                            BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                            BorderThickness="1"
+                            CornerRadius="{DynamicResource Luna.Radius.Default}">
+                      <StackPanel Spacing="8">
+                        <TextBlock Text="标签文字" />
+                        <TextBox Watermark="请输入内容" />
+                      </StackPanel>
+                    </Border>
+                    <Grid Name="MixedActionTarget" ColumnDefinitions="*,*" ColumnSpacing="16">
+                      <Button Content="重置" />
+                      <Button Grid.Column="1" Classes="primary" Content="确定" />
+                    </Grid>
+                  </StackPanel>
+                </Border>
+              </StackPanel>
+            </Border>
+          </StackPanel>
+
+          <StackPanel Spacing="16">
+            <TextBlock Text="自定义气泡"
+                       Margin="16,0"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <Border Margin="16,0"
+                    Padding="16"
+                    Background="{DynamicResource Luna.Brush.Background.Container}"
+                    CornerRadius="{DynamicResource Luna.Radius.ExtraLarge}">
+              <StackPanel Spacing="16">
+                <Button Classes="primary" Content="用户引导" Click="StartCustomPopoverGuide" />
+                <Border Padding="16"
+                        Background="{DynamicResource Luna.Brush.Background.Page}"
+                        CornerRadius="{DynamicResource Luna.Radius.Large}">
+                  <StackPanel Spacing="16">
+                    <StackPanel Name="CustomTitleTarget" Spacing="4">
+                      <TextBlock Text="用户引导标题"
+                                 FontSize="24"
+                                 FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                                 Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+                      <TextBlock Text="按钮用于开启一个闭环的操作任务，如“删除”对象、“购买”商品等。"
+                                 TextWrapping="Wrap"
+                                 FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                                 Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                    </StackPanel>
+                    <Border Name="CustomLabelFieldTarget"
+                            Padding="12"
+                            BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                            BorderThickness="1"
+                            CornerRadius="{DynamicResource Luna.Radius.Default}">
+                      <StackPanel Spacing="8">
+                        <TextBlock Text="标签文字" />
+                        <TextBox Watermark="请输入内容" />
+                      </StackPanel>
+                    </Border>
+                    <Grid Name="CustomActionTarget" ColumnDefinitions="*,*" ColumnSpacing="16">
+                      <Button Content="重置" />
+                      <Button Grid.Column="1" Classes="primary" Content="确定" />
+                    </Grid>
+                  </StackPanel>
+                </Border>
+              </StackPanel>
+            </Border>
+          </StackPanel>
+        </StackPanel>
+      </StackPanel>
+    </ScrollViewer>
+
+    <luna:GuideHost Name="GuideHost" />
+  </Grid>
+</UserControl>

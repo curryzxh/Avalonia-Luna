@@ -1,0 +1,44 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:luna="https://github.com/curryzxh/Luna">
+  <Style Selector="luna|PullDownRefresh">
+    <Setter Property="Template">
+      <ControlTemplate TargetType="luna:PullDownRefresh">
+        <Grid ClipToBounds="True">
+          <Border Height="{TemplateBinding IndicatorVisibleHeight}"
+                  VerticalAlignment="Top"
+                  Background="{DynamicResource Luna.Brush.Background.Page}">
+            <StackPanel Orientation="Horizontal"
+                        Spacing="8"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+              <TextBlock Text="{TemplateBinding StatusGlyph}"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                         VerticalAlignment="Center"
+                         IsVisible="{TemplateBinding ShowStatusGlyph}" />
+              <luna:LoadingIndicator Theme="Circular"
+                                     Size="18"
+                                     Duration="0:0:0.8"
+                                     VerticalAlignment="Center"
+                                     IsVisible="{TemplateBinding ShowLoadingIndicator}" />
+              <TextBlock Text="{TemplateBinding StatusText}"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                         VerticalAlignment="Center" />
+            </StackPanel>
+          </Border>
+
+          <ScrollViewer Name="PART_ScrollViewer"
+                        HorizontalScrollBarVisibility="Disabled"
+                        VerticalScrollBarVisibility="Auto">
+            <ContentPresenter Content="{TemplateBinding Content}"
+                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                              VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+          </ScrollViewer>
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>

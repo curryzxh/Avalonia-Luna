@@ -1,0 +1,35 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:luna="https://github.com/curryzxh/Luna">
+  <Style Selector="luna|DropdownMenu">
+    <Setter Property="HorizontalAlignment" Value="Stretch" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid ClipToBounds="False">
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                  BorderBrush="{DynamicResource Luna.Brush.Border.Subtle}"
+                  BorderThickness="0,0,0,1">
+            <Grid Name="PART_HeaderHost"
+                  ColumnDefinitions="*" />
+          </Border>
+
+          <Grid IsVisible="{TemplateBinding OverlayVisible}"
+                Panel.ZIndex="100">
+            <luna:Overlay Name="PART_Overlay"
+                          Visible="{TemplateBinding OverlayVisible}">
+              <Border Name="PART_PanelBorder"
+                      Background="{DynamicResource Luna.Brush.Background.Container}"
+                      BorderBrush="{DynamicResource Luna.Brush.Border.Subtle}"
+                      BorderThickness="0,0,0,1"
+                      MaxHeight="360"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Top">
+                <ContentPresenter Name="PART_PanelHost" />
+              </Border>
+            </luna:Overlay>
+          </Grid>
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>

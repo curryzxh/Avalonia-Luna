@@ -1,0 +1,81 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <Style Selector="ProgressBar">
+    <Setter Property="MinHeight" Value="8" />
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Component}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
+    <Setter Property="Template">
+      <ControlTemplate TargetType="ProgressBar">
+        <Grid>
+          <Border Name="Track"
+                  Height="8"
+                  Background="{TemplateBinding Background}"
+                  CornerRadius="999">
+            <Panel ClipToBounds="True">
+              <Border Name="PART_Indicator"
+                      Background="{TemplateBinding Foreground}"
+                      CornerRadius="999"
+                      HorizontalAlignment="Left"
+                      VerticalAlignment="Stretch"
+                      IsVisible="{Binding !IsIndeterminate, RelativeSource={RelativeSource TemplatedParent}}" />
+              <Border Name="PART_IndeterminateIndicator"
+                      Width="64"
+                      Background="{TemplateBinding Foreground}"
+                      CornerRadius="999"
+                      HorizontalAlignment="Left"
+                      VerticalAlignment="Stretch"
+                      IsVisible="{Binding IsIndeterminate, RelativeSource={RelativeSource TemplatedParent}}" />
+            </Panel>
+          </Border>
+
+          <TextBlock Name="ProgressText"
+                     IsVisible="{Binding ShowProgressText, RelativeSource={RelativeSource TemplatedParent}}"
+                     Text="{Binding Percentage, RelativeSource={RelativeSource TemplatedParent}, StringFormat='{}{0:0}%'}"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Anti}" />
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="ProgressBar.plump">
+    <Setter Property="MinHeight" Value="20" />
+  </Style>
+
+  <Style Selector="ProgressBar.plump /template/ Border#Track">
+    <Setter Property="Height" Value="20" />
+  </Style>
+
+  <Style Selector="ProgressBar.plump /template/ TextBlock#ProgressText">
+    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Small}" />
+  </Style>
+
+  <Style Selector="ProgressBar.warning">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Warning}" />
+  </Style>
+
+  <Style Selector="ProgressBar.error">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Danger}" />
+  </Style>
+
+  <Style Selector="ProgressBar.success">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Success}" />
+  </Style>
+
+  <Style Selector="ProgressBar.active">
+    <Setter Property="Foreground">
+      <LinearGradientBrush StartPoint="0%,50%" EndPoint="100%,50%">
+        <GradientStop Color="#0052D9" Offset="0" />
+        <GradientStop Color="#2BA471" Offset="1" />
+      </LinearGradientBrush>
+    </Setter>
+  </Style>
+
+  <Style Selector="ProgressBar:disabled">
+    <Setter Property="Opacity" Value="0.45" />
+  </Style>
+</Styles>

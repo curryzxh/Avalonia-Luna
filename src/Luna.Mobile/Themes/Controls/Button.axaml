@@ -3,8 +3,8 @@
   <Style Selector="Button">
     <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.TouchTarget}" />
     <Setter Property="Padding" Value="{DynamicResource Luna.Padding.Control.Medium}" />
-    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Component}" />
-    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
+    <Setter Property="Background" Value="#E7E7E7" />
+    <Setter Property="BorderBrush" Value="#E7E7E7" />
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Default}" />
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
@@ -15,14 +15,14 @@
   </Style>
 
   <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Border.Weak}" />
-    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
+    <Setter Property="Background" Value="#E7E7E7" />
+    <Setter Property="BorderBrush" Value="#E7E7E7" />
     <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
   </Style>
 
   <Style Selector="Button:pressed /template/ ContentPresenter#PART_ContentPresenter">
-    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Border.Default}" />
-    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
+    <Setter Property="Background" Value="#A6A6A6" />
+    <Setter Property="BorderBrush" Value="#A6A6A6" />
     <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
   </Style>
 

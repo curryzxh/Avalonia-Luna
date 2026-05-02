@@ -1,0 +1,143 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:luna="https://github.com/curryzxh/Luna"
+             x:Class="Luna.Mobile.Sample.Views.PullDownRefreshDemoView">
+  <luna:PullDownRefresh x:Name="DemoPullDownRefresh"
+                        RefreshRequested="OnRefreshRequested"
+                        IndicatorHeight="66">
+    <StackPanel Background="{DynamicResource Luna.Brush.Background.Page}"
+                Spacing="16">
+      <StackPanel Margin="16,0,16,0"
+                  Spacing="8">
+        <TextBlock Text="PullDownRefresh 下拉刷新"
+                   FontSize="{DynamicResource Luna.FontSize.Title.Large}"
+                   FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+        <TextBlock Text="用于快速刷新页面信息，刷新可以是整页刷新也可以是页面的局部刷新。"
+                   FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                   TextWrapping="Wrap" />
+      </StackPanel>
+
+      <Border Margin="16,0,16,0"
+              Height="171"
+              Background="{DynamicResource Luna.Brush.Background.Component}"
+              CornerRadius="12">
+        <TextBlock Text="拖拽该区域演示 顶部下拉刷新"
+                   FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center" />
+      </Border>
+
+      <TextBlock x:Name="RefreshResultText"
+                 Margin="16,0,16,0"
+                 Text="最近刷新：尚未触发"
+                 FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                 Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+
+      <Grid Margin="16,0,16,16"
+            ColumnDefinitions="*,*"
+            RowDefinitions="Auto,Auto,Auto,Auto"
+            ColumnSpacing="16"
+            RowSpacing="16">
+        <Border Grid.Row="0"
+                Grid.Column="0"
+                Padding="12"
+                Background="{DynamicResource Luna.Brush.Background.Container}"
+                CornerRadius="12">
+          <StackPanel Spacing="12">
+            <luna:Skeleton Theme="Image" />
+            <luna:Skeleton Theme="Text"
+                           Width="100" />
+            <luna:Skeleton Theme="Paragraph" />
+          </StackPanel>
+        </Border>
+        <Border Grid.Row="0"
+                Grid.Column="1"
+                Padding="12"
+                Background="{DynamicResource Luna.Brush.Background.Container}"
+                CornerRadius="12">
+          <StackPanel Spacing="12">
+            <luna:Skeleton Theme="Image" />
+            <luna:Skeleton Theme="Text"
+                           Width="100" />
+            <luna:Skeleton Theme="Paragraph" />
+          </StackPanel>
+        </Border>
+        <Border Grid.Row="1"
+                Grid.Column="0"
+                Padding="12"
+                Background="{DynamicResource Luna.Brush.Background.Container}"
+                CornerRadius="12">
+          <StackPanel Spacing="12">
+            <luna:Skeleton Theme="Image" />
+            <luna:Skeleton Theme="Text"
+                           Width="100" />
+            <luna:Skeleton Theme="Paragraph" />
+          </StackPanel>
+        </Border>
+        <Border Grid.Row="1"
+                Grid.Column="1"
+                Padding="12"
+                Background="{DynamicResource Luna.Brush.Background.Container}"
+                CornerRadius="12">
+          <StackPanel Spacing="12">
+            <luna:Skeleton Theme="Image" />
+            <luna:Skeleton Theme="Text"
+                           Width="100" />
+            <luna:Skeleton Theme="Paragraph" />
+          </StackPanel>
+        </Border>
+        <Border Grid.Row="2"
+                Grid.Column="0"
+                Padding="12"
+                Background="{DynamicResource Luna.Brush.Background.Container}"
+                CornerRadius="12">
+          <StackPanel Spacing="12">
+            <luna:Skeleton Theme="Image" />
+            <luna:Skeleton Theme="Text"
+                           Width="100" />
+            <luna:Skeleton Theme="Paragraph" />
+          </StackPanel>
+        </Border>
+        <Border Grid.Row="2"
+                Grid.Column="1"
+                Padding="12"
+                Background="{DynamicResource Luna.Brush.Background.Container}"
+                CornerRadius="12">
+          <StackPanel Spacing="12">
+            <luna:Skeleton Theme="Image" />
+            <luna:Skeleton Theme="Text"
+                           Width="100" />
+            <luna:Skeleton Theme="Paragraph" />
+          </StackPanel>
+        </Border>
+        <Border Grid.Row="3"
+                Grid.Column="0"
+                Padding="12"
+                Background="{DynamicResource Luna.Brush.Background.Container}"
+                CornerRadius="12">
+          <StackPanel Spacing="12">
+            <luna:Skeleton Theme="Image" />
+            <luna:Skeleton Theme="Text"
+                           Width="100" />
+            <luna:Skeleton Theme="Paragraph" />
+          </StackPanel>
+        </Border>
+        <Border Grid.Row="3"
+                Grid.Column="1"
+                Padding="12"
+                Background="{DynamicResource Luna.Brush.Background.Container}"
+                CornerRadius="12">
+          <StackPanel Spacing="12">
+            <luna:Skeleton Theme="Image" />
+            <luna:Skeleton Theme="Text"
+                           Width="100" />
+            <luna:Skeleton Theme="Paragraph" />
+          </StackPanel>
+        </Border>
+      </Grid>
+    </StackPanel>
+  </luna:PullDownRefresh>
+</UserControl>

@@ -52,11 +52,11 @@ public sealed class Loading : ContentControl
 
     /// <inheritdoc cref="Size" />
     public static readonly StyledProperty<double> SizeProperty =
-        AvaloniaProperty.Register<Loading, double>(nameof(Size), 22);
+        AvaloniaProperty.Register<Loading, double>(nameof(Size), 20);
 
     /// <inheritdoc cref="Duration" />
     public static readonly StyledProperty<TimeSpan> DurationProperty =
-        AvaloniaProperty.Register<Loading, TimeSpan>(nameof(Duration), TimeSpan.FromMilliseconds(3000));
+        AvaloniaProperty.Register<Loading, TimeSpan>(nameof(Duration), TimeSpan.FromMilliseconds(800));
 
     /// <inheritdoc cref="Text" />
     public static readonly StyledProperty<string?> TextProperty =

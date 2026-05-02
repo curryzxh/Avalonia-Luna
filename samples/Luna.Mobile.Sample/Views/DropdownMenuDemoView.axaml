@@ -1,0 +1,87 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:luna="https://github.com/curryzxh/Luna"
+             xmlns:vm="using:Luna.Mobile.Sample.ViewModels"
+             x:Class="Luna.Mobile.Sample.Views.DropdownMenuDemoView"
+             x:DataType="vm:DropdownMenuDemoViewModel">
+  <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
+    <StackPanel Spacing="24" Margin="0,0,0,28">
+      <StackPanel Margin="16,0" Spacing="8">
+        <TextBlock Text="DropdownMenu 下拉菜单"
+                   FontSize="{DynamicResource Luna.FontSize.Title.Large}"
+                   FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+        <TextBlock Text="菜单呈现数个并列的选项类目，用于整个页面的内容筛选，由菜单面板和菜单选项组成。"
+                   FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                   TextWrapping="Wrap" />
+      </StackPanel>
+
+      <StackPanel Spacing="28">
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="01 组件类型"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="单选下拉菜单"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+            <ContentControl Name="SingleDemoHost" />
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="分栏下拉菜单"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+            <ContentControl Name="MultipleDemoHost" />
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="向上展开"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                  Padding="0,240,0,0">
+            <ContentControl Name="DirectionDemoHost" />
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="02 组件状态"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="禁用状态"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+            <ContentControl Name="DisabledDemoHost" />
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="插槽样式"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}">
+            <ContentControl Name="CustomizedDemoHost" />
+          </Border>
+        </StackPanel>
+
+        <Border Height="400"
+                Background="Transparent" />
+      </StackPanel>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

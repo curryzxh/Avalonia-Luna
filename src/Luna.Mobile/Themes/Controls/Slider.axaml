@@ -1,0 +1,179 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <Styles.Resources>
+    <ControlTheme x:Key="LunaSliderTrackTheme"
+                  TargetType="RepeatButton">
+      <Setter Property="Background" Value="Transparent" />
+      <Setter Property="Focusable" Value="False" />
+      <Setter Property="Template">
+        <ControlTemplate>
+          <Border Background="{TemplateBinding Background}"
+                  CornerRadius="{DynamicResource Luna.Radius.Circle}" />
+        </ControlTemplate>
+      </Setter>
+    </ControlTheme>
+  </Styles.Resources>
+
+  <Style Selector="Slider">
+    <Setter Property="MinHeight" Value="32" />
+    <Setter Property="MinWidth" Value="120" />
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Component}" />
+  </Style>
+
+  <Style Selector="Slider:horizontal">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid Name="Root">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" MinHeight="32" />
+            <RowDefinition Height="Auto" />
+          </Grid.RowDefinitions>
+          <Track Name="PART_Track"
+                 Grid.Row="1"
+                 Minimum="{TemplateBinding Minimum}"
+                 Maximum="{TemplateBinding Maximum}"
+                 Value="{TemplateBinding Value, Mode=TwoWay}"
+                 IsDirectionReversed="{TemplateBinding IsDirectionReversed}"
+                 Orientation="Horizontal">
+            <Track.DecreaseButton>
+              <RepeatButton Name="PART_DecreaseButton"
+                            Theme="{StaticResource LunaSliderTrackTheme}"
+                            Background="{DynamicResource Luna.Brush.Brand}" />
+            </Track.DecreaseButton>
+            <Track.IncreaseButton>
+              <RepeatButton Name="PART_IncreaseButton"
+                            Theme="{StaticResource LunaSliderTrackTheme}"
+                            Background="{TemplateBinding Background}" />
+            </Track.IncreaseButton>
+            <Thumb Name="Thumb"
+                   Width="24"
+                   Height="24">
+              <Thumb.Template>
+                <ControlTemplate>
+                  <Border Name="ThumbBorder"
+                          Width="24"
+                          Height="24"
+                          Background="{DynamicResource Luna.Brush.Brand}"
+                          CornerRadius="12">
+                    <Border Name="ThumbInner"
+                            Width="10"
+                            Height="10"
+                            Background="{DynamicResource Luna.Brush.Text.Anti}"
+                            CornerRadius="5"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center" />
+                  </Border>
+                </ControlTemplate>
+              </Thumb.Template>
+            </Thumb>
+          </Track>
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="Slider:vertical">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid Name="Root">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" MinWidth="32" />
+            <ColumnDefinition Width="Auto" />
+          </Grid.ColumnDefinitions>
+          <Track Name="PART_Track"
+                 Grid.Column="1"
+                 Minimum="{TemplateBinding Minimum}"
+                 Maximum="{TemplateBinding Maximum}"
+                 Value="{TemplateBinding Value, Mode=TwoWay}"
+                 IsDirectionReversed="{TemplateBinding IsDirectionReversed}"
+                 Orientation="Vertical">
+            <Track.DecreaseButton>
+              <RepeatButton Name="PART_DecreaseButton"
+                            Theme="{StaticResource LunaSliderTrackTheme}"
+                            Background="{DynamicResource Luna.Brush.Brand}" />
+            </Track.DecreaseButton>
+            <Track.IncreaseButton>
+              <RepeatButton Name="PART_IncreaseButton"
+                            Theme="{StaticResource LunaSliderTrackTheme}"
+                            Background="{TemplateBinding Background}" />
+            </Track.IncreaseButton>
+            <Thumb Name="Thumb"
+                   Width="24"
+                   Height="24">
+              <Thumb.Template>
+                <ControlTemplate>
+                  <Border Name="ThumbBorder"
+                          Width="24"
+                          Height="24"
+                          Background="{DynamicResource Luna.Brush.Brand}"
+                          CornerRadius="12">
+                    <Border Name="ThumbInner"
+                            Width="10"
+                            Height="10"
+                            Background="{DynamicResource Luna.Brush.Text.Anti}"
+                            CornerRadius="5"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center" />
+                  </Border>
+                </ControlTemplate>
+              </Thumb.Template>
+            </Thumb>
+          </Track>
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="Slider /template/ RepeatButton#PART_DecreaseButton">
+    <Setter Property="Height" Value="4" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+  </Style>
+
+  <Style Selector="Slider /template/ RepeatButton#PART_IncreaseButton">
+    <Setter Property="Height" Value="4" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+  </Style>
+
+  <Style Selector="Slider:disabled">
+    <Setter Property="Opacity" Value="0.45" />
+  </Style>
+
+  <Style Selector="Slider:pressed /template/ Thumb#Thumb Border#ThumbBorder">
+    <Setter Property="Width" Value="28" />
+    <Setter Property="Height" Value="28" />
+    <Setter Property="CornerRadius" Value="14" />
+  </Style>
+
+  <Style Selector="Slider:pressed /template/ Thumb#Thumb Border#ThumbInner">
+    <Setter Property="Width" Value="12" />
+    <Setter Property="Height" Value="12" />
+    <Setter Property="CornerRadius" Value="6" />
+  </Style>
+
+  <Style Selector="Slider.luna-capsule /template/ RepeatButton#PART_DecreaseButton">
+    <Setter Property="Height" Value="8" />
+  </Style>
+
+  <Style Selector="Slider.luna-capsule /template/ RepeatButton#PART_IncreaseButton">
+    <Setter Property="Height" Value="8" />
+  </Style>
+
+  <Style Selector="Slider.luna-capsule /template/ Thumb#Thumb Border#ThumbBorder">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Text.Anti}" />
+    <Setter Property="BoxShadow" Value="0 1 4 0 #22000000" />
+  </Style>
+
+  <Style Selector="Slider.luna-capsule /template/ Thumb#Thumb Border#ThumbInner">
+    <Setter Property="Width" Value="8" />
+    <Setter Property="Height" Value="8" />
+    <Setter Property="CornerRadius" Value="4" />
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="Slider.luna-capsule:disabled /template/ Thumb#Thumb Border#ThumbBorder">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Component}" />
+  </Style>
+</Styles>

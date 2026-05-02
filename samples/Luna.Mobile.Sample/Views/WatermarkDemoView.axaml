@@ -1,0 +1,229 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:luna="https://github.com/curryzxh/Luna"
+             xmlns:vm="using:Luna.Mobile.Sample.ViewModels"
+             x:Class="Luna.Mobile.Sample.Views.WatermarkDemoView"
+             x:DataType="vm:WatermarkDemoViewModel">
+  <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
+    <StackPanel Spacing="24" Margin="0,0,0,28">
+      <StackPanel Margin="16,0" Spacing="8">
+        <TextBlock Text="Watermark 水印"
+                   FontSize="{DynamicResource Luna.FontSize.Title.Large}"
+                   FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+        <TextBlock Text="给页面的某个区域加上水印。"
+                   FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                   TextWrapping="Wrap" />
+      </StackPanel>
+
+      <StackPanel Spacing="28">
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="01 组件类型"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="文本、图片、图文与运动水印。"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+
+          <StackPanel Spacing="16">
+            <TextBlock Text="文本水印"
+                       Margin="16,0"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <Border Margin="16,0"
+                    Background="{DynamicResource Luna.Brush.Background.Container}"
+                    CornerRadius="{DynamicResource Luna.Radius.Default}">
+              <luna:Watermark TileWidth="68"
+                              TileHeight="52"
+                              HorizontalSpacing="56"
+                              VerticalSpacing="56">
+                <luna:Watermark.Items>
+                  <luna:WatermarkItem Text="文字水印" />
+                </luna:Watermark.Items>
+                <Border Height="300" />
+              </luna:Watermark>
+            </Border>
+          </StackPanel>
+
+          <StackPanel Spacing="16">
+            <TextBlock Text="图片水印"
+                       Margin="16,0"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <Border Margin="16,0"
+                    Background="{DynamicResource Luna.Brush.Background.Container}"
+                    CornerRadius="{DynamicResource Luna.Radius.Default}">
+              <luna:Watermark TileWidth="120"
+                              TileHeight="24"
+                              HorizontalSpacing="56"
+                              VerticalSpacing="76">
+                <luna:Watermark.Items>
+                  <luna:WatermarkItem Source="https://tdesign.gtimg.com/starter/brand-logo-light.png" />
+                </luna:Watermark.Items>
+                <Border Height="300" />
+              </luna:Watermark>
+            </Border>
+          </StackPanel>
+
+          <StackPanel Spacing="16">
+            <TextBlock Text="图片灰阶水印"
+                       Margin="16,0"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <Border Margin="16,0"
+                    Background="{DynamicResource Luna.Brush.Background.Container}"
+                    CornerRadius="{DynamicResource Luna.Radius.Default}">
+              <luna:Watermark TileWidth="120"
+                              TileHeight="24"
+                              HorizontalSpacing="56"
+                              VerticalSpacing="76"
+                              Alpha="0.3">
+                <luna:Watermark.Items>
+                  <luna:WatermarkItem Source="https://tdesign.gtimg.com/starter/brand-logo-light.png"
+                                      IsGrayscale="True" />
+                </luna:Watermark.Items>
+                <Border Height="300" />
+              </luna:Watermark>
+            </Border>
+          </StackPanel>
+
+          <StackPanel Spacing="16">
+            <TextBlock Text="多行图文水印"
+                       Margin="16,0"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <Border Margin="16,0"
+                    Background="{DynamicResource Luna.Brush.Background.Container}"
+                    CornerRadius="{DynamicResource Luna.Radius.Default}">
+              <luna:Watermark TileWidth="120"
+                              TileHeight="76"
+                              HorizontalSpacing="56"
+                              VerticalSpacing="56"
+                              LineSpacing="24"
+                              Alpha="0.3">
+                <luna:Watermark.Items>
+                  <luna:WatermarkItem Text="水印文本"
+                                      Foreground="Black" />
+                  <luna:WatermarkItem Source="https://tdesign.gtimg.com/starter/brand-logo-light.png" />
+                </luna:Watermark.Items>
+                <Border Height="300" />
+              </luna:Watermark>
+            </Border>
+          </StackPanel>
+
+          <StackPanel Spacing="16">
+            <TextBlock Text="多行图文灰阶水印"
+                       Margin="16,0"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <Border Margin="16,0"
+                    Background="{DynamicResource Luna.Brush.Background.Container}"
+                    CornerRadius="{DynamicResource Luna.Radius.Default}">
+              <luna:Watermark TileWidth="120"
+                              TileHeight="76"
+                              HorizontalSpacing="56"
+                              VerticalSpacing="76"
+                              LineSpacing="24"
+                              Alpha="0.3">
+                <luna:Watermark.Items>
+                  <luna:WatermarkItem Text="水印文本"
+                                      Foreground="Black" />
+                  <luna:WatermarkItem Source="https://tdesign.gtimg.com/starter/brand-logo-light.png"
+                                      IsGrayscale="True" />
+                </luna:Watermark.Items>
+                <Border Height="300" />
+              </luna:Watermark>
+            </Border>
+          </StackPanel>
+
+          <StackPanel Spacing="16">
+            <TextBlock Text="运动文字水印"
+                       Margin="16,0"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <Border Margin="16,0"
+                    Background="{DynamicResource Luna.Brush.Background.Container}"
+                    CornerRadius="{DynamicResource Luna.Radius.Default}">
+              <luna:Watermark Movable="True">
+                <luna:Watermark.Items>
+                  <luna:WatermarkItem Text="文字水印" />
+                </luna:Watermark.Items>
+                <Border Height="300" />
+              </luna:Watermark>
+            </Border>
+          </StackPanel>
+
+          <StackPanel Spacing="16">
+            <TextBlock Text="运动图片水印"
+                       Margin="16,0"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <Border Margin="16,0"
+                    Background="{DynamicResource Luna.Brush.Background.Container}"
+                    CornerRadius="{DynamicResource Luna.Radius.Default}">
+              <luna:Watermark Movable="True"
+                              TileWidth="158"
+                              TileHeight="22">
+                <luna:Watermark.Items>
+                  <luna:WatermarkItem Source="https://tdesign.gtimg.com/starter/brand-logo-light.png" />
+                </luna:Watermark.Items>
+                <Border Height="300" />
+              </luna:Watermark>
+            </Border>
+          </StackPanel>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="02 组件样式"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+          </StackPanel>
+
+          <TextBlock Text="Rectangular Grid 矩形布局"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          <Border Margin="16,0"
+                  Background="{DynamicResource Luna.Brush.Background.Container}"
+                  CornerRadius="{DynamicResource Luna.Radius.Default}">
+            <luna:Watermark TileWidth="68"
+                            TileHeight="52"
+                            HorizontalSpacing="56"
+                            VerticalSpacing="56"
+                            Layout="Rectangular">
+              <luna:Watermark.Items>
+                <luna:WatermarkItem Text="文字水印" />
+              </luna:Watermark.Items>
+              <Border Height="300" />
+            </luna:Watermark>
+          </Border>
+
+          <TextBlock Text="Hexagonal Grid 六边形网格"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          <Border Margin="16,0"
+                  Background="{DynamicResource Luna.Brush.Background.Container}"
+                  CornerRadius="{DynamicResource Luna.Radius.Default}">
+            <luna:Watermark TileWidth="68"
+                            TileHeight="52"
+                            HorizontalSpacing="56"
+                            VerticalSpacing="56"
+                            Layout="Hexagonal">
+              <luna:Watermark.Items>
+                <luna:WatermarkItem Text="文字水印" />
+              </luna:Watermark.Items>
+              <Border Height="300" />
+            </luna:Watermark>
+          </Border>
+        </StackPanel>
+      </StackPanel>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

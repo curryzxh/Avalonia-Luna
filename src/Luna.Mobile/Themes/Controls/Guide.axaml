@@ -1,0 +1,174 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:luna="https://github.com/curryzxh/Luna">
+  <Style Selector="luna|GuideHost">
+    <Setter Property="ClipToBounds" Value="True" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid>
+          <ContentPresenter Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+
+          <Grid IsVisible="{Binding HasCurrentStep, RelativeSource={RelativeSource TemplatedParent}}">
+            <Border Background="{DynamicResource Luna.Brush.Mask}"
+                    Opacity="0.72"
+                    IsVisible="{Binding ResolvedShowOverlay, RelativeSource={RelativeSource TemplatedParent}}" />
+
+            <Canvas>
+              <Border Width="{Binding HighlightWidth, RelativeSource={RelativeSource TemplatedParent}}"
+                      Height="{Binding HighlightHeight, RelativeSource={RelativeSource TemplatedParent}}"
+                      Canvas.Left="{Binding HighlightLeft, RelativeSource={RelativeSource TemplatedParent}}"
+                      Canvas.Top="{Binding HighlightTop, RelativeSource={RelativeSource TemplatedParent}}"
+                      Background="Transparent"
+                      BorderBrush="{DynamicResource Luna.Brush.Brand}"
+                      BorderThickness="2"
+                      CornerRadius="{DynamicResource Luna.Radius.Large}" />
+            </Canvas>
+
+            <Canvas IsVisible="{Binding IsPopoverMode, RelativeSource={RelativeSource TemplatedParent}}">
+              <Border Name="PART_PopoverPanel"
+                      Canvas.Left="{Binding PopoverLeft, RelativeSource={RelativeSource TemplatedParent}}"
+                      Canvas.Top="{Binding PopoverTop, RelativeSource={RelativeSource TemplatedParent}}"
+                      Width="{Binding PopoverWidth, RelativeSource={RelativeSource TemplatedParent}}"
+                      MaxWidth="280"
+                      Padding="16"
+                      Background="{DynamicResource Luna.Brush.Background.Container}"
+                      CornerRadius="{DynamicResource Luna.Radius.ExtraLarge}"
+                      BoxShadow="0 8 24 0 #26000000">
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto"
+                      RowSpacing="12">
+                  <Grid ColumnDefinitions="Auto,*,Auto">
+                    <Button Name="PART_BackButton_Popover"
+                            Classes="text small"
+                            Content="{TemplateBinding BackText}"
+                            IsVisible="{Binding CanGoBack, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <TextBlock Grid.Column="1"
+                               Text="{Binding CounterText, RelativeSource={RelativeSource TemplatedParent}}"
+                               HorizontalAlignment="Center"
+                               Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                               FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                               IsVisible="{Binding ShowCounter, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <Button Name="PART_SkipButton_Popover"
+                            Grid.Column="2"
+                            Classes="text small"
+                            Content="{TemplateBinding SkipText}"
+                            IsVisible="{Binding ShowSkipButton, RelativeSource={RelativeSource TemplatedParent}}" />
+                  </Grid>
+
+                  <StackPanel Grid.Row="1"
+                              Spacing="8"
+                              IsVisible="{Binding ShowDefaultContent, RelativeSource={RelativeSource TemplatedParent}}">
+                    <TextBlock Text="{Binding ResolvedTitle, RelativeSource={RelativeSource TemplatedParent}}"
+                               FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                               FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                               Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                               IsVisible="{Binding HasResolvedTitle, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <TextBlock Text="{Binding ResolvedBody, RelativeSource={RelativeSource TemplatedParent}}"
+                               TextWrapping="Wrap"
+                               Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                               FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                               IsVisible="{Binding HasResolvedBody, RelativeSource={RelativeSource TemplatedParent}}" />
+                  </StackPanel>
+
+                  <ContentPresenter Grid.Row="1"
+                                    Content="{Binding ResolvedContent, RelativeSource={RelativeSource TemplatedParent}}"
+                                    IsVisible="{Binding HasResolvedContent, RelativeSource={RelativeSource TemplatedParent}}" />
+
+                  <Grid Grid.Row="3"
+                        ColumnDefinitions="*,Auto"
+                        ColumnSpacing="12">
+                    <Button Name="PART_NextButton_Popover"
+                            Grid.Column="1"
+                            Classes="primary"
+                            MinWidth="88"
+                            Content="{TemplateBinding NextText}"
+                            IsVisible="{Binding ShowNextButton, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <Button Name="PART_FinishButton_Popover"
+                            Grid.Column="1"
+                            Classes="primary"
+                            MinWidth="88"
+                            Content="{TemplateBinding FinishText}"
+                            IsVisible="{Binding IsLastStep, RelativeSource={RelativeSource TemplatedParent}}" />
+                  </Grid>
+                </Grid>
+              </Border>
+            </Canvas>
+
+            <Grid IsVisible="{Binding IsDialogMode, RelativeSource={RelativeSource TemplatedParent}}">
+              <Border Name="PART_DialogPanel"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      Margin="24"
+                      MaxWidth="320"
+                      Padding="20"
+                      Background="{DynamicResource Luna.Brush.Background.Container}"
+                      CornerRadius="{DynamicResource Luna.Radius.ExtraLarge}"
+                      BoxShadow="0 12 28 0 #33000000">
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto"
+                      RowSpacing="12">
+                  <Grid ColumnDefinitions="Auto,*,Auto">
+                    <Button Name="PART_BackButton_Dialog"
+                            Classes="text small"
+                            Content="{TemplateBinding BackText}"
+                            IsVisible="{Binding CanGoBack, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <TextBlock Grid.Column="1"
+                               Text="{Binding CounterText, RelativeSource={RelativeSource TemplatedParent}}"
+                               HorizontalAlignment="Center"
+                               Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                               FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                               IsVisible="{Binding ShowCounter, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <Button Name="PART_SkipButton_Dialog"
+                            Grid.Column="2"
+                            Classes="text small"
+                            Content="{TemplateBinding SkipText}"
+                            IsVisible="{Binding ShowSkipButton, RelativeSource={RelativeSource TemplatedParent}}" />
+                  </Grid>
+
+                  <StackPanel Grid.Row="1"
+                              Spacing="8"
+                              IsVisible="{Binding ShowDefaultContent, RelativeSource={RelativeSource TemplatedParent}}">
+                    <TextBlock Text="{Binding ResolvedTitle, RelativeSource={RelativeSource TemplatedParent}}"
+                               TextAlignment="Center"
+                               FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                               FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                               Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                               IsVisible="{Binding HasResolvedTitle, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <TextBlock Text="{Binding ResolvedBody, RelativeSource={RelativeSource TemplatedParent}}"
+                               TextWrapping="Wrap"
+                               TextAlignment="Center"
+                               Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                               FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                               IsVisible="{Binding HasResolvedBody, RelativeSource={RelativeSource TemplatedParent}}" />
+                  </StackPanel>
+
+                  <ContentPresenter Grid.Row="1"
+                                    Content="{Binding ResolvedContent, RelativeSource={RelativeSource TemplatedParent}}"
+                                    IsVisible="{Binding HasResolvedContent, RelativeSource={RelativeSource TemplatedParent}}" />
+
+                  <Grid Grid.Row="3"
+                        ColumnDefinitions="*,Auto"
+                        ColumnSpacing="12">
+                    <Button Name="PART_NextButton_Dialog"
+                            Grid.Column="1"
+                            Classes="primary"
+                            MinWidth="88"
+                            Content="{TemplateBinding NextText}"
+                            IsVisible="{Binding ShowNextButton, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <Button Name="PART_FinishButton_Dialog"
+                            Grid.Column="1"
+                            Classes="primary"
+                            MinWidth="88"
+                            Content="{TemplateBinding FinishText}"
+                            IsVisible="{Binding IsLastStep, RelativeSource={RelativeSource TemplatedParent}}" />
+                  </Grid>
+                </Grid>
+              </Border>
+            </Grid>
+          </Grid>
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>

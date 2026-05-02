@@ -1,0 +1,342 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:luna="https://github.com/curryzxh/Luna">
+  <Style Selector="luna|Steps">
+    <Setter Property="HorizontalAlignment" Value="Stretch" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <ItemsPresenter />
+      </ControlTemplate>
+    </Setter>
+    <Setter Property="ItemsPanel">
+      <ItemsPanelTemplate>
+        <UniformGrid Columns="{Binding ResolvedItemCount, RelativeSource={RelativeSource AncestorType=luna:Steps}}" />
+      </ItemsPanelTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="luna|Steps:vertical">
+    <Setter Property="ItemsPanel">
+      <ItemsPanelTemplate>
+        <StackPanel Orientation="Vertical" />
+      </ItemsPanelTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="luna|StepItem">
+    <Setter Property="HorizontalAlignment" Value="Stretch" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid RowDefinitions="Auto,Auto"
+              RowSpacing="{DynamicResource Luna.Spacing.2}"
+              Margin="0,0,0,8">
+          <Grid ColumnDefinitions="24,*"
+                ColumnSpacing="{DynamicResource Luna.Spacing.2}"
+                VerticalAlignment="Center">
+            <Grid Width="24"
+                  Height="24"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Center">
+              <Border Name="PART_Indicator"
+                      Width="24"
+                      Height="24"
+                      Background="{DynamicResource Luna.Brush.Background.Component}"
+                      BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                      BorderThickness="1"
+                      CornerRadius="{DynamicResource Luna.Radius.Circle}" />
+              <ContentPresenter Name="PART_CustomIcon"
+                                Content="{TemplateBinding Icon}"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                IsVisible="{Binding HasCustomIcon, RelativeSource={RelativeSource TemplatedParent}}" />
+              <TextBlock Name="PART_IndexText"
+                         Text="{TemplateBinding DisplayIndex}"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                         FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                         IsVisible="{Binding ShowIndexText, RelativeSource={RelativeSource TemplatedParent}}" />
+              <Path Name="PART_CheckIcon"
+                    Width="12"
+                    Height="12"
+                    Data="M2 6.5L5 9.5L10 3.5"
+                    Stroke="{DynamicResource Luna.Brush.Brand}"
+                    StrokeThickness="2"
+                    StrokeLineCap="Round"
+                    Stretch="Uniform"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    IsVisible="{Binding ShowCheckIcon, RelativeSource={RelativeSource TemplatedParent}}" />
+              <Path Name="PART_ErrorIcon"
+                    Width="10"
+                    Height="10"
+                    Data="M5 1V6 M5 8V9"
+                    Stroke="{DynamicResource Luna.Brush.Error}"
+                    StrokeThickness="2"
+                    StrokeLineCap="Round"
+                    Stretch="Uniform"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    IsVisible="{Binding ShowErrorIcon, RelativeSource={RelativeSource TemplatedParent}}" />
+              <Border Name="PART_DotIndicator"
+                      Width="10"
+                      Height="10"
+                      CornerRadius="{DynamicResource Luna.Radius.Circle}"
+                      Background="{DynamicResource Luna.Brush.Border.Default}"
+                      BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                      BorderThickness="1"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      IsVisible="{Binding ShowDotIndicator, RelativeSource={RelativeSource TemplatedParent}}" />
+            </Grid>
+
+            <Border Name="PART_HorizontalConnector"
+                    Grid.Column="1"
+                    Height="2"
+                    Margin="0,0,8,0"
+                    Background="{DynamicResource Luna.Brush.Border.Divider}"
+                    CornerRadius="{DynamicResource Luna.Radius.Circle}"
+                    VerticalAlignment="Center"
+                    IsVisible="{Binding ShowConnector, RelativeSource={RelativeSource TemplatedParent}}" />
+          </Grid>
+
+          <StackPanel Grid.Row="1"
+                      Spacing="4"
+                      Margin="0,0,8,0">
+            <TextBlock Name="PART_Title"
+                       Text="{TemplateBinding Title}"
+                       TextWrapping="Wrap"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" />
+            <TextBlock Name="PART_Content"
+                       Text="{TemplateBinding Content}"
+                       TextWrapping="Wrap"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                       IsVisible="{Binding ShowContent, RelativeSource={RelativeSource TemplatedParent}}" />
+          </StackPanel>
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="luna|StepItem:vertical">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid ColumnDefinitions="24,*"
+              ColumnSpacing="{DynamicResource Luna.Spacing.3}"
+              Margin="0,0,0,16">
+          <Grid Width="24"
+                RowDefinitions="Auto,*"
+                HorizontalAlignment="Left">
+            <Grid Width="24"
+                  Height="24"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Top">
+              <Border Name="PART_Indicator"
+                      Width="24"
+                      Height="24"
+                      Background="{DynamicResource Luna.Brush.Background.Component}"
+                      BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                      BorderThickness="1"
+                      CornerRadius="{DynamicResource Luna.Radius.Circle}" />
+              <ContentPresenter Name="PART_CustomIcon"
+                                Content="{TemplateBinding Icon}"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                IsVisible="{Binding HasCustomIcon, RelativeSource={RelativeSource TemplatedParent}}" />
+              <TextBlock Name="PART_IndexText"
+                         Text="{TemplateBinding DisplayIndex}"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                         FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                         IsVisible="{Binding ShowIndexText, RelativeSource={RelativeSource TemplatedParent}}" />
+              <Path Name="PART_CheckIcon"
+                    Width="12"
+                    Height="12"
+                    Data="M2 6.5L5 9.5L10 3.5"
+                    Stroke="{DynamicResource Luna.Brush.Brand}"
+                    StrokeThickness="2"
+                    StrokeLineCap="Round"
+                    Stretch="Uniform"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    IsVisible="{Binding ShowCheckIcon, RelativeSource={RelativeSource TemplatedParent}}" />
+              <Path Name="PART_ErrorIcon"
+                    Width="10"
+                    Height="10"
+                    Data="M5 1V6 M5 8V9"
+                    Stroke="{DynamicResource Luna.Brush.Error}"
+                    StrokeThickness="2"
+                    StrokeLineCap="Round"
+                    Stretch="Uniform"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    IsVisible="{Binding ShowErrorIcon, RelativeSource={RelativeSource TemplatedParent}}" />
+              <Border Name="PART_DotIndicator"
+                      Width="10"
+                      Height="10"
+                      CornerRadius="{DynamicResource Luna.Radius.Circle}"
+                      Background="{DynamicResource Luna.Brush.Border.Default}"
+                      BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                      BorderThickness="1"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      IsVisible="{Binding ShowDotIndicator, RelativeSource={RelativeSource TemplatedParent}}" />
+            </Grid>
+
+            <Border Name="PART_VerticalConnector"
+                    Grid.Row="1"
+                    Width="2"
+                    Margin="11,8,11,0"
+                    Background="{DynamicResource Luna.Brush.Border.Divider}"
+                    CornerRadius="{DynamicResource Luna.Radius.Circle}"
+                    IsVisible="{Binding ShowConnector, RelativeSource={RelativeSource TemplatedParent}}" />
+          </Grid>
+
+          <StackPanel Grid.Column="1"
+                      Spacing="4">
+            <Grid ColumnDefinitions="*,Auto"
+                  ColumnSpacing="{DynamicResource Luna.Spacing.2}">
+              <TextBlock Name="PART_Title"
+                         Text="{TemplateBinding Title}"
+                         TextWrapping="Wrap"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" />
+              <TextBlock Name="PART_TitleRight"
+                         Grid.Column="1"
+                         Text="{TemplateBinding TitleRight}"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                         HorizontalAlignment="Right"
+                         IsVisible="{Binding ShowTitleRight, RelativeSource={RelativeSource TemplatedParent}}" />
+            </Grid>
+
+            <TextBlock Name="PART_Content"
+                       Text="{TemplateBinding Content}"
+                       TextWrapping="Wrap"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                       IsVisible="{Binding ShowContent, RelativeSource={RelativeSource TemplatedParent}}" />
+
+            <ContentPresenter Name="PART_Extra"
+                              Content="{TemplateBinding Extra}"
+                              IsVisible="{Binding ShowExtra, RelativeSource={RelativeSource TemplatedParent}}" />
+          </StackPanel>
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="luna|StepItem:last">
+    <Setter Property="Margin" Value="0" />
+  </Style>
+
+  <Style Selector="luna|StepItem /template/ Border#PART_Indicator">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Component}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
+  </Style>
+
+  <Style Selector="luna|StepItem /template/ TextBlock#PART_Title">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Placeholder}" />
+  </Style>
+
+  <Style Selector="luna|StepItem /template/ Border#PART_HorizontalConnector">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Border.Divider}" />
+  </Style>
+
+  <Style Selector="luna|StepItem /template/ Border#PART_VerticalConnector">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Border.Divider}" />
+  </Style>
+
+  <Style Selector="luna|StepItem:process /template/ Border#PART_Indicator">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="luna|StepItem:process /template/ TextBlock#PART_IndexText">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Anti}" />
+  </Style>
+
+  <Style Selector="luna|StepItem:process /template/ TextBlock#PART_Title">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="luna|StepItem:process /template/ Border#PART_HorizontalConnector">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="luna|StepItem:process /template/ Border#PART_VerticalConnector">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="luna|StepItem:finish /template/ Border#PART_Indicator">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand.Light}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand.Light}" />
+  </Style>
+
+  <Style Selector="luna|StepItem:finish /template/ TextBlock#PART_Title">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
+  </Style>
+
+  <Style Selector="luna|StepItem:finish /template/ Border#PART_HorizontalConnector">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="luna|StepItem:finish /template/ Border#PART_VerticalConnector">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="luna|StepItem:error /template/ Border#PART_Indicator">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Error.Light}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Error.Light}" />
+  </Style>
+
+  <Style Selector="luna|StepItem:error /template/ TextBlock#PART_IndexText">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Error}" />
+  </Style>
+
+  <Style Selector="luna|StepItem:error /template/ TextBlock#PART_Title">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Error}" />
+  </Style>
+
+  <Style Selector="luna|StepItem:error /template/ Border#PART_HorizontalConnector">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Error}" />
+  </Style>
+
+  <Style Selector="luna|StepItem:error /template/ Border#PART_VerticalConnector">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Error}" />
+  </Style>
+
+  <Style Selector="luna|StepItem:dot /template/ Border#PART_Indicator">
+    <Setter Property="Width" Value="10" />
+    <Setter Property="Height" Value="10" />
+    <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Circle}" />
+    <Setter Property="BorderThickness" Value="1" />
+  </Style>
+
+  <Style Selector="luna|StepItem:dot:default /template/ Border#PART_Indicator">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
+  </Style>
+
+  <Style Selector="luna|StepItem:dot:process /template/ Border#PART_Indicator">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="luna|StepItem:dot:finish /template/ Border#PART_Indicator">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="luna|StepItem:dot:error /template/ Border#PART_Indicator">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Error}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Error}" />
+  </Style>
+</Styles>

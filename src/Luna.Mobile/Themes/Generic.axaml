@@ -3,6 +3,8 @@
         xmlns:luna="https://github.com/curryzxh/Luna">
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Button.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Fab.axaml" />
+  <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Footer.axaml" />
+  <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Guide.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/TextBox.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/ToggleSwitch.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/CheckBox.axaml" />
@@ -11,6 +13,7 @@
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/SearchBar.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/NavBar.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Stepper.axaml" />
+  <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Steps.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/BottomSheetShared.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/DateTimePicker.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Indexes.axaml" />
@@ -20,18 +23,27 @@
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Tag.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Divider.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Dialog.axaml" />
+  <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/DropdownMenu.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/ActionSheet.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Drawer.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Empty.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Loading.axaml" />
+  <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Link.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Message.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/NoticeBar.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Overlay.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Picker.axaml" />
+  <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/PullDownRefresh.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Rate.axaml" />
+  <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Skeleton.axaml" />
+  <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/SwipeCell.axaml" />
+  <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Progress.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Toast.axaml" />
+  <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Watermark.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Popover.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/ImageViewer.axaml" />
+  <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Slider.axaml" />
+  <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Segmented.axaml" />
 
   <Design.PreviewWith>
     <Border Padding="24">

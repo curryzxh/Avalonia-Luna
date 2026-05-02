@@ -1,0 +1,66 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Luna.Mobile.Controls"
+        xmlns:luna="https://github.com/curryzxh/Luna">
+  <Style Selector="luna|Skeleton">
+    <Setter Property="ClipToBounds" Value="True" />
+    <Setter Property="Template">
+      <ControlTemplate TargetType="luna:Skeleton">
+        <Grid>
+          <ContentPresenter Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            IsVisible="{TemplateBinding ShowContent}" />
+
+          <ItemsControl ItemsSource="{TemplateBinding ResolvedRows}"
+                        IsVisible="{TemplateBinding ShowSkeleton}">
+            <ItemsControl.ItemTemplate>
+              <DataTemplate x:DataType="controls:SkeletonRowLayout">
+                <Border Margin="{Binding Margin}"
+                        Padding="{Binding Padding}">
+                  <ItemsControl ItemsSource="{Binding Blocks}">
+                    <ItemsControl.ItemsPanel>
+                      <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" />
+                      </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                      <DataTemplate x:DataType="controls:SkeletonBlockLayout">
+                        <Border Width="{Binding Width}"
+                                Height="{Binding Height}"
+                                Margin="{Binding Margin}"
+                                CornerRadius="{Binding CornerRadius}"
+                                Background="{DynamicResource Luna.Brush.Background.Component}"
+                                Opacity="{Binding FlashedOpacity, RelativeSource={RelativeSource AncestorType=luna:Skeleton}}">
+                          <Grid ClipToBounds="True">
+                            <Border CornerRadius="{Binding CornerRadius}"
+                                    Background="{DynamicResource Luna.Brush.Background.Component}" />
+                            <Border CornerRadius="{Binding CornerRadius}"
+                                    IsVisible="{Binding ShowGradientAnimation, RelativeSource={RelativeSource AncestorType=luna:Skeleton}}">
+                              <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0"
+                                                     EndPoint="1,0">
+                                  <GradientStop Color="#00FFFFFF"
+                                                Offset="{Binding GradientLeadOffset, RelativeSource={RelativeSource AncestorType=luna:Skeleton}}" />
+                                  <GradientStop Color="#B3FFFFFF"
+                                                Offset="{Binding GradientCenterOffset, RelativeSource={RelativeSource AncestorType=luna:Skeleton}}" />
+                                  <GradientStop Color="#00FFFFFF"
+                                                Offset="{Binding GradientTrailOffset, RelativeSource={RelativeSource AncestorType=luna:Skeleton}}" />
+                                </LinearGradientBrush>
+                              </Border.Background>
+                            </Border>
+                          </Grid>
+                        </Border>
+                      </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                  </ItemsControl>
+                </Border>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>

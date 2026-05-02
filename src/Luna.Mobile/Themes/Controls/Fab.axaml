@@ -20,8 +20,7 @@
                 Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
-                CornerRadius="{TemplateBinding CornerRadius}"
-                BoxShadow="{DynamicResource Luna.Shadow.Floating}">
+                CornerRadius="{TemplateBinding CornerRadius}">
           <StackPanel Orientation="Horizontal"
                       Spacing="8"
                       HorizontalAlignment="Center"

@@ -53,11 +53,11 @@ public sealed class LoadingIndicator : Control
 
     /// <inheritdoc cref="Size" />
     public static readonly StyledProperty<double> SizeProperty =
-        AvaloniaProperty.Register<LoadingIndicator, double>(nameof(Size), 22);
+        AvaloniaProperty.Register<LoadingIndicator, double>(nameof(Size), 20);
 
     /// <inheritdoc cref="Duration" />
     public static readonly StyledProperty<TimeSpan> DurationProperty =
-        AvaloniaProperty.Register<LoadingIndicator, TimeSpan>(nameof(Duration), TimeSpan.FromMilliseconds(3000));
+        AvaloniaProperty.Register<LoadingIndicator, TimeSpan>(nameof(Duration), TimeSpan.FromMilliseconds(800));
 
     /// <inheritdoc cref="Foreground" />
     public static readonly StyledProperty<IBrush?> ForegroundProperty =
@@ -141,7 +141,12 @@ public sealed class LoadingIndicator : Control
             return;
         }
 
-        var bounds = new Rect(0, 0, size, size);
+        var availableWidth = Bounds.Width > 0 ? Bounds.Width : size;
+        var availableHeight = Bounds.Height > 0 ? Bounds.Height : size;
+        var drawSize = Math.Min(size, Math.Min(availableWidth, availableHeight));
+        var offsetX = (availableWidth - drawSize) / 2;
+        var offsetY = (availableHeight - drawSize) / 2;
+        var bounds = new Rect(offsetX, offsetY, drawSize, drawSize);
         var brush = Foreground ?? Brushes.Black;
 
         switch (Theme)
@@ -167,21 +172,40 @@ public sealed class LoadingIndicator : Control
 
     private void RenderCircular(DrawingContext context, Rect bounds, IBrush brush)
     {
-        var stroke = Math.Max(2, bounds.Width * 0.1);
+        var diameter = Math.Min(bounds.Width, bounds.Height);
+        var stroke = Math.Max(1.8, diameter * 0.085);
+        var radius = Math.Max(0, (diameter - stroke) / 2);
+        if (radius <= 0)
+        {
+            return;
+        }
+
         var center = bounds.Center;
-        var radius = (bounds.Width - stroke) / 2;
-        var circumference = 2 * Math.PI * radius;
-        var dash = new DashStyle([circumference * 0.75, circumference * 0.25], -_progress * circumference);
-        var pen = new Pen(brush, stroke, lineCap: PenLineCap.Round, dashStyle: dash);
-        context.DrawEllipse(null, pen, center, radius, radius);
+        var pen = new Pen(brush, stroke, lineCap: PenLineCap.Round);
+        const int segmentCount = 24;
+        var stepAngle = 360.0 / segmentCount;
+        var sweepAngle = stepAngle * 0.72;
+        var rotation = _progress * 360.0;
+
+        for (var i = 0; i < segmentCount; i++)
+        {
+            var opacity = 0.16 + 0.84 * ((i + 1) / (double)segmentCount);
+            var startAngle = -90 + rotation + i * stepAngle;
+            using (context.PushOpacity(opacity))
+            {
+                DrawArc(context, center, radius, startAngle, sweepAngle, pen);
+            }
+        }
     }
 
     private void RenderSpinner(DrawingContext context, Rect bounds, IBrush brush)
     {
         var center = bounds.Center;
-        var radius = bounds.Width / 2;
-        var lineLength = radius * 0.45;
-        var thickness = Math.Max(2, bounds.Width * 0.08);
+        var diameter = Math.Min(bounds.Width, bounds.Height);
+        var radius = diameter / 2;
+        var lineLength = radius * 0.34;
+        var innerOffset = radius * 0.28;
+        var thickness = Math.Max(1.4, diameter * 0.055);
         var count = 12;
         var head = (int)Math.Floor(_progress * count) % count;
         var pen = new Pen(brush, thickness, lineCap: PenLineCap.Round);
@@ -189,10 +213,10 @@ public sealed class LoadingIndicator : Control
         for (var i = 0; i < count; i++)
         {
             var t = (i - head + count) % count;
-            var opacity = 1.0 - t / (double)count;
+            var opacity = 0.18 + 0.82 * ((count - t) / (double)count);
             var angle = i * (Math.PI * 2 / count);
-            var p1 = new Point(center.X + (radius * 0.15) * Math.Cos(angle), center.Y + (radius * 0.15) * Math.Sin(angle));
-            var p2 = new Point(center.X + (radius * 0.15 + lineLength) * Math.Cos(angle), center.Y + (radius * 0.15 + lineLength) * Math.Sin(angle));
+            var p1 = new Point(center.X + innerOffset * Math.Cos(angle), center.Y + innerOffset * Math.Sin(angle));
+            var p2 = new Point(center.X + (innerOffset + lineLength) * Math.Cos(angle), center.Y + (innerOffset + lineLength) * Math.Sin(angle));
             using (context.PushOpacity(opacity))
             {
                 context.DrawLine(pen, p1, p2);
@@ -202,22 +226,61 @@ public sealed class LoadingIndicator : Control
 
     private void RenderDots(DrawingContext context, Rect bounds, IBrush brush)
     {
-        var dot = bounds.Width * 0.18;
-        var gap = bounds.Width * 0.12;
+        var diameter = Math.Min(bounds.Width, bounds.Height);
+        var dot = Math.Max(4, diameter * 0.16);
+        var gap = dot * 0.55;
         var total = dot * 3 + gap * 2;
         var startX = (bounds.Width - total) / 2;
         var y = bounds.Height / 2;
 
         for (var i = 0; i < 3; i++)
         {
-            var phase = (_progress + i * 0.15) % 1.0;
-            var opacity = 0.25 + 0.75 * Math.Sin(phase * Math.PI);
-            var rect = new Rect(startX + i * (dot + gap), y - dot / 2, dot, dot);
+            var phase = NormalizeProgress(_progress - i * 0.18);
+            var wave = 0.5 - 0.5 * Math.Cos(phase * Math.PI * 2);
+            var scale = 0.72 + 0.28 * wave;
+            var opacity = 0.28 + 0.72 * wave;
+            var scaledDot = dot * scale;
+            var x = startX + i * (dot + gap) + (dot - scaledDot) / 2;
+            var rect = new Rect(x, y - scaledDot / 2, scaledDot, scaledDot);
             using (context.PushOpacity(opacity))
             {
-                context.DrawEllipse(brush, null, rect.Center, dot / 2, dot / 2);
+                context.DrawEllipse(brush, null, rect.Center, scaledDot / 2, scaledDot / 2);
             }
         }
+    }
+
+    private static void DrawArc(DrawingContext context, Point center, double radius, double startAngle, double sweepAngle, Pen pen)
+    {
+        if (radius <= 0 || sweepAngle <= 0)
+        {
+            return;
+        }
+
+        var geometry = new StreamGeometry();
+        using (var geometryContext = geometry.Open())
+        {
+            var start = PointOnCircle(center, radius, startAngle);
+            var end = PointOnCircle(center, radius, startAngle + sweepAngle);
+            geometryContext.BeginFigure(start, false);
+            geometryContext.ArcTo(end, new Size(radius, radius), 0, sweepAngle > 180, SweepDirection.Clockwise);
+            geometryContext.EndFigure(false);
+        }
+
+        context.DrawGeometry(null, pen, geometry);
+    }
+
+    private static Point PointOnCircle(Point center, double radius, double angleDegrees)
+    {
+        var radians = angleDegrees * Math.PI / 180.0;
+        return new Point(
+            center.X + radius * Math.Cos(radians),
+            center.Y + radius * Math.Sin(radians));
+    }
+
+    private static double NormalizeProgress(double value)
+    {
+        value %= 1.0;
+        return value < 0 ? value + 1.0 : value;
     }
 
     private void UpdateProgress()
@@ -225,7 +288,7 @@ public sealed class LoadingIndicator : Control
         var duration = Duration.TotalSeconds;
         if (duration <= 0)
         {
-            duration = 3;
+            duration = 0.8;
         }
 
         var elapsedSeconds = (Stopwatch.GetTimestamp() - _startTimestamp) / (double)Stopwatch.Frequency;

@@ -1,0 +1,150 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:luna="https://github.com/curryzxh/Luna"
+             x:Class="Luna.Mobile.Sample.Views.SegmentedDemoView">
+  <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
+    <StackPanel Spacing="24" Margin="0,0,0,28">
+      <StackPanel Margin="16,0" Spacing="8">
+        <TextBlock Text="Segmented 分段控制器"
+                   FontSize="{DynamicResource Luna.FontSize.Title.Large}"
+                   FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+        <TextBlock Text="用于展示多个选项并允许用户选择其中单个选项。"
+                   FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                   TextWrapping="Wrap" />
+      </StackPanel>
+
+      <StackPanel Spacing="28">
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="01 组件类型"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="基础"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                  Margin="16,0"
+                  Padding="16">
+            <StackPanel Spacing="16">
+              <luna:Segmented SelectedIndex="0">
+                <luna:SegmentedItem Content="选项" Value="0" />
+                <luna:SegmentedItem Content="选项" Value="1" />
+                <luna:SegmentedItem Content="选项" Value="2" />
+              </luna:Segmented>
+
+              <luna:Segmented SelectedIndex="1">
+                <luna:SegmentedItem Content="选项" Value="0">
+                  <luna:SegmentedItem.Icon>
+                    <Path Width="14"
+                          Height="14"
+                          Data="M4 11.5L12 5L20 11.5V20H14V14H10V20H4V11.5Z"
+                          Fill="{DynamicResource Luna.Brush.Text.Secondary}"
+                          Stretch="Uniform" />
+                  </luna:SegmentedItem.Icon>
+                </luna:SegmentedItem>
+                <luna:SegmentedItem Content="选项" Value="1">
+                  <luna:SegmentedItem.Icon>
+                    <Path Width="14"
+                          Height="14"
+                          Data="M4 11.5L12 5L20 11.5V20H14V14H10V20H4V11.5Z"
+                          Fill="{DynamicResource Luna.Brush.Text.Secondary}"
+                          Stretch="Uniform" />
+                  </luna:SegmentedItem.Icon>
+                </luna:SegmentedItem>
+                <luna:SegmentedItem Content="选项" Value="2">
+                  <luna:SegmentedItem.Icon>
+                    <Path Width="14"
+                          Height="14"
+                          Data="M4 11.5L12 5L20 11.5V20H14V14H10V20H4V11.5Z"
+                          Fill="{DynamicResource Luna.Brush.Text.Secondary}"
+                          Stretch="Uniform" />
+                  </luna:SegmentedItem.Icon>
+                </luna:SegmentedItem>
+              </luna:Segmented>
+            </StackPanel>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="自适应宽度"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                  Margin="16,0"
+                  Padding="16">
+            <StackPanel Spacing="16">
+              <luna:Segmented Block="True"
+                              SelectedIndex="0"
+                              HorizontalAlignment="Stretch">
+                <luna:SegmentedItem Content="选项" Value="0" />
+                <luna:SegmentedItem Content="选项" Value="1" />
+                <luna:SegmentedItem Content="选项" Value="2" />
+              </luna:Segmented>
+
+              <luna:Segmented Block="True"
+                              SelectedIndex="2"
+                              HorizontalAlignment="Stretch">
+                <luna:SegmentedItem Content="选项" Value="0">
+                  <luna:SegmentedItem.Icon>
+                    <Path Width="14"
+                          Height="14"
+                          Data="M4 11.5L12 5L20 11.5V20H14V14H10V20H4V11.5Z"
+                          Fill="{DynamicResource Luna.Brush.Text.Secondary}"
+                          Stretch="Uniform" />
+                  </luna:SegmentedItem.Icon>
+                </luna:SegmentedItem>
+                <luna:SegmentedItem Content="选项" Value="1">
+                  <luna:SegmentedItem.Icon>
+                    <Path Width="14"
+                          Height="14"
+                          Data="M4 11.5L12 5L20 11.5V20H14V14H10V20H4V11.5Z"
+                          Fill="{DynamicResource Luna.Brush.Text.Secondary}"
+                          Stretch="Uniform" />
+                  </luna:SegmentedItem.Icon>
+                </luna:SegmentedItem>
+                <luna:SegmentedItem Content="选项" Value="2">
+                  <luna:SegmentedItem.Icon>
+                    <Path Width="14"
+                          Height="14"
+                          Data="M4 11.5L12 5L20 11.5V20H14V14H10V20H4V11.5Z"
+                          Fill="{DynamicResource Luna.Brush.Text.Secondary}"
+                          Stretch="Uniform" />
+                  </luna:SegmentedItem.Icon>
+                </luna:SegmentedItem>
+              </luna:Segmented>
+            </StackPanel>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="02 组件状态"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="控制器状态"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                  Margin="16,0"
+                  Padding="16">
+            <luna:Segmented SelectedIndex="0">
+              <luna:SegmentedItem Content="选中" Value="0" />
+              <luna:SegmentedItem Content="默认" Value="1" />
+              <luna:SegmentedItem Content="禁用" Value="2" IsEnabled="False" />
+            </luna:Segmented>
+          </Border>
+        </StackPanel>
+      </StackPanel>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

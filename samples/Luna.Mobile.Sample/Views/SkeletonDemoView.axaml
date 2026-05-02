@@ -1,0 +1,152 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:luna="https://github.com/curryzxh/Luna"
+             x:Class="Luna.Mobile.Sample.Views.SkeletonDemoView">
+  <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
+    <StackPanel Spacing="24" Margin="0,0,0,28">
+      <StackPanel Margin="16,0" Spacing="8">
+        <TextBlock Text="Skeleton 骨架屏"
+                   FontSize="{DynamicResource Luna.FontSize.Title.Large}"
+                   FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+        <TextBlock Text="用于等待加载内容所展示的占位图形组合，有动态效果加载效果，减少用户等待焦虑。"
+                   FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                   TextWrapping="Wrap" />
+      </StackPanel>
+
+      <StackPanel Spacing="28">
+        <StackPanel Spacing="16">
+          <TextBlock Text="01 类型"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+
+          <StackPanel Margin="16,0" Spacing="8">
+            <TextBlock Text="头像骨架屏"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                    Padding="16">
+              <luna:Skeleton Theme="Avatar" />
+            </Border>
+          </StackPanel>
+
+          <StackPanel Margin="16,0" Spacing="8">
+            <TextBlock Text="图片骨架屏"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                    Padding="16">
+              <luna:Skeleton Theme="Image"
+                             HorizontalAlignment="Stretch" />
+            </Border>
+          </StackPanel>
+
+          <StackPanel Margin="16,0" Spacing="8">
+            <TextBlock Text="文本骨架屏"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                    Padding="16">
+              <luna:Skeleton Theme="Text"
+                             HorizontalAlignment="Stretch" />
+            </Border>
+          </StackPanel>
+
+          <StackPanel Margin="16,0" Spacing="8">
+            <TextBlock Text="段落骨架屏"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                    Padding="16">
+              <luna:Skeleton Theme="Paragraph"
+                             HorizontalAlignment="Stretch" />
+            </Border>
+          </StackPanel>
+
+          <StackPanel Margin="16,0" Spacing="8">
+            <TextBlock Text="单元格骨架屏"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                    Padding="16">
+              <StackPanel Spacing="16">
+                <luna:Skeleton x:Name="CellAvatarSkeleton"
+                               Theme="Custom"
+                               HorizontalAlignment="Stretch" />
+                <luna:Skeleton x:Name="CellImageSkeleton"
+                               Theme="Custom"
+                               HorizontalAlignment="Stretch" />
+              </StackPanel>
+            </Border>
+          </StackPanel>
+
+          <StackPanel Margin="16,0" Spacing="8">
+            <TextBlock Text="宫格骨架屏"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                    Padding="16">
+              <luna:Skeleton x:Name="GridSkeleton"
+                             Theme="Custom"
+                             HorizontalAlignment="Stretch" />
+            </Border>
+          </StackPanel>
+
+          <StackPanel Margin="16,0" Spacing="8">
+            <TextBlock Text="图文组合骨架屏"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                    Padding="16">
+              <StackPanel Orientation="Horizontal"
+                          HorizontalAlignment="Stretch"
+                          Spacing="14">
+                <luna:Skeleton x:Name="ImageGroupLeftSkeleton"
+                               Theme="Custom"
+                               Width="163" />
+                <luna:Skeleton x:Name="ImageGroupRightSkeleton"
+                               Theme="Custom"
+                               Width="163" />
+              </StackPanel>
+            </Border>
+          </StackPanel>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="02 组件动效"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+
+          <StackPanel Margin="16,0" Spacing="8">
+            <TextBlock Text="渐变加载效果"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                    Padding="16">
+              <luna:Skeleton Theme="Paragraph"
+                             Animation="Gradient"
+                             HorizontalAlignment="Stretch" />
+            </Border>
+          </StackPanel>
+
+          <StackPanel Margin="16,0" Spacing="8">
+            <TextBlock Text="闪烁加载效果"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                    Padding="16">
+              <luna:Skeleton Theme="Paragraph"
+                             Animation="Flashed"
+                             HorizontalAlignment="Stretch" />
+            </Border>
+          </StackPanel>
+        </StackPanel>
+      </StackPanel>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

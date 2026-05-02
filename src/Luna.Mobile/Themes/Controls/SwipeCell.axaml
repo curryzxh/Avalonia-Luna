@@ -1,0 +1,34 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:luna="https://github.com/curryzxh/Luna">
+  <Style Selector="luna|SwipeCell">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid ClipToBounds="True">
+          <Border Name="PART_LeftActions"
+                  HorizontalAlignment="Left"
+                  Background="Transparent">
+            <ContentPresenter Name="PART_LeftPresenter"
+                              Content="{TemplateBinding Left}"
+                              VerticalAlignment="Stretch"
+                              IsVisible="{Binding HasLeft, RelativeSource={RelativeSource TemplatedParent}}" />
+          </Border>
+          <Border Name="PART_RightActions"
+                  HorizontalAlignment="Right"
+                  Background="Transparent">
+            <ContentPresenter Name="PART_RightPresenter"
+                              Content="{TemplateBinding Right}"
+                              VerticalAlignment="Stretch"
+                              IsVisible="{Binding HasRight, RelativeSource={RelativeSource TemplatedParent}}" />
+          </Border>
+          <Border Name="PART_ContentHost"
+                  Background="{TemplateBinding Background}">
+            <ContentPresenter Content="{TemplateBinding Content}"
+                              ContentTemplate="{TemplateBinding ContentTemplate}" />
+          </Border>
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>

@@ -25,6 +25,7 @@
               <luna:LoadingIndicator Theme="{TemplateBinding Theme}"
                                          Size="{TemplateBinding Size}"
                                          Duration="{TemplateBinding Duration}"
+                                         HorizontalAlignment="Center"
                                          IsVisible="{TemplateBinding Indicator}" />
               <TextBlock Text="{TemplateBinding Text}"
                          IsVisible="{TemplateBinding ShowText}"
@@ -45,6 +46,7 @@
               <luna:LoadingIndicator Theme="{TemplateBinding Theme}"
                                          Size="{TemplateBinding Size}"
                                          Duration="{TemplateBinding Duration}"
+                                         HorizontalAlignment="Center"
                                          IsVisible="{TemplateBinding Indicator}" />
               <TextBlock Text="{TemplateBinding Text}"
                          Foreground="{DynamicResource Luna.Brush.Text.Secondary}"

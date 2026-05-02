@@ -1,0 +1,382 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:luna="https://github.com/curryzxh/Luna"
+             xmlns:vm="using:Luna.Mobile.Sample.ViewModels"
+             x:Class="Luna.Mobile.Sample.Views.SwipeCellDemoView"
+             x:DataType="vm:SwipeCellDemoViewModel">
+  <UserControl.Styles>
+    <Style Selector="Button.swipe-action">
+      <Setter Property="Width" Value="72" />
+      <Setter Property="MinWidth" Value="72" />
+      <Setter Property="Padding" Value="0" />
+      <Setter Property="BorderThickness" Value="0" />
+      <Setter Property="CornerRadius" Value="0" />
+      <Setter Property="Foreground" Value="White" />
+      <Setter Property="Background" Value="#4B5563" />
+      <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Small}" />
+      <Setter Property="FontWeight" Value="{DynamicResource Luna.FontWeight.SemiBold}" />
+      <Setter Property="HorizontalContentAlignment" Value="Center" />
+      <Setter Property="VerticalContentAlignment" Value="Center" />
+      <Setter Property="VerticalAlignment" Value="Stretch" />
+    </Style>
+    <Style Selector="Button.swipe-action.favor">
+      <Setter Property="Background" Value="#A7A7A7" />
+    </Style>
+    <Style Selector="Button.swipe-action.edit">
+      <Setter Property="Background" Value="#ED7B2F" />
+    </Style>
+    <Style Selector="Button.swipe-action.delete">
+      <Setter Property="Background" Value="#E34D59" />
+    </Style>
+    <Style Selector="Button.swipe-action.confirm">
+      <Setter Property="Width" Value="88" />
+      <Setter Property="MinWidth" Value="88" />
+      <Setter Property="Background" Value="#C93545" />
+    </Style>
+    <Style Selector="Button.swipe-action.compact">
+      <Setter Property="Width" Value="64" />
+      <Setter Property="MinWidth" Value="64" />
+    </Style>
+  </UserControl.Styles>
+
+  <Grid>
+    <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
+      <StackPanel Spacing="24" Margin="0,0,0,28">
+        <StackPanel Margin="16,0" Spacing="8">
+          <TextBlock Text="SwipeCell 滑动操作"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Large}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+          <TextBlock Text="用来承载列表中的更多操作，通过左右滑动来展示，按钮宽度固定，高度随列表项变化。"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                     TextWrapping="Wrap" />
+        </StackPanel>
+
+        <StackPanel Spacing="28">
+          <StackPanel Spacing="16">
+            <StackPanel Margin="16,0" Spacing="4">
+              <TextBlock Text="01 左滑操作"
+                         FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                         FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+              <TextBlock Text="支持左滑后展示单个或多个操作按钮。"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            </StackPanel>
+            <luna:CellGroup>
+              <StackPanel>
+                <luna:SwipeCell OpenMode="Right">
+                  <luna:SwipeCell.Right>
+                    <Button Classes="swipe-action delete"
+                            Content="删除"
+                            Click="OnDeleteClick" />
+                  </luna:SwipeCell.Right>
+                  <luna:Cell Title="左滑单操作"
+                             RightText="辅助信息"
+                             ShowArrow="False" />
+                </luna:SwipeCell>
+
+                <luna:SwipeCell OpenMode="Right">
+                  <luna:SwipeCell.Right>
+                    <Button Classes="swipe-action delete"
+                            Content="删除"
+                            Click="OnDeleteClick" />
+                  </luna:SwipeCell.Right>
+                  <luna:Cell Title="左滑单操作"
+                             Description="这是一段较长的描述文字，用于验证操作区高度随内容变化。"
+                             RightText="辅助信息"
+                             ShowArrow="False" />
+                </luna:SwipeCell>
+
+                <luna:SwipeCell OpenMode="Right">
+                  <luna:SwipeCell.Right>
+                    <Grid ColumnDefinitions="72,72">
+                      <Button Grid.Column="0"
+                              Classes="swipe-action favor"
+                              Content="收藏"
+                              Click="OnFavoriteClick" />
+                      <Button Grid.Column="1"
+                              Classes="swipe-action edit"
+                              Content="编辑"
+                              Click="OnEditClick" />
+                    </Grid>
+                  </luna:SwipeCell.Right>
+                  <luna:Cell Title="左滑双操作"
+                             RightText="辅助信息"
+                             ShowArrow="False" />
+                </luna:SwipeCell>
+
+                <luna:SwipeCell OpenMode="Right">
+                  <luna:SwipeCell.Right>
+                    <Grid ColumnDefinitions="72,72,72">
+                      <Button Grid.Column="0"
+                              Classes="swipe-action favor"
+                              Content="收藏"
+                              Click="OnFavoriteClick" />
+                      <Button Grid.Column="1"
+                              Classes="swipe-action edit"
+                              Content="编辑"
+                              Click="OnEditClick" />
+                      <Button Grid.Column="2"
+                              Classes="swipe-action delete"
+                              Content="删除"
+                              Click="OnDeleteClick" />
+                    </Grid>
+                  </luna:SwipeCell.Right>
+                  <luna:Cell Title="左滑三操作"
+                             RightText="辅助信息"
+                             ShowArrow="False" />
+                </luna:SwipeCell>
+              </StackPanel>
+            </luna:CellGroup>
+          </StackPanel>
+
+          <StackPanel Spacing="16">
+            <StackPanel Margin="16,0" Spacing="4">
+              <TextBlock Text="02 右滑操作"
+                         FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                         FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+              <TextBlock Text="支持从右向左拖拽，展示左侧操作按钮。"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            </StackPanel>
+            <luna:CellGroup>
+              <StackPanel>
+                <luna:SwipeCell OpenMode="Left">
+                  <luna:SwipeCell.Left>
+                    <Button Classes="swipe-action favor"
+                            Content="选择"
+                            Click="OnFavoriteClick" />
+                  </luna:SwipeCell.Left>
+                  <luna:Cell Title="右滑单操作"
+                             RightText="辅助信息"
+                             ShowArrow="False" />
+                </luna:SwipeCell>
+              </StackPanel>
+            </luna:CellGroup>
+          </StackPanel>
+
+          <StackPanel Spacing="16">
+            <StackPanel Margin="16,0" Spacing="4">
+              <TextBlock Text="03 双侧滑动"
+                         FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                         FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+              <TextBlock Text="同一个单元格可同时提供左右两侧操作。"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            </StackPanel>
+            <luna:CellGroup>
+              <StackPanel>
+                <luna:SwipeCell OpenMode="Right">
+                  <luna:SwipeCell.Left>
+                    <Button Classes="swipe-action favor"
+                            Content="选择"
+                            Click="OnFavoriteClick" />
+                  </luna:SwipeCell.Left>
+                  <luna:SwipeCell.Right>
+                    <Grid ColumnDefinitions="72,72">
+                      <Button Grid.Column="0"
+                              Classes="swipe-action favor"
+                              Content="收藏"
+                              Click="OnFavoriteClick" />
+                      <Button Grid.Column="1"
+                              Classes="swipe-action delete"
+                              Content="删除"
+                              Click="OnDeleteClick" />
+                    </Grid>
+                  </luna:SwipeCell.Right>
+                  <luna:Cell Title="双侧滑动操作"
+                             RightText="辅助信息"
+                             ShowArrow="False" />
+                </luna:SwipeCell>
+              </StackPanel>
+            </luna:CellGroup>
+          </StackPanel>
+
+          <StackPanel Spacing="16">
+            <StackPanel Margin="16,0" Spacing="4">
+              <TextBlock Text="04 图标操作"
+                         FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                         FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+              <TextBlock Text="支持图标加文字、纯图标与纵向排列操作。"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            </StackPanel>
+            <luna:CellGroup>
+              <StackPanel>
+                <luna:SwipeCell OpenMode="Right">
+                  <luna:SwipeCell.Right>
+                    <Grid ColumnDefinitions="72,72">
+                      <Button Grid.Column="0"
+                              Classes="swipe-action edit"
+                              Click="OnEditClick">
+                        <StackPanel Orientation="Horizontal"
+                                    Spacing="6"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+                          <Path Width="14"
+                                Height="14"
+                                Data="M4 16L7.5 15.2L16.8 5.9L14.1 3.2L4.8 12.5L4 16Z M12.9 4.4L15.6 7.1"
+                                Fill="White"
+                                Stretch="Uniform" />
+                          <TextBlock Text="编辑"
+                                     Foreground="White" />
+                        </StackPanel>
+                      </Button>
+                      <Button Grid.Column="1"
+                              Classes="swipe-action delete"
+                              Click="OnDeleteClick">
+                        <StackPanel Orientation="Horizontal"
+                                    Spacing="6"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+                          <Path Width="14"
+                                Height="14"
+                                Data="M5 6H15V17H5V6Z M3 4H17V6H3V4Z M7 2H13V4H7V2Z"
+                                Fill="White"
+                                Stretch="Uniform" />
+                          <TextBlock Text="删除"
+                                     Foreground="White" />
+                        </StackPanel>
+                      </Button>
+                    </Grid>
+                  </luna:SwipeCell.Right>
+                  <luna:Cell Title="图标加文字横排"
+                             RightText="辅助信息"
+                             ShowArrow="False" />
+                </luna:SwipeCell>
+
+                <luna:SwipeCell OpenMode="Right">
+                  <luna:SwipeCell.Right>
+                    <Grid ColumnDefinitions="64,64">
+                      <Button Grid.Column="0"
+                              Classes="swipe-action edit compact"
+                              Click="OnEditClick">
+                        <Path Width="16"
+                              Height="16"
+                              Data="M4 16L7.5 15.2L16.8 5.9L14.1 3.2L4.8 12.5L4 16Z M12.9 4.4L15.6 7.1"
+                              Fill="White"
+                              Stretch="Uniform" />
+                      </Button>
+                      <Button Grid.Column="1"
+                              Classes="swipe-action delete compact"
+                              Click="OnDeleteClick">
+                        <Path Width="16"
+                              Height="16"
+                              Data="M5 6H15V17H5V6Z M3 4H17V6H3V4Z M7 2H13V4H7V2Z"
+                              Fill="White"
+                              Stretch="Uniform" />
+                      </Button>
+                    </Grid>
+                  </luna:SwipeCell.Right>
+                  <luna:Cell Title="纯图标"
+                             RightText="辅助信息"
+                             ShowArrow="False" />
+                </luna:SwipeCell>
+
+                <luna:SwipeCell OpenMode="Right">
+                  <luna:SwipeCell.Right>
+                    <Grid ColumnDefinitions="72,72">
+                      <Button Grid.Column="0"
+                              Classes="swipe-action edit"
+                              Click="OnEditClick">
+                        <StackPanel Spacing="4"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+                          <Path Width="16"
+                                Height="16"
+                                Data="M4 16L7.5 15.2L16.8 5.9L14.1 3.2L4.8 12.5L4 16Z M12.9 4.4L15.6 7.1"
+                                Fill="White"
+                                Stretch="Uniform" />
+                          <TextBlock Text="编辑"
+                                     Foreground="White"
+                                     HorizontalAlignment="Center" />
+                        </StackPanel>
+                      </Button>
+                      <Button Grid.Column="1"
+                              Classes="swipe-action delete"
+                              Click="OnDeleteClick">
+                        <StackPanel Spacing="4"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+                          <Path Width="16"
+                                Height="16"
+                                Data="M5 6H15V17H5V6Z M3 4H17V6H3V4Z M7 2H13V4H7V2Z"
+                                Fill="White"
+                                Stretch="Uniform" />
+                          <TextBlock Text="删除"
+                                     Foreground="White"
+                                     HorizontalAlignment="Center" />
+                        </StackPanel>
+                      </Button>
+                    </Grid>
+                  </luna:SwipeCell.Right>
+                  <luna:Cell Title="图标加文字竖排"
+                             Description="这是一段较长的描述文字，用于验证操作区高度随内容变化。"
+                             RightText="辅助信息"
+                             ShowArrow="False" />
+                </luna:SwipeCell>
+              </StackPanel>
+            </luna:CellGroup>
+          </StackPanel>
+
+          <StackPanel Spacing="16">
+            <StackPanel Margin="16,0" Spacing="4">
+              <TextBlock Text="05 事件确认"
+                         FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                         FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+              <TextBlock Text="支持双侧操作区，并通过外部事件处理二次确认与关闭逻辑。"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            </StackPanel>
+            <luna:CellGroup>
+              <StackPanel>
+                <luna:SwipeCell Name="EventSwipeCell"
+                                OpenMode="Right">
+                  <luna:SwipeCell.Left>
+                    <Grid ColumnDefinitions="72,72">
+                      <Button Grid.Column="0"
+                              Classes="swipe-action edit"
+                              Content="编辑"
+                              Click="OnEditClick" />
+                      <Button Grid.Column="1"
+                              Classes="swipe-action delete"
+                              Content="删除"
+                              Click="OnDeleteClick" />
+                    </Grid>
+                  </luna:SwipeCell.Left>
+                  <luna:SwipeCell.Right>
+                    <Grid ColumnDefinitions="72,72,88">
+                      <Button Grid.Column="0"
+                              Classes="swipe-action edit"
+                              Content="编辑"
+                              Click="OnEditClick" />
+                      <Button Grid.Column="1"
+                              Classes="swipe-action delete"
+                              Content="删除"
+                              Click="OnDeleteClick" />
+                      <Button Grid.Column="2"
+                              Classes="swipe-action confirm"
+                              Content="确认删除"
+                              Click="OnConfirmDeleteClick" />
+                    </Grid>
+                  </luna:SwipeCell.Right>
+                  <luna:Cell Title="带二次确认的操作"
+                             RightText="辅助信息"
+                             ShowArrow="False" />
+                </luna:SwipeCell>
+              </StackPanel>
+            </luna:CellGroup>
+          </StackPanel>
+        </StackPanel>
+      </StackPanel>
+    </ScrollViewer>
+
+    <luna:ToastHost Name="ToastHost" />
+  </Grid>
+</UserControl>

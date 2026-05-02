@@ -182,8 +182,8 @@
                        Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
           </StackPanel>
 
-          <StackPanel Margin="16,0" Spacing="12">
-            <Expander Classes="card"
+          <StackPanel Margin="16,0">
+            <Expander
                       IsExpanded="True">
               <Expander.Header>
                 <TextBlock Text="折叠面板标题"
@@ -196,7 +196,7 @@
                          TextWrapping="Wrap" />
             </Expander>
 
-            <Expander Classes="card">
+            <Expander>
               <Expander.Header>
                 <TextBlock Text="折叠面板标题"
                            FontSize="{DynamicResource Luna.FontSize.Body.Large}"
@@ -208,7 +208,7 @@
                          TextWrapping="Wrap" />
             </Expander>
 
-            <Expander Classes="card">
+            <Expander>
               <Expander.Header>
                 <TextBlock Text="折叠面板标题"
                            FontSize="{DynamicResource Luna.FontSize.Body.Large}"

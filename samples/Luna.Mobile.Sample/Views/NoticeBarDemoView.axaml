@@ -7,120 +7,119 @@
   <Grid>
     <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
       <StackPanel Spacing="24" Margin="0,0,0,28">
-      
-      <StackPanel Margin="16,0" Spacing="8">
-        <TextBlock Text="NoticeBar 公告栏"
-                   FontSize="{DynamicResource Luna.FontSize.Title.Large}"
-                   FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
-                   Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
-        <TextBlock Text="在导航栏下方，用于给用户显示提示消息。"
-                   FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
-                   Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
-                   TextWrapping="Wrap" />
-      </StackPanel>
-
-      <StackPanel Spacing="28">
-        <StackPanel Spacing="16">
-          <TextBlock Text="01 组件类型"
-                     Margin="16,0"
-                     FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+        <StackPanel Margin="16,0" Spacing="8">
+          <TextBlock Text="NoticeBar 公告栏"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Large}"
                      FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
                      Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
-
-          <StackPanel Margin="16,0" Spacing="16">
-            <TextBlock Text="纯文字的公告栏"
-                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
-                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-            <luna:NoticeBar Content="这是一条普通的通知消息"
-                                ShowIcon="False" />
-
-            <TextBlock Text="带图标静态公告栏"
-                       Margin="0,6,0,0"
-                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
-                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-            <luna:NoticeBar Content="提示文字描述提示文字描述提示文字描述" />
-
-            <TextBlock Text="带关闭的公告栏"
-                       Margin="0,6,0,0"
-                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
-                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-            <luna:NoticeBar Name="CloseNotice"
-                                Content="这是一条普通的通知信息"
-                                ShowClose="True"
-                                CloseRequested="OnCloseNoticeCloseRequested" />
-
-            <TextBlock Text="带入口的公告栏"
-                       Margin="0,6,0,0"
-                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
-                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-            <luna:NoticeBar Content="这是一条普通的消息通知"
-                                SuffixGlyph="›"
-                                PointerPressed="OnEntrancePressed" />
-
-            <TextBlock Text="自定样式的公告栏"
-                       Margin="0,6,0,0"
-                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
-                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-            <luna:NoticeBar Classes="cover"
-                                Content="提示文字描述提示文字描述提示文字描述"
-                                PrefixGlyph="♪"
-                                SuffixGlyph="›" />
-
-            <TextBlock Text="自定义内容的公告栏"
-                       Margin="0,6,0,0"
-                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
-                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-            <luna:NoticeBar Name="CustomNotice"
-                                Content="提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述"
-                                OperationText="详情"
-                                SuffixGlyph="×"
-                                SuffixRequested="OnCustomSuffixRequested" />
-          </StackPanel>
+          <TextBlock Text="在导航栏下方，用于给用户显示提示消息。"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                     TextWrapping="Wrap" />
         </StackPanel>
 
-        <StackPanel Spacing="16">
-          <StackPanel Margin="16,0" Spacing="4">
-            <TextBlock Text="02 组件状态"
-                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
-                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
-                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
-            <TextBlock Text="公告栏类型有普通（info）、警示（warning）、成功（success）、错误（error）"
-                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
-                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
-                       TextWrapping="Wrap" />
-          </StackPanel>
-          <StackPanel Margin="16,0" Spacing="16">
-            <luna:NoticeBar Content="默认状态公告栏默认状态公告栏" Theme="Info" />
-            <luna:NoticeBar Content="成功状态公告栏成功状态公告栏" Theme="Success" />
-            <luna:NoticeBar Content="警示状态公告栏警示状态公告栏" Theme="Warning" />
-            <luna:NoticeBar Content="错误状态公告栏错误状态公告栏" Theme="Error" />
-          </StackPanel>
-        </StackPanel>
+        <StackPanel Spacing="28">
+          <StackPanel Spacing="16">
+            <StackPanel Margin="16,0" Spacing="4">
+              <TextBlock Text="01 组件类型"
+                         FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                         FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+              <TextBlock Text="纯文字的公告栏"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            </StackPanel>
 
-        <StackPanel Spacing="16">
-          <StackPanel Margin="16,0" Spacing="4">
-            <TextBlock Text="03 可滚动的公告栏"
-                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
-                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
-                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
-            <TextBlock Text="可滚动公告栏有水平 (horizontal) 和垂直 (vertical)"
-                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
-                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
-                       TextWrapping="Wrap" />
+            <StackPanel Margin="16,0" Spacing="16">
+              <luna:NoticeBar Content="这是一条普通的通知消息"
+                              ShowIcon="False" />
+
+              <TextBlock Text="带图标静态公告栏"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+              <luna:NoticeBar Content="提示文字描述提示文字描述提示文字描述" />
+
+              <TextBlock Text="带关闭的公告栏"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+              <luna:NoticeBar Name="CloseNotice"
+                              Content="这是一条普通的通知信息"
+                              ShowClose="True"
+                              CloseRequested="OnCloseNoticeCloseRequested" />
+
+              <TextBlock Text="带入口的公告栏"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+              <luna:NoticeBar Content="这是一条普通的消息通知"
+                              SuffixGlyph="›"
+                              PointerPressed="OnEntrancePressed" />
+
+              <TextBlock Text="自定样式的公告栏"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+              <luna:NoticeBar Classes="cover"
+                              Content="提示文字描述提示文字描述提示文字描述"
+                              PrefixGlyph="♪"
+                              SuffixGlyph="›" />
+
+              <TextBlock Text="自定义内容的公告栏"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+              <luna:NoticeBar Name="CustomNotice"
+                              Content="提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述"
+                              OperationText="详情"
+                              SuffixGlyph="×"
+                              SuffixRequested="OnCustomSuffixRequested" />
+            </StackPanel>
           </StackPanel>
-          <StackPanel Margin="16,0" Spacing="16">
-            <luna:NoticeBar Content="提示文字描述提示文字描述提示文字描述提示文字描述文"
-                                ShowIcon="False"
-                                Marquee="True" />
-            <luna:NoticeBar Content="提示文字描述提示文字描述提示文字描述提示文字描述文"
-                                Marquee="True" />
-            <luna:NoticeBar Name="VerticalNotice"
-                                PrefixGlyph="♪"
-                                Marquee="True"
-                                Direction="Vertical" />
+
+          <StackPanel Spacing="16">
+            <StackPanel Margin="16,0" Spacing="4">
+              <TextBlock Text="02 组件状态"
+                         FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                         FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+              <TextBlock Text="公告栏类型有普通（info）、警示（warning）、成功（success）、错误（error）"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                         TextWrapping="Wrap" />
+            </StackPanel>
+            <StackPanel Margin="16,0" Spacing="16">
+              <luna:NoticeBar Content="默认状态公告栏默认状态公告栏"
+                              Theme="Info" />
+              <luna:NoticeBar Content="成功状态公告栏成功状态公告栏"
+                              Theme="Success" />
+              <luna:NoticeBar Content="警示状态公告栏警示状态公告栏"
+                              Theme="Warning" />
+              <luna:NoticeBar Content="错误状态公告栏错误状态公告栏"
+                              Theme="Error" />
+            </StackPanel>
+          </StackPanel>
+
+          <StackPanel Spacing="16">
+            <StackPanel Margin="16,0" Spacing="4">
+              <TextBlock Text="03 可滚动的公告栏"
+                         FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                         FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+              <TextBlock Text="可滚动公告栏有水平 (horizontal) 和垂直 (vertical)"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                         TextWrapping="Wrap" />
+            </StackPanel>
+            <StackPanel Margin="16,0" Spacing="16">
+              <luna:NoticeBar Content="提示文字描述提示文字描述提示文字描述提示文字描述文"
+                              ShowIcon="False"
+                              Marquee="True" />
+              <luna:NoticeBar Content="提示文字描述提示文字描述提示文字描述提示文字描述文"
+                              Marquee="True" />
+              <luna:NoticeBar Name="VerticalNotice"
+                              PrefixGlyph="♪"
+                              Marquee="True"
+                              Direction="Vertical" />
+            </StackPanel>
           </StackPanel>
         </StackPanel>
-      </StackPanel>
       </StackPanel>
     </ScrollViewer>
     <luna:ToastHost Name="ToastHost" />

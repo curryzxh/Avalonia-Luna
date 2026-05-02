@@ -26,14 +26,14 @@
                     Grid.Column="1"
                     ClipToBounds="True"
                     VerticalAlignment="Center">
-              <Canvas>
+              <Grid>
                 <TextBlock Name="PART_ContentText"
-                           Text="{TemplateBinding Content}"
-                           Foreground="{TemplateBinding Foreground}"
+                           Text="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}"
+                           Foreground="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}"
                            FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
                            TextWrapping="NoWrap"
                            VerticalAlignment="Center" />
-              </Canvas>
+              </Grid>
             </Border>
 
             <Button Name="PART_OperationButton"

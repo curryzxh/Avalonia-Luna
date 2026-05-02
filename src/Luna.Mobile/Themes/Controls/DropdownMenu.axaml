@@ -5,7 +5,7 @@
     <Setter Property="HorizontalAlignment" Value="Stretch" />
     <Setter Property="Template">
       <ControlTemplate>
-        <Grid ClipToBounds="False">
+        <Panel ClipToBounds="False">
           <Border Background="{DynamicResource Luna.Brush.Background.Container}"
                   BorderBrush="{DynamicResource Luna.Brush.Border.Subtle}"
                   BorderThickness="0,0,0,1">
@@ -13,22 +13,26 @@
                   ColumnDefinitions="*" />
           </Border>
 
-          <Grid IsVisible="{TemplateBinding OverlayVisible}"
-                Panel.ZIndex="100">
-            <luna:Overlay Name="PART_Overlay"
-                          Visible="{TemplateBinding OverlayVisible}">
+          <Popup Name="PART_Popup"
+                 IsLightDismissEnabled="False"
+                 PlacementTarget="{TemplateBinding}">
+            <Grid Name="PART_PopupRoot"
+                  Width="{Binding Bounds.Width, RelativeSource={RelativeSource TemplatedParent}}">
+              <Border Name="PART_Backdrop"
+                      Background="{DynamicResource Luna.Brush.Mask}" />
               <Border Name="PART_PanelBorder"
                       Background="{DynamicResource Luna.Brush.Background.Container}"
                       BorderBrush="{DynamicResource Luna.Brush.Border.Subtle}"
                       BorderThickness="0,0,0,1"
+                      ClipToBounds="True"
                       MaxHeight="360"
                       HorizontalAlignment="Stretch"
                       VerticalAlignment="Top">
                 <ContentPresenter Name="PART_PanelHost" />
               </Border>
-            </luna:Overlay>
-          </Grid>
-        </Grid>
+            </Grid>
+          </Popup>
+        </Panel>
       </ControlTemplate>
     </Setter>
   </Style>

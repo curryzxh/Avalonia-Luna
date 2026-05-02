@@ -1,0 +1,199 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Luna.Mobile.Sample.Views.CollapseDemoView">
+  <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
+    <StackPanel Spacing="24" Margin="0,0,0,28">
+      <StackPanel Margin="16,0" Spacing="8">
+        <TextBlock Text="Collapse 折叠面板"
+                   FontSize="{DynamicResource Luna.FontSize.Title.Large}"
+                   FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+        <TextBlock Text="可以折叠/展开的内容区域。"
+                   FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                   Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                   TextWrapping="Wrap" />
+      </StackPanel>
+
+      <StackPanel Spacing="28">
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="01 类型"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="基础折叠面板"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                  Margin="16,0">
+            <Expander IsExpanded="True">
+              <Expander.Header>
+                <TextBlock Text="折叠面板标题"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+              </Expander.Header>
+              <TextBlock Text="此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                         TextWrapping="Wrap" />
+            </Expander>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="带操作说明"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                  Margin="16,0">
+            <Expander x:Name="ActionExpander"
+                      IsExpanded="True">
+              <Expander.Header>
+                <Grid ColumnDefinitions="*,Auto"
+                      ColumnSpacing="8"
+                      HorizontalAlignment="Stretch">
+                  <TextBlock Text="折叠面板标题"
+                             FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                             Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+                  <Grid Grid.Column="1"
+                        HorizontalAlignment="Right">
+                    <TextBlock Text="展开"
+                               FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                               Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                               IsVisible="{Binding !#ActionExpander.IsExpanded}" />
+                    <TextBlock Text="收起"
+                               FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                               Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                               IsVisible="{Binding #ActionExpander.IsExpanded}" />
+                  </Grid>
+                </Grid>
+              </Expander.Header>
+              <TextBlock Text="此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                         TextWrapping="Wrap" />
+            </Expander>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <TextBlock Text="手风琴式"
+                     Margin="16,0"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                  Margin="16,0">
+            <StackPanel>
+              <Expander x:Name="AccordionExpander1"
+                        IsExpanded="True"
+                        Expanded="AccordionExpander_OnExpanded">
+                <Expander.Header>
+                  <TextBlock Text="折叠面板标题"
+                             FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                             Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+                </Expander.Header>
+                <TextBlock Text="此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                           TextWrapping="Wrap" />
+              </Expander>
+
+              <Expander x:Name="AccordionExpander2"
+                        Expanded="AccordionExpander_OnExpanded">
+                <Expander.Header>
+                  <TextBlock Text="折叠面板标题"
+                             FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                             Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+                </Expander.Header>
+                <TextBlock Text="此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                           TextWrapping="Wrap" />
+              </Expander>
+
+              <Expander x:Name="AccordionExpander3"
+                        Expanded="AccordionExpander_OnExpanded">
+                <Expander.Header>
+                  <TextBlock Text="折叠面板标题"
+                             FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                             Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+                </Expander.Header>
+                <TextBlock Text="此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                           TextWrapping="Wrap" />
+              </Expander>
+
+              <Expander IsEnabled="False">
+                <Expander.Header>
+                  <TextBlock Text="折叠面板标题"
+                             FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                             Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+                </Expander.Header>
+                <TextBlock Text="禁用项内容占位"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+              </Expander>
+            </StackPanel>
+          </Border>
+        </StackPanel>
+
+        <StackPanel Spacing="16">
+          <StackPanel Margin="16,0" Spacing="4">
+            <TextBlock Text="02 组件样式"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="卡片折叠面板"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+
+          <StackPanel Margin="16,0" Spacing="12">
+            <Expander Classes="card"
+                      IsExpanded="True">
+              <Expander.Header>
+                <TextBlock Text="折叠面板标题"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+              </Expander.Header>
+              <TextBlock Text="此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                         TextWrapping="Wrap" />
+            </Expander>
+
+            <Expander Classes="card">
+              <Expander.Header>
+                <TextBlock Text="折叠面板标题"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+              </Expander.Header>
+              <TextBlock Text="此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                         TextWrapping="Wrap" />
+            </Expander>
+
+            <Expander Classes="card">
+              <Expander.Header>
+                <TextBlock Text="折叠面板标题"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Large}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+              </Expander.Header>
+              <TextBlock Text="此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                         TextWrapping="Wrap" />
+            </Expander>
+          </StackPanel>
+        </StackPanel>
+      </StackPanel>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

@@ -1,0 +1,32 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:luna="https://github.com/curryzxh/Luna">
+  <Style Selector="luna|Watermark">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid ClipToBounds="True">
+          <ContentPresenter Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}" />
+          <luna:WatermarkSurface Name="PART_Surface"
+                                 IsHitTestVisible="False"
+                                 Items="{TemplateBinding Items}"
+                                 TileWidth="{TemplateBinding TileWidth}"
+                                 TileHeight="{TemplateBinding TileHeight}"
+                                 HorizontalSpacing="{TemplateBinding HorizontalSpacing}"
+                                 VerticalSpacing="{TemplateBinding VerticalSpacing}"
+                                 LineSpacing="{TemplateBinding LineSpacing}"
+                                 Angle="{TemplateBinding Angle}"
+                                 Alpha="{TemplateBinding Alpha}"
+                                 Layout="{TemplateBinding Layout}"
+                                 Movable="{TemplateBinding Movable}"
+                                 AnimationDuration="{TemplateBinding AnimationDuration}" />
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="luna|WatermarkSurface">
+    <Setter Property="IsHitTestVisible" Value="False" />
+  </Style>
+</Styles>

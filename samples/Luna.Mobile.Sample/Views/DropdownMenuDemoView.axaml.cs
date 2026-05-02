@@ -1,10 +1,15 @@
+using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Primitives;
 using Avalonia.Layout;
 using Avalonia.Media;
 using Luna.Mobile.Controls;
 using Luna.Mobile.Sample.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
+using Button = Avalonia.Controls.Button;
+using Path = Avalonia.Controls.Shapes.Path;
+using ToggleButton = Avalonia.Controls.Primitives.ToggleButton;
 
 namespace Luna.Mobile.Sample.Views;
 
@@ -73,6 +78,11 @@ public partial class DropdownMenuDemoView : UserControl
     {
         var menu = BuildSingleDemo();
         menu.Direction = DropdownMenuDirection.Up;
+        if (menu.Items.Count > 0)
+        {
+            menu.Items[0].HeaderIcon = BuildChevronIcon(16);
+        }
+
         return menu;
     }
 
@@ -95,16 +105,36 @@ public partial class DropdownMenuDemoView : UserControl
         {
             Label = "三列多选",
             Multiple = true,
-            OptionsColumns = 1,
         };
 
         var group1 = CreateTagGroup("类型", "type", ["type_1", "type_2"]);
         var group2 = CreateTagGroup("角色", "role", ["role_2"]);
+        var allTags = group1.tags.Concat(group2.tags).ToArray();
 
         var content = new StackPanel();
         content.Children.Add(group1.host);
         content.Children.Add(group2.host);
         item.Content = content;
+
+        void SyncSelectedValues()
+        {
+            item.SelectedValues.Clear();
+            foreach (var entry in allTags.Where(entry => entry.tag.IsChecked == true))
+            {
+                item.SelectedValues.Add(entry.value);
+            }
+        }
+
+        foreach (var entry in allTags)
+        {
+            entry.tag.PropertyChanged += (_, args) =>
+            {
+                if (args.Property == ToggleButton.IsCheckedProperty)
+                {
+                    SyncSelectedValues();
+                }
+            };
+        }
 
         var resetButton = new Button
         {
@@ -115,10 +145,12 @@ public partial class DropdownMenuDemoView : UserControl
         };
         resetButton.Click += (_, _) =>
         {
-            foreach (var checkBox in group1.checkBoxes.Concat(group2.checkBoxes))
+            foreach (var entry in allTags.Where(entry => entry.tag.IsEnabled))
             {
-                checkBox.IsChecked = false;
+                entry.tag.IsChecked = false;
             }
+
+            SyncSelectedValues();
         };
 
         var confirmButton = new Button
@@ -142,6 +174,7 @@ public partial class DropdownMenuDemoView : UserControl
         Grid.SetColumn(confirmButton, 1);
 
         menu.Items.Add(item);
+        SyncSelectedValues();
         return menu;
     }
 
@@ -174,7 +207,18 @@ public partial class DropdownMenuDemoView : UserControl
         return item;
     }
 
-    private static (StackPanel host, List<CheckBox> checkBoxes) CreateTagGroup(string title, string prefix, IReadOnlyList<string> selected)
+    private static Path BuildChevronIcon(double size)
+    {
+        return new Path
+        {
+            Width = size,
+            Height = size,
+            Stretch = Stretch.Uniform,
+            Data = Geometry.Parse("M4 6L8 10L12 6"),
+        };
+    }
+
+    private static (StackPanel host, List<(CheckTag tag, string value)> tags) CreateTagGroup(string title, string prefix, IReadOnlyList<string> selected)
     {
         var host = new StackPanel();
         host.Children.Add(new TextBlock
@@ -191,30 +235,36 @@ public partial class DropdownMenuDemoView : UserControl
             Margin = new Thickness(16, 0, 16, 12),
         };
 
-        var checkBoxes = new List<CheckBox>();
+        var tags = new List<(CheckTag tag, string value)>();
         for (var i = 0; i < 8; i++)
         {
             var value = $"{prefix}_{i + 1}";
-            var checkBox = new CheckBox
+            var tag = new CheckTag
             {
                 Content = $"{title}{ChineseNumbers[i]}",
                 IsChecked = selected.Contains(value),
+                Theme = TagTheme.Primary,
+                Variant = TagVariant.Light,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
                 Margin = new Thickness(0, 0, 8, 8),
             };
-            checkBoxes.Add(checkBox);
-            grid.Children.Add(checkBox);
+            tags.Add((tag, value));
+            grid.Children.Add(tag);
         }
 
-        var disabledBox = new CheckBox
+        var disabledTag = new CheckTag
         {
             Content = "禁用选项",
             IsEnabled = false,
+            Theme = TagTheme.Primary,
+            Variant = TagVariant.Light,
+            HorizontalAlignment = HorizontalAlignment.Stretch,
             Margin = new Thickness(0, 0, 8, 8),
         };
-        checkBoxes.Add(disabledBox);
-        grid.Children.Add(disabledBox);
+        tags.Add((disabledTag, "disabled"));
+        grid.Children.Add(disabledTag);
 
         host.Children.Add(grid);
-        return (host, checkBoxes);
+        return (host, tags);
     }
 }

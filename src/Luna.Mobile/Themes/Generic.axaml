@@ -20,6 +20,7 @@
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Badge.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Avatar.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Cell.axaml" />
+  <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Collapse.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Tag.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Divider.axaml" />
   <StyleInclude Source="avares://Luna.Mobile/Themes/Controls/Dialog.axaml" />

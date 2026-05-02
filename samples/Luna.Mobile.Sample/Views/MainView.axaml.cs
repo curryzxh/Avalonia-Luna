@@ -115,6 +115,7 @@ public partial class MainView : UserControl
             "/cascader" => new CascaderDemoView(),
             "/cell" => new CellDemoView(),
             "/checkbox" => new CheckBoxDemoView(),
+            "/collapse" => new CollapseDemoView(),
             "/datetimepicker" => new DateTimePickerDemoView(),
             "/dropdownmenu" => new DropdownMenuDemoView(),
             "/drawer" => new DrawerDemoView(),

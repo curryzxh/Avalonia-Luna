@@ -495,19 +495,25 @@ public sealed class DropdownMenuItem : HeaderedContentControl
 /// </summary>
 [PseudoClasses(":open", ":up", ":down")]
 [TemplatePart(HeaderHostPartName, typeof(Grid))]
-[TemplatePart(OverlayPartName, typeof(Overlay))]
+[TemplatePart(PopupPartName, typeof(Popup))]
+[TemplatePart(PopupRootPartName, typeof(Grid))]
+[TemplatePart(BackdropPartName, typeof(Border))]
 [TemplatePart(PanelBorderPartName, typeof(Border))]
 [TemplatePart(PanelHostPartName, typeof(ContentPresenter))]
 public sealed class DropdownMenu : TemplatedControl
 {
     private const string HeaderHostPartName = "PART_HeaderHost";
-    private const string OverlayPartName = "PART_Overlay";
+    private const string PopupPartName = "PART_Popup";
+    private const string PopupRootPartName = "PART_PopupRoot";
+    private const string BackdropPartName = "PART_Backdrop";
     private const string PanelBorderPartName = "PART_PanelBorder";
     private const string PanelHostPartName = "PART_PanelHost";
     private readonly AvaloniaList<DropdownMenuItem> _items = [];
     private readonly Dictionary<DropdownMenuItem, HeaderRefs> _headerRefs = [];
     private Grid? _headerHost;
-    private Overlay? _overlay;
+    private Popup? _popup;
+    private Grid? _popupRoot;
+    private Border? _backdrop;
     private Border? _panelBorder;
     private ContentPresenter? _panelHost;
     private DropdownMenuItem? _expandedItem;
@@ -578,19 +584,26 @@ public sealed class DropdownMenu : TemplatedControl
     {
         base.OnApplyTemplate(e);
 
-        if (_overlay is not null)
+        if (_backdrop is not null)
         {
-            _overlay.Clicked -= OnOverlayClicked;
+            _backdrop.PointerPressed -= OnBackdropPressed;
         }
 
         _headerHost = e.NameScope.Find<Grid>(HeaderHostPartName);
-        _overlay = e.NameScope.Find<Overlay>(OverlayPartName);
+        _popup = e.NameScope.Find<Popup>(PopupPartName);
+        _popupRoot = e.NameScope.Find<Grid>(PopupRootPartName);
+        _backdrop = e.NameScope.Find<Border>(BackdropPartName);
         _panelBorder = e.NameScope.Find<Border>(PanelBorderPartName);
         _panelHost = e.NameScope.Find<ContentPresenter>(PanelHostPartName);
 
-        if (_overlay is not null)
+        if (_popup is not null)
         {
-            _overlay.Clicked += OnOverlayClicked;
+            _popup.PlacementTarget = this;
+        }
+
+        if (_backdrop is not null)
+        {
+            _backdrop.PointerPressed += OnBackdropPressed;
         }
 
         BuildHeaders();
@@ -739,6 +752,12 @@ public sealed class DropdownMenu : TemplatedControl
         OnOverlayPressed();
     }
 
+    private void OnBackdropPressed(object? sender, PointerPressedEventArgs e)
+    {
+        e.Handled = true;
+        OnOverlayPressed();
+    }
+
     private void BuildHeaders()
     {
         if (_headerHost is null)
@@ -798,7 +817,7 @@ public sealed class DropdownMenu : TemplatedControl
 
         var content = new Grid
         {
-            ColumnDefinitions = new ColumnDefinitions("Auto,10"),
+            ColumnDefinitions = new ColumnDefinitions("Auto,Auto"),
             ColumnSpacing = 6,
             HorizontalAlignment = HorizontalAlignment.Center,
         };
@@ -830,6 +849,11 @@ public sealed class DropdownMenu : TemplatedControl
         UpdateAllHeaderStates();
         UpdatePanelPlacement();
         UpdatePanelContent();
+
+        if (_popup is not null)
+        {
+            _popup.IsOpen = OverlayVisible;
+        }
     }
 
     private void UpdateAllHeaderStates()
@@ -877,7 +901,7 @@ public sealed class DropdownMenu : TemplatedControl
 
     private void UpdatePanelPlacement()
     {
-        if (_panelBorder is null)
+        if (_panelBorder is null || _popup is null || _popupRoot is null)
         {
             return;
         }
@@ -888,15 +912,35 @@ public sealed class DropdownMenu : TemplatedControl
             headerHeight = 44;
         }
 
+        _popup.PlacementTarget = this;
+
+        var topLevel = TopLevel.GetTopLevel(this);
+        var controlOrigin = topLevel is not null
+            ? this.TranslatePoint(new Point(0, 0), topLevel)
+            : null;
+
         if (Direction == DropdownMenuDirection.Up)
         {
+            _popup.Placement = PlacementMode.Top;
+            _popup.VerticalOffset = -headerHeight;
             _panelBorder.VerticalAlignment = VerticalAlignment.Bottom;
-            _panelBorder.Margin = new Thickness(0, 0, 0, headerHeight);
+            _panelBorder.Margin = default;
+            _panelBorder.CornerRadius = new CornerRadius(16, 16, 0, 0);
+            var availableHeight = Math.Max(0, controlOrigin?.Y ?? 0);
+            _popupRoot.Height = availableHeight;
         }
         else
         {
+            _popup.Placement = PlacementMode.Bottom;
+            _popup.VerticalOffset = headerHeight;
             _panelBorder.VerticalAlignment = VerticalAlignment.Top;
-            _panelBorder.Margin = new Thickness(0, headerHeight, 0, 0);
+            _panelBorder.Margin = default;
+            _panelBorder.CornerRadius = new CornerRadius(0, 0, 16, 16);
+            var top = (controlOrigin?.Y ?? 0) + headerHeight;
+            var availableHeight = topLevel is not null
+                ? Math.Max(0, topLevel.Bounds.Height - top)
+                : 0;
+            _popupRoot.Height = availableHeight;
         }
     }
 

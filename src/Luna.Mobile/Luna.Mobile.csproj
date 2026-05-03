@@ -1,7 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net10.0;net10.0-android</TargetFrameworks>
+    <PackageId>Luna.Avalonia.Mobile</PackageId>
+    <Version>1.0.1</Version>
+    <Authors>curryzxh</Authors>
     <Description>Luna touch-first Avalonia custom controls for mobile surfaces.</Description>
+    <PackageTags>avalonia;mobile;controls;ui</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <IsPackable>true</IsPackable>
     <ImplicitUsings>false</ImplicitUsings>
     <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
   </PropertyGroup>
@@ -12,5 +20,9 @@
 
   <ItemGroup>
     <PackageReference Include="Avalonia" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 </Project>

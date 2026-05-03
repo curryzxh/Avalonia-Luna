@@ -2,6 +2,10 @@
 
 本目录统一保存 Luna 控件库的规划、设计分析和实施拆分文档。
 
+## 使用文档
+
+- [Luna.Mobile 控件使用文档](controls/README.md)：面向控件使用者的组件手册，覆盖最小用法、常用属性、对应 sample 和当前限制。
+
 ## 文档索引
 
 - [TDesign Mobile 组件对照分析](tdesign-mobile-component-analysis.md)：对照 TDesign Mobile 与 Avalonia 12，判断哪些组件应优先皮肤化，哪些需要 Luna 自定义控件。

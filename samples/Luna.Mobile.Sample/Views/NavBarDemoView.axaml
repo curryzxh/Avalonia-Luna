@@ -26,17 +26,10 @@
       <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Secondary}" />
     </Style>
 
-    <Style Selector="luna|NavBar.navbar-accent /template/ Border">
+    <Style Selector="luna|NavBar.navbar-accent">
       <Setter Property="Background" Value="#0052D9" />
       <Setter Property="BorderBrush" Value="#0052D9" />
-    </Style>
-
-    <Style Selector="luna|NavBar.navbar-accent /template/ TextBlock">
       <Setter Property="Foreground" Value="#FFFFFF" />
-    </Style>
-
-    <Style Selector="luna|NavBar.navbar-accent /template/ Path">
-      <Setter Property="Stroke" Value="#FFFFFF" />
     </Style>
   </UserControl.Styles>
 

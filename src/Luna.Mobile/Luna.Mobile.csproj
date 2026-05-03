@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFrameworks>net10.0;net10.0-android</TargetFrameworks>
     <PackageId>Luna.Avalonia.Mobile</PackageId>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Authors>curryzxh</Authors>
     <Description>Luna touch-first Avalonia custom controls for mobile surfaces.</Description>
     <PackageTags>avalonia;mobile;controls;ui</PackageTags>

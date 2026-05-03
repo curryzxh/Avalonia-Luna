@@ -598,7 +598,7 @@ public sealed class DropdownMenu : TemplatedControl
 
         if (_popup is not null)
         {
-            _popup.PlacementTarget = this;
+            _popup.PlacementTarget = _headerHost is not null ? _headerHost : this;
         }
 
         if (_backdrop is not null)
@@ -912,17 +912,18 @@ public sealed class DropdownMenu : TemplatedControl
             headerHeight = 44;
         }
 
-        _popup.PlacementTarget = this;
+        Control placementTarget = _headerHost is not null ? _headerHost : this;
+        _popup.PlacementTarget = placementTarget;
 
         var topLevel = TopLevel.GetTopLevel(this);
         var controlOrigin = topLevel is not null
-            ? this.TranslatePoint(new Point(0, 0), topLevel)
+            ? placementTarget.TranslatePoint(new Point(0, 0), topLevel)
             : null;
 
         if (Direction == DropdownMenuDirection.Up)
         {
             _popup.Placement = PlacementMode.Top;
-            _popup.VerticalOffset = -headerHeight;
+            _popup.VerticalOffset = 0;
             _panelBorder.VerticalAlignment = VerticalAlignment.Bottom;
             _panelBorder.Margin = default;
             _panelBorder.CornerRadius = new CornerRadius(16, 16, 0, 0);
@@ -932,7 +933,7 @@ public sealed class DropdownMenu : TemplatedControl
         else
         {
             _popup.Placement = PlacementMode.Bottom;
-            _popup.VerticalOffset = headerHeight;
+            _popup.VerticalOffset = 0;
             _panelBorder.VerticalAlignment = VerticalAlignment.Top;
             _panelBorder.Margin = default;
             _panelBorder.CornerRadius = new CornerRadius(0, 0, 16, 16);

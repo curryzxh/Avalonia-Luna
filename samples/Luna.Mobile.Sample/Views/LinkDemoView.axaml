@@ -10,13 +10,38 @@
     </Style>
 
     <Style Selector="Path.link-demo-icon">
-      <Setter Property="Width" Value="12" />
-      <Setter Property="Height" Value="12" />
-      <Setter Property="StrokeThickness" Value="1.6" />
+      <Setter Property="StrokeThickness" Value="1.7" />
       <Setter Property="StrokeLineCap" Value="Round" />
       <Setter Property="Stroke" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=HyperlinkButton}}" />
       <Setter Property="Stretch" Value="Uniform" />
       <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style Selector="Path.link-demo-prefix-icon">
+      <Setter Property="Width" Value="14" />
+      <Setter Property="Height" Value="14" />
+      <Setter Property="Margin" Value="0,0,2,0" />
+    </Style>
+
+    <Style Selector="Path.link-demo-suffix-icon">
+      <Setter Property="Width" Value="11" />
+      <Setter Property="Height" Value="11" />
+      <Setter Property="Margin" Value="0" />
+    </Style>
+
+    <Style Selector="Path.link-demo-suffix-icon.small">
+      <Setter Property="Width" Value="10" />
+      <Setter Property="Height" Value="10" />
+    </Style>
+
+    <Style Selector="Path.link-demo-suffix-icon.medium">
+      <Setter Property="Width" Value="11" />
+      <Setter Property="Height" Value="11" />
+    </Style>
+
+    <Style Selector="Path.link-demo-suffix-icon.large">
+      <Setter Property="Width" Value="12" />
+      <Setter Property="Height" Value="12" />
     </Style>
   </UserControl.Styles>
   <ScrollViewer Background="{DynamicResource Luna.Brush.Background.Page}">
@@ -82,16 +107,16 @@
                         VerticalAlignment="Center">
               <HyperlinkButton Classes="primary small">
                 <StackPanel Orientation="Horizontal" Spacing="4">
-                  <Path Classes="link-demo-icon"
-                        Data="M5 3H19V17H5V3Z M8 7H16 M8 10H16 M8 13H13" />
+                  <Path Classes="link-demo-icon link-demo-prefix-icon"
+                        Data="M5.2 7.8L4.1 8.9C3.3 9.7 3.3 10.9 4.1 11.7C4.9 12.5 6.1 12.5 6.9 11.7L8.5 10.1 M8.7 5.3L10.3 3.7C11.1 2.9 12.3 2.9 13.1 3.7C13.9 4.5 13.9 5.7 13.1 6.5L12 7.6 M6.8 9.3L10.4 5.7" />
                   <TextBlock Text="跳转链接" />
                 </StackPanel>
               </HyperlinkButton>
 
               <HyperlinkButton Classes="small">
                 <StackPanel Orientation="Horizontal" Spacing="4">
-                  <Path Classes="link-demo-icon"
-                        Data="M5 3H19V17H5V3Z M8 7H16 M8 10H16 M8 13H13" />
+                  <Path Classes="link-demo-icon link-demo-prefix-icon"
+                        Data="M5.2 7.8L4.1 8.9C3.3 9.7 3.3 10.9 4.1 11.7C4.9 12.5 6.1 12.5 6.9 11.7L8.5 10.1 M8.7 5.3L10.3 3.7C11.1 2.9 12.3 2.9 13.1 3.7C13.9 4.5 13.9 5.7 13.1 6.5L12 7.6 M6.8 9.3L10.4 5.7" />
                   <TextBlock Text="跳转链接" />
                 </StackPanel>
               </HyperlinkButton>
@@ -112,16 +137,16 @@
               <HyperlinkButton Classes="primary small underline">
                 <StackPanel Orientation="Horizontal" Spacing="4">
                   <TextBlock Text="跳转链接" />
-                  <Path Classes="link-demo-icon"
-                        Data="M6 6H18V18 M7 17L17 7" />
+                  <Path Classes="link-demo-icon link-demo-suffix-icon"
+                        Data="M3 5V13H11 M7 3H13V9 M8.1 7.9L13 3 M10.4 3H13V5.6" />
                 </StackPanel>
               </HyperlinkButton>
 
               <HyperlinkButton Classes="small underline">
                 <StackPanel Orientation="Horizontal" Spacing="4">
                   <TextBlock Text="跳转链接" />
-                  <Path Classes="link-demo-icon"
-                        Data="M6 6H18V18 M7 17L17 7" />
+                  <Path Classes="link-demo-icon link-demo-suffix-icon"
+                        Data="M3 5V13H11 M7 3H13V9 M8.1 7.9L13 3 M10.4 3H13V5.6" />
                 </StackPanel>
               </HyperlinkButton>
             </StackPanel>
@@ -145,22 +170,22 @@
                 <HyperlinkButton Classes="primary small">
                   <StackPanel Orientation="Horizontal" Spacing="4">
                     <TextBlock Text="跳转链接" />
-                    <Path Classes="link-demo-icon"
-                          Data="M6 6H18V18 M7 17L17 7" />
+                    <Path Classes="link-demo-icon link-demo-suffix-icon"
+                          Data="M3 5V13H11 M7 3H13V9 M8.1 7.9L13 3 M10.4 3H13V5.6" />
                   </StackPanel>
                 </HyperlinkButton>
                 <HyperlinkButton Classes="small">
                   <StackPanel Orientation="Horizontal" Spacing="4">
                     <TextBlock Text="跳转链接" />
-                    <Path Classes="link-demo-icon"
-                          Data="M6 6H18V18 M7 17L17 7" />
+                    <Path Classes="link-demo-icon link-demo-suffix-icon"
+                          Data="M3 5V13H11 M7 3H13V9 M8.1 7.9L13 3 M10.4 3H13V5.6" />
                   </StackPanel>
                 </HyperlinkButton>
                 <HyperlinkButton Classes="danger small">
                   <StackPanel Orientation="Horizontal" Spacing="4">
                     <TextBlock Text="跳转链接" />
-                    <Path Classes="link-demo-icon"
-                          Data="M6 6H18V18 M7 17L17 7" />
+                    <Path Classes="link-demo-icon link-demo-suffix-icon"
+                          Data="M3 5V13H11 M7 3H13V9 M8.1 7.9L13 3 M10.4 3H13V5.6" />
                   </StackPanel>
                 </HyperlinkButton>
               </StackPanel>
@@ -168,15 +193,15 @@
                 <HyperlinkButton Classes="success small">
                   <StackPanel Orientation="Horizontal" Spacing="4">
                     <TextBlock Text="跳转链接" />
-                    <Path Classes="link-demo-icon"
-                          Data="M6 6H18V18 M7 17L17 7" />
+                    <Path Classes="link-demo-icon link-demo-suffix-icon"
+                          Data="M3 5V13H11 M7 3H13V9 M8.1 7.9L13 3 M10.4 3H13V5.6" />
                   </StackPanel>
                 </HyperlinkButton>
                 <HyperlinkButton Classes="warning small">
                   <StackPanel Orientation="Horizontal" Spacing="4">
                     <TextBlock Text="跳转链接" />
-                    <Path Classes="link-demo-icon"
-                          Data="M6 6H18V18 M7 17L17 7" />
+                    <Path Classes="link-demo-icon link-demo-suffix-icon"
+                          Data="M3 5V13H11 M7 3H13V9 M8.1 7.9L13 3 M10.4 3H13V5.6" />
                   </StackPanel>
                 </HyperlinkButton>
               </StackPanel>
@@ -196,22 +221,22 @@
                 <HyperlinkButton Classes="primary small" IsEnabled="False">
                   <StackPanel Orientation="Horizontal" Spacing="4">
                     <TextBlock Text="跳转链接" />
-                    <Path Classes="link-demo-icon"
-                          Data="M6 6H18V18 M7 17L17 7" />
+                    <Path Classes="link-demo-icon link-demo-suffix-icon"
+                          Data="M3 5V13H11 M7 3H13V9 M8.1 7.9L13 3 M10.4 3H13V5.6" />
                   </StackPanel>
                 </HyperlinkButton>
                 <HyperlinkButton Classes="small" IsEnabled="False">
                   <StackPanel Orientation="Horizontal" Spacing="4">
                     <TextBlock Text="跳转链接" />
-                    <Path Classes="link-demo-icon"
-                          Data="M6 6H18V18 M7 17L17 7" />
+                    <Path Classes="link-demo-icon link-demo-suffix-icon"
+                          Data="M3 5V13H11 M7 3H13V9 M8.1 7.9L13 3 M10.4 3H13V5.6" />
                   </StackPanel>
                 </HyperlinkButton>
                 <HyperlinkButton Classes="danger small" IsEnabled="False">
                   <StackPanel Orientation="Horizontal" Spacing="4">
                     <TextBlock Text="跳转链接" />
-                    <Path Classes="link-demo-icon"
-                          Data="M6 6H18V18 M7 17L17 7" />
+                    <Path Classes="link-demo-icon link-demo-suffix-icon"
+                          Data="M3 5V13H11 M7 3H13V9 M8.1 7.9L13 3 M10.4 3H13V5.6" />
                   </StackPanel>
                 </HyperlinkButton>
               </StackPanel>
@@ -219,15 +244,15 @@
                 <HyperlinkButton Classes="success small" IsEnabled="False">
                   <StackPanel Orientation="Horizontal" Spacing="4">
                     <TextBlock Text="跳转链接" />
-                    <Path Classes="link-demo-icon"
-                          Data="M6 6H18V18 M7 17L17 7" />
+                    <Path Classes="link-demo-icon link-demo-suffix-icon"
+                          Data="M3 4.5V13H11.5V10.7 M7 3H13V9 M12.7 3.3L6.8 9.2" />
                   </StackPanel>
                 </HyperlinkButton>
                 <HyperlinkButton Classes="warning small" IsEnabled="False">
                   <StackPanel Orientation="Horizontal" Spacing="4">
                     <TextBlock Text="跳转链接" />
-                    <Path Classes="link-demo-icon"
-                          Data="M6 6H18V18 M7 17L17 7" />
+                    <Path Classes="link-demo-icon link-demo-suffix-icon"
+                          Data="M3 4.5V13H11.5V10.7 M7 3H13V9 M12.7 3.3L6.8 9.2" />
                   </StackPanel>
                 </HyperlinkButton>
               </StackPanel>
@@ -253,24 +278,24 @@
               <HyperlinkButton Classes="primary small">
                 <StackPanel Orientation="Horizontal" Spacing="4">
                   <TextBlock Text="S号链接" />
-                  <Path Classes="link-demo-icon"
-                        Data="M6 6H18V18 M7 17L17 7" />
+                  <Path Classes="link-demo-icon link-demo-suffix-icon small"
+                        Data="M3 5V13H11 M7 3H13V9 M8.1 7.9L13 3 M10.4 3H13V5.6" />
                 </StackPanel>
               </HyperlinkButton>
 
               <HyperlinkButton Classes="primary medium">
                 <StackPanel Orientation="Horizontal" Spacing="4">
                   <TextBlock Text="M号链接" />
-                  <Path Classes="link-demo-icon"
-                        Data="M6 6H18V18 M7 17L17 7" />
+                  <Path Classes="link-demo-icon link-demo-suffix-icon medium"
+                        Data="M3 5V13H11 M7 3H13V9 M8.1 7.9L13 3 M10.4 3H13V5.6" />
                 </StackPanel>
               </HyperlinkButton>
 
               <HyperlinkButton Classes="primary large">
                 <StackPanel Orientation="Horizontal" Spacing="4">
                   <TextBlock Text="L号链接" />
-                  <Path Classes="link-demo-icon"
-                        Data="M6 6H18V18 M7 17L17 7" />
+                  <Path Classes="link-demo-icon link-demo-suffix-icon large"
+                        Data="M3 5V13H11 M7 3H13V9 M8.1 7.9L13 3 M10.4 3H13V5.6" />
                 </StackPanel>
               </HyperlinkButton>
             </StackPanel>

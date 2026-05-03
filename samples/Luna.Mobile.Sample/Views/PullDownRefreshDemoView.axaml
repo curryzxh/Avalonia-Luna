@@ -1,9 +1,12 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:luna="https://github.com/curryzxh/Luna"
-             x:Class="Luna.Mobile.Sample.Views.PullDownRefreshDemoView">
+             xmlns:vm="using:Luna.Mobile.Sample.ViewModels"
+             x:Class="Luna.Mobile.Sample.Views.PullDownRefreshDemoView"
+             x:DataType="vm:PullDownRefreshDemoViewModel">
   <luna:PullDownRefresh x:Name="DemoPullDownRefresh"
-                        RefreshRequested="OnRefreshRequested"
+                        RefreshCommand="{Binding RefreshCommand}"
+                        RefreshCommandParameter="{Binding #DemoPullDownRefresh}"
                         IndicatorHeight="66">
     <StackPanel Background="{DynamicResource Luna.Brush.Background.Page}"
                 Spacing="16">
@@ -32,7 +35,7 @@
 
       <TextBlock x:Name="RefreshResultText"
                  Margin="16,0,16,0"
-                 Text="最近刷新：尚未触发"
+                 Text="{Binding RefreshResultText}"
                  FontSize="{DynamicResource Luna.FontSize.Body.Small}"
                  Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
 

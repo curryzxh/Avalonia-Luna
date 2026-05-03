@@ -7,6 +7,7 @@ using Avalonia.Interactivity;
 using Avalonia.Media;
 using Avalonia.Threading;
 using System;
+using System.Windows.Input;
 
 namespace Luna.Mobile.Controls;
 
@@ -73,6 +74,12 @@ public sealed class PullDownRefresh : ContentControl
 
     public static readonly StyledProperty<TimeSpan> CompleteVisibleDurationProperty =
         AvaloniaProperty.Register<PullDownRefresh, TimeSpan>(nameof(CompleteVisibleDuration), TimeSpan.FromMilliseconds(600));
+
+    public static readonly StyledProperty<ICommand?> RefreshCommandProperty =
+        AvaloniaProperty.Register<PullDownRefresh, ICommand?>(nameof(RefreshCommand));
+
+    public static readonly StyledProperty<object?> RefreshCommandParameterProperty =
+        AvaloniaProperty.Register<PullDownRefresh, object?>(nameof(RefreshCommandParameter));
 
     public static readonly DirectProperty<PullDownRefresh, double> PullDistanceProperty =
         AvaloniaProperty.RegisterDirect<PullDownRefresh, double>(
@@ -222,6 +229,24 @@ public sealed class PullDownRefresh : ContentControl
     {
         get => GetValue(CompleteVisibleDurationProperty);
         set => SetValue(CompleteVisibleDurationProperty, value);
+    }
+
+    /// <summary>
+    /// 获取或设置下拉刷新触发时执行的命令。
+    /// </summary>
+    public ICommand? RefreshCommand
+    {
+        get => GetValue(RefreshCommandProperty);
+        set => SetValue(RefreshCommandProperty, value);
+    }
+
+    /// <summary>
+    /// 获取或设置下拉刷新命令参数。
+    /// </summary>
+    public object? RefreshCommandParameter
+    {
+        get => GetValue(RefreshCommandParameterProperty);
+        set => SetValue(RefreshCommandParameterProperty, value);
     }
 
     /// <summary>
@@ -416,6 +441,22 @@ public sealed class PullDownRefresh : ContentControl
         _isCompleting = false;
         IsRefreshing = true;
         RaiseEvent(new RoutedEventArgs(RefreshRequestedEvent));
+        ExecuteRefreshCommand();
+    }
+
+    private void ExecuteRefreshCommand()
+    {
+        var command = RefreshCommand;
+        if (command is null)
+        {
+            return;
+        }
+
+        var parameter = RefreshCommandParameter;
+        if (command.CanExecute(parameter))
+        {
+            command.Execute(parameter);
+        }
     }
 
     private void OnIsRefreshingChanged(bool isRefreshing)

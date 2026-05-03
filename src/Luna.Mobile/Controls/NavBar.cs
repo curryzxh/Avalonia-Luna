@@ -4,6 +4,7 @@ using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
 using System;
+using System.Windows.Input;
 
 namespace Luna.Mobile.Controls;
 
@@ -46,6 +47,14 @@ public sealed class NavBar : TemplatedControl
     /// <inheritdoc cref="BarHeight" />
     public static readonly StyledProperty<double> BarHeightProperty =
         AvaloniaProperty.Register<NavBar, double>(nameof(BarHeight), 56d);
+
+    /// <inheritdoc cref="BackRequestedCommand" />
+    public static readonly StyledProperty<ICommand?> BackRequestedCommandProperty =
+        AvaloniaProperty.Register<NavBar, ICommand?>(nameof(BackRequestedCommand));
+
+    /// <inheritdoc cref="BackRequestedCommandParameter" />
+    public static readonly StyledProperty<object?> BackRequestedCommandParameterProperty =
+        AvaloniaProperty.Register<NavBar, object?>(nameof(BackRequestedCommandParameter));
 
     /// <summary>
     /// 定义返回按钮触发事件。
@@ -116,6 +125,24 @@ public sealed class NavBar : TemplatedControl
         set => SetValue(BarHeightProperty, value);
     }
 
+    /// <summary>
+    /// 获取或设置返回按钮触发时执行的命令。
+    /// </summary>
+    public ICommand? BackRequestedCommand
+    {
+        get => GetValue(BackRequestedCommandProperty);
+        set => SetValue(BackRequestedCommandProperty, value);
+    }
+
+    /// <summary>
+    /// 获取或设置返回按钮命令参数。
+    /// </summary>
+    public object? BackRequestedCommandParameter
+    {
+        get => GetValue(BackRequestedCommandParameterProperty);
+        set => SetValue(BackRequestedCommandParameterProperty, value);
+    }
+
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {
         base.OnApplyTemplate(e);
@@ -136,5 +163,12 @@ public sealed class NavBar : TemplatedControl
     private void BackButton_OnClick(object? sender, RoutedEventArgs e)
     {
         RaiseEvent(new RoutedEventArgs(BackRequestedEvent));
+
+        var command = BackRequestedCommand;
+        var parameter = BackRequestedCommandParameter;
+        if (command?.CanExecute(parameter) == true)
+        {
+            command.Execute(parameter);
+        }
     }
 }

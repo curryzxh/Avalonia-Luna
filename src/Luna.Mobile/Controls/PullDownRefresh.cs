@@ -342,7 +342,13 @@ public sealed class PullDownRefresh : ContentControl
     protected override void OnDetachedFromVisualTree(VisualTreeAttachmentEventArgs e)
     {
         StopCompletionTimer();
-        DetachScrollViewer();
+        CleanupPointer(null);
+
+        if (!IsRefreshing && !_isCompleting)
+        {
+            ResetToIdle();
+        }
+
         base.OnDetachedFromVisualTree(e);
     }
 

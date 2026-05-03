@@ -93,6 +93,7 @@ public partial class MainViewModel : ViewModelBase
             new("Popover 弹出气泡", "/popover"),
             new("Popup 弹出层", "/popup"),
             new("PullDownRefresh 下拉刷新", "/pulldownrefresh"),
+            new("PullDownRefresh Tab 内下拉刷新", "/pulldownrefresh-tabs"),
             new("SwipeCell 滑动操作", "/swipecell"),
             new("Toast 轻提示", "/toast"),
         ]),

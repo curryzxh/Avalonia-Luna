@@ -137,6 +137,7 @@ public partial class MainView : UserControl
             "/overlay" => new OverlayDemoView(),
             "/picker" => new PickerDemoView(),
             "/pulldownrefresh" => new PullDownRefreshDemoView(),
+            "/pulldownrefresh-tabs" => new PullDownRefreshTabsDemoView(),
             "/progress" => new ProgressDemoView(),
             "/radio" => new RadioDemoView(),
             "/rate" => new RateDemoView(),

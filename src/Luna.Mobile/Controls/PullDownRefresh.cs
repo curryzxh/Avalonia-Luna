@@ -330,10 +330,6 @@ public sealed class PullDownRefresh : ContentControl
         if (_scrollViewer is not null)
         {
             _scrollViewer.RenderTransform = _contentTransform;
-            _scrollViewer.PointerPressed += OnScrollViewerPointerPressed;
-            _scrollViewer.PointerMoved += OnScrollViewerPointerMoved;
-            _scrollViewer.PointerReleased += OnScrollViewerPointerReleased;
-            _scrollViewer.PointerCaptureLost += OnScrollViewerPointerCaptureLost;
         }
 
         UpdateOffsets();
@@ -352,8 +348,10 @@ public sealed class PullDownRefresh : ContentControl
         base.OnDetachedFromVisualTree(e);
     }
 
-    private void OnScrollViewerPointerPressed(object? sender, PointerPressedEventArgs e)
+    protected override void OnPointerPressed(PointerPressedEventArgs e)
     {
+        base.OnPointerPressed(e);
+
         if (!IsEnabled || IsRefreshing || _scrollViewer is null)
         {
             return;
@@ -369,8 +367,10 @@ public sealed class PullDownRefresh : ContentControl
         _pressedPoint = e.GetPosition(this);
     }
 
-    private void OnScrollViewerPointerMoved(object? sender, PointerEventArgs e)
+    protected override void OnPointerMoved(PointerEventArgs e)
     {
+        base.OnPointerMoved(e);
+
         if (!_isPointerPressed || IsRefreshing || _scrollViewer is null)
         {
             return;
@@ -387,7 +387,7 @@ public sealed class PullDownRefresh : ContentControl
             }
 
             _isDragging = true;
-            e.Pointer.Capture(_scrollViewer);
+            e.Pointer.Capture(this);
         }
 
         if (deltaY <= 0)
@@ -402,8 +402,10 @@ public sealed class PullDownRefresh : ContentControl
         e.Handled = true;
     }
 
-    private void OnScrollViewerPointerReleased(object? sender, PointerReleasedEventArgs e)
+    protected override void OnPointerReleased(PointerReleasedEventArgs e)
     {
+        base.OnPointerReleased(e);
+
         if (!_isPointerPressed)
         {
             return;
@@ -421,8 +423,10 @@ public sealed class PullDownRefresh : ContentControl
         CleanupPointer(e.Pointer);
     }
 
-    private void OnScrollViewerPointerCaptureLost(object? sender, PointerCaptureLostEventArgs e)
+    protected override void OnPointerCaptureLost(PointerCaptureLostEventArgs e)
     {
+        base.OnPointerCaptureLost(e);
+
         CleanupPointer(e.Pointer);
         if (!IsRefreshing && !_isCompleting)
         {
@@ -432,7 +436,7 @@ public sealed class PullDownRefresh : ContentControl
 
     private void CleanupPointer(IPointer? pointer)
     {
-        if (_scrollViewer is not null && pointer?.Captured == _scrollViewer)
+        if (pointer?.Captured == this)
         {
             pointer.Capture(null);
         }
@@ -597,23 +601,15 @@ public sealed class PullDownRefresh : ContentControl
         var threshold = Math.Max(Threshold, 1d);
         if (distance <= threshold)
         {
-            return distance * 0.75d;
+            return distance * 0.95d;
         }
 
         var extra = distance - threshold;
-        return (threshold * 0.75d) + (extra * 0.35d);
+        return (threshold * 0.95d) + (extra * 0.55d);
     }
 
     private void DetachScrollViewer()
     {
-        if (_scrollViewer is not null)
-        {
-            _scrollViewer.PointerPressed -= OnScrollViewerPointerPressed;
-            _scrollViewer.PointerMoved -= OnScrollViewerPointerMoved;
-            _scrollViewer.PointerReleased -= OnScrollViewerPointerReleased;
-            _scrollViewer.PointerCaptureLost -= OnScrollViewerPointerCaptureLost;
-        }
-
         _scrollViewer = null;
     }
 }

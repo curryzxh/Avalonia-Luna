@@ -4,33 +4,37 @@
   <Style Selector="controls|Loading">
     <Setter Property="Template">
       <ControlTemplate>
-        <StackPanel Orientation="Horizontal"
-                    Spacing="8"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    IsVisible="{TemplateBinding IsLoading}">
-          <Border Width="{TemplateBinding Size}"
+        <Grid RowDefinitions="Auto,Auto">
+          <Border Grid.Row="0"
+                  Width="{TemplateBinding Size}"
                   Height="{TemplateBinding Size}"
-                  CornerRadius="{DynamicResource Luna.Radius.Round}"
-                  BorderBrush="{DynamicResource Luna.Brush.Brand}"
-                  BorderThickness="2"
-                  RenderTransformOrigin="50%,50%"
-                  ClipToBounds="True">
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center">
             <Border.RenderTransform>
-              <RotateTransform Angle="0" />
+              <RotateTransform Angle="{TemplateBinding Rotation}" />
             </Border.RenderTransform>
+            <Ellipse Width="{TemplateBinding Size}"
+                     Height="{TemplateBinding Size}"
+                     Stroke="{DynamicResource Luna.Brush.Brand}"
+                     StrokeThickness="2.5"
+                     Stretch="None" />
           </Border>
-          <TextBlock Text="{TemplateBinding Text}"
-                     VerticalAlignment="Center"
+          <TextBlock Grid.Row="1"
+                     Text="{TemplateBinding Text}"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Small}"
                      Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
-                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
-                     IsVisible="{TemplateBinding Text, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
-        </StackPanel>
+                     HorizontalAlignment="Center"
+                     Margin="0,8,0,0">
+            <TextBlock.IsVisible>
+              <Binding Path="Text" RelativeSource="{RelativeSource TemplatedParent}" Converter="{x:Static StringConverters.IsNotNullOrEmpty}" />
+            </TextBlock.IsVisible>
+          </TextBlock>
+        </Grid>
       </ControlTemplate>
     </Setter>
   </Style>
 
-  <Style Selector="controls|Loading:spinner">
-    <Setter Property="IsVisible" Value="True" />
+  <Style Selector="controls|Loading:not(:loading)">
+    <Setter Property="IsVisible" Value="False" />
   </Style>
 </Styles>

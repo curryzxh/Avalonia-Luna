@@ -4,36 +4,75 @@
              xmlns:controls="using:Luna.Desktop.Controls"
              x:Class="Luna.Desktop.Sample.Views.Samples.GuideSampleView"
              x:DataType="vm:GuideSampleViewModel">
-  <StackPanel Spacing="16">
-    <Border Classes="sample-card">
-      <StackPanel Spacing="12">
-        <TextBlock Text="新手引导" Classes="sample-title" />
-        <TextBlock Text="Guide 通过遮罩高亮逐步引导用户了解功能。点击按钮开始引导。" Classes="sample-caption" />
-        <Button Content="开始引导" Classes="primary" Command="{ReflectionBinding StartGuideCommand}" />
-      </StackPanel>
-    </Border>
-
-    <Border Classes="sample-card">
-      <StackPanel Spacing="12">
-        <TextBlock Text="引导预览" Classes="sample-title" />
-        <controls:Guide IsVisible="{Binding IsGuideVisible}"
-                        Title="{Binding GuideTitle}"
-                        Description="{Binding GuideDescription}"
-                        CurrentStep="{Binding CurrentStep}"
-                        TotalSteps="{Binding TotalSteps}"
-                        MaxWidth="500"
-                        MaxHeight="300">
-          <StackPanel Spacing="16">
-            <TextBlock Text="这是需要引导的功能区域" FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
-                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
-            <TextBlock Text="引导遮罩会覆盖在其他内容之上，高亮展示当前步骤。" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" TextWrapping="Wrap" />
-            <StackPanel Orientation="Horizontal" Spacing="8">
-              <Button Content="下一步" Classes="primary" Command="{ReflectionBinding NextStepCommand}" />
-              <Button Content="跳过" Classes="link" Command="{ReflectionBinding CloseGuideCommand}" />
-            </StackPanel>
+  <ScrollViewer>
+    <StackPanel Spacing="16" Margin="0,0,0,24">
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="基本引导" Classes="sample-title" />
+          <TextBlock Text="Guide 用于分步引导用户了解页面功能。点击开始按钮启动引导流程。" Classes="sample-caption" />
+          <StackPanel Spacing="8" Orientation="Horizontal">
+            <Button Content="开始引导" Classes="primary" Command="{Binding StartGuideCommand}" />
+            <Button Content="完成引导" Classes="tertiary" Command="{Binding FinishGuideCommand}" />
+            <Button Content="重置" Classes="tertiary" Command="{Binding ResetGuideCommand}" />
           </StackPanel>
-        </controls:Guide>
-      </StackPanel>
-    </Border>
-  </StackPanel>
+          <TextBlock Text="{Binding GuideStatus}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+        </StackPanel>
+      </Border>
+
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="引导步骤" Classes="sample-title" />
+          <TextBlock Text="以下是当前引导配置的步骤列表。" Classes="sample-caption" />
+          <ItemsControl ItemsSource="{Binding Steps}">
+            <ItemsControl.ItemTemplate>
+              <DataTemplate>
+                <Border Background="{DynamicResource Luna.Brush.Background.Page}"
+                        CornerRadius="{DynamicResource Luna.Radius.Default}"
+                        Padding="12"
+                        Margin="0,0,0,8">
+                  <StackPanel Spacing="4">
+                    <TextBlock Text="{Binding Title}"
+                               FontWeight="{DynamicResource Luna.FontWeight.Bold}"
+                               Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+                    <TextBlock Text="{Binding Description}"
+                               TextWrapping="Wrap"
+                               Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                               FontSize="{DynamicResource Luna.FontSize.Body.Small}" />
+                  </StackPanel>
+                </Border>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </StackPanel>
+      </Border>
+
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="引导覆盖层演示" Classes="sample-title" />
+          <TextBlock Text="引导激活时显示半透明遮罩和信息面板。" Classes="sample-caption" />
+          <controls:Guide IsActive="{Binding IsGuideActive}"
+                          CurrentTitle="功能介绍"
+                          CurrentDescription="这是一个引导步骤的演示。实际使用时，Guide 会定位到目标控件并高亮显示。">
+            <Border Width="400" Height="200"
+                    Background="{DynamicResource Luna.Brush.Background.Container}"
+                    BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource Luna.Radius.Default}"
+                    Padding="24">
+              <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="8">
+                <TextBlock Text="被引导覆盖的内容区域"
+                           FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           HorizontalAlignment="Center" />
+                <TextBlock Text="激活引导后，此区域上方会出现半透明遮罩"
+                           Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                           HorizontalAlignment="Center" />
+              </StackPanel>
+            </Border>
+          </controls:Guide>
+        </StackPanel>
+      </Border>
+    </StackPanel>
+  </ScrollViewer>
 </UserControl>

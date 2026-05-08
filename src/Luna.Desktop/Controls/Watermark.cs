@@ -1,9 +1,11 @@
-using System;
 using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Primitives;
+using Avalonia.Controls.Shapes;
+using Avalonia.Controls.Templates;
 using Avalonia.Media;
+using Avalonia.Media.Immutable;
+using Avalonia.VisualTree;
 
 namespace Luna.Desktop.Controls;
 
@@ -23,6 +25,14 @@ public class Watermark : ContentControl
 
     public static readonly StyledProperty<double> GapProperty =
         AvaloniaProperty.Register<Watermark, double>(nameof(Gap), 120);
+
+    public static readonly StyledProperty<double> LineSpacingProperty =
+        AvaloniaProperty.Register<Watermark, double>(nameof(LineSpacing), 80);
+
+    public static readonly StyledProperty<bool> IsScrollingProperty =
+        AvaloniaProperty.Register<Watermark, bool>(nameof(IsScrolling), false);
+
+    private WatermarkOverlay? _overlay;
 
     public string WatermarkText
     {
@@ -54,174 +64,154 @@ public class Watermark : ContentControl
         set => SetValue(GapProperty, value);
     }
 
-    private WatermarkOverlay? _overlay;
+    public double LineSpacing
+    {
+        get => GetValue(LineSpacingProperty);
+        set => SetValue(LineSpacingProperty, value);
+    }
+
+    public bool IsScrolling
+    {
+        get => GetValue(IsScrollingProperty);
+        set => SetValue(IsScrollingProperty, value);
+    }
 
     static Watermark()
     {
-        WatermarkTextProperty.Changed.AddClassHandler<Watermark>((x, _) => x.InvalidateWatermark());
-        WatermarkFontSizeProperty.Changed.AddClassHandler<Watermark>((x, _) => x.InvalidateWatermark());
-        WatermarkOpacityProperty.Changed.AddClassHandler<Watermark>((x, _) => x.InvalidateWatermark());
-        RotateProperty.Changed.AddClassHandler<Watermark>((x, _) => x.InvalidateWatermark());
-        GapProperty.Changed.AddClassHandler<Watermark>((x, _) => x.InvalidateWatermark());
-    }
-
-    protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
-    {
-        base.OnApplyTemplate(e);
-        _overlay = e.NameScope.Find<WatermarkOverlay>("PART_WatermarkOverlay");
-        SyncOverlay();
-    }
-
-    protected override Size ArrangeOverride(Size finalSize)
-    {
-        var result = base.ArrangeOverride(finalSize);
-        SyncOverlay();
-        return result;
-    }
-
-    private void InvalidateWatermark()
-    {
-        if (_overlay != null)
-        {
-            SyncOverlay();
-            _overlay.InvalidateVisual();
-        }
-    }
-
-    private void SyncOverlay()
-    {
-        if (_overlay == null) return;
-
-        _overlay.WatermarkText = WatermarkText;
-        _overlay.WatermarkFontSize = WatermarkFontSize;
-        _overlay.Opacity = WatermarkOpacity;
-        _overlay.Rotation = Rotate;
-        _overlay.Gap = Gap;
-    }
-}
-
-public class WatermarkOverlay : Control
-{
-    public static readonly StyledProperty<string> WatermarkTextProperty =
-        AvaloniaProperty.Register<WatermarkOverlay, string>(nameof(WatermarkText), "Luna");
-
-    public static readonly StyledProperty<double> WatermarkFontSizeProperty =
-        AvaloniaProperty.Register<WatermarkOverlay, double>(nameof(WatermarkFontSize), 14);
-
-    public static readonly StyledProperty<double> RotationProperty =
-        AvaloniaProperty.Register<WatermarkOverlay, double>(nameof(Rotation), -22);
-
-    public static readonly StyledProperty<double> GapProperty =
-        AvaloniaProperty.Register<WatermarkOverlay, double>(nameof(Gap), 120);
-
-    public string WatermarkText
-    {
-        get => GetValue(WatermarkTextProperty);
-        set => SetValue(WatermarkTextProperty, value);
-    }
-
-    public double WatermarkFontSize
-    {
-        get => GetValue(WatermarkFontSizeProperty);
-        set => SetValue(WatermarkFontSizeProperty, value);
-    }
-
-    public double Rotation
-    {
-        get => GetValue(RotationProperty);
-        set => SetValue(RotationProperty, value);
-    }
-
-    public double Gap
-    {
-        get => GetValue(GapProperty);
-        set => SetValue(GapProperty, value);
-    }
-
-    static WatermarkOverlay()
-    {
-        AffectsRender<WatermarkOverlay>(
-            WatermarkTextProperty,
-            WatermarkFontSizeProperty,
-            RotationProperty,
-            GapProperty);
+        WatermarkTextProperty.Changed.AddClassHandler<Watermark>(OnRenderPropertyChanged);
+        WatermarkFontSizeProperty.Changed.AddClassHandler<Watermark>(OnRenderPropertyChanged);
+        WatermarkOpacityProperty.Changed.AddClassHandler<Watermark>(OnRenderPropertyChanged);
+        RotateProperty.Changed.AddClassHandler<Watermark>(OnRenderPropertyChanged);
+        GapProperty.Changed.AddClassHandler<Watermark>(OnRenderPropertyChanged);
+        LineSpacingProperty.Changed.AddClassHandler<Watermark>(OnRenderPropertyChanged);
+        IsScrollingProperty.Changed.AddClassHandler<Watermark>(OnRenderPropertyChanged);
     }
 
     public override void Render(DrawingContext context)
     {
         base.Render(context);
+    }
+
+    protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
+    {
+        base.OnApplyTemplate(e);
+        _overlay = this.FindDescendantOfType<WatermarkOverlay>();
+        if (_overlay != null)
+        {
+            _overlay.Watermark = this;
+            UpdateOverlay();
+        }
+    }
+
+    protected override Size MeasureOverride(Size availableSize)
+    {
+        var result = base.MeasureOverride(availableSize);
+        UpdateOverlay();
+        return result;
+    }
+
+    private static void OnRenderPropertyChanged(Watermark sender, AvaloniaPropertyChangedEventArgs e)
+    {
+        sender.UpdateOverlay();
+    }
+
+    private void UpdateOverlay()
+    {
+        _overlay?.InvalidateVisual();
+    }
+
+    internal void DrawWatermark(DrawingContext context, Size size)
+    {
+        if (string.IsNullOrEmpty(WatermarkText) || size.Width <= 0 || size.Height <= 0)
+            return;
 
         var text = WatermarkText;
-        if (string.IsNullOrEmpty(text))
-            return;
-
-        var bounds = Bounds;
-        if (bounds.Width <= 0 || bounds.Height <= 0)
-            return;
-
         var fontSize = WatermarkFontSize;
-        var gap = Math.Max(Gap, 1);
-        var rotation = Rotation;
-        var radians = rotation * Math.PI / 180.0;
+        var opacity = WatermarkOpacity;
+        var rotate = Rotate;
+        var gap = Gap;
+        var lineSpacing = LineSpacing;
 
-        var brush = (IBrush?)this.FindResource("Luna.Brush.Text.Primary") ?? Brushes.Black;
+        var brush = new SolidColorBrush(Colors.Black, opacity);
+        var typeface = new Typeface(FontFamily, FontStyle.Normal, FontWeight.Normal);
 
-        var typeface = new Typeface(FontFamily, FontStyle, FontWeight);
+        var formattedText = new FormattedText(
+            text,
+            System.Globalization.CultureInfo.CurrentCulture,
+            FlowDirection.LeftToRight,
+            typeface,
+            fontSize,
+            brush);
 
-        var lines = text.Split('\n');
-        var lineHeight = fontSize * 1.4;
-        var totalTextHeight = lineHeight * lines.Length;
+        var textWidth = formattedText.Width;
+        var textHeight = formattedText.Height;
 
-        var textWidth = 0.0;
-        var formattedLines = new FormattedText[lines.Length];
-        for (var i = 0; i < lines.Length; i++)
+        var totalWidth = textWidth + gap;
+        var totalHeight = textHeight + lineSpacing;
+
+        var diagonal = Math.Sqrt(size.Width * size.Width + size.Height * size.Height);
+        var centerX = size.Width / 2;
+        var centerY = size.Height / 2;
+
+        var rotateRad = rotate * Math.PI / 180;
+
+        var rows = (int)(diagonal / totalHeight) + 4;
+        var cols = (int)(diagonal / totalWidth) + 4;
+
+        var startX = centerX - (cols * totalWidth) / 2;
+        var startY = centerY - (rows * totalHeight) / 2;
+
+        using (context.PushTransform(
+            Matrix.CreateTranslation(centerX, centerY) *
+            Matrix.CreateRotation(rotateRad) *
+            Matrix.CreateTranslation(-centerX, -centerY)))
         {
-            var ft = new FormattedText(
-                lines[i],
-                System.Globalization.CultureInfo.CurrentCulture,
-                FlowDirection.LeftToRight,
-                typeface,
-                fontSize,
-                brush);
-            formattedLines[i] = ft;
-            textWidth = Math.Max(textWidth, ft.Bounds.Width);
-        }
-
-        var cellWidth = textWidth + gap;
-        var cellHeight = totalTextHeight + gap;
-
-        var diagonal = Math.Sqrt(bounds.Width * bounds.Width + bounds.Height * bounds.Height) * 1.5;
-        var halfDiag = diagonal / 2;
-        var cx = bounds.Width / 2;
-        var cy = bounds.Height / 2;
-
-        var cos = Math.Cos(radians);
-        var sin = Math.Sin(radians);
-
-        var startX = cx - halfDiag;
-        var startY = cy - halfDiag;
-        var endX = cx + halfDiag;
-        var endY = cy + halfDiag;
-
-        var stepX = cellWidth;
-        var stepY = cellHeight;
-
-        var offset = (startY - endX) / 2;
-
-        using var push = context.PushTransform(Matrix.CreateRotation(radians));
-
-        for (var y = startY; y < endY; y += stepY)
-        {
-            var rowOffset = (((y - startY) / stepY) % 2 == 1) ? stepX / 2 : 0;
-
-            for (var x = startX - rowOffset; x < endX; x += stepX)
+            for (var row = 0; row < rows; row++)
             {
-                for (var li = 0; li < formattedLines.Length; li++)
+                var offset = (row % 2 == 1) ? totalWidth / 2 : 0;
+                for (var col = 0; col < cols; col++)
                 {
-                    var lineY = y + li * lineHeight;
-                    context.DrawText(formattedLines[li], new Point(x, lineY));
+                    var x = startX + col * totalWidth + offset;
+                    var y = startY + row * totalHeight;
+
+                    if (IsScrolling)
+                    {
+                        var scrollOffset = (row % 2 == 0) ? gap * 0.3 : -gap * 0.3;
+                        x += scrollOffset;
+                    }
+
+                    context.DrawText(
+                        new FormattedText(
+                            text,
+                            System.Globalization.CultureInfo.CurrentCulture,
+                            FlowDirection.LeftToRight,
+                            typeface,
+                            fontSize,
+                            brush),
+                        new Point(x, y));
                 }
             }
         }
+    }
+}
+
+public class WatermarkOverlay : Control
+{
+    internal Watermark? Watermark { get; set; }
+
+    public sealed override void Render(DrawingContext context)
+    {
+        base.Render(context);
+        if (Watermark == null) return;
+
+        var size = Bounds.Size;
+        if (size.Width <= 0 || size.Height <= 0) return;
+
+        Watermark.DrawWatermark(context, size);
+    }
+
+    protected override Size MeasureOverride(Size availableSize)
+    {
+        return new Size(availableSize.Width, availableSize.Height);
     }
 }

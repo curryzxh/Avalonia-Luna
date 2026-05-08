@@ -2,55 +2,46 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="using:Luna.Desktop.Controls">
   <Style Selector="controls|Rate">
-    <Setter Property="Focusable" Value="False" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <ItemsControl ItemsSource="{TemplateBinding Items}">
+          <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+              <StackPanel Orientation="Horizontal" Spacing="4" />
+            </ItemsPanelTemplate>
+          </ItemsControl.ItemsPanel>
+          <ItemsControl.ItemTemplate>
+            <DataTemplate x:DataType="controls:RateItem">
+              <controls:RateItemControl Cursor="Hand">
+                <TextBlock Text="{Binding Character}"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
+              </controls:RateItemControl>
+            </DataTemplate>
+          </ItemsControl.ItemTemplate>
+        </ItemsControl>
+      </ControlTemplate>
+    </Setter>
   </Style>
 
-  <Style Selector="controls|Rate > StackPanel > Button">
-    <Setter Property="Background" Value="Transparent" />
-    <Setter Property="BorderBrush" Value="Transparent" />
-    <Setter Property="BorderThickness" Value="0" />
-    <Setter Property="Padding" Value="2" />
-    <Setter Property="Focusable" Value="False" />
-    <Setter Property="Cursor" Value="Hand" />
-    <Setter Property="Opacity" Value="1" />
+  <Style Selector="controls|RateItemControl">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Placeholder}" />
   </Style>
 
-  <Style Selector="controls|Rate > StackPanel > Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-    <Setter Property="Background" Value="Transparent" />
+  <Style Selector="controls|RateItemControl:filled">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Warning}" />
   </Style>
 
-  <Style Selector="controls|Rate > StackPanel > Button:pointerover">
-    <Setter Property="Opacity" Value="0.8" />
+  <Style Selector="controls|RateItemControl:pointerover">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Warning}" />
   </Style>
 
-  <Style Selector="controls|Rate > StackPanel > Button:pressed">
-    <Setter Property="Opacity" Value="0.6" />
+  <Style Selector="controls|Rate:disabled">
+    <Setter Property="Opacity" Value="0.5" />
+    <Setter Property="Cursor" Value="Default" />
   </Style>
 
-  <Style Selector="controls|Rate > StackPanel > Button > TextBlock">
-    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Title.Medium}" />
-    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Border.Default}" />
-    <Setter Property="TextAlignment" Value="Center" />
-  </Style>
-
-  <Style Selector="controls|Rate:disabled > StackPanel > Button">
-    <Setter Property="Opacity" Value="0.4" />
-    <Setter Property="Cursor" Value="Arrow" />
-  </Style>
-
-  <Style Selector="controls|Rate.small > StackPanel > Button > TextBlock">
-    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Medium}" />
-  </Style>
-
-  <Style Selector="controls|Rate.small > StackPanel > Button">
-    <Setter Property="Padding" Value="1" />
-  </Style>
-
-  <Style Selector="controls|Rate.large > StackPanel > Button > TextBlock">
-    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Title.Large}" />
-  </Style>
-
-  <Style Selector="controls|Rate.large > StackPanel > Button">
-    <Setter Property="Padding" Value="4" />
+  <Style Selector="controls|Rate:disabled /template/ controls|RateItemControl">
+    <Setter Property="Cursor" Value="Default" />
   </Style>
 </Styles>

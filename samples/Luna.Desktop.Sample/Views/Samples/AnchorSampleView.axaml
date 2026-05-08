@@ -4,54 +4,79 @@
              xmlns:controls="using:Luna.Desktop.Controls"
              x:Class="Luna.Desktop.Sample.Views.Samples.AnchorSampleView"
              x:DataType="vm:AnchorSampleViewModel">
-  <StackPanel Spacing="16">
-    <Border Classes="sample-card">
-      <StackPanel Spacing="12">
-        <TextBlock Text="基本锚点" Classes="sample-title" />
-        <TextBlock Text="Anchor 提供页面内快速跳转定位功能，左侧导航链接 + 右侧滚动内容区域。点击链接平滑滚动到对应章节，滚动内容自动高亮当前章节。"
-                   Classes="sample-caption" TextWrapping="Wrap" />
-        <Border Height="400"
-                BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
-                BorderThickness="1"
-                CornerRadius="{DynamicResource Luna.Radius.Default}">
-          <Grid ColumnDefinitions="180,*">
-            <controls:Anchor Name="PART_Anchor"
-                             ItemsSource="{Binding Sections}"
-                             DisplayMemberPath="Title">
-              <controls:Anchor.ItemContainerTheme>
-                <ControlTheme TargetType="controls:AnchorItem">
-                  <Setter Property="AnchorId" Value="{Binding AnchorId}" />
-                </ControlTheme>
-              </controls:Anchor.ItemContainerTheme>
-            </controls:Anchor>
-
-            <ScrollViewer Name="PART_ScrollViewer" Grid.Column="1"
-                          Margin="24,16"
-                          HorizontalScrollBarVisibility="Disabled"
-                          VerticalScrollBarVisibility="Auto">
+  <Border Classes="sample-card">
+    <StackPanel Spacing="12">
+      <TextBlock Text="锚点导航" Classes="sample-title" />
+      <TextBlock Text="Anchor 提供页面内快速跳转定位功能。左侧导航点击可跳转到对应区域，滚动内容时左侧导航自动高亮。" Classes="sample-caption" />
+      <Border Height="320"
+              BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+              BorderThickness="1"
+              CornerRadius="{DynamicResource Luna.Radius.Default}">
+        <Grid ColumnDefinitions="160,*">
+          <Border Grid.Column="0"
+                  Background="{DynamicResource Luna.Brush.Background.Page}"
+                  BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                  BorderThickness="0,0,1,0"
+                  Padding="8,16">
+            <ScrollViewer VerticalScrollBarVisibility="Hidden">
               <ItemsControl ItemsSource="{Binding Sections}">
                 <ItemsControl.ItemTemplate>
-                  <DataTemplate x:DataType="vm:AnchorSection">
-                    <StackPanel Spacing="8"
-                                Margin="0,0,0,32"
-                                controls:Anchor.AnchorId="{Binding AnchorId}">
+                  <DataTemplate>
+                    <Border Padding="8,6" CornerRadius="4" Cursor="Hand">
                       <TextBlock Text="{Binding Title}"
-                                 FontSize="{DynamicResource Luna.FontSize.Title.Small}"
-                                 FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
-                                 Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
-                      <TextBlock Text="{Binding Description}"
-                                 TextWrapping="Wrap"
                                  FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
-                                 Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
-                                 LineHeight="22" />
-                    </StackPanel>
+                                 Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                    </Border>
                   </DataTemplate>
                 </ItemsControl.ItemTemplate>
               </ItemsControl>
             </ScrollViewer>
-          </Grid>
-        </Border>
-      </StackPanel>
-    </Border>
-  </StackPanel>
+          </Border>
+          <ScrollViewer Grid.Column="1" Name="PART_ContentScroll">
+            <StackPanel Spacing="24" Margin="24,16">
+              <StackPanel Spacing="8">
+                <TextBlock Text="概述" FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           controls:Anchor.AnchorId="overview" />
+                <TextBlock TextWrapping="Wrap" Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                           Text="Luna Desktop 是一套基于 Avalonia UI 的桌面端组件库，遵循 TDesign 设计规范。提供丰富的控件、主题和布局支持，帮助开发者快速构建美观的桌面应用。" />
+              </StackPanel>
+
+              <StackPanel Spacing="8">
+                <TextBlock Text="特性" FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           controls:Anchor.AnchorId="features" />
+                <TextBlock TextWrapping="Wrap" Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                           Text="支持明暗主题切换、Token 化设计、MVVM 绑定、响应式布局。覆盖基础、表单、数据展示、反馈和导航五大控件域。" />
+              </StackPanel>
+
+              <StackPanel Spacing="8">
+                <TextBlock Text="快速开始" FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           controls:Anchor.AnchorId="quickstart" />
+                <TextBlock TextWrapping="Wrap" Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                           Text="通过 NuGet 安装 Luna.Desktop 包，在 App.axaml 中引用主题资源，即可开始使用所有控件。" />
+              </StackPanel>
+
+              <StackPanel Spacing="8">
+                <TextBlock Text="主题系统" FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           controls:Anchor.AnchorId="theme" />
+                <TextBlock TextWrapping="Wrap" Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                           Text="Luna 使用 Token 化主题系统，支持品牌色、功能色、文本色、背景色、边框色、圆角、间距、字号、阴影等设计变量。" />
+              </StackPanel>
+
+              <StackPanel Spacing="8">
+                <TextBlock Text="控件列表" FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           controls:Anchor.AnchorId="controls" />
+                <TextBlock TextWrapping="Wrap" Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                           Text="Luna Desktop 当前包含 60+ 控件，涵盖 Button、Input、Select、Table、Dialog、Menu、Tabs、Steps、Pagination 等常用控件。" />
+              </StackPanel>
+            </StackPanel>
+          </ScrollViewer>
+        </Grid>
+      </Border>
+    </StackPanel>
+  </Border>
 </UserControl>

@@ -2,23 +2,35 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="using:Luna.Desktop.Controls">
   <Style Selector="controls|StickyTool">
+    <Setter Property="HorizontalAlignment" Value="Right" />
+    <Setter Property="VerticalAlignment" Value="Bottom" />
+    <Setter Property="Margin" Value="0,0,24,24" />
     <Setter Property="Template">
       <ControlTemplate>
-        <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+        <Border Name="PART_Root"
+                Background="{DynamicResource Luna.Brush.Background.Container}"
                 BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
                 BorderThickness="1"
                 CornerRadius="{DynamicResource Luna.Radius.Default}"
                 BoxShadow="{DynamicResource Luna.Shadow.Popup}"
-                Padding="8"
-                MinWidth="48">
+                Padding="4"
+                ClipToBounds="False">
           <ContentPresenter Content="{TemplateBinding Content}" />
         </Border>
       </ControlTemplate>
     </Setter>
   </Style>
 
-  <Style Selector="controls|StickyTool:collapsed">
-    <Setter Property="Width" Value="48" />
-    <Setter Property="Height" Value="48" />
+  <Style Selector="controls|StickyTool:collapsed /template/ Border#PART_Root">
+    <Setter Property="Opacity" Value="0.4" />
+    <Setter Property="MaxWidth" Value="48" />
+  </Style>
+
+  <Style Selector="controls|StickyTool:right">
+    <Setter Property="HorizontalAlignment" Value="Right" />
+  </Style>
+
+  <Style Selector="controls|StickyTool:left">
+    <Setter Property="HorizontalAlignment" Value="Left" />
   </Style>
 </Styles>

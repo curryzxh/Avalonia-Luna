@@ -1,73 +1,45 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="using:Luna.Desktop.Controls">
-  <Style Selector="controls|Anchor">
-    <Setter Property="Template">
-      <ControlTemplate>
-        <Border Background="{DynamicResource Luna.Brush.Background.Container}"
-                BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
-                BorderThickness="0,0,1,0"
-                CornerRadius="0"
-                Padding="12,16">
-          <ScrollViewer HorizontalScrollBarVisibility="Disabled"
-                        VerticalScrollBarVisibility="Auto">
-            <ItemsPresenter />
-          </ScrollViewer>
-        </Border>
-      </ControlTemplate>
-    </Setter>
-    <Setter Property="ItemsPanel">
-      <ItemsPanelTemplate>
-        <StackPanel Orientation="Vertical" Spacing="2" />
-      </ItemsPanelTemplate>
-    </Setter>
-  </Style>
-
   <Style Selector="controls|AnchorItem">
+    <Setter Property="Padding" Value="8,6" />
     <Setter Property="Cursor" Value="Hand" />
+    <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Small}" />
     <Setter Property="Template">
       <ControlTemplate>
-        <Border Name="PART_Root"
-                Padding="8,6"
-                CornerRadius="{DynamicResource Luna.Radius.Small}"
-                Background="Transparent">
-          <Grid ColumnDefinitions="Auto,*" ColumnSpacing="8">
+        <Border Background="{TemplateBinding Background}"
+                CornerRadius="{TemplateBinding CornerRadius}"
+                Padding="{TemplateBinding Padding}">
+          <Panel>
             <Border Name="PART_Indicator"
-                    Width="3"
-                    CornerRadius="1.5"
+                    Width="2"
                     Background="Transparent"
                     VerticalAlignment="Stretch"
-                    Margin="0,2,0,2" />
-            <ContentPresenter Name="PART_Header"
-                              Grid.Column="1"
-                              Content="{TemplateBinding Header}"
-                              ContentTemplate="{TemplateBinding HeaderTemplate}"
-                              VerticalAlignment="Center" />
-          </Grid>
+                    HorizontalAlignment="Left"
+                    CornerRadius="1"
+                    Margin="0,2" />
+            <TextBlock Text="{TemplateBinding Text}"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                       VerticalAlignment="Center"
+                       Margin="12,0,0,0" />
+          </Panel>
         </Border>
       </ControlTemplate>
     </Setter>
   </Style>
 
-  <Style Selector="controls|AnchorItem /template/ ContentPresenter#PART_Header TextBlock">
-    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Medium}" />
-    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Secondary}" />
-  </Style>
-
-  <Style Selector="controls|AnchorItem:pointerover /template/ Border#PART_Root">
-    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.ComponentActive}" />
+  <Style Selector="controls|AnchorItem:pointerover">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Component}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
   </Style>
 
   <Style Selector="controls|AnchorItem:selected /template/ Border#PART_Indicator">
     <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand}" />
   </Style>
 
-  <Style Selector="controls|AnchorItem:selected /template/ ContentPresenter#PART_Header TextBlock">
+  <Style Selector="controls|AnchorItem:selected">
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
-    <Setter Property="FontWeight" Value="{DynamicResource Luna.FontWeight.Medium}" />
-  </Style>
-
-  <Style Selector="controls|AnchorItem:pressed /template/ Border#PART_Root">
-    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Disabled}" />
+    <Setter Property="FontWeight" Value="{DynamicResource Luna.FontWeight.Bold}" />
   </Style>
 </Styles>

@@ -1,52 +1,161 @@
+using System.Collections.ObjectModel;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Metadata;
+using Avalonia.Controls.Primitives;
+using Avalonia.Controls.Templates;
+using Avalonia.Input;
+using Avalonia.Interactivity;
+using Avalonia.VisualTree;
 
 namespace Luna.Desktop.Controls;
 
+[PseudoClasses(":active")]
 public class Guide : ContentControl
 {
-    public static readonly StyledProperty<string?> TitleProperty =
-        AvaloniaProperty.Register<Guide, string?>(nameof(Title));
+    public static readonly StyledProperty<ObservableCollection<GuideStep>> StepsProperty =
+        AvaloniaProperty.Register<Guide, ObservableCollection<GuideStep>>(nameof(Steps));
 
-    public static readonly StyledProperty<string?> DescriptionProperty =
-        AvaloniaProperty.Register<Guide, string?>(nameof(Description));
+    public static readonly StyledProperty<int> CurrentStepIndexProperty =
+        AvaloniaProperty.Register<Guide, int>(nameof(CurrentStepIndex), -1);
 
-    public static readonly StyledProperty<bool> IsVisibleProperty =
-        AvaloniaProperty.Register<Guide, bool>(nameof(IsVisible), false);
+    public static readonly StyledProperty<bool> IsActiveProperty =
+        AvaloniaProperty.Register<Guide, bool>(nameof(IsActive), false);
 
-    public static readonly StyledProperty<int> CurrentStepProperty =
-        AvaloniaProperty.Register<Guide, int>(nameof(CurrentStep), 0);
+    public static readonly StyledProperty<string?> CurrentTitleProperty =
+        AvaloniaProperty.Register<Guide, string?>(nameof(CurrentTitle));
 
-    public static readonly StyledProperty<int> TotalStepsProperty =
-        AvaloniaProperty.Register<Guide, int>(nameof(TotalSteps), 1);
+    public static readonly StyledProperty<string?> CurrentDescriptionProperty =
+        AvaloniaProperty.Register<Guide, string?>(nameof(CurrentDescription));
 
-    public string? Title
+    private Border? _overlay;
+    private Border? _highlightBorder;
+    private Border? _infoPanel;
+    private Control? _currentTarget;
+
+    public ObservableCollection<GuideStep> Steps
     {
-        get => GetValue(TitleProperty);
-        set => SetValue(TitleProperty, value);
+        get => GetValue(StepsProperty);
+        set => SetValue(StepsProperty, value);
     }
 
-    public string? Description
+    public int CurrentStepIndex
     {
-        get => GetValue(DescriptionProperty);
-        set => SetValue(DescriptionProperty, value);
+        get => GetValue(CurrentStepIndexProperty);
+        set => SetValue(CurrentStepIndexProperty, value);
     }
 
-    public bool IsVisible
+    public bool IsActive
     {
-        get => GetValue(IsVisibleProperty);
-        set => SetValue(IsVisibleProperty, value);
+        get => GetValue(IsActiveProperty);
+        set => SetValue(IsActiveProperty, value);
     }
 
-    public int CurrentStep
+    public string? CurrentTitle
     {
-        get => GetValue(CurrentStepProperty);
-        set => SetValue(CurrentStepProperty, value);
+        get => GetValue(CurrentTitleProperty);
+        set => SetValue(CurrentTitleProperty, value);
     }
 
-    public int TotalSteps
+    public string? CurrentDescription
     {
-        get => GetValue(TotalStepsProperty);
-        set => SetValue(TotalStepsProperty, value);
+        get => GetValue(CurrentDescriptionProperty);
+        set => SetValue(CurrentDescriptionProperty, value);
     }
+
+    static Guide()
+    {
+        IsActiveProperty.Changed.AddClassHandler<Guide>(OnIsActiveChanged);
+        CurrentStepIndexProperty.Changed.AddClassHandler<Guide>(OnCurrentStepIndexChanged);
+    }
+
+    protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
+    {
+        base.OnApplyTemplate(e);
+        _overlay = this.FindDescendantOfType<Border>();
+    }
+
+    public void Start()
+    {
+        if (Steps == null || Steps.Count == 0) return;
+        IsActive = true;
+        CurrentStepIndex = 0;
+        PseudoClasses.Set(":active", true);
+        ShowCurrentStep();
+    }
+
+    public void Next()
+    {
+        if (Steps == null || CurrentStepIndex < 0) return;
+        var next = CurrentStepIndex + 1;
+        if (next < Steps.Count)
+        {
+            CurrentStepIndex = next;
+            ShowCurrentStep();
+        }
+        else
+        {
+            Finish();
+        }
+    }
+
+    public void Prev()
+    {
+        if (Steps == null || CurrentStepIndex <= 0) return;
+        CurrentStepIndex = CurrentStepIndex - 1;
+        ShowCurrentStep();
+    }
+
+    public void Skip()
+    {
+        Finish();
+    }
+
+    public void Finish()
+    {
+        IsActive = false;
+        CurrentStepIndex = -1;
+        PseudoClasses.Set(":active", false);
+        CurrentTitle = null;
+        CurrentDescription = null;
+    }
+
+    private static void OnIsActiveChanged(Guide sender, AvaloniaPropertyChangedEventArgs e)
+    {
+        sender.PseudoClasses.Set(":active", sender.IsActive);
+    }
+
+    private static void OnCurrentStepIndexChanged(Guide sender, AvaloniaPropertyChangedEventArgs e)
+    {
+        if (sender.IsActive)
+        {
+            sender.ShowCurrentStep();
+        }
+    }
+
+    private void ShowCurrentStep()
+    {
+        if (Steps == null || CurrentStepIndex < 0 || CurrentStepIndex >= Steps.Count) return;
+
+        var step = Steps[CurrentStepIndex];
+        CurrentTitle = step.Title;
+        CurrentDescription = step.Description;
+
+        if (!string.IsNullOrEmpty(step.TargetControlId))
+        {
+            var topLevel = TopLevel.GetTopLevel(this);
+            if (topLevel != null)
+            {
+                _currentTarget = topLevel.GetVisualDescendants()
+                    .FirstOrDefault(d => d.Name == step.TargetControlId) as Control;
+            }
+        }
+    }
+}
+
+public class GuideStep
+{
+    public string? TargetControlId { get; set; }
+    public string? Title { get; set; }
+    public string? Description { get; set; }
 }

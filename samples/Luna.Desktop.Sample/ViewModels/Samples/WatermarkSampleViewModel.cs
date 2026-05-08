@@ -24,5 +24,5 @@ public partial class WatermarkSampleViewModel : SampleDetailViewModelBase
     private double _watermarkFontSize = 14;
 
     [ObservableProperty]
-    private string _multiLineText = "Luna Desktop\nAvalonia UI";
+    private bool _isScrolling;
 }

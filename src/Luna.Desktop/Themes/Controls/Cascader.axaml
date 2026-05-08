@@ -2,37 +2,57 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="using:Luna.Desktop.Controls">
   <Style Selector="controls|Cascader">
-    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
-    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
-    <Setter Property="BorderThickness" Value="1" />
-    <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Default}" />
-    <Setter Property="Padding" Value="12,8" />
-    <Setter Property="MinHeight" Value="36" />
     <Setter Property="Cursor" Value="Hand" />
     <Setter Property="Template">
       <ControlTemplate>
-        <Border Background="{TemplateBinding Background}"
-                BorderBrush="{TemplateBinding BorderBrush}"
-                BorderThickness="{TemplateBinding BorderThickness}"
-                CornerRadius="{TemplateBinding CornerRadius}"
-                Padding="{TemplateBinding Padding}">
-          <Grid ColumnDefinitions="*,Auto">
-            <TextBlock Grid.Column="0"
-                       Text="{TemplateBinding Placeholder}"
-                       Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
-                       VerticalAlignment="Center" />
-            <PathIcon Grid.Column="1"
-                      Data="M7 10l5 5 5-5z"
+        <Grid>
+          <Border Name="PART_Input"
+                  Background="{DynamicResource Luna.Brush.Background.Container}"
+                  BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                  BorderThickness="1"
+                  CornerRadius="{DynamicResource Luna.Radius.Default}"
+                  Height="32"
+                  Padding="8,0">
+            <Grid ColumnDefinitions="*,Auto">
+              <TextBlock Grid.Column="0"
+                         Text="{TemplateBinding DisplayText}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                         VerticalAlignment="Center"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}" />
+              <Border Grid.Column="1"
                       Width="16" Height="16"
-                      Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
-                      VerticalAlignment="Center" />
-          </Grid>
-        </Border>
+                      VerticalAlignment="Center">
+                <TextBlock Text="&#x25BC;"
+                           FontSize="10"
+                           Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
+              </Border>
+            </Grid>
+          </Border>
+          <Popup IsOpen="{TemplateBinding IsDropDownOpen, Mode=TwoWay}"
+                 Placement="BottomEdgeAlignedLeft"
+                 IsLightDismissEnabled="True"
+                 PlacementTarget="{Binding #PART_Input, RelativeSource={RelativeSource TemplatedParent}}">
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                    BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource Luna.Radius.Default}"
+                    BoxShadow="{DynamicResource Luna.Shadow.Popup}"
+                    Padding="4">
+              <StackPanel Orientation="Horizontal" />
+            </Border>
+          </Popup>
+        </Grid>
       </ControlTemplate>
     </Setter>
   </Style>
 
-  <Style Selector="controls|Cascader:pointerover /template/ Border">
+  <Style Selector="controls|Cascader:pointerover /template/ Border#PART_Input">
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="controls|Cascader:dropdown-open /template/ Border#PART_Input">
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand}" />
   </Style>
 </Styles>

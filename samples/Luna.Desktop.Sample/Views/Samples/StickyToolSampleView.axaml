@@ -4,51 +4,54 @@
              xmlns:controls="using:Luna.Desktop.Controls"
              x:Class="Luna.Desktop.Sample.Views.Samples.StickyToolSampleView"
              x:DataType="vm:StickyToolSampleViewModel">
-  <StackPanel Spacing="16">
-    <Border Classes="sample-card">
-      <StackPanel Spacing="12">
-        <TextBlock Text="固定工具栏" Classes="sample-title" />
-        <TextBlock Text="StickyTool 固定在页面侧边，常用于放置快捷操作按钮。" Classes="sample-caption" />
-        <Grid ColumnDefinitions="*,Auto">
-          <Border Grid.Column="0" Height="200"
-                  Background="{DynamicResource Luna.Brush.Background.Page}"
-                  BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
-                  BorderThickness="1"
-                  CornerRadius="{DynamicResource Luna.Radius.Default}">
-            <TextBlock Text="页面内容区域" HorizontalAlignment="Center" VerticalAlignment="Center"
-                       Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" />
-          </Border>
-          <controls:StickyTool Grid.Column="1" Position="Right" Offset="0" Margin="12,0,0,0">
-            <StackPanel Spacing="4">
-              <Button Content="📋" Classes="link" FontSize="20" />
-              <Button Content="🔍" Classes="link" FontSize="20" />
-              <Button Content="⚙️" Classes="link" FontSize="20" />
-            </StackPanel>
-          </controls:StickyTool>
-        </Grid>
-      </StackPanel>
-    </Border>
+  <ScrollViewer>
+    <Grid>
+      <StackPanel Spacing="16" Margin="0,0,0,24">
+        <Border Classes="sample-card">
+          <StackPanel Spacing="12">
+            <TextBlock Text="基本吸顶工具" Classes="sample-title" />
+            <TextBlock Text="StickyTool 在页面滚动时吸附在侧边，向下滚动时自动折叠，鼠标悬停展开。" Classes="sample-caption" />
+            <TextBlock TextWrapping="Wrap" Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                       Text="滚动此页面可看到右下角的 StickyTool 自动折叠/展开效果。滚动超过阈值后向下滚动会折叠，鼠标移入会展开。" />
+          </StackPanel>
+        </Border>
 
-    <Border Classes="sample-card">
-      <StackPanel Spacing="12">
-        <TextBlock Text="左侧定位" Classes="sample-title" />
-        <Grid ColumnDefinitions="Auto,*">
-          <controls:StickyTool Grid.Column="0" Position="Left" Offset="0" Margin="0,0,12,0">
-            <StackPanel Spacing="4">
-              <Button Content="🏠" Classes="link" FontSize="20" />
-              <Button Content="📊" Classes="link" FontSize="20" />
-            </StackPanel>
-          </controls:StickyTool>
-          <Border Grid.Column="1" Height="200"
-                  Background="{DynamicResource Luna.Brush.Background.Page}"
-                  BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
-                  BorderThickness="1"
-                  CornerRadius="{DynamicResource Luna.Radius.Default}">
-            <TextBlock Text="页面内容区域" HorizontalAlignment="Center" VerticalAlignment="Center"
-                       Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" />
-          </Border>
-        </Grid>
+        <Border Classes="sample-card">
+          <StackPanel Spacing="12">
+            <TextBlock Text="内容区域" Classes="sample-title" />
+            <TextBlock Text="以下为占位内容，用于产生足够的滚动距离来展示 StickyTool 效果。" Classes="sample-caption" />
+          </StackPanel>
+        </Border>
+
+        <Border Classes="sample-card" Height="200" />
+        <Border Classes="sample-card" Height="200" />
+        <Border Classes="sample-card" Height="200" />
+        <Border Classes="sample-card" Height="200" />
+        <Border Classes="sample-card" Height="200" />
+        <Border Classes="sample-card" Height="200" />
+        <Border Classes="sample-card" Height="200" />
+        <Border Classes="sample-card" Height="200" />
       </StackPanel>
-    </Border>
-  </StackPanel>
+
+      <controls:StickyTool Offset="200" Position="Right">
+        <StackPanel Spacing="4" Orientation="Horizontal">
+          <Button Content="&#xE72C;" FontFamily="Segoe MDL2 Assets"
+                  Width="36" Height="36"
+                  Padding="0"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center" />
+          <Button Content="&#xE74A;" FontFamily="Segoe MDL2 Assets"
+                  Width="36" Height="36"
+                  Padding="0"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center" />
+          <Button Content="&#xE72A;" FontFamily="Segoe MDL2 Assets"
+                  Width="36" Height="36"
+                  Padding="0"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center" />
+        </StackPanel>
+      </controls:StickyTool>
+    </Grid>
+  </ScrollViewer>
 </UserControl>

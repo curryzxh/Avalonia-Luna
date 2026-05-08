@@ -7,8 +7,7 @@
       <ControlTemplate>
         <Grid>
           <ContentPresenter Content="{TemplateBinding Content}" />
-          <controls:WatermarkOverlay Name="PART_WatermarkOverlay"
-                                     IsHitTestVisible="False"
+          <controls:WatermarkOverlay IsHitTestVisible="False"
                                      ZIndex="99" />
         </Grid>
       </ControlTemplate>

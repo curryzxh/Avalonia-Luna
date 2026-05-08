@@ -4,14 +4,23 @@
   <Style Selector="controls|LunaPopup">
     <Setter Property="Template">
       <ControlTemplate>
-        <StackPanel>
-          <ContentControl Content="{TemplateBinding Anchor}" Name="PART_Anchor" />
-          <Popup Child="{TemplateBinding Content}"
+        <Grid>
+          <ContentPresenter Content="{TemplateBinding Content}" />
+          <Popup Name="PART_Popup"
                  IsOpen="{TemplateBinding IsOpen, Mode=TwoWay}"
                  Placement="{TemplateBinding Placement}"
-                 PlacementTarget="{Binding #PART_Anchor}">
+                 IsLightDismissEnabled="{TemplateBinding IsLightDismissEnabled}"
+                 PlacementTarget="{TemplateBinding}">
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                    BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource Luna.Radius.Default}"
+                    BoxShadow="{DynamicResource Luna.Shadow.Popup}"
+                    Padding="12">
+              <ContentPresenter Content="{TemplateBinding PopupContent}" />
+            </Border>
           </Popup>
-        </StackPanel>
+        </Grid>
       </ControlTemplate>
     </Setter>
   </Style>

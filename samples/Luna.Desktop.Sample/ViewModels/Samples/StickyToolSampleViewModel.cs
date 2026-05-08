@@ -1,6 +1,10 @@
+using CommunityToolkit.Mvvm.ComponentModel;
+
 namespace Luna.Desktop.Sample.ViewModels.Samples;
 
-public class StickyToolSampleViewModel()
-    : SampleDetailViewModelBase("导航", "StickyTool", "吸附工具，固定在页面边缘的快捷操作面板。")
+public partial class StickyToolSampleViewModel : SampleDetailViewModelBase
 {
+    public StickyToolSampleViewModel() : base("导航", "StickyTool", "吸顶工具，滚动时吸附在页面侧边的工具栏。")
+    {
+    }
 }

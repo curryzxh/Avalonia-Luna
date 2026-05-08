@@ -1,6 +1,6 @@
 # Luna.Desktop 控件库并行 Agent 协调计划
 
-- 状态：✅ 全部完成，构建通过（0 错误）
+- 状态：✅ 迭代 2-A 完成，构建通过（0 错误）
 - 关联需求：`docs/features/20260508-luna-desktop-control-catalog/spec.md`
 - 关联方案：`docs/features/20260508-luna-desktop-control-catalog/plan.md`
 
@@ -292,7 +292,7 @@ plan.md 中控件覆盖了 Navigation 和 Layout 域，需要在 `ControlSampleC
 | Divider | ✅ 59行 | ✅ 3选择器/5 Setter | ✅ | ✅ 43行 | ✅ | |
 | Space | 无（StackPanel样式） | ✅ 4选择器/4 Setter | ✅ | ✅ 87行 | ✅ | |
 | Descriptions | ✅ 45行 | ⚠️ 1选择器/3 Setter | ✅ 27行 | ✅ 59行 | ⚠️ | 主题样式过于简单 |
-| Guide | ✅ 82行 | ✅ 33行 | ✅ | ✅ 34行 | ✅ | |
+| Guide | ✅ 160行 | ✅ 52行 | ✅ 40行 | ✅ 80行 | ✅ | 完整引导控件，遮罩+步骤管理+信息面板 |
 | ImageViewer | ✅ 68行 | ✅ 28行 | ✅ | ✅ 36行 | ✅ | |
 | DesktopBadge(深化) | ✅ 121行 | ✅ 138行 | ✅ 22行 | ✅ 120行 | ✅ | |
 
@@ -308,7 +308,7 @@ plan.md 中控件覆盖了 Navigation 和 Layout 域，需要在 `ControlSampleC
 | DatePicker | 无（原生） | 无 | ✅ 11行 | ⚠️ 23行，2占位 | ⚠️ | 用原生CalendarDatePicker，缺Luna样式 |
 | TimePicker | 无（原生） | 无 | ✅ 11行 | ⚠️ 22行，2占位 | ⚠️ | 用原生TimePicker，缺Luna样式 |
 | Upload | 无 | 无 | ✅ 29行 | ✅ 60行 | ⚠️ | 示例展示，无自定义控件 |
-| Cascader | ✅ 43行 | ✅ 30行 | ✅ 30行 | ✅ 43行 | ⚠️ | 基本控件+TreeView替代 |
+| Cascader | ✅ 155行 | ✅ 58行 | ✅ 44行 | ✅ 52行 | ✅ | 完整级联选择控件，支持多级数据和Popup弹层 |
 | Rate | ✅ 135行 | ⚠️ 7行/1选择器 | ✅ 16行 | ✅ 36行 | ⚠️ | 主题样式过于简单 |
 | ColorPicker | 无 | 无 | ✅ 28行 | ✅ 55行 | ⚠️ | 示例展示，无自定义控件 |
 | Input(深化) | 无 | ✅ 已有 | ✅ 58行 | ✅ 115行 | ✅ | |
@@ -332,7 +332,7 @@ plan.md 中控件覆盖了 Navigation 和 Layout 域，需要在 `ControlSampleC
 | List | 无（ItemsControl样式） | ✅ 20行 | ✅ | ✅ 38行 | ✅ | |
 | Comment | ✅ 43行 | ⚠️ 36行/1选择器 | ✅ | ✅ 17行 | ⚠️ | 主题和示例都简单 |
 | QRCode | 无 | 无 | ✅ 18行 | ✅ 50行 | ⚠️ | API 设计预览，需第三方库 |
-| Watermark | ✅ 56行 | ✅ 15行 | ✅ 18行 | ✅ 52行 | ⚠️ | 基本水印控件 |
+| Watermark | ✅ 200行 | ✅ 18行 | ✅ 22行 | ✅ 96行 | ✅ | 完整水印渲染，DrawingContext平铺旋转文字 |
 | BackTop | ✅ 73行 | ✅ 35行 | ✅ 18行 | ✅ 42行 | ✅ | |
 | Image | 无 | ⚠️ 14行/2选择器 | ✅ | ⚠️ 44行/2占位 | ⚠️ | 样式和示例都偏简单 |
 | Progress(深化) | 无 | ✅ 已有 | ✅ 19行 | ✅ 63行 | ✅ | |
@@ -364,17 +364,17 @@ plan.md 中控件覆盖了 Navigation 和 Layout 域，需要在 `ControlSampleC
 | Pagination | ✅ 268行 | ⚠️ 40行/1选择器 | ✅ 32行 | ✅ 41行 | ⚠️ | 主题只有模板定义 |
 | Breadcrumb | ✅ 135行 | ✅ 31行 | ✅ 10行 | ✅ 32行 | ✅ | |
 | Steps | ✅ 553行 | ✅ 299行 | ✅ 16行 | ✅ 45行 | ✅ | |
-| Anchor | ✅ 16行 | ✅ 30行 | ✅ | ✅ 35行 | ⚠️ | 基本锚点布局 |
-| Affix | ✅ 16行 | ✅ 24行 | ✅ | ✅ 39行 | ⚠️ | 基本固钉 |
-| StickyTool | ✅ 31行 | ✅ 24行 | ✅ | ✅ 60行 | ⚠️ | 基本吸附工具 |
+| Anchor | ✅ 170行+AnchorItem 40行 | ✅ 50行 | ✅ 30行 | ✅ 70行 | ✅ | 完整锚点导航，支持滚动高亮和点击跳转 |
+| Affix | ✅ 100行 | ✅ 25行 | ✅ 14行 | ✅ 72行 | ✅ | 完整固钉，滚动监听+:fixed伪类 |
+| StickyTool | ✅ 110行 | ✅ 35行 | ✅ 10行 | ✅ 70行 | ✅ | 完整吸附工具，折叠/展开+滚动联动 |
 | Slider(深化) | 无 | ✅ 已有 | ✅ 25行 | ✅ 88行 | ✅ | |
 
 ## 完成度汇总
 
 | 评级 | 数量 | 占比 | 控件列表 |
 |---|---|---|---|
-| ✅ 完成 | 38 | 61% | Icon, Link, Typography, Divider, Space, DesktopBadge, Textarea, InputNumber, Select, Input, CheckBox, Radio, Switch, Card, Skeleton, Collapse, Timeline, Statistic, Calendar, Tree, List, Progress, Tag, Avatar, Empty, Alert, Drawer, Message, Popconfirm, Tabs, Menu, Dropdown, Breadcrumb, Steps, Slider, BackTop, Table, Guide, ImageViewer |
-| ⚠️ 部分完成 | 24 | 39% | Descriptions, AutoComplete, Form, DatePicker, TimePicker, Rate, Tooltip, Comment, Image, Dialog, Loading, Popup, Swiper, Pagination, Notification, Upload, Cascader, ColorPicker, QRCode, Watermark, Anchor, Affix, StickyTool, Notification |
+| ✅ 完成 | 44 | 71% | Icon, Link, Typography, Divider, Space, DesktopBadge, Textarea, InputNumber, Select, Input, CheckBox, Radio, Switch, Card, Skeleton, Collapse, Timeline, Statistic, Calendar, Tree, List, Progress, Tag, Avatar, Empty, Alert, Drawer, Message, Popconfirm, Tabs, Menu, Dropdown, Breadcrumb, Steps, Slider, BackTop, Table, Guide, ImageViewer, Watermark, Anchor, Affix, StickyTool, Cascader |
+| ⚠️ 部分完成 | 18 | 29% | Descriptions, AutoComplete, Form, DatePicker, TimePicker, Rate, Tooltip, Comment, Image, Dialog, Loading, Popup, Swiper, Pagination, Notification, Upload, ColorPicker, QRCode |
 | ❌ 占位 | 0 | 0% | 无 |
 
 ### 按域统计
@@ -382,10 +382,10 @@ plan.md 中控件覆盖了 Navigation 和 Layout 域，需要在 `ControlSampleC
 | 域 | ✅完成 | ⚠️部分 |
 |---|---|---|
 | Base | Icon, Link, Typography, Guide, ImageViewer | — |
-| Form | Textarea, InputNumber, Select, Input, CheckBox, Radio, Switch | AutoComplete, Form, DatePicker, TimePicker, Rate, Upload, Cascader, ColorPicker |
-| Data | Card, Skeleton, Collapse, Timeline, Statistic, Calendar, Tree, List, Progress, Tag, Avatar, Empty, BackTop, Table | Tooltip, Comment, Image, QRCode, Watermark |
+| Form | Textarea, InputNumber, Select, Input, CheckBox, Radio, Switch, Cascader | AutoComplete, Form, DatePicker, TimePicker, Rate, Upload, ColorPicker |
+| Data | Card, Skeleton, Collapse, Timeline, Statistic, Calendar, Tree, List, Progress, Tag, Avatar, Empty, BackTop, Table, Watermark | Tooltip, Comment, Image, QRCode |
 | Message | Alert, Drawer, Message, Popconfirm | Dialog, Loading, Popup, Swiper, Notification |
-| Navigation | Tabs, Menu, Dropdown, Breadcrumb, Steps, Slider | Pagination, Anchor, Affix, StickyTool |
+| Navigation | Tabs, Menu, Dropdown, Breadcrumb, Steps, Slider, Anchor, Affix, StickyTool | Pagination |
 | Layout | Divider, Space, DesktopBadge | Descriptions |
 
 ## 待办优先级

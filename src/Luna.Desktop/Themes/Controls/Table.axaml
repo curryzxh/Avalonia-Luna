@@ -6,8 +6,6 @@
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Default}" />
-    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Medium}" />
-    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
     <Setter Property="ClipToBounds" Value="True" />
     <Setter Property="Template">
       <ControlTemplate>
@@ -16,43 +14,61 @@
                 BorderThickness="{TemplateBinding BorderThickness}"
                 CornerRadius="{TemplateBinding CornerRadius}">
           <ScrollViewer HorizontalScrollBarVisibility="Auto"
-                        VerticalScrollBarVisibility="Disabled">
-            <ItemsPresenter Name="PART_ItemsPresenter"
-                            Margin="0" />
+                        VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+              <Border Name="PART_Header"
+                      Background="{DynamicResource Luna.Brush.Background.Page}"
+                      BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                      BorderThickness="0,0,0,1"
+                      Padding="0"
+                      MinHeight="{TemplateBinding RowMinHeight}">
+                <ItemsControl ItemsSource="{TemplateBinding Columns}">
+                  <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                      <StackPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                  </ItemsControl.ItemsPanel>
+                  <ItemsControl.ItemTemplate>
+                    <DataTemplate x:DataType="controls:TableColumn">
+                      <Border MinWidth="{Binding MinWidth}"
+                              Width="{Binding Width}"
+                              Padding="16,12"
+                              VerticalAlignment="Center">
+                        <TextBlock Text="{Binding Header}"
+                                   FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                                   FontWeight="{DynamicResource Luna.FontWeight.Bold}"
+                                   Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                                   TextAlignment="{Binding Alignment}" />
+                      </Border>
+                    </DataTemplate>
+                  </ItemsControl.ItemTemplate>
+                </ItemsControl>
+              </Border>
+              <ItemsPresenter Name="PART_ItemsPresenter" />
+            </StackPanel>
           </ScrollViewer>
         </Border>
       </ControlTemplate>
     </Setter>
   </Style>
 
-  <Style Selector="controls|Table > Border">
-    <Setter Property="MinHeight" Value="48" />
-    <Setter Property="Padding" Value="16,12" />
-    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Divider}" />
+  <Style Selector="controls|Table > Border > ScrollViewer > StackPanel > Border > ItemsControl > StackPanel > Border">
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
+    <Setter Property="BorderThickness" Value="0,0,1,0" />
+  </Style>
+
+  <Style Selector="controls|Table /template/ ItemsPresenter > StackPanel > Border">
+    <Setter Property="MinHeight" Value="{Binding RowMinHeight, RelativeSource={RelativeSource AncestorType=controls:Table}}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
     <Setter Property="BorderThickness" Value="0,0,0,1" />
+    <Setter Property="Padding" Value="16,12" />
   </Style>
 
-  <Style Selector="controls|Table > Border:pointerover">
+  <Style Selector="controls|Table:striped /template/ ItemsPresenter > StackPanel > Border:nth-child(odd)">
     <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Page}" />
   </Style>
 
-  <Style Selector="controls|Table.bordered > Border">
-    <Setter Property="BorderThickness" Value="0,0,1,1" />
-  </Style>
-
-  <Style Selector="controls|Table.striped > Border:nth-child(odd)">
-    <Setter Property="Background" Value="Transparent" />
-  </Style>
-
-  <Style Selector="controls|Table.striped > Border:nth-child(even)">
-    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Page}" />
-  </Style>
-
-  <Style Selector="controls|Table:not(.hoverable) > Border:pointerover">
-    <Setter Property="Background" Value="Transparent" />
-  </Style>
-
-  <Style Selector="controls|Table.striped > Border:nth-child(even):pointerover">
-    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Page}" />
+  <Style Selector="controls|Table:hoverable /template/ ItemsPresenter > StackPanel > Border:pointerover">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Component}" />
   </Style>
 </Styles>

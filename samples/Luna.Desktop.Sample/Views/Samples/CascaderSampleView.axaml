@@ -4,41 +4,32 @@
              xmlns:controls="using:Luna.Desktop.Controls"
              x:Class="Luna.Desktop.Sample.Views.Samples.CascaderSampleView"
              x:DataType="vm:CascaderSampleViewModel">
-  <StackPanel Spacing="16">
-    <Border Classes="sample-card">
-      <StackPanel Spacing="12">
-        <TextBlock Text="级联选择" Classes="sample-title" />
-        <TextBlock Text="Cascader 用于多级数据联动选择，如省市区选择。当前展示 TreeView 方式实现。" Classes="sample-caption" />
-        <controls:Cascader Placeholder="{Binding SelectedPath}" />
-      </StackPanel>
-    </Border>
+  <ScrollViewer>
+    <StackPanel Spacing="16" Margin="0,0,0,24">
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="基本级联选择" Classes="sample-title" />
+          <TextBlock Text="点击输入框展开下拉面板，逐级选择省/市/区。" Classes="sample-caption" />
+          <controls:Cascader Width="320" HorizontalAlignment="Left"
+                             Options="{Binding Options}"
+                             Placeholder="请选择地区" />
+        </StackPanel>
+      </Border>
 
-    <Border Classes="sample-card">
-      <StackPanel Spacing="12">
-        <TextBlock Text="数据结构展示" Classes="sample-title" />
-        <TextBlock Text="级联选择器支持多级嵌套数据。" Classes="sample-caption" />
-        <TreeView MaxWidth="360" HorizontalAlignment="Left">
-          <TreeViewItem ItemsSource="{Binding Items}" Header="中国">
-            <TreeViewItem.ItemTemplate>
-              <DataTemplate>
-                <TreeViewItem ItemsSource="{Binding Children}" Header="{Binding Label}" IsExpanded="True">
-                  <TreeViewItem.ItemTemplate>
-                    <DataTemplate>
-                      <TreeViewItem ItemsSource="{Binding Children}" Header="{Binding Label}" IsExpanded="True">
-                        <TreeViewItem.ItemTemplate>
-                          <DataTemplate>
-                            <TreeViewItem Header="{Binding Label}" />
-                          </DataTemplate>
-                        </TreeViewItem.ItemTemplate>
-                      </TreeViewItem>
-                    </DataTemplate>
-                  </TreeViewItem.ItemTemplate>
-                </TreeViewItem>
-              </DataTemplate>
-            </TreeViewItem.ItemTemplate>
-          </TreeViewItem>
-        </TreeView>
-      </StackPanel>
-    </Border>
-  </StackPanel>
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="自定义占位符" Classes="sample-title" />
+          <TextBlock Text="通过 Placeholder 属性设置自定义提示文字。" Classes="sample-caption" />
+          <StackPanel Spacing="8">
+            <controls:Cascader Width="320" HorizontalAlignment="Left"
+                               Options="{Binding Options}"
+                               Placeholder="选择省份 / 城市 / 区县" />
+            <controls:Cascader Width="320" HorizontalAlignment="Left"
+                               Options="{Binding Options}"
+                               Placeholder="Pick a region" />
+          </StackPanel>
+        </StackPanel>
+      </Border>
+    </StackPanel>
+  </ScrollViewer>
 </UserControl>

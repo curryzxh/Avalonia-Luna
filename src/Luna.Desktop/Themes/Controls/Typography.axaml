@@ -1,0 +1,65 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Style Selector="TextBlock.typography-h1">
+    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Title.Large}" />
+    <Setter Property="FontWeight" Value="{DynamicResource Luna.FontWeight.SemiBold}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
+    <Setter Property="LineHeight" Value="40" />
+  </Style>
+
+  <Style Selector="TextBlock.typography-h2">
+    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Title.Medium}" />
+    <Setter Property="FontWeight" Value="{DynamicResource Luna.FontWeight.SemiBold}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
+    <Setter Property="LineHeight" Value="32" />
+  </Style>
+
+  <Style Selector="TextBlock.typography-h3">
+    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Title.Small}" />
+    <Setter Property="FontWeight" Value="{DynamicResource Luna.FontWeight.SemiBold}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
+    <Setter Property="LineHeight" Value="28" />
+  </Style>
+
+  <Style Selector="TextBlock.typography-h4">
+    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Medium}" />
+    <Setter Property="FontWeight" Value="{DynamicResource Luna.FontWeight.SemiBold}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
+    <Setter Property="LineHeight" Value="24" />
+  </Style>
+
+  <Style Selector="TextBlock.typography-h5">
+    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Small}" />
+    <Setter Property="FontWeight" Value="{DynamicResource Luna.FontWeight.SemiBold}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
+    <Setter Property="LineHeight" Value="22" />
+  </Style>
+
+  <Style Selector="TextBlock.typography-h6">
+    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Small}" />
+    <Setter Property="FontWeight" Value="{DynamicResource Luna.FontWeight.Medium}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Secondary}" />
+    <Setter Property="LineHeight" Value="20" />
+  </Style>
+
+  <Style Selector="TextBlock.typography-body">
+    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Medium}" />
+    <Setter Property="FontWeight" Value="{DynamicResource Luna.FontWeight.Regular}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
+    <Setter Property="LineHeight" Value="22" />
+  </Style>
+
+  <Style Selector="TextBlock.typography-body-small">
+    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Small}" />
+    <Setter Property="FontWeight" Value="{DynamicResource Luna.FontWeight.Regular}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
+    <Setter Property="LineHeight" Value="20" />
+  </Style>
+
+  <Style Selector="TextBlock.typography-caption">
+    <Setter Property="FontSize" Value="12" />
+    <Setter Property="FontWeight" Value="{DynamicResource Luna.FontWeight.Regular}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Secondary}" />
+    <Setter Property="LineHeight" Value="20" />
+  </Style>
+</Styles>

@@ -5,25 +5,63 @@
              x:DataType="vm:EmptySampleViewModel">
   <StackPanel Spacing="16">
     <Border Classes="sample-card">
-      <StackPanel Spacing="12" HorizontalAlignment="Center">
-        <TextBlock Text="--" FontSize="48" Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" HorizontalAlignment="Center" />
-        <TextBlock Text="暂无数据" Classes="sample-title" HorizontalAlignment="Center" />
-        <TextBlock Text="当前筛选条件下没有匹配结果。" Classes="sample-caption" HorizontalAlignment="Center" />
+      <StackPanel Spacing="12" HorizontalAlignment="Center" MaxWidth="400">
+        <TextBlock Text="基础空状态" Classes="sample-title" HorizontalAlignment="Center" />
+        <Border Width="80" Height="60" CornerRadius="{DynamicResource Luna.Radius.Default}"
+                Background="{DynamicResource Luna.Brush.Background.Component}"
+                HorizontalAlignment="Center">
+          <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="2">
+            <Border Width="40" Height="4" CornerRadius="2" Background="{DynamicResource Luna.Brush.Border.Weak}" HorizontalAlignment="Center" />
+            <Border Width="28" Height="4" CornerRadius="2" Background="{DynamicResource Luna.Brush.Border.Weak}" Margin="0,2,0,0" />
+          </StackPanel>
+        </Border>
+        <TextBlock Text="暂无数据" FontWeight="{DynamicResource Luna.FontWeight.Medium}" FontSize="{DynamicResource Luna.FontSize.Title.Small}" Foreground="{DynamicResource Luna.Brush.Text.Primary}" HorizontalAlignment="Center" />
+        <TextBlock Text="当前筛选条件下没有匹配结果，请调整筛选条件后重试。" Classes="sample-caption" HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" />
         <Button Content="清空筛选" Classes="primary" HorizontalAlignment="Center" />
       </StackPanel>
     </Border>
 
     <Border Classes="sample-card">
-      <WrapPanel>
-        <StackPanel Spacing="6" Width="180" Margin="0,0,18,8">
-          <TextBlock Text="网络错误" Classes="sample-title" />
-          <TextBlock Text="请检查连接后重试。" Classes="sample-caption" />
+      <StackPanel Spacing="12">
+        <TextBlock Text="不同场景" Classes="sample-title" />
+        <WrapPanel>
+          <Border Width="180" Padding="16" Margin="0,0,16,8" Background="{DynamicResource Luna.Brush.Background.Page}" CornerRadius="{DynamicResource Luna.Radius.Default}">
+            <StackPanel Spacing="8" HorizontalAlignment="Center">
+              <TextBlock Text="⚠" FontSize="24" HorizontalAlignment="Center" Foreground="{DynamicResource Luna.Brush.Warning}" />
+              <TextBlock Text="网络错误" FontWeight="{DynamicResource Luna.FontWeight.Medium}" Foreground="{DynamicResource Luna.Brush.Text.Primary}" HorizontalAlignment="Center" />
+              <TextBlock Text="请检查连接后重试。" FontSize="{DynamicResource Luna.FontSize.Body.Small}" Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" HorizontalAlignment="Center" />
+              <Button Content="重新加载" Classes="text primary" HorizontalAlignment="Center" />
+            </StackPanel>
+          </Border>
+          <Border Width="180" Padding="16" Margin="0,0,16,8" Background="{DynamicResource Luna.Brush.Background.Page}" CornerRadius="{DynamicResource Luna.Radius.Default}">
+            <StackPanel Spacing="8" HorizontalAlignment="Center">
+              <TextBlock Text="🚧" FontSize="24" HorizontalAlignment="Center" />
+              <TextBlock Text="建设中" FontWeight="{DynamicResource Luna.FontWeight.Medium}" Foreground="{DynamicResource Luna.Brush.Text.Primary}" HorizontalAlignment="Center" />
+              <TextBlock Text="能力将在后续版本开放。" FontSize="{DynamicResource Luna.FontSize.Body.Small}" Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" HorizontalAlignment="Center" />
+            </StackPanel>
+          </Border>
+          <Border Width="180" Padding="16" Margin="0,0,16,8" Background="{DynamicResource Luna.Brush.Background.Page}" CornerRadius="{DynamicResource Luna.Radius.Default}">
+            <StackPanel Spacing="8" HorizontalAlignment="Center">
+              <TextBlock Text="✓" FontSize="24" HorizontalAlignment="Center" Foreground="{DynamicResource Luna.Brush.Success}" />
+              <TextBlock Text="已完成" FontWeight="{DynamicResource Luna.FontWeight.Medium}" Foreground="{DynamicResource Luna.Brush.Text.Primary}" HorizontalAlignment="Center" />
+              <TextBlock Text="所有任务已处理完毕。" FontSize="{DynamicResource Luna.FontSize.Body.Small}" Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" HorizontalAlignment="Center" />
+            </StackPanel>
+          </Border>
+        </WrapPanel>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" HorizontalAlignment="Center" MaxWidth="400">
+        <TextBlock Text="带操作按钮" Classes="sample-title" HorizontalAlignment="Center" />
+        <StackPanel HorizontalAlignment="Center" Spacing="8">
+          <TextBlock Text="暂无内容" Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" HorizontalAlignment="Center" />
+          <StackPanel Orientation="Horizontal" Spacing="8" HorizontalAlignment="Center">
+            <Button Content="刷新" Classes="primary small" />
+            <Button Content="返回首页" Classes="outline small" />
+          </StackPanel>
         </StackPanel>
-        <StackPanel Spacing="6" Width="180" Margin="0,0,18,8">
-          <TextBlock Text="建设中" Classes="sample-title" />
-          <TextBlock Text="能力将在后续版本开放。" Classes="sample-caption" />
-        </StackPanel>
-      </WrapPanel>
+      </StackPanel>
     </Border>
   </StackPanel>
 </UserControl>

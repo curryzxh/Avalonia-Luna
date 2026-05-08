@@ -8,16 +8,55 @@
       <StackPanel Spacing="12" MaxWidth="560" HorizontalAlignment="Left">
         <TextBlock Text="线性进度" Classes="sample-title" />
         <ProgressBar Minimum="0" Maximum="100" Value="{Binding Percentage}" Height="8" />
-        <TextBlock Text="{Binding Percentage, StringFormat='进度 {0:F0}%'}" Classes="sample-caption" />
+        <Slider Minimum="0" Maximum="100" Value="{Binding Percentage}" />
       </StackPanel>
     </Border>
 
     <Border Classes="sample-card">
       <StackPanel Spacing="12" MaxWidth="560" HorizontalAlignment="Left">
-        <TextBlock Text="状态与加载" Classes="sample-title" />
-        <ProgressBar Minimum="0" Maximum="100" Value="100" Height="8" Foreground="{DynamicResource Luna.Brush.Success}" />
-        <ProgressBar Minimum="0" Maximum="100" Value="56" Height="8" Foreground="{DynamicResource Luna.Brush.Warning}" />
+        <TextBlock Text="状态进度" Classes="sample-title" />
+        <StackPanel Spacing="8">
+          <DockPanel>
+            <TextBlock Text="成功" Width="48" VerticalAlignment="Center" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <ProgressBar Minimum="0" Maximum="100" Value="{Binding SuccessPercentage}" Height="8" Foreground="{DynamicResource Luna.Brush.Success}" />
+          </DockPanel>
+          <DockPanel>
+            <TextBlock Text="警告" Width="48" VerticalAlignment="Center" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <ProgressBar Minimum="0" Maximum="100" Value="{Binding WarningPercentage}" Height="8" Foreground="{DynamicResource Luna.Brush.Warning}" />
+          </DockPanel>
+          <DockPanel>
+            <TextBlock Text="错误" Width="48" VerticalAlignment="Center" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <ProgressBar Minimum="0" Maximum="100" Value="{Binding ErrorPercentage}" Height="8" Foreground="{DynamicResource Luna.Brush.Error}" />
+          </DockPanel>
+        </StackPanel>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="560" HorizontalAlignment="Left">
+        <TextBlock Text="不确定进度" Classes="sample-title" />
         <ProgressBar IsIndeterminate="True" Height="8" />
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="560" HorizontalAlignment="Left">
+        <TextBlock Text="不同尺寸" Classes="sample-title" />
+        <StackPanel Spacing="8">
+          <ProgressBar Minimum="0" Maximum="100" Value="50" Height="4" />
+          <ProgressBar Minimum="0" Maximum="100" Value="50" Height="8" />
+          <ProgressBar Minimum="0" Maximum="100" Value="50" Height="12" />
+        </StackPanel>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="560" HorizontalAlignment="Left">
+        <TextBlock Text="带标签" Classes="sample-title" />
+        <DockPanel>
+          <TextBlock Text="{Binding Percentage, StringFormat='{}{0:F0}%'}" FontWeight="{DynamicResource Luna.FontWeight.SemiBold}" Foreground="{DynamicResource Luna.Brush.Text.Primary}" VerticalAlignment="Center" Margin="12,0,0,0" />
+          <ProgressBar Minimum="0" Maximum="100" Value="{Binding Percentage}" Height="8" />
+        </DockPanel>
       </StackPanel>
     </Border>
   </StackPanel>

@@ -4,34 +4,117 @@
              xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
              x:Class="Luna.Desktop.Sample.Views.Samples.DesktopBadgeSampleView"
              x:DataType="vm:DesktopBadgeSampleViewModel">
-  <StackPanel Spacing="16">
-    <Border Classes="sample-card">
-      <StackPanel Spacing="12">
-        <TextBlock Text="数字徽标" Classes="sample-title" />
-        <TextBlock Text="TDesign Badge 的 count、dot、maxCount 可先映射为 DesktopBadge 文本和位置组合。" Classes="sample-caption" />
-        <WrapPanel>
-          <luna:DesktopBadge Text="8" Margin="0,0,12,8" />
-          <luna:DesktopBadge Text="99+" Margin="0,0,12,8" />
-          <luna:DesktopBadge Text="NEW" Classes="brand" Margin="0,0,12,8" />
-        </WrapPanel>
-      </StackPanel>
-    </Border>
+  <ScrollViewer>
+    <StackPanel Spacing="16" Margin="0,0,0,16">
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="数字徽标" Classes="sample-title" />
+          <TextBlock Text="通过 Count 属性设置数字，MaxCount 控制溢出显示。" Classes="sample-caption" />
+          <WrapPanel>
+            <luna:DesktopBadge Count="8" Margin="0,0,12,8" />
+            <luna:DesktopBadge Count="100" Margin="0,0,12,8" />
+            <luna:DesktopBadge Count="100" MaxCount="999" Margin="0,0,12,8" />
+            <luna:DesktopBadge Count="0" Margin="0,0,12,8" />
+          </WrapPanel>
+        </StackPanel>
+      </Border>
 
-    <Border Classes="sample-card">
-      <StackPanel Spacing="12">
-        <TextBlock Text="标签组合" Classes="sample-title" />
-        <WrapPanel>
-          <Border Classes="tag primary" Margin="0,0,10,8">
-            <TextBlock Text="审批中" Foreground="{DynamicResource Luna.Brush.Brand}" />
-          </Border>
-          <Border Classes="tag success" Margin="0,0,10,8">
-            <TextBlock Text="已上线" Foreground="{DynamicResource Luna.Brush.Success}" />
-          </Border>
-          <Border Classes="tag warning" Margin="0,0,10,8">
-            <TextBlock Text="需复核" Foreground="{DynamicResource Luna.Brush.Warning}" />
-          </Border>
-        </WrapPanel>
-      </StackPanel>
-    </Border>
-  </StackPanel>
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="圆点徽标" Classes="sample-title" />
+          <TextBlock Text="设置 IsDot=\"True\" 显示小圆点，常用于状态提示。" Classes="sample-caption" />
+          <WrapPanel>
+            <luna:DesktopBadge IsDot="True" Margin="0,0,12,8" />
+            <luna:DesktopBadge IsDot="True" Classes="brand" Margin="0,0,12,8" />
+            <luna:DesktopBadge IsDot="True" Classes="success" Margin="0,0,12,8" />
+            <luna:DesktopBadge IsDot="True" Classes="warning" Margin="0,0,12,8" />
+          </WrapPanel>
+        </StackPanel>
+      </Border>
+
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="形状变体" Classes="sample-title" />
+          <TextBlock Text="Shape 属性支持 Round（默认）和 Circle（正圆形）。" Classes="sample-caption" />
+          <WrapPanel>
+            <luna:DesktopBadge Count="8" Margin="0,0,12,8" />
+            <luna:DesktopBadge Count="8" Shape="Circle" Margin="0,0,12,8" />
+            <luna:DesktopBadge Count="88" Margin="0,0,12,8" />
+          </WrapPanel>
+        </StackPanel>
+      </Border>
+
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="颜色变体" Classes="sample-title" />
+          <TextBlock Text="通过 Classes 切换颜色语义：brand、success、warning。" Classes="sample-caption" />
+          <WrapPanel>
+            <luna:DesktopBadge Count="8" Margin="0,0,12,8" />
+            <luna:DesktopBadge Count="8" Classes="brand" Margin="0,0,12,8" />
+            <luna:DesktopBadge Count="8" Classes="success" Margin="0,0,12,8" />
+            <luna:DesktopBadge Count="8" Classes="warning" Margin="0,0,12,8" />
+          </WrapPanel>
+        </StackPanel>
+      </Border>
+
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="偏移量" Classes="sample-title" />
+          <TextBlock Text="通过 Offset 属性微调徽标位置。" Classes="sample-caption" />
+          <WrapPanel>
+            <luna:DesktopBadge Count="8" Offset="0,0" Margin="0,0,12,8" />
+            <luna:DesktopBadge Count="8" Offset="4,-4" Margin="0,0,12,8" />
+            <luna:DesktopBadge Count="8" Offset="-4,4" Margin="0,0,12,8" />
+          </WrapPanel>
+        </StackPanel>
+      </Border>
+
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="自定义文本" Classes="sample-title" />
+          <TextBlock Text="通过 Text 属性直接设置显示文字。" Classes="sample-caption" />
+          <WrapPanel>
+            <luna:DesktopBadge Text="NEW" Margin="0,0,12,8" />
+            <luna:DesktopBadge Text="HOT" Classes="brand" Margin="0,0,12,8" />
+            <luna:DesktopBadge Text="99+" Margin="0,0,12,8" />
+          </WrapPanel>
+        </StackPanel>
+      </Border>
+
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="标签组合" Classes="sample-title" />
+          <WrapPanel>
+            <Border Classes="tag primary" Margin="0,0,10,8">
+              <TextBlock Text="审批中" Foreground="{DynamicResource Luna.Brush.Brand}" />
+            </Border>
+            <Border Classes="tag success" Margin="0,0,10,8">
+              <TextBlock Text="已上线" Foreground="{DynamicResource Luna.Brush.Success}" />
+            </Border>
+            <Border Classes="tag warning" Margin="0,0,10,8">
+              <TextBlock Text="需复核" Foreground="{DynamicResource Luna.Brush.Warning}" />
+            </Border>
+          </WrapPanel>
+        </StackPanel>
+      </Border>
+
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="交互演示" Classes="sample-title" />
+          <TextBlock Text="调整 Count 和 MaxCount 观察徽标变化。" Classes="sample-caption" />
+          <StackPanel Orientation="Horizontal" Spacing="16" VerticalAlignment="Center">
+            <luna:DesktopBadge Count="{Binding Count}" MaxCount="{Binding MaxCount}" IsDot="{Binding ShowDot}" />
+            <luna:DesktopBadge Count="{Binding Count}" MaxCount="{Binding MaxCount}" IsDot="{Binding ShowDot}" Classes="brand" />
+          </StackPanel>
+          <StackPanel Orientation="Horizontal" Spacing="12" Margin="0,8,0,0">
+            <TextBlock Text="Count:" VerticalAlignment="Center" />
+            <NumericUpDown Value="{Binding Count}" Minimum="0" Maximum="9999" Width="100" />
+            <TextBlock Text="MaxCount:" VerticalAlignment="Center" Margin="8,0,0,0" />
+            <NumericUpDown Value="{Binding MaxCount}" Minimum="1" Maximum="9999" Width="100" />
+          </StackPanel>
+          <CheckBox Content="显示圆点 (IsDot)" IsChecked="{Binding ShowDot}" Margin="0,4,0,0" />
+        </StackPanel>
+      </Border>
+    </StackPanel>
+  </ScrollViewer>
 </UserControl>

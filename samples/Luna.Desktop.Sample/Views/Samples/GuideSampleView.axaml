@@ -1,0 +1,27 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             x:Class="Luna.Desktop.Sample.Views.Samples.GuideSampleView"
+             x:DataType="vm:GuideSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="Guide 引导" Classes="sample-title" />
+        <TextBlock Text="引导气泡用于逐步引导用户了解页面功能。" Classes="sample-caption" />
+        <Border Background="{DynamicResource Luna.Brush.Background.Component}"
+                CornerRadius="{DynamicResource Luna.Radius.Default}"
+                Padding="24,16">
+          <StackPanel Spacing="8">
+            <TextBlock Text="功能说明" Classes="sample-caption" />
+            <TextBlock Text="Guide 控件将提供以下能力：" Classes="typography-body" />
+            <TextBlock Text="• 按步骤高亮目标元素，展示引导气泡" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <TextBlock Text="• 支持自定义气泡内容、位置偏移和步骤计数" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <TextBlock Text="• 支持跳过、上一步、下一步和完成回调" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <TextBlock Text="• 可配置遮罩层样式和高亮区域圆角" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+        </Border>
+        <TextBlock Text="该控件尚未实现，敬请期待。" Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" />
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

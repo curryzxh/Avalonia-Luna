@@ -6,16 +6,61 @@
   <StackPanel Spacing="16">
     <Border Classes="sample-card">
       <StackPanel Spacing="12">
-        <TextBlock Text="Avatar 类型" Classes="sample-title" />
+        <TextBlock Text="字符头像" Classes="sample-title" />
         <WrapPanel>
           <Border Classes="avatar" Margin="0,0,12,8">
             <TextBlock Text="L" Foreground="{DynamicResource Luna.Brush.Text.Anti}" FontWeight="{DynamicResource Luna.FontWeight.SemiBold}" HorizontalAlignment="Center" VerticalAlignment="Center" />
           </Border>
-          <Border Classes="avatar round" Background="{DynamicResource Luna.Brush.Success}" Margin="0,0,12,8">
+          <Border Classes="avatar" Background="{DynamicResource Luna.Brush.Success}" Margin="0,0,12,8">
             <TextBlock Text="A" Foreground="{DynamicResource Luna.Brush.Neutral.White}" FontWeight="{DynamicResource Luna.FontWeight.SemiBold}" HorizontalAlignment="Center" VerticalAlignment="Center" />
           </Border>
           <Border Classes="avatar" Background="{DynamicResource Luna.Brush.Warning}" Margin="0,0,12,8">
             <TextBlock Text="U" Foreground="{DynamicResource Luna.Brush.Neutral.White}" FontWeight="{DynamicResource Luna.FontWeight.SemiBold}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+          </Border>
+          <Border Classes="avatar" Background="{DynamicResource Luna.Brush.Error}" Margin="0,0,12,8">
+            <TextBlock Text="Z" Foreground="{DynamicResource Luna.Brush.Neutral.White}" FontWeight="{DynamicResource Luna.FontWeight.SemiBold}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+          </Border>
+        </WrapPanel>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="尺寸" Classes="sample-title" />
+        <WrapPanel VerticalAlignment="Bottom">
+          <Border Classes="avatar" Width="28" Height="28" Margin="0,0,12,8">
+            <TextBlock Text="S" FontSize="{DynamicResource Luna.FontSize.Body.Small}" Foreground="{DynamicResource Luna.Brush.Text.Anti}" FontWeight="{DynamicResource Luna.FontWeight.SemiBold}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+          </Border>
+          <Border Classes="avatar" Width="36" Height="36" Margin="0,0,12,8">
+            <TextBlock Text="M" Foreground="{DynamicResource Luna.Brush.Text.Anti}" FontWeight="{DynamicResource Luna.FontWeight.SemiBold}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+          </Border>
+          <Border Classes="avatar" Width="48" Height="48" Margin="0,0,12,8">
+            <TextBlock Text="L" FontSize="{DynamicResource Luna.FontSize.Title.Small}" Foreground="{DynamicResource Luna.Brush.Text.Anti}" FontWeight="{DynamicResource Luna.FontWeight.SemiBold}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+          </Border>
+        </WrapPanel>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="形状" Classes="sample-title" />
+        <WrapPanel>
+          <Border Classes="avatar" CornerRadius="{DynamicResource Luna.Radius.Default}" Margin="0,0,12,8">
+            <TextBlock Text="R" Foreground="{DynamicResource Luna.Brush.Text.Anti}" FontWeight="{DynamicResource Luna.FontWeight.SemiBold}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+          </Border>
+          <Border Classes="avatar" CornerRadius="{DynamicResource Luna.Radius.Round}" Margin="0,0,12,8">
+            <TextBlock Text="C" Foreground="{DynamicResource Luna.Brush.Text.Anti}" FontWeight="{DynamicResource Luna.FontWeight.SemiBold}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+          </Border>
+        </WrapPanel>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="图片头像（占位）" Classes="sample-title" />
+        <WrapPanel>
+          <Border Classes="avatar" Background="{DynamicResource Luna.Brush.Background.Component}" BorderBrush="{DynamicResource Luna.Brush.Border.Default}" BorderThickness="1" Margin="0,0,12,8">
+            <TextBlock Text="Img" FontSize="{DynamicResource Luna.FontSize.Body.Small}" Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" HorizontalAlignment="Center" VerticalAlignment="Center" />
           </Border>
         </WrapPanel>
       </StackPanel>
@@ -25,9 +70,12 @@
       <StackPanel Spacing="12">
         <TextBlock Text="Avatar Group" Classes="sample-title" />
         <StackPanel Orientation="Horizontal">
-          <Border Classes="avatar"><TextBlock Text="D" Foreground="{DynamicResource Luna.Brush.Text.Anti}" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border>
-          <Border Classes="avatar" Background="{DynamicResource Luna.Brush.Success}" Margin="-8,0,0,0"><TextBlock Text="E" Foreground="{DynamicResource Luna.Brush.Neutral.White}" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border>
-          <Border Classes="avatar" Background="{DynamicResource Luna.Brush.Error}" Margin="-8,0,0,0"><TextBlock Text="+3" Foreground="{DynamicResource Luna.Brush.Neutral.White}" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border>
+          <Border Classes="avatar"><TextBlock Text="D" Foreground="{DynamicResource Luna.Brush.Text.Anti}" FontWeight="{DynamicResource Luna.FontWeight.SemiBold}" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border>
+          <Border Classes="avatar" Background="{DynamicResource Luna.Brush.Success}" Margin="-8,0,0,0"><TextBlock Text="E" Foreground="{DynamicResource Luna.Brush.Neutral.White}" FontWeight="{DynamicResource Luna.FontWeight.SemiBold}" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border>
+          <Border Classes="avatar" Background="{DynamicResource Luna.Brush.Warning}" Margin="-8,0,0,0"><TextBlock Text="F" Foreground="{DynamicResource Luna.Brush.Neutral.White}" FontWeight="{DynamicResource Luna.FontWeight.SemiBold}" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border>
+          <Border Classes="avatar" Background="{DynamicResource Luna.Brush.Background.Component}" BorderBrush="{DynamicResource Luna.Brush.Border.Default}" BorderThickness="1" Margin="-8,0,0,0">
+            <TextBlock Text="+3" FontSize="{DynamicResource Luna.FontSize.Body.Small}" Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" FontWeight="{DynamicResource Luna.FontWeight.Medium}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+          </Border>
         </StackPanel>
       </StackPanel>
     </Border>

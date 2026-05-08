@@ -1,0 +1,40 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Luna.Desktop.Controls">
+  <Style Selector="controls|Divider">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Secondary}" />
+    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Small}" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Panel>
+          <Border x:Name="PART_Line"
+                  Background="{DynamicResource Luna.Brush.Border.Divider}"
+                  Height="1"
+                  VerticalAlignment="Center" />
+          <Border x:Name="PART_ContentHost"
+                  IsVisible="{TemplateBinding Content, Converter={x:Static ObjectConverters.IsNotNull}}"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  Background="{DynamicResource Luna.Brush.Background.Page}"
+                  Padding="16,0">
+            <ContentPresenter Content="{TemplateBinding Content}" />
+          </Border>
+        </Panel>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|Divider:vertical">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border Background="{DynamicResource Luna.Brush.Border.Divider}"
+                Width="1"
+                HorizontalAlignment="Center" />
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|Divider:dashed /template/ Border#PART_Line">
+    <Setter Property="Background" Value="Transparent" />
+  </Style>
+</Styles>

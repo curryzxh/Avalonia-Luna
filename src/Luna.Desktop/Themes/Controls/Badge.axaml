@@ -6,17 +6,42 @@
     <Setter Property="Padding" Value="8,2" />
     <Setter Property="Template">
       <ControlTemplate>
-        <Border Background="{DynamicResource Luna.Brush.Error}"
+        <Border x:Name="PART_Root"
+                Background="{DynamicResource Luna.Brush.Error}"
                 CornerRadius="{DynamicResource Luna.Radius.Round}"
-                Padding="{TemplateBinding Padding}">
+                Padding="{TemplateBinding Padding}"
+                Margin="{TemplateBinding Offset}">
           <TextBlock Text="{TemplateBinding Text}"
-                     Foreground="{DynamicResource Luna.Brush.Neutral.White}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Anti}"
                      FontSize="{DynamicResource Luna.FontSize.Body.Small}"
                      FontWeight="{DynamicResource Luna.FontWeight.Medium}"
-                     VerticalAlignment="Center" />
+                     VerticalAlignment="Center"
+                     HorizontalAlignment="Center" />
         </Border>
       </ControlTemplate>
     </Setter>
+  </Style>
+
+  <Style Selector="controls|DesktopBadge:dot">
+    <Setter Property="MinHeight" Value="0" />
+    <Setter Property="MinWidth" Value="0" />
+    <Setter Property="Padding" Value="0" />
+    <Setter Property="Width" Value="8" />
+    <Setter Property="Height" Value="8" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border x:Name="PART_Root"
+                Background="{DynamicResource Luna.Brush.Error}"
+                CornerRadius="{DynamicResource Luna.Radius.Round}"
+                Width="8"
+                Height="8"
+                Margin="{TemplateBinding Offset}" />
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|DesktopBadge:hidden">
+    <Setter Property="IsVisible" Value="False" />
   </Style>
 
   <Style Selector="controls|DesktopBadge.brand">
@@ -24,12 +49,88 @@
       <ControlTemplate>
         <Border Background="{DynamicResource Luna.Brush.Brand}"
                 CornerRadius="{DynamicResource Luna.Radius.Round}"
-                Padding="{TemplateBinding Padding}">
+                Padding="{TemplateBinding Padding}"
+                Margin="{TemplateBinding Offset}">
           <TextBlock Text="{TemplateBinding Text}"
                      Foreground="{DynamicResource Luna.Brush.Text.Anti}"
                      FontSize="{DynamicResource Luna.FontSize.Body.Small}"
                      FontWeight="{DynamicResource Luna.FontWeight.Medium}"
-                     VerticalAlignment="Center" />
+                     VerticalAlignment="Center"
+                     HorizontalAlignment="Center" />
+        </Border>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|DesktopBadge.brand:dot">
+    <Setter Property="MinHeight" Value="0" />
+    <Setter Property="MinWidth" Value="0" />
+    <Setter Property="Padding" Value="0" />
+    <Setter Property="Width" Value="8" />
+    <Setter Property="Height" Value="8" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border Background="{DynamicResource Luna.Brush.Brand}"
+                CornerRadius="{DynamicResource Luna.Radius.Round}"
+                Width="8"
+                Height="8"
+                Margin="{TemplateBinding Offset}" />
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|DesktopBadge:circle">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border x:Name="PART_Root"
+                Background="{DynamicResource Luna.Brush.Error}"
+                CornerRadius="{DynamicResource Luna.Radius.Round}"
+                Width="20"
+                Height="20"
+                Padding="0"
+                Margin="{TemplateBinding Offset}">
+          <TextBlock Text="{TemplateBinding Text}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Anti}"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                     FontWeight="{DynamicResource Luna.FontWeight.Medium}"
+                     VerticalAlignment="Center"
+                     HorizontalAlignment="Center" />
+        </Border>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|DesktopBadge.success">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border Background="{DynamicResource Luna.Brush.Success}"
+                CornerRadius="{DynamicResource Luna.Radius.Round}"
+                Padding="{TemplateBinding Padding}"
+                Margin="{TemplateBinding Offset}">
+          <TextBlock Text="{TemplateBinding Text}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Anti}"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                     FontWeight="{DynamicResource Luna.FontWeight.Medium}"
+                     VerticalAlignment="Center"
+                     HorizontalAlignment="Center" />
+        </Border>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|DesktopBadge.warning">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border Background="{DynamicResource Luna.Brush.Warning}"
+                CornerRadius="{DynamicResource Luna.Radius.Round}"
+                Padding="{TemplateBinding Padding}"
+                Margin="{TemplateBinding Offset}">
+          <TextBlock Text="{TemplateBinding Text}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Anti}"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                     FontWeight="{DynamicResource Luna.FontWeight.Medium}"
+                     VerticalAlignment="Center"
+                     HorizontalAlignment="Center" />
         </Border>
       </ControlTemplate>
     </Setter>

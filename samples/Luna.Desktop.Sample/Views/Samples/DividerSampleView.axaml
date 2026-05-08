@@ -1,0 +1,43 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:luna="clr-namespace:Luna.Desktop.Controls;assembly=Luna.Desktop"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             x:Class="Luna.Desktop.Sample.Views.Samples.DividerSampleView"
+             x:DataType="vm:DividerSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="水平分割线" Classes="sample-title" />
+        <TextBlock Text="默认水平方向，分隔内容区块。" Classes="sample-caption" />
+        <TextBlock Text="上方内容" Classes="typography-body" />
+        <luna:Divider />
+        <TextBlock Text="下方内容" Classes="typography-body" />
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="带文字分割线" Classes="sample-title" />
+        <TextBlock Text="通过 Content 属性居中显示分割文字。" Classes="sample-caption" />
+        <luna:Divider Content="分割线文字" />
+        <luna:Divider>
+          <TextBlock Text="自定义内容" Foreground="{DynamicResource Luna.Brush.Brand}" />
+        </luna:Divider>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="垂直分割线" Classes="sample-title" />
+        <TextBlock Text="设置 Orientation=\"Vertical\" 用于行内分隔。" Classes="sample-caption" />
+        <StackPanel Orientation="Horizontal" Spacing="16" VerticalAlignment="Center">
+          <TextBlock Text="文字 A" Classes="typography-body" VerticalAlignment="Center" />
+          <luna:Divider Orientation="Vertical" Height="16" />
+          <TextBlock Text="文字 B" Classes="typography-body" VerticalAlignment="Center" />
+          <luna:Divider Orientation="Vertical" Height="16" />
+          <TextBlock Text="文字 C" Classes="typography-body" VerticalAlignment="Center" />
+        </StackPanel>
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

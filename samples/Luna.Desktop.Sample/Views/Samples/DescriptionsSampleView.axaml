@@ -1,0 +1,59 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             x:Class="Luna.Desktop.Sample.Views.Samples.DescriptionsSampleView"
+             x:DataType="vm:DescriptionsSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="基础描述列表" Classes="sample-title" />
+        <TextBlock Text="以标签-值对形式展示结构化数据，标签使用次要文字色，值使用主文字色。" Classes="sample-caption" />
+        <ItemsControl ItemsSource="{Binding Items}">
+          <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+              <UniformGrid Columns="2" />
+            </ItemsPanelTemplate>
+          </ItemsControl.ItemsPanel>
+          <ItemsControl.ItemTemplate>
+            <DataTemplate x:DataType="vm:DescriptionItem">
+              <Border BorderBrush="{DynamicResource Luna.Brush.Border.Divider}" BorderThickness="1" Padding="12,8" Margin="-1,-1,0,0">
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                  <TextBlock Text="{Binding Label}" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" Width="80" />
+                  <TextBlock Text="{Binding Value}" Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+                </StackPanel>
+              </Border>
+            </DataTemplate>
+          </ItemsControl.ItemTemplate>
+        </ItemsControl>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="带边框描述列表" Classes="sample-title" />
+        <TextBlock Text="使用 UniformGrid + Border 实现带边框的表格化描述列表。" Classes="sample-caption" />
+        <ItemsControl ItemsSource="{Binding Items}">
+          <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+              <UniformGrid Columns="2" />
+            </ItemsPanelTemplate>
+          </ItemsControl.ItemsPanel>
+          <ItemsControl.ItemTemplate>
+            <DataTemplate x:DataType="vm:DescriptionItem">
+              <Border BorderBrush="{DynamicResource Luna.Brush.Border.Divider}" BorderThickness="1" Margin="-1,-1,0,0">
+                <Grid ColumnDefinitions="100,*">
+                  <Border BorderBrush="{DynamicResource Luna.Brush.Border.Divider}" BorderThickness="0,0,1,0" Padding="12,8" Background="{DynamicResource Luna.Brush.Background.Page}">
+                    <TextBlock Text="{Binding Label}" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" VerticalAlignment="Center" />
+                  </Border>
+                  <Border Grid.Column="1" Padding="12,8">
+                    <TextBlock Text="{Binding Value}" Foreground="{DynamicResource Luna.Brush.Text.Primary}" VerticalAlignment="Center" />
+                  </Border>
+                </Grid>
+              </Border>
+            </DataTemplate>
+          </ItemsControl.ItemTemplate>
+        </ItemsControl>
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

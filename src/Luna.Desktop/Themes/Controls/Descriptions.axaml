@@ -1,0 +1,27 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Luna.Desktop.Controls">
+  <Style Selector="controls|Descriptions">
+    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Medium}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <StackPanel Spacing="8">
+          <TextBlock x:Name="PART_Title"
+                     Text="{TemplateBinding Title}"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Small}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     IsVisible="{TemplateBinding Title, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
+          <ItemsControl x:Name="PART_Items"
+                        ItemsSource="{TemplateBinding ItemsSource}">
+            <ItemsControl.ItemsPanel>
+              <ItemsPanelTemplate>
+                <StackPanel />
+              </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+          </ItemsControl>
+        </StackPanel>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>

@@ -3,16 +3,95 @@
              xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
              x:Class="Luna.Desktop.Sample.Views.Samples.TagSampleView"
              x:DataType="vm:TagSampleViewModel">
-  <Border Classes="sample-card">
-    <StackPanel Spacing="12">
-      <TextBlock Text="Tag 主题" Classes="sample-title" />
-      <WrapPanel>
-        <Border Classes="tag" Margin="0,0,10,8"><TextBlock Text="默认标签" /></Border>
-        <Border Classes="tag primary" Margin="0,0,10,8"><TextBlock Text="品牌标签" Foreground="{DynamicResource Luna.Brush.Brand}" /></Border>
-        <Border Classes="tag success" Margin="0,0,10,8"><TextBlock Text="成功标签" Foreground="{DynamicResource Luna.Brush.Success}" /></Border>
-        <Border Classes="tag warning" Margin="0,0,10,8"><TextBlock Text="警告标签" Foreground="{DynamicResource Luna.Brush.Warning}" /></Border>
-        <Border Classes="tag" Margin="0,0,10,8"><TextBlock Text="可关闭 x" /></Border>
-      </WrapPanel>
-    </StackPanel>
-  </Border>
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="基础标签" Classes="sample-title" />
+        <WrapPanel>
+          <Border Classes="tag" Margin="0,0,10,8"><TextBlock Text="默认" /></Border>
+          <Border Classes="tag primary" Margin="0,0,10,8"><TextBlock Text="主要" Foreground="{DynamicResource Luna.Brush.Brand}" /></Border>
+          <Border Classes="tag success" Margin="0,0,10,8"><TextBlock Text="成功" Foreground="{DynamicResource Luna.Brush.Success}" /></Border>
+          <Border Classes="tag warning" Margin="0,0,10,8"><TextBlock Text="警告" Foreground="{DynamicResource Luna.Brush.Warning}" /></Border>
+          <Border Classes="tag danger" Margin="0,0,10,8"><TextBlock Text="危险" Foreground="{DynamicResource Luna.Brush.Error}" /></Border>
+        </WrapPanel>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="主题变体" Classes="sample-title" />
+        <WrapPanel>
+          <Border Classes="tag light primary" Background="{DynamicResource Luna.Brush.Brand.Light}" Margin="0,0,10,8">
+            <TextBlock Text="Light 主要" Foreground="{DynamicResource Luna.Brush.Brand}" />
+          </Border>
+          <Border Classes="tag outline primary" Background="Transparent" BorderBrush="{DynamicResource Luna.Brush.Brand}" BorderThickness="1" Margin="0,0,10,8">
+            <TextBlock Text="Outline 主要" Foreground="{DynamicResource Luna.Brush.Brand}" />
+          </Border>
+          <Border Classes="tag dark primary" Background="{DynamicResource Luna.Brush.Brand}" Margin="0,0,10,8">
+            <TextBlock Text="Dark 主要" Foreground="{DynamicResource Luna.Brush.Text.Anti}" />
+          </Border>
+          <Border Classes="tag light-outline primary" Background="{DynamicResource Luna.Brush.Brand.Light}" BorderBrush="{DynamicResource Luna.Brush.Brand}" BorderThickness="1" Margin="0,0,10,8">
+            <TextBlock Text="Light-Outline" Foreground="{DynamicResource Luna.Brush.Brand}" />
+          </Border>
+        </WrapPanel>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="尺寸" Classes="sample-title" />
+        <WrapPanel VerticalAlignment="Center">
+          <Border Classes="tag" Padding="4,2" Margin="0,0,10,8">
+            <TextBlock Text="Small" FontSize="{DynamicResource Luna.FontSize.Body.Small}" />
+          </Border>
+          <Border Classes="tag" Margin="0,0,10,8">
+            <TextBlock Text="Medium（默认）" />
+          </Border>
+          <Border Classes="tag" Padding="10,4" Margin="0,0,10,8">
+            <TextBlock Text="Large" FontSize="{DynamicResource Luna.FontSize.Title.Small}" />
+          </Border>
+          <Border Classes="tag" Padding="14,6" Margin="0,0,10,8">
+            <TextBlock Text="Extra Large" FontSize="{DynamicResource Luna.FontSize.Title.Small}" />
+          </Border>
+        </WrapPanel>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="形状" Classes="sample-title" />
+        <WrapPanel>
+          <Border Classes="tag" Margin="0,0,10,8">
+            <TextBlock Text="Square" />
+          </Border>
+          <Border Classes="tag" CornerRadius="{DynamicResource Luna.Radius.Round}" Padding="10,4" Margin="0,0,10,8">
+            <TextBlock Text="Round" />
+          </Border>
+          <Border Classes="tag" CornerRadius="0" Padding="10,4" Margin="0,0,10,8">
+            <TextBlock Text="Mark" />
+          </Border>
+        </WrapPanel>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="可关闭 / 可选中" Classes="sample-title" />
+        <WrapPanel>
+          <Border Classes="tag primary" Background="{DynamicResource Luna.Brush.Brand.Light}" Margin="0,0,10,8">
+            <StackPanel Orientation="Horizontal" Spacing="4">
+              <TextBlock Text="可关闭" Foreground="{DynamicResource Luna.Brush.Brand}" />
+              <TextBlock Text="×" Foreground="{DynamicResource Luna.Brush.Brand}" FontWeight="{DynamicResource Luna.FontWeight.Bold}" />
+            </StackPanel>
+          </Border>
+          <Border Classes="tag" Background="{DynamicResource Luna.Brush.Brand}" Margin="0,0,10,8">
+            <TextBlock Text="已选中" Foreground="{DynamicResource Luna.Brush.Text.Anti}" />
+          </Border>
+          <Border Classes="tag outline" BorderBrush="{DynamicResource Luna.Brush.Border.Default}" BorderThickness="1" Margin="0,0,10,8">
+            <TextBlock Text="未选中" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </Border>
+        </WrapPanel>
+      </StackPanel>
+    </Border>
+  </StackPanel>
 </UserControl>

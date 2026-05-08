@@ -1,0 +1,87 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             x:Class="Luna.Desktop.Sample.Views.Samples.SpaceSampleView"
+             x:DataType="vm:SpaceSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="水平间距" Classes="sample-title" />
+        <TextBlock Text="使用 StackPanel Classes=\"space\" 并配合 Orientation=\"Horizontal\" 排列元素。" Classes="sample-caption" />
+        <StackPanel Classes="space medium" Orientation="Horizontal">
+          <Border Background="{DynamicResource Luna.Brush.Brand.Light}" CornerRadius="{DynamicResource Luna.Radius.Default}" Padding="16,8">
+            <TextBlock Text="项目 A" />
+          </Border>
+          <Border Background="{DynamicResource Luna.Brush.Brand.Light}" CornerRadius="{DynamicResource Luna.Radius.Default}" Padding="16,8">
+            <TextBlock Text="项目 B" />
+          </Border>
+          <Border Background="{DynamicResource Luna.Brush.Brand.Light}" CornerRadius="{DynamicResource Luna.Radius.Default}" Padding="16,8">
+            <TextBlock Text="项目 C" />
+          </Border>
+        </StackPanel>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="间距大小" Classes="sample-title" />
+        <TextBlock Text="通过 small / medium / large 控制间距大小。" Classes="sample-caption" />
+        <TextBlock Text="Space.Small (4px)" Classes="sample-caption" />
+        <StackPanel Classes="space small" Orientation="Horizontal">
+          <Border Background="{DynamicResource Luna.Brush.Background.Component}" CornerRadius="{DynamicResource Luna.Radius.Default}" Padding="12,6">
+            <TextBlock Text="A" FontSize="12" />
+          </Border>
+          <Border Background="{DynamicResource Luna.Brush.Background.Component}" CornerRadius="{DynamicResource Luna.Radius.Default}" Padding="12,6">
+            <TextBlock Text="B" FontSize="12" />
+          </Border>
+          <Border Background="{DynamicResource Luna.Brush.Background.Component}" CornerRadius="{DynamicResource Luna.Radius.Default}" Padding="12,6">
+            <TextBlock Text="C" FontSize="12" />
+          </Border>
+        </StackPanel>
+
+        <TextBlock Text="Space.Medium (8px)" Classes="sample-caption" />
+        <StackPanel Classes="space medium" Orientation="Horizontal">
+          <Border Background="{DynamicResource Luna.Brush.Background.Component}" CornerRadius="{DynamicResource Luna.Radius.Default}" Padding="12,6">
+            <TextBlock Text="A" FontSize="12" />
+          </Border>
+          <Border Background="{DynamicResource Luna.Brush.Background.Component}" CornerRadius="{DynamicResource Luna.Radius.Default}" Padding="12,6">
+            <TextBlock Text="B" FontSize="12" />
+          </Border>
+          <Border Background="{DynamicResource Luna.Brush.Background.Component}" CornerRadius="{DynamicResource Luna.Radius.Default}" Padding="12,6">
+            <TextBlock Text="C" FontSize="12" />
+          </Border>
+        </StackPanel>
+
+        <TextBlock Text="Space.Large (16px)" Classes="sample-caption" />
+        <StackPanel Classes="space large" Orientation="Horizontal">
+          <Border Background="{DynamicResource Luna.Brush.Background.Component}" CornerRadius="{DynamicResource Luna.Radius.Default}" Padding="12,6">
+            <TextBlock Text="A" FontSize="12" />
+          </Border>
+          <Border Background="{DynamicResource Luna.Brush.Background.Component}" CornerRadius="{DynamicResource Luna.Radius.Default}" Padding="12,6">
+            <TextBlock Text="B" FontSize="12" />
+          </Border>
+          <Border Background="{DynamicResource Luna.Brush.Background.Component}" CornerRadius="{DynamicResource Luna.Radius.Default}" Padding="12,6">
+            <TextBlock Text="C" FontSize="12" />
+          </Border>
+        </StackPanel>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="垂直间距" Classes="sample-title" />
+        <StackPanel Classes="space large">
+          <Border Background="{DynamicResource Luna.Brush.Background.Component}" CornerRadius="{DynamicResource Luna.Radius.Default}" Padding="12,8">
+            <TextBlock Text="垂直项目 1" />
+          </Border>
+          <Border Background="{DynamicResource Luna.Brush.Background.Component}" CornerRadius="{DynamicResource Luna.Radius.Default}" Padding="12,8">
+            <TextBlock Text="垂直项目 2" />
+          </Border>
+          <Border Background="{DynamicResource Luna.Brush.Background.Component}" CornerRadius="{DynamicResource Luna.Radius.Default}" Padding="12,8">
+            <TextBlock Text="垂直项目 3" />
+          </Border>
+        </StackPanel>
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

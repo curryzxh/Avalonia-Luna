@@ -4,6 +4,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
+using Avalonia.Interactivity;
 
 namespace Luna.Desktop.Controls;
 
@@ -91,11 +92,6 @@ public class InputNumber : TemplatedControl
         MinimumProperty.Changed.AddClassHandler<InputNumber>((x, _) => x.ClampValue());
     }
 
-    public override void Render(ImmediateDrawingContext context)
-    {
-        base.Render(context);
-    }
-
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {
         base.OnApplyTemplate(e);
@@ -115,7 +111,7 @@ public class InputNumber : TemplatedControl
         SyncTextBox();
     }
 
-    private void OnSpinnerUpClick(object? sender, Interactivity.RoutedEventArgs e)
+    private void OnSpinnerUpClick(object? sender, RoutedEventArgs e)
     {
         if (IsReadOnly) return;
         var newVal = (Value ?? Minimum) + Step;
@@ -123,7 +119,7 @@ public class InputNumber : TemplatedControl
         SetCurrentValue(ValueProperty, newVal);
     }
 
-    private void OnSpinnerDownClick(object? sender, Interactivity.RoutedEventArgs e)
+    private void OnSpinnerDownClick(object? sender, RoutedEventArgs e)
     {
         if (IsReadOnly) return;
         var newVal = (Value ?? Maximum) - Step;
@@ -131,7 +127,7 @@ public class InputNumber : TemplatedControl
         SetCurrentValue(ValueProperty, newVal);
     }
 
-    private void OnTextBoxLostFocus(object? sender, Interactivity.RoutedEventArgs e)
+    private void OnTextBoxLostFocus(object? sender, RoutedEventArgs e)
     {
         CommitInput();
     }

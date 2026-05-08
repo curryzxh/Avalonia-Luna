@@ -1,0 +1,54 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Style Selector="Button.link">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
+    <Setter Property="Padding" Value="0" />
+    <Setter Property="MinHeight" Value="0" />
+    <Setter Property="Cursor" Value="Hand" />
+  </Style>
+
+  <Style Selector="Button.link:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Brand.Active}" />
+  </Style>
+
+  <Style Selector="Button.link:pressed /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Brand.Active}" />
+  </Style>
+
+  <Style Selector="Button.link:disabled">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
+  </Style>
+
+  <Style Selector="Button.link:disabled /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
+  </Style>
+
+  <Style Selector="Button.link.underline">
+    <Setter Property="TextDecorations" Value="Underline" />
+  </Style>
+
+  <Style Selector="Button.link.danger">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Error}" />
+  </Style>
+
+  <Style Selector="Button.link.danger:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="TextBlock.Foreground" Value="{DynamicResource Luna.Brush.Error}" />
+  </Style>
+
+  <Style Selector="Button.link.success">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Success}" />
+  </Style>
+
+  <Style Selector="Button.link.warning">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Warning}" />
+  </Style>
+</Styles>

@@ -45,6 +45,21 @@ public static class ControlSampleCatalog
             Create(Data, new TagSampleViewModel(), "https://tdesign.tencent.com/react/components/tag"),
             Create(Data, new AvatarSampleViewModel(), "https://tdesign.tencent.com/react/components/avatar"),
             Create(Data, new EmptySampleViewModel(), "https://tdesign.tencent.com/react/components/empty"),
+            Create(Data, new CardSampleViewModel(), "https://tdesign.tencent.com/react/components/card"),
+            Create(Data, new TooltipSampleViewModel(), "https://tdesign.tencent.com/react/components/tooltip"),
+            Create(Data, new SkeletonSampleViewModel(), "https://tdesign.tencent.com/react/components/skeleton"),
+            Create(Data, new CollapseSampleViewModel(), "https://tdesign.tencent.com/react/components/collapse"),
+            Create(Data, new TimelineSampleViewModel(), "https://tdesign.tencent.com/react/components/timeline"),
+            Create(Data, new StatisticSampleViewModel(), "https://tdesign.tencent.com/react/components/statistic"),
+            Create(Data, new CalendarSampleViewModel(), "https://tdesign.tencent.com/react/components/calendar"),
+            Create(Data, new TableSampleViewModel(), "https://tdesign.tencent.com/react/components/table"),
+            Create(Data, new TreeSampleViewModel(), "https://tdesign.tencent.com/react/components/tree"),
+            Create(Data, new ListSampleViewModel(), "https://tdesign.tencent.com/react/components/list"),
+            Create(Data, new CommentSampleViewModel(), "https://tdesign.tencent.com/react/components/comment"),
+            Create(Data, new QRCodeSampleViewModel(), "https://tdesign.tencent.com/react/components/qrcode"),
+            Create(Data, new WatermarkSampleViewModel(), "https://tdesign.tencent.com/react/components/watermark"),
+            Create(Data, new BackTopSampleViewModel(), "https://tdesign.tencent.com/react/components/back-top"),
+            Create(Data, new ImageSampleViewModel(), "https://tdesign.tencent.com/react/components/image"),
 
             Create(Message, new NotificationSampleViewModel(), "https://tdesign.tencent.com/react/components/notification"),
 
@@ -66,6 +81,15 @@ public static class ControlSampleCatalog
             Create(Message, new PopupSampleViewModel(), "https://tdesign.tencent.com/react/components/popup"),
             Create(Message, new PopconfirmSampleViewModel(), "https://tdesign.tencent.com/react/components/popconfirm"),
             Create(Message, new SwiperSampleViewModel(), "https://tdesign.tencent.com/react/components/swiper"),
+
+            Create(Base, new IconSampleViewModel(), "https://tdesign.tencent.com/react/components/icon"),
+            Create(Base, new LinkSampleViewModel(), "https://tdesign.tencent.com/react/components/link"),
+            Create(Base, new TypographySampleViewModel(), "https://tdesign.tencent.com/react/components/typography"),
+            Create(Base, new GuideSampleViewModel(), "https://tdesign.tencent.com/react/components/guide"),
+            Create(Base, new ImageViewerSampleViewModel(), "https://tdesign.tencent.com/react/components/image-viewer"),
+            Create(Layout, new DividerSampleViewModel(), "https://tdesign.tencent.com/react/components/divider"),
+            Create(Layout, new SpaceSampleViewModel(), "https://tdesign.tencent.com/react/components/space"),
+            Create(Layout, new DescriptionsSampleViewModel(), "https://tdesign.tencent.com/react/components/descriptions"),
         ];
     }
 

@@ -7,4 +7,13 @@ public partial class ProgressSampleViewModel()
 {
     [ObservableProperty]
     private double percentage = 64;
+
+    [ObservableProperty]
+    private double successPercentage = 100;
+
+    [ObservableProperty]
+    private double warningPercentage = 56;
+
+    [ObservableProperty]
+    private double errorPercentage = 88;
 }

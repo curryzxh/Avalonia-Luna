@@ -20,7 +20,11 @@
                   HorizontalContentAlignment="Center"
                   VerticalContentAlignment="Center"
                   FontSize="16"
-                  CornerRadius="{DynamicResource Luna.Radius.Default}" />
+                  CornerRadius="{DynamicResource Luna.Radius.Default}"
+                  Background="{DynamicResource Luna.Brush.Background.Container}"
+                  BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                  BorderThickness="1"
+                  Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
 
           <StackPanel Name="PART_ButtonPanel" Orientation="Horizontal" Spacing="4" />
 
@@ -32,9 +36,81 @@
                   HorizontalContentAlignment="Center"
                   VerticalContentAlignment="Center"
                   FontSize="16"
-                  CornerRadius="{DynamicResource Luna.Radius.Default}" />
+                  CornerRadius="{DynamicResource Luna.Radius.Default}"
+                  Background="{DynamicResource Luna.Brush.Background.Container}"
+                  BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                  BorderThickness="1"
+                  Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
         </StackPanel>
       </ControlTemplate>
     </Setter>
+  </Style>
+
+  <Style Selector="controls|Pagination /template/ Button#PART_PreviousButton:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.ComponentActive}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Strong}" />
+  </Style>
+
+  <Style Selector="controls|Pagination /template/ Button#PART_NextButton:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.ComponentActive}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Strong}" />
+  </Style>
+
+  <Style Selector="controls|Pagination /template/ Button#PART_PreviousButton:disabled /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Disabled}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Weak}" />
+  </Style>
+
+  <Style Selector="controls|Pagination /template/ Button#PART_NextButton:disabled /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Disabled}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Weak}" />
+  </Style>
+
+  <Style Selector="controls|Pagination /template/ Button#PART_PreviousButton:disabled">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
+  </Style>
+
+  <Style Selector="controls|Pagination /template/ Button#PART_NextButton:disabled">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
+  </Style>
+
+  <Style Selector="controls|Pagination > StackPanel > StackPanel > Button">
+    <Setter Property="MinWidth" Value="32" />
+    <Setter Property="Height" Value="32" />
+    <Setter Property="Padding" Value="4,0" />
+    <Setter Property="HorizontalContentAlignment" Value="Center" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Default}" />
+    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Medium}" />
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
+  </Style>
+
+  <Style Selector="controls|Pagination > StackPanel > StackPanel > Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.ComponentActive}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Strong}" />
+  </Style>
+
+  <Style Selector="controls|Pagination > StackPanel > StackPanel > Button.active">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Anti}" />
+    <Setter Property="FontWeight" Value="{DynamicResource Luna.FontWeight.Medium}" />
+  </Style>
+
+  <Style Selector="controls|Pagination > StackPanel > StackPanel > Button.active:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand.Active}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand.Active}" />
+  </Style>
+
+  <Style Selector="controls|Pagination > StackPanel > StackPanel > Button:disabled /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Disabled}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Weak}" />
+  </Style>
+
+  <Style Selector="controls|Pagination > StackPanel > StackPanel > Button:disabled">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
   </Style>
 </Styles>

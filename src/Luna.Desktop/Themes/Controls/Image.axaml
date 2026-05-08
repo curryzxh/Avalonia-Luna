@@ -11,4 +11,15 @@
       </Template>
     </Setter>
   </Style>
+
+  <Style Selector="Border.image-placeholder">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Component}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Default}" />
+  </Style>
+
+  <Style Selector="Border.image-placeholder.round">
+    <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Round}" />
+  </Style>
 </Styles>

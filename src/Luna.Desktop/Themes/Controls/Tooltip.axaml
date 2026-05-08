@@ -9,4 +9,26 @@
     <Setter Property="Padding" Value="8,4" />
     <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Small}" />
   </Style>
+
+  <Style Selector="ToolTip /template/ Border#PART_Border">
+    <Setter Property="BoxShadow" Value="{DynamicResource Luna.Shadow.Popup}" />
+  </Style>
+
+  <Style Selector="ToolTip.brand">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Anti}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="ToolTip.error">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Error}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Anti}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Error}" />
+  </Style>
+
+  <Style Selector="ToolTip.warning">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Warning}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Anti}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Warning}" />
+  </Style>
 </Styles>

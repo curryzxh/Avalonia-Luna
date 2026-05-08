@@ -4,87 +4,28 @@
   <Style Selector="controls|Loading">
     <Setter Property="Template">
       <ControlTemplate>
-        <Grid>
-          <StackPanel Orientation="Horizontal"
-                      Spacing="8"
-                      VerticalAlignment="Center"
-                      HorizontalAlignment="Center"
-                      IsVisible="{TemplateBinding IsLoading}">
-            <Border Width="{TemplateBinding Size}"
-                    Height="{TemplateBinding Size}"
-                    CornerRadius="{DynamicResource Luna.Radius.Round}"
-                    BorderBrush="{DynamicResource Luna.Brush.Brand}"
-                    BorderThickness="2,2,2,2"
-                    RenderTransformOrigin="50%,50%"
-                    ClipToBounds="True">
-              <Border.RenderTransform>
-                <RotateTransform x:Name="PART_SpinnerRotate" Angle="0" />
-              </Border.RenderTransform>
-              <Animation Duration="0:0:0.8" RepeatCount="Infinite">
-                <KeyFrame Cue="0%">
-                  <Setter Property="RotateTransform.Angle" Value="0" />
-                </KeyFrame>
-                <KeyFrame Cue="100%">
-                  <Setter Property="RotateTransform.Angle" Value="360" />
-                </KeyFrame>
-              </Animation>
-            </Border>
-            <TextBlock Text="{TemplateBinding Text}"
-                       VerticalAlignment="Center"
-                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
-                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
-                       IsVisible="{TemplateBinding Text, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
-          </StackPanel>
-
-          <Border Name="PART_Overlay"
-                  Background="{DynamicResource Luna.Brush.Mask}"
-                  IsVisible="False"
-                  CornerRadius="{DynamicResource Luna.Radius.Default}" />
-        </Grid>
-      </ControlTemplate>
-    </Setter>
-  </Style>
-
-  <Style Selector="controls|Loading.overlay">
-    <Setter Property="Template">
-      <ControlTemplate>
-        <Grid>
-          <ContentPresenter Content="{TemplateBinding Content}" />
-          <Border Background="{DynamicResource Luna.Brush.Mask}"
-                  IsVisible="{TemplateBinding IsLoading}"
-                  CornerRadius="{DynamicResource Luna.Radius.Default}" />
-          <StackPanel Orientation="Horizontal"
-                      Spacing="8"
-                      VerticalAlignment="Center"
-                      HorizontalAlignment="Center"
-                      IsVisible="{TemplateBinding IsLoading}"
-                      ZIndex="1">
-            <Border Width="{TemplateBinding Size}"
-                    Height="{TemplateBinding Size}"
-                    CornerRadius="{DynamicResource Luna.Radius.Round}"
-                    BorderBrush="{DynamicResource Luna.Brush.Brand}"
-                    BorderThickness="2,2,2,2"
-                    RenderTransformOrigin="50%,50%"
-                    ClipToBounds="True">
-              <Border.RenderTransform>
-                <RotateTransform x:Name="PART_SpinnerRotateOverlay" Angle="0" />
-              </Border.RenderTransform>
-              <Animation Duration="0:0:0.8" RepeatCount="Infinite">
-                <KeyFrame Cue="0%">
-                  <Setter Property="RotateTransform.Angle" Value="0" />
-                </KeyFrame>
-                <KeyFrame Cue="100%">
-                  <Setter Property="RotateTransform.Angle" Value="360" />
-                </KeyFrame>
-              </Animation>
-            </Border>
-            <TextBlock Text="{TemplateBinding Text}"
-                       VerticalAlignment="Center"
-                       Foreground="{DynamicResource Luna.Brush.Text.Anti}"
-                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
-                       IsVisible="{TemplateBinding Text, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
-          </StackPanel>
-        </Grid>
+        <StackPanel Orientation="Horizontal"
+                    Spacing="8"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    IsVisible="{TemplateBinding IsLoading}">
+          <Border Width="{TemplateBinding Size}"
+                  Height="{TemplateBinding Size}"
+                  CornerRadius="{DynamicResource Luna.Radius.Round}"
+                  BorderBrush="{DynamicResource Luna.Brush.Brand}"
+                  BorderThickness="2"
+                  RenderTransformOrigin="50%,50%"
+                  ClipToBounds="True">
+            <Border.RenderTransform>
+              <RotateTransform Angle="0" />
+            </Border.RenderTransform>
+          </Border>
+          <TextBlock Text="{TemplateBinding Text}"
+                     VerticalAlignment="Center"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     IsVisible="{TemplateBinding Text, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
+        </StackPanel>
       </ControlTemplate>
     </Setter>
   </Style>

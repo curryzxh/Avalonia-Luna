@@ -6,22 +6,37 @@
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
     <Setter Property="Template">
       <ControlTemplate>
-        <StackPanel Spacing="8">
-          <TextBlock x:Name="PART_Title"
-                     Text="{TemplateBinding Title}"
-                     FontSize="{DynamicResource Luna.FontSize.Title.Small}"
-                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
-                     IsVisible="{TemplateBinding Title, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
-          <ItemsControl x:Name="PART_Items"
-                        ItemsSource="{TemplateBinding ItemsSource}">
-            <ItemsControl.ItemsPanel>
-              <ItemsPanelTemplate>
-                <StackPanel />
-              </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-          </ItemsControl>
-        </StackPanel>
+        <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                CornerRadius="{DynamicResource Luna.Radius.Default}"
+                BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                BorderThickness="1"
+                Padding="0">
+          <StackPanel Spacing="0">
+            <TextBlock x:Name="PART_Title"
+                       Text="{TemplateBinding Title}"
+                       FontSize="{DynamicResource Luna.FontSize.Title.Small}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                       Padding="16,12"
+                       IsVisible="{TemplateBinding Title, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
+            <Border BorderBrush="{DynamicResource Luna.Brush.Border.Divider}"
+                    BorderThickness="0,0,0,1"
+                    IsVisible="{TemplateBinding Title, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
+            <ItemsControl x:Name="PART_Items"
+                          ItemsSource="{TemplateBinding ItemsSource}">
+              <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                  <StackPanel />
+                </ItemsPanelTemplate>
+              </ItemsControl.ItemsPanel>
+            </ItemsControl>
+          </StackPanel>
+        </Border>
       </ControlTemplate>
     </Setter>
+  </Style>
+
+  <Style Selector="controls|Descriptions /template/ Border > StackPanel > Border">
+    <Setter Property="Background" Value="Transparent" />
   </Style>
 </Styles>

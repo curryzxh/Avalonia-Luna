@@ -4,14 +4,53 @@
              xmlns:controls="using:Luna.Desktop.Controls"
              x:Class="Luna.Desktop.Sample.Views.Samples.CommentSampleView"
              x:DataType="vm:CommentSampleViewModel">
-  <StackPanel Spacing="16">
-    <Border Classes="sample-card">
-      <StackPanel Spacing="16" MaxWidth="560" HorizontalAlignment="Left">
-        <TextBlock Text="基础评论" Classes="sample-title" />
-        <controls:Comment Author="张三" AvatarText="Z" Content="这个功能非常好用，界面设计也很清晰。" Timestamp="2 小时前" />
-        <controls:Comment Author="李四" AvatarText="L" Content="建议增加暗色模式的支持，夜间使用更友好。" Timestamp="1 天前" />
-        <controls:Comment Author="王五" AvatarText="W" Content="数据加载速度很快，体验很流畅。期待后续版本的新功能！" Timestamp="3 天前" />
-      </StackPanel>
-    </Border>
-  </StackPanel>
+  <ScrollViewer>
+    <StackPanel Spacing="16" Margin="0,0,0,24">
+      <Border Classes="sample-card">
+        <StackPanel Spacing="16" MaxWidth="560" HorizontalAlignment="Left">
+          <TextBlock Text="基础评论" Classes="sample-title" />
+          <controls:Comment Author="张三" AvatarText="Z" Content="这个功能非常好用，界面设计也很清晰。" Timestamp="2 小时前" />
+          <controls:Comment Author="李四" AvatarText="L" Content="建议增加暗色模式的支持，夜间使用更友好。" Timestamp="1 天前" />
+          <controls:Comment Author="王五" AvatarText="W" Content="数据加载速度很快，体验很流畅。期待后续版本的新功能！" Timestamp="3 天前" />
+        </StackPanel>
+      </Border>
+
+      <Border Classes="sample-card">
+        <StackPanel Spacing="16" MaxWidth="560" HorizontalAlignment="Left">
+          <TextBlock Text="嵌套回复" Classes="sample-title" />
+          <TextBlock Text="评论支持嵌套回复展示，子评论缩进显示。" Classes="sample-caption" />
+          <controls:Comment Author="张三" AvatarText="Z" Content="这个设计方案看起来不错，但有些细节需要优化。" Timestamp="2 小时前" />
+          <Border Margin="52,0,0,0">
+            <StackPanel Spacing="16">
+              <controls:Comment Author="李四" AvatarText="L" Content="同意，特别是配色方案可以再调整一下。" Timestamp="1 小时前" />
+              <controls:Comment Author="张三" AvatarText="Z" Content="好的，我会尽快修改配色并提交更新。" Timestamp="30 分钟前" />
+            </StackPanel>
+          </Border>
+          <controls:Comment Author="王五" AvatarText="W" Content="整体风格非常统一，推荐大家使用。" Timestamp="5 小时前" />
+          <Border Margin="52,0,0,0">
+            <StackPanel Spacing="16">
+              <controls:Comment Author="赵六" AvatarText="R" Content="已在使用，体验非常好。" Timestamp="4 小时前" />
+            </StackPanel>
+          </Border>
+        </StackPanel>
+      </Border>
+
+      <Border Classes="sample-card">
+        <StackPanel Spacing="16" MaxWidth="560" HorizontalAlignment="Left">
+          <TextBlock Text="带操作按钮" Classes="sample-title" />
+          <TextBlock Text="评论可附加点赞、回复等操作按钮。" Classes="sample-caption" />
+          <controls:Comment Author="张三" AvatarText="Z" Content="这个功能非常好用，界面设计也很清晰。" Timestamp="2 小时前" />
+          <StackPanel Orientation="Horizontal" Spacing="16" Margin="52,0,0,0">
+            <Button Classes="text small" Content="👍 赞同 (12)" />
+            <Button Classes="text small" Content="回复" />
+          </StackPanel>
+          <controls:Comment Author="李四" AvatarText="L" Content="建议增加暗色模式的支持，夜间使用更友好。" Timestamp="1 天前" />
+          <StackPanel Orientation="Horizontal" Spacing="16" Margin="52,0,0,0">
+            <Button Classes="text small" Content="👍 赞同 (8)" />
+            <Button Classes="text small" Content="回复" />
+          </StackPanel>
+        </StackPanel>
+      </Border>
+    </StackPanel>
+  </ScrollViewer>
 </UserControl>

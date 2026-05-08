@@ -1,0 +1,24 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             x:Class="Luna.Desktop.Sample.Views.Samples.ProgressSampleView"
+             x:DataType="vm:ProgressSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="560" HorizontalAlignment="Left">
+        <TextBlock Text="线性进度" Classes="sample-title" />
+        <ProgressBar Minimum="0" Maximum="100" Value="{Binding Percentage}" Height="8" />
+        <TextBlock Text="{Binding Percentage, StringFormat='进度 {0:F0}%'}" Classes="sample-caption" />
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="560" HorizontalAlignment="Left">
+        <TextBlock Text="状态与加载" Classes="sample-title" />
+        <ProgressBar Minimum="0" Maximum="100" Value="100" Height="8" Foreground="{DynamicResource Luna.Brush.Success}" />
+        <ProgressBar Minimum="0" Maximum="100" Value="56" Height="8" Foreground="{DynamicResource Luna.Brush.Warning}" />
+        <ProgressBar IsIndeterminate="True" Height="8" />
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

@@ -1,0 +1,19 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             x:Class="Luna.Desktop.Sample.Views.Samples.CheckBoxSampleView"
+             x:DataType="vm:CheckBoxSampleViewModel">
+  <Border Classes="sample-card">
+    <StackPanel Spacing="12">
+      <TextBlock Text="Checkbox 状态" Classes="sample-title" />
+      <WrapPanel>
+        <CheckBox Content="未选中项" Margin="0,0,18,8" />
+        <CheckBox Content="半选状态" IsThreeState="True" IsChecked="{Binding AuditState, Mode=TwoWay}" Margin="0,0,18,8" />
+        <CheckBox Content="选中项" IsChecked="{Binding AllowNotification, Mode=TwoWay}" Margin="0,0,18,8" />
+        <CheckBox Content="未选禁用项" IsEnabled="False" Margin="0,0,18,8" />
+        <CheckBox Content="选中禁用项" IsEnabled="False" IsChecked="True" Margin="0,0,18,8" />
+      </WrapPanel>
+      <CheckBox Content="允许匿名统计" IsChecked="{Binding AllowAnalytics, Mode=TwoWay}" />
+    </StackPanel>
+  </Border>
+</UserControl>

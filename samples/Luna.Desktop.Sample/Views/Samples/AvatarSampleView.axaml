@@ -1,0 +1,35 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             x:Class="Luna.Desktop.Sample.Views.Samples.AvatarSampleView"
+             x:DataType="vm:AvatarSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="Avatar 类型" Classes="sample-title" />
+        <WrapPanel>
+          <Border Classes="avatar" Margin="0,0,12,8">
+            <TextBlock Text="L" Foreground="{DynamicResource Luna.Brush.Text.Anti}" FontWeight="{DynamicResource Luna.FontWeight.SemiBold}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+          </Border>
+          <Border Classes="avatar round" Background="{DynamicResource Luna.Brush.Success}" Margin="0,0,12,8">
+            <TextBlock Text="A" Foreground="{DynamicResource Luna.Brush.Neutral.White}" FontWeight="{DynamicResource Luna.FontWeight.SemiBold}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+          </Border>
+          <Border Classes="avatar" Background="{DynamicResource Luna.Brush.Warning}" Margin="0,0,12,8">
+            <TextBlock Text="U" Foreground="{DynamicResource Luna.Brush.Neutral.White}" FontWeight="{DynamicResource Luna.FontWeight.SemiBold}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+          </Border>
+        </WrapPanel>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="Avatar Group" Classes="sample-title" />
+        <StackPanel Orientation="Horizontal">
+          <Border Classes="avatar"><TextBlock Text="D" Foreground="{DynamicResource Luna.Brush.Text.Anti}" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border>
+          <Border Classes="avatar" Background="{DynamicResource Luna.Brush.Success}" Margin="-8,0,0,0"><TextBlock Text="E" Foreground="{DynamicResource Luna.Brush.Neutral.White}" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border>
+          <Border Classes="avatar" Background="{DynamicResource Luna.Brush.Error}" Margin="-8,0,0,0"><TextBlock Text="+3" Foreground="{DynamicResource Luna.Brush.Neutral.White}" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border>
+        </StackPanel>
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

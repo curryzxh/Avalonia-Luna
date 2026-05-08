@@ -1,0 +1,18 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             x:Class="Luna.Desktop.Sample.Views.Samples.SwitchSampleView"
+             x:DataType="vm:SwitchSampleViewModel">
+  <Border Classes="sample-card">
+    <StackPanel Spacing="12">
+      <TextBlock Text="Switch 状态" Classes="sample-title" />
+      <WrapPanel>
+        <ToggleSwitch Content="实时预览" IsChecked="{Binding RealtimePreview, Mode=TwoWay}" Margin="0,0,24,8" />
+        <ToggleSwitch Content="默认关闭" Margin="0,0,24,8" />
+        <ToggleSwitch Content="加载占位" IsEnabled="False" IsChecked="True" Margin="0,0,24,8" />
+        <ToggleSwitch Content="禁用状态" IsEnabled="False" Margin="0,0,24,8" />
+      </WrapPanel>
+      <TextBlock Text="TDesign Switch 的 loading 与 label 后续进入控件模板任务，当前保留示例位置。" Classes="sample-caption" />
+    </StackPanel>
+  </Border>
+</UserControl>

@@ -13,6 +13,8 @@ public partial class ButtonSampleViewModel()
     [ObservableProperty]
     private bool isLoading;
 
+    public string LoadingButtonText => IsLoading ? "加载中..." : "加载按钮";
+
     public string StatusText => ClickCount == 0 ? "等待操作" : $"已执行 {ClickCount} 次";
 
     [RelayCommand]
@@ -26,6 +28,7 @@ public partial class ButtonSampleViewModel()
     private void ToggleLoading()
     {
         IsLoading = !IsLoading;
+        OnPropertyChanged(nameof(LoadingButtonText));
     }
 
     [RelayCommand(CanExecute = nameof(CanReset))]
@@ -34,6 +37,7 @@ public partial class ButtonSampleViewModel()
         ClickCount = 0;
         IsLoading = false;
         OnPropertyChanged(nameof(StatusText));
+        OnPropertyChanged(nameof(LoadingButtonText));
     }
 
     private bool CanReset()

@@ -15,7 +15,7 @@
 
 - `src/Luna.Desktop/`：规划主题 token、控件主题资源和后续控件类。
 - `samples/Luna.Desktop.Sample/`：规划 catalog shell、ViewModel、Models 和示例页面组织。
-- `docs/features/`：保存本次需求、方案、任务、验收和过程记录。
+- `docs/features/`：保存本次需求和技术方案。默认每个 feature 只维护 `spec.md` 与 `plan.md`，不额外生成任务、验收或过程记录文档。
 
 ## 桌面控件库分层
 
@@ -90,6 +90,67 @@
 6. 首批反馈示例：Dialog 或 Notification。
 7. 文档同步：更新 `docs/controls/` 或新增桌面控件文档入口。
 
+## 并行 Agent 分工
+
+后续控件可按组件域拆分给多个 Agent 并行推进。每个 Agent 必须遵循 `docs/guides/tdesign-desktop-sample-authoring-guide.md`，以 TDesign React 决定示例内容和视觉目标，以 Luna 工程约定决定目录、命名、token 和 catalog 接入方式，Ursa 只作为 Avalonia 实现参考。
+
+- Agent A：Base + Layout，优先实现 Icon、Link、Typography、Divider、Space、Descriptions。
+- Agent B：Form 基础，优先实现 Textarea、InputNumber、Select、AutoComplete、Form。
+- Agent C：Data 展示，优先实现 Card、Tooltip、Skeleton、Collapse、Timeline、Statistic。
+- Agent D：Feedback，优先实现 Alert、Dialog、Drawer、Message、Loading、Popup、Popconfirm。
+- Agent E：Navigation，优先实现 Tabs、Menu、Dropdown、Pagination、Breadcrumb、Steps。
+- Agent F：复杂数据，独立推进 Table、Tree、DatePicker、TimePicker、Upload，动手前必须参考 Ursa 相邻实现。
+
+## 单控件交付流程
+
+每个控件都按同一条流水线交付，确保不同 Agent 的产物能合并到同一个 catalog。
+
+1. 使用 `tdesign-mcp-server` 查询 React 组件文档和 DOM 结构。
+2. 对照 `tdesign-react/packages/components/{component}/_example/` 复刻示例分组、状态组合和示例文案。
+3. 判断 Avalonia 映射方式：原生控件皮肤化、Luna 轻量包装控件，或参考 Ursa 的自定义控件结构。
+4. 在 `src/Luna.Desktop/` 中补齐必要主题资源、ControlTheme 或控件类，不直接沿用 Ursa Semi 样式。
+5. 在 `Luna.Desktop.Sample` 中新增 `{Component}SampleViewModel` 与 `{Component}SampleView`。
+6. 接入 `ControlSampleCatalog.CreateSamples()`，文档链接临时指向 TDesign React 对应组件页。
+7. 对暂不支持能力保留示例位置，用说明文本或禁用控件占位，不为单个示例临时发明不稳定公共 API。
+8. 在本 feature 的 `spec.md` 或 `plan.md` 记录 TDesign 来源、MCP 查询项、Avalonia 映射方式、Ursa 参考和不支持项。
+
+## 控件实现优先队列
+
+### P0：直接分派
+
+- Base：Icon、Link、Typography、ImageViewer。
+- Form：Textarea、InputNumber、Select、AutoComplete、DatePicker、TimePicker、Upload、Form。
+- Data：Card、Table、Tooltip、Skeleton、Collapse、Timeline、Statistic、Calendar。
+- Message：Alert、Dialog、Drawer、Message、Loading、Popup、Popconfirm。
+- Navigation：Tabs、Menu、Dropdown、Pagination、Breadcrumb、Steps。
+- Layout：Divider、Descriptions、Grid、Space、Layout。
+
+### P1：先设计再实现
+
+- Form：Cascader、TreeSelect、Transfer、ColorPicker、Rate、InputAdornment。
+- Data：Tree、List、Comment、QRCode、Watermark、BackTop、Image。
+- Message：Swiper。
+- Navigation：Anchor、Affix、StickyTool。
+- Layout：Guide。
+
+### P2：基础控件稳定后处理
+
+- Data：RangeInput、SelectInput、TagInput。
+
+## 已有示例深化路线
+
+- Button：继续补真实 loading spinner、统一 icon 体系、dashed 边框模板和焦点态。
+- DesktopBadge：对齐 count、dot、maxCount、offset、shape。
+- Input：补 clearable、prefix/suffix、status、tips、size、maxlength。
+- CheckBox / Radio：补 group、disabled、indeterminate、option 列表和键盘行为。
+- Switch：补 size、label、loading、disabled。
+- Slider：补 range、marks、tooltip、step、disabled。
+- Progress：补 line/circle/dashboard、status、label、theme。
+- Tag：补 variant、size、shape、closable、checkable。
+- Avatar：补 image、icon、size、shape、group、badge 组合。
+- Empty：补 image、description、action 和不同场景。
+- Notification：补 service/host、position、duration、close、theme 和动画。
+
 ## 风险与取舍
 
 - 如果桌面 token 直接复用移动尺寸，控件会显得过大，影响桌面信息密度。因此只复用命名和语义，尺寸默认单独定义。
@@ -103,8 +164,8 @@
 - 实现阶段执行 `dotnet build Luna.sln --no-restore`。
 - 桌面 Sample 实现后执行 `dotnet run --project samples/Luna.Desktop.Sample/Luna.Desktop.Sample.csproj`。
 - 手工验证启动、搜索、示例切换、主题切换、窗口缩放、键盘 Tab 焦点和禁用态。
+- 单控件合并前至少执行 `dotnet build samples/Luna.Desktop.Sample/Luna.Desktop.Sample.csproj --no-restore`。
 
 ## 回滚方案
 
 本阶段仅生成文档。若方案方向需要调整，可直接修改本 feature 目录内文档和 `docs/features/index.md` 索引，不影响控件库运行。
-

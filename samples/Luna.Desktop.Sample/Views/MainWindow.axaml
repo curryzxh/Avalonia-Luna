@@ -123,7 +123,7 @@
     <Grid Grid.Row="1" ColumnDefinitions="310,*">
       <Border Grid.Column="0" Classes="shell-sidebar">
         <Grid RowDefinitions="Auto,Auto,*" RowSpacing="14">
-          <TextBox Watermark="搜索控件、分类或 TDesign 文档"
+          <TextBox PlaceholderText="搜索控件、分类或 TDesign 文档"
                    Text="{Binding SearchText, Mode=TwoWay}" />
           <TextBlock Grid.Row="1"
                      Text="{Binding SearchStatus}"

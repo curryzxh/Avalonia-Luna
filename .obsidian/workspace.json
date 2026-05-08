@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/guides/tdesign-desktop-sample-authoring-guide.md",
+                "file": "docs/features/20260508-luna-desktop-control-catalog/plan.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "tdesign-desktop-sample-authoring-guide"
+              "title": "plan"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 388.5
   },
   "right": {
     "id": "3be276de301d2cda",
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/guides/tdesign-desktop-sample-authoring-guide.md",
+                "file": "docs/features/20260508-luna-desktop-control-catalog/plan.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "tdesign-desktop-sample-authoring-guide 的反向链接列表"
+              "title": "plan 的反向链接列表"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/guides/tdesign-desktop-sample-authoring-guide.md",
+                "file": "docs/features/20260508-luna-desktop-control-catalog/plan.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "tdesign-desktop-sample-authoring-guide 的出链列表"
+              "title": "plan 的出链列表"
             }
           },
           {
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/guides/tdesign-desktop-sample-authoring-guide.md",
+                "file": "docs/features/20260508-luna-desktop-control-catalog/plan.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "tdesign-desktop-sample-authoring-guide 的大纲"
+              "title": "plan 的大纲"
             }
           }
         ]
@@ -185,22 +185,31 @@
   },
   "active": "6b16127aa59d2ddb",
   "lastOpenFiles": [
-    "samples/Luna.Desktop.Sample/ViewModels/Samples/NotificationSampleViewModel.cs",
-    "samples/Luna.Desktop.Sample/ViewModels/Samples/EmptySampleViewModel.cs",
-    "samples/Luna.Desktop.Sample/ViewModels/Samples/AvatarSampleViewModel.cs",
-    "samples/Luna.Desktop.Sample/ViewModels/Samples/TagSampleViewModel.cs",
-    "samples/Luna.Desktop.Sample/ViewModels/Samples/ProgressSampleViewModel.cs",
-    "samples/Luna.Desktop.Sample/ViewModels/Samples/SliderSampleViewModel.cs",
-    "samples/Luna.Desktop.Sample/ViewModels/Samples/SwitchSampleViewModel.cs",
-    "samples/Luna.Desktop.Sample/ViewModels/Samples/RadioSampleViewModel.cs",
-    "samples/Luna.Desktop.Sample/ViewModels/Samples/CheckBoxSampleViewModel.cs",
-    "samples/Luna.Desktop.Sample/ViewModels/Samples/InputSampleViewModel.cs",
-    "samples/Luna.Desktop.Sample/ViewModels/Samples/ButtonSampleViewModel.cs",
+    "docs/features/20260508-luna-desktop-control-catalog/spec.md",
+    "docs/guides/tdesign-desktop-sample-authoring-guide.md",
     "docs/guides/tdesign-mobile-sample-authoring-guide.md",
     "docs/features/20260508-luna-desktop-control-catalog/plan.md",
+    "samples/Luna.Mobile.Sample/bin/Debug/net10.0-android/com.curryzxh.luna.mobile.sample-Signed.apk.idsig",
+    "samples/Luna.Mobile.Sample/obj/Debug/net10.0-android/android_debug_keystore.flag",
+    "samples/Luna.Mobile.Sample/obj/Debug/net10.0-android/android/bin/com.curryzxh.luna.mobile.sample.apk.3zyb4r.part",
+    "samples/Luna.Mobile.Sample/obj/Debug/net10.0-android/android/bin/com.curryzxh.luna.mobile.sample.apk",
+    "samples/Luna.Mobile.Sample/obj/Debug/net10.0-android/android-x64/wrapped/libarc.bin.so",
+    "samples/Luna.Mobile.Sample/obj/Debug/net10.0-android/android-x64/wrapped",
+    "samples/Luna.Mobile.Sample/obj/Debug/net10.0-android/android-arm64/wrapped/libarc.bin.so",
+    "samples/Luna.Mobile.Sample/obj/Debug/net10.0-android/android-arm64/wrapped",
+    "samples/Luna.Mobile.Sample/obj/Debug/net10.0-android/stamp/_CompileToDalvik.stamp",
+    "samples/Luna.Mobile.Sample/obj/Debug/net10.0-android/android/bin/classes.dex",
+    "samples/Luna.Mobile.Sample/obj/Debug/net10.0-android/lp/99/jl/res/drawable-xxxhdpi-v4/abc_text_select_handle_right_mtrl.png",
+    "samples/Luna.Mobile.Sample/obj/Debug/net10.0-android/lp/99/jl/res/drawable-xxxhdpi-v4/abc_text_select_handle_left_mtrl.png",
+    "samples/Luna.Mobile.Sample/obj/Debug/net10.0-android/lp/99/jl/res/drawable-xxxhdpi-v4/abc_tab_indicator_mtrl_alpha.9.png",
+    "samples/Luna.Mobile.Sample/obj/Debug/net10.0-android/lp/99/jl/res/drawable-xxxhdpi-v4/abc_switch_track_mtrl_alpha.9.png",
+    "samples/Luna.Mobile.Sample/obj/Debug/net10.0-android/lp/99/jl/res/drawable-xxxhdpi-v4/abc_spinner_mtrl_am_alpha.9.png",
+    "samples/Luna.Mobile.Sample/obj/Debug/net10.0-android/lp/99/jl/res/drawable-xxxhdpi-v4/abc_scrubber_control_to_pressed_mtrl_005.png",
+    "samples/Luna.Mobile.Sample/obj/Debug/net10.0-android/lp/99/jl/res/drawable-xxxhdpi-v4/abc_scrubber_control_to_pressed_mtrl_000.png",
+    "samples/Luna.Mobile.Sample/obj/Debug/net10.0-android/lp/99/jl/res/drawable-xxxhdpi-v4/abc_btn_switch_to_on_mtrl_00012.9.png",
+    "samples/Luna.Mobile.Sample/obj/Debug/net10.0-android/lp/99/jl/res/drawable-xxxhdpi-v4/abc_btn_switch_to_on_mtrl_00001.9.png",
+    "samples/Luna.Mobile.Sample/obj/Debug/net10.0-android/lp/99/jl/res/drawable-xxxhdpi-v4/abc_btn_radio_to_on_mtrl_015.png",
     "docs/features/README.md",
-    "docs/guides/tdesign-desktop-sample-authoring-guide.md",
-    "docs/features/20260508-luna-desktop-control-catalog/spec.md",
     "docs/features/_template/README.md",
     "docs/features/_template/acceptance.md",
     "docs/features/_template/tasks.md",

@@ -1,0 +1,113 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             x:Class="Luna.Desktop.Sample.Views.Samples.ButtonSampleView"
+             x:DataType="vm:ButtonSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="Theme 主题" Classes="sample-title" />
+        <TextBlock Text="对应 TDesign theme：default、primary、danger、warning、success。" Classes="sample-caption" />
+        <WrapPanel>
+          <Button Content="默认按钮" Margin="0,0,10,8" />
+          <Button Content="主要按钮" Classes="primary" Command="{Binding RunPrimaryCommand}" Margin="0,0,10,8" />
+          <Button Content="危险按钮" Classes="danger" Margin="0,0,10,8" />
+          <Button Content="警告按钮" Classes="warning" Margin="0,0,10,8" />
+          <Button Content="成功按钮" Classes="success" Margin="0,0,10,8" />
+        </WrapPanel>
+        <TextBlock Text="{Binding StatusText}" Classes="sample-caption" />
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="Variant 变体" Classes="sample-title" />
+        <TextBlock Text="对应 TDesign variant：base、outline、dashed、text。dashed 当前用线框占位，后续由控件模板补虚线边框。" Classes="sample-caption" />
+        <WrapPanel>
+          <Button Content="填充按钮" Classes="primary" Margin="0,0,10,8" />
+          <Button Content="描边按钮" Classes="primary outline" Margin="0,0,10,8" />
+          <Button Content="虚框按钮" Classes="dashed" Margin="0,0,10,8" />
+          <Button Content="文字按钮" Classes="primary text" Margin="0,0,10,8" />
+        </WrapPanel>
+        <WrapPanel>
+          <Button Content="危险描边" Classes="danger outline" Margin="0,0,10,8" />
+          <Button Content="警告描边" Classes="warning outline" Margin="0,0,10,8" />
+          <Button Content="成功描边" Classes="success outline" Margin="0,0,10,8" />
+          <Button Content="危险文字" Classes="danger text" Margin="0,0,10,8" />
+        </WrapPanel>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="Size 尺寸" Classes="sample-title" />
+        <TextBlock Text="对应 TDesign size：small、medium、large，桌面默认保持中等密度。" Classes="sample-caption" />
+        <WrapPanel>
+          <Button Content="小尺寸" Classes="small" Margin="0,0,10,8" />
+          <Button Content="中尺寸" Classes="primary" Margin="0,0,10,8" />
+          <Button Content="大尺寸" Classes="large" Margin="0,0,10,8" />
+        </WrapPanel>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="Shape 形状" Classes="sample-title" />
+        <TextBlock Text="对应 TDesign shape：rectangle、square、round、circle。" Classes="sample-caption" />
+        <WrapPanel>
+          <Button Content="长方形" Classes="primary" Margin="0,0,10,8" />
+          <Button Content="+" Classes="primary square" Margin="0,0,10,8" />
+          <Button Content="圆角长方形" Classes="primary round" Margin="0,0,10,8" />
+          <Button Content="?" Classes="primary circle" Margin="0,0,10,8" />
+        </WrapPanel>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="Icon / Suffix 图标内容" Classes="sample-title" />
+        <TextBlock Text="TDesign icon 与 suffix 在 Avalonia 中先用按钮内容组合表达，后续接入统一图标体系。" Classes="sample-caption" />
+        <WrapPanel>
+          <Button Margin="0,0,10,8">
+            <StackPanel Orientation="Horizontal" Spacing="6">
+              <TextBlock Text="+" />
+              <TextBlock Text="新建" />
+            </StackPanel>
+          </Button>
+          <Button Classes="primary" Margin="0,0,10,8">
+            <StackPanel Orientation="Horizontal" Spacing="6">
+              <TextBlock Text="上传" />
+              <TextBlock Text="↑" />
+            </StackPanel>
+          </Button>
+          <Button Classes="outline" Margin="0,0,10,8">
+            <StackPanel Orientation="Horizontal" Spacing="6">
+              <TextBlock Text="更多" />
+              <TextBlock Text="..." />
+            </StackPanel>
+          </Button>
+        </WrapPanel>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="Loading / Disabled / Block 状态" Classes="sample-title" />
+        <TextBlock Text="loading 暂以禁用态和文案占位，block 映射为横向拉伸布局。" Classes="sample-caption" />
+        <WrapPanel>
+          <Button Content="{Binding LoadingButtonText}"
+                  Classes="primary"
+                  IsEnabled="{Binding !IsLoading}"
+                  Command="{Binding ToggleLoadingCommand}"
+                  Margin="0,0,10,8" />
+          <Button Content="禁用按钮" Classes="primary" IsEnabled="False" Margin="0,0,10,8" />
+          <Button Content="切换加载态" Command="{Binding ToggleLoadingCommand}" Margin="0,0,10,8" />
+          <Button Content="重置计数" Classes="outline" Command="{Binding ResetCommand}" Margin="0,0,10,8" />
+        </WrapPanel>
+        <Button Content="块级按钮"
+                Classes="primary block"
+                Margin="0,0,0,8" />
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

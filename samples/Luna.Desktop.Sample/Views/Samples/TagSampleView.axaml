@@ -1,0 +1,18 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             x:Class="Luna.Desktop.Sample.Views.Samples.TagSampleView"
+             x:DataType="vm:TagSampleViewModel">
+  <Border Classes="sample-card">
+    <StackPanel Spacing="12">
+      <TextBlock Text="Tag 主题" Classes="sample-title" />
+      <WrapPanel>
+        <Border Classes="tag" Margin="0,0,10,8"><TextBlock Text="默认标签" /></Border>
+        <Border Classes="tag primary" Margin="0,0,10,8"><TextBlock Text="品牌标签" Foreground="{DynamicResource Luna.Brush.Brand}" /></Border>
+        <Border Classes="tag success" Margin="0,0,10,8"><TextBlock Text="成功标签" Foreground="{DynamicResource Luna.Brush.Success}" /></Border>
+        <Border Classes="tag warning" Margin="0,0,10,8"><TextBlock Text="警告标签" Foreground="{DynamicResource Luna.Brush.Warning}" /></Border>
+        <Border Classes="tag" Margin="0,0,10,8"><TextBlock Text="可关闭 x" /></Border>
+      </WrapPanel>
+    </StackPanel>
+  </Border>
+</UserControl>

@@ -1,0 +1,29 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             x:Class="Luna.Desktop.Sample.Views.Samples.EmptySampleView"
+             x:DataType="vm:EmptySampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" HorizontalAlignment="Center">
+        <TextBlock Text="--" FontSize="48" Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" HorizontalAlignment="Center" />
+        <TextBlock Text="暂无数据" Classes="sample-title" HorizontalAlignment="Center" />
+        <TextBlock Text="当前筛选条件下没有匹配结果。" Classes="sample-caption" HorizontalAlignment="Center" />
+        <Button Content="清空筛选" Classes="primary" HorizontalAlignment="Center" />
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <WrapPanel>
+        <StackPanel Spacing="6" Width="180" Margin="0,0,18,8">
+          <TextBlock Text="网络错误" Classes="sample-title" />
+          <TextBlock Text="请检查连接后重试。" Classes="sample-caption" />
+        </StackPanel>
+        <StackPanel Spacing="6" Width="180" Margin="0,0,18,8">
+          <TextBlock Text="建设中" Classes="sample-title" />
+          <TextBlock Text="能力将在后续版本开放。" Classes="sample-caption" />
+        </StackPanel>
+      </WrapPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

@@ -1,0 +1,49 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             x:Class="Luna.Desktop.Sample.Views.Samples.NotificationSampleView"
+             x:DataType="vm:NotificationSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="Notification 类型" Classes="sample-title" />
+        <WrapPanel>
+          <Border Classes="notification-card" Margin="0,0,14,12">
+            <StackPanel Spacing="5">
+              <TextBlock Text="信息通知" FontWeight="{DynamicResource Luna.FontWeight.SemiBold}" Foreground="{DynamicResource Luna.Brush.Brand}" />
+              <TextBlock Text="这是一条 info 消息通知。" Classes="sample-caption" />
+            </StackPanel>
+          </Border>
+          <Border Classes="notification-card" BorderBrush="{DynamicResource Luna.Brush.Success}" Margin="0,0,14,12">
+            <StackPanel Spacing="5">
+              <TextBlock Text="提交成功" FontWeight="{DynamicResource Luna.FontWeight.SemiBold}" Foreground="{DynamicResource Luna.Brush.Success}" />
+              <TextBlock Text="数据已保存，可以继续下一步。" Classes="sample-caption" />
+            </StackPanel>
+          </Border>
+          <Border Classes="notification-card" BorderBrush="{DynamicResource Luna.Brush.Warning}" Margin="0,0,14,12">
+            <StackPanel Spacing="5">
+              <TextBlock Text="需要注意" FontWeight="{DynamicResource Luna.FontWeight.SemiBold}" Foreground="{DynamicResource Luna.Brush.Warning}" />
+              <TextBlock Text="部分配置还没有完成。" Classes="sample-caption" />
+            </StackPanel>
+          </Border>
+        </WrapPanel>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="关闭操作" Classes="sample-title" />
+        <Button Content="显示 / 隐藏内联通知" Command="{Binding ToggleInlineNotificationCommand}" HorizontalAlignment="Left" />
+        <Border Classes="notification-card" IsVisible="{Binding ShowInlineNotification}">
+          <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+            <StackPanel Spacing="5">
+              <TextBlock Text="标题名称" FontWeight="{DynamicResource Luna.FontWeight.SemiBold}" />
+              <TextBlock Text="这是一条可关闭的消息通知。" Classes="sample-caption" />
+            </StackPanel>
+            <Button Grid.Column="1" Content="关闭" Classes="text small" Command="{Binding ToggleInlineNotificationCommand}" />
+          </Grid>
+        </Border>
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

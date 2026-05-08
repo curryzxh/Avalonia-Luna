@@ -1,0 +1,23 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             x:Class="Luna.Desktop.Sample.Views.Samples.SliderSampleView"
+             x:DataType="vm:SliderSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="560" HorizontalAlignment="Left">
+        <TextBlock Text="基础滑块" Classes="sample-title" />
+        <Slider Minimum="0" Maximum="100" Value="{Binding Progress, Mode=TwoWay}" />
+        <TextBlock Text="{Binding Progress, StringFormat='当前值 {0:F0}%'}" Classes="sample-caption" />
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="560" HorizontalAlignment="Left">
+        <TextBlock Text="步进与禁用" Classes="sample-title" />
+        <Slider Minimum="0" Maximum="100" TickFrequency="10" IsSnapToTickEnabled="True" Value="{Binding Threshold, Mode=TwoWay}" />
+        <Slider Minimum="0" Maximum="100" Value="32" IsEnabled="False" />
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

@@ -47,6 +47,12 @@
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Anti}" />
   </Style>
 
+  <Style Selector="Button.warning">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Warning}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Warning}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Anti}" />
+  </Style>
+
   <Style Selector="Button.success">
     <Setter Property="Background" Value="{DynamicResource Luna.Brush.Success}" />
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Success}" />
@@ -64,9 +70,49 @@
     <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
   </Style>
 
+  <Style Selector="Button.danger.outline">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Error}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Error}" />
+  </Style>
+
+  <Style Selector="Button.warning.outline">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Warning}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Warning}" />
+  </Style>
+
+  <Style Selector="Button.success.outline">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Success}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Success}" />
+  </Style>
+
+  <Style Selector="Button.dashed">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Strong}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
+  </Style>
+
   <Style Selector="Button.text">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="Transparent" />
+  </Style>
+
+  <Style Selector="Button.primary.text">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="Button.danger.text">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Error}" />
+  </Style>
+
+  <Style Selector="Button.warning.text">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Warning}" />
+  </Style>
+
+  <Style Selector="Button.success.text">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Success}" />
   </Style>
 
   <Style Selector="Button.text:pointerover /template/ ContentPresenter#PART_ContentPresenter">
@@ -87,5 +133,23 @@
 
   <Style Selector="Button.round">
     <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Round}" />
+  </Style>
+
+  <Style Selector="Button.square">
+    <Setter Property="Width" Value="{DynamicResource Luna.Size.Control.Medium}" />
+    <Setter Property="MinWidth" Value="{DynamicResource Luna.Size.Control.Medium}" />
+    <Setter Property="Padding" Value="0" />
+  </Style>
+
+  <Style Selector="Button.circle">
+    <Setter Property="Width" Value="{DynamicResource Luna.Size.Control.Medium}" />
+    <Setter Property="MinWidth" Value="{DynamicResource Luna.Size.Control.Medium}" />
+    <Setter Property="Padding" Value="0" />
+    <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Round}" />
+  </Style>
+
+  <Style Selector="Button.block">
+    <Setter Property="HorizontalAlignment" Value="Stretch" />
+    <Setter Property="HorizontalContentAlignment" Value="Center" />
   </Style>
 </Styles>

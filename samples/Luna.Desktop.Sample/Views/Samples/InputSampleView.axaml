@@ -1,0 +1,26 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             x:Class="Luna.Desktop.Sample.Views.Samples.InputSampleView"
+             x:DataType="vm:InputSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="520" HorizontalAlignment="Left">
+        <TextBlock Text="基础输入" Classes="sample-title" />
+        <TextBox PlaceholderText="请输入账号" Text="{Binding Account, Mode=TwoWay}" />
+        <TextBox PlaceholderText="请输入密码" PasswordChar="*" />
+        <TextBox PlaceholderText="禁用输入框" IsEnabled="False" />
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="560" HorizontalAlignment="Left">
+        <TextBlock Text="状态与提示" Classes="sample-title" />
+        <TextBox Text="tdesign-react" Classes="error" />
+        <TextBlock Text="校验存在严重问题文本提示" Foreground="{DynamicResource Luna.Brush.Error}" />
+        <TextBox Text="{Binding Notes, Mode=TwoWay}" AcceptsReturn="True" Height="96" TextWrapping="Wrap" />
+        <TextBlock Text="{Binding NotesLength, StringFormat='当前输入 {0} 个字符'}" Classes="sample-caption" />
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

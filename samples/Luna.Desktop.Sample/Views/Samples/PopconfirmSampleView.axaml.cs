@@ -12,12 +12,12 @@ public partial class PopconfirmSampleView : UserControl
     private void OnConfirmed(object? sender, System.EventArgs e)
     {
         if (DataContext is ViewModels.Samples.PopconfirmSampleViewModel vm)
-            vm.OnConfirmedCommand.Execute(null);
+            vm.ConfirmCount++;
     }
 
     private void OnCanceled(object? sender, System.EventArgs e)
     {
         if (DataContext is ViewModels.Samples.PopconfirmSampleViewModel vm)
-            vm.OnCanceledCommand.Execute(null);
+            vm.CancelCount++;
     }
 }

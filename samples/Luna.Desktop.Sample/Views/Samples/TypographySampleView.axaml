@@ -7,7 +7,7 @@
     <Border Classes="sample-card">
       <StackPanel Spacing="12">
         <TextBlock Text="标题级别" Classes="sample-title" />
-        <TextBlock Text="使用 Classes=\"typography-h1~h6\" 切换标题级别，字号和字重自动匹配。" Classes="sample-caption" />
+        <TextBlock Text="使用 Classes=&quot;typography-h1~h6&quot; 切换标题级别，字号和字重自动匹配。" Classes="sample-caption" />
         <StackPanel Spacing="8">
           <TextBlock Text="H1 标题 — 28px SemiBold" Classes="typography-h1" />
           <TextBlock Text="H2 标题 — 20px SemiBold" Classes="typography-h2" />

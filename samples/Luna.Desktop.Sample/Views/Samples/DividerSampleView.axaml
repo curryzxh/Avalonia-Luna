@@ -29,7 +29,7 @@
     <Border Classes="sample-card">
       <StackPanel Spacing="12">
         <TextBlock Text="垂直分割线" Classes="sample-title" />
-        <TextBlock Text="设置 Orientation=\"Vertical\" 用于行内分隔。" Classes="sample-caption" />
+        <TextBlock Text="设置 Orientation=&quot;Vertical&quot; 用于行内分隔。" Classes="sample-caption" />
         <StackPanel Orientation="Horizontal" Spacing="16" VerticalAlignment="Center">
           <TextBlock Text="文字 A" Classes="typography-body" VerticalAlignment="Center" />
           <luna:Divider Orientation="Vertical" Height="16" />

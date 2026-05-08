@@ -7,7 +7,7 @@
     <Border Classes="sample-card">
       <StackPanel Spacing="12">
         <TextBlock Text="水平间距" Classes="sample-title" />
-        <TextBlock Text="使用 StackPanel Classes=\"space\" 并配合 Orientation=\"Horizontal\" 排列元素。" Classes="sample-caption" />
+        <TextBlock Text="使用 StackPanel Classes=&quot;space&quot; 并配合 Orientation=&quot;Horizontal&quot; 排列元素。" Classes="sample-caption" />
         <StackPanel Classes="space medium" Orientation="Horizontal">
           <Border Background="{DynamicResource Luna.Brush.Brand.Light}" CornerRadius="{DynamicResource Luna.Radius.Default}" Padding="16,8">
             <TextBlock Text="项目 A" />

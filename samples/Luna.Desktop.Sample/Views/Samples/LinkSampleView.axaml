@@ -7,7 +7,7 @@
     <Border Classes="sample-card">
       <StackPanel Spacing="12">
         <TextBlock Text="基础链接" Classes="sample-title" />
-        <TextBlock Text="使用 Button Classes=\"link\" 渲染文字链接，默认品牌色，悬停变深。" Classes="sample-caption" />
+        <TextBlock Text="使用 Button Classes=&quot;link&quot; 渲染文字链接，默认品牌色，悬停变深。" Classes="sample-caption" />
         <WrapPanel>
           <Button Classes="link" Content="默认链接" Margin="0,0,16,8" />
           <Button Classes="link underline" Content="下划线链接" Margin="0,0,16,8" />

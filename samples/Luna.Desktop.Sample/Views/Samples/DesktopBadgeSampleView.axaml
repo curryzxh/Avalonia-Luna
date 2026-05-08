@@ -22,7 +22,7 @@
       <Border Classes="sample-card">
         <StackPanel Spacing="12">
           <TextBlock Text="圆点徽标" Classes="sample-title" />
-          <TextBlock Text="设置 IsDot=\"True\" 显示小圆点，常用于状态提示。" Classes="sample-caption" />
+          <TextBlock Text="设置 IsDot=&quot;True&quot; 显示小圆点，常用于状态提示。" Classes="sample-caption" />
           <WrapPanel>
             <luna:DesktopBadge IsDot="True" Margin="0,0,12,8" />
             <luna:DesktopBadge IsDot="True" Classes="brand" Margin="0,0,12,8" />

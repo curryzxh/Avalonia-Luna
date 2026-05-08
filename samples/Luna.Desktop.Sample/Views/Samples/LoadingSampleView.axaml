@@ -9,6 +9,7 @@
       <Border Classes="sample-card">
         <StackPanel Spacing="12">
           <TextBlock Text="基本用法" Classes="sample-title" />
+          <TextBlock Text="加载指示器会自动旋转动画，可通过 IsLoading 控制显示。" Classes="sample-caption" />
           <controls:Loading IsLoading="{Binding IsLoading}"
                             Text="{Binding LoadingText}"
                             Size="{Binding LoadingSize}" />
@@ -35,12 +36,38 @@
       <Border Classes="sample-card">
         <StackPanel Spacing="12">
           <TextBlock Text="不同尺寸" Classes="sample-title" />
+          <TextBlock Text="提供多种尺寸的加载指示器。" Classes="sample-caption" />
           <WrapPanel>
             <controls:Loading IsLoading="True" Size="16" Margin="0,0,24,0" />
             <controls:Loading IsLoading="True" Size="24" Margin="0,0,24,0" />
             <controls:Loading IsLoading="True" Size="36" Margin="0,0,24,0" />
             <controls:Loading IsLoading="True" Size="48" Text="加载中..." />
           </WrapPanel>
+        </StackPanel>
+      </Border>
+
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="包裹内容" Classes="sample-title" />
+          <TextBlock Text="Loading 作为 ContentControl 可包裹内容，加载时覆盖内容区域。" Classes="sample-caption" />
+          <CheckBox Content="显示加载遮罩" IsChecked="{Binding WrapLoading}" Margin="0,0,0,8" />
+          <controls:Loading IsLoading="{Binding WrapLoading}"
+                            Size="32"
+                            Text="正在加载..."
+                            HorizontalAlignment="Left">
+            <Border Width="400" Height="120"
+                    Background="{DynamicResource Luna.Brush.Background.Container}"
+                    BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource Luna.Radius.Default}"
+                    Padding="16">
+              <StackPanel VerticalAlignment="Center" Spacing="8">
+                <TextBlock Text="这里是实际内容区域" FontWeight="{DynamicResource Luna.FontWeight.Medium}" />
+                <TextBlock Text="当 Loading 处于加载状态时，加载指示器会覆盖此区域。"
+                           Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+              </StackPanel>
+            </Border>
+          </controls:Loading>
         </StackPanel>
       </Border>
     </StackPanel>

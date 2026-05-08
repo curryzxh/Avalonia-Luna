@@ -4,33 +4,58 @@
              xmlns:controls="using:Luna.Desktop.Controls"
              x:Class="Luna.Desktop.Sample.Views.Samples.RateSampleView"
              x:DataType="vm:RateSampleViewModel">
-  <StackPanel Spacing="16">
-    <Border Classes="sample-card">
-      <StackPanel Spacing="12" MaxWidth="400" HorizontalAlignment="Left">
-        <TextBlock Text="基础评分" Classes="sample-title" />
-        <controls:Rate Value="{Binding BasicRate, Mode=TwoWay}" />
-        <TextBlock Text="{Binding BasicRate, StringFormat='当前评分：{0} 分'}" Classes="sample-caption" />
-      </StackPanel>
-    </Border>
+  <ScrollViewer>
+    <StackPanel Spacing="16" Margin="0,0,0,24">
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12" MaxWidth="400" HorizontalAlignment="Left">
+          <TextBlock Text="基础评分" Classes="sample-title" />
+          <TextBlock Text="点击星星进行评分，支持再次点击清除。" Classes="sample-caption" />
+          <controls:Rate Value="{Binding BasicRate, Mode=TwoWay}" />
+          <TextBlock Text="{Binding BasicRate, StringFormat='当前评分：{0} 分'}" Classes="sample-caption" />
+        </StackPanel>
+      </Border>
 
-    <Border Classes="sample-card">
-      <StackPanel Spacing="12" MaxWidth="400" HorizontalAlignment="Left">
-        <TextBlock Text="预设评分" Classes="sample-title" />
-        <controls:Rate Value="{Binding PresetRate, Mode=TwoWay}" />
-        <TextBlock Text="{Binding PresetRate, StringFormat='当前评分：{0} 分'}" Classes="sample-caption" />
-      </StackPanel>
-    </Border>
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12" MaxWidth="400" HorizontalAlignment="Left">
+          <TextBlock Text="预设评分" Classes="sample-title" />
+          <TextBlock Text="设置默认评分值。" Classes="sample-caption" />
+          <controls:Rate Value="{Binding PresetRate, Mode=TwoWay}" />
+          <TextBlock Text="{Binding PresetRate, StringFormat='当前评分：{0} 分'}" Classes="sample-caption" />
+        </StackPanel>
+      </Border>
 
-    <Border Classes="sample-card">
-      <StackPanel Spacing="12" MaxWidth="400" HorizontalAlignment="Left">
-        <TextBlock Text="自定义图标与大小" Classes="sample-title" />
-        <controls:Rate Value="{Binding CustomRate, Mode=TwoWay}"
-                       Character="♥"
-                       IconSize="32"
-                       Count="5"
-                       AllowClear="True" />
-        <TextBlock Text="{Binding CustomRate, StringFormat='当前评分：{0} 分'}" Classes="sample-caption" />
-      </StackPanel>
-    </Border>
-  </StackPanel>
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12" MaxWidth="400" HorizontalAlignment="Left">
+          <TextBlock Text="自定义图标与数量" Classes="sample-title" />
+          <TextBlock Text="使用 Character 自定义图标，Count 控制星星数量。" Classes="sample-caption" />
+          <controls:Rate Value="{Binding CustomRate, Mode=TwoWay}"
+                         Character="♥"
+                         Count="5"
+                         AllowClear="True" />
+          <TextBlock Text="{Binding CustomRate, StringFormat='当前评分：{0} 分'}" Classes="sample-caption" />
+        </StackPanel>
+      </Border>
+
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12" MaxWidth="400" HorizontalAlignment="Left">
+          <TextBlock Text="半星评分（10 分制）" Classes="sample-title" />
+          <TextBlock Text="使用 10 颗星模拟半星效果，每 2 颗星代表 1 分。" Classes="sample-caption" />
+          <controls:Rate Value="{Binding CustomCount, Mode=TwoWay}"
+                         Count="10"
+                         AllowClear="True" />
+          <TextBlock Text="{Binding CustomCount, StringFormat='当前评分：{0} / 10'}" Classes="sample-caption" />
+        </StackPanel>
+      </Border>
+
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12" MaxWidth="400" HorizontalAlignment="Left">
+          <TextBlock Text="只读模式" Classes="sample-title" />
+          <TextBlock Text="设置 IsReadOnly 后仅展示评分，不允许交互。" Classes="sample-caption" />
+          <controls:Rate Value="{Binding ReadOnlyRate}"
+                         IsReadOnly="True" />
+          <TextBlock Text="{Binding ReadOnlyRate, StringFormat='只读评分：{0} 分'}" Classes="sample-caption" />
+        </StackPanel>
+      </Border>
+    </StackPanel>
+  </ScrollViewer>
 </UserControl>

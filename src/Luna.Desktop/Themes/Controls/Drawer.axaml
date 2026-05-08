@@ -12,7 +12,7 @@
           <Border Name="PART_DrawerPanel"
                   Background="{DynamicResource Luna.Brush.Background.Container}"
                   CornerRadius="0"
-                  BoxShadows="{DynamicResource Luna.Shadow.Popup}"
+                  BoxShadow="{DynamicResource Luna.Shadow.Popup}"
                   IsVisible="{TemplateBinding IsOpen}"
                   ZIndex="1001">
             <Border.Styles>

@@ -7,16 +7,37 @@
     <Border Classes="sample-card">
       <StackPanel Spacing="12">
         <TextBlock Text="基础表格" Classes="sample-title" />
-        <DataGrid ItemsSource="{Binding Rows}" AutoGenerateColumns="False" IsReadOnly="True"
-                  MaxWidth="720" HorizontalAlignment="Left">
-          <DataGrid.Columns>
-            <DataGridTextColumn Header="编号" Binding="{Binding Id}" Width="100" />
-            <DataGridTextColumn Header="名称" Binding="{Binding Name}" Width="*" />
-            <DataGridTextColumn Header="分类" Binding="{Binding Category}" Width="120" />
-            <DataGridTextColumn Header="价格" Binding="{Binding Price, StringFormat='¥{0:F0}'}" Width="80" />
-            <DataGridTextColumn Header="状态" Binding="{Binding Status}" Width="80" />
-          </DataGrid.Columns>
-        </DataGrid>
+        <TextBlock Text="Luna Table 基于 Avalonia DataGrid 皮肤化，需要引用 Avalonia.Controls.DataGrid 包。当前为占位展示。" Classes="sample-caption" />
+        <Border BorderBrush="{DynamicResource Luna.Brush.Border.Default}" BorderThickness="1"
+                CornerRadius="{DynamicResource Luna.Radius.Default}" MaxWidth="720" HorizontalAlignment="Left">
+          <StackPanel>
+            <Border Background="{DynamicResource Luna.Brush.Background.Page}" Padding="12,8"
+                    BorderBrush="{DynamicResource Luna.Brush.Border.Divider}" BorderThickness="0,0,0,1">
+              <StackPanel Orientation="Horizontal" Spacing="0">
+                <TextBlock Text="编号" Width="80" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                <TextBlock Text="名称" Width="200" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                <TextBlock Text="分类" Width="100" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                <TextBlock Text="价格" Width="80" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                <TextBlock Text="状态" Width="80" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+              </StackPanel>
+            </Border>
+            <ItemsControl ItemsSource="{Binding Rows}">
+              <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                  <Border Padding="12,8" BorderBrush="{DynamicResource Luna.Brush.Border.Divider}" BorderThickness="0,0,0,1">
+                    <StackPanel Orientation="Horizontal" Spacing="0">
+                      <TextBlock Text="{Binding Id}" Width="80" />
+                      <TextBlock Text="{Binding Name}" Width="200" />
+                      <TextBlock Text="{Binding Category}" Width="100" />
+                      <TextBlock Text="{Binding Price, StringFormat='{}¥{0:F0}'}" Width="80" />
+                      <TextBlock Text="{Binding Status}" Width="80" />
+                    </StackPanel>
+                  </Border>
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+          </StackPanel>
+        </Border>
       </StackPanel>
     </Border>
   </StackPanel>

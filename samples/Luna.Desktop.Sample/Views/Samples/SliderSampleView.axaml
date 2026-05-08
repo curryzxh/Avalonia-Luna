@@ -47,18 +47,18 @@
         <Grid RowDefinitions="Auto,Auto" Margin="0,4">
           <Grid ColumnDefinitions="*,Auto">
             <Slider Minimum="0" Maximum="{Binding RangeEnd}" Value="{Binding RangeStart, Mode=TwoWay}" />
-            <TextBlock Text="{Binding RangeStart, StringFormat='{0:F0}'}"
+            <TextBlock Text="{Binding RangeStart, StringFormat='{}{0:F0}'}"
                        Classes="sample-caption" VerticalAlignment="Center" Margin="8,0,0,0" Width="32" />
           </Grid>
           <Grid ColumnDefinitions="*,Auto" Grid.Row="1">
             <Slider Minimum="{Binding RangeStart}" Maximum="100" Value="{Binding RangeEnd, Mode=TwoWay}" />
-            <TextBlock Text="{Binding RangeEnd, StringFormat='{0:F0}'}"
+            <TextBlock Text="{Binding RangeEnd, StringFormat='{}{0:F0}'}"
                        Classes="sample-caption" VerticalAlignment="Center" Margin="8,0,0,0" Width="32" />
           </Grid>
         </Grid>
-        <TextBlock Text="{Binding RangeStart, StringFormat='范围：{0:F0}'}" Classes="sample-caption">
+        <TextBlock Classes="sample-caption">
           <TextBlock.Text>
-            <MultiBinding StringFormat='范围：{0:F0} - {1:F0}'>
+            <MultiBinding StringFormat='{}范围：{0:F0} - {1:F0}'>
               <Binding Path="RangeStart" />
               <Binding Path="RangeEnd" />
             </MultiBinding>

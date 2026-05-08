@@ -4,9 +4,12 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace Luna.Desktop.Sample.ViewModels.Samples;
 
-public partial class PaginationSampleViewModel()
-    : SampleDetailViewModelBase("导航", "Pagination", "分页控件，展示页码导航、总数显示和翻页。")
+public partial class PaginationSampleViewModel : SampleDetailViewModelBase
 {
+    public PaginationSampleViewModel() : base("导航", "Pagination", "分页控件，展示页码导航、总数显示和翻页。")
+    {
+    }
+
     [ObservableProperty]
     private int currentPage = 1;
 

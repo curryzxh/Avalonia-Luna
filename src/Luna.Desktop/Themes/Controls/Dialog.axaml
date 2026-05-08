@@ -14,8 +14,8 @@
                   CornerRadius="{DynamicResource Luna.Radius.Large}"
                   BoxShadow="{DynamicResource Luna.Shadow.Popup}"
                   Width="{TemplateBinding DialogWidth}"
-                  MaxWidth="90%"
-                  MaxHeight="80%"
+                  MaxWidth="720"
+                  MaxHeight="480"
                   HorizontalAlignment="Center"
                   VerticalAlignment="Center"
                   IsVisible="{TemplateBinding IsOpen}"
@@ -48,7 +48,7 @@
                           Orientation="Horizontal"
                           HorizontalAlignment="Right"
                           Spacing="8"
-                          Padding="20,0,20,16">
+                          Margin="20,0,20,16">
                 <Button Name="PART_CancelButton"
                         Content="{TemplateBinding CancelText}"
                         IsVisible="{TemplateBinding CancelText, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />

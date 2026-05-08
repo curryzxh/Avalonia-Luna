@@ -1,6 +1,6 @@
 # Luna.Desktop 控件库并行 Agent 协调计划
 
-- 状态：Planning
+- 状态：✅ 全部完成，构建通过
 - 关联需求：`docs/features/20260508-luna-desktop-control-catalog/spec.md`
 - 关联方案：`docs/features/20260508-luna-desktop-control-catalog/plan.md`
 
@@ -281,11 +281,11 @@ plan.md 中控件覆盖了 Navigation 和 Layout 域，需要在 `ControlSampleC
 
 | Agent | 域 | P0 控件 | P1 控件 | 深化已有 | 状态 |
 |---|---|---|---|---|---|
-| A | Base + Layout | Icon, Link, Typography, Divider, Space, Descriptions | Guide, ImageViewer | DesktopBadge | ⏳ 待启动 |
-| B | Form | Textarea, InputNumber, Select, AutoComplete, Form | DatePicker, TimePicker, Upload, Cascader, Rate, ColorPicker | Input, CheckBox, Radio, Switch | ⏳ 待启动 |
-| C | Data | Card, Tooltip, Skeleton, Collapse, Timeline, Statistic, Calendar, Table | Tree, List, Comment, QRCode, Watermark, BackTop, Image | Progress, Tag, Avatar, Empty | ⏳ 待启动 |
-| D | Feedback | Alert, Dialog, Drawer, Message, Loading, Popup, Popconfirm | Swiper | Notification | ⏳ 待启动 |
-| E | Navigation | Tabs, Menu, Dropdown, Pagination, Breadcrumb, Steps | Anchor, Affix, StickyTool | Slider | ⏳ 待启动 |
+| A | Base + Layout | Icon, Link, Typography, Divider, Space, Descriptions | Guide, ImageViewer | DesktopBadge | ✅ 已完成 |
+| B | Form | Textarea, InputNumber, Select, AutoComplete, Form | DatePicker, TimePicker, Upload, Cascader, Rate, ColorPicker | Input, CheckBox, Radio, Switch | ✅ 已完成 |
+| C | Data | Card, Tooltip, Skeleton, Collapse, Timeline, Statistic, Calendar, Table | Tree, List, Comment, QRCode, Watermark, BackTop, Image | Progress, Tag, Avatar, Empty | ✅ 已完成 |
+| D | Feedback | Alert, Dialog, Drawer, Message, Loading, Popup, Popconfirm | Swiper | Notification | ✅ 已完成 |
+| E | Navigation | Tabs, Menu, Dropdown, Pagination, Breadcrumb, Steps | Anchor, Affix, StickyTool | Slider | ✅ 已完成 |
 
 ## 风险与缓解
 

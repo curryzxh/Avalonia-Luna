@@ -6,7 +6,6 @@
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Default}" />
     <Setter Property="Padding" Value="4" />
-    <Setter Property="BoxShadows" Value="{DynamicResource Luna.Shadow.Popup}" />
   </Style>
 
   <Style Selector="ContextMenu MenuItem">

@@ -10,7 +10,6 @@
         <TextBlock Text="Luna Upload 控件将在后续迭代中实现。将支持点击上传、拖拽上传、文件列表、上传进度、图片预览和大小限制等能力。" Classes="sample-caption" />
         <Border BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
                 BorderThickness="1"
-                BorderDashArray="4,4"
                 CornerRadius="{DynamicResource Luna.Radius.Default}"
                 Padding="32"
                 HorizontalAlignment="Left">

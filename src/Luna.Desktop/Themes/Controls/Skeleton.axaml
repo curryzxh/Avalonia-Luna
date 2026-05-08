@@ -8,17 +8,16 @@
         <Grid>
           <ContentPresenter Content="{TemplateBinding Content}"
                             IsVisible="{TemplateBinding Loading, Converter={x:Static BoolConverters.Not}}" />
-          <StackPanel Name="PART_Placeholder"
-                      IsVisible="{TemplateBinding Loading}"
-                      Spacing="{TemplateBinding RowSpacing}">
-          </StackPanel>
+          <ContentControl Name="PART_Placeholder"
+                          HorizontalAlignment="Stretch"
+                          IsVisible="{TemplateBinding Loading}" />
         </Grid>
       </ControlTemplate>
     </Setter>
   </Style>
 
-  <Style Selector="controls|Skeleton:text /template/ StackPanel#PART_Placeholder">
-    <Setter Property="Children">
+  <Style Selector="controls|Skeleton:text /template/ ContentControl#PART_Placeholder">
+    <Setter Property="Content">
       <Template>
         <Border Height="16" Width="240"
                 CornerRadius="{DynamicResource Luna.Radius.Default}"
@@ -27,8 +26,8 @@
     </Setter>
   </Style>
 
-  <Style Selector="controls|Skeleton:avatar /template/ StackPanel#PART_Placeholder">
-    <Setter Property="Children">
+  <Style Selector="controls|Skeleton:avatar /template/ ContentControl#PART_Placeholder">
+    <Setter Property="Content">
       <Template>
         <StackPanel Orientation="Horizontal" Spacing="12">
           <Border Width="48" Height="48"
@@ -45,8 +44,8 @@
     </Setter>
   </Style>
 
-  <Style Selector="controls|Skeleton:paragraph /template/ StackPanel#PART_Placeholder">
-    <Setter Property="Children">
+  <Style Selector="controls|Skeleton:paragraph /template/ ContentControl#PART_Placeholder">
+    <Setter Property="Content">
       <Template>
         <StackPanel Spacing="12">
           <Border Height="16" CornerRadius="{DynamicResource Luna.Radius.Default}"

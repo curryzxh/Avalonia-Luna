@@ -5,11 +5,11 @@
     <Setter Property="Template">
       <ControlTemplate>
         <StackPanel>
-          <ContentControl Content="{TemplateBinding Anchor}" />
+          <ContentControl Content="{TemplateBinding Anchor}" Name="PART_Anchor" />
           <Popup Child="{TemplateBinding Content}"
                  IsOpen="{TemplateBinding IsOpen, Mode=TwoWay}"
                  Placement="{TemplateBinding Placement}"
-                 PlacementTarget="{Binding #Anchor_Target}">
+                 PlacementTarget="{Binding #PART_Anchor}">
           </Popup>
         </StackPanel>
       </ControlTemplate>

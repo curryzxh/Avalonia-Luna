@@ -13,7 +13,7 @@
                              TotalCount="{Binding TotalCount}"
                              PageSize="{Binding PageSize}"
                              ShowTotal="{Binding ShowTotal}"
-                             Command="{Binding OnPageChangedCommand}" />
+                             Command="{ReflectionBinding OnPageChangedCommand}" />
         <TextBlock Text="{Binding PageInfo}" Classes="sample-caption" />
       </StackPanel>
     </Border>

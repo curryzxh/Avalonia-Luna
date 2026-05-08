@@ -4,4 +4,53 @@
   <Style Selector="controls|Rate">
     <Setter Property="Focusable" Value="False" />
   </Style>
+
+  <Style Selector="controls|Rate > StackPanel > Button">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="Padding" Value="2" />
+    <Setter Property="Focusable" Value="False" />
+    <Setter Property="Cursor" Value="Hand" />
+    <Setter Property="Opacity" Value="1" />
+  </Style>
+
+  <Style Selector="controls|Rate > StackPanel > Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="Transparent" />
+  </Style>
+
+  <Style Selector="controls|Rate > StackPanel > Button:pointerover">
+    <Setter Property="Opacity" Value="0.8" />
+  </Style>
+
+  <Style Selector="controls|Rate > StackPanel > Button:pressed">
+    <Setter Property="Opacity" Value="0.6" />
+  </Style>
+
+  <Style Selector="controls|Rate > StackPanel > Button > TextBlock">
+    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Title.Medium}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Border.Default}" />
+    <Setter Property="TextAlignment" Value="Center" />
+  </Style>
+
+  <Style Selector="controls|Rate:disabled > StackPanel > Button">
+    <Setter Property="Opacity" Value="0.4" />
+    <Setter Property="Cursor" Value="Arrow" />
+  </Style>
+
+  <Style Selector="controls|Rate.small > StackPanel > Button > TextBlock">
+    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Medium}" />
+  </Style>
+
+  <Style Selector="controls|Rate.small > StackPanel > Button">
+    <Setter Property="Padding" Value="1" />
+  </Style>
+
+  <Style Selector="controls|Rate.large > StackPanel > Button > TextBlock">
+    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Title.Large}" />
+  </Style>
+
+  <Style Selector="controls|Rate.large > StackPanel > Button">
+    <Setter Property="Padding" Value="4" />
+  </Style>
 </Styles>

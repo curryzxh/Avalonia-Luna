@@ -1,6 +1,6 @@
 # Luna.Desktop 控件库并行 Agent 协调计划
 
-- 状态：✅ 全部完成，构建通过
+- 状态：🔧 审计完成，部分控件需要深化
 - 关联需求：`docs/features/20260508-luna-desktop-control-catalog/spec.md`
 - 关联方案：`docs/features/20260508-luna-desktop-control-catalog/plan.md`
 
@@ -279,13 +279,141 @@ plan.md 中控件覆盖了 Navigation 和 Layout 域，需要在 `ControlSampleC
 
 ## Agent 任务跟踪表
 
-| Agent | 域 | P0 控件 | P1 控件 | 深化已有 | 状态 |
-|---|---|---|---|---|---|
-| A | Base + Layout | Icon, Link, Typography, Divider, Space, Descriptions | Guide, ImageViewer | DesktopBadge | ✅ 已完成 |
-| B | Form | Textarea, InputNumber, Select, AutoComplete, Form | DatePicker, TimePicker, Upload, Cascader, Rate, ColorPicker | Input, CheckBox, Radio, Switch | ✅ 已完成 |
-| C | Data | Card, Tooltip, Skeleton, Collapse, Timeline, Statistic, Calendar, Table | Tree, List, Comment, QRCode, Watermark, BackTop, Image | Progress, Tag, Avatar, Empty | ✅ 已完成 |
-| D | Feedback | Alert, Dialog, Drawer, Message, Loading, Popup, Popconfirm | Swiper | Notification | ✅ 已完成 |
-| E | Navigation | Tabs, Menu, Dropdown, Pagination, Breadcrumb, Steps | Anchor, Affix, StickyTool | Slider | ✅ 已完成 |
+> 审计日期：2026-05-08
+> 评级标准：✅ 完成（有实质控件+样式+多场景示例） | ⚠️ 部分完成（有框架但内容不足） | ❌ 占位（只有说明文字） | 🚫 缺失（文件不存在）
+
+### Agent A：Base + Layout
+
+| 控件 | 控件类 | 主题样式 | Sample VM | Sample View | 评级 | 备注 |
+|---|---|---|---|---|---|---|
+| Icon | 无（原生） | ✅ 7选择器/10 Setter | ✅ | ✅ 48行，实际展示 | ✅ | |
+| Link | 无（Button样式） | ✅ 10选择器/22 Setter | ✅ | ✅ 31行 | ✅ | |
+| Typography | 无（TextBlock样式） | ✅ 9选择器/36 Setter | ✅ | ✅ 33行 | ✅ | |
+| Divider | ✅ 59行 | ✅ 3选择器/5 Setter | ✅ | ✅ 43行 | ✅ | |
+| Space | 无（StackPanel样式） | ✅ 4选择器/4 Setter | ✅ | ✅ 87行 | ✅ | |
+| Descriptions | ✅ 45行 | ⚠️ 1选择器/3 Setter | ✅ 27行 | ✅ 59行 | ⚠️ | 主题样式过于简单 |
+| Guide | 无 | 无 | ✅ | ❌ 27行纯占位 | ❌ | 计划后续实现 |
+| ImageViewer | 无 | 无 | ✅ | ❌ 28行纯占位 | ❌ | 计划后续实现 |
+| DesktopBadge(深化) | ✅ 121行 | ✅ 138行 | ✅ 22行 | ✅ 120行 | ✅ | |
+
+### Agent B：Form
+
+| 控件 | 控件类 | 主题样式 | Sample VM | Sample View | 评级 | 备注 |
+|---|---|---|---|---|---|---|
+| Textarea | 无（TextBox样式） | ✅ 68行 | ✅ 23行 | ✅ 56行 | ✅ | |
+| InputNumber | ✅ 213行 | ✅ 74行 | ✅ 22行 | ✅ 49行 | ✅ | |
+| Select | 无（ComboBox样式） | ✅ 30行 | ✅ 21行 | ✅ 50行 | ✅ | |
+| AutoComplete | 无 | 无 | ✅ 16行 | ⚠️ 26行，1占位 | ⚠️ | 只用原生控件，缺Luna封装 |
+| Form | 无 | 无 | ✅ 19行 | ⚠️ 45行，1占位 | ⚠️ | 缺表单验证和布局样式 |
+| DatePicker | 无（原生） | 无 | ✅ 11行 | ⚠️ 23行，2占位 | ⚠️ | 用原生CalendarDatePicker，缺Luna样式 |
+| TimePicker | 无（原生） | 无 | ✅ 11行 | ⚠️ 22行，2占位 | ⚠️ | 用原生TimePicker，缺Luna样式 |
+| Upload | 无 | 无 | ✅ 8行 | ❌ 25行纯占位 | ❌ | 计划后续实现 |
+| Cascader | 无 | 无 | ✅ 8行 | ❌ 14行纯占位 | ❌ | 计划后续实现 |
+| Rate | ✅ 135行 | ⚠️ 7行/1选择器 | ✅ 16行 | ✅ 36行 | ⚠️ | 主题样式过于简单 |
+| ColorPicker | 无 | 无 | ✅ 8行 | ❌ 14行纯占位 | ❌ | 计划后续实现 |
+| Input(深化) | 无 | ✅ 已有 | ✅ 58行 | ✅ 115行 | ✅ | |
+| CheckBox(深化) | 无 | ✅ 已有 | ✅ 29行 | ✅ 53行 | ✅ | |
+| Radio(深化) | 无 | ✅ 已有 | ✅ 21行 | ✅ 55行 | ✅ | |
+| Switch(深化) | 无 | ✅ 已有 | ✅ 25行 | ✅ 54行 | ✅ | |
+
+### Agent C：Data
+
+| 控件 | 控件类 | 主题样式 | Sample VM | Sample View | 评级 | 备注 |
+|---|---|---|---|---|---|---|
+| Card | ✅ 52行 | ✅ 52行 | ✅ | ✅ 44行 | ✅ | |
+| Tooltip | 无（原生样式） | ⚠️ 12行/1选择器 | ✅ | ✅ 43行 | ⚠️ | 主题样式简单 |
+| Skeleton | ✅ 60行 | ✅ 61行 | ✅ 10行 | ✅ 48行 | ✅ | |
+| Collapse | 无（Expander样式） | ✅ 25行 | ✅ | ✅ 39行 | ✅ | |
+| Timeline | ✅ 147行 | ✅ 73行 | ✅ | ✅ 48行 | ✅ | |
+| Statistic | ✅ 101行 | ✅ 52行 | ✅ | ✅ 36行 | ✅ | |
+| Calendar | 无（原生样式） | ✅ 46行 | ✅ | ✅ 21行 | ✅ | |
+| Table | 无 | ❌ 3行空文件 | ✅ 26行 | ⚠️ 44行/1占位 | ❌ | DataGrid未引用，用ItemsControl替代 |
+| Tree | 无（TreeView样式） | ✅ 25行 | ✅ | ✅ 31行 | ✅ | |
+| List | 无（ItemsControl样式） | ✅ 20行 | ✅ | ✅ 38行 | ✅ | |
+| Comment | ✅ 43行 | ⚠️ 36行/1选择器 | ✅ | ✅ 17行 | ⚠️ | 主题和示例都简单 |
+| QRCode | 无 | 无 | ✅ | ❌ 17行纯占位 | ❌ | 计划后续实现 |
+| Watermark | 无 | 无 | ✅ | ❌ 18行纯占位 | ❌ | 计划后续实现 |
+| BackTop | 无 | 无 | ✅ | ❌ 13行纯占位 | ❌ | 计划后续实现 |
+| Image | 无 | ⚠️ 14行/2选择器 | ✅ | ⚠️ 44行/2占位 | ⚠️ | 样式和示例都偏简单 |
+| Progress(深化) | 无 | ✅ 已有 | ✅ 19行 | ✅ 63行 | ✅ | |
+| Tag(深化) | 无 | ✅ 已有 | ✅ | ✅ 97行 | ✅ | |
+| Avatar(深化) | 无 | ✅ 已有 | ✅ | ✅ 83行 | ✅ | |
+| Empty(深化) | 无 | ✅ 已有 | ✅ | ✅ 67行 | ✅ | |
+
+### Agent D：Feedback
+
+| 控件 | 控件类 | 主题样式 | Sample VM | Sample View | 评级 | 备注 |
+|---|---|---|---|---|---|---|
+| Alert | ✅ 102行 | ✅ 75行 | ✅ 30行 | ✅ 55行 | ✅ | |
+| Dialog | ✅ 190行 | ⚠️ 66行/1选择器 | ✅ 46行 | ✅ 35行 | ⚠️ | 主题只有模板定义，样式不够 |
+| Drawer | ✅ 188行 | ✅ 71行 | ✅ 51行 | ✅ 36行 | ✅ | |
+| Message | ✅ 166行 | ✅ 60行 | ✅ 30行 | ✅ 26行 | ✅ | |
+| Loading | ✅ 69行 | ⚠️ 36行/2选择器 | ✅ 16行 | ✅ 48行 | ⚠️ | 主题样式简单 |
+| Popup | ✅ 44行 | ⚠️ 18行/1选择器 | ✅ 14行 | ⚠️ 29行 | ⚠️ | 主题和示例都简单 |
+| Popconfirm | ✅ 93行 | ✅ 50行 | ✅ 20行 | ✅ 47行 | ✅ | |
+| Swiper | 无 | 无 | ✅ 10行 | ✅ 34行 | ⚠️ | 无控件类，示例用原生模拟 |
+| Notification(深化) | 无 | ✅ 已有 | ✅ 90行 | ✅ 137行 | ✅ | |
+
+### Agent E：Navigation
+
+| 控件 | 控件类 | 主题样式 | Sample VM | Sample View | 评级 | 备注 |
+|---|---|---|---|---|---|---|
+| Tabs | 无（TabControl样式） | ✅ 74行 | ✅ 10行 | ✅ 59行 | ✅ | |
+| Menu | 无（Menu样式） | ✅ 43行 | ✅ 10行 | ✅ 47行 | ✅ | |
+| Dropdown | 无（ContextMenu样式） | ✅ 27行 | ✅ 10行 | ✅ 57行 | ✅ | |
+| Pagination | ✅ 268行 | ⚠️ 40行/1选择器 | ✅ 32行 | ✅ 41行 | ⚠️ | 主题只有模板定义 |
+| Breadcrumb | ✅ 135行 | ✅ 31行 | ✅ 10行 | ✅ 32行 | ✅ | |
+| Steps | ✅ 553行 | ✅ 299行 | ✅ 16行 | ✅ 45行 | ✅ | |
+| Anchor | ⚠️ 16行空壳 | ⚠️ 17行/1选择器 | ✅ | ❌ 18行纯占位 | ❌ | 控件和示例都是占位 |
+| Affix | ⚠️ 16行空壳 | ⚠️ 17行/1选择器 | ✅ | ❌ 18行纯占位 | ❌ | 控件和示例都是占位 |
+| StickyTool | ⚠️ 31行简单 | ⚠️ 17行/1选择器 | ✅ | ❌ 18行纯占位 | ❌ | 控件和示例都是占位 |
+| Slider(深化) | 无 | ✅ 已有 | ✅ 25行 | ✅ 88行 | ✅ | |
+
+## 完成度汇总
+
+| 评级 | 数量 | 占比 | 控件列表 |
+|---|---|---|---|
+| ✅ 完成 | 35 | 56% | Icon, Link, Typography, Divider, Space, DesktopBadge, Textarea, InputNumber, Select, Input, CheckBox, Radio, Switch, Card, Skeleton, Collapse, Timeline, Statistic, Calendar, Tree, List, Progress, Tag, Avatar, Empty, Alert, Drawer, Message, Popconfirm, Tabs, Menu, Dropdown, Breadcrumb, Steps, Slider |
+| ⚠️ 部分完成 | 15 | 24% | Descriptions, AutoComplete, Form, DatePicker, TimePicker, Rate, Tooltip, Comment, Image, Dialog, Loading, Popup, Swiper, Pagination, Notification |
+| ❌ 占位 | 12 | 19% | Guide, ImageViewer, Upload, Cascader, ColorPicker, Table, QRCode, Watermark, BackTop, Anchor, Affix, StickyTool |
+
+### 按域统计
+
+| 域 | ✅完成 | ⚠️部分 | ❌占位 |
+|---|---|---|---|
+| Base | Icon, Link, Typography | — | Guide, ImageViewer |
+| Form | Textarea, InputNumber, Select, Input, CheckBox, Radio, Switch | AutoComplete, Form, DatePicker, TimePicker, Rate | Upload, Cascader, ColorPicker |
+| Data | Card, Skeleton, Collapse, Timeline, Statistic, Calendar, Tree, List, Progress, Tag, Avatar, Empty | Tooltip, Comment, Image | Table, QRCode, Watermark, BackTop |
+| Message | Alert, Drawer, Message, Popconfirm | Dialog, Loading, Popup, Swiper, Notification | — |
+| Navigation | Tabs, Menu, Dropdown, Breadcrumb, Steps, Slider | Pagination | Anchor, Affix, StickyTool |
+| Layout | Divider, Space, DesktopBadge | Descriptions | — |
+
+## 待办优先级
+
+### P0 — 需要立即修复（⚠️ 部分完成 → ✅）
+1. **Pagination 主题样式** — 当前只有模板定义，缺少选择器样式
+2. **Dialog 主题样式** — 当前只有模板定义，缺少细节样式
+3. **Rate 主题样式** — 只有7行1个选择器，需要补全
+4. **Loading 主题样式** — 只有2个选择器，需要补全动画
+5. **Popup 示例** — 示例偏简单，需要补全方向展示
+
+### P1 — 需要完善（⚠️ → ✅）
+6. **Descriptions 主题** — 只有1个选择器
+7. **Tooltip 主题** — 只有12行
+8. **Comment 主题+示例** — 只有1个选择器，示例只有3条评论
+9. **AutoComplete** — 缺Luna封装
+10. **Form** — 缺表单布局和验证样式
+11. **DatePicker/TimePicker** — 缺Luna自定义样式
+12. **Image** — 样式和示例都偏简单
+13. **Swiper** — 无控件类
+14. **Notification** — 示例很完整但缺少自定义主题样式
+
+### P2 — 计划后续实现（❌ 占位）
+15. Guide, ImageViewer — 复杂自定义控件
+16. Upload, Cascader, ColorPicker — Form 高级控件
+17. Table — 需要引用 DataGrid 包
+18. QRCode, Watermark, BackTop — Data 高级功能
+19. Anchor, Affix, StickyTool — Navigation 辅助控件
 
 ## 风险与缓解
 

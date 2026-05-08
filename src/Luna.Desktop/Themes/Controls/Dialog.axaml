@@ -8,7 +8,17 @@
           <Border Name="PART_Overlay"
                   Background="{DynamicResource Luna.Brush.Mask}"
                   IsVisible="{TemplateBinding IsOpen}"
-                  ZIndex="1000" />
+                  ZIndex="1000">
+            <Border.Styles>
+              <Style Selector="Border">
+                <Setter Property="Transitions">
+                  <Transitions>
+                    <DoubleTransition Property="Opacity" Duration="0:0:0.25" Easing="CubicEaseOut" />
+                  </Transitions>
+                </Setter>
+              </Style>
+            </Border.Styles>
+          </Border>
           <Border Name="PART_DialogPanel"
                   Background="{DynamicResource Luna.Brush.Background.Container}"
                   CornerRadius="{DynamicResource Luna.Radius.Large}"
@@ -20,6 +30,16 @@
                   VerticalAlignment="Center"
                   IsVisible="{TemplateBinding IsOpen}"
                   ZIndex="1001">
+            <Border.Styles>
+              <Style Selector="Border">
+                <Setter Property="Transitions">
+                  <Transitions>
+                    <DoubleTransition Property="Opacity" Duration="0:0:0.2" Easing="CubicEaseOut" />
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2" Easing="CubicEaseOut" />
+                  </Transitions>
+                </Setter>
+              </Style>
+            </Border.Styles>
             <Grid RowDefinitions="Auto,*,Auto">
               <Grid Grid.Row="0" ColumnDefinitions="*,Auto"
                     Margin="20,16,12,0">
@@ -36,6 +56,12 @@
                         FontFamily="Segoe MDL2 Assets"
                         FontSize="12"
                         Classes="text small"
+                        Width="28"
+                        Height="28"
+                        Padding="0"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        CornerRadius="{DynamicResource Luna.Radius.Default}"
                         VerticalAlignment="Top"
                         IsVisible="{TemplateBinding ShowCloseButton}" />
               </Grid>
@@ -62,5 +88,17 @@
         </Panel>
       </ControlTemplate>
     </Setter>
+  </Style>
+
+  <Style Selector="controls|DialogHost.small">
+    <Setter Property="DialogWidth" Value="360" />
+  </Style>
+
+  <Style Selector="controls|DialogHost /template/ Button#PART_CloseButton:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Component}" />
+  </Style>
+
+  <Style Selector="controls|DialogHost.large">
+    <Setter Property="DialogWidth" Value="600" />
   </Style>
 </Styles>

@@ -9,7 +9,7 @@
           <Popup Child="{TemplateBinding Content}"
                  IsOpen="{TemplateBinding IsOpen, Mode=TwoWay}"
                  Placement="{TemplateBinding Placement}"
-                 PlacementTarget="{TemplateBinding #Anchor_Target}">
+                 PlacementTarget="{Binding #Anchor_Target}">
           </Popup>
         </StackPanel>
       </ControlTemplate>

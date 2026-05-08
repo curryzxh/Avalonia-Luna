@@ -4,7 +4,7 @@
   <Style Selector="controls|Popconfirm /template/ Popup#PART_Popup > Border">
     <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
     <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Default}" />
-    <Setter Property="BoxShadow" Value="{DynamicResource Luna.Shadow.Popup}" />
+    <Setter Property="BoxShadows" Value="{DynamicResource Luna.Shadow.Popup}" />
     <Setter Property="Padding" Value="16" />
   </Style>
 
@@ -16,7 +16,7 @@
           <Popup Name="PART_Popup"
                  IsOpen="{TemplateBinding IsOpen, Mode=TwoWay}"
                  Placement="{TemplateBinding Placement}"
-                 PlacementTarget="{TemplateBinding #PART_ContentPresenter}">
+                 PlacementTarget="{Binding #PART_ContentPresenter}">
             <Border Background="{DynamicResource Luna.Brush.Background.Container}"
                     CornerRadius="{DynamicResource Luna.Radius.Default}"
                     BoxShadow="{DynamicResource Luna.Shadow.Popup}"

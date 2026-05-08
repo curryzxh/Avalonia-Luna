@@ -22,7 +22,7 @@
                   ZIndex="1001">
             <Grid RowDefinitions="Auto,*,Auto">
               <Grid Grid.Row="0" ColumnDefinitions="*,Auto"
-                    Padding="20,16,12,0">
+                    Margin="20,16,12,0">
                 <TextBlock Grid.Column="0"
                            Text="{TemplateBinding Title}"
                            FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"

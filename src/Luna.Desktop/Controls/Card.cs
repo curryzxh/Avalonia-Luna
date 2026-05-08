@@ -1,9 +1,9 @@
 using Avalonia;
-using Avalonia.Controls.Primitives;
+using Avalonia.Controls;
 
 namespace Luna.Desktop.Controls;
 
-public class Card : TemplatedControl
+public class Card : ContentControl
 {
     public static readonly StyledProperty<string?> TitleProperty =
         AvaloniaProperty.Register<Card, string?>(nameof(Title));

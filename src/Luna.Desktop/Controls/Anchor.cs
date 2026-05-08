@@ -1,10 +1,9 @@
 using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Controls.Primitives;
 
 namespace Luna.Desktop.Controls;
 
-public class Anchor : TemplatedControl
+public class Anchor : ContentControl
 {
     public static readonly StyledProperty<string?> TargetIdProperty =
         AvaloniaProperty.Register<Anchor, string?>(nameof(TargetId));

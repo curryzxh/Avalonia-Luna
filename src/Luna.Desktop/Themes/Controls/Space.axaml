@@ -16,7 +16,4 @@
     <Setter Property="Spacing" Value="16" />
   </Style>
 
-  <Style Selector="WrapPanel.space">
-    <Setter Property="Spacing" Value="8" />
-  </Style>
 </Styles>

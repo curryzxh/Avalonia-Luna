@@ -1,10 +1,9 @@
 using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Controls.Primitives;
 
 namespace Luna.Desktop.Controls;
 
-public class StickyTool : TemplatedControl
+public class StickyTool : ContentControl
 {
     public static readonly StyledProperty<double> OffsetProperty =
         AvaloniaProperty.Register<StickyTool, double>(nameof(Offset), 100);

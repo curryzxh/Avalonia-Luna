@@ -2,6 +2,7 @@ using System;
 using System.Windows.Input;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Templates;
 using Avalonia.Data;
 using Avalonia.Layout;
@@ -24,7 +25,6 @@ public class Breadcrumb : ItemsControl
     }
 
     [AssignBinding]
-    [InheritDataTypeFromItems(nameof(ItemsSource))]
     public BindingBase? CommandBinding
     {
         get => GetValue(CommandBindingProperty);

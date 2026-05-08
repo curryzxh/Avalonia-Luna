@@ -118,7 +118,7 @@ public class Timeline : ItemsControl
     private void UpdateItemPositions()
     {
         var index = 0;
-        foreach (var child in GetVisualChildren())
+        foreach (var child in VisualChildren)
         {
             if (child is TimelineItem ti)
             {

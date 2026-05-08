@@ -12,7 +12,6 @@
   <Style Selector="TabControl.tabs /template/ TabStrip#PART_HeaderPanel">
     <Setter Property="Margin" Value="0,0,0,0" />
     <Setter Property="Background" Value="Transparent" />
-    <Setter Property="Gap" Value="0" />
   </Style>
 
   <Style Selector="TabControl.tabs TabItem">

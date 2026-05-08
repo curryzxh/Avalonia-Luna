@@ -63,6 +63,6 @@
     <Setter Property="AcceptsReturn" Value="True" />
     <Setter Property="TextWrapping" Value="Wrap" />
     <Setter Property="VerticalContentAlignment" Value="Top" />
-    <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
+    <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
   </Style>
 </Styles>

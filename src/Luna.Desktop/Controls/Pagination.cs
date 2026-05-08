@@ -104,11 +104,19 @@ public class Pagination : TemplatedControl
     {
         base.OnApplyTemplate(e);
 
-        Button.ClickEvent.RemoveHandler(OnNavigateButtonClick, _previousButton, _nextButton);
+        if (_previousButton is not null)
+            _previousButton.Click -= OnNavigateButtonClick;
+        if (_nextButton is not null)
+            _nextButton.Click -= OnNavigateButtonClick;
+
         _previousButton = e.NameScope.Find<Button>(PART_PreviousButton);
         _nextButton = e.NameScope.Find<Button>(PART_NextButton);
         _buttonPanel = e.NameScope.Find<StackPanel>(PART_ButtonPanel);
-        Button.ClickEvent.AddHandler(OnNavigateButtonClick, _previousButton, _nextButton);
+
+        if (_previousButton is not null)
+            _previousButton.Click += OnNavigateButtonClick;
+        if (_nextButton is not null)
+            _nextButton.Click += OnNavigateButtonClick;
 
         UpdateButtons();
     }

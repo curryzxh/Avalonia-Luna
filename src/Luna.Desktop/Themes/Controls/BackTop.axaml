@@ -1,0 +1,34 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Luna.Desktop.Controls">
+  <Style Selector="controls|BackTop">
+    <Setter Property="Width" Value="40" />
+    <Setter Property="Height" Value="40" />
+    <Setter Property="Cursor" Value="Hand" />
+    <Setter Property="IsVisible" Value="False" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border Width="{TemplateBinding Width}"
+                Height="{TemplateBinding Height}"
+                CornerRadius="{DynamicResource Luna.Radius.Round}"
+                Background="{DynamicResource Luna.Brush.Background.Container}"
+                BoxShadow="{DynamicResource Luna.Shadow.Popup}"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+          <Border.RenderTransform>
+            <TranslateTransform X="{TemplateBinding Right}" />
+          </Border.RenderTransform>
+          <ContentPresenter Content="{TemplateBinding Content}" />
+        </Border>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|BackTop:visible">
+    <Setter Property="IsVisible" Value="True" />
+  </Style>
+
+  <Style Selector="controls|BackTop:pointerover /template/ Border">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand.Light}" />
+  </Style>
+</Styles>

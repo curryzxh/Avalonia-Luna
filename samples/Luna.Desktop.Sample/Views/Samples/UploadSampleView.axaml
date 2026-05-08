@@ -5,20 +5,53 @@
              x:DataType="vm:UploadSampleViewModel">
   <StackPanel Spacing="16">
     <Border Classes="sample-card">
-      <StackPanel Spacing="12" MaxWidth="520" HorizontalAlignment="Left">
-        <TextBlock Text="上传占位" Classes="sample-title" />
-        <TextBlock Text="Luna Upload 控件将在后续迭代中实现。将支持点击上传、拖拽上传、文件列表、上传进度、图片预览和大小限制等能力。" Classes="sample-caption" />
-        <Border BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+      <StackPanel Spacing="12">
+        <TextBlock Text="文件上传" Classes="sample-title" />
+        <TextBlock Text="Upload 支持拖拽上传和文件列表管理。点击下方按钮模拟添加文件。" Classes="sample-caption" />
+        <Button Content="选择文件" Classes="primary" Command="{ReflectionBinding AddFileCommand}" HorizontalAlignment="Left" />
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="拖拽上传区域" Classes="sample-title" />
+        <Border Height="120"
+                BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
                 BorderThickness="1"
                 CornerRadius="{DynamicResource Luna.Radius.Default}"
-                Padding="32"
-                HorizontalAlignment="Left">
-          <StackPanel Spacing="8" HorizontalAlignment="Center">
-            <TextBlock Text="📂" FontSize="28" HorizontalAlignment="Center" />
-            <TextBlock Text="点击或拖拽文件到此区域上传" HorizontalAlignment="Center"
-                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                Background="{DynamicResource Luna.Brush.Background.Page}">
+          <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="4">
+            <TextBlock Text="📁" FontSize="28" HorizontalAlignment="Center" />
+            <TextBlock Text="点击或拖拽文件到此区域" Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                       HorizontalAlignment="Center" FontSize="{DynamicResource Luna.FontSize.Body.Small}" />
           </StackPanel>
         </Border>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="文件列表" Classes="sample-title" />
+        <ItemsControl ItemsSource="{Binding Files}">
+          <ItemsControl.ItemTemplate>
+            <DataTemplate>
+              <Border Padding="12,8" BorderBrush="{DynamicResource Luna.Brush.Border.Divider}" BorderThickness="0,0,0,1">
+                <Grid ColumnDefinitions="*,Auto,Auto">
+                  <StackPanel Grid.Column="0" Spacing="2">
+                    <TextBlock Text="{Binding Name}" Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+                    <TextBlock Text="{Binding SizeDisplay}" FontSize="{DynamicResource Luna.FontSize.Caption}"
+                               Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" />
+                  </StackPanel>
+                  <ProgressBar Grid.Column="1" Value="{Binding Progress}" Minimum="0" Maximum="100"
+                               Width="120" VerticalAlignment="Center" Margin="12,0" />
+                  <Button Grid.Column="2" Content="✕" Classes="link"
+                          Command="{ReflectionBinding $parent[UserControl].((vm:UploadSampleViewModel)DataContext).RemoveFileCommand}"
+                          CommandParameter="{Binding}" />
+                </Grid>
+              </Border>
+            </DataTemplate>
+          </ItemsControl.ItemTemplate>
+        </ItemsControl>
       </StackPanel>
     </Border>
   </StackPanel>

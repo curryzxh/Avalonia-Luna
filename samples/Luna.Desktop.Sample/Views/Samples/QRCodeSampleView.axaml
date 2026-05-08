@@ -3,15 +3,45 @@
              xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
              x:Class="Luna.Desktop.Sample.Views.Samples.QRCodeSampleView"
              x:DataType="vm:QRCodeSampleViewModel">
-  <Border Classes="sample-card">
-    <StackPanel Spacing="12" HorizontalAlignment="Center">
-      <TextBlock Text="二维码" Classes="sample-title" HorizontalAlignment="Center" />
-      <Border Width="160" Height="160" Background="{DynamicResource Luna.Brush.Background.Component}"
-              CornerRadius="{DynamicResource Luna.Radius.Default}">
-        <TextBlock Text="QR Code\n（占位）" HorizontalAlignment="Center" VerticalAlignment="Center"
-                   Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" TextAlignment="Center" />
-      </Border>
-      <TextBlock Text="二维码生成功能将在后续版本实现。" Classes="sample-caption" HorizontalAlignment="Center" />
-    </StackPanel>
-  </Border>
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="二维码" Classes="sample-title" />
+        <TextBlock Text="{Binding StatusText}" Classes="sample-caption" />
+        <StackPanel Orientation="Horizontal" Spacing="16">
+          <Border Width="{Binding Size}" Height="{Binding Size}"
+                  Background="{DynamicResource Luna.Brush.Background.Page}"
+                  BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                  BorderThickness="1"
+                  CornerRadius="{DynamicResource Luna.Radius.Default}">
+            <Panel>
+              <TextBlock Text="QR" FontSize="32" FontWeight="Bold"
+                         Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                         HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Panel>
+          </Border>
+          <StackPanel Spacing="8" VerticalAlignment="Center">
+            <TextBlock Text="内容" Classes="sample-caption" />
+            <TextBox Text="{Binding Content}" Width="240" />
+            <TextBlock Text="{Binding Size, StringFormat='{}尺寸：{0}px'}" Classes="sample-caption" />
+            <Slider Minimum="64" Maximum="320" Value="{Binding Size}" Width="240" />
+          </StackPanel>
+        </StackPanel>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="API 设计预览" Classes="sample-title" />
+        <TextBlock Text="计划 API：" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+        <Border Background="{DynamicResource Luna.Brush.Background.Page}" Padding="12"
+                CornerRadius="{DynamicResource Luna.Radius.Small}">
+          <TextBlock Text="QRCode控件&#x0a;  Content: string — 二维码内容&#x0a;  Size: int — 二维码尺寸&#x0a;  Level: ErrorCorrectionLevel — 纠错等级&#x0a;  Foreground: Brush — 前景色&#x0a;  Background: Brush — 背景色"
+                     FontFamily="Consolas, monospace"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+        </Border>
+      </StackPanel>
+    </Border>
+  </StackPanel>
 </UserControl>

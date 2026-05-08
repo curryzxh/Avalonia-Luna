@@ -1,27 +1,35 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             xmlns:controls="using:Luna.Desktop.Controls"
              x:Class="Luna.Desktop.Sample.Views.Samples.ImageViewerSampleView"
              x:DataType="vm:ImageViewerSampleViewModel">
   <StackPanel Spacing="16">
     <Border Classes="sample-card">
       <StackPanel Spacing="12">
-        <TextBlock Text="ImageViewer 图片预览" Classes="sample-title" />
-        <TextBlock Text="图片预览控件用于全屏或弹层中查看大图。" Classes="sample-caption" />
-        <Border Background="{DynamicResource Luna.Brush.Background.Component}"
-                CornerRadius="{DynamicResource Luna.Radius.Default}"
-                Padding="24,16">
-          <StackPanel Spacing="8">
-            <TextBlock Text="功能说明" Classes="sample-caption" />
-            <TextBlock Text="ImageViewer 控件将提供以下能力：" Classes="typography-body" />
-            <TextBlock Text="• 支持图片缩放（滚轮 / 按钮放大缩小）" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-            <TextBlock Text="• 支持图片旋转（顺时针 / 逆时针 90°）" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-            <TextBlock Text="• 支持拖拽平移查看大图细节" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-            <TextBlock Text="• 支持图片列表翻页浏览（上一张 / 下一张）" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-            <TextBlock Text="• 提供遮罩层模式弹窗全屏预览" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-          </StackPanel>
-        </Border>
-        <TextBlock Text="该控件尚未实现，敬请期待。" Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" />
+        <TextBlock Text="图片预览" Classes="sample-title" />
+        <TextBlock Text="ImageViewer 支持图片的缩放、旋转操作。" Classes="sample-caption" />
+        <controls:ImageViewer Source="{Binding ImageUrl}"
+                              Zoom="{Binding Zoom}"
+                              Rotate="{Binding Rotate}"
+                              ShowToolbar="True"
+                              MaxWidth="600"
+                              MaxHeight="400"
+                              HorizontalAlignment="Left" />
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="手动控制" Classes="sample-title" />
+        <StackPanel Spacing="8">
+          <TextBlock Text="{Binding Zoom, StringFormat='{}缩放：{0:P0}'}" Classes="sample-caption" />
+          <Slider Minimum="0.1" Maximum="3" Value="{Binding Zoom}" />
+        </StackPanel>
+        <StackPanel Spacing="8">
+          <TextBlock Text="{Binding Rotate, StringFormat='{}旋转：{0:F0}°'}" Classes="sample-caption" />
+          <Slider Minimum="-180" Maximum="180" Value="{Binding Rotate}" />
+        </StackPanel>
       </StackPanel>
     </Border>
   </StackPanel>

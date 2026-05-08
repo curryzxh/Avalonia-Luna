@@ -1,0 +1,44 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Luna.Desktop.Controls">
+  <Style Selector="controls|ImageViewer">
+    <Setter Property="ClipToBounds" Value="True" />
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Page}" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid RowDefinitions="*,Auto">
+          <Border Grid.Row="0"
+                  Background="{TemplateBinding Background}"
+                  ClipToBounds="True">
+            <Image Source="{TemplateBinding Source}"
+                   Stretch="Uniform"
+                   RenderTransformOrigin="50%,50%">
+              <Image.RenderTransform>
+                <TransformGroup>
+                  <ScaleTransform ScaleX="{TemplateBinding Zoom}" ScaleY="{TemplateBinding Zoom}" />
+                  <RotateTransform Angle="{TemplateBinding Rotate}" />
+                </TransformGroup>
+              </Image.RenderTransform>
+            </Image>
+          </Border>
+          <Border Grid.Row="1"
+                  Background="{DynamicResource Luna.Brush.Background.Container}"
+                  BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                  BorderThickness="0,1,0,0"
+                  Padding="12,8"
+                  IsVisible="{TemplateBinding ShowToolbar}">
+            <StackPanel Orientation="Horizontal" Spacing="8" HorizontalAlignment="Center">
+              <Button Content="−" Classes="link" />
+              <TextBlock Text="{Binding Zoom, RelativeSource={RelativeSource TemplatedParent}, StringFormat='{}{0:P0}'}"
+                         VerticalAlignment="Center"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Small}" />
+              <Button Content="+" Classes="link" />
+              <Button Content="↻" Classes="link" />
+            </StackPanel>
+          </Border>
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>

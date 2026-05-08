@@ -1,0 +1,38 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Luna.Desktop.Controls">
+  <Style Selector="controls|Cascader">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Default}" />
+    <Setter Property="Padding" Value="12,8" />
+    <Setter Property="MinHeight" Value="36" />
+    <Setter Property="Cursor" Value="Hand" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                CornerRadius="{TemplateBinding CornerRadius}"
+                Padding="{TemplateBinding Padding}">
+          <Grid ColumnDefinitions="*,Auto">
+            <TextBlock Grid.Column="0"
+                       Text="{TemplateBinding Placeholder}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                       VerticalAlignment="Center" />
+            <PathIcon Grid.Column="1"
+                      Data="M7 10l5 5 5-5z"
+                      Width="16" Height="16"
+                      Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                      VerticalAlignment="Center" />
+          </Grid>
+        </Border>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|Cascader:pointerover /template/ Border">
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+</Styles>

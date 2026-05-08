@@ -1,0 +1,47 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Luna.Desktop.Controls">
+  <Style Selector="controls|Guide">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Panel>
+          <ContentPresenter Content="{TemplateBinding Content}" />
+          <Border IsVisible="{TemplateBinding IsVisible}"
+                  Background="{DynamicResource Luna.Brush.Mask}"
+                  ZIndex="999">
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                    CornerRadius="{DynamicResource Luna.Radius.Default}"
+                    BoxShadow="{DynamicResource Luna.Shadow.Popup}"
+                    Padding="20"
+                    MaxWidth="320"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+              <StackPanel Spacing="12">
+                <TextBlock Text="{TemplateBinding Title}"
+                           FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                           FontWeight="{DynamicResource Luna.FontWeight.Bold}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+                <TextBlock Text="{TemplateBinding Description}"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                           TextWrapping="Wrap" />
+                <StackPanel Orientation="Horizontal" Spacing="8" HorizontalAlignment="Right">
+                  <TextBlock Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                             FontSize="{DynamicResource Luna.FontSize.Caption}"
+                             VerticalAlignment="Center">
+                    <TextBlock.Text>
+                      <MultiBinding StringFormat='{}{0} / {1}'>
+                        <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="CurrentStep" />
+                        <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="TotalSteps" />
+                      </MultiBinding>
+                    </TextBlock.Text>
+                  </TextBlock>
+                </StackPanel>
+              </StackPanel>
+            </Border>
+          </Border>
+        </Panel>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>

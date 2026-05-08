@@ -1,37 +1,75 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             xmlns:controls="using:Luna.Desktop.Controls"
              x:Class="Luna.Desktop.Sample.Views.Samples.TableSampleView"
              x:DataType="vm:TableSampleViewModel">
   <StackPanel Spacing="16">
     <Border Classes="sample-card">
       <StackPanel Spacing="12">
         <TextBlock Text="基础表格" Classes="sample-title" />
-        <TextBlock Text="Luna Table 基于 Avalonia DataGrid 皮肤化，需要引用 Avalonia.Controls.DataGrid 包。当前为占位展示。" Classes="sample-caption" />
+        <TextBlock Text="使用 Luna Table 控件展示结构化数据，支持边框、斑马纹和悬停高亮。" Classes="sample-caption" />
+        <controls:Table ItemsSource="{Binding Rows}"
+                        Bordered="{Binding Bordered}"
+                        Striped="{Binding Striped}"
+                        Hoverable="{Binding Hoverable}"
+                        MaxWidth="720" HorizontalAlignment="Left">
+          <controls:Table.ItemTemplate>
+            <DataTemplate>
+              <Border Padding="12,8" BorderBrush="{DynamicResource Luna.Brush.Border.Divider}" BorderThickness="0,0,0,1">
+                <Grid ColumnDefinitions="80,200,100,80,80">
+                  <TextBlock Grid.Column="0" Text="{Binding Id}" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                  <TextBlock Grid.Column="1" Text="{Binding Name}" />
+                  <TextBlock Grid.Column="2" Text="{Binding Category}" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                  <TextBlock Grid.Column="3" Text="{Binding Price, StringFormat='{}¥{0:F0}'}" />
+                  <TextBlock Grid.Column="4" Text="{Binding Status}" />
+                </Grid>
+              </Border>
+            </DataTemplate>
+          </controls:Table.ItemTemplate>
+        </controls:Table>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="表格特性" Classes="sample-title" />
+        <StackPanel Orientation="Horizontal" Spacing="16">
+          <CheckBox Content="边框" IsChecked="{Binding Bordered}" />
+          <CheckBox Content="斑马纹" IsChecked="{Binding Striped}" />
+          <CheckBox Content="悬停高亮" IsChecked="{Binding Hoverable}" />
+        </StackPanel>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="表头表格" Classes="sample-title" />
+        <TextBlock Text="添加固定表头的表格样式。" Classes="sample-caption" />
         <Border BorderBrush="{DynamicResource Luna.Brush.Border.Default}" BorderThickness="1"
                 CornerRadius="{DynamicResource Luna.Radius.Default}" MaxWidth="720" HorizontalAlignment="Left">
           <StackPanel>
             <Border Background="{DynamicResource Luna.Brush.Background.Page}" Padding="12,8"
                     BorderBrush="{DynamicResource Luna.Brush.Border.Divider}" BorderThickness="0,0,0,1">
-              <StackPanel Orientation="Horizontal" Spacing="0">
-                <TextBlock Text="编号" Width="80" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-                <TextBlock Text="名称" Width="200" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-                <TextBlock Text="分类" Width="100" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-                <TextBlock Text="价格" Width="80" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-                <TextBlock Text="状态" Width="80" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-              </StackPanel>
+              <Grid ColumnDefinitions="80,200,100,80,80">
+                <TextBlock Grid.Column="0" Text="编号" FontWeight="{DynamicResource Luna.FontWeight.Medium}" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                <TextBlock Grid.Column="1" Text="名称" FontWeight="{DynamicResource Luna.FontWeight.Medium}" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                <TextBlock Grid.Column="2" Text="分类" FontWeight="{DynamicResource Luna.FontWeight.Medium}" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                <TextBlock Grid.Column="3" Text="价格" FontWeight="{DynamicResource Luna.FontWeight.Medium}" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                <TextBlock Grid.Column="4" Text="状态" FontWeight="{DynamicResource Luna.FontWeight.Medium}" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+              </Grid>
             </Border>
             <ItemsControl ItemsSource="{Binding Rows}">
               <ItemsControl.ItemTemplate>
                 <DataTemplate>
                   <Border Padding="12,8" BorderBrush="{DynamicResource Luna.Brush.Border.Divider}" BorderThickness="0,0,0,1">
-                    <StackPanel Orientation="Horizontal" Spacing="0">
-                      <TextBlock Text="{Binding Id}" Width="80" />
-                      <TextBlock Text="{Binding Name}" Width="200" />
-                      <TextBlock Text="{Binding Category}" Width="100" />
-                      <TextBlock Text="{Binding Price, StringFormat='{}¥{0:F0}'}" Width="80" />
-                      <TextBlock Text="{Binding Status}" Width="80" />
-                    </StackPanel>
+                    <Grid ColumnDefinitions="80,200,100,80,80">
+                      <TextBlock Grid.Column="0" Text="{Binding Id}" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                      <TextBlock Grid.Column="1" Text="{Binding Name}" />
+                      <TextBlock Grid.Column="2" Text="{Binding Category}" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                      <TextBlock Grid.Column="3" Text="{Binding Price, StringFormat='{}¥{0:F0}'}" />
+                      <TextBlock Grid.Column="4" Text="{Binding Status}" />
+                    </Grid>
                   </Border>
                 </DataTemplate>
               </ItemsControl.ItemTemplate>

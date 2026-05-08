@@ -1,26 +1,38 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             xmlns:controls="using:Luna.Desktop.Controls"
              x:Class="Luna.Desktop.Sample.Views.Samples.GuideSampleView"
              x:DataType="vm:GuideSampleViewModel">
   <StackPanel Spacing="16">
     <Border Classes="sample-card">
       <StackPanel Spacing="12">
-        <TextBlock Text="Guide 引导" Classes="sample-title" />
-        <TextBlock Text="引导气泡用于逐步引导用户了解页面功能。" Classes="sample-caption" />
-        <Border Background="{DynamicResource Luna.Brush.Background.Component}"
-                CornerRadius="{DynamicResource Luna.Radius.Default}"
-                Padding="24,16">
-          <StackPanel Spacing="8">
-            <TextBlock Text="功能说明" Classes="sample-caption" />
-            <TextBlock Text="Guide 控件将提供以下能力：" Classes="typography-body" />
-            <TextBlock Text="• 按步骤高亮目标元素，展示引导气泡" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-            <TextBlock Text="• 支持自定义气泡内容、位置偏移和步骤计数" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-            <TextBlock Text="• 支持跳过、上一步、下一步和完成回调" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-            <TextBlock Text="• 可配置遮罩层样式和高亮区域圆角" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+        <TextBlock Text="新手引导" Classes="sample-title" />
+        <TextBlock Text="Guide 通过遮罩高亮逐步引导用户了解功能。点击按钮开始引导。" Classes="sample-caption" />
+        <Button Content="开始引导" Classes="primary" Command="{ReflectionBinding StartGuideCommand}" />
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="引导预览" Classes="sample-title" />
+        <controls:Guide IsVisible="{Binding IsGuideVisible}"
+                        Title="{Binding GuideTitle}"
+                        Description="{Binding GuideDescription}"
+                        CurrentStep="{Binding CurrentStep}"
+                        TotalSteps="{Binding TotalSteps}"
+                        MaxWidth="500"
+                        MaxHeight="300">
+          <StackPanel Spacing="16">
+            <TextBlock Text="这是需要引导的功能区域" FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="引导遮罩会覆盖在其他内容之上，高亮展示当前步骤。" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" TextWrapping="Wrap" />
+            <StackPanel Orientation="Horizontal" Spacing="8">
+              <Button Content="下一步" Classes="primary" Command="{ReflectionBinding NextStepCommand}" />
+              <Button Content="跳过" Classes="link" Command="{ReflectionBinding CloseGuideCommand}" />
+            </StackPanel>
           </StackPanel>
-        </Border>
-        <TextBlock Text="该控件尚未实现，敬请期待。" Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" />
+        </controls:Guide>
       </StackPanel>
     </Border>
   </StackPanel>

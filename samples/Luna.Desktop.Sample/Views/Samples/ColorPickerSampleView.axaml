@@ -5,9 +5,48 @@
              x:DataType="vm:ColorPickerSampleViewModel">
   <StackPanel Spacing="16">
     <Border Classes="sample-card">
-      <StackPanel Spacing="12" MaxWidth="520" HorizontalAlignment="Left">
-        <TextBlock Text="颜色选择占位" Classes="sample-title" />
-        <TextBlock Text="Luna ColorPicker 控件将在后续迭代中实现。将支持色板选择、HEX/RGB 输入、透明度调节和最近使用颜色。当前保留占位示例位置。" Classes="sample-caption" />
+      <StackPanel Spacing="12">
+        <TextBlock Text="预设色板" Classes="sample-title" />
+        <TextBlock Text="从预设颜色中选择，支持自定义颜色输入。" Classes="sample-caption" />
+        <WrapPanel Orientation="Horizontal" ItemWidth="32" ItemHeight="32">
+          <ItemsControl ItemsSource="{Binding PresetColors}">
+            <ItemsControl.ItemsPanel>
+              <ItemsPanelTemplate>
+                <WrapPanel Orientation="Horizontal" ItemWidth="36" ItemHeight="36" />
+              </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+              <DataTemplate>
+                <Border Width="28" Height="28"
+                        CornerRadius="{DynamicResource Luna.Radius.Small}"
+                        Background="{Binding}"
+                        Cursor="Hand"
+                        Margin="2">
+                </Border>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </WrapPanel>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="颜色预览" Classes="sample-title" />
+        <StackPanel Orientation="Horizontal" Spacing="16">
+          <Border Width="120" Height="120"
+                  CornerRadius="{DynamicResource Luna.Radius.Default}"
+                  Background="{Binding SelectedColor}">
+            <TextBlock Text="{Binding SelectedColor}"
+                       Foreground="{Binding ContrastForeground}"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Small}" />
+          </Border>
+          <StackPanel Spacing="8" VerticalAlignment="Center">
+            <TextBlock Text="输入颜色值（HEX）" Classes="sample-caption" />
+            <TextBox Text="{Binding SelectedColor}" Width="160" />
+          </StackPanel>
+        </StackPanel>
       </StackPanel>
     </Border>
   </StackPanel>

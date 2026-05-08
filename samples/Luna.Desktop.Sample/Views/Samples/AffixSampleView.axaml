@@ -7,11 +7,44 @@
   <StackPanel Spacing="16">
     <Border Classes="sample-card">
       <StackPanel Spacing="12">
-        <TextBlock Text="固钉（占位）" Classes="sample-title" />
-        <TextBlock Text="Affix 将元素固定在页面可视区域指定位置。当前为占位示例。后续版本将支持滚动吸附行为。" Classes="sample-caption" />
-        <controls:Affix Offset="100">
-          <TextBlock Text="固钉区域占位内容" Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" />
+        <TextBlock Text="固钉（Affix）" Classes="sample-title" />
+        <TextBlock Text="将内容固定在页面可视区域，不随页面滚动。适用于导航栏、工具栏等场景。" Classes="sample-caption" />
+        <controls:Affix Offset="0">
+          <Border Background="{DynamicResource Luna.Brush.Brand}"
+                  CornerRadius="{DynamicResource Luna.Radius.Default}"
+                  Padding="16,8"
+                  HorizontalAlignment="Left">
+            <TextBlock Text="固钉内容 — 固定在顶部" Foreground="{DynamicResource Luna.Brush.Text.Inverse}"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}" />
+          </Border>
         </controls:Affix>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="固定偏移" Classes="sample-title" />
+        <TextBlock Text="通过 Offset 属性设置固定时距顶部/底部的距离。" Classes="sample-caption" />
+        <StackPanel Spacing="8" Orientation="Horizontal">
+          <controls:Affix Offset="0">
+            <Border Background="{DynamicResource Luna.Brush.Background.Component}"
+                    BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource Luna.Radius.Default}"
+                    Padding="12,6">
+              <TextBlock Text="Offset=0" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            </Border>
+          </controls:Affix>
+          <controls:Affix Offset="50">
+            <Border Background="{DynamicResource Luna.Brush.Background.Component}"
+                    BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource Luna.Radius.Default}"
+                    Padding="12,6">
+              <TextBlock Text="Offset=50" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            </Border>
+          </controls:Affix>
+        </StackPanel>
       </StackPanel>
     </Border>
   </StackPanel>

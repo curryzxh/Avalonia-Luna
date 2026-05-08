@@ -8,10 +8,17 @@
                 BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
                 BorderThickness="1"
                 CornerRadius="{DynamicResource Luna.Radius.Default}"
-                Padding="16">
+                BoxShadow="{DynamicResource Luna.Shadow.Popup}"
+                Padding="8"
+                MinWidth="48">
           <ContentPresenter Content="{TemplateBinding Content}" />
         </Border>
       </ControlTemplate>
     </Setter>
+  </Style>
+
+  <Style Selector="controls|StickyTool:collapsed">
+    <Setter Property="Width" Value="48" />
+    <Setter Property="Height" Value="48" />
   </Style>
 </Styles>

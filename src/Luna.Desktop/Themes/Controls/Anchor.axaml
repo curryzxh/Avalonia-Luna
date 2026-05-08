@@ -4,13 +4,29 @@
   <Style Selector="controls|Anchor">
     <Setter Property="Template">
       <ControlTemplate>
-        <Border Background="{DynamicResource Luna.Brush.Background.Container}"
-                BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
-                BorderThickness="1"
-                CornerRadius="{DynamicResource Luna.Radius.Default}"
-                Padding="16">
-          <ContentPresenter Content="{TemplateBinding Content}" />
-        </Border>
+        <Grid ColumnDefinitions="180,*">
+          <Border Grid.Column="0"
+                  Background="{DynamicResource Luna.Brush.Background.Container}"
+                  BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                  BorderThickness="0,0,1,0"
+                  Padding="12,16">
+            <ItemsControl Name="PART_AnchorItems">
+              <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                  <Border Padding="8,6"
+                          CornerRadius="{DynamicResource Luna.Radius.Small}"
+                          Cursor="Hand">
+                    <TextBlock FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                               Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                  </Border>
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+          </Border>
+          <ContentPresenter Grid.Column="1"
+                            Content="{TemplateBinding Content}"
+                            Margin="24,16" />
+        </Grid>
       </ControlTemplate>
     </Setter>
   </Style>

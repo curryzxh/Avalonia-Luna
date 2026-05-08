@@ -1,3 +1,58 @@
 <Styles xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Luna.Desktop.Controls">
+  <Style Selector="controls|Table">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Default}" />
+    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Medium}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
+    <Setter Property="ClipToBounds" Value="True" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                CornerRadius="{TemplateBinding CornerRadius}">
+          <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                        VerticalScrollBarVisibility="Disabled">
+            <ItemsPresenter Name="PART_ItemsPresenter"
+                            Margin="0" />
+          </ScrollViewer>
+        </Border>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|Table > Border">
+    <Setter Property="MinHeight" Value="48" />
+    <Setter Property="Padding" Value="16,12" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Divider}" />
+    <Setter Property="BorderThickness" Value="0,0,0,1" />
+  </Style>
+
+  <Style Selector="controls|Table > Border:pointerover">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Page}" />
+  </Style>
+
+  <Style Selector="controls|Table.bordered > Border">
+    <Setter Property="BorderThickness" Value="0,0,1,1" />
+  </Style>
+
+  <Style Selector="controls|Table.striped > Border:nth-child(odd)">
+    <Setter Property="Background" Value="Transparent" />
+  </Style>
+
+  <Style Selector="controls|Table.striped > Border:nth-child(even)">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Page}" />
+  </Style>
+
+  <Style Selector="controls|Table:not(.hoverable) > Border:pointerover">
+    <Setter Property="Background" Value="Transparent" />
+  </Style>
+
+  <Style Selector="controls|Table.striped > Border:nth-child(even):pointerover">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Page}" />
+  </Style>
 </Styles>

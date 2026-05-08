@@ -1,13 +1,49 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             xmlns:controls="using:Luna.Desktop.Controls"
              x:Class="Luna.Desktop.Sample.Views.Samples.BackTopSampleView"
              x:DataType="vm:BackTopSampleViewModel">
-  <Border Classes="sample-card">
-    <StackPanel Spacing="12">
-      <TextBlock Text="回到顶部" Classes="sample-title" />
-      <TextBlock Text="回到顶部功能将在后续版本实现。" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-      <TextBlock Text="需要在 ScrollViewer 容器中使用，当滚动超过一定距离后显示回到顶部按钮。" Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" TextWrapping="Wrap" MaxWidth="480" />
-    </StackPanel>
-  </Border>
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="基本用法" Classes="sample-title" />
+        <TextBlock Text="在 ScrollViewer 中滚动超过阈值后，右下角出现回到顶部按钮。点击按钮滚动回顶部。" Classes="sample-caption" />
+        <Border Height="300" BorderBrush="{DynamicResource Luna.Brush.Border.Default}" BorderThickness="1"
+                CornerRadius="{DynamicResource Luna.Radius.Default}">
+          <Grid>
+            <ScrollViewer>
+              <StackPanel Spacing="8" Margin="16">
+                <TextBlock Text="向下滚动查看效果 ↓" Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" />
+                <ItemsControl ItemsSource="{Binding ScrollContentLines}">
+                  <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                      <Border Padding="12,8" BorderBrush="{DynamicResource Luna.Brush.Border.Divider}" BorderThickness="0,0,0,1">
+                        <TextBlock Text="{Binding}" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                      </Border>
+                    </DataTemplate>
+                  </ItemsControl.ItemTemplate>
+                </ItemsControl>
+              </StackPanel>
+            </ScrollViewer>
+            <controls:BackTop VisibilityHeight="{Binding VisibilityHeight}"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Bottom"
+                               Margin="0,0,24,16">
+              <PathIcon Data="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"
+                        Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            </controls:BackTop>
+          </Grid>
+        </Border>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="自定义阈值" Classes="sample-title" />
+        <TextBlock Text="{Binding VisibilityHeight, StringFormat='{}当前阈值：{0}px'}" Classes="sample-caption" />
+        <Slider Minimum="100" Maximum="600" Value="{Binding VisibilityHeight}" />
+      </StackPanel>
+    </Border>
+  </StackPanel>
 </UserControl>

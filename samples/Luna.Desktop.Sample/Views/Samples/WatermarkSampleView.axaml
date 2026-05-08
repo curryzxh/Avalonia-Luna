@@ -1,18 +1,50 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             xmlns:controls="using:Luna.Desktop.Controls"
              x:Class="Luna.Desktop.Sample.Views.Samples.WatermarkSampleView"
              x:DataType="vm:WatermarkSampleViewModel">
-  <Border Classes="sample-card">
-    <StackPanel Spacing="12">
-      <TextBlock Text="水印" Classes="sample-title" />
-      <Border Width="400" Height="200" Background="{DynamicResource Luna.Brush.Background.Container}"
-              BorderBrush="{DynamicResource Luna.Brush.Border.Default}" BorderThickness="1"
-              CornerRadius="{DynamicResource Luna.Radius.Default}">
-        <TextBlock Text="水印功能将在后续版本实现。&#x0a;支持自定义文字、旋转角度和透明度。"
-                   HorizontalAlignment="Center" VerticalAlignment="Center"
-                   Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" TextAlignment="Center" />
-      </Border>
-    </StackPanel>
-  </Border>
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="水印效果" Classes="sample-title" />
+        <TextBlock Text="在内容区域上方叠加半透明重复水印文字。" Classes="sample-caption" />
+        <controls:Watermark WatermarkText="{Binding WatermarkText}"
+                            WatermarkOpacity="{Binding WatermarkOpacity}"
+                            Rotate="{Binding WatermarkRotate}">
+          <Border Width="500" Height="240"
+                  Background="{DynamicResource Luna.Brush.Background.Container}"
+                  BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                  BorderThickness="1"
+                  CornerRadius="{DynamicResource Luna.Radius.Default}"
+                  Padding="24">
+            <StackPanel Spacing="8" VerticalAlignment="Center" HorizontalAlignment="Center">
+              <TextBlock Text="这是受水印保护的内容区域" FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}" HorizontalAlignment="Center" />
+              <TextBlock Text="水印文字会叠加在内容上方，防止截图盗用。" Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                         HorizontalAlignment="Center" />
+            </StackPanel>
+          </Border>
+        </controls:Watermark>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="自定义参数" Classes="sample-title" />
+        <StackPanel Spacing="8">
+          <TextBlock Text="水印文字" Classes="sample-caption" />
+          <TextBox Text="{Binding WatermarkText}" />
+        </StackPanel>
+        <StackPanel Spacing="8">
+          <TextBlock Text="{Binding WatermarkOpacity, StringFormat='{}透明度：{0:F2}'}" Classes="sample-caption" />
+          <Slider Minimum="0.02" Maximum="0.5" Value="{Binding WatermarkOpacity}" />
+        </StackPanel>
+        <StackPanel Spacing="8">
+          <TextBlock Text="{Binding WatermarkRotate, StringFormat='{}旋转角度：{0:F0}°'}" Classes="sample-caption" />
+          <Slider Minimum="-90" Maximum="90" Value="{Binding WatermarkRotate}" />
+        </StackPanel>
+      </StackPanel>
+    </Border>
+  </StackPanel>
 </UserControl>

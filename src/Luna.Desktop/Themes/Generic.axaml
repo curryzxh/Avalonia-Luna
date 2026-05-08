@@ -49,6 +49,11 @@
   <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/Divider.axaml" />
   <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/Space.axaml" />
   <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/Descriptions.axaml" />
+  <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/BackTop.axaml" />
+  <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/Watermark.axaml" />
+  <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/Cascader.axaml" />
+  <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/ImageViewer.axaml" />
+  <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/Guide.axaml" />
 
   <Design.PreviewWith>
     <Border Padding="24">

@@ -1,0 +1,32 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             xmlns:controls="using:Luna.Desktop.Controls"
+             x:Class="Luna.Desktop.Sample.Views.Samples.BreadcrumbSampleView"
+             x:DataType="vm:BreadcrumbSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="基础面包屑" Classes="sample-title" />
+        <TextBlock Text="展示页面层级路径，支持自定义分隔符。" Classes="sample-caption" />
+        <controls:Breadcrumb Separator="/">
+          <controls:BreadcrumbItem Content="首页" />
+          <controls:BreadcrumbItem Content="产品中心" />
+          <controls:BreadcrumbItem Content="智能硬件" />
+          <controls:BreadcrumbItem Content="详情" />
+        </controls:Breadcrumb>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="自定义分隔符" Classes="sample-title" />
+        <controls:Breadcrumb Separator="›">
+          <controls:BreadcrumbItem Content="首页" />
+          <controls:BreadcrumbItem Content="设置" />
+          <controls:BreadcrumbItem Content="账户安全" />
+        </controls:Breadcrumb>
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

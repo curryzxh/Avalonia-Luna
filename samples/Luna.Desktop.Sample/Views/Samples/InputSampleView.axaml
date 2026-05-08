@@ -14,10 +14,99 @@
     </Border>
 
     <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="520" HorizontalAlignment="Left">
+        <TextBlock Text="可清除 (Clearable)" Classes="sample-title" />
+        <Grid>
+          <TextBox Text="{Binding ClearableText, Mode=TwoWay}"
+                   PlaceholderText="输入后可清除"
+                   Padding="10,5,32,5" />
+          <Button Content="✕"
+                  VerticalAlignment="Center"
+                  HorizontalAlignment="Right"
+                  Margin="0,0,6,0"
+                  Padding="4"
+                  FontSize="12"
+                  Background="Transparent"
+                  BorderThickness="0"
+                  Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                  Command="{Binding ClearInputCommand}" />
+        </Grid>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="520" HorizontalAlignment="Left">
+        <TextBlock Text="前缀与后缀 (Prefix / Suffix)" Classes="sample-title" />
+        <Grid>
+          <TextBox Text="{Binding PrefixText, Mode=TwoWay}"
+                   PlaceholderText="请输入网址"
+                   Padding="36,5,10,5" />
+          <TextBlock Text="https://"
+                     VerticalAlignment="Center"
+                     Margin="10,0,0,0"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}" />
+        </Grid>
+        <Grid>
+          <TextBox Text="{Binding SuffixText, Mode=TwoWay}"
+                   PlaceholderText="请输入邮箱"
+                   Padding="10,5,80,5" />
+          <TextBlock Text="@tdesign.com"
+                     VerticalAlignment="Center"
+                     HorizontalAlignment="Right"
+                     Margin="0,0,10,0"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}" />
+        </Grid>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="520" HorizontalAlignment="Left">
+        <TextBlock Text="状态 (Status)" Classes="sample-title" />
+        <TextBox Text="{Binding ErrorInput, Mode=TwoWay}" Classes="error"
+                 PlaceholderText="错误状态" />
+        <TextBlock Text="校验存在严重问题文本提示" Foreground="{DynamicResource Luna.Brush.Error}" Classes="sample-caption" />
+        <TextBox Text="{Binding WarningInput, Mode=TwoWay}" Classes="warning"
+                 PlaceholderText="警告状态" />
+        <TextBlock Text="校验存在疑问的文本提示" Foreground="{DynamicResource Luna.Brush.Warning}" Classes="sample-caption" />
+        <TextBox Text="{Binding SuccessInput, Mode=TwoWay}" Classes="success"
+                 PlaceholderText="成功状态" />
+        <TextBlock Text="校验通过" Foreground="{DynamicResource Luna.Brush.Success}" Classes="sample-caption" />
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="520" HorizontalAlignment="Left">
+        <TextBlock Text="不同尺寸 (Size)" Classes="sample-title" />
+        <TextBox Text="Small 尺寸" Classes="small"
+                 PlaceholderText="小尺寸输入框" />
+        <TextBox Text="默认尺寸"
+                 PlaceholderText="默认尺寸输入框" />
+        <TextBox Text="Large 尺寸" Classes="large"
+                 PlaceholderText="大尺寸输入框" />
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="560" HorizontalAlignment="Left">
+        <TextBlock Text="字数限制 (MaxLength)" Classes="sample-title" />
+        <TextBox Text="{Binding MaxLengthText, Mode=TwoWay}"
+                 MaxLength="{Binding MaxLength}" />
+        <TextBlock Classes="sample-caption">
+          <TextBlock.Text>
+            <MultiBinding StringFormat="已输入 {0} / {1} 个字符">
+              <Binding Path="MaxLengthTextLength" />
+              <Binding Path="MaxLength" />
+            </MultiBinding>
+          </TextBlock.Text>
+        </TextBlock>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
       <StackPanel Spacing="12" MaxWidth="560" HorizontalAlignment="Left">
         <TextBlock Text="状态与提示" Classes="sample-title" />
-        <TextBox Text="tdesign-react" Classes="error" />
-        <TextBlock Text="校验存在严重问题文本提示" Foreground="{DynamicResource Luna.Brush.Error}" />
         <TextBox Text="{Binding Notes, Mode=TwoWay}" AcceptsReturn="True" Height="96" TextWrapping="Wrap" />
         <TextBlock Text="{Binding NotesLength, StringFormat='当前输入 {0} 个字符'}" Classes="sample-caption" />
       </StackPanel>

@@ -1,0 +1,68 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Luna.Desktop.Controls">
+  <Style Selector="controls|DrawerHost">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Panel>
+          <Border Name="PART_Overlay"
+                  Background="{DynamicResource Luna.Brush.Mask}"
+                  IsVisible="{TemplateBinding IsOpen}"
+                  ZIndex="1000" />
+          <Border Name="PART_DrawerPanel"
+                  Background="{DynamicResource Luna.Brush.Background.Container}"
+                  CornerRadius="0"
+                  BoxShadow="{DynamicResource Luna.Shadow.Popup}"
+                  IsVisible="{TemplateBinding IsOpen}"
+                  ZIndex="1001">
+            <Border.Styles>
+              <Style Selector="Border:right">
+                <Setter Property="Width" Value="{TemplateBinding DrawerSize}" />
+                <Setter Property="HorizontalAlignment" Value="Right" />
+                <Setter Property="VerticalAlignment" Value="Stretch" />
+              </Style>
+              <Style Selector="Border:left">
+                <Setter Property="Width" Value="{TemplateBinding DrawerSize}" />
+                <Setter Property="HorizontalAlignment" Value="Left" />
+                <Setter Property="VerticalAlignment" Value="Stretch" />
+              </Style>
+              <Style Selector="Border:top">
+                <Setter Property="Height" Value="{TemplateBinding DrawerSize}" />
+                <Setter Property="HorizontalAlignment" Value="Stretch" />
+                <Setter Property="VerticalAlignment" Value="Top" />
+              </Style>
+              <Style Selector="Border:bottom">
+                <Setter Property="Height" Value="{TemplateBinding DrawerSize}" />
+                <Setter Property="HorizontalAlignment" Value="Stretch" />
+                <Setter Property="VerticalAlignment" Value="Bottom" />
+              </Style>
+            </Border.Styles>
+            <Grid RowDefinitions="Auto,*">
+              <Grid Grid.Row="0" ColumnDefinitions="*,Auto" Padding="16,12,8,12"
+                    BorderBrush="{DynamicResource Luna.Brush.Border.Divider}"
+                    BorderThickness="0,0,0,1">
+                <TextBlock Grid.Column="0"
+                           Text="{TemplateBinding Title}"
+                           FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                           FontSize="{DynamicResource Luna.FontSize.Title.Small}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           VerticalAlignment="Center"
+                           IsVisible="{TemplateBinding Title, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
+                <Button Grid.Column="1"
+                        Name="PART_CloseButton"
+                        Content="&#xE711;"
+                        FontFamily="Segoe MDL2 Assets"
+                        FontSize="12"
+                        Classes="text small"
+                        IsVisible="{TemplateBinding ShowCloseButton}" />
+              </Grid>
+              <ScrollViewer Grid.Row="1" Padding="16">
+                <ContentPresenter Content="{TemplateBinding Content}" />
+              </ScrollViewer>
+            </Grid>
+          </Border>
+        </Panel>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>

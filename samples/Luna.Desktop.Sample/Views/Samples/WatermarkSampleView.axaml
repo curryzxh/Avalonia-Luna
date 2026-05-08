@@ -1,0 +1,18 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             x:Class="Luna.Desktop.Sample.Views.Samples.WatermarkSampleView"
+             x:DataType="vm:WatermarkSampleViewModel">
+  <Border Classes="sample-card">
+    <StackPanel Spacing="12">
+      <TextBlock Text="水印" Classes="sample-title" />
+      <Border Width="400" Height="200" Background="{DynamicResource Luna.Brush.Background.Container}"
+              BorderBrush="{DynamicResource Luna.Brush.Border.Default}" BorderThickness="1"
+              CornerRadius="{DynamicResource Luna.Radius.Default}">
+        <TextBlock Text="水印功能将在后续版本实现。&#x0a;支持自定义文字、旋转角度和透明度。"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                   Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" TextAlignment="Center" />
+      </Border>
+    </StackPanel>
+  </Border>
+</UserControl>

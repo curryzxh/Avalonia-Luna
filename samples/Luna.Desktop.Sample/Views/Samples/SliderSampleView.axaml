@@ -14,9 +14,74 @@
 
     <Border Classes="sample-card">
       <StackPanel Spacing="12" MaxWidth="560" HorizontalAlignment="Left">
-        <TextBlock Text="步进与禁用" Classes="sample-title" />
-        <Slider Minimum="0" Maximum="100" TickFrequency="10" IsSnapToTickEnabled="True" Value="{Binding Threshold, Mode=TwoWay}" />
+        <TextBlock Text="步进 (Step)" Classes="sample-title" />
+        <TextBlock Text="设置 TickFrequency 和 IsSnapToTickEnabled 让滑块按步长吸附。" Classes="sample-caption" />
+        <Slider Minimum="0" Maximum="100" TickFrequency="10" IsSnapToTickEnabled="True"
+                Value="{Binding StepValue, Mode=TwoWay}" />
+        <TextBlock Text="{Binding StepValue, StringFormat='步进值 {0:F0}（步长 10）'}" Classes="sample-caption" />
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="560" HorizontalAlignment="Left">
+        <TextBlock Text="刻度标记 (Marks)" Classes="sample-caption" />
+        <TextBlock Text="使用 TickBar 或自定义刻度标注。" Classes="sample-caption" />
+        <Grid>
+          <Slider Minimum="0" Maximum="100" TickFrequency="25" IsSnapToTickEnabled="True"
+                  Value="{Binding MarkedValue, Mode=TwoWay}" />
+        </Grid>
+        <Grid ColumnDefinitions="*,*,*,*,*">
+          <TextBlock Text="0" Classes="sample-caption" HorizontalAlignment="Left" />
+          <TextBlock Text="25" Classes="sample-caption" HorizontalAlignment="Center" Grid.Column="1" />
+          <TextBlock Text="50" Classes="sample-caption" HorizontalAlignment="Center" Grid.Column="2" />
+          <TextBlock Text="75" Classes="sample-caption" HorizontalAlignment="Center" Grid.Column="3" />
+          <TextBlock Text="100" Classes="sample-caption" HorizontalAlignment="Right" Grid.Column="4" />
+        </Grid>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="560" HorizontalAlignment="Left">
+        <TextBlock Text="范围滑块 (Range)" Classes="sample-title" />
+        <TextBlock Text="使用两个 Slider 模拟双滑块范围选择。" Classes="sample-caption" />
+        <Grid RowDefinitions="Auto,Auto" Margin="0,4">
+          <Grid ColumnDefinitions="*,Auto">
+            <Slider Minimum="0" Maximum="{Binding RangeEnd}" Value="{Binding RangeStart, Mode=TwoWay}" />
+            <TextBlock Text="{Binding RangeStart, StringFormat='{0:F0}'}"
+                       Classes="sample-caption" VerticalAlignment="Center" Margin="8,0,0,0" Width="32" />
+          </Grid>
+          <Grid ColumnDefinitions="*,Auto" Grid.Row="1">
+            <Slider Minimum="{Binding RangeStart}" Maximum="100" Value="{Binding RangeEnd, Mode=TwoWay}" />
+            <TextBlock Text="{Binding RangeEnd, StringFormat='{0:F0}'}"
+                       Classes="sample-caption" VerticalAlignment="Center" Margin="8,0,0,0" Width="32" />
+          </Grid>
+        </Grid>
+        <TextBlock Text="{Binding RangeStart, StringFormat='范围：{0:F0}'}" Classes="sample-caption">
+          <TextBlock.Text>
+            <MultiBinding StringFormat='范围：{0:F0} - {1:F0}'>
+              <Binding Path="RangeStart" />
+              <Binding Path="RangeEnd" />
+            </MultiBinding>
+          </TextBlock.Text>
+        </TextBlock>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="560" HorizontalAlignment="Left">
+        <TextBlock Text="悬停值提示 (Tooltip)" Classes="sample-title" />
+        <TextBlock Text="使用 ToolTip.TopAttached 展示滑块悬停提示。" Classes="sample-caption" />
+        <Slider Minimum="0" Maximum="100" Value="{Binding Threshold, Mode=TwoWay}"
+                ToolTip.Tip="{Binding Threshold, StringFormat='当前值 {0:F0}'}"
+                ToolTip.Placement="Top" />
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="560" HorizontalAlignment="Left">
+        <TextBlock Text="禁用态 (Disabled)" Classes="sample-title" />
         <Slider Minimum="0" Maximum="100" Value="32" IsEnabled="False" />
+        <TextBlock Text="禁用状态下滑块不可交互。" Classes="sample-caption" />
       </StackPanel>
     </Border>
   </StackPanel>

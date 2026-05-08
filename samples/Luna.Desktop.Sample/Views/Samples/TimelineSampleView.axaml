@@ -1,0 +1,48 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             xmlns:controls="using:Luna.Desktop.Controls"
+             x:Class="Luna.Desktop.Sample.Views.Samples.TimelineSampleView"
+             x:DataType="vm:TimelineSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="560" HorizontalAlignment="Left">
+        <TextBlock Text="基础时间线" Classes="sample-title" />
+        <controls:Timeline>
+          <controls:TimelineItem Header="需求评审" Timestamp="2025-01-15" ItemType="Primary">
+            完成产品需求评审和技术方案设计
+          </controls:TimelineItem>
+          <controls:TimelineItem Header="开发阶段" Timestamp="2025-01-20" ItemType="Default">
+            前后端并行开发，每日同步进度
+          </controls:TimelineItem>
+          <controls:TimelineItem Header="测试验收" Timestamp="2025-02-01" ItemType="Success">
+            功能测试和回归测试通过
+          </controls:TimelineItem>
+          <controls:TimelineItem Header="正式上线" Timestamp="2025-02-10" ItemType="Default">
+            部署生产环境并完成灰度发布
+          </controls:TimelineItem>
+        </controls:Timeline>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="560" HorizontalAlignment="Left">
+        <TextBlock Text="不同状态" Classes="sample-title" />
+        <controls:Timeline>
+          <controls:TimelineItem Header="创建订单" Timestamp="10:00" ItemType="Success">
+            订单已创建，等待支付
+          </controls:TimelineItem>
+          <controls:TimelineItem Header="支付中" Timestamp="10:02" ItemType="Primary">
+            正在处理支付请求
+          </controls:TimelineItem>
+          <controls:TimelineItem Header="风控拦截" Timestamp="10:03" ItemType="Error">
+            触发风控规则，订单已冻结
+          </controls:TimelineItem>
+          <controls:TimelineItem Header="人工审核" Timestamp="10:15" ItemType="Warning">
+            已提交人工审核，等待处理
+          </controls:TimelineItem>
+        </controls:Timeline>
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

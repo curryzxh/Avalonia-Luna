@@ -1,0 +1,14 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             x:Class="Luna.Desktop.Sample.Views.Samples.ColorPickerSampleView"
+             x:DataType="vm:ColorPickerSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="520" HorizontalAlignment="Left">
+        <TextBlock Text="颜色选择占位" Classes="sample-title" />
+        <TextBlock Text="Luna ColorPicker 控件将在后续迭代中实现。将支持色板选择、HEX/RGB 输入、透明度调节和最近使用颜色。当前保留占位示例位置。" Classes="sample-caption" />
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

@@ -18,11 +18,36 @@
 
     <Border Classes="sample-card">
       <StackPanel Spacing="12">
+        <TextBlock Text="Radio Group" Classes="sample-title" />
+        <TextBlock Text="使用 GroupName 实现互斥选择" Classes="sample-caption" />
+        <WrapPanel>
+          <RadioButton GroupName="color" Content="Red"
+                       IsChecked="{Binding Color, Converter={x:Static StringConverters.IsNotNullOrEmpty}, ConverterParameter=Red, Mode=OneWay}"
+                       Margin="0,0,18,8" />
+          <RadioButton GroupName="color" Content="Green" Margin="0,0,18,8" />
+          <RadioButton GroupName="color" Content="Blue" Margin="0,0,18,8" />
+          <RadioButton GroupName="color" Content="Yellow" Margin="0,0,18,8" />
+        </WrapPanel>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
         <TextBlock Text="桌面密度选择" Classes="sample-title" />
         <WrapPanel>
           <RadioButton GroupName="density" Content="Small" Margin="0,0,18,8" />
           <RadioButton GroupName="density" Content="Medium" IsChecked="True" Margin="0,0,18,8" />
           <RadioButton GroupName="density" Content="Large" Margin="0,0,18,8" />
+        </WrapPanel>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="禁用状态" Classes="sample-title" />
+        <WrapPanel>
+          <RadioButton GroupName="disabled" Content="可用项" IsChecked="True" Margin="0,0,18,8" />
+          <RadioButton GroupName="disabled" Content="禁用项" IsEnabled="False" Margin="0,0,18,8" />
         </WrapPanel>
       </StackPanel>
     </Border>

@@ -1,0 +1,47 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             xmlns:controls="using:Luna.Desktop.Controls"
+             x:Class="Luna.Desktop.Sample.Views.Samples.PopconfirmSampleView"
+             x:DataType="vm:PopconfirmSampleViewModel">
+  <ScrollViewer>
+    <StackPanel Spacing="16" Margin="0,0,0,24">
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="基本用法" Classes="sample-title" />
+          <TextBlock Text="点击按钮弹出确认气泡。" Classes="sample-caption" />
+          <WrapPanel>
+            <controls:Popconfirm PopupContent="确认要执行此操作吗？"
+                                 ConfirmText="确认"
+                                 CancelText="取消"
+                                 Confirmed="OnConfirmed"
+                                 Canceled="OnCanceled">
+              <Button Content="删除" Classes="danger" />
+            </controls:Popconfirm>
+          </WrapPanel>
+          <StackPanel Orientation="Horizontal" Spacing="16">
+            <TextBlock Text="{Binding ConfirmCount, StringFormat='确认次数: {0}'}" Classes="sample-caption" />
+            <TextBlock Text="{Binding CancelCount, StringFormat='取消次数: {0}'}" Classes="sample-caption" />
+          </StackPanel>
+        </StackPanel>
+      </Border>
+
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="不同弹出位置" Classes="sample-title" />
+          <WrapPanel>
+            <controls:Popconfirm PopupContent="底部弹出确认" Placement="Bottom" ConfirmText="确定">
+              <Button Content="底部弹出" Margin="0,0,8,0" />
+            </controls:Popconfirm>
+            <controls:Popconfirm PopupContent="顶部弹出确认" Placement="Top" ConfirmText="确定">
+              <Button Content="顶部弹出" Margin="0,0,8,0" />
+            </controls:Popconfirm>
+            <controls:Popconfirm PopupContent="右侧弹出确认" Placement="Right" ConfirmText="确定">
+              <Button Content="右侧弹出" />
+            </controls:Popconfirm>
+          </WrapPanel>
+        </StackPanel>
+      </Border>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

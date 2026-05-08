@@ -1,0 +1,18 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             xmlns:controls="using:Luna.Desktop.Controls"
+             x:Class="Luna.Desktop.Sample.Views.Samples.AffixSampleView"
+             x:DataType="vm:AffixSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="固钉（占位）" Classes="sample-title" />
+        <TextBlock Text="Affix 将元素固定在页面可视区域指定位置。当前为占位示例。后续版本将支持滚动吸附行为。" Classes="sample-caption" />
+        <controls:Affix Offset="100">
+          <TextBlock Text="固钉区域占位内容" Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" />
+        </controls:Affix>
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

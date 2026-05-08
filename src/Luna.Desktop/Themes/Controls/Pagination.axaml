@@ -1,0 +1,40 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Luna.Desktop.Controls">
+  <Style Selector="controls|Pagination">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+          <TextBlock Text="{Binding TotalCount, StringFormat='共 {0} 条', RelativeSource={RelativeSource TemplatedParent}}"
+                     VerticalAlignment="Center"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                     IsVisible="{Binding ShowTotal, RelativeSource={RelativeSource TemplatedParent}}"
+                     Margin="0,0,8,0" />
+
+          <Button Name="PART_PreviousButton"
+                  Content="&#x2039;"
+                  MinWidth="32"
+                  Height="32"
+                  Padding="0"
+                  HorizontalContentAlignment="Center"
+                  VerticalContentAlignment="Center"
+                  FontSize="16"
+                  CornerRadius="{DynamicResource Luna.Radius.Default}" />
+
+          <StackPanel Name="PART_ButtonPanel" Orientation="Horizontal" Spacing="4" />
+
+          <Button Name="PART_NextButton"
+                  Content="&#x203A;"
+                  MinWidth="32"
+                  Height="32"
+                  Padding="0"
+                  HorizontalContentAlignment="Center"
+                  VerticalContentAlignment="Center"
+                  FontSize="16"
+                  CornerRadius="{DynamicResource Luna.Radius.Default}" />
+        </StackPanel>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>

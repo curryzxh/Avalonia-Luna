@@ -1,0 +1,50 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             x:Class="Luna.Desktop.Sample.Views.Samples.SelectSampleView"
+             x:DataType="vm:SelectSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="320" HorizontalAlignment="Left">
+        <TextBlock Text="基础选择" Classes="sample-title" />
+        <ComboBox ItemsSource="{Binding Cities}"
+                  SelectedItem="{Binding SelectedCity, Mode=TwoWay}"
+                  PlaceholderText="请选择城市" />
+        <TextBlock Text="{Binding SelectedCity, StringFormat='已选择：{0}'}" Classes="sample-caption" />
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="320" HorizontalAlignment="Left">
+        <TextBlock Text="默认选中" Classes="sample-title" />
+        <ComboBox ItemsSource="{Binding Sizes}"
+                  SelectedItem="{Binding SelectedSize, Mode=TwoWay}"
+                  PlaceholderText="请选择尺码" />
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="320" HorizontalAlignment="Left">
+        <TextBlock Text="禁用状态" Classes="sample-title" />
+        <ComboBox SelectedItem="{Binding DisabledSelected}"
+                  IsEnabled="False">
+          <ComboBoxItem Content="选项一" />
+          <ComboBoxItem Content="选项二" />
+        </ComboBox>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="320" HorizontalAlignment="Left">
+        <TextBlock Text="可编辑选择" Classes="sample-title" />
+        <ComboBox IsEditable="True"
+                  PlaceholderText="可输入搜索">
+          <ComboBoxItem Content="Apple" />
+          <ComboBoxItem Content="Banana" />
+          <ComboBoxItem Content="Cherry" />
+          <ComboBoxItem Content="Durian" />
+        </ComboBox>
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

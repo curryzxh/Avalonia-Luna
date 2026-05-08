@@ -1,0 +1,75 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Luna.Desktop.Controls">
+  <Style Selector="controls|Alert">
+    <Setter Property="Padding" Value="12,16" />
+    <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Default}" />
+    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Medium}" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                CornerRadius="{TemplateBinding CornerRadius}"
+                Padding="{TemplateBinding Padding}"
+                IsVisible="{TemplateBinding IsClosed, Converter={x:Static BoolConverters.Not}}">
+          <Grid ColumnDefinitions="Auto,*,Auto">
+            <TextBlock Grid.Column="0"
+                       Text="&#xE946;"
+                       FontFamily="Segoe MDL2 Assets"
+                       FontSize="16"
+                       VerticalAlignment="Top"
+                       Margin="0,1,8,0"
+                       Foreground="{TemplateBinding Foreground}" />
+            <StackPanel Grid.Column="1" Spacing="4">
+              <TextBlock Text="{TemplateBinding Title}"
+                         FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                         Foreground="{TemplateBinding Foreground}"
+                         IsVisible="{TemplateBinding Title, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
+              <TextBlock Text="{TemplateBinding Message}"
+                         Foreground="{TemplateBinding Foreground}"
+                         Opacity="0.85"
+                         IsVisible="{TemplateBinding Message, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
+            </StackPanel>
+            <Button Grid.Column="2"
+                    Name="PART_CloseButton"
+                    Content="&#xE711;"
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="12"
+                    Classes="text small"
+                    VerticalAlignment="Top"
+                    IsVisible="{TemplateBinding IsClosable}" />
+          </Grid>
+        </Border>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|Alert:info">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand.Light}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand}" />
+    <Setter Property="BorderThickness" Value="1,0,0,0" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="controls|Alert:success">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Success.Light}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Success}" />
+    <Setter Property="BorderThickness" Value="1,0,0,0" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Success}" />
+  </Style>
+
+  <Style Selector="controls|Alert:warning">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Warning.Light}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Warning}" />
+    <Setter Property="BorderThickness" Value="1,0,0,0" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Warning}" />
+  </Style>
+
+  <Style Selector="controls|Alert:error">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Error.Light}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Error}" />
+    <Setter Property="BorderThickness" Value="1,0,0,0" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Error}" />
+  </Style>
+</Styles>

@@ -1,0 +1,48 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             xmlns:controls="using:Luna.Desktop.Controls"
+             x:Class="Luna.Desktop.Sample.Views.Samples.LoadingSampleView"
+             x:DataType="vm:LoadingSampleViewModel">
+  <ScrollViewer>
+    <StackPanel Spacing="16" Margin="0,0,0,24">
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="基本用法" Classes="sample-title" />
+          <controls:Loading IsLoading="{Binding IsLoading}"
+                            Text="{Binding LoadingText}"
+                            Size="{Binding LoadingSize}" />
+        </StackPanel>
+      </Border>
+
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="自定义配置" Classes="sample-title" />
+          <StackPanel Spacing="8">
+            <CheckBox Content="显示加载" IsChecked="{Binding IsLoading}" />
+            <StackPanel Orientation="Horizontal" Spacing="8">
+              <TextBlock Text="文字：" VerticalAlignment="Center" />
+              <TextBox Text="{Binding LoadingText}" Width="200" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Spacing="8">
+              <TextBlock Text="大小：" VerticalAlignment="Center" />
+              <Slider Minimum="12" Maximum="48" Value="{Binding LoadingSize}" Width="200" />
+            </StackPanel>
+          </StackPanel>
+        </StackPanel>
+      </Border>
+
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="不同尺寸" Classes="sample-title" />
+          <WrapPanel>
+            <controls:Loading IsLoading="True" Size="16" Margin="0,0,24,0" />
+            <controls:Loading IsLoading="True" Size="24" Margin="0,0,24,0" />
+            <controls:Loading IsLoading="True" Size="36" Margin="0,0,24,0" />
+            <controls:Loading IsLoading="True" Size="48" Text="加载中..." />
+          </WrapPanel>
+        </StackPanel>
+      </Border>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

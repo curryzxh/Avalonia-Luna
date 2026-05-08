@@ -1,0 +1,44 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             xmlns:controls="using:Luna.Desktop.Controls"
+             x:Class="Luna.Desktop.Sample.Views.Samples.CardSampleView"
+             x:DataType="vm:CardSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="基础卡片" Classes="sample-title" />
+        <controls:Card Title="卡片标题" Width="360" HorizontalAlignment="Left">
+          <TextBlock Text="这里是卡片内容区域，可以放置任意内容。" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+        </controls:Card>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="带底部操作的卡片" Classes="sample-title" />
+        <controls:Card Title="通知中心" Width="360" HorizontalAlignment="Left">
+          <StackPanel Spacing="8">
+            <TextBlock Text="你有 3 条未读消息" Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+            <TextBlock Text="系统将在 24 小时后自动清理过期通知。" Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" FontSize="{DynamicResource Luna.FontSize.Body.Small}" />
+          </StackPanel>
+          <controls:Card.Footer>
+            <StackPanel Orientation="Horizontal" Spacing="8" HorizontalAlignment="Right">
+              <Button Content="忽略" Classes="text" />
+              <Button Content="查看全部" Classes="primary" />
+            </StackPanel>
+          </controls:Card.Footer>
+        </controls:Card>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="无边框卡片" Classes="sample-title" />
+        <controls:Card Title="纯内容" Bordered="False" Shadow="False" Width="360" HorizontalAlignment="Left">
+          <TextBlock Text="无边框无阴影的卡片内容区域。" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+        </controls:Card>
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

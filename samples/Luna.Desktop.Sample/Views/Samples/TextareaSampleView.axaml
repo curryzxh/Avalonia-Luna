@@ -1,0 +1,56 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             x:Class="Luna.Desktop.Sample.Views.Samples.TextareaSampleView"
+             x:DataType="vm:TextareaSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="520" HorizontalAlignment="Left">
+        <TextBlock Text="基础多行文本" Classes="sample-title" />
+        <TextBox Classes="textarea"
+                 Text="{Binding Content, Mode=TwoWay}"
+                 AcceptsReturn="True"
+                 TextWrapping="Wrap"
+                 Height="100"
+                 PlaceholderText="请输入多行文本内容" />
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="520" HorizontalAlignment="Left">
+        <TextBlock Text="带字数统计" Classes="sample-title" />
+        <TextBox Classes="textarea"
+                 Text="{Binding Content, Mode=TwoWay}"
+                 AcceptsReturn="True"
+                 TextWrapping="Wrap"
+                 Height="100"
+                 MaxLength="{Binding MaxLength}" />
+        <TextBlock Text="{Binding ContentLength, StringFormat='已输入 {0} 个字符'}" Classes="sample-caption" />
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="520" HorizontalAlignment="Left">
+        <TextBlock Text="不同状态" Classes="sample-title" />
+        <TextBox Classes="textarea error"
+                 Text="{Binding ErrorText, Mode=TwoWay}"
+                 AcceptsReturn="True"
+                 TextWrapping="Wrap"
+                 Height="80" />
+        <TextBlock Text="校验不通过" Foreground="{DynamicResource Luna.Brush.Error}" Classes="sample-caption" />
+        <TextBox Classes="textarea"
+                 Text="只读文本内容"
+                 AcceptsReturn="True"
+                 TextWrapping="Wrap"
+                 Height="80"
+                 IsReadOnly="True" />
+        <TextBox Classes="textarea"
+                 PlaceholderText="禁用状态"
+                 AcceptsReturn="True"
+                 TextWrapping="Wrap"
+                 Height="80"
+                 IsEnabled="False" />
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

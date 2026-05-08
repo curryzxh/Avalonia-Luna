@@ -1,0 +1,49 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             xmlns:controls="using:Luna.Desktop.Controls"
+             x:Class="Luna.Desktop.Sample.Views.Samples.InputNumberSampleView"
+             x:DataType="vm:InputNumberSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="320" HorizontalAlignment="Left">
+        <TextBlock Text="基础数字输入" Classes="sample-title" />
+        <controls:InputNumber Value="{Binding Quantity, Mode=TwoWay}"
+                              Step="1"
+                              Minimum="0"
+                              Maximum="999"
+                              PlaceholderText="请输入数量" />
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="320" HorizontalAlignment="Left">
+        <TextBlock Text="小数精度" Classes="sample-title" />
+        <controls:InputNumber Value="{Binding DecimalValue, Mode=TwoWay}"
+                              Step="0.01"
+                              Minimum="0"
+                              Maximum="100"
+                              DecimalPlaces="2"
+                              PlaceholderText="请输入价格" />
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="320" HorizontalAlignment="Left">
+        <TextBlock Text="范围限制 (0-100)" Classes="sample-title" />
+        <controls:InputNumber Value="{Binding ClampedValue, Mode=TwoWay}"
+                              Step="10"
+                              Minimum="0"
+                              Maximum="100" />
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="320" HorizontalAlignment="Left">
+        <TextBlock Text="禁用状态" Classes="sample-title" />
+        <controls:InputNumber Value="{Binding DisabledValue, Mode=TwoWay}"
+                              IsEnabled="False" />
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

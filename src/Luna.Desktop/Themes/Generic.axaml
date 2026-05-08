@@ -12,6 +12,25 @@
   <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/Button.axaml" />
   <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/TextBox.axaml" />
   <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/Badge.axaml" />
+  <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/Tabs.axaml" />
+  <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/Menu.axaml" />
+  <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/Dropdown.axaml" />
+  <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/Pagination.axaml" />
+  <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/Breadcrumb.axaml" />
+  <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/Steps.axaml" />
+  <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/Anchor.axaml" />
+  <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/Affix.axaml" />
+  <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/StickyTool.axaml" />
+  <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/Alert.axaml" />
+  <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/Dialog.axaml" />
+  <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/Drawer.axaml" />
+  <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/Message.axaml" />
+  <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/Loading.axaml" />
+  <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/Popup.axaml" />
+  <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/Popconfirm.axaml" />
+  <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/InputNumber.axaml" />
+  <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/ComboBox.axaml" />
+  <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/Rate.axaml" />
 
   <Design.PreviewWith>
     <Border Padding="24">

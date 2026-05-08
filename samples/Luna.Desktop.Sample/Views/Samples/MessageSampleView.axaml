@@ -1,0 +1,26 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             xmlns:controls="using:Luna.Desktop.Controls"
+             x:Class="Luna.Desktop.Sample.Views.Samples.MessageSampleView"
+             x:DataType="vm:MessageSampleViewModel">
+  <ScrollViewer>
+    <StackPanel Spacing="16" Margin="0,0,0,24">
+      <controls:MessageHost />
+
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="消息类型" Classes="sample-title" />
+          <TextBlock Text="点击按钮在顶部显示对应类型的全局消息。" Classes="sample-caption" />
+          <WrapPanel>
+            <Button Content="信息消息" Command="{Binding ShowInfoCommand}" Margin="0,0,8,0" />
+            <Button Content="成功消息" Command="{Binding ShowSuccessCommand}" Classes="success" Margin="0,0,8,0" />
+            <Button Content="警告消息" Command="{Binding ShowWarningCommand}" Classes="warning" Margin="0,0,8,0" />
+            <Button Content="错误消息" Command="{Binding ShowErrorCommand}" Classes="danger" Margin="0,0,8,0" />
+            <Button Content="可关闭消息" Command="{Binding ShowClosableCommand}" Classes="outline" />
+          </WrapPanel>
+        </StackPanel>
+      </Border>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

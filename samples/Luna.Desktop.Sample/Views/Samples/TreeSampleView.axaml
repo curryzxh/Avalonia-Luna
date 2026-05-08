@@ -1,0 +1,31 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             x:Class="Luna.Desktop.Sample.Views.Samples.TreeSampleView"
+             x:DataType="vm:TreeSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="400" HorizontalAlignment="Left">
+        <TextBlock Text="基础树" Classes="sample-title" />
+        <TreeView>
+          <TreeViewItem Header="技术部" IsExpanded="True">
+            <TreeViewItem Header="前端组">
+              <TreeViewItem Header="React 团队" />
+              <TreeViewItem Header="Vue 团队" />
+            </TreeViewItem>
+            <TreeViewItem Header="后端组">
+              <TreeViewItem Header="Java 团队" />
+              <TreeViewItem Header="Go 团队" />
+            </TreeViewItem>
+            <TreeViewItem Header="测试组" />
+          </TreeViewItem>
+          <TreeViewItem Header="产品部">
+            <TreeViewItem Header="产品设计" />
+            <TreeViewItem Header="用户研究" />
+          </TreeViewItem>
+          <TreeViewItem Header="运营部" />
+        </TreeView>
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

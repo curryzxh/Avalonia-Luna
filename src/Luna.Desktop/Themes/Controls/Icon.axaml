@@ -1,0 +1,33 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Style Selector="PathIcon">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
+    <Setter Property="Width" Value="{DynamicResource Luna.Size.Icon.Medium}" />
+    <Setter Property="Height" Value="{DynamicResource Luna.Size.Icon.Medium}" />
+  </Style>
+
+  <Style Selector="PathIcon.small">
+    <Setter Property="Width" Value="{DynamicResource Luna.Size.Icon.Small}" />
+    <Setter Property="Height" Value="{DynamicResource Luna.Size.Icon.Small}" />
+  </Style>
+
+  <Style Selector="PathIcon.brand">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="PathIcon.error">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Error}" />
+  </Style>
+
+  <Style Selector="PathIcon.success">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Success}" />
+  </Style>
+
+  <Style Selector="PathIcon.warning">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Warning}" />
+  </Style>
+
+  <Style Selector="PathIcon.disabled">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Disabled}" />
+  </Style>
+</Styles>

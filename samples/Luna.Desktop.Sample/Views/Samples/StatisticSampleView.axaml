@@ -1,0 +1,36 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             xmlns:controls="using:Luna.Desktop.Controls"
+             x:Class="Luna.Desktop.Sample.Views.Samples.StatisticSampleView"
+             x:DataType="vm:StatisticSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="基础统计" Classes="sample-title" />
+        <WrapPanel>
+          <controls:Statistic Title="总销售额" Value="126,560" Prefix="¥" Margin="0,0,48,16" />
+          <controls:Statistic Title="活跃用户" Value="8,846" Margin="0,0,48,16" />
+          <controls:Statistic Title="转化率" Value="93.2" Suffix="%" Margin="0,0,48,16" />
+        </WrapPanel>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="趋势统计" Classes="sample-title" />
+        <WrapPanel>
+          <controls:Statistic Title="本周收入" Value="¥ 12,680" Trend="Up" Description="较上周 +12.3%" Margin="0,0,48,16" />
+          <controls:Statistic Title="退款笔数" Value="38" Trend="Down" Description="较上周 -5.2%" Margin="0,0,48,16" />
+        </WrapPanel>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="加载态" Classes="sample-title" />
+        <controls:Statistic Title="数据加载中" Value="0" Loading="True" />
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

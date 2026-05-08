@@ -1,0 +1,41 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             xmlns:controls="using:Luna.Desktop.Controls"
+             x:Class="Luna.Desktop.Sample.Views.Samples.PaginationSampleView"
+             x:DataType="vm:PaginationSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="基础分页" Classes="sample-title" />
+        <TextBlock Text="展示页码导航、前后翻页和总数显示。" Classes="sample-caption" />
+        <controls:Pagination CurrentPage="{Binding CurrentPage, Mode=TwoWay}"
+                             TotalCount="{Binding TotalCount}"
+                             PageSize="{Binding PageSize}"
+                             ShowTotal="{Binding ShowTotal}"
+                             Command="{Binding OnPageChangedCommand}" />
+        <TextBlock Text="{Binding PageInfo}" Classes="sample-caption" />
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="参数调整" Classes="sample-title" />
+        <StackPanel Orientation="Horizontal" Spacing="16">
+          <StackPanel Spacing="4">
+            <TextBlock Text="总条数" Classes="sample-caption" />
+            <NumericUpDown Value="{Binding TotalCount}" Minimum="0" Maximum="10000" />
+          </StackPanel>
+          <StackPanel Spacing="4">
+            <TextBlock Text="每页条数" Classes="sample-caption" />
+            <NumericUpDown Value="{Binding PageSize}" Minimum="5" Maximum="100" />
+          </StackPanel>
+          <StackPanel Spacing="4">
+            <TextBlock Text="显示总数" Classes="sample-caption" />
+            <ToggleSwitch IsChecked="{Binding ShowTotal}" />
+          </StackPanel>
+        </StackPanel>
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

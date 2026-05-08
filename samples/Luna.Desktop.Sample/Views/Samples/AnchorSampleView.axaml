@@ -1,0 +1,18 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             xmlns:controls="using:Luna.Desktop.Controls"
+             x:Class="Luna.Desktop.Sample.Views.Samples.AnchorSampleView"
+             x:DataType="vm:AnchorSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="锚点导航（占位）" Classes="sample-title" />
+        <TextBlock Text="Anchor 用于页面内快速跳转定位，当前为占位示例。后续版本将支持滚动监听和锚点高亮。" Classes="sample-caption" />
+        <controls:Anchor>
+          <TextBlock Text="锚点区域占位内容" Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" />
+        </controls:Anchor>
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

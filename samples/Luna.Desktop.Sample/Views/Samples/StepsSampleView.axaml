@@ -1,0 +1,45 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             xmlns:controls="using:Luna.Desktop.Controls"
+             x:Class="Luna.Desktop.Sample.Views.Samples.StepsSampleView"
+             x:DataType="vm:StepsSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="横向步骤条" Classes="sample-title" />
+        <TextBlock Text="点击步骤项可切换当前步骤。" Classes="sample-caption" />
+        <controls:Steps Current="{Binding CurrentStep, Mode=TwoWay}">
+          <controls:StepItem Title="步骤一" Content="基本信息填写" />
+          <controls:StepItem Title="步骤二" Content="详细配置" />
+          <controls:StepItem Title="步骤三" Content="确认提交" />
+          <controls:StepItem Title="步骤四" Content="完成" />
+        </controls:Steps>
+        <TextBlock Text="{Binding CurrentStep, StringFormat='当前步骤索引：{0}'}" Classes="sample-caption" />
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="纵向步骤条" Classes="sample-title" />
+        <controls:Steps Current="1" Layout="Vertical">
+          <controls:StepItem Title="账号信息" Content="填写基本账号信息" TitleRight="2024-01-01" />
+          <controls:StepItem Title="详细配置" Content="配置偏好设置" TitleRight="2024-01-02" />
+          <controls:StepItem Title="确认提交" Content="检查并确认" />
+          <controls:StepItem Title="完成" Content="流程结束" />
+        </controls:Steps>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="带错误状态" Classes="sample-title" />
+        <controls:Steps Current="1" CurrentStatus="Error">
+          <controls:StepItem Title="已完成" Content="已完成步骤" />
+          <controls:StepItem Title="审核中" Content="审核被驳回" />
+          <controls:StepItem Title="待审核" Content="等待审核" />
+        </controls:Steps>
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

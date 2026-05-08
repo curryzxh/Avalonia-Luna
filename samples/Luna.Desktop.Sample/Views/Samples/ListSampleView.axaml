@@ -1,0 +1,38 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             x:Class="Luna.Desktop.Sample.Views.Samples.ListSampleView"
+             x:DataType="vm:ListSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="400" HorizontalAlignment="Left">
+        <TextBlock Text="基础列表" Classes="sample-title" />
+        <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                BorderThickness="1"
+                CornerRadius="{DynamicResource Luna.Radius.Default}">
+          <StackPanel>
+            <Border Padding="12,8" BorderBrush="{DynamicResource Luna.Brush.Border.Divider}" BorderThickness="0,0,0,1">
+              <StackPanel>
+                <TextBlock Text="通知设置" Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+                <TextBlock Text="管理系统通知和消息提醒" FontSize="{DynamicResource Luna.FontSize.Body.Small}" Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" />
+              </StackPanel>
+            </Border>
+            <Border Padding="12,8" BorderBrush="{DynamicResource Luna.Brush.Border.Divider}" BorderThickness="0,0,0,1">
+              <StackPanel>
+                <TextBlock Text="隐私安全" Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+                <TextBlock Text="密码、二次验证和登录设备管理" FontSize="{DynamicResource Luna.FontSize.Body.Small}" Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" />
+              </StackPanel>
+            </Border>
+            <Border Padding="12,8">
+              <StackPanel>
+                <TextBlock Text="关于" Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+                <TextBlock Text="版本信息和许可协议" FontSize="{DynamicResource Luna.FontSize.Body.Small}" Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" />
+              </StackPanel>
+            </Border>
+          </StackPanel>
+        </Border>
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

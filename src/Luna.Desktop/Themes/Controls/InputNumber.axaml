@@ -1,0 +1,74 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Luna.Desktop.Controls">
+  <Style Selector="controls|InputNumber">
+    <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.Control.Medium}" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                CornerRadius="{TemplateBinding CornerRadius}">
+          <Grid ColumnDefinitions="*,Auto">
+            <TextBox Name="PART_TextBox"
+                     Grid.Column="0"
+                     Background="Transparent"
+                     BorderThickness="0"
+                     Padding="10,5"
+                     Foreground="{TemplateBinding Foreground}"
+                     FontSize="{TemplateBinding FontSize}"
+                     PlaceholderText="{TemplateBinding PlaceholderText}"
+                     IsReadOnly="{TemplateBinding IsReadOnly}" />
+            <StackPanel Grid.Column="1" Orientation="Vertical" Width="24"
+                        VerticalAlignment="Stretch">
+              <Button Name="PART_SpinnerUp"
+                      VerticalAlignment="Stretch"
+                      HorizontalAlignment="Stretch"
+                      Padding="0"
+                      BorderThickness="0"
+                      Background="Transparent"
+                      CornerRadius="0"
+                      Content="▲"
+                      FontSize="8"
+                      Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+              <Button Name="PART_SpinnerDown"
+                      VerticalAlignment="Stretch"
+                      HorizontalAlignment="Stretch"
+                      Padding="0"
+                      BorderThickness="0"
+                      Background="Transparent"
+                      CornerRadius="0"
+                      Content="▼"
+                      FontSize="8"
+                      Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            </StackPanel>
+          </Grid>
+        </Border>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|InputNumber">
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Default}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
+    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Medium}" />
+  </Style>
+
+  <Style Selector="controls|InputNumber:pointerover">
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Strong}" />
+  </Style>
+
+  <Style Selector="controls|InputNumber:focus">
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="controls|InputNumber:disabled">
+    <Setter Property="Opacity" Value="0.5" />
+  </Style>
+
+  <Style Selector="controls|InputNumber.error">
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Error}" />
+  </Style>
+</Styles>

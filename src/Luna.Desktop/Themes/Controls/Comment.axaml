@@ -1,0 +1,36 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Luna.Desktop.Controls">
+  <Style Selector="controls|Comment">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <StackPanel Orientation="Horizontal" Spacing="12">
+          <Border Width="40" Height="40"
+                  CornerRadius="{DynamicResource Luna.Radius.Round}"
+                  Background="{DynamicResource Luna.Brush.Brand}"
+                  VerticalAlignment="Top">
+            <TextBlock Text="{TemplateBinding AvatarText}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Anti}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center" />
+          </Border>
+          <StackPanel Spacing="4" VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal" Spacing="8">
+              <TextBlock Text="{TemplateBinding Author}"
+                         FontWeight="{DynamicResource Luna.FontWeight.Medium}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+              <TextBlock Text="{TemplateBinding Timestamp}"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" />
+            </StackPanel>
+            <TextBlock Text="{TemplateBinding Content}"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                       TextWrapping="Wrap" />
+          </StackPanel>
+        </StackPanel>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>

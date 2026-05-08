@@ -1,0 +1,14 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             x:Class="Luna.Desktop.Sample.Views.Samples.CascaderSampleView"
+             x:DataType="vm:CascaderSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="520" HorizontalAlignment="Left">
+        <TextBlock Text="级联选择占位" Classes="sample-title" />
+        <TextBlock Text="Luna Cascader 控件将在后续迭代中实现。将参考 Luna.Mobile Cascader 和 TDesign Cascader 语义，支持多级数据、异步加载、搜索和自定义字段名。当前保留占位示例位置。" Classes="sample-caption" />
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

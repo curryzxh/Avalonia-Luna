@@ -1,0 +1,55 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             xmlns:controls="using:Luna.Desktop.Controls"
+             x:Class="Luna.Desktop.Sample.Views.Samples.AlertSampleView"
+             x:DataType="vm:AlertSampleViewModel">
+  <ScrollViewer>
+    <StackPanel Spacing="16" Margin="0,0,0,24">
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="Alert 类型" Classes="sample-title" />
+          <controls:Alert Title="信息提示"
+                          Message="这是一条信息提示，用于告知用户当前操作的状态。"
+                          Theme="Info"
+                          IsClosable="True"
+                          IsClosed="{Binding !ShowInfoAlert}" />
+          <controls:Alert Title="成功提示"
+                          Message="操作已成功完成，数据已保存。"
+                          Theme="Success"
+                          IsClosable="True"
+                          IsClosed="{Binding !ShowSuccessAlert}" />
+          <controls:Alert Title="警告提示"
+                          Message="请注意，此操作可能会导致部分数据丢失。"
+                          Theme="Warning"
+                          IsClosable="True"
+                          IsClosed="{Binding !ShowWarningAlert}" />
+          <controls:Alert Title="错误提示"
+                          Message="操作失败，请检查网络连接后重试。"
+                          Theme="Error"
+                          IsClosable="True"
+                          IsClosed="{Binding !ShowErrorAlert}" />
+          <Button Content="重置所有警告" Command="{Binding ResetAlertsCommand}" HorizontalAlignment="Left" />
+        </StackPanel>
+      </Border>
+
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="不可关闭" Classes="sample-title" />
+          <controls:Alert Title="信息提示"
+                          Message="这条警告提醒没有关闭按钮。"
+                          Theme="Info" />
+        </StackPanel>
+      </Border>
+
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="仅标题" Classes="sample-title" />
+          <controls:Alert Title="简洁信息提示"
+                          Theme="Info"
+                          IsClosable="True" />
+        </StackPanel>
+      </Border>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

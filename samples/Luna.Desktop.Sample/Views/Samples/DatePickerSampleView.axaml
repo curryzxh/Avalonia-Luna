@@ -1,0 +1,23 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             x:Class="Luna.Desktop.Sample.Views.Samples.DatePickerSampleView"
+             x:DataType="vm:DatePickerSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="320" HorizontalAlignment="Left">
+        <TextBlock Text="基础日期选择" Classes="sample-title" />
+        <CalendarDatePicker SelectedDate="{Binding SelectedDate, Mode=TwoWay}"
+                            PlaceholderText="请选择日期"
+                            HorizontalAlignment="Stretch" />
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="400" HorizontalAlignment="Left">
+        <TextBlock Text="占位说明" Classes="sample-title" />
+        <TextBlock Text="Luna DatePicker 自定义控件将在后续迭代中实现，当前使用 Avalonia 原生 CalendarDatePicker 搭配 Luna 主题。后续将支持日期范围选择、快捷选项和自定义格式。" Classes="sample-caption" />
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

@@ -1,0 +1,13 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             x:Class="Luna.Desktop.Sample.Views.Samples.BackTopSampleView"
+             x:DataType="vm:BackTopSampleViewModel">
+  <Border Classes="sample-card">
+    <StackPanel Spacing="12">
+      <TextBlock Text="回到顶部" Classes="sample-title" />
+      <TextBlock Text="回到顶部功能将在后续版本实现。" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+      <TextBlock Text="需要在 ScrollViewer 容器中使用，当滚动超过一定距离后显示回到顶部按钮。" Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" TextWrapping="Wrap" MaxWidth="480" />
+    </StackPanel>
+  </Border>
+</UserControl>

@@ -1,0 +1,26 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             x:Class="Luna.Desktop.Sample.Views.Samples.UploadSampleView"
+             x:DataType="vm:UploadSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="520" HorizontalAlignment="Left">
+        <TextBlock Text="上传占位" Classes="sample-title" />
+        <TextBlock Text="Luna Upload 控件将在后续迭代中实现。将支持点击上传、拖拽上传、文件列表、上传进度、图片预览和大小限制等能力。" Classes="sample-caption" />
+        <Border BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                BorderThickness="1"
+                BorderDashArray="4,4"
+                CornerRadius="{DynamicResource Luna.Radius.Default}"
+                Padding="32"
+                HorizontalAlignment="Left">
+          <StackPanel Spacing="8" HorizontalAlignment="Center">
+            <TextBlock Text="📂" FontSize="28" HorizontalAlignment="Center" />
+            <TextBlock Text="点击或拖拽文件到此区域上传" HorizontalAlignment="Center"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+        </Border>
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

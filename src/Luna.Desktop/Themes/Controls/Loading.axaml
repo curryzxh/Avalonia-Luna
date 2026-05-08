@@ -1,0 +1,36 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Luna.Desktop.Controls">
+  <Style Selector="controls|Loading">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <StackPanel Orientation="Horizontal"
+                    Spacing="8"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    IsVisible="{TemplateBinding IsLoading}">
+          <Border Width="{TemplateBinding Size}"
+                  Height="{TemplateBinding Size}"
+                  CornerRadius="{DynamicResource Luna.Radius.Round}"
+                  BorderBrush="{DynamicResource Luna.Brush.Brand}"
+                  BorderThickness="2"
+                  RenderTransformOrigin="50%,50%">
+            <Border.RenderTransform>
+              <RotateTransform Angle="0" />
+            </Border.RenderTransform>
+            <Border.Styles>
+              <Style Selector="Border:not(:spinner)">
+                <Setter Property="IsVisible" Value="False" />
+              </Style>
+            </Border.Styles>
+          </Border>
+          <TextBlock Text="{TemplateBinding Text}"
+                     VerticalAlignment="Center"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                     IsVisible="{TemplateBinding Text, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
+        </StackPanel>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>

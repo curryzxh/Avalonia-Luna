@@ -1,0 +1,43 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             x:Class="Luna.Desktop.Sample.Views.Samples.TooltipSampleView"
+             x:DataType="vm:TooltipSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="基础提示" Classes="sample-title" />
+        <WrapPanel>
+          <Button Content="上侧提示" Margin="0,0,12,8"
+                  ToolTip.Tip="这是一个上侧提示"
+                  ToolTip.Placement="Top" />
+          <Button Content="右侧提示" Margin="0,0,12,8"
+                  ToolTip.Tip="这是一个右侧提示"
+                  ToolTip.Placement="Right" />
+          <Button Content="下侧提示" Margin="0,0,12,8"
+                  ToolTip.Tip="这是一个下侧提示"
+                  ToolTip.Placement="Bottom" />
+          <Button Content="左侧提示" Margin="0,0,12,8"
+                  ToolTip.Tip="这是一个左侧提示"
+                  ToolTip.Placement="Left" />
+        </WrapPanel>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="不同触发元素" Classes="sample-title" />
+        <WrapPanel>
+          <TextBlock Text="悬停查看提示" Margin="0,0,12,8"
+                     Foreground="{DynamicResource Luna.Brush.Brand}"
+                     ToolTip.Tip="文本也可以有 Tooltip" />
+          <Border Background="{DynamicResource Luna.Brush.Background.Component}"
+                  Padding="12,8" CornerRadius="{DynamicResource Luna.Radius.Default}" Margin="0,0,12,8"
+                  ToolTip.Tip="容器元素的提示">
+            <TextBlock Text="容器提示" />
+          </Border>
+        </WrapPanel>
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

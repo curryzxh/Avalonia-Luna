@@ -1,0 +1,57 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             x:Class="Luna.Desktop.Sample.Views.Samples.DropdownSampleView"
+             x:DataType="vm:DropdownSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="按钮触发下拉" Classes="sample-title" />
+        <TextBlock Text="使用 Button 的 Flyout 展示下拉菜单。" Classes="sample-caption" />
+        <Button Content="更多操作">
+          <Button.Flyout>
+            <MenuFlyout>
+              <MenuItem Header="编辑" />
+              <MenuItem Header="复制" />
+              <MenuItem Header="删除" />
+              <Separator />
+              <MenuItem Header="详情" />
+            </MenuFlyout>
+          </Button.Flyout>
+        </Button>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="右键菜单" Classes="sample-title" />
+        <TextBlock Text="在此区域右键查看 ContextMenu。" Classes="sample-caption" />
+        <Border Background="{DynamicResource Luna.Brush.Background.Component}"
+                BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                BorderThickness="1"
+                CornerRadius="{DynamicResource Luna.Radius.Default}"
+                Height="120"
+                Padding="16">
+          <Border.ContextMenu>
+            <ContextMenu>
+              <MenuItem Header="刷新" />
+              <MenuItem Header="复制" />
+              <MenuItem Header="粘贴" />
+              <Separator />
+              <MenuItem Header="属性" />
+            </ContextMenu>
+          </Border.ContextMenu>
+          <TextBlock Text="右键点击此区域" VerticalAlignment="Center" HorizontalAlignment="Center"
+                     Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" />
+        </Border>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="交互反馈" Classes="sample-title" />
+        <TextBlock Text="{Binding LastAction, StringFormat='最近操作：{0}'}" Classes="sample-caption" />
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

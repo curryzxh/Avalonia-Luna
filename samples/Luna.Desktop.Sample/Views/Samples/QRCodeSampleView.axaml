@@ -1,0 +1,17 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             x:Class="Luna.Desktop.Sample.Views.Samples.QRCodeSampleView"
+             x:DataType="vm:QRCodeSampleViewModel">
+  <Border Classes="sample-card">
+    <StackPanel Spacing="12" HorizontalAlignment="Center">
+      <TextBlock Text="二维码" Classes="sample-title" HorizontalAlignment="Center" />
+      <Border Width="160" Height="160" Background="{DynamicResource Luna.Brush.Background.Component}"
+              CornerRadius="{DynamicResource Luna.Radius.Default}">
+        <TextBlock Text="QR Code\n（占位）" HorizontalAlignment="Center" VerticalAlignment="Center"
+                   Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" TextAlignment="Center" />
+      </Border>
+      <TextBlock Text="二维码生成功能将在后续版本实现。" Classes="sample-caption" HorizontalAlignment="Center" />
+    </StackPanel>
+  </Border>
+</UserControl>

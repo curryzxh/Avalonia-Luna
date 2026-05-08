@@ -1,0 +1,29 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             xmlns:controls="using:Luna.Desktop.Controls"
+             x:Class="Luna.Desktop.Sample.Views.Samples.PopupSampleView"
+             x:DataType="vm:PopupSampleViewModel">
+  <ScrollViewer>
+    <StackPanel Spacing="16" Margin="0,0,0,24">
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="基本弹出层" Classes="sample-title" />
+          <TextBlock Text="基于 Avalonia Popup 的皮肤化封装，支持不同弹出方向。" Classes="sample-caption" />
+          <StackPanel Orientation="Horizontal" Spacing="8">
+            <Button Content="切换弹出层" Command="{Binding TogglePopupCommand}" />
+          </StackPanel>
+          <Border Background="{DynamicResource Luna.Brush.Background.Component}"
+                  CornerRadius="{DynamicResource Luna.Radius.Default}"
+                  Padding="16"
+                  IsVisible="{Binding IsPopupOpen}">
+            <StackPanel Spacing="8">
+              <TextBlock Text="弹出层内容" FontWeight="{DynamicResource Luna.FontWeight.SemiBold}" />
+              <TextBlock Text="这是一个弹出层示例，展示弹出内容区域。" Classes="sample-caption" />
+            </StackPanel>
+          </Border>
+        </StackPanel>
+      </Border>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

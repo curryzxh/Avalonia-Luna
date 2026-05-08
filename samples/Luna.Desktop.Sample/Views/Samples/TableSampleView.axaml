@@ -1,0 +1,23 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             x:Class="Luna.Desktop.Sample.Views.Samples.TableSampleView"
+             x:DataType="vm:TableSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="基础表格" Classes="sample-title" />
+        <DataGrid ItemsSource="{Binding Rows}" AutoGenerateColumns="False" IsReadOnly="True"
+                  MaxWidth="720" HorizontalAlignment="Left">
+          <DataGrid.Columns>
+            <DataGridTextColumn Header="编号" Binding="{Binding Id}" Width="100" />
+            <DataGridTextColumn Header="名称" Binding="{Binding Name}" Width="*" />
+            <DataGridTextColumn Header="分类" Binding="{Binding Category}" Width="120" />
+            <DataGridTextColumn Header="价格" Binding="{Binding Price, StringFormat='¥{0:F0}'}" Width="80" />
+            <DataGridTextColumn Header="状态" Binding="{Binding Status}" Width="80" />
+          </DataGrid.Columns>
+        </DataGrid>
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

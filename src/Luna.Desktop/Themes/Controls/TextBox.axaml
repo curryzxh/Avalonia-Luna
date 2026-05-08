@@ -19,7 +19,50 @@
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand}" />
   </Style>
 
+  <Style Selector="TextBox:disabled">
+    <Setter Property="Opacity" Value="0.5" />
+  </Style>
+
   <Style Selector="TextBox.error">
     <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Error}" />
+  </Style>
+
+  <Style Selector="TextBox.error:focus">
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Error}" />
+  </Style>
+
+  <Style Selector="TextBox.warning">
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Warning}" />
+  </Style>
+
+  <Style Selector="TextBox.warning:focus">
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Warning}" />
+  </Style>
+
+  <Style Selector="TextBox.success">
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Success}" />
+  </Style>
+
+  <Style Selector="TextBox.success:focus">
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Success}" />
+  </Style>
+
+  <Style Selector="TextBox.small">
+    <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.Control.Small}" />
+    <Setter Property="Padding" Value="8,3" />
+    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Small}" />
+  </Style>
+
+  <Style Selector="TextBox.large">
+    <Setter Property="MinHeight" Value="{DynamicResource Luna.Size.Control.Large}" />
+    <Setter Property="Padding" Value="12,8" />
+  </Style>
+
+  <Style Selector="TextBox.textarea">
+    <Setter Property="MinHeight" Value="80" />
+    <Setter Property="AcceptsReturn" Value="True" />
+    <Setter Property="TextWrapping" Value="Wrap" />
+    <Setter Property="VerticalContentAlignment" Value="Top" />
+    <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
   </Style>
 </Styles>

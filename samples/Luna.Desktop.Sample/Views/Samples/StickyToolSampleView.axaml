@@ -1,0 +1,18 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             xmlns:controls="using:Luna.Desktop.Controls"
+             x:Class="Luna.Desktop.Sample.Views.Samples.StickyToolSampleView"
+             x:DataType="vm:StickyToolSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="吸附工具（占位）" Classes="sample-title" />
+        <TextBlock Text="StickyTool 固定在页面边缘的快捷操作面板。当前为占位示例。后续版本将支持定位吸附和展开收起。" Classes="sample-caption" />
+        <controls:StickyTool Offset="100">
+          <TextBlock Text="吸附工具区域占位内容" Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" />
+        </controls:StickyTool>
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

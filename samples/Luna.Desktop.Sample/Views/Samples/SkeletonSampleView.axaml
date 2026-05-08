@@ -1,0 +1,48 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             xmlns:controls="using:Luna.Desktop.Controls"
+             x:Class="Luna.Desktop.Sample.Views.Samples.SkeletonSampleView"
+             x:DataType="vm:SkeletonSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="文本骨架" Classes="sample-title" />
+        <controls:Skeleton Theme="Text" Loading="{Binding IsLoading}" Width="300" HorizontalAlignment="Left">
+          <TextBlock Text="文本内容已加载完成" Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+        </controls:Skeleton>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="头像骨架" Classes="sample-title" />
+        <controls:Skeleton Theme="Avatar" Loading="{Binding IsLoading}" Width="300" HorizontalAlignment="Left">
+          <StackPanel Orientation="Horizontal" Spacing="12">
+            <Border Width="48" Height="48" CornerRadius="24" Background="{DynamicResource Luna.Brush.Brand}" />
+            <StackPanel Spacing="4" VerticalAlignment="Center">
+              <TextBlock Text="用户名" Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+              <TextBlock Text="描述信息" FontSize="{DynamicResource Luna.FontSize.Body.Small}" Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" />
+            </StackPanel>
+          </StackPanel>
+        </controls:Skeleton>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="段落骨架" Classes="sample-title" />
+        <controls:Skeleton Theme="Paragraph" Loading="{Binding IsLoading}" Width="400" HorizontalAlignment="Left">
+          <TextBlock Text="段落内容已加载完成，这里是一段完整的文本描述。" Foreground="{DynamicResource Luna.Brush.Text.Primary}" TextWrapping="Wrap" />
+        </controls:Skeleton>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="切换加载状态" Classes="sample-title" />
+        <ToggleButton Content="切换加载" IsChecked="{Binding IsLoading}" />
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

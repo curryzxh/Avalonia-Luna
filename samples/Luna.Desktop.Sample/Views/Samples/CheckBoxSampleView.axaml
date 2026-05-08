@@ -3,17 +3,51 @@
              xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
              x:Class="Luna.Desktop.Sample.Views.Samples.CheckBoxSampleView"
              x:DataType="vm:CheckBoxSampleViewModel">
-  <Border Classes="sample-card">
-    <StackPanel Spacing="12">
-      <TextBlock Text="Checkbox 状态" Classes="sample-title" />
-      <WrapPanel>
-        <CheckBox Content="未选中项" Margin="0,0,18,8" />
-        <CheckBox Content="半选状态" IsThreeState="True" IsChecked="{Binding AuditState, Mode=TwoWay}" Margin="0,0,18,8" />
-        <CheckBox Content="选中项" IsChecked="{Binding AllowNotification, Mode=TwoWay}" Margin="0,0,18,8" />
-        <CheckBox Content="未选禁用项" IsEnabled="False" Margin="0,0,18,8" />
-        <CheckBox Content="选中禁用项" IsEnabled="False" IsChecked="True" Margin="0,0,18,8" />
-      </WrapPanel>
-      <CheckBox Content="允许匿名统计" IsChecked="{Binding AllowAnalytics, Mode=TwoWay}" />
-    </StackPanel>
-  </Border>
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="Checkbox 状态" Classes="sample-title" />
+        <WrapPanel>
+          <CheckBox Content="未选中项" Margin="0,0,18,8" />
+          <CheckBox Content="半选状态" IsThreeState="True" IsChecked="{Binding AuditState, Mode=TwoWay}" Margin="0,0,18,8" />
+          <CheckBox Content="选中项" IsChecked="{Binding AllowNotification, Mode=TwoWay}" Margin="0,0,18,8" />
+          <CheckBox Content="未选禁用项" IsEnabled="False" Margin="0,0,18,8" />
+          <CheckBox Content="选中禁用项" IsEnabled="False" IsChecked="True" Margin="0,0,18,8" />
+        </WrapPanel>
+        <CheckBox Content="允许匿名统计" IsChecked="{Binding AllowAnalytics, Mode=TwoWay}" />
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="Checkbox Group" Classes="sample-title" />
+        <TextBlock Text="全选控制子项选中状态" Classes="sample-caption" />
+        <CheckBox Content="全选" IsChecked="{Binding GroupSelectAll, Mode=TwoWay}" />
+        <StackPanel Margin="20,0,0,0" Spacing="4">
+          <CheckBox Content="选项 A" IsChecked="{Binding GroupItem1, Mode=TwoWay}" />
+          <CheckBox Content="选项 B" IsChecked="{Binding GroupItem2, Mode=TwoWay}" />
+          <CheckBox Content="选项 C" IsChecked="{Binding GroupItem3, Mode=TwoWay}" />
+        </StackPanel>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="半选 (Indeterminate)" Classes="sample-title" />
+        <TextBlock Text="IsThreeState 属性启用半选状态，点击可在三种状态间循环。" Classes="sample-caption" />
+        <CheckBox Content="半选状态" IsThreeState="True" IsChecked="{Binding AuditState, Mode=TwoWay}" />
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="禁用 (Disabled)" Classes="sample-title" />
+        <WrapPanel>
+          <CheckBox Content="禁用未选" IsEnabled="False" Margin="0,0,18,8" />
+          <CheckBox Content="禁用已选" IsEnabled="False" IsChecked="True" Margin="0,0,18,8" />
+          <CheckBox Content="禁用半选" IsThreeState="True" IsChecked="{x:Null}" IsEnabled="False" Margin="0,0,18,8" />
+        </WrapPanel>
+      </StackPanel>
+    </Border>
+  </StackPanel>
 </UserControl>

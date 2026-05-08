@@ -1,0 +1,25 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Style Selector="Expander">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Default}" />
+    <Setter Property="Padding" Value="16" />
+    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Medium}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
+  </Style>
+
+  <Style Selector="Expander /template/ ToggleButton#PART_toggle">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
+    <Setter Property="FontWeight" Value="{DynamicResource Luna.FontWeight.Medium}" />
+    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Title.Small}" />
+  </Style>
+
+  <Style Selector="Expander /template/ Border#PART_ContentBorder">
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Divider}" />
+    <Setter Property="BorderThickness" Value="0,1,0,0" />
+    <Setter Property="Margin" Value="0,12,0,0" />
+    <Setter Property="Padding" Value="0,12,0,0" />
+  </Style>
+</Styles>

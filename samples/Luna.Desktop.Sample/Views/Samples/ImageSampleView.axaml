@@ -1,0 +1,44 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             x:Class="Luna.Desktop.Sample.Views.Samples.ImageSampleView"
+             x:DataType="vm:ImageSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="图片占位" Classes="sample-title" />
+        <WrapPanel>
+          <Border Width="120" Height="120" Margin="0,0,12,8"
+                  Background="{DynamicResource Luna.Brush.Background.Component}"
+                  CornerRadius="{DynamicResource Luna.Radius.Default}"
+                  BorderBrush="{DynamicResource Luna.Brush.Border.Default}" BorderThickness="1">
+            <TextBlock Text="图片占位" HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" />
+          </Border>
+          <Border Width="120" Height="120" Margin="0,0,12,8"
+                  Background="{DynamicResource Luna.Brush.Background.Component}"
+                  CornerRadius="{DynamicResource Luna.Radius.Round}"
+                  BorderBrush="{DynamicResource Luna.Brush.Border.Default}" BorderThickness="1">
+            <TextBlock Text="圆形" HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" />
+          </Border>
+        </WrapPanel>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="加载状态" Classes="sample-title" />
+        <Border Width="160" Height="100" Margin="0,0,12,8"
+                Background="{DynamicResource Luna.Brush.Background.Page}"
+                CornerRadius="{DynamicResource Luna.Radius.Default}"
+                BorderBrush="{DynamicResource Luna.Brush.Border.Default}" BorderThickness="1">
+          <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="4">
+            <TextBlock Text="加载失败" HorizontalAlignment="Center" Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" />
+            <Button Content="重新加载" Classes="text small" HorizontalAlignment="Center" />
+          </StackPanel>
+        </Border>
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

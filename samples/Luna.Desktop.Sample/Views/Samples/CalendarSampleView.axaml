@@ -1,0 +1,21 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             x:Class="Luna.Desktop.Sample.Views.Samples.CalendarSampleView"
+             x:DataType="vm:CalendarSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="基础日历" Classes="sample-title" />
+        <Calendar HorizontalAlignment="Left" />
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="选择日期范围" Classes="sample-title" />
+        <CalendarDatePicker HorizontalAlignment="Left" Width="240" />
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

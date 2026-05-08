@@ -1,0 +1,39 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             x:Class="Luna.Desktop.Sample.Views.Samples.CollapseSampleView"
+             x:DataType="vm:CollapseSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="560" HorizontalAlignment="Left">
+        <TextBlock Text="基础折叠面板" Classes="sample-title" />
+        <Expander Header="面板一" IsExpanded="True">
+          <TextBlock Text="这里是面板一的内容。折叠面板可以承载文本、列表或其他控件。" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" TextWrapping="Wrap" />
+        </Expander>
+        <Expander Header="面板二">
+          <TextBlock Text="这里是面板二的内容。默认收起状态。" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" TextWrapping="Wrap" />
+        </Expander>
+        <Expander Header="面板三">
+          <StackPanel Spacing="8">
+            <TextBlock Text="面板三包含多个元素：" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <CheckBox Content="选项 A" />
+            <CheckBox Content="选项 B" />
+            <CheckBox Content="选项 C" />
+          </StackPanel>
+        </Expander>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="560" HorizontalAlignment="Left">
+        <TextBlock Text="不同展开方向" Classes="sample-title" />
+        <Expander Header="向下展开" ExpandDirection="Down" MaxWidth="400" HorizontalAlignment="Left">
+          <TextBlock Text="向下展开的内容。" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+        </Expander>
+        <Expander Header="向上展开" ExpandDirection="Up" MaxWidth="400" HorizontalAlignment="Left">
+          <TextBlock Text="向上展开的内容。" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+        </Expander>
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

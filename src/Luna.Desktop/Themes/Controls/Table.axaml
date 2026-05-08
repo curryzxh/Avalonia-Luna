@@ -1,0 +1,46 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Style Selector="DataGrid">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="RowBackground" Value="{DynamicResource Luna.Brush.Background.Container}" />
+    <Setter Property="AlternatingRowBackground" Value="{DynamicResource Luna.Brush.Background.Page}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
+    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Medium}" />
+    <Setter Property="GridLinesVisibility" Value="Horizontal" />
+    <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource Luna.Brush.Border.Divider}" />
+    <Setter Property="HeadersVisibility" Value="Column" />
+    <Setter Property="CanUserResizeColumns" Value="True" />
+    <Setter Property="CanUserReorderColumns" Value="True" />
+    <Setter Property="CanUserSortColumns" Value="True" />
+    <Setter Property="SelectionMode" Value="Extended" />
+    <Setter Property="RowHeight" Value="NaN" />
+    <Setter Property="MinRowHeight" Value="36" />
+  </Style>
+
+  <Style Selector="DataGrid /template/ DataGridColumnHeader">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Page}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Secondary}" />
+    <Setter Property="FontWeight" Value="{DynamicResource Luna.FontWeight.Medium}" />
+    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Small}" />
+    <Setter Property="Padding" Value="12,8" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Divider}" />
+    <Setter Property="BorderThickness" Value="0,0,1,1" />
+  </Style>
+
+  <Style Selector="DataGrid /template/ DataGridCell">
+    <Setter Property="Padding" Value="12,8" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Divider}" />
+    <Setter Property="BorderThickness" Value="0,0,0,0" />
+  </Style>
+
+  <Style Selector="DataGrid /template/ DataGridCell:selected">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand.Light}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="DataGrid /template/ DataGridRow:selected">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand.Light}" />
+  </Style>
+</Styles>

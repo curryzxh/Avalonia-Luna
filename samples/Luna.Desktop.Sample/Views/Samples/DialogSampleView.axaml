@@ -1,0 +1,35 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             xmlns:controls="using:Luna.Desktop.Controls"
+             x:Class="Luna.Desktop.Sample.Views.Samples.DialogSampleView"
+             x:DataType="vm:DialogSampleViewModel">
+  <ScrollViewer>
+    <StackPanel Spacing="16" Margin="0,0,0,24">
+      <controls:DialogHost />
+
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="基本用法" Classes="sample-title" />
+          <TextBlock Text="点击按钮弹出对话框。" Classes="sample-caption" />
+          <WrapPanel>
+            <Button Content="打开对话框" Command="{Binding ShowDialogCommand}" Margin="0,0,8,0" />
+            <Button Content="简单对话框" Command="{Binding ShowSimpleDialogCommand}" Classes="outline" />
+          </WrapPanel>
+        </StackPanel>
+      </Border>
+
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="自定义配置" Classes="sample-title" />
+          <StackPanel Spacing="8">
+            <TextBox Text="{Binding DialogTitle}" Watermark="标题" />
+            <TextBox Text="{Binding DialogContent}" Watermark="内容" AcceptsReturn="True" Height="60" />
+            <CheckBox Content="点击遮罩关闭" IsChecked="{Binding CloseOnOverlayClick}" />
+            <Button Content="使用自定义配置打开" Command="{Binding ShowDialogCommand}" Classes="primary" />
+          </StackPanel>
+        </StackPanel>
+      </Border>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

@@ -1,0 +1,17 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             xmlns:controls="using:Luna.Desktop.Controls"
+             x:Class="Luna.Desktop.Sample.Views.Samples.CommentSampleView"
+             x:DataType="vm:CommentSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="16" MaxWidth="560" HorizontalAlignment="Left">
+        <TextBlock Text="基础评论" Classes="sample-title" />
+        <controls:Comment Author="张三" AvatarText="Z" Content="这个功能非常好用，界面设计也很清晰。" Timestamp="2 小时前" />
+        <controls:Comment Author="李四" AvatarText="L" Content="建议增加暗色模式的支持，夜间使用更友好。" Timestamp="1 天前" />
+        <controls:Comment Author="王五" AvatarText="W" Content="数据加载速度很快，体验很流畅。期待后续版本的新功能！" Timestamp="3 天前" />
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

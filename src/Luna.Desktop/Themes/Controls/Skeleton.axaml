@@ -1,0 +1,62 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Luna.Desktop.Controls">
+  <Style Selector="controls|Skeleton">
+    <Setter Property="ClipToBounds" Value="True" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid>
+          <ContentPresenter Content="{TemplateBinding Content}"
+                            IsVisible="{TemplateBinding Loading, Converter={x:Static BoolConverters.Not}}" />
+          <StackPanel Name="PART_Placeholder"
+                      IsVisible="{TemplateBinding Loading}"
+                      Spacing="{TemplateBinding RowSpacing}">
+          </StackPanel>
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|Skeleton:text /template/ StackPanel#PART_Placeholder">
+    <Setter Property="Children">
+      <Template>
+        <Border Height="16" Width="240"
+                CornerRadius="{DynamicResource Luna.Radius.Default}"
+                Background="{DynamicResource Luna.Brush.Background.Component}" />
+      </Template>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|Skeleton:avatar /template/ StackPanel#PART_Placeholder">
+    <Setter Property="Children">
+      <Template>
+        <StackPanel Orientation="Horizontal" Spacing="12">
+          <Border Width="48" Height="48"
+                  CornerRadius="{DynamicResource Luna.Radius.Round}"
+                  Background="{DynamicResource Luna.Brush.Background.Component}" />
+          <StackPanel Spacing="8" VerticalAlignment="Center" Width="160">
+            <Border Height="16" CornerRadius="{DynamicResource Luna.Radius.Default}"
+                    Background="{DynamicResource Luna.Brush.Background.Component}" />
+            <Border Height="12" Width="100" CornerRadius="{DynamicResource Luna.Radius.Default}"
+                    Background="{DynamicResource Luna.Brush.Background.Component}" />
+          </StackPanel>
+        </StackPanel>
+      </Template>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|Skeleton:paragraph /template/ StackPanel#PART_Placeholder">
+    <Setter Property="Children">
+      <Template>
+        <StackPanel Spacing="12">
+          <Border Height="16" CornerRadius="{DynamicResource Luna.Radius.Default}"
+                  Background="{DynamicResource Luna.Brush.Background.Component}" />
+          <Border Height="16" CornerRadius="{DynamicResource Luna.Radius.Default}"
+                  Background="{DynamicResource Luna.Brush.Background.Component}" />
+          <Border Height="16" Width="180" CornerRadius="{DynamicResource Luna.Radius.Default}"
+                  Background="{DynamicResource Luna.Brush.Background.Component}" />
+        </StackPanel>
+      </Template>
+    </Setter>
+  </Style>
+</Styles>

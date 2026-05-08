@@ -1,0 +1,59 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             x:Class="Luna.Desktop.Sample.Views.Samples.TabsSampleView"
+             x:DataType="vm:TabsSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="默认标签页" Classes="sample-title" />
+        <TextBlock Text="TabControl 添加 Classes=&quot;tabs&quot; 启用 Luna 样式。" Classes="sample-caption" />
+        <TabControl Classes="tabs" SelectedIndex="{Binding SelectedTab}">
+          <TabItem Header="标签一">
+            <TextBlock Text="标签一的内容区域" Margin="16" />
+          </TabItem>
+          <TabItem Header="标签二">
+            <TextBlock Text="标签二的内容区域" Margin="16" />
+          </TabItem>
+          <TabItem Header="标签三">
+            <TextBlock Text="标签三的内容区域" Margin="16" />
+          </TabItem>
+        </TabControl>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="卡片样式标签页" Classes="sample-title" />
+        <TabControl Classes="tabs card">
+          <TabItem Header="用户管理">
+            <TextBlock Text="用户管理面板" Margin="16" />
+          </TabItem>
+          <TabItem Header="角色管理">
+            <TextBlock Text="角色管理面板" Margin="16" />
+          </TabItem>
+          <TabItem Header="权限配置">
+            <TextBlock Text="权限配置面板" Margin="16" />
+          </TabItem>
+        </TabControl>
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12">
+        <TextBlock Text="禁用标签项" Classes="sample-title" />
+        <TabControl Classes="tabs">
+          <TabItem Header="可用标签">
+            <TextBlock Text="内容" Margin="16" />
+          </TabItem>
+          <TabItem Header="禁用标签" IsEnabled="False">
+            <TextBlock Text="不可选" Margin="16" />
+          </TabItem>
+          <TabItem Header="另一个标签">
+            <TextBlock Text="内容" Margin="16" />
+          </TabItem>
+        </TabControl>
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

@@ -1,0 +1,66 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Luna.Desktop.Controls">
+  <Style Selector="controls|DialogHost">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Panel>
+          <Border Name="PART_Overlay"
+                  Background="{DynamicResource Luna.Brush.Mask}"
+                  IsVisible="{TemplateBinding IsOpen}"
+                  ZIndex="1000" />
+          <Border Name="PART_DialogPanel"
+                  Background="{DynamicResource Luna.Brush.Background.Container}"
+                  CornerRadius="{DynamicResource Luna.Radius.Large}"
+                  BoxShadow="{DynamicResource Luna.Shadow.Popup}"
+                  Width="{TemplateBinding DialogWidth}"
+                  MaxWidth="90%"
+                  MaxHeight="80%"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  IsVisible="{TemplateBinding IsOpen}"
+                  ZIndex="1001">
+            <Grid RowDefinitions="Auto,*,Auto">
+              <Grid Grid.Row="0" ColumnDefinitions="*,Auto"
+                    Padding="20,16,12,0">
+                <TextBlock Grid.Column="0"
+                           Text="{TemplateBinding Title}"
+                           FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                           FontSize="{DynamicResource Luna.FontSize.Title.Small}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                           VerticalAlignment="Center"
+                           IsVisible="{TemplateBinding Title, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
+                <Button Grid.Column="1"
+                        Name="PART_CloseButton"
+                        Content="&#xE711;"
+                        FontFamily="Segoe MDL2 Assets"
+                        FontSize="12"
+                        Classes="text small"
+                        VerticalAlignment="Top"
+                        IsVisible="{TemplateBinding ShowCloseButton}" />
+              </Grid>
+
+              <ScrollViewer Grid.Row="1" Padding="20,12,20,12">
+                <ContentPresenter Content="{TemplateBinding Content}" />
+              </ScrollViewer>
+
+              <StackPanel Grid.Row="2"
+                          Orientation="Horizontal"
+                          HorizontalAlignment="Right"
+                          Spacing="8"
+                          Padding="20,0,20,16">
+                <Button Name="PART_CancelButton"
+                        Content="{TemplateBinding CancelText}"
+                        IsVisible="{TemplateBinding CancelText, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
+                <Button Name="PART_ConfirmButton"
+                        Content="{TemplateBinding ConfirmText}"
+                        Classes="primary"
+                        IsVisible="{TemplateBinding ConfirmText, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
+              </StackPanel>
+            </Grid>
+          </Border>
+        </Panel>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>

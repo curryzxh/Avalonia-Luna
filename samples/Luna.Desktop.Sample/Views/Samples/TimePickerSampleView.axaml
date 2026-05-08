@@ -1,0 +1,22 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             x:Class="Luna.Desktop.Sample.Views.Samples.TimePickerSampleView"
+             x:DataType="vm:TimePickerSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="320" HorizontalAlignment="Left">
+        <TextBlock Text="基础时间选择" Classes="sample-title" />
+        <TimePicker SelectedTime="{Binding SelectedTime, Mode=TwoWay}"
+                    HorizontalAlignment="Stretch" />
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="400" HorizontalAlignment="Left">
+        <TextBlock Text="占位说明" Classes="sample-title" />
+        <TextBlock Text="Luna TimePicker 自定义控件将在后续迭代中实现，当前使用 Avalonia 原生 TimePicker 搭配 Luna 主题。后续将支持滚动选择、快捷时间和自定义格式。" Classes="sample-caption" />
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

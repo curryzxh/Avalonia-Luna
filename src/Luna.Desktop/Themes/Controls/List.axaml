@@ -1,0 +1,20 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Style Selector="ItemsControl.list">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Default}" />
+    <Setter Property="Padding" Value="0" />
+  </Style>
+
+  <Style Selector="ItemsControl.list Border.list-item">
+    <Setter Property="Padding" Value="12,8" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Divider}" />
+    <Setter Property="BorderThickness" Value="0,0,0,1" />
+  </Style>
+
+  <Style Selector="ItemsControl.list Border.list-item:last-child">
+    <Setter Property="BorderThickness" Value="0" />
+  </Style>
+</Styles>

@@ -1,0 +1,34 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             x:Class="Luna.Desktop.Sample.Views.Samples.SwiperSampleView"
+             x:DataType="vm:SwiperSampleViewModel">
+  <ScrollViewer>
+    <StackPanel Spacing="16" Margin="0,0,0,24">
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="Swiper 轮播" Classes="sample-title" />
+          <Border Background="{DynamicResource Luna.Brush.Background.Component}"
+                  CornerRadius="{DynamicResource Luna.Radius.Default}"
+                  Height="200"
+                  HorizontalAlignment="Stretch">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
+              <TextBlock Text="&#xE722;"
+                         FontFamily="Segoe MDL2 Assets"
+                         FontSize="32"
+                         HorizontalAlignment="Center"
+                         Foreground="{DynamicResource Luna.Brush.Text.Placeholder}" />
+              <TextBlock Text="Swiper 组件待实现"
+                         Foreground="{DynamicResource Luna.Brush.Text.Placeholder}"
+                         HorizontalAlignment="Center" />
+              <TextBlock Text="当前索引: 0"
+                         Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                         HorizontalAlignment="Center"
+                         Classes="sample-caption" />
+            </StackPanel>
+          </Border>
+        </StackPanel>
+      </Border>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

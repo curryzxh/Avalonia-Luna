@@ -1,3 +1,4 @@
+using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Luna.Desktop.Sample.ViewModels.Samples;
@@ -13,4 +14,16 @@ public partial class CheckBoxSampleViewModel()
 
     [ObservableProperty]
     private bool? auditState;
+
+    [ObservableProperty]
+    private bool groupSelectAll;
+
+    [ObservableProperty]
+    private bool groupItem1 = true;
+
+    [ObservableProperty]
+    private bool groupItem2;
+
+    [ObservableProperty]
+    private bool groupItem3 = true;
 }

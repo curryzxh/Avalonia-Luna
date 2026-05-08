@@ -1,0 +1,60 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Luna.Desktop.Controls">
+  <Style Selector="controls|MessageHost">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border Background="Transparent"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                IsVisible="{TemplateBinding IsOpen}"
+                ZIndex="2000">
+          <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                  CornerRadius="{DynamicResource Luna.Radius.Default}"
+                  BoxShadow="{DynamicResource Luna.Shadow.Popup}"
+                  Padding="12,10"
+                  MinWidth="300"
+                  MaxWidth="500"
+                  HorizontalAlignment="Center">
+            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="8">
+              <TextBlock Grid.Column="0"
+                         VerticalAlignment="Center"
+                         FontSize="16"
+                         Foreground="{TemplateBinding Foreground}" />
+              <TextBlock Grid.Column="1"
+                         Text="{TemplateBinding Content}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}"
+                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                         VerticalAlignment="Center"
+                         TextWrapping="Wrap" />
+              <Button Grid.Column="2"
+                      Name="PART_CloseButton"
+                      Content="&#xE711;"
+                      FontFamily="Segoe MDL2 Assets"
+                      FontSize="10"
+                      Classes="text small"
+                      VerticalAlignment="Center"
+                      IsVisible="{TemplateBinding ShowClose}" />
+            </Grid>
+          </Border>
+        </Border>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|MessageHost:info">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="controls|MessageHost:success">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Success}" />
+  </Style>
+
+  <Style Selector="controls|MessageHost:warning">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Warning}" />
+  </Style>
+
+  <Style Selector="controls|MessageHost:error">
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Error}" />
+  </Style>
+</Styles>

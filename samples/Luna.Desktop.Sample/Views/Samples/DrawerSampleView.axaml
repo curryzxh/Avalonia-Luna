@@ -1,0 +1,36 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             xmlns:controls="using:Luna.Desktop.Controls"
+             x:Class="Luna.Desktop.Sample.Views.Samples.DrawerSampleView"
+             x:DataType="vm:DrawerSampleViewModel">
+  <ScrollViewer>
+    <StackPanel Spacing="16" Margin="0,0,0,24">
+      <controls:DrawerHost />
+
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="不同方向" Classes="sample-title" />
+          <TextBlock Text="点击按钮从不同方向打开抽屉。" Classes="sample-caption" />
+          <WrapPanel>
+            <Button Content="从右侧打开" Command="{Binding ShowRightDrawerCommand}" Margin="0,0,8,0" />
+            <Button Content="从左侧打开" Command="{Binding ShowLeftDrawerCommand}" Margin="0,0,8,0" />
+            <Button Content="从上方打开" Command="{Binding ShowTopDrawerCommand}" Margin="0,0,8,0" />
+            <Button Content="从下方打开" Command="{Binding ShowBottomDrawerCommand}" />
+          </WrapPanel>
+        </StackPanel>
+      </Border>
+
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="自定义内容" Classes="sample-title" />
+          <StackPanel Spacing="8">
+            <TextBox Text="{Binding DrawerTitle}" Watermark="抽屉标题" />
+            <TextBox Text="{Binding DrawerContent}" Watermark="抽屉内容" AcceptsReturn="True" Height="60" />
+          </StackPanel>
+          <Button Content="打开自定义抽屉" Command="{Binding ShowRightDrawerCommand}" Classes="primary" />
+        </StackPanel>
+      </Border>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

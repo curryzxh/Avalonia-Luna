@@ -7,4 +7,19 @@ public partial class SwitchSampleViewModel()
 {
     [ObservableProperty]
     private bool realtimePreview = true;
+
+    [ObservableProperty]
+    private bool smallSwitch;
+
+    [ObservableProperty]
+    private bool mediumSwitch = true;
+
+    [ObservableProperty]
+    private bool largeSwitch;
+
+    [ObservableProperty]
+    private bool labelSwitch;
+
+    [ObservableProperty]
+    private bool customLabelSwitch = true;
 }

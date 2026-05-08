@@ -1,0 +1,26 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             x:Class="Luna.Desktop.Sample.Views.Samples.AutoCompleteSampleView"
+             x:DataType="vm:AutoCompleteSampleViewModel">
+  <StackPanel Spacing="16">
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="400" HorizontalAlignment="Left">
+        <TextBlock Text="基础自动完成" Classes="sample-title" />
+        <TextBlock Text="使用 Avalonia 原生 AutoCompleteBox 搭配 Luna 主题。" Classes="sample-caption" />
+        <AutoCompleteBox ItemsSource="{Binding Suggestions}"
+                         Text="{Binding SearchText, Mode=TwoWay}"
+                         PlaceholderText="请输入水果名称"
+                         MinimumPrefixLength="0"
+                         FilterMode="Contains" />
+      </StackPanel>
+    </Border>
+
+    <Border Classes="sample-card">
+      <StackPanel Spacing="12" MaxWidth="400" HorizontalAlignment="Left">
+        <TextBlock Text="自定义建议" Classes="sample-title" />
+        <TextBlock Text="Luna 自定义 AutoComplete 控件将在后续迭代中提供更丰富的功能（高亮匹配、异步搜索、自定义模板）。" Classes="sample-caption" />
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

@@ -1,3 +1,4 @@
+using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Luna.Desktop.Sample.ViewModels.Samples;
@@ -7,4 +8,14 @@ public partial class RadioSampleViewModel()
 {
     [ObservableProperty]
     private string density = "Medium";
+
+    [ObservableProperty]
+    private string color = "Red";
+
+    [ObservableProperty]
+    private string size = "M";
+
+    public ObservableCollection<string> Colors { get; } = ["Red", "Green", "Blue", "Yellow"];
+
+    public ObservableCollection<string> Sizes { get; } = ["XS", "S", "M", "L", "XL"];
 }

@@ -3,47 +3,135 @@
              xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
              x:Class="Luna.Desktop.Sample.Views.Samples.NotificationSampleView"
              x:DataType="vm:NotificationSampleViewModel">
-  <StackPanel Spacing="16">
-    <Border Classes="sample-card">
-      <StackPanel Spacing="12">
-        <TextBlock Text="Notification 类型" Classes="sample-title" />
-        <WrapPanel>
-          <Border Classes="notification-card" Margin="0,0,14,12">
-            <StackPanel Spacing="5">
-              <TextBlock Text="信息通知" FontWeight="{DynamicResource Luna.FontWeight.SemiBold}" Foreground="{DynamicResource Luna.Brush.Brand}" />
-              <TextBlock Text="这是一条 info 消息通知。" Classes="sample-caption" />
-            </StackPanel>
-          </Border>
-          <Border Classes="notification-card" BorderBrush="{DynamicResource Luna.Brush.Success}" Margin="0,0,14,12">
-            <StackPanel Spacing="5">
-              <TextBlock Text="提交成功" FontWeight="{DynamicResource Luna.FontWeight.SemiBold}" Foreground="{DynamicResource Luna.Brush.Success}" />
-              <TextBlock Text="数据已保存，可以继续下一步。" Classes="sample-caption" />
-            </StackPanel>
-          </Border>
-          <Border Classes="notification-card" BorderBrush="{DynamicResource Luna.Brush.Warning}" Margin="0,0,14,12">
-            <StackPanel Spacing="5">
-              <TextBlock Text="需要注意" FontWeight="{DynamicResource Luna.FontWeight.SemiBold}" Foreground="{DynamicResource Luna.Brush.Warning}" />
-              <TextBlock Text="部分配置还没有完成。" Classes="sample-caption" />
-            </StackPanel>
-          </Border>
-        </WrapPanel>
-      </StackPanel>
-    </Border>
+  <ScrollViewer>
+    <StackPanel Spacing="16" Margin="0,0,0,24">
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="通知类型" Classes="sample-title" />
+          <TextBlock Text="点击按钮在右上角弹出对应类型的通知。" Classes="sample-caption" />
+          <WrapPanel>
+            <Button Content="信息通知" Command="{Binding ShowInfoNotificationCommand}" Margin="0,0,8,0" />
+            <Button Content="成功通知" Command="{Binding ShowSuccessNotificationCommand}" Classes="success" Margin="0,0,8,0" />
+            <Button Content="警告通知" Command="{Binding ShowWarningNotificationCommand}" Classes="warning" Margin="0,0,8,0" />
+            <Button Content="错误通知" Command="{Binding ShowErrorNotificationCommand}" Classes="danger" Margin="0,0,8,0" />
+          </WrapPanel>
+        </StackPanel>
+      </Border>
 
-    <Border Classes="sample-card">
-      <StackPanel Spacing="12">
-        <TextBlock Text="关闭操作" Classes="sample-title" />
-        <Button Content="显示 / 隐藏内联通知" Command="{Binding ToggleInlineNotificationCommand}" HorizontalAlignment="Left" />
-        <Border Classes="notification-card" IsVisible="{Binding ShowInlineNotification}">
-          <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
-            <StackPanel Spacing="5">
-              <TextBlock Text="标题名称" FontWeight="{DynamicResource Luna.FontWeight.SemiBold}" />
-              <TextBlock Text="这是一条可关闭的消息通知。" Classes="sample-caption" />
-            </StackPanel>
-            <Button Grid.Column="1" Content="关闭" Classes="text small" Command="{Binding ToggleInlineNotificationCommand}" />
-          </Grid>
-        </Border>
-      </StackPanel>
-    </Border>
-  </StackPanel>
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="通知位置" Classes="sample-title" />
+          <TextBlock Text="选择通知弹出的位置。" Classes="sample-caption" />
+          <StackPanel Orientation="Horizontal" Spacing="8">
+            <RadioButton Content="右上" GroupName="NotifPosition" IsChecked="True" />
+            <RadioButton Content="左上" GroupName="NotifPosition" />
+            <RadioButton Content="右下" GroupName="NotifPosition" />
+            <RadioButton Content="左下" GroupName="NotifPosition" />
+          </StackPanel>
+        </StackPanel>
+      </Border>
+
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="自动关闭时间" Classes="sample-title" />
+          <StackPanel Orientation="Horizontal" Spacing="8">
+            <TextBlock Text="Duration：" VerticalAlignment="Center" />
+            <Slider Minimum="0" Maximum="30" Value="{Binding DurationSeconds}" Width="200" />
+            <TextBlock Text="{Binding DurationSeconds, StringFormat='{}{0:F0}s'}" VerticalAlignment="Center" />
+          </StackPanel>
+          <TextBlock Text="设为 0 表示不自动关闭。" Classes="sample-caption" />
+        </StackPanel>
+      </Border>
+
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <StackPanel Orientation="Horizontal" Spacing="8">
+            <TextBlock Text="活跃通知" Classes="sample-title" />
+            <TextBlock Text="{Binding NotificationCount, StringFormat='({0})'}"
+                       Classes="sample-caption" VerticalAlignment="Center" />
+          </StackPanel>
+          <Button Content="清除所有" Command="{Binding ClearAllNotificationsCommand}"
+                  Classes="outline small" HorizontalAlignment="Left" />
+          <ItemsControl ItemsSource="{Binding ActiveNotifications}">
+            <ItemsControl.ItemTemplate>
+              <DataTemplate>
+                <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                        BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                        BorderThickness="1"
+                        CornerRadius="{DynamicResource Luna.Radius.Default}"
+                        Padding="12"
+                        Margin="0,0,0,8">
+                  <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                    <StackPanel Grid.Column="0" Spacing="4">
+                      <TextBlock Text="{Binding Title}"
+                                 FontWeight="{DynamicResource Luna.FontWeight.SemiBold}" />
+                      <TextBlock Text="{Binding Content}" Classes="sample-caption"
+                                 TextWrapping="Wrap" />
+                    </StackPanel>
+                    <TextBlock Grid.Column="1"
+                               Text="{Binding Timestamp, StringFormat='{}{0:HH:mm:ss}'}"
+                               Classes="sample-caption"
+                               VerticalAlignment="Top" />
+                  </Grid>
+                </Border>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </StackPanel>
+      </Border>
+
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="静态样式展示" Classes="sample-title" />
+          <TextBlock Text="以下为内联静态展示，不受交互控制。" Classes="sample-caption" />
+          <WrapPanel>
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                    BorderBrush="{DynamicResource Luna.Brush.Brand}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource Luna.Radius.Default}"
+                    Padding="12" Margin="0,0,12,8" MinWidth="280">
+              <StackPanel Spacing="4">
+                <TextBlock Text="信息通知" FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                           Foreground="{DynamicResource Luna.Brush.Brand}" />
+                <TextBlock Text="这是一条 info 消息通知。" Classes="sample-caption" />
+              </StackPanel>
+            </Border>
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                    BorderBrush="{DynamicResource Luna.Brush.Success}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource Luna.Radius.Default}"
+                    Padding="12" Margin="0,0,12,8" MinWidth="280">
+              <StackPanel Spacing="4">
+                <TextBlock Text="提交成功" FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                           Foreground="{DynamicResource Luna.Brush.Success}" />
+                <TextBlock Text="数据已保存，可以继续下一步。" Classes="sample-caption" />
+              </StackPanel>
+            </Border>
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                    BorderBrush="{DynamicResource Luna.Brush.Warning}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource Luna.Radius.Default}"
+                    Padding="12" Margin="0,0,12,8" MinWidth="280">
+              <StackPanel Spacing="4">
+                <TextBlock Text="需要注意" FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                           Foreground="{DynamicResource Luna.Brush.Warning}" />
+                <TextBlock Text="部分配置还没有完成。" Classes="sample-caption" />
+              </StackPanel>
+            </Border>
+            <Border Background="{DynamicResource Luna.Brush.Background.Container}"
+                    BorderBrush="{DynamicResource Luna.Brush.Error}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource Luna.Radius.Default}"
+                    Padding="12" MinWidth="280">
+              <StackPanel Spacing="4">
+                <TextBlock Text="操作失败" FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                           Foreground="{DynamicResource Luna.Brush.Error}" />
+                <TextBlock Text="网络连接异常，请稍后重试。" Classes="sample-caption" />
+              </StackPanel>
+            </Border>
+          </WrapPanel>
+        </StackPanel>
+      </Border>
+    </StackPanel>
+  </ScrollViewer>
 </UserControl>

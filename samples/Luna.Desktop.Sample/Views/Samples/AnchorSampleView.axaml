@@ -7,30 +7,49 @@
   <StackPanel Spacing="16">
     <Border Classes="sample-card">
       <StackPanel Spacing="12">
-        <TextBlock Text="锚点导航" Classes="sample-title" />
-        <TextBlock Text="Anchor 提供页面内快速跳转定位功能，左侧导航 + 右侧内容区域。" Classes="sample-caption" />
-        <Border Height="300" BorderBrush="{DynamicResource Luna.Brush.Border.Default}" BorderThickness="1"
+        <TextBlock Text="基本锚点" Classes="sample-title" />
+        <TextBlock Text="Anchor 提供页面内快速跳转定位功能，左侧导航链接 + 右侧滚动内容区域。点击链接平滑滚动到对应章节，滚动内容自动高亮当前章节。"
+                   Classes="sample-caption" TextWrapping="Wrap" />
+        <Border Height="400"
+                BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                BorderThickness="1"
                 CornerRadius="{DynamicResource Luna.Radius.Default}">
-          <controls:Anchor>
-            <ScrollViewer>
-              <StackPanel Spacing="24" Margin="16">
-                <TextBlock Text="第一节：概述" FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
-                           Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
-                <TextBlock Text="Luna Desktop 是一套基于 Avalonia UI 的桌面端组件库，遵循 TDesign 设计规范。提供丰富的控件、主题和布局支持，帮助开发者快速构建美观的桌面应用。"
-                           TextWrapping="Wrap" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          <Grid ColumnDefinitions="180,*">
+            <controls:Anchor Name="PART_Anchor"
+                             ItemsSource="{Binding Sections}"
+                             DisplayMemberPath="Title">
+              <controls:Anchor.ItemContainerTheme>
+                <ControlTheme TargetType="controls:AnchorItem">
+                  <Setter Property="AnchorId" Value="{Binding AnchorId}" />
+                </ControlTheme>
+              </controls:Anchor.ItemContainerTheme>
+            </controls:Anchor>
 
-                <TextBlock Text="第二节：特性" FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
-                           Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
-                <TextBlock Text="支持明暗主题切换、Token 化设计、MVVM 绑定、响应式布局。覆盖基础、表单、数据展示、反馈和导航五大控件域。"
-                           TextWrapping="Wrap" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-
-                <TextBlock Text="第三节：快速开始" FontSize="{DynamicResource Luna.FontSize.Title.Medium}"
-                           Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
-                <TextBlock Text="通过 NuGet 安装 Luna.Desktop 包，在 App.axaml 中引用主题资源，即可开始使用所有控件。"
-                           TextWrapping="Wrap" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
-              </StackPanel>
+            <ScrollViewer Name="PART_ScrollViewer" Grid.Column="1"
+                          Margin="24,16"
+                          HorizontalScrollBarVisibility="Disabled"
+                          VerticalScrollBarVisibility="Auto">
+              <ItemsControl ItemsSource="{Binding Sections}">
+                <ItemsControl.ItemTemplate>
+                  <DataTemplate x:DataType="vm:AnchorSection">
+                    <StackPanel Spacing="8"
+                                Margin="0,0,0,32"
+                                controls:Anchor.AnchorId="{Binding AnchorId}">
+                      <TextBlock Text="{Binding Title}"
+                                 FontSize="{DynamicResource Luna.FontSize.Title.Small}"
+                                 FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                                 Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+                      <TextBlock Text="{Binding Description}"
+                                 TextWrapping="Wrap"
+                                 FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                                 Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                                 LineHeight="22" />
+                    </StackPanel>
+                  </DataTemplate>
+                </ItemsControl.ItemTemplate>
+              </ItemsControl>
             </ScrollViewer>
-          </controls:Anchor>
+          </Grid>
         </Border>
       </StackPanel>
     </Border>

@@ -19,4 +19,10 @@ public partial class WatermarkSampleViewModel : SampleDetailViewModelBase
 
     [ObservableProperty]
     private double _watermarkGap = 120;
+
+    [ObservableProperty]
+    private double _watermarkFontSize = 14;
+
+    [ObservableProperty]
+    private string _multiLineText = "Luna Desktop\nAvalonia UI";
 }

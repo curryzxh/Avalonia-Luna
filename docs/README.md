@@ -24,6 +24,7 @@
 ## 指南与过程文档
 
 - [TDesign Mobile 示例复刻指南](guides/tdesign-mobile-sample-authoring-guide.md)：沉淀从 TDesign Mobile React 官方示例源码复刻 Luna 移动示例页的流程、映射原则和占位策略。
+- [TDesign Desktop 示例复刻指南](guides/tdesign-desktop-sample-authoring-guide.md)：沉淀从 TDesign React 桌面端示例和 Ursa.Avalonia 复刻 Luna 桌面示例页的流程、映射原则和验收要求。
 - [Features 目录说明](features/README.md)：说明单次需求或改造文档如何在 `docs/features/` 中组织。
 - [Features 索引](features/index.md)：汇总当前功能目录与专题工作入口。
 

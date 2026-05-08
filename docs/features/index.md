@@ -5,20 +5,22 @@
 ## 使用说明
 
 - 新需求优先按 `YYYYMMDD-主题短名/` 新建目录。
-- 每个功能目录建议至少包含 `README.md`、`spec.md`、`plan.md`。
+- 每个功能目录默认只包含 `spec.md` 和 `plan.md`。
 - 已完成或中断的需求也建议保留目录，仅在文档内标注状态。
 - 状态约定：`⏳ 未完成` 表示需求或方案已建立但尚未确认开发完成；`✅ 已完成` 表示需求已交付完成。
 
 ## 模板
 
-- [_template](_template/README.md)
+- [_template/spec.md](_template/spec.md)
+- [_template/plan.md](_template/plan.md)
 
 ## 功能目录
 
-- 当前暂无已登记的功能目录。
-- 后续新增功能目录后，在这里补充状态、主题和主要文档入口。
+| 目录 | 状态 | 主题 | 主要文档 |
+| --- | --- | --- | --- |
+| [20260508-luna-desktop-control-catalog](20260508-luna-desktop-control-catalog/spec.md) | ⏳ 未完成 | Luna.Desktop 控件库与桌面示例工作台规划 | [spec.md](20260508-luna-desktop-control-catalog/spec.md) / [plan.md](20260508-luna-desktop-control-catalog/plan.md) |
 
 ## 维护建议
 
 - 新增功能目录时，同步补充本索引。
-- 如果某个目录只有阶段性方案文件，建议后续补齐 `README.md`、`spec.md`、`plan.md`。
+- 如果某个目录只有单文件方案，建议后续补齐 `spec.md` 或 `plan.md`。

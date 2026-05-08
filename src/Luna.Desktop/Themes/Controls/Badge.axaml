@@ -1,0 +1,37 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Luna.Desktop.Controls">
+  <Style Selector="controls|DesktopBadge">
+    <Setter Property="MinHeight" Value="22" />
+    <Setter Property="Padding" Value="8,2" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border Background="{DynamicResource Luna.Brush.Error}"
+                CornerRadius="{DynamicResource Luna.Radius.Round}"
+                Padding="{TemplateBinding Padding}">
+          <TextBlock Text="{TemplateBinding Text}"
+                     Foreground="{DynamicResource Luna.Brush.Neutral.White}"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                     FontWeight="{DynamicResource Luna.FontWeight.Medium}"
+                     VerticalAlignment="Center" />
+        </Border>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="controls|DesktopBadge.brand">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border Background="{DynamicResource Luna.Brush.Brand}"
+                CornerRadius="{DynamicResource Luna.Radius.Round}"
+                Padding="{TemplateBinding Padding}">
+          <TextBlock Text="{TemplateBinding Text}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Anti}"
+                     FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                     FontWeight="{DynamicResource Luna.FontWeight.Medium}"
+                     VerticalAlignment="Center" />
+        </Border>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>

@@ -1,29 +1,21 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="using:Luna.Desktop.Controls">
+  <Styles.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="avares://Luna.Desktop/Themes/Index.axaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </Styles.Resources>
+
+  <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/Button.axaml" />
+  <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/TextBox.axaml" />
+  <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/Badge.axaml" />
+
   <Design.PreviewWith>
     <Border Padding="24">
       <controls:DesktopBadge Text="Desktop control" />
     </Border>
   </Design.PreviewWith>
-
-  <Style Selector="controls|DesktopBadge">
-    <Setter Property="MinHeight" Value="28" />
-    <Setter Property="Padding" Value="10,4" />
-    <Setter Property="Template">
-      <ControlTemplate>
-        <Border Background="#EEF4FF"
-                BorderBrush="#7AA7FF"
-                BorderThickness="1"
-                CornerRadius="6"
-                Padding="{TemplateBinding Padding}">
-          <TextBlock Text="{TemplateBinding Text}"
-                     Foreground="#14366F"
-                     FontSize="13"
-                     FontWeight="SemiBold"
-                     VerticalAlignment="Center" />
-        </Border>
-      </ControlTemplate>
-    </Setter>
-  </Style>
 </Styles>

@@ -1,39 +1,203 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:model="using:Luna.Desktop.Sample.Models"
         xmlns:vm="using:Luna.Desktop.Sample.ViewModels"
-        xmlns:luna="clr-namespace:Luna.Desktop.Controls;assembly=Luna.Desktop"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="960" d:DesignHeight="560"
+        mc:Ignorable="d"
+        d:DesignWidth="1180"
+        d:DesignHeight="760"
         x:Class="Luna.Desktop.Sample.Views.MainWindow"
+        x:Name="RootWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Width="960"
-        Height="560"
+        Width="1180"
+        Height="760"
+        MinWidth="920"
+        MinHeight="620"
         Title="Luna Desktop Sample">
+  <Design.DataContext>
+    <vm:MainWindowViewModel />
+  </Design.DataContext>
 
-    <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <vm:MainWindowViewModel/>
-    </Design.DataContext>
+  <Window.Styles>
+    <Style Selector="Border.shell-top">
+      <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Divider}" />
+      <Setter Property="BorderThickness" Value="0,0,0,1" />
+      <Setter Property="Padding" Value="24,18" />
+    </Style>
 
-    <Grid RowDefinitions="Auto,*" Margin="32" RowSpacing="24">
-        <StackPanel Spacing="8">
-            <TextBlock Text="{Binding Greeting}" FontSize="28" FontWeight="SemiBold" />
-            <TextBlock Text="Desktop custom controls playground" Foreground="{DynamicResource TextControlPlaceholderForeground}" />
+    <Style Selector="Border.shell-sidebar">
+      <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Divider}" />
+      <Setter Property="BorderThickness" Value="0,0,1,0" />
+      <Setter Property="Padding" Value="18" />
+    </Style>
+
+    <Style Selector="Border.sample-card">
+      <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Divider}" />
+      <Setter Property="BorderThickness" Value="1" />
+      <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Large}" />
+      <Setter Property="Padding" Value="{DynamicResource Luna.Padding.Card}" />
+    </Style>
+
+    <Style Selector="TextBlock.sample-title">
+      <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Title.Small}" />
+      <Setter Property="FontWeight" Value="{DynamicResource Luna.FontWeight.SemiBold}" />
+      <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
+    </Style>
+
+    <Style Selector="TextBlock.sample-caption">
+      <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Small}" />
+      <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Secondary}" />
+      <Setter Property="TextWrapping" Value="Wrap" />
+    </Style>
+
+    <Style Selector="Border.tag">
+      <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Component}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
+      <Setter Property="BorderThickness" Value="1" />
+      <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Default}" />
+      <Setter Property="Padding" Value="10,3" />
+    </Style>
+
+    <Style Selector="Border.tag.primary">
+      <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand.Subtle}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand}" />
+    </Style>
+
+    <Style Selector="Border.tag.success">
+      <Setter Property="Background" Value="{DynamicResource Luna.Brush.Success.Light}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Success}" />
+    </Style>
+
+    <Style Selector="Border.tag.warning">
+      <Setter Property="Background" Value="{DynamicResource Luna.Brush.Warning.Light}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Warning}" />
+    </Style>
+
+    <Style Selector="Border.avatar">
+      <Setter Property="Width" Value="40" />
+      <Setter Property="Height" Value="40" />
+      <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Round}" />
+      <Setter Property="Background" Value="{DynamicResource Luna.Brush.Brand}" />
+    </Style>
+
+    <Style Selector="Border.avatar.round">
+      <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Large}" />
+    </Style>
+
+    <Style Selector="Border.notification-card">
+      <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
+      <Setter Property="BorderThickness" Value="1" />
+      <Setter Property="BoxShadow" Value="{DynamicResource Luna.Shadow.Popup}" />
+      <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Large}" />
+      <Setter Property="Padding" Value="14" />
+      <Setter Property="MinWidth" Value="280" />
+    </Style>
+  </Window.Styles>
+
+  <Grid RowDefinitions="Auto,*"
+        Background="{DynamicResource Luna.Brush.Background.Page}">
+    <Border Grid.Row="0" Classes="shell-top">
+      <Grid ColumnDefinitions="*,Auto" ColumnSpacing="16">
+        <StackPanel Spacing="4">
+          <TextBlock Text="{Binding ShellTitle}"
+                     FontSize="{DynamicResource Luna.FontSize.Title.Large}"
+                     FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+          <TextBlock Text="{Binding ShellSubtitle}"
+                     Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
         </StackPanel>
 
-        <Border Grid.Row="1"
-                BorderBrush="{DynamicResource SystemControlForegroundBaseLowBrush}"
-                BorderThickness="1"
-                CornerRadius="8"
-                Padding="24">
-            <StackPanel Spacing="16" HorizontalAlignment="Left">
-                <TextBlock Text="Luna.Desktop.Controls.DesktopBadge" FontWeight="SemiBold" />
-                <luna:DesktopBadge Text="Desktop ready" />
-            </StackPanel>
-        </Border>
-    </Grid>
+        <ToggleSwitch Grid.Column="1"
+                      Content="深色主题"
+                      IsChecked="{Binding IsDarkTheme}"
+                      VerticalAlignment="Center" />
+      </Grid>
+    </Border>
 
+    <Grid Grid.Row="1" ColumnDefinitions="310,*">
+      <Border Grid.Column="0" Classes="shell-sidebar">
+        <Grid RowDefinitions="Auto,Auto,*" RowSpacing="14">
+          <TextBox Watermark="搜索控件、分类或 TDesign 文档"
+                   Text="{Binding SearchText, Mode=TwoWay}" />
+          <TextBlock Grid.Row="1"
+                     Text="{Binding SearchStatus}"
+                     Classes="sample-caption" />
+
+          <ScrollViewer Grid.Row="2">
+            <ItemsControl ItemsSource="{Binding FilteredSampleGroups}">
+              <ItemsControl.ItemTemplate>
+                <DataTemplate x:DataType="model:SampleGroup">
+                  <StackPanel Spacing="6" Margin="0,0,0,18">
+                    <TextBlock Text="{Binding Key}"
+                               FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                               FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                               Foreground="{DynamicResource Luna.Brush.Brand}" />
+                    <TextBlock Text="{Binding Title}"
+                               FontSize="{DynamicResource Luna.FontSize.Title.Small}"
+                               FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                               Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+                    <TextBlock Text="{Binding Description}"
+                               Classes="sample-caption" />
+
+                    <ItemsControl ItemsSource="{Binding Items}">
+                      <ItemsControl.ItemTemplate>
+                        <DataTemplate x:DataType="model:SampleNavigationItem">
+                          <Button Command="{Binding #RootWindow.DataContext.SelectSampleCommand}"
+                                  CommandParameter="{Binding}"
+                                  HorizontalAlignment="Stretch"
+                                  HorizontalContentAlignment="Left"
+                                  Margin="0,0,0,6"
+                                  Padding="10,8">
+                            <StackPanel Spacing="2">
+                              <TextBlock Text="{Binding Title}"
+                                         FontWeight="{DynamicResource Luna.FontWeight.SemiBold}" />
+                              <TextBlock Text="{Binding Description}"
+                                         Classes="sample-caption" />
+                            </StackPanel>
+                          </Button>
+                        </DataTemplate>
+                      </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                  </StackPanel>
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+          </ScrollViewer>
+        </Grid>
+      </Border>
+
+      <ScrollViewer Grid.Column="1">
+        <StackPanel Margin="28" Spacing="22">
+          <StackPanel Spacing="6">
+            <TextBlock Text="{Binding SelectedCategory}"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                       FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                       Foreground="{DynamicResource Luna.Brush.Brand}" />
+            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="14">
+              <TextBlock Text="{Binding SelectedTitle}"
+                         FontSize="{DynamicResource Luna.FontSize.Title.Large}"
+                         FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                         Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+              <Button Grid.Column="1"
+                      Content="TDesign 文档"
+                      Classes="outline small"
+                      Command="{Binding OpenDocumentationCommand}"
+                      VerticalAlignment="Center" />
+            </Grid>
+            <TextBlock Text="{Binding SelectedDescription}"
+                       TextWrapping="Wrap"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+
+          <ContentControl Content="{Binding SelectedContent}" />
+        </StackPanel>
+      </ScrollViewer>
+    </Grid>
+  </Grid>
 </Window>

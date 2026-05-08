@@ -1,0 +1,43 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ResourceDictionary.ThemeDictionaries>
+    <ResourceDictionary x:Key="Dark">
+      <Color x:Key="Luna.Color.Brand.1">#102A52</Color>
+      <Color x:Key="Luna.Color.Brand.3">#1D519E</Color>
+      <Color x:Key="Luna.Color.Brand.5">#458FFF</Color>
+      <Color x:Key="Luna.Color.Brand.6">#5E9FFF</Color>
+      <Color x:Key="Luna.Color.Brand.7">#8FBCFF</Color>
+      <Color x:Key="Luna.Color.Brand.Subtle">#173D78</Color>
+      <Color x:Key="Luna.Color.Brand.Subtle.Active">#1D519E</Color>
+
+      <Color x:Key="SystemAccentColor">#5E9FFF</Color>
+      <Color x:Key="SystemAccentColorLight1">#8FBCFF</Color>
+      <Color x:Key="SystemAccentColorDark1">#458FFF</Color>
+
+      <Color x:Key="Luna.Color.Success.6">#34C995</Color>
+      <Color x:Key="Luna.Color.Warning.6">#F2995F</Color>
+      <Color x:Key="Luna.Color.Error.6">#E86A62</Color>
+      <Color x:Key="Luna.Color.Success.1">#12352B</Color>
+      <Color x:Key="Luna.Color.Warning.1">#3A2A16</Color>
+      <Color x:Key="Luna.Color.Error.1">#3A1C1C</Color>
+
+      <Color x:Key="Luna.Color.Text.Primary">#F2F3F5</Color>
+      <Color x:Key="Luna.Color.Text.Secondary">#C9CDD4</Color>
+      <Color x:Key="Luna.Color.Text.Placeholder">#8F959E</Color>
+      <Color x:Key="Luna.Color.Text.Disabled">#5F6670</Color>
+      <Color x:Key="Luna.Color.Text.Anti">#0F1419</Color>
+
+      <Color x:Key="Luna.Color.Background.Page">#0F1419</Color>
+      <Color x:Key="Luna.Color.Background.Container">#171D24</Color>
+      <Color x:Key="Luna.Color.Background.Component">#222A33</Color>
+      <Color x:Key="Luna.Color.Background.ComponentActive">#173D78</Color>
+      <Color x:Key="Luna.Color.Background.Disabled">#242B33</Color>
+
+      <Color x:Key="Luna.Color.Border.Default">#343D48</Color>
+      <Color x:Key="Luna.Color.Border.Weak">#242B33</Color>
+      <Color x:Key="Luna.Color.Border.Strong">#4B5563</Color>
+      <Color x:Key="Luna.Color.Border.Divider">#343D48</Color>
+      <Color x:Key="Luna.Color.Mask">#99000000</Color>
+    </ResourceDictionary>
+  </ResourceDictionary.ThemeDictionaries>
+</ResourceDictionary>

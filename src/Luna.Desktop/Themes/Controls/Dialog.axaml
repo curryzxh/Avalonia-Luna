@@ -77,7 +77,7 @@
                           Margin="20,0,20,16">
                 <Button Name="PART_CancelButton"
                         Content="{TemplateBinding CancelText}"
-                        IsVisible="{TemplateBinding CancelText, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
+                        IsVisible="{TemplateBinding ShowCancelButton}" />
                 <Button Name="PART_ConfirmButton"
                         Content="{TemplateBinding ConfirmText}"
                         Classes="primary"
@@ -100,5 +100,10 @@
 
   <Style Selector="controls|DialogHost.large">
     <Setter Property="DialogWidth" Value="600" />
+  </Style>
+
+  <Style Selector="controls|DialogHost:confirm-loading /template/ Button#PART_ConfirmButton">
+    <Setter Property="IsEnabled" Value="False" />
+    <Setter Property="Opacity" Value="0.7" />
   </Style>
 </Styles>

@@ -1,0 +1,21 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Style Selector="AutoCompleteBox">
+    <Setter Property="Background" Value="{DynamicResource Luna.Brush.Background.Container}" />
+    <Setter Property="Foreground" Value="{DynamicResource Luna.Brush.Text.Primary}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Border.Default}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="{DynamicResource Luna.Radius.Default}" />
+    <Setter Property="FontSize" Value="{DynamicResource Luna.FontSize.Body.Medium}" />
+    <Setter Property="Padding" Value="8,6" />
+    <Setter Property="MinHeight" Value="32" />
+  </Style>
+
+  <Style Selector="AutoCompleteBox:focus-within">
+    <Setter Property="BorderBrush" Value="{DynamicResource Luna.Brush.Brand}" />
+  </Style>
+
+  <Style Selector="AutoCompleteBox:disabled">
+    <Setter Property="Opacity" Value="0.5" />
+  </Style>
+</Styles>

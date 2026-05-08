@@ -4,43 +4,85 @@ using Luna.Desktop.Controls;
 
 namespace Luna.Desktop.Sample.ViewModels.Samples;
 
-public partial class DialogSampleViewModel()
-    : SampleDetailViewModelBase("反馈", "Dialog", "对话框，支持标题、内容、确认/取消按钮和遮罩关闭。")
+public sealed partial class DialogSampleViewModel()
+    : SampleDetailViewModelBase("反馈", "Dialog", "对话框控件，支持模态、自定义按钮、ESC 关闭和加载状态。")
 {
     [ObservableProperty]
-    private string dialogTitle = "基本对话框";
+    private string _dialogTitle = "基本对话框";
 
     [ObservableProperty]
-    private string dialogContent = "这是一个对话框的内容区域，用于展示需要用户确认的信息。";
+    private string _dialogContent = "对话框内容区域，可放置任意控件。";
 
     [ObservableProperty]
-    private bool closeOnOverlayClick;
+    private bool _showCloseButton = true;
+
+    [ObservableProperty]
+    private bool _showCancelButton = true;
+
+    [ObservableProperty]
+    private bool _closeOnOverlayClick = true;
+
+    [ObservableProperty]
+    private bool _closeOnEsc = true;
+
+    [ObservableProperty]
+    private string _resultText = string.Empty;
 
     [RelayCommand]
-    private void ShowDialog()
+    private void ShowBasic() => LunaDialog.Show(new DialogOptions
     {
-        LunaDialog.Show(new DialogOptions
+        Title = "基本对话框",
+        Content = "这是一个基本对话框示例，点击确认或取消按钮关闭。按 ESC 键也可以关闭。",
+    });
+
+    [RelayCommand]
+    private void ShowSmall() => LunaDialog.Show(new DialogOptions
+    {
+        Title = "小型对话框",
+        Content = "这是一个小型对话框，宽度 360px。",
+        Width = 360,
+    });
+
+    [RelayCommand]
+    private void ShowLarge() => LunaDialog.Show(new DialogOptions
+    {
+        Title = "大型对话框",
+        Content = "这是一个大型对话框，宽度 600px，适合展示较多内容或复杂表单。",
+        Width = 600,
+    });
+
+    [RelayCommand]
+    private void ShowConfirm() => LunaDialog.Show(new DialogOptions
+    {
+        Title = "确认操作",
+        Content = "确定要删除这条记录吗？此操作不可撤销。",
+        ConfirmText = "删除",
+        CancelText = "取消",
+        CloseOnOverlayClick = false,
+    });
+
+    [RelayCommand]
+    private void ShowCustom()
+    {
+        if (DialogHost.Current is null) return;
+        DialogHost.Current.Result += OnDialogResult;
+        DialogHost.Current.Show(new DialogOptions
         {
             Title = DialogTitle,
             Content = DialogContent,
-            ConfirmText = "确认",
-            CancelText = "取消",
+            ShowCloseButton = ShowCloseButton,
+            ShowCancelButton = ShowCancelButton,
             CloseOnOverlayClick = CloseOnOverlayClick,
-            ShowCloseButton = true,
-            Width = 480,
+            CloseOnEsc = CloseOnEsc,
         });
     }
 
-    [RelayCommand]
-    private void ShowSimpleDialog()
+    private void OnDialogResult(object? sender, DialogResult result)
     {
-        LunaDialog.Show(new DialogOptions
+        if (sender is DialogHost host)
         {
-            Title = "提示",
-            Content = "操作成功完成。",
-            ConfirmText = "知道了",
-            CloseOnOverlayClick = true,
-            Width = 360,
-        });
+            host.Result -= OnDialogResult;
+            ResultText = $"对话框结果：{result}";
+        }
     }
 }

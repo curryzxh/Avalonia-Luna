@@ -9,15 +9,22 @@
             <Border Width="40" Height="40"
                     CornerRadius="{DynamicResource Luna.Radius.Round}"
                     Background="{DynamicResource Luna.Brush.Brand}"
+                    ClipToBounds="True"
                     VerticalAlignment="Top">
-              <TextBlock Text="{TemplateBinding AvatarText}"
-                         Foreground="{DynamicResource Luna.Brush.Text.Anti}"
-                         FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
-                         FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
-                         HorizontalAlignment="Center"
-                         VerticalAlignment="Center" />
+              <Panel>
+                <TextBlock Text="{TemplateBinding AvatarText}"
+                           Foreground="{DynamicResource Luna.Brush.Text.Anti}"
+                           FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
+                           FontSize="{DynamicResource Luna.FontSize.Body.Medium}"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           IsVisible="{TemplateBinding AvatarSource, Converter={x:Static ObjectConverters.IsNull}}" />
+                <Image Source="{TemplateBinding AvatarSource}"
+                       Stretch="UniformToFill"
+                       IsVisible="{TemplateBinding AvatarSource, Converter={x:Static ObjectConverters.IsNotNull}}" />
+              </Panel>
             </Border>
-            <StackPanel Spacing="4" VerticalAlignment="Top" MinWidth="0">
+            <StackPanel Spacing="4" VerticalAlignment="Top" MinWidth="0" Grid.Column="1">
               <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
                 <TextBlock Text="{TemplateBinding Author}"
                            FontWeight="{DynamicResource Luna.FontWeight.Medium}"
@@ -34,12 +41,21 @@
                          Foreground="{DynamicResource Luna.Brush.Text.Primary}"
                          TextWrapping="Wrap"
                          LineHeight="22" />
+              <ContentPresenter Content="{TemplateBinding Actions}"
+                                IsVisible="{TemplateBinding Actions, Converter={x:Static ObjectConverters.IsNotNull}}"
+                                Margin="0,4,0,0" />
             </StackPanel>
           </StackPanel>
-          <Border Margin="52,0,0,0"
-                  BorderBrush="{DynamicResource Luna.Brush.Border.Divider}"
-                  BorderThickness="0,0,0,0">
-            <StackPanel Name="PART_Replies" Spacing="16" />
+          <Border Margin="52,0,0,0">
+            <ItemsControl ItemsSource="{TemplateBinding Replies}"
+                          IsVisible="{TemplateBinding Replies, Converter={x:Static ObjectConverters.IsNotNull}}"
+                          Margin="0,0,0,0">
+              <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                  <StackPanel Spacing="16" />
+                </ItemsPanelTemplate>
+              </ItemsControl.ItemsPanel>
+            </ItemsControl>
           </Border>
         </StackPanel>
       </ControlTemplate>

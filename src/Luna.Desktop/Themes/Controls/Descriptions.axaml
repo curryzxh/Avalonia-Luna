@@ -22,20 +22,10 @@
                     IsVisible="{TemplateBinding Title, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
             <ItemsControl ItemsSource="{TemplateBinding ItemsSource}"
                           ItemTemplate="{TemplateBinding ItemTemplate}"
-                          Margin="16,12">
-              <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                  <UniformGrid Rows="0" Columns="{Binding ColumnCount, RelativeSource={RelativeSource TemplatedParent}}" />
-                </ItemsPanelTemplate>
-              </ItemsControl.ItemsPanel>
-            </ItemsControl>
+                          Margin="16,12" />
           </StackPanel>
         </Border>
       </ControlTemplate>
     </Setter>
-  </Style>
-
-  <Style Selector="controls|Descriptions /template/ UniformGrid > Border">
-    <Setter Property="Padding" Value="0,6" />
   </Style>
 </Styles>

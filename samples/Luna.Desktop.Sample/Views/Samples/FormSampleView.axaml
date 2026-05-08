@@ -1,45 +1,50 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="using:Luna.Desktop.Sample.ViewModels.Samples"
+             xmlns:controls="using:Luna.Desktop.Controls"
              x:Class="Luna.Desktop.Sample.Views.Samples.FormSampleView"
              x:DataType="vm:FormSampleViewModel">
-  <StackPanel Spacing="16">
-    <Border Classes="sample-card">
-      <StackPanel Spacing="12" MaxWidth="520" HorizontalAlignment="Left">
-        <TextBlock Text="基础表单布局" Classes="sample-title" />
-        <TextBlock Text="Luna Form 控件将在后续迭代中提供统一的标签宽度、校验状态和布局模式。当前展示手动布局示例。" Classes="sample-caption" />
-        <Grid RowDefinitions="Auto,8,Auto,8,Auto,8,Auto,8,Auto"
-              ColumnDefinitions="80,*">
-          <TextBlock Grid.Row="0" Grid.Column="0" Text="姓名" VerticalAlignment="Center" />
-          <TextBox Grid.Row="0" Grid.Column="1"
-                   Text="{Binding Name, Mode=TwoWay}"
-                   PlaceholderText="请输入姓名" />
-
-          <TextBlock Grid.Row="2" Grid.Column="0" Text="邮箱" VerticalAlignment="Center" />
-          <TextBox Grid.Row="2" Grid.Column="1"
-                   Text="{Binding Email, Mode=TwoWay}"
-                   PlaceholderText="请输入邮箱" />
-
-          <TextBlock Grid.Row="4" Grid.Column="0" Text="手机号" VerticalAlignment="Center" />
-          <TextBox Grid.Row="4" Grid.Column="1"
-                   Text="{Binding Phone, Mode=TwoWay}"
-                   PlaceholderText="请输入手机号" />
-
-          <TextBlock Grid.Row="6" Grid.Column="0" Text="备注" VerticalAlignment="Top" />
-          <TextBox Grid.Row="6" Grid.Column="1"
-                   Text="{Binding Remark, Mode=TwoWay}"
-                   AcceptsReturn="True"
-                   TextWrapping="Wrap"
-                   Height="80"
-                   PlaceholderText="请输入备注信息" />
-
-          <StackPanel Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2"
-                      Orientation="Horizontal" Spacing="12" HorizontalAlignment="Right">
-            <Button Content="重置" Classes="outline" />
-            <Button Content="提交" Classes="primary" />
+  <ScrollViewer>
+    <StackPanel Spacing="16" Margin="0,0,0,24">
+      <Border Classes="sample-card">
+        <StackPanel Spacing="16" MaxWidth="480" HorizontalAlignment="Left">
+          <TextBlock Text="水平表单" Classes="sample-title" />
+          <TextBlock Text="使用 FormItem 管理标签对齐、必填标记和错误信息。" Classes="sample-caption" />
+          <StackPanel Spacing="16">
+            <controls:FormItem Label="姓名" IsRequired="True" ErrorMessage="{Binding NameError}" LabelWidth="80">
+              <TextBox Text="{Binding Name, Mode=TwoWay}" Watermark="请输入姓名" />
+            </controls:FormItem>
+            <controls:FormItem Label="邮箱" IsRequired="True" ErrorMessage="{Binding EmailError}" LabelWidth="80">
+              <TextBox Text="{Binding Email, Mode=TwoWay}" Watermark="请输入邮箱地址" />
+            </controls:FormItem>
+            <controls:FormItem Label="手机号" IsRequired="True" ErrorMessage="{Binding PhoneError}" LabelWidth="80">
+              <TextBox Text="{Binding Phone, Mode=TwoWay}" Watermark="请输入手机号" />
+            </controls:FormItem>
+            <controls:FormItem Label="备注" LabelWidth="80">
+              <TextBox Text="{Binding Remark, Mode=TwoWay}" AcceptsReturn="True" Height="80" Watermark="请输入备注（选填）" />
+            </controls:FormItem>
+            <StackPanel Orientation="Horizontal" Spacing="8" Margin="80,0,0,0">
+              <Button Classes="primary" Content="提交" Command="{Binding SubmitCommand}" />
+              <Button Content="重置" Command="{Binding ResetCommand}" />
+            </StackPanel>
           </StackPanel>
-        </Grid>
-      </StackPanel>
-    </Border>
-  </StackPanel>
+        </StackPanel>
+      </Border>
+
+      <Border Classes="sample-card">
+        <StackPanel Spacing="16" MaxWidth="480" HorizontalAlignment="Left">
+          <TextBlock Text="垂直表单" Classes="sample-title" />
+          <TextBlock Text="设置 LabelAlign=Vertical 使标签在输入框上方显示。" Classes="sample-caption" />
+          <StackPanel Spacing="16">
+            <controls:FormItem Label="用户名" IsRequired="True" LabelAlign="Vertical">
+              <TextBox Text="{Binding Name, Mode=TwoWay}" Watermark="请输入用户名" />
+            </controls:FormItem>
+            <controls:FormItem Label="邮箱地址" LabelAlign="Vertical">
+              <TextBox Text="{Binding Email, Mode=TwoWay}" Watermark="请输入邮箱" />
+            </controls:FormItem>
+          </StackPanel>
+        </StackPanel>
+      </Border>
+    </StackPanel>
+  </ScrollViewer>
 </UserControl>

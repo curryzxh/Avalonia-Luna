@@ -21,14 +21,17 @@ public sealed record DialogOptions
     public string? ConfirmText { get; init; } = "确认";
     public string? CancelText { get; init; } = "取消";
     public bool ShowCloseButton { get; init; } = true;
+    public bool ShowCancelButton { get; init; } = true;
     public bool CloseOnOverlayClick { get; init; }
+    public bool CloseOnEsc { get; init; } = true;
     public double Width { get; init; } = 480;
 }
 
-[PseudoClasses(PC_Open)]
+[PseudoClasses(PC_Open, PC_ConfirmLoading)]
 public sealed class DialogHost : TemplatedControl
 {
     private const string PC_Open = ":open";
+    private const string PC_ConfirmLoading = ":confirm-loading";
 
     private static DialogHost? _current;
     private Border? _overlay;
@@ -54,16 +57,27 @@ public sealed class DialogHost : TemplatedControl
     public static readonly StyledProperty<bool> ShowCloseButtonProperty =
         AvaloniaProperty.Register<DialogHost, bool>(nameof(ShowCloseButton), true);
 
+    public static readonly StyledProperty<bool> ShowCancelButtonProperty =
+        AvaloniaProperty.Register<DialogHost, bool>(nameof(ShowCancelButton), true);
+
     public static readonly StyledProperty<bool> CloseOnOverlayClickProperty =
         AvaloniaProperty.Register<DialogHost, bool>(nameof(CloseOnOverlayClick));
 
+    public static readonly StyledProperty<bool> CloseOnEscProperty =
+        AvaloniaProperty.Register<DialogHost, bool>(nameof(CloseOnEsc), true);
+
     public static readonly StyledProperty<double> DialogWidthProperty =
         AvaloniaProperty.Register<DialogHost, double>(nameof(DialogWidth), 480);
+
+    public static readonly StyledProperty<bool> ConfirmLoadingProperty =
+        AvaloniaProperty.Register<DialogHost, bool>(nameof(ConfirmLoading));
 
     static DialogHost()
     {
         IsOpenProperty.Changed.AddClassHandler<DialogHost>((control, args) =>
             control.PseudoClasses.Set(PC_Open, args.GetNewValue<bool>()));
+        ConfirmLoadingProperty.Changed.AddClassHandler<DialogHost>((control, args) =>
+            control.PseudoClasses.Set(PC_ConfirmLoading, args.GetNewValue<bool>()));
     }
 
     public bool IsOpen
@@ -102,16 +116,34 @@ public sealed class DialogHost : TemplatedControl
         set => SetValue(ShowCloseButtonProperty, value);
     }
 
+    public bool ShowCancelButton
+    {
+        get => GetValue(ShowCancelButtonProperty);
+        set => SetValue(ShowCancelButtonProperty, value);
+    }
+
     public bool CloseOnOverlayClick
     {
         get => GetValue(CloseOnOverlayClickProperty);
         set => SetValue(CloseOnOverlayClickProperty, value);
     }
 
+    public bool CloseOnEsc
+    {
+        get => GetValue(CloseOnEscProperty);
+        set => SetValue(CloseOnEscProperty, value);
+    }
+
     public double DialogWidth
     {
         get => GetValue(DialogWidthProperty);
         set => SetValue(DialogWidthProperty, value);
+    }
+
+    public bool ConfirmLoading
+    {
+        get => GetValue(ConfirmLoadingProperty);
+        set => SetValue(ConfirmLoadingProperty, value);
     }
 
     public event EventHandler<DialogResult>? Result;
@@ -124,14 +156,18 @@ public sealed class DialogHost : TemplatedControl
         ConfirmText = options.ConfirmText;
         CancelText = options.CancelText;
         ShowCloseButton = options.ShowCloseButton;
+        ShowCancelButton = options.ShowCancelButton;
         CloseOnOverlayClick = options.CloseOnOverlayClick;
+        CloseOnEsc = options.CloseOnEsc;
         DialogWidth = options.Width;
+        ConfirmLoading = false;
         IsOpen = true;
     }
 
     public void Close(DialogResult result = DialogResult.None)
     {
         _options = null;
+        ConfirmLoading = false;
         IsOpen = false;
         Result?.Invoke(this, result);
     }
@@ -140,11 +176,13 @@ public sealed class DialogHost : TemplatedControl
     {
         base.OnAttachedToVisualTree(e);
         _current = this;
+        KeyDown += OnKeyDown;
     }
 
     protected override void OnDetachedFromVisualTree(VisualTreeAttachmentEventArgs e)
     {
         base.OnDetachedFromVisualTree(e);
+        KeyDown -= OnKeyDown;
         if (ReferenceEquals(_current, this))
             _current = null;
     }
@@ -171,6 +209,15 @@ public sealed class DialogHost : TemplatedControl
 
         if (_overlay is not null)
             _overlay.PointerPressed += OnOverlayPressed;
+    }
+
+    private void OnKeyDown(object? sender, KeyEventArgs e)
+    {
+        if (e.Key == Key.Escape && IsOpen && CloseOnEsc)
+        {
+            e.Handled = true;
+            Close(DialogResult.Canceled);
+        }
     }
 
     private void OnOverlayPressed(object? sender, PointerPressedEventArgs e)

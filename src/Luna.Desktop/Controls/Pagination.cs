@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Windows.Input;
 using Avalonia;
 using Avalonia.Collections;
@@ -15,6 +16,8 @@ public class Pagination : TemplatedControl
     public const string PART_PreviousButton = "PART_PreviousButton";
     public const string PART_NextButton = "PART_NextButton";
     public const string PART_ButtonPanel = "PART_ButtonPanel";
+    public const string PART_PageSizeSelector = "PART_PageSizeSelector";
+    public const string PART_JumperInput = "PART_JumperInput";
 
     public static readonly StyledProperty<int> CurrentPageProperty =
         AvaloniaProperty.Register<Pagination, int>(nameof(CurrentPage), 1, defaultBindingMode: BindingMode.TwoWay);
@@ -37,6 +40,16 @@ public class Pagination : TemplatedControl
     public static readonly StyledProperty<bool> ShowTotalProperty =
         AvaloniaProperty.Register<Pagination, bool>(nameof(ShowTotal));
 
+    public static readonly StyledProperty<bool> ShowPageSizeSelectorProperty =
+        AvaloniaProperty.Register<Pagination, bool>(nameof(ShowPageSizeSelector));
+
+    public static readonly StyledProperty<IList<int>> PageSizeOptionsProperty =
+        AvaloniaProperty.Register<Pagination, IList<int>>(nameof(PageSizeOptions),
+            new AvaloniaList<int> { 10, 20, 50, 100 });
+
+    public static readonly StyledProperty<bool> ShowJumperProperty =
+        AvaloniaProperty.Register<Pagination, bool>(nameof(ShowJumper));
+
     public static readonly RoutedEvent<RoutedEventArgs> CurrentPageChangedEvent =
         RoutedEvent.Register<Pagination, RoutedEventArgs>(nameof(CurrentPageChanged), RoutingStrategies.Bubble);
 
@@ -44,6 +57,8 @@ public class Pagination : TemplatedControl
     private int _pageCount = 1;
     private Button? _previousButton;
     private StackPanel? _buttonPanel;
+    private ComboBox? _pageSizeSelector;
+    private TextBox? _jumperInput;
 
     static Pagination()
     {
@@ -94,6 +109,24 @@ public class Pagination : TemplatedControl
         set => SetValue(ShowTotalProperty, value);
     }
 
+    public bool ShowPageSizeSelector
+    {
+        get => GetValue(ShowPageSizeSelectorProperty);
+        set => SetValue(ShowPageSizeSelectorProperty, value);
+    }
+
+    public IList<int> PageSizeOptions
+    {
+        get => GetValue(PageSizeOptionsProperty);
+        set => SetValue(PageSizeOptionsProperty, value);
+    }
+
+    public bool ShowJumper
+    {
+        get => GetValue(ShowJumperProperty);
+        set => SetValue(ShowJumperProperty, value);
+    }
+
     public event EventHandler<RoutedEventArgs>? CurrentPageChanged
     {
         add => AddHandler(CurrentPageChangedEvent, value);
@@ -112,13 +145,55 @@ public class Pagination : TemplatedControl
         _previousButton = e.NameScope.Find<Button>(PART_PreviousButton);
         _nextButton = e.NameScope.Find<Button>(PART_NextButton);
         _buttonPanel = e.NameScope.Find<StackPanel>(PART_ButtonPanel);
+        _pageSizeSelector = e.NameScope.Find<ComboBox>(PART_PageSizeSelector);
+        _jumperInput = e.NameScope.Find<TextBox>(PART_JumperInput);
 
         if (_previousButton is not null)
             _previousButton.Click += OnNavigateButtonClick;
         if (_nextButton is not null)
             _nextButton.Click += OnNavigateButtonClick;
+        if (_pageSizeSelector is not null)
+        {
+            _pageSizeSelector.ItemsSource = PageSizeOptions;
+            _pageSizeSelector.SelectedItem = PageSize;
+            _pageSizeSelector.SelectionChanged += OnPageSizeChanged;
+        }
+        if (_jumperInput is not null)
+        {
+            _jumperInput.KeyDown += OnJumperKeyDown;
+        }
 
         UpdateButtons();
+    }
+
+    private void OnPageSizeChanged(object? sender, SelectionChangedEventArgs e)
+    {
+        if (_pageSizeSelector?.SelectedItem is int newSize && newSize != PageSize)
+        {
+            SetCurrentValue(PageSizeProperty, newSize);
+            SetCurrentValue(CurrentPageProperty, 1);
+            RaiseEvent(new RoutedEventArgs(CurrentPageChangedEvent));
+            InvokeCommand();
+        }
+    }
+
+    private void OnJumperKeyDown(object? sender, KeyEventArgs e)
+    {
+        if (e.Key == Key.Enter && _jumperInput is not null)
+        {
+            if (int.TryParse(_jumperInput.Text, out var page))
+            {
+                page = Math.Clamp(page, 1, PageCount);
+                if (page != CurrentPage)
+                {
+                    SetCurrentValue(CurrentPageProperty, page);
+                    RaiseEvent(new RoutedEventArgs(CurrentPageChangedEvent));
+                    InvokeCommand();
+                }
+                _jumperInput.Text = string.Empty;
+            }
+            e.Handled = true;
+        }
     }
 
     private void OnNavigateButtonClick(object? sender, RoutedEventArgs e)

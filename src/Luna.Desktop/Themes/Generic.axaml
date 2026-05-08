@@ -54,6 +54,10 @@
   <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/Cascader.axaml" />
   <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/ImageViewer.axaml" />
   <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/Guide.axaml" />
+  <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/AutoComplete.axaml" />
+  <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/DatePicker.axaml" />
+  <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/TimePicker.axaml" />
+  <StyleInclude Source="avares://Luna.Desktop/Themes/Controls/Form.axaml" />
 
   <Design.PreviewWith>
     <Border Padding="24">

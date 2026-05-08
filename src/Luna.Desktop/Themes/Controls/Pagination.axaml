@@ -12,6 +12,19 @@
                      IsVisible="{Binding ShowTotal, RelativeSource={RelativeSource TemplatedParent}}"
                      Margin="0,0,8,0" />
 
+          <StackPanel Orientation="Horizontal" Spacing="4"
+                      IsVisible="{Binding ShowPageSizeSelector, RelativeSource={RelativeSource TemplatedParent}}"
+                      Margin="0,0,4,0">
+            <TextBlock Text="每页" VerticalAlignment="Center"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <ComboBox Name="PART_PageSizeSelector"
+                      MinWidth="80" Height="32" />
+            <TextBlock Text="条" VerticalAlignment="Center"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
+
           <Button Name="PART_PreviousButton"
                   Content="&#x2039;"
                   MinWidth="32"
@@ -41,6 +54,21 @@
                   BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
                   BorderThickness="1"
                   Foreground="{DynamicResource Luna.Brush.Text.Primary}" />
+
+          <StackPanel Orientation="Horizontal" Spacing="4"
+                      IsVisible="{Binding ShowJumper, RelativeSource={RelativeSource TemplatedParent}}"
+                      Margin="8,0,0,0">
+            <TextBlock Text="跳至" VerticalAlignment="Center"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            <TextBox Name="PART_JumperInput"
+                     Width="48" Height="32"
+                     HorizontalContentAlignment="Center"
+                     VerticalContentAlignment="Center" />
+            <TextBlock Text="页" VerticalAlignment="Center"
+                       FontSize="{DynamicResource Luna.FontSize.Body.Small}"
+                       Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+          </StackPanel>
         </StackPanel>
       </ControlTemplate>
     </Setter>

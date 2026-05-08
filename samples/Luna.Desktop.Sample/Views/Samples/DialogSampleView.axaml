@@ -6,28 +6,51 @@
              x:DataType="vm:DialogSampleViewModel">
   <ScrollViewer>
     <StackPanel Spacing="16" Margin="0,0,0,24">
-      <controls:DialogHost />
-
       <Border Classes="sample-card">
         <StackPanel Spacing="12">
           <TextBlock Text="基本用法" Classes="sample-title" />
-          <TextBlock Text="点击按钮弹出对话框。" Classes="sample-caption" />
-          <WrapPanel>
-            <Button Content="打开对话框" Command="{Binding ShowDialogCommand}" Margin="0,0,8,0" />
-            <Button Content="简单对话框" Command="{Binding ShowSimpleDialogCommand}" Classes="outline" />
-          </WrapPanel>
+          <TextBlock Text="点击按钮打开对话框，支持 ESC 关闭和遮罩点击关闭。" Classes="sample-caption" />
+          <StackPanel Orientation="Horizontal" Spacing="8">
+            <Button Classes="primary" Content="基本对话框" Command="{Binding ShowBasicCommand}" />
+            <Button Content="小型对话框" Command="{Binding ShowSmallCommand}" />
+            <Button Content="大型对话框" Command="{Binding ShowLargeCommand}" />
+          </StackPanel>
+        </StackPanel>
+      </Border>
+
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="确认对话框" Classes="sample-title" />
+          <TextBlock Text="不显示关闭按钮，禁用遮罩关闭，强制用户明确选择。" Classes="sample-caption" />
+          <Button Content="删除确认" Command="{Binding ShowConfirmCommand}" />
         </StackPanel>
       </Border>
 
       <Border Classes="sample-card">
         <StackPanel Spacing="12">
           <TextBlock Text="自定义配置" Classes="sample-title" />
-          <StackPanel Spacing="8">
-            <TextBox Text="{Binding DialogTitle}" Watermark="标题" />
-            <TextBox Text="{Binding DialogContent}" Watermark="内容" AcceptsReturn="True" Height="60" />
-            <CheckBox Content="点击遮罩关闭" IsChecked="{Binding CloseOnOverlayClick}" />
-            <Button Content="使用自定义配置打开" Command="{Binding ShowDialogCommand}" Classes="primary" />
+          <TextBlock Text="配置标题、内容、按钮和关闭行为。" Classes="sample-caption" />
+          <StackPanel Spacing="8" MaxWidth="400">
+            <StackPanel Spacing="4">
+              <TextBlock Text="标题" Classes="sample-caption" />
+              <TextBox Text="{Binding DialogTitle}" />
+            </StackPanel>
+            <StackPanel Spacing="4">
+              <TextBlock Text="内容" Classes="sample-caption" />
+              <TextBox Text="{Binding DialogContent}" AcceptsReturn="True" Height="60" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Spacing="16">
+              <CheckBox Content="关闭按钮" IsChecked="{Binding ShowCloseButton}" />
+              <CheckBox Content="取消按钮" IsChecked="{Binding ShowCancelButton}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Spacing="16">
+              <CheckBox Content="遮罩关闭" IsChecked="{Binding CloseOnOverlayClick}" />
+              <CheckBox Content="ESC 关闭" IsChecked="{Binding CloseOnEsc}" />
+            </StackPanel>
+            <Button Classes="primary" Content="打开自定义对话框" Command="{Binding ShowCustomCommand}" />
           </StackPanel>
+          <TextBlock Text="{Binding ResultText}" Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                     IsVisible="{Binding ResultText, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
         </StackPanel>
       </Border>
     </StackPanel>

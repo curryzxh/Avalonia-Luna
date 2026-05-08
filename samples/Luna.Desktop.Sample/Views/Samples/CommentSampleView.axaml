@@ -9,6 +9,7 @@
       <Border Classes="sample-card">
         <StackPanel Spacing="16" MaxWidth="560" HorizontalAlignment="Left">
           <TextBlock Text="基础评论" Classes="sample-title" />
+          <TextBlock Text="使用 Author/AvatarText/Content/Timestamp 属性展示评论。" Classes="sample-caption" />
           <controls:Comment Author="张三" AvatarText="Z" Content="这个功能非常好用，界面设计也很清晰。" Timestamp="2 小时前" />
           <controls:Comment Author="李四" AvatarText="L" Content="建议增加暗色模式的支持，夜间使用更友好。" Timestamp="1 天前" />
           <controls:Comment Author="王五" AvatarText="W" Content="数据加载速度很快，体验很流畅。期待后续版本的新功能！" Timestamp="3 天前" />
@@ -17,8 +18,31 @@
 
       <Border Classes="sample-card">
         <StackPanel Spacing="16" MaxWidth="560" HorizontalAlignment="Left">
+          <TextBlock Text="带操作按钮" Classes="sample-title" />
+          <TextBlock Text="使用 Actions 属性为评论附加操作按钮。" Classes="sample-caption" />
+          <controls:Comment Author="张三" AvatarText="Z" Content="这个功能非常好用，界面设计也很清晰。" Timestamp="2 小时前">
+            <controls:Comment.Actions>
+              <StackPanel Orientation="Horizontal" Spacing="16">
+                <Button Classes="text small" Content="👍 赞同 (12)" />
+                <Button Classes="text small" Content="回复" />
+              </StackPanel>
+            </controls:Comment.Actions>
+          </controls:Comment>
+          <controls:Comment Author="李四" AvatarText="L" Content="建议增加暗色模式的支持，夜间使用更友好。" Timestamp="1 天前">
+            <controls:Comment.Actions>
+              <StackPanel Orientation="Horizontal" Spacing="16">
+                <Button Classes="text small" Content="👍 赞同 (8)" />
+                <Button Classes="text small" Content="回复" />
+              </StackPanel>
+            </controls:Comment.Actions>
+          </controls:Comment>
+        </StackPanel>
+      </Border>
+
+      <Border Classes="sample-card">
+        <StackPanel Spacing="16" MaxWidth="560" HorizontalAlignment="Left">
           <TextBlock Text="嵌套回复" Classes="sample-title" />
-          <TextBlock Text="评论支持嵌套回复展示，子评论缩进显示。" Classes="sample-caption" />
+          <TextBlock Text="使用 Replies 属性绑定嵌套回复数据。" Classes="sample-caption" />
           <controls:Comment Author="张三" AvatarText="Z" Content="这个设计方案看起来不错，但有些细节需要优化。" Timestamp="2 小时前" />
           <Border Margin="52,0,0,0">
             <StackPanel Spacing="16">
@@ -32,23 +56,6 @@
               <controls:Comment Author="赵六" AvatarText="R" Content="已在使用，体验非常好。" Timestamp="4 小时前" />
             </StackPanel>
           </Border>
-        </StackPanel>
-      </Border>
-
-      <Border Classes="sample-card">
-        <StackPanel Spacing="16" MaxWidth="560" HorizontalAlignment="Left">
-          <TextBlock Text="带操作按钮" Classes="sample-title" />
-          <TextBlock Text="评论可附加点赞、回复等操作按钮。" Classes="sample-caption" />
-          <controls:Comment Author="张三" AvatarText="Z" Content="这个功能非常好用，界面设计也很清晰。" Timestamp="2 小时前" />
-          <StackPanel Orientation="Horizontal" Spacing="16" Margin="52,0,0,0">
-            <Button Classes="text small" Content="👍 赞同 (12)" />
-            <Button Classes="text small" Content="回复" />
-          </StackPanel>
-          <controls:Comment Author="李四" AvatarText="L" Content="建议增加暗色模式的支持，夜间使用更友好。" Timestamp="1 天前" />
-          <StackPanel Orientation="Horizontal" Spacing="16" Margin="52,0,0,0">
-            <Button Classes="text small" Content="👍 赞同 (8)" />
-            <Button Classes="text small" Content="回复" />
-          </StackPanel>
         </StackPanel>
       </Border>
     </StackPanel>

@@ -124,7 +124,7 @@ src/Luna.Mobile/Themes/
 文档验收：
 
 - `docs/README.md` 可找到本文档入口。
-- `docs/luna-control-roadmap.md` 阶段 1 与本文档一致。
+- `docs/planning/luna-control-roadmap.md` 阶段 1 与本文档一致。
 - 本文档明确 MVP 控件、非目标、资源组织、token 接入、示例验收。
 
 实现验收：

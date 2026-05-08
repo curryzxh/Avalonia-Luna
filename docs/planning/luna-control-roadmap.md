@@ -1,6 +1,6 @@
 # Luna 控件库阶段规划
 
-本文基于 [TDesign Mobile 组件对照分析](tdesign-mobile-component-analysis.md)，用于后续拆分 Luna 控件库建设任务。
+本文基于 [TDesign Mobile 组件对照分析](../analysis/tdesign-mobile-component-analysis.md)，用于后续拆分 Luna 控件库建设任务。
 
 ## 阶段 0：主题基础设施
 

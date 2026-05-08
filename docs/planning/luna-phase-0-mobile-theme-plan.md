@@ -172,14 +172,14 @@ samples/Luna.Mobile.Sample/
 - 阶段 1 的 `Button`、`TextBox`、`CheckBox`、`RadioButton`、`ToggleSwitch`、`Slider`、`NumericUpDown`、`ProgressBar` 必须优先使用阶段 0 token。
 - 控件级资源键命名建议为 `Luna.ControlName.Property.State`，例如 `Luna.Button.Background.Primary`.
 - 组件级 token 只能引用基础 token，不应直接写死色值。
-- 如果 TDesign 组件语义和 Avalonia 原生控件不匹配，应先更新 `tdesign-mobile-component-analysis.md`，再进入控件设计。
+- 如果 TDesign 组件语义和 Avalonia 原生控件不匹配，应先更新 `../analysis/tdesign-mobile-component-analysis.md`，再进入控件设计。
 
 ## 验收标准
 
 文档验收：
 
 - `docs/README.md` 能找到本文档入口。
-- `docs/luna-control-roadmap.md` 阶段 0 与本文档不冲突。
+- `docs/planning/luna-control-roadmap.md` 阶段 0 与本文档不冲突。
 - 本文档明确阶段 0 产出、非目标、资源结构、token 命名和验收标准。
 
 实现验收：

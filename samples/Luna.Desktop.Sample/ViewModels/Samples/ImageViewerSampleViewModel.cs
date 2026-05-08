@@ -1,11 +1,16 @@
+using Avalonia;
+using Avalonia.Media;
+using Avalonia.Media.Imaging;
+using Avalonia.Platform;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Luna.Desktop.Sample.ViewModels.Samples;
 
 public partial class ImageViewerSampleViewModel : SampleDetailViewModelBase
 {
-    public ImageViewerSampleViewModel() : base("基础", "ImageViewer", "图片预览控件，支持放大、缩小和旋转。")
+    public ImageViewerSampleViewModel() : base("基础", "ImageViewer", "图片预览控件，支持放大、缩小、旋转和拖拽平移。")
     {
+        Source = CreateSampleImage();
     }
 
     [ObservableProperty]
@@ -15,5 +20,37 @@ public partial class ImageViewerSampleViewModel : SampleDetailViewModelBase
     private double _rotate;
 
     [ObservableProperty]
-    private string _imageUrl = "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=a%20beautiful%20mountain%20landscape%20with%20lake%20reflection%20at%20sunset%2C%20photorealistic&image_size=landscape_16_9";
+    private IImage? _source;
+
+    private static Bitmap CreateSampleImage()
+    {
+        var width = 640;
+        var height = 400;
+        var bitmap = new WriteableBitmap(
+            new PixelSize(width, height),
+            new Vector(96, 96),
+            PixelFormat.Bgra8888,
+            AlphaFormat.Premul);
+
+        using var fb = bitmap.Lock();
+        var rowBytes = fb.RowBytes;
+        var buffer = new byte[fb.Size.Height * rowBytes];
+        for (var y = 0; y < height; y++)
+        {
+            for (var x = 0; x < width; x++)
+            {
+                var r = (byte)(x * 255 / width);
+                var g = (byte)(y * 255 / height);
+                var b = (byte)128;
+                var offset = y * rowBytes + x * 4;
+                buffer[offset] = b;
+                buffer[offset + 1] = g;
+                buffer[offset + 2] = r;
+                buffer[offset + 3] = 0xFF;
+            }
+        }
+
+        System.Runtime.InteropServices.Marshal.Copy(buffer, 0, fb.Address, buffer.Length);
+        return bitmap;
+    }
 }

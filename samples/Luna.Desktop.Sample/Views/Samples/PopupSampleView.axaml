@@ -8,46 +8,102 @@
     <StackPanel Spacing="16" Margin="0,0,0,24">
       <Border Classes="sample-card">
         <StackPanel Spacing="12">
-          <TextBlock Text="基本弹出层" Classes="sample-title" />
-          <TextBlock Text="基于 Avalonia Popup 的皮肤化封装，支持不同弹出方向。" Classes="sample-caption" />
+          <TextBlock Text="点击触发" Classes="sample-title" />
+          <TextBlock Text="默认触发方式，点击触发元素切换弹出层。" Classes="sample-caption" />
+          <controls:LunaPopup IsOpen="{Binding IsClickOpen, Mode=TwoWay}"
+                              Placement="Bottom"
+                              Trigger="Click">
+            <controls:LunaPopup.Content>
+              <Button Content="点击弹出" />
+            </controls:LunaPopup.Content>
+            <controls:LunaPopup.PopupContent>
+              <StackPanel Spacing="8" MinWidth="200">
+                <TextBlock Text="弹出层内容" FontWeight="{DynamicResource Luna.FontWeight.SemiBold}" />
+                <TextBlock Text="点击外部区域可关闭弹出层。"
+                           TextWrapping="Wrap"
+                           Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+              </StackPanel>
+            </controls:LunaPopup.PopupContent>
+          </controls:LunaPopup>
+        </StackPanel>
+      </Border>
+
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="悬停触发" Classes="sample-title" />
+          <TextBlock Text="鼠标悬停时自动弹出，移出后关闭。" Classes="sample-caption" />
+          <controls:LunaPopup IsOpen="{Binding IsHoverOpen, Mode=TwoWay}"
+                              Placement="Top"
+                              Trigger="Hover">
+            <controls:LunaPopup.Content>
+              <Border Background="{DynamicResource Luna.Brush.Background.Component}"
+                      BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
+                      BorderThickness="1"
+                      CornerRadius="{DynamicResource Luna.Radius.Default}"
+                      Padding="12,8">
+                <TextBlock Text="鼠标悬停此处" />
+              </Border>
+            </controls:LunaPopup.Content>
+            <controls:LunaPopup.PopupContent>
+              <TextBlock Text="悬停触发的弹出内容" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+            </controls:LunaPopup.PopupContent>
+          </controls:LunaPopup>
+        </StackPanel>
+      </Border>
+
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="手动触发" Classes="sample-title" />
+          <TextBlock Text="通过 IsOpen 属性手动控制弹出层的显示与隐藏。" Classes="sample-caption" />
           <StackPanel Orientation="Horizontal" Spacing="8">
-            <Button Content="切换弹出层" Command="{Binding TogglePopupCommand}" />
+            <controls:LunaPopup IsOpen="{Binding IsManualOpen, Mode=TwoWay}"
+                                Placement="Bottom"
+                                Trigger="Manual">
+              <controls:LunaPopup.Content>
+                <Border Background="{DynamicResource Luna.Brush.Background.Component}"
+                        BorderBrush="{DynamicResource Luna.Brush.Brand}"
+                        BorderThickness="1"
+                        CornerRadius="{DynamicResource Luna.Radius.Default}"
+                        Padding="12,8">
+                  <TextBlock Text="手动弹出目标" Foreground="{DynamicResource Luna.Brush.Brand}" />
+                </Border>
+              </controls:LunaPopup.Content>
+              <controls:LunaPopup.PopupContent>
+                <StackPanel Spacing="8">
+                  <TextBlock Text="手动控制的弹出层" FontWeight="{DynamicResource Luna.FontWeight.SemiBold}" />
+                  <TextBlock Text="通过按钮手动切换 IsOpen 属性。"
+                             Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                </StackPanel>
+              </controls:LunaPopup.PopupContent>
+            </controls:LunaPopup>
+            <Button Content="切换弹出" Command="{Binding ToggleManualCommand}" />
           </StackPanel>
-          <Border Background="{DynamicResource Luna.Brush.Background.Component}"
-                  CornerRadius="{DynamicResource Luna.Radius.Default}"
-                  Padding="16"
-                  IsVisible="{Binding IsPopupOpen}">
-            <StackPanel Spacing="8">
-              <TextBlock Text="弹出层内容" FontWeight="{DynamicResource Luna.FontWeight.SemiBold}" />
-              <TextBlock Text="这是一个弹出层示例，展示弹出内容区域。" Classes="sample-caption" />
-            </StackPanel>
-          </Border>
         </StackPanel>
       </Border>
 
       <Border Classes="sample-card">
         <StackPanel Spacing="12">
           <TextBlock Text="不同弹出方向" Classes="sample-title" />
-          <TextBlock Text="支持 Top / Bottom / Left / Right / Center 五种弹出方向。" Classes="sample-caption" />
+          <TextBlock Text="通过 Placement 属性控制弹出方向：Bottom / Top / Left / Right / Center。" Classes="sample-caption" />
           <WrapPanel Orientation="Horizontal" ItemWidth="160" ItemHeight="160">
             <Border Margin="8"
                     Background="{DynamicResource Luna.Brush.Background.Component}"
                     CornerRadius="{DynamicResource Luna.Radius.Default}"
                     BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
                     BorderThickness="1">
-              <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
-                <TextBlock Text="Top" HorizontalAlignment="Center"
-                           Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
-                           FontSize="{DynamicResource Luna.FontSize.Body.Small}" />
-                <Button Content="上方弹出" Command="{Binding ToggleTopCommand}" />
-                <Border Background="{DynamicResource Luna.Brush.Brand.Light}"
-                        CornerRadius="{DynamicResource Luna.Radius.Default}"
-                        Padding="8,4"
-                        IsVisible="{Binding IsTopOpen}">
-                  <TextBlock Text="Top Popup" Foreground="{DynamicResource Luna.Brush.Brand}"
-                             FontSize="{DynamicResource Luna.FontSize.Body.Small}" />
-                </Border>
-              </StackPanel>
+              <controls:LunaPopup Placement="Top" Trigger="Click">
+                <controls:LunaPopup.Content>
+                  <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
+                    <TextBlock Text="Top" HorizontalAlignment="Center"
+                               Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                               FontSize="{DynamicResource Luna.FontSize.Body.Small}" />
+                    <Button Content="上方弹出" />
+                  </StackPanel>
+                </controls:LunaPopup.Content>
+                <controls:LunaPopup.PopupContent>
+                  <TextBlock Text="Top Popup" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                </controls:LunaPopup.PopupContent>
+              </controls:LunaPopup>
             </Border>
 
             <Border Margin="8"
@@ -55,19 +111,19 @@
                     CornerRadius="{DynamicResource Luna.Radius.Default}"
                     BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
                     BorderThickness="1">
-              <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
-                <TextBlock Text="Bottom" HorizontalAlignment="Center"
-                           Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
-                           FontSize="{DynamicResource Luna.FontSize.Body.Small}" />
-                <Button Content="下方弹出" Command="{Binding ToggleBottomCommand}" />
-                <Border Background="{DynamicResource Luna.Brush.Brand.Light}"
-                        CornerRadius="{DynamicResource Luna.Radius.Default}"
-                        Padding="8,4"
-                        IsVisible="{Binding IsBottomOpen}">
-                  <TextBlock Text="Bottom Popup" Foreground="{DynamicResource Luna.Brush.Brand}"
-                             FontSize="{DynamicResource Luna.FontSize.Body.Small}" />
-                </Border>
-              </StackPanel>
+              <controls:LunaPopup Placement="Bottom" Trigger="Click">
+                <controls:LunaPopup.Content>
+                  <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
+                    <TextBlock Text="Bottom" HorizontalAlignment="Center"
+                               Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                               FontSize="{DynamicResource Luna.FontSize.Body.Small}" />
+                    <Button Content="下方弹出" />
+                  </StackPanel>
+                </controls:LunaPopup.Content>
+                <controls:LunaPopup.PopupContent>
+                  <TextBlock Text="Bottom Popup" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                </controls:LunaPopup.PopupContent>
+              </controls:LunaPopup>
             </Border>
 
             <Border Margin="8"
@@ -75,19 +131,19 @@
                     CornerRadius="{DynamicResource Luna.Radius.Default}"
                     BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
                     BorderThickness="1">
-              <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
-                <TextBlock Text="Left" HorizontalAlignment="Center"
-                           Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
-                           FontSize="{DynamicResource Luna.FontSize.Body.Small}" />
-                <Button Content="左侧弹出" Command="{Binding ToggleLeftCommand}" />
-                <Border Background="{DynamicResource Luna.Brush.Brand.Light}"
-                        CornerRadius="{DynamicResource Luna.Radius.Default}"
-                        Padding="8,4"
-                        IsVisible="{Binding IsLeftOpen}">
-                  <TextBlock Text="Left Popup" Foreground="{DynamicResource Luna.Brush.Brand}"
-                             FontSize="{DynamicResource Luna.FontSize.Body.Small}" />
-                </Border>
-              </StackPanel>
+              <controls:LunaPopup Placement="Left" Trigger="Click">
+                <controls:LunaPopup.Content>
+                  <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
+                    <TextBlock Text="Left" HorizontalAlignment="Center"
+                               Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                               FontSize="{DynamicResource Luna.FontSize.Body.Small}" />
+                    <Button Content="左侧弹出" />
+                  </StackPanel>
+                </controls:LunaPopup.Content>
+                <controls:LunaPopup.PopupContent>
+                  <TextBlock Text="Left Popup" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                </controls:LunaPopup.PopupContent>
+              </controls:LunaPopup>
             </Border>
 
             <Border Margin="8"
@@ -95,41 +151,21 @@
                     CornerRadius="{DynamicResource Luna.Radius.Default}"
                     BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
                     BorderThickness="1">
-              <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
-                <TextBlock Text="Right" HorizontalAlignment="Center"
-                           Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
-                           FontSize="{DynamicResource Luna.FontSize.Body.Small}" />
-                <Button Content="右侧弹出" Command="{Binding ToggleRightCommand}" />
-                <Border Background="{DynamicResource Luna.Brush.Brand.Light}"
-                        CornerRadius="{DynamicResource Luna.Radius.Default}"
-                        Padding="8,4"
-                        IsVisible="{Binding IsRightOpen}">
-                  <TextBlock Text="Right Popup" Foreground="{DynamicResource Luna.Brush.Brand}"
-                             FontSize="{DynamicResource Luna.FontSize.Body.Small}" />
-                </Border>
-              </StackPanel>
+              <controls:LunaPopup Placement="Right" Trigger="Click">
+                <controls:LunaPopup.Content>
+                  <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
+                    <TextBlock Text="Right" HorizontalAlignment="Center"
+                               Foreground="{DynamicResource Luna.Brush.Text.Secondary}"
+                               FontSize="{DynamicResource Luna.FontSize.Body.Small}" />
+                    <Button Content="右侧弹出" />
+                  </StackPanel>
+                </controls:LunaPopup.Content>
+                <controls:LunaPopup.PopupContent>
+                  <TextBlock Text="Right Popup" Foreground="{DynamicResource Luna.Brush.Text.Secondary}" />
+                </controls:LunaPopup.PopupContent>
+              </controls:LunaPopup>
             </Border>
           </WrapPanel>
-        </StackPanel>
-      </Border>
-
-      <Border Classes="sample-card">
-        <StackPanel Spacing="12">
-          <TextBlock Text="居中弹出" Classes="sample-title" />
-          <TextBlock Text="弹出层在触发元素正中显示。" Classes="sample-caption" />
-          <StackPanel Orientation="Horizontal" Spacing="8">
-            <Button Content="居中弹出" Command="{Binding ToggleCenterCommand}" />
-          </StackPanel>
-          <Border Background="{DynamicResource Luna.Brush.Background.Component}"
-                  CornerRadius="{DynamicResource Luna.Radius.Default}"
-                  Padding="16"
-                  IsVisible="{Binding IsCenterOpen}">
-            <StackPanel Spacing="8">
-              <TextBlock Text="Center Popup" FontWeight="{DynamicResource Luna.FontWeight.SemiBold}" />
-              <TextBlock Text="居中弹出的弹出层内容示例。" Classes="sample-caption" />
-              <Button Content="关闭" Command="{Binding ToggleCenterCommand}" Classes="text small" />
-            </StackPanel>
-          </Border>
         </StackPanel>
       </Border>
     </StackPanel>

@@ -9,11 +9,9 @@
         <Border Background="{DynamicResource Luna.Brush.Background.Container}"
                 CornerRadius="{DynamicResource Luna.Radius.Default}"
                 BorderBrush="{DynamicResource Luna.Brush.Border.Default}"
-                BorderThickness="1"
-                Padding="0">
+                BorderThickness="1">
           <StackPanel Spacing="0">
-            <TextBlock x:Name="PART_Title"
-                       Text="{TemplateBinding Title}"
+            <TextBlock Text="{TemplateBinding Title}"
                        FontSize="{DynamicResource Luna.FontSize.Title.Small}"
                        FontWeight="{DynamicResource Luna.FontWeight.SemiBold}"
                        Foreground="{DynamicResource Luna.Brush.Text.Primary}"
@@ -22,11 +20,12 @@
             <Border BorderBrush="{DynamicResource Luna.Brush.Border.Divider}"
                     BorderThickness="0,0,0,1"
                     IsVisible="{TemplateBinding Title, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
-            <ItemsControl x:Name="PART_Items"
-                          ItemsSource="{TemplateBinding ItemsSource}">
+            <ItemsControl ItemsSource="{TemplateBinding ItemsSource}"
+                          ItemTemplate="{TemplateBinding ItemTemplate}"
+                          Margin="16,12">
               <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                  <StackPanel />
+                  <UniformGrid Rows="0" Columns="{Binding ColumnCount, RelativeSource={RelativeSource TemplatedParent}}" />
                 </ItemsPanelTemplate>
               </ItemsControl.ItemsPanel>
             </ItemsControl>
@@ -36,7 +35,7 @@
     </Setter>
   </Style>
 
-  <Style Selector="controls|Descriptions /template/ Border > StackPanel > Border">
-    <Setter Property="Background" Value="Transparent" />
+  <Style Selector="controls|Descriptions /template/ UniformGrid > Border">
+    <Setter Property="Padding" Value="0,6" />
   </Style>
 </Styles>

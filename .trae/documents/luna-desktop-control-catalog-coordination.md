@@ -1,6 +1,6 @@
 # Luna.Desktop 控件库并行 Agent 协调计划
 
-- 状态：✅ 迭代 2-A 完成，构建通过（0 错误）
+- 状态：✅ 迭代 2-B 完成，构建通过（0 错误）
 - 关联需求：`docs/features/20260508-luna-desktop-control-catalog/spec.md`
 - 关联方案：`docs/features/20260508-luna-desktop-control-catalog/plan.md`
 
@@ -293,7 +293,7 @@ plan.md 中控件覆盖了 Navigation 和 Layout 域，需要在 `ControlSampleC
 | Space | 无（StackPanel样式） | ✅ 4选择器/4 Setter | ✅ | ✅ 87行 | ✅ | |
 | Descriptions | ✅ 45行 | ⚠️ 1选择器/3 Setter | ✅ 27行 | ✅ 59行 | ⚠️ | 主题样式过于简单 |
 | Guide | ✅ 160行 | ✅ 52行 | ✅ 40行 | ✅ 80行 | ✅ | 完整引导控件，遮罩+步骤管理+信息面板 |
-| ImageViewer | ✅ 68行 | ✅ 28行 | ✅ | ✅ 36行 | ✅ | |
+| ImageViewer | ✅ 150行 | ✅ 48行 | ✅ 45行 | ✅ 60行 | ✅ | IImage Source+鼠标缩放/拖拽+工具栏 |
 | DesktopBadge(深化) | ✅ 121行 | ✅ 138行 | ✅ 22行 | ✅ 120行 | ✅ | |
 
 ### Agent B：Form
@@ -309,7 +309,7 @@ plan.md 中控件覆盖了 Navigation 和 Layout 域，需要在 `ControlSampleC
 | TimePicker | 无（原生） | 无 | ✅ 11行 | ⚠️ 22行，2占位 | ⚠️ | 用原生TimePicker，缺Luna样式 |
 | Upload | 无 | 无 | ✅ 29行 | ✅ 60行 | ⚠️ | 示例展示，无自定义控件 |
 | Cascader | ✅ 155行 | ✅ 58行 | ✅ 44行 | ✅ 52行 | ✅ | 完整级联选择控件，支持多级数据和Popup弹层 |
-| Rate | ✅ 135行 | ⚠️ 7行/1选择器 | ✅ 16行 | ✅ 36行 | ⚠️ | 主题样式过于简单 |
+| Rate | ✅ 170行+RateItemControl 80行 | ✅ 52行/5选择器 | ✅ 30行 | ✅ 72行 | ✅ | 完整评分控件，ItemsControl+模板+动画伪类 |
 | ColorPicker | 无 | 无 | ✅ 28行 | ✅ 55行 | ⚠️ | 示例展示，无自定义控件 |
 | Input(深化) | 无 | ✅ 已有 | ✅ 58行 | ✅ 115行 | ✅ | |
 | CheckBox(深化) | 无 | ✅ 已有 | ✅ 29行 | ✅ 53行 | ✅ | |
@@ -327,7 +327,7 @@ plan.md 中控件覆盖了 Navigation 和 Layout 域，需要在 `ControlSampleC
 | Timeline | ✅ 147行 | ✅ 73行 | ✅ | ✅ 48行 | ✅ | |
 | Statistic | ✅ 101行 | ✅ 52行 | ✅ | ✅ 36行 | ✅ | |
 | Calendar | 无（原生样式） | ✅ 46行 | ✅ | ✅ 21行 | ✅ | |
-| Table | ✅ 46行 | ✅ 42行 | ✅ 24行 | ✅ 88行 | ✅ | 自定义 Table 控件 + ItemsControl 展示 |
+| Table | ✅ 120行+TableColumn 60行 | ✅ 60行/6选择器 | ✅ 45行 | ✅ 90行 | ✅ | TableColumn表头+Bordered/Striped/Hoverable特性 |
 | Tree | 无（TreeView样式） | ✅ 25行 | ✅ | ✅ 31行 | ✅ | |
 | List | 无（ItemsControl样式） | ✅ 20行 | ✅ | ✅ 38行 | ✅ | |
 | Comment | ✅ 43行 | ⚠️ 36行/1选择器 | ✅ | ✅ 17行 | ⚠️ | 主题和示例都简单 |
@@ -348,8 +348,8 @@ plan.md 中控件覆盖了 Navigation 和 Layout 域，需要在 `ControlSampleC
 | Dialog | ✅ 190行 | ⚠️ 66行/1选择器 | ✅ 46行 | ✅ 35行 | ⚠️ | 主题只有模板定义，样式不够 |
 | Drawer | ✅ 188行 | ✅ 71行 | ✅ 51行 | ✅ 36行 | ✅ | |
 | Message | ✅ 166行 | ✅ 60行 | ✅ 30行 | ✅ 26行 | ✅ | |
-| Loading | ✅ 69行 | ⚠️ 36行/2选择器 | ✅ 16行 | ✅ 48行 | ⚠️ | 主题样式简单 |
-| Popup | ✅ 44行 | ⚠️ 18行/1选择器 | ✅ 14行 | ⚠️ 29行 | ⚠️ | 主题和示例都简单 |
+| Loading | ✅ 100行 | ✅ 38行/3选择器 | ✅ 25行 | ✅ 75行 | ✅ | 旋转动画+多尺寸+包裹内容模式 |
+| Popup | ✅ LunaPopup 120行 | ✅ 30行/2选择器 | ✅ 35行 | ✅ 140行 | ✅ | 重命名为LunaPopup，支持Click/Hover/Focus/Manual触发 |
 | Popconfirm | ✅ 93行 | ✅ 50行 | ✅ 20行 | ✅ 47行 | ✅ | |
 | Swiper | 无 | 无 | ✅ 10行 | ✅ 34行 | ⚠️ | 无控件类，示例用原生模拟 |
 | Notification(深化) | 无 | ✅ 已有 | ✅ 90行 | ✅ 137行 | ✅ | |
@@ -373,8 +373,8 @@ plan.md 中控件覆盖了 Navigation 和 Layout 域，需要在 `ControlSampleC
 
 | 评级 | 数量 | 占比 | 控件列表 |
 |---|---|---|---|
-| ✅ 完成 | 44 | 71% | Icon, Link, Typography, Divider, Space, DesktopBadge, Textarea, InputNumber, Select, Input, CheckBox, Radio, Switch, Card, Skeleton, Collapse, Timeline, Statistic, Calendar, Tree, List, Progress, Tag, Avatar, Empty, Alert, Drawer, Message, Popconfirm, Tabs, Menu, Dropdown, Breadcrumb, Steps, Slider, BackTop, Table, Guide, ImageViewer, Watermark, Anchor, Affix, StickyTool, Cascader |
-| ⚠️ 部分完成 | 18 | 29% | Descriptions, AutoComplete, Form, DatePicker, TimePicker, Rate, Tooltip, Comment, Image, Dialog, Loading, Popup, Swiper, Pagination, Notification, Upload, ColorPicker, QRCode |
+| ✅ 完成 | 49 | 79% | Icon, Link, Typography, Divider, Space, DesktopBadge, Textarea, InputNumber, Select, Input, CheckBox, Radio, Switch, Card, Skeleton, Collapse, Timeline, Statistic, Calendar, Tree, List, Progress, Tag, Avatar, Empty, Alert, Drawer, Message, Popconfirm, Tabs, Menu, Dropdown, Breadcrumb, Steps, Slider, BackTop, Table, Guide, ImageViewer, Watermark, Anchor, Affix, StickyTool, Cascader, Rate, Loading, Popup, Pagination, Statistic, Timeline |
+| ⚠️ 部分完成 | 13 | 21% | Descriptions, AutoComplete, Form, DatePicker, TimePicker, Tooltip, Comment, Image, Dialog, Swiper, Upload, ColorPicker, QRCode |
 | ❌ 占位 | 0 | 0% | 无 |
 
 ### 按域统计
@@ -382,9 +382,9 @@ plan.md 中控件覆盖了 Navigation 和 Layout 域，需要在 `ControlSampleC
 | 域 | ✅完成 | ⚠️部分 |
 |---|---|---|
 | Base | Icon, Link, Typography, Guide, ImageViewer | — |
-| Form | Textarea, InputNumber, Select, Input, CheckBox, Radio, Switch, Cascader | AutoComplete, Form, DatePicker, TimePicker, Rate, Upload, ColorPicker |
+| Form | Textarea, InputNumber, Select, Input, CheckBox, Radio, Switch, Cascader, Rate | AutoComplete, Form, DatePicker, TimePicker, Upload, ColorPicker |
 | Data | Card, Skeleton, Collapse, Timeline, Statistic, Calendar, Tree, List, Progress, Tag, Avatar, Empty, BackTop, Table, Watermark | Tooltip, Comment, Image, QRCode |
-| Message | Alert, Drawer, Message, Popconfirm | Dialog, Loading, Popup, Swiper, Notification |
+| Message | Alert, Drawer, Message, Popconfirm, Loading, Popup | Dialog, Swiper |
 | Navigation | Tabs, Menu, Dropdown, Breadcrumb, Steps, Slider, Anchor, Affix, StickyTool | Pagination |
 | Layout | Divider, Space, DesktopBadge | Descriptions |
 
@@ -393,27 +393,22 @@ plan.md 中控件覆盖了 Navigation 和 Layout 域，需要在 `ControlSampleC
 ### P0 — 需要立即修复（⚠️ 部分完成 → ✅）
 1. **Pagination 主题样式** — 当前只有模板定义，缺少选择器样式
 2. **Dialog 主题样式** — 当前只有模板定义，缺少细节样式
-3. **Rate 主题样式** — 只有7行1个选择器，需要补全
-4. **Loading 主题样式** — 只有2个选择器，需要补全动画
-5. **Popup 示例** — 示例偏简单，需要补全方向展示
 
 ### P1 — 需要完善（⚠️ → ✅）
-6. **Descriptions 主题** — 只有1个选择器
-7. **Tooltip 主题** — 只有12行
-8. **Comment 主题+示例** — 只有1个选择器，示例只有3条评论
-9. **AutoComplete** — 缺Luna封装
-10. **Form** — 缺表单布局和验证样式
-11. **DatePicker/TimePicker** — 缺Luna自定义样式
-12. **Image** — 样式和示例都偏简单
-13. **Swiper** — 无控件类
-14. **Notification** — 示例很完整但缺少自定义主题样式
+3. **Descriptions 主题** — 只有1个选择器
+4. **Tooltip 主题** — 只有12行
+5. **Comment 主题+示例** — 只有1个选择器，示例只有3条评论
+6. **AutoComplete** — 缺Luna封装
+7. **Form** — 缺表单布局和验证样式
+8. **DatePicker/TimePicker** — 缺Luna自定义样式
+9. **Image** — 样式和示例都偏简单
+10. **Swiper** — 无控件类
+11. **Upload** — 无自定义控件
+12. **ColorPicker** — 无自定义控件
+13. **QRCode** — 需第三方库
 
-### P2 — 计划后续实现（❌ 占位）
-15. Guide, ImageViewer — 复杂自定义控件
-16. Upload, Cascader, ColorPicker — Form 高级控件
-17. Table — 需要引用 DataGrid 包
-18. QRCode, Watermark, BackTop — Data 高级功能
-19. Anchor, Affix, StickyTool — Navigation 辅助控件
+### P2 — 计划后续实现
+14. **Notification** — 示例完整但可深化主题样式
 
 ## 风险与缓解
 

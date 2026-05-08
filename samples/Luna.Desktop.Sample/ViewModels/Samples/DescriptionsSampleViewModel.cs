@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
+using Luna.Desktop.Controls;
 
 namespace Luna.Desktop.Sample.ViewModels.Samples;
 
@@ -9,19 +10,22 @@ public sealed partial class DescriptionsSampleViewModel()
     [ObservableProperty]
     private ObservableCollection<DescriptionItem> _items =
     [
-        new("用户名", "张三"),
-        new("邮箱", "zhangsan@example.com"),
-        new("手机号", "138-0000-0000"),
-        new("地址", "北京市朝阳区望京街道"),
-        new("部门", "前端开发组"),
-        new("职级", "T6"),
-        new("入职日期", "2023-01-15"),
-        new("状态", "在职"),
+        new() { Label = "用户名", Value = "张三" },
+        new() { Label = "邮箱", Value = "zhangsan@example.com" },
+        new() { Label = "手机号", Value = "138-0000-0000" },
+        new() { Label = "地址", Value = "北京市朝阳区望京街道" },
+        new() { Label = "部门", Value = "前端开发组" },
+        new() { Label = "职级", Value = "T6" },
+        new() { Label = "入职日期", Value = "2023-01-15" },
+        new() { Label = "状态", Value = "在职" },
     ];
-}
 
-public sealed class DescriptionItem(string label, string value)
-{
-    public string Label { get; } = label;
-    public string Value { get; } = value;
+    [ObservableProperty]
+    private int _columnCount = 2;
+
+    [ObservableProperty]
+    private double _labelWidth = 100;
+
+    [ObservableProperty]
+    private string _title = "用户信息";
 }

@@ -38,10 +38,10 @@
 
   <Style Selector="controls|Rate:disabled">
     <Setter Property="Opacity" Value="0.5" />
-    <Setter Property="Cursor" Value="Default" />
+    <Setter Property="Cursor" Value="Arrow" />
   </Style>
 
   <Style Selector="controls|Rate:disabled /template/ controls|RateItemControl">
-    <Setter Property="Cursor" Value="Default" />
+    <Setter Property="Cursor" Value="Arrow" />
   </Style>
 </Styles>

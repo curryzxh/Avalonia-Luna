@@ -4,33 +4,50 @@
              xmlns:controls="using:Luna.Desktop.Controls"
              x:Class="Luna.Desktop.Sample.Views.Samples.ImageViewerSampleView"
              x:DataType="vm:ImageViewerSampleViewModel">
-  <StackPanel Spacing="16">
-    <Border Classes="sample-card">
-      <StackPanel Spacing="12">
-        <TextBlock Text="图片预览" Classes="sample-title" />
-        <TextBlock Text="ImageViewer 支持图片的缩放、旋转操作。" Classes="sample-caption" />
-        <controls:ImageViewer Source="{Binding ImageUrl}"
-                              Zoom="{Binding Zoom}"
-                              Rotate="{Binding Rotate}"
-                              ShowToolbar="True"
-                              MaxWidth="600"
-                              MaxHeight="400"
-                              HorizontalAlignment="Left" />
-      </StackPanel>
-    </Border>
+  <ScrollViewer>
+    <StackPanel Spacing="16" Margin="0,0,0,24">
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="图片预览" Classes="sample-title" />
+          <TextBlock Text="ImageViewer 支持图片的缩放、旋转和拖拽操作。使用鼠标滚轮缩放，拖拽平移。" Classes="sample-caption" />
+          <controls:ImageViewer Source="{Binding Source}"
+                                Zoom="{Binding Zoom, Mode=TwoWay}"
+                                Rotate="{Binding Rotate, Mode=TwoWay}"
+                                ShowToolbar="True"
+                                MaxWidth="660"
+                                MaxHeight="500"
+                                HorizontalAlignment="Left" />
+        </StackPanel>
+      </Border>
 
-    <Border Classes="sample-card">
-      <StackPanel Spacing="12">
-        <TextBlock Text="手动控制" Classes="sample-title" />
-        <StackPanel Spacing="8">
-          <TextBlock Text="{Binding Zoom, StringFormat='{}缩放：{0:P0}'}" Classes="sample-caption" />
-          <Slider Minimum="0.1" Maximum="3" Value="{Binding Zoom}" />
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="手动控制" Classes="sample-title" />
+          <TextBlock Text="通过绑定 Zoom 和 Rotate 属性实现外部控制。" Classes="sample-caption" />
+          <StackPanel Spacing="8">
+            <StackPanel Spacing="8">
+              <TextBlock Text="{Binding Zoom, StringFormat='{}缩放：{0:P0}'}" Classes="sample-caption" />
+              <Slider Minimum="0.1" Maximum="3" Value="{Binding Zoom}" />
+            </StackPanel>
+            <StackPanel Spacing="8">
+              <TextBlock Text="{Binding Rotate, StringFormat='{}旋转：{0:F0}°'}" Classes="sample-caption" />
+              <Slider Minimum="-180" Maximum="180" Value="{Binding Rotate}" />
+            </StackPanel>
+          </StackPanel>
         </StackPanel>
-        <StackPanel Spacing="8">
-          <TextBlock Text="{Binding Rotate, StringFormat='{}旋转：{0:F0}°'}" Classes="sample-caption" />
-          <Slider Minimum="-180" Maximum="180" Value="{Binding Rotate}" />
+      </Border>
+
+      <Border Classes="sample-card">
+        <StackPanel Spacing="12">
+          <TextBlock Text="隐藏工具栏" Classes="sample-title" />
+          <TextBlock Text="设置 ShowToolbar=False 隐藏底部工具栏，仅通过鼠标滚轮和拖拽操作。" Classes="sample-caption" />
+          <controls:ImageViewer Source="{Binding Source}"
+                                ShowToolbar="False"
+                                MaxWidth="660"
+                                MaxHeight="400"
+                                HorizontalAlignment="Left" />
         </StackPanel>
-      </StackPanel>
-    </Border>
-  </StackPanel>
+      </Border>
+    </StackPanel>
+  </ScrollViewer>
 </UserControl>
